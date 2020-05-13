@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Purdue Blocks
  * Plugin URI: https://github.com/ahmadawais/create-guten-block/
- * Description: Purdue Blocks is a plugin used by Purdue Wordpress and Drupal sites to allow users to add Purdue's elements to pages.
+ * Description: Adds Gutenberg blocks to Wordpress based on Purdue's brand elements.
  * Author: Purdue Marketing & Media
  * Author URI: https://brand.purdue.edu/
  * Version: 1.1.0
