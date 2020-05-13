@@ -6,6 +6,6 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
-### [0.1.9] - 2020-03-29
+### [1.1.0] - 2020-05-13
 #### Added
 - Initial public release
