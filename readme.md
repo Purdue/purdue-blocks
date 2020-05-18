@@ -13,3 +13,4 @@ Relevant changes are documented below.
 ### [1.2.0] - 2020-05-18
 #### Added
 - Add CTA Hero block
+- Add Title Hero block
