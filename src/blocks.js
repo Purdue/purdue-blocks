@@ -10,6 +10,7 @@
  */
 
 import "./site-hero/block.js";
+import "./cta-hero/block.js";
 
 // const { updateCategory } = wp.blocks;
 // const { SVG, Path } = wp.components;
