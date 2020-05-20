@@ -276,16 +276,18 @@ registerBlockType("purdue-blocks/feature-story-lg", {
                 <div className={ `content${
                     props.attributes.imgAlign === 'left' ? '' : ' content-reversed'
                   }`}>
+                    {!props.attributes.header ?'':(
                   <h2>
                     {props.attributes.header}
-                  </h2>
+                  </h2>)}
                   <InnerBlocks.Content/>
+                  {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(
                   <a
                   href={props.attributes.ctaUrl}
                   className="pu-feature-story__button"
                 >
                   {props.attributes.ctaText}
-                </a> 
+                </a>)}
                   </div>
               </div>
             </div>
