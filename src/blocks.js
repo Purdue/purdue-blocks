@@ -13,6 +13,7 @@ import "./site-hero/block.js";
 import "./cta-hero/block.js";
 import "./title-hero/block.js";
 import "./feature-story-lg/block.js";
+import "./proofpoint/block.js"
 
 // const { updateCategory } = wp.blocks;
 // const { SVG, Path } = wp.components;
