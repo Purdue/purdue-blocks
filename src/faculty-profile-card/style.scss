@@ -1,0 +1,132 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+@import "../scss/bulma-utilities";
+
+.faculty-profile-card {
+  &.box {
+    padding: 0;
+  }
+  .media {
+    padding: 2.25rem;
+
+    @include touch {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .media-left {
+      margin-right: 2.325rem;
+
+      @include touch {
+        margin: 0 0 2.325rem 0;
+      }
+      
+      @include mobile {
+        width: 100%;
+      }
+
+      .image {
+        width: 100%;
+        height: auto;
+        max-width: 19.125rem;
+      }
+    }
+
+    .media-content {
+      ul {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+
+        li {
+          display: flex;
+          font-size: 1.25rem;
+
+          &:not(:last-child) {
+            margin-bottom: 1.325rem;
+          }
+
+          svg {
+            margin-right: 1.325rem;
+            color: #555960;
+          }
+
+          .profile-info-item {
+            display: flex;
+            flex-direction: column;
+            margin-top: -0.5rem;
+
+            p {
+              margin-bottom: 0;
+              font-size: 1.125rem;
+              font-weight: 400;
+              font-family: acumin-pro;
+            }
+
+            a {
+              text-decoration: none;
+              color: black;
+              margin-bottom: 0;
+              font-size: 1.125rem;
+              font-weight: 400;
+              font-family: acumin-pro;
+            }
+
+            span {
+              display: block;
+              font-size: 1rem;
+              font-weight: 300;
+              color: #555960;
+              font-family: acumin-pro;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .level {
+    background: black;
+    padding: 0.75rem 1.75rem;
+    justify-content: flex-end;
+
+    @include mobile {
+      padding: 0.75rem 1rem;
+    }
+
+    .level-right {
+
+      @include mobile {
+        width: 100%;
+        max-width: 20rem;
+        justify-content: space-between;
+      }
+
+      .level-item {
+        color: white;
+
+        &:not(:last-child) {
+          margin-right: 2.25rem;
+
+          @include mobile {
+            margin-right: 0;
+          }
+        }
+      }
+
+      p.level-item {
+        margin-bottom: 0;
+        font-size: 1.125rem;
+      }
+
+      a.level-item {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
