@@ -19,7 +19,8 @@ const {
   PanelRow,
   TextareaControl,
   Button,
-  RadioControl
+  RadioControl,
+  CheckboxControl,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 
@@ -39,9 +40,9 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/feature-story-lg", {
+registerBlockType("purdue-blocks/feature-story", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Large featured story"), // Block title.
+  title: __("Featured story"), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -74,12 +75,11 @@ registerBlockType("purdue-blocks/feature-story-lg", {
    */
 
   attributes: {
+    style: { type: "boolean", default: true },
     header: { type: "string", default: "" },
-    // content: { type: "string", default: "" },
     imgUrl: { type: "string", default: "" },
     altText: { type: "string", default: "" },
-    // imgError: { type: "boolean" },
-    imgAlign: { type: "string", default: "left"  },
+    contentAlign: { type: "string", default: "left"  },
     ctaUrl: { type: "string", default: "" },
     ctaText: { type: "string", default: "" },
   },
@@ -94,21 +94,41 @@ registerBlockType("purdue-blocks/feature-story-lg", {
   ),
 
   edit: (props) => {
-
+    const setChecked = () => {
+      if (props.attributes.style) {
+        props.setAttributes({
+          style: false,
+        });
+      } else {
+        props.setAttributes({
+          style: true,
+        });
+      }
+    };
     return [
       <InspectorControls>
+         <PanelBody>
+         <PanelRow>
+            <CheckboxControl
+              label="Full width"
+              help="Would you like this featured story row to take up the full screen width?"
+              checked={props.attributes.style}
+              onChange={setChecked}
+            />
+          </PanelRow>
+        </PanelBody>
         <PanelBody>
           <PanelRow>
             <RadioControl
-                label="Align Image"
-                help="Choose to place the image to the left or right."
-                selected={ props.attributes.imgAlign }
+                label="Align content"
+                help="Choose to place the content to the left or right."
+                selected={ props.attributes.contentAlign }
                 options={ [
                   { label: 'Left', value: 'left' },
                   { label: 'Right', value: 'right' },
                 ] }
                 onChange={ ( option ) => {
-                  props.setAttributes( { imgAlign: option } )
+                  props.setAttributes( { contentAlign: option } )
                 } }
               />
             </PanelRow>
@@ -193,21 +213,13 @@ registerBlockType("purdue-blocks/feature-story-lg", {
           <MediaUploadCheck>
             <MediaUpload
               onSelect={(img) => {
-                // const aspectRatio = img.width / img.height;
-                // if (aspectRatio !== 2) {
-                //   props.setAttributes({
-                //     imgError: true,
-                //   });
-                // } else {
                   props.setAttributes({
                     imgUrl: img.sizes.full.url,
                     altText:
                       props.attributes.altText !== ""
                         ? props.attributes.altText
                         : img.alt,
-                    // imgError: false,
                   });
-                // }
               }}
               render={({ open }) => {
                 return props.attributes.imgUrl !== "" ? (
@@ -258,11 +270,10 @@ registerBlockType("purdue-blocks/feature-story-lg", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
-    const returned = (
-      <div  className="pu-feature-story">
+    const returned = props.attributes.style ?(<div  className="pu-feature-story">
         <div className="hero is-medium">         
           <div className={ `${
-        props.attributes.imgAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
+        props.attributes.contentAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
       }`}>
             <span
               className="background-image"
@@ -274,7 +285,7 @@ registerBlockType("purdue-blocks/feature-story-lg", {
           <div className="hero-body">
             <div className="container">
                 <div className={ `content${
-                    props.attributes.imgAlign === 'left' ? '' : ' content-reversed'
+                    props.attributes.contentAlign === 'left' ? '' : ' content-reversed'
                   }`}>
                     {!props.attributes.header ?'':(
                   <h2>
@@ -292,7 +303,33 @@ registerBlockType("purdue-blocks/feature-story-lg", {
               </div>
             </div>
         </div>
-      </div>
+      </div>):(
+        <div  className="pu-feature-story pu-feature-story__narrow">
+          <div class={ `container pu-feature-story__container${
+          props.attributes.contentAlign === 'left' ? '' : ' pu-feature-story__container-reversed'
+        }`}>
+            <div
+              className="background-image"
+              role="img"
+              style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
+              aria-label={props.attributes.altText}
+            ></div>
+            <div className="story-content">
+                    {!props.attributes.header ?'':(
+                  <h2>
+                    {props.attributes.header}
+                  </h2>)}
+                  <InnerBlocks.Content/>
+                  {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(
+                  <a
+                  href={props.attributes.ctaUrl}
+                  className="pu-feature-story__button"
+                >
+                  {props.attributes.ctaText}
+                </a>)}
+            </div>       
+          </div>
+        </div>    
     );
     return returned;
   },
