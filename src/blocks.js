@@ -13,6 +13,11 @@ import "./site-hero/block.js";
 import "./cta-hero/block.js";
 import "./title-hero/block.js";
 import "./list/block.js";
+import "./cta-banner/block.js";
+import "./faculty-profile-card/block.js";
+import "./feature-story-lg/block.js";
+import "./proofpoint/block.js"
+
 
 // const { updateCategory } = wp.blocks;
 // const { SVG, Path } = wp.components;
