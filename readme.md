@@ -14,3 +14,8 @@ Relevant changes are documented below.
 #### Added
 - Add CTA Hero block
 - Add Title Hero block
+
+2020-05-20
+#### Added
+- Add large featured story block
+
