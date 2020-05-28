@@ -19,6 +19,7 @@ const {
   PanelRow,
   CheckboxControl,
   TextareaControl,
+  TextControl,
   Button,
   ToggleControl,
 } = wp.components;
@@ -99,6 +100,8 @@ registerBlockType("purdue-blocks/site-hero", {
     altText: { type: "string", default: "" },
     imgError: { type: "boolean" },
     includeSocial: { type: "boolean" },
+    includeButton: { type: "boolean" },
+    anchor: { type: "string", default: "" },
     styleToggle: { type: "boolean", default: false },
     checkedSocials: { type: "object", default: {} },
     currUrl: { type: "string", default: "" },
@@ -114,10 +117,13 @@ registerBlockType("purdue-blocks/site-hero", {
   ),
 
   edit: (props) => {
+    const titleField = document.querySelector("#siteHeroTitleInput");
+    const titleFieldIsFocused = document.activeElement === titleField;
+
     if (props.attributes.currUrl === "") {
       props.setAttributes({ currUrl: select("core/editor").getPermalink() });
     }
-    if (props.attributes.pageTitle === "") {
+    if (props.attributes.pageTitle === "" && !titleFieldIsFocused) {
       props.setAttributes({
         pageTitle: select("core/editor").getCurrentPost().title,
       });
@@ -135,7 +141,17 @@ registerBlockType("purdue-blocks/site-hero", {
         });
       }
     };
-
+    const setButtonChecked = () => {
+      if (props.attributes.includeButton) {
+        props.setAttributes({
+          includeButton: false,
+        });
+      } else {
+        props.setAttributes({
+          includeButton: true,
+        });
+      }
+    };
     return [
       <InspectorControls>
         <PanelBody>
@@ -190,6 +206,24 @@ registerBlockType("purdue-blocks/site-hero", {
               })
             : ""}
         </PanelBody>
+        <PanelBody>
+          <PanelRow>
+              <CheckboxControl
+                label="Include a Jump to Article button"
+                help="Would you like to include a Jump to Article button?"
+                checked={props.attributes.includeButton}
+                onChange={setButtonChecked}
+              />
+            </PanelRow>
+            {props.attributes.includeButton
+            ?(<PanelRow>
+              <TextControl
+                label="ID of the element the button will jump to"
+                value={props.attributes.anchor}
+                onChange={(anchor) => props.setAttributes({ anchor })}
+              />
+            </PanelRow>):""}
+          </PanelBody>
       </InspectorControls>,
 
       <div className={"bulma-blocks-editor-site-hero"}>
@@ -198,12 +232,9 @@ registerBlockType("purdue-blocks/site-hero", {
           <div className="field">
             <div className="control">
               <input
-                value={
-                  props.attributes.pageTitle !== ""
-                    ? props.attributes.pageTitle
-                    : ""
-                }
+                value={props.attributes.pageTitle}
                 className="input"
+                id="siteHeroTitleInput"
                 type="text"
                 placeholder="Page Title..."
                 onChange={(e) => {
@@ -344,7 +375,10 @@ registerBlockType("purdue-blocks/site-hero", {
                                 href={`${
                                   socials.find((item) => item.faSlug === faSlug)
                                     .share
-                                }${select("core/editor").getPermalink()}`}
+                                }${
+                                  props.attributes.currUrl ||
+                                  select("core/editor").getPermalink()
+                                }`}
                                 className="icon"
                               >
                                 <i className={`fab fa-lg fa-${faSlug}`}></i>
@@ -358,6 +392,10 @@ registerBlockType("purdue-blocks/site-hero", {
                 ) : (
                   ""
                 )}
+                {props.attributes.includeButton && props.attributes.anchor? (
+                  <a href={`#${props.attributes.anchor}`} class="jump-button">jump to articles <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                ) : ""
+                }
               </div>
             </div>
           </div>
@@ -395,7 +433,10 @@ registerBlockType("purdue-blocks/site-hero", {
                                 href={`${
                                   socials.find((item) => item.faSlug === faSlug)
                                     .share
-                                }${select("core/editor").getPermalink()}`}
+                                }${
+                                  props.attributes.currUrl ||
+                                  select("core/editor").getPermalink()
+                                }`}
                                 className="icon"
                               >
                                 <i className={`fab fa-lg fa-${faSlug}`}></i>
@@ -409,6 +450,10 @@ registerBlockType("purdue-blocks/site-hero", {
                 ) : (
                   ""
                 )}
+                 {props.attributes.includeButton && props.attributes.anchor? (
+                  <a href={`#${props.attributes.anchor}`} class="jump-button">jump to articles <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+                ) : ""
+                }
               </div>
             </div>
           </div>

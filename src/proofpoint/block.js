@@ -79,7 +79,8 @@ registerBlockType("purdue-blocks/proofpoint", {
     border:{ type: "boolean", default: false },
     buttonColor: { type: "string", default: "black"  },
     highlighted: { type: "string", default: "" },
-    fontStyle: { type: "string", default: "narrow" },
+    headerfontStyle: { type: "string", default: "narrow" },
+    contentfontStyle: { type: "string", default: "narrow" },
     content: { type: "string", default: "" },
     source: { type: "string", default: "" },
     ctaUrl: { type: "string", default: "" },
@@ -159,13 +160,28 @@ registerBlockType("purdue-blocks/proofpoint", {
           <PanelRow>
             <RadioControl
                 label="Highlighted Text Style"
-                selected={ props.attributes.fontStyle }
+                selected={ props.attributes.headerfontStyle }
                 options={ [
                   { label: 'Wide', value: 'wide' },
                   { label: 'Narrow', value: 'narrow' },
                 ] }
                 onChange={ ( option ) => {
-                  props.setAttributes( { fontStyle: option } )
+                  props.setAttributes( { headerfontStyle: option } )
+                } }
+              />
+            </PanelRow>
+          </PanelBody>
+          <PanelBody>
+          <PanelRow>
+            <RadioControl
+                label="Content Text Style"
+                selected={ props.attributes.contentfontStyle }
+                options={ [
+                  { label: 'Wide', value: 'wide' },
+                  { label: 'Narrow', value: 'narrow' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { contentfontStyle: option } )
                 } }
               />
             </PanelRow>
@@ -287,15 +303,17 @@ registerBlockType("purdue-blocks/proofpoint", {
         props.attributes.border ? ' pu-proofpoint__border' : ''
       }`}>       
           <div className="container">
-           {!props.attributes.highlighted ?'':props.attributes.fontStyle==="wide" ?(
+           {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
             <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">
               {props.attributes.highlighted}
             </p>):(
             <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow">
               {props.attributes.highlighted}
             </p>)}
-            {!props.attributes.content ?'':(
-            <p className="pu-proofpoint__content">
+            {!props.attributes.content ?'':props.attributes.contentfontStyle==="wide" ?(
+            <p className="pu-proofpoint__content pu-proofpoint__content-wide">
+              {props.attributes.content}
+            </p>):(<p className="pu-proofpoint__content pu-proofpoint__content-narrow">
               {props.attributes.content}
             </p>)}
             {!props.attributes.source ?'':(

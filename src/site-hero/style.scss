@@ -4,368 +4,292 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
+ @import "../scss/bulma-utilities";
 
-.bulma-blocks-40-60-hero {
-  .hero {
-    position: relative;
-    @include touch {
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-
-    .hero-body {
-      position: relative;
-      background: White;
-      z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      margin: 0 !important;
-
-      @include touch {
-        order: 2;
-        height: auto;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-
-      @include desktop {
-        order: 1;
-        justify-content: flex-end;
-      }
-
-      .content {
-        color: black !important;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        height: 52rem;
-        margin-bottom: 0;
-        padding: 0;
-
-        @include touch {
-          max-width: 100%;
-          height: auto;
-        }
-
-        @include desktop {
-          max-width: 23rem;
-        }
-
-        @include widescreen {
-          max-width: 27rem;
-        }
-
-        @include fullhd {
-          max-width: 27.5rem;
-        }
-
-        .level {
-          margin-top: 2rem;
-
-          @include mobile {
-            margin: 1rem 0 0;
-          }
-        }
-
-        .level-item {
-          margin-right: 2.5rem;
-
-          a {
-            color: black !important;
-          }
-        }
-
-        h1 {
-          font-family: acumin-pro-semi-condensed;
-          font-weight: 700;
-          font-size: 2.8125rem;
-          color: black !important;
-
-          @include tablet {
-            font-size: 4.25rem !important;
-          }
-        }
-
-        p {
-          font-size: 1.5rem;
-          font-family: "United Sans";
-          text-transform: uppercase;
-          width: 85%;
-
-          @include mobile {
-            font-size: 1.25rem;
-          }
-        }
-      }
-    }
-    
-    .hero-image {
-      z-index: 4;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 60%;
-      height: 100%;
-      @include touch {
-        position: relative;
-        height: 20rem;
-        width: 100%;
-        flex-basis: auto;
-        order: 1;
-      }
-
-      @include mobile {
-        height: 17rem;
-      }
-
-      .background-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-  }
-}
-
-.bulma-blocks-50-50-hero {
-  .hero {
-    display: flex;
-    position: relative;
-
-    @include touch {
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-
-    .hero-body {
-      position: relative;
-      background: black;
-      display: flex;
-      align-items: center;
-      z-index: 2;
-
-      @include touch {
-        order: 2;
-      }
-
-      .content {
-        color: white !important;
-        width: auto;
-        max-width: 30rem;
-
-        @include touch {
-          max-width: 100%;
-        }
-
-        h1 {
-          font-family: acumin-pro-semi-condensed;
-          color: white !important;
-          font-size: 1.875rem;
-
-          @include tablet {
-            font-size: 2.8125rem !important;
-          }
-        }
-
-        p {
-          font-size: 1.25rem;
-          font-family: acumin-pro;
-        }
-
-        .level {
-          margin-top: 2.5rem;
-        }
-
-        .level-item {
-          margin-right: 2.5rem;
-
-          a {
-            color: white !important;
-          }
-        }
-      }
-    }
-
-    .hero-image {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      z-index: 4;
-
-      &:before {
-        content: "";
-        background: black;
-        width: 5rem;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        clip-path: polygon(0 0, 0% 100%, 100% 0);
-
-        @include touch {
-          clip-path: polygon(0 0, 0% 100%, 100% 100%);
-          width: 100%;
-          height: 5rem;
-          left: 0;
-          bottom: 0;
-        }
-      }
-
-      @include touch {
-        position: relative;
-        height: 20rem;
-        width: 100%;
-        flex-basis: auto;
-        order: 1;
-      }
-
-      @include mobile {
-        height: 17rem;
-      }
-
-      .background-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-  }
-}
-
-// .bulma-blocks-50-50-hero {
-//   .columns {
-
-//     @include touch {
-//       flex-direction: column;
-//       flex-wrap: nowrap;
-//     }
-
-//     .column {
-//       position: relative;
-
-//       .content {
-//         color: white !important;
-//         width: auto;
-//         margin: 0 auto;
-
-//         @include touch {
-//           &.section {
-//             padding-top: 1rem !important;
-//             padding-bottom: 3.5rem !important;
-//           }
-//         }
-
-//         @include desktop {
-//           margin-right: 0.6rem;
-//           width: 31rem;
-//         }
-
-//         @include widescreen {
-//           margin-right: 4.6rem;
-//           width: 33rem;
-//         }
-
-//         @include fullhd {
-//           margin-right: 10.6rem;
-//         }
-
-//         h1 {
-//           font-family: acumin-pro-semi-condensed;
-//           color: white !important;
-//           font-size: 1.875rem;
-
-//           @include tablet {
-//             font-size: 2.8125rem !important;
-//           }
-//         }
-
-//         p {
-//           font-size: 1.25rem;
-//           font-family: acumin-pro;
-//         }
-
-//         &.section {
-//           padding-top: 7rem;
-//           padding-bottom: 7rem;
-
-//           .level {
-//             margin-top: 2.5rem;
-//           }
-
-//           .level-item {
-//             margin-right: 2.5rem;
-
-//             a {
-//               color: white !important;
-//             }
-//           }
-//         }
-//       }
-
-//       &:first-child {
-//         background: black;
-//         display: flex;
-//         align-items: center;
-//         z-index: 2;
-
-//         @include touch {
-//           order: 2
-//         }
-
-//         @include desktop {
-//           order: 1;
-//         }
-
-//         &:after {
-//           content: "";
-//           background: black;
-//           width: 5rem;
-//           height: 100%;
-//           position: absolute;
-//           left: 100%;
-//           clip-path: polygon(0 0, 0% 100%, 100% 0);
-
-//           @include touch {
-//             clip-path: polygon(0 0, 0% 100%, 100% 100%);
-//             width: 100%;
-//             height: 5rem;
-//             left: 0;
-//             bottom: 100%;
-//           }
-//         }
-//       }
-
-//       &:last-child {
-
-//         @include touch {
-//           height: 18rem;
-//           flex-basis: auto;
-//           order: 1;
-//         }
-
-//         @include desktop {
-//           order: 2;
-//         }
-
-//         .background-image {
-//           display: block;
-//           width: 100%;
-//           height: 100%;
-//           background-position: center;
-//           background-repeat: no-repeat;
-//           background-size: cover;
-//         }
-//       }
-//     }
-//   }
-// }
+ .bulma-blocks-40-60-hero {
+   .hero {
+     position: relative;
+     @include touch {
+       flex-direction: column;
+       flex-wrap: nowrap;
+     }
+ 
+     .hero-body {
+       position: relative;
+       background: White;
+       z-index: 2;
+       display: flex;
+       align-items: flex-end;
+       justify-content: flex-end;
+       margin: 0 !important;
+ 
+       @include touch {
+         order: 2;
+         height: auto;
+         align-items: flex-start;
+         justify-content: flex-start;
+       }
+ 
+       @include desktop {
+         order: 1;
+         justify-content: flex-end;
+       }
+ 
+       .content {
+         color: black !important;
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         justify-content: flex-end;
+         min-height: 40rem;
+         height: auto;
+         margin-bottom: 0;
+         padding: 0;
+ 
+         @include touch {
+           max-width: 100%;
+           min-height: 0px;
+           height: auto;
+         }
+ 
+         @include desktop {
+           max-width: 23rem;
+         }
+ 
+         @include widescreen {
+           max-width: 26rem;
+         }
+ 
+         @include fullhd {
+           max-width: 27rem;
+         }
+ 
+         .level {
+           margin-top: 2rem;
+           margin-bottom:0;
+ 
+           @include mobile {
+             margin: 1rem 0 0;
+           }
+         }
+ 
+         .level-item {
+           margin-right: 2.5rem;
+ 
+           a {
+             color: black !important;
+           }
+         }
+ 
+         h1 {
+           font-family: acumin-pro-semi-condensed;
+           font-weight: 700;
+           font-size: 1.875rem;
+           color: black !important;
+           line-height:1.33;
+ 
+           @include tablet {
+               font-size: 4.25rem !important;
+               line-height:1.125;
+           }
+         }
+ 
+         p {
+           font-size: 1.5rem;
+           font-family: "United Sans";
+           text-transform: uppercase;
+           width: 85%;
+           &:last-of-type{
+             margin-bottom:0;
+           }
+ 
+           @include mobile {
+             font-size: 1.25rem;
+           }
+         }
+       }
+     }
+     
+     .hero-image {
+       z-index: 4;
+       position: absolute;
+       right: 0;
+       top: 0;
+       width: 60%;
+       height: 100%;
+       @include touch {
+         position: relative;
+         height: 20rem;
+         width: 100%;
+         flex-basis: auto;
+         order: 1;
+       }
+ 
+       @include mobile {
+         height: 17rem;
+       }
+ 
+       .background-image {
+         display: block;
+         width: 100%;
+         height: 100%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+       }
+     }
+   }
+   .jump-button {
+     font-family: "United Sans";
+     font-weight: 400;
+     font-size: 1.25rem;
+     text-transform: capitalize;
+     color: #8e6f3e !important;
+     text-decoration:none;
+     margin-top:1.5rem;
+     display:block;
+     svg {
+         padding-left: 0.25rem;
+     }
+ 
+     &:hover {
+         svg {
+             animation: bounce 0.3s infinite alternate;
+         }
+     }
+ }
+ }
+ 
+ .bulma-blocks-50-50-hero {
+   .hero {
+     display: flex;
+     position: relative;
+ 
+     @include touch {
+       flex-direction: column;
+       flex-wrap: nowrap;
+     }
+ 
+     .hero-body {
+       position: relative;
+       background: black;
+       display: flex;
+       align-items: center;
+       z-index: 2;
+ 
+       @include touch {
+         order: 2;
+       }
+ 
+       .content {
+         color: white !important;
+         width: auto;
+         max-width: 30rem;
+ 
+         @include touch {
+           max-width: 100%;
+         }
+ 
+         h1 {
+           font-family: acumin-pro-semi-condensed;
+           color: white !important;
+           font-size: 1.875rem;
+ 
+           @include tablet {
+             font-size: 2.8125rem !important;
+           }
+         }
+ 
+         p {
+           font-size: 1.25rem;
+           font-family: acumin-pro;
+           &:last-of-type{
+             margin-bottom:0;
+           }
+         }
+ 
+         .level {
+           margin-top: 2.5rem;
+           margin-bottom:0;
+         }
+ 
+         .level-item {
+           margin-right: 2.5rem;
+ 
+           a {
+             color: white !important;
+           }
+         }
+       }
+     }
+ 
+     .hero-image {
+       position: absolute;
+       right: 0;
+       top: 0;
+       width: 50%;
+       height: 100%;
+       z-index: 4;
+ 
+       &:before {
+         content: "";
+         background: black;
+         width: 5rem;
+         height: 100%;
+         position: absolute;
+         left: 0;
+         clip-path: polygon(0 0, 0% 100%, 100% 0);
+ 
+         @include touch {
+           clip-path: polygon(0 0, 0% 100%, 100% 100%);
+           width: 100%;
+           height: 5rem;
+           left: 0;
+           bottom: 0;
+         }
+       }
+ 
+       @include touch {
+         position: relative;
+         height: 20rem;
+         width: 100%;
+         flex-basis: auto;
+         order: 1;
+       }
+ 
+       @include mobile {
+         height: 17rem;
+       }
+ 
+       .background-image {
+         display: block;
+         width: 100%;
+         height: 100%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+       }
+     }
+   }
+   .jump-button {
+     font-family: "United Sans";
+     font-weight: 400;
+     font-size: 1.25rem;
+     text-transform: capitalize;
+     color: #CEB991 !important;
+     text-decoration:none;
+     margin-top:1.5rem;
+     display:block;
+     svg {
+         padding-left: 0.25rem;
+     }
+ 
+     &:hover {
+         svg {
+             animation: bounce 0.3s infinite alternate;
+         }
+     }
+ }
+ }
+ 
+ 
