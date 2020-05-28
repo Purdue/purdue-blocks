@@ -114,10 +114,13 @@ registerBlockType("purdue-blocks/site-hero", {
   ),
 
   edit: (props) => {
+    const titleField = document.querySelector("#siteHeroTitleInput");
+    const titleFieldIsFocused = document.activeElement === titleField;
+
     if (props.attributes.currUrl === "") {
       props.setAttributes({ currUrl: select("core/editor").getPermalink() });
     }
-    if (props.attributes.pageTitle === "") {
+    if (props.attributes.pageTitle === "" && !titleFieldIsFocused) {
       props.setAttributes({
         pageTitle: select("core/editor").getCurrentPost().title,
       });
@@ -198,12 +201,9 @@ registerBlockType("purdue-blocks/site-hero", {
           <div className="field">
             <div className="control">
               <input
-                value={
-                  props.attributes.pageTitle !== ""
-                    ? props.attributes.pageTitle
-                    : ""
-                }
+                value={props.attributes.pageTitle}
                 className="input"
+                id="siteHeroTitleInput"
                 type="text"
                 placeholder="Page Title..."
                 onChange={(e) => {
@@ -344,7 +344,10 @@ registerBlockType("purdue-blocks/site-hero", {
                                 href={`${
                                   socials.find((item) => item.faSlug === faSlug)
                                     .share
-                                }${select("core/editor").getPermalink()}`}
+                                }${
+                                  props.attributes.currUrl ||
+                                  select("core/editor").getPermalink()
+                                }`}
                                 className="icon"
                               >
                                 <i className={`fab fa-lg fa-${faSlug}`}></i>
@@ -395,7 +398,10 @@ registerBlockType("purdue-blocks/site-hero", {
                                 href={`${
                                   socials.find((item) => item.faSlug === faSlug)
                                     .share
-                                }${select("core/editor").getPermalink()}`}
+                                }${
+                                  props.attributes.currUrl ||
+                                  select("core/editor").getPermalink()
+                                }`}
                                 className="icon"
                               >
                                 <i className={`fab fa-lg fa-${faSlug}`}></i>
