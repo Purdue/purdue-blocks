@@ -19,6 +19,7 @@ const {
   PanelRow,
   TextareaControl,
   Button,
+  CheckboxControl,
   RadioControl
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
@@ -39,9 +40,9 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/feature-story-lg", {
+registerBlockType("purdue-blocks/proofpoint", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Large featured story"), // Block title.
+  title: __("Proof Point"), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -74,12 +75,13 @@ registerBlockType("purdue-blocks/feature-story-lg", {
    */
 
   attributes: {
-    header: { type: "string", default: "" },
-    // content: { type: "string", default: "" },
-    imgUrl: { type: "string", default: "" },
-    altText: { type: "string", default: "" },
-    // imgError: { type: "boolean" },
-    imgAlign: { type: "string", default: "left"  },
+    color: { type: "string", default: "black"  },
+    border:{ type: "boolean", default: false },
+    buttonColor: { type: "string", default: "black"  },
+    highlighted: { type: "string", default: "" },
+    fontStyle: { type: "string", default: "narrow" },
+    content: { type: "string", default: "" },
+    source: { type: "string", default: "" },
     ctaUrl: { type: "string", default: "" },
     ctaText: { type: "string", default: "" },
   },
@@ -90,66 +92,140 @@ registerBlockType("purdue-blocks/feature-story-lg", {
 
   // Block description in side panel
   description: __(
-    "This block adds a feature story row on the page."
+    "This block adds a proofpoint card."
   ),
 
   edit: (props) => {
-
+    const setChecked = () => {
+      if (props.attributes.border) {
+        props.setAttributes({
+          border: false,
+        });
+      } else {
+        props.setAttributes({
+          border: true,
+        });
+      }
+    };
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
             <RadioControl
-                label="Align Image"
-                help="Choose to place the image to the left or right."
-                selected={ props.attributes.imgAlign }
+                label="Background Color"
+                help="Choose to background color of the proofpoint."
+                selected={ props.attributes.color }
                 options={ [
-                  { label: 'Left', value: 'left' },
-                  { label: 'Right', value: 'right' },
+                  { label: 'Black', value: 'black' },
+                  { label: 'White', value: 'white' },
                 ] }
                 onChange={ ( option ) => {
-                  props.setAttributes( { imgAlign: option } )
+                  props.setAttributes( { color: option } )
                 } }
               />
             </PanelRow>
+          </PanelBody>
+          {props.attributes.color === 'white'?(
+        <PanelBody>
           <PanelRow>
-            <TextareaControl
-              label="Featured Image Alt Text"
-              value={props.attributes.altText}
-              onChange={(altText) => props.setAttributes({ altText })}
+            <CheckboxControl
+              label="Add border?"
+              help="Would you like to add border to the proofpoint?"
+              checked={props.attributes.border}
+              onChange={setChecked}
             />
           </PanelRow>
         </PanelBody>
+        ):''}
+        {props.attributes.color === 'white'?(
+        <PanelBody>
+          <PanelRow>
+            <RadioControl
+                label="Button Color"
+                help="Choose the CTA button color."
+                selected={ props.attributes.buttonColor }
+                options={ [
+                  { label: 'Black', value: 'black' },
+                  { label: 'White', value: 'white' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { buttonColor: option } )
+                } }
+              />
+            </PanelRow>
+        </PanelBody>
+        ):''}
+        <PanelBody>
+          <PanelRow>
+            <RadioControl
+                label="Highlighted Text Style"
+                selected={ props.attributes.fontStyle }
+                options={ [
+                  { label: 'Wide', value: 'wide' },
+                  { label: 'Narrow', value: 'narrow' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { fontStyle: option } )
+                } }
+              />
+            </PanelRow>
+          </PanelBody>
       </InspectorControls>,
 
-      <div className={"purdue-blocks-editor-feature-story"}>
+      <div className={"purdue-blocks-editor-proofpoint"}>
         <div className="content">
-          <span>Add A Header</span>
+          <span>Add Highlighted Text</span>
           <div className="field">
             <div className="control">
               <input
                 value={
-                  props.attributes.header !== ""
-                    ? props.attributes.header
+                  props.attributes.highlighted !== ""
+                    ? props.attributes.highlighted
                     : ""
                 }
                 className="input"
                 type="text"
-                placeholder="Content Header..."
+                placeholder="Highlighted Text..."
                 onChange={(e) => {
-                  props.setAttributes({ header: e.target.value });
+                  props.setAttributes({ highlighted: e.target.value });
                 }}
               ></input>
             </div>
           </div>
           <span>Add Content Body</span>
-
           <div className="field">
             <div className="control">
-              <InnerBlocks
-                template={ BLOCKS_TEMPLATE }
-                allowedBlocks={ [ 'core/paragraph','core/list'] }
-              />
+              <input
+                  value={
+                    props.attributes.content !== ""
+                      ? props.attributes.content
+                      : ""
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Content Text..."
+                  onChange={(e) => {
+                    props.setAttributes({ content: e.target.value });
+                  }}
+                ></input>
+            </div>
+          </div>
+          <span>Add Source of the Proofpoint</span>
+          <div className="field">
+            <div className="control">
+              <input
+                  value={
+                    props.attributes.source !== ""
+                      ? props.attributes.source
+                      : ""
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Source of Text..."
+                  onChange={(e) => {
+                    props.setAttributes({ source: e.target.value });
+                  }}
+                ></input>
             </div>
           </div>
           <span>Add CTA Button Text and URL</span>
@@ -188,60 +264,6 @@ registerBlockType("purdue-blocks/feature-story-lg", {
             </div>
           </div>
         </div>
-        <div className="content">
-          <span>Choose a Hero Image</span>
-          <MediaUploadCheck>
-            <MediaUpload
-              onSelect={(img) => {
-                // const aspectRatio = img.width / img.height;
-                // if (aspectRatio !== 2) {
-                //   props.setAttributes({
-                //     imgError: true,
-                //   });
-                // } else {
-                  props.setAttributes({
-                    imgUrl: img.sizes.full.url,
-                    altText:
-                      props.attributes.altText !== ""
-                        ? props.attributes.altText
-                        : img.alt,
-                    // imgError: false,
-                  });
-                // }
-              }}
-              render={({ open }) => {
-                return props.attributes.imgUrl !== "" ? (
-                  <div className={"purdue-blocks-editor-feature-story__preview"}>
-                    <figure className={"image"}>
-                      <img
-                        alt={props.attributes.altText}
-                        src={props.attributes.imgUrl}
-                      />
-                    </figure>
-                    <Button
-                      className={"purdue-blocks-editor-feature-story__button"}
-                      onClick={open}
-                    >
-                      Select a New Image
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={"purdue-blocks-editor-feature-story__container"}>
-                    <p className={"purdue-blocks-editor-feature-story__description"}>
-                      Pick an image from the media library. The recommended aspect ratio is 3:2.
-                    </p>
-                    <Button
-                      className={"purdue-blocks-editor-feature-story__button"}
-                      onClick={open}
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                );
-              }}
-            />
-          </MediaUploadCheck>
-        </div>
       </div>,
     ];
   },
@@ -259,39 +281,40 @@ registerBlockType("purdue-blocks/feature-story-lg", {
    */
   save: (props) => {
     const returned = (
-      <div  className="pu-feature-story">
-        <div className="hero is-medium">         
-          <div className={ `${
-        props.attributes.imgAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
-      }`}>
-            <span
-              className="background-image"
-              role="img"
-              style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
-              aria-label={props.attributes.altText}
-            />
-          </div>
-          <div className="hero-body">
-            <div className="container">
-                <div className={ `content${
-                    props.attributes.imgAlign === 'left' ? '' : ' content-reversed'
-                  }`}>
-                    {!props.attributes.header ?'':(
-                  <h2>
-                    {props.attributes.header}
-                  </h2>)}
-                  <InnerBlocks.Content/>
-                  {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(
-                  <a
+      <div  className={ `pu-proofpoint${
+        props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
+      }${
+        props.attributes.border ? ' pu-proofpoint__border' : ''
+      }`}>       
+          <div className="container">
+           {!props.attributes.highlighted ?'':props.attributes.fontStyle==="wide" ?(
+            <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">
+              {props.attributes.highlighted}
+            </p>):(
+            <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow">
+              {props.attributes.highlighted}
+            </p>)}
+            {!props.attributes.content ?'':(
+            <p className="pu-proofpoint__content">
+              {props.attributes.content}
+            </p>)}
+            {!props.attributes.source ?'':(
+            <p className="pu-proofpoint__source">
+              {props.attributes.source}
+            </p>)}
+            {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(props.attributes.color === 'white'&&props.attributes.buttonColor==="white")?
+                  (<a
                   href={props.attributes.ctaUrl}
-                  className="pu-feature-story__button"
+                  className="pu-proofpoint__button pu-proofpoint__button-white"
+                >
+                  {props.attributes.ctaText}
+                </a>):(<a
+                  href={props.attributes.ctaUrl}
+                  className="pu-proofpoint__button"
                 >
                   {props.attributes.ctaText}
                 </a>)}
-                  </div>
-              </div>
-            </div>
-        </div>
+          </div>
       </div>
     );
     return returned;
