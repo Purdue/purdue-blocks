@@ -34,7 +34,9 @@
          order: 1;
          justify-content: flex-end;
        }
- 
+        .container{
+          width:100%;
+        }
        .content {
          color: black !important;
          display: flex;
@@ -87,7 +89,7 @@
            font-size: 1.875rem;
            color: black !important;
            line-height:1.33;
- 
+            width:100%;
            @include tablet {
                font-size: 4.25rem !important;
                line-height:1.125;
@@ -180,7 +182,9 @@
        @include touch {
          order: 2;
        }
- 
+      .container{
+        width:100%;
+      }
        .content {
          color: white !important;
          width: auto;
