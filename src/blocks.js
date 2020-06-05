@@ -9,15 +9,15 @@
  * Webpack is compiling as the input file.
  */
 
-import "./site-hero/block.js";
-import "./cta-hero/block.js";
-import "./title-hero/block.js";
-import "./list/block.js";
-import "./cta-banner/block.js";
-import "./faculty-profile-card/block.js";
-import "./feature-story/block.js";
-import "./proofpoint/block.js"
-
+import './site-hero/block.js';
+import './cta-hero/block.js';
+import './title-hero/block.js';
+import './list/block.js';
+import './cta-banner/block.js';
+import './faculty-profile-card/block.js';
+import './feature-story/block.js';
+import './proofpoint/block.js'
+import './testimonial/block.js'
 
 // const { updateCategory } = wp.blocks;
 // const { SVG, Path } = wp.components;
