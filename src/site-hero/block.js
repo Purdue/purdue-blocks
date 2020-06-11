@@ -8,8 +8,8 @@
  */
 
 //  Import CSS.
-import "./editor.scss";
-import "./style.scss";
+import './editor.scss';
+import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -24,24 +24,30 @@ const {
   ToggleControl,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
-const { select } = wp.data;
+const { dispatch, select } = wp.data;
+const category = {
+  slug: 'purdue-blocks',
+  title: __( 'Purdue Blocks' ),
+};
+const currentCategories = select( 'core/blocks' ).getCategories().filter( item => item.slug !== category.slug );
+dispatch( 'core/blocks' ).setCategories( [ category, ...currentCategories ] );
 
 // Array of social media share options.
 const socials = [
   {
-    faSlug: "facebook-f",
-    name: "Facebook",
-    share: "https://www.facebook.com/sharer/sharer.php?u=",
+    faSlug: 'facebook-f',
+    name: 'Facebook',
+    share: 'https://www.facebook.com/sharer/sharer.php?u=',
   },
   {
-    faSlug: "twitter",
-    name: "Twitter",
-    share: "https://twitter.com/intent/tweet?url=",
+    faSlug: 'twitter',
+    name: 'Twitter',
+    share: 'https://twitter.com/intent/tweet?url=',
   },
   {
-    faSlug: "linkedin-in",
-    name: "LinkedIn",
-    share: "https://www.linkedin.com/shareArticle?mini=true&url=",
+    faSlug: 'linkedin-in',
+    name: 'LinkedIn',
+    share: 'https://www.linkedin.com/shareArticle?mini=true&url=',
   },
 ];
 
@@ -58,9 +64,9 @@ const socials = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/site-hero", {
+registerBlockType( 'purdue-blocks/site-hero', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Site Hero"), // Block title.
+  title: __( 'Site Hero' ), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -78,7 +84,7 @@ registerBlockType("purdue-blocks/site-hero", {
       ></path>
     </svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
   /**
@@ -94,17 +100,17 @@ registerBlockType("purdue-blocks/site-hero", {
    */
 
   attributes: {
-    pageTitle: { type: "string", default: "" },
-    subText: { type: "string" },
-    imgUrl: { type: "string", default: "" },
-    altText: { type: "string", default: "" },
-    imgError: { type: "boolean" },
-    includeSocial: { type: "boolean" },
-    includeButton: { type: "boolean" },
-    anchor: { type: "string", default: "" },
-    styleToggle: { type: "boolean", default: false },
-    checkedSocials: { type: "object", default: {} },
-    currUrl: { type: "string", default: "" },
+    pageTitle: { type: 'string', default: '' },
+    subText: { type: 'string' },
+    imgUrl: { type: 'string', default: '' },
+    altText: { type: 'string', default: '' },
+    imgError: { type: 'boolean' },
+    includeSocial: { type: 'boolean' },
+    includeButton: { type: 'boolean' },
+    anchor: { type: 'string', default: '' },
+    styleToggle: { type: 'boolean', default: false },
+    checkedSocials: { type: 'object', default: {} },
+    currUrl: { type: 'string', default: '' },
   },
 
   supports: {
@@ -113,43 +119,43 @@ registerBlockType("purdue-blocks/site-hero", {
 
   // Block description in side panel
   description: __(
-    "This block should be used at the top of the page. Choose a page title, intro copy, an image, and whether to include social media share buttons."
+    'This block should be used at the top of the page. Choose a page title, intro copy, an image, and whether to include social media share buttons.'
   ),
 
-  edit: (props) => {
-    const titleField = document.querySelector("#siteHeroTitleInput");
+  edit: ( props ) => {
+    const titleField = document.querySelector( '#siteHeroTitleInput' );
     const titleFieldIsFocused = document.activeElement === titleField;
 
-    if (props.attributes.currUrl === "") {
-      props.setAttributes({ currUrl: select("core/editor").getPermalink() });
+    if ( props.attributes.currUrl === '' ) {
+      props.setAttributes( { currUrl: select( 'core/editor' ).getPermalink() } );
     }
-    if (props.attributes.pageTitle === "" && !titleFieldIsFocused) {
-      props.setAttributes({
-        pageTitle: select("core/editor").getCurrentPost().title,
-      });
+    if ( props.attributes.pageTitle === '' && ! titleFieldIsFocused ) {
+      props.setAttributes( {
+        pageTitle: select( 'core/editor' ).getCurrentPost().title,
+      } );
     }
     const checkedSocials = props.attributes.checkedSocials;
 
     const setChecked = () => {
-      if (props.attributes.includeSocial) {
-        props.setAttributes({
+      if ( props.attributes.includeSocial ) {
+        props.setAttributes( {
           includeSocial: false,
-        });
+        } );
       } else {
-        props.setAttributes({
+        props.setAttributes( {
           includeSocial: true,
-        });
+        } );
       }
     };
     const setButtonChecked = () => {
-      if (props.attributes.includeButton) {
-        props.setAttributes({
+      if ( props.attributes.includeButton ) {
+        props.setAttributes( {
           includeButton: false,
-        });
+        } );
       } else {
-        props.setAttributes({
+        props.setAttributes( {
           includeButton: true,
-        });
+        } );
       }
     };
     return [
@@ -158,12 +164,12 @@ registerBlockType("purdue-blocks/site-hero", {
           <PanelRow>
             <ToggleControl
               label="Hero Style Toggle"
-              help={props.attributes.styleToggle ? "40/60 Hero" : "50/50 Hero"}
-              checked={props.attributes.styleToggle}
-              onChange={() =>
-                props.setAttributes({
-                  styleToggle: !props.attributes.styleToggle,
-                })
+              help={ props.attributes.styleToggle ? '40/60 Hero' : '50/50 Hero' }
+              checked={ props.attributes.styleToggle }
+              onChange={ () =>
+                props.setAttributes( {
+                  styleToggle: ! props.attributes.styleToggle,
+                } )
               }
             />
           </PanelRow>
@@ -172,74 +178,74 @@ registerBlockType("purdue-blocks/site-hero", {
           <PanelRow>
             <TextareaControl
               label="Hero Image Alt Text"
-              value={props.attributes.altText}
-              onChange={(altText) => props.setAttributes({ altText })}
+              value={ props.attributes.altText }
+              onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
           <PanelRow>
             <CheckboxControl
               label="Include Social Share Links"
               help="Would you like to include links to share this site on social media?"
-              checked={props.attributes.includeSocial}
-              onChange={setChecked}
+              checked={ props.attributes.includeSocial }
+              onChange={ setChecked }
             />
           </PanelRow>
-          {props.attributes.includeSocial
-            ? socials.map(({ faSlug, name }) => {
-                return (
-                  <CheckboxControl
-                    label={name}
-                    checked={checkedSocials[faSlug]}
-                    onChange={(check) => {
-                      if (check) {
-                        checkedSocials[faSlug] = true;
-                      } else {
-                        delete checkedSocials[faSlug];
-                      }
-                      props.setAttributes({
-                        includeSocial: true,
-                        checkedSocials: { ...checkedSocials },
-                      });
-                    }}
-                  />
-                );
-              })
-            : ""}
+          { props.attributes.includeSocial ?
+            socials.map( ( { faSlug, name } ) => {
+              return (
+                <CheckboxControl
+                  label={ name }
+                  checked={ checkedSocials[ faSlug ] }
+                  onChange={ ( check ) => {
+                    if ( check ) {
+                      checkedSocials[ faSlug ] = true;
+                    } else {
+                      delete checkedSocials[ faSlug ];
+                    }
+                    props.setAttributes( {
+                      includeSocial: true,
+                      checkedSocials: { ...checkedSocials },
+                    } );
+                  } }
+                />
+              );
+            } ) :
+            '' }
         </PanelBody>
         <PanelBody>
           <PanelRow>
-              <CheckboxControl
-                label="Include a Jump to Article button"
-                help="Would you like to include a Jump to Article button?"
-                checked={props.attributes.includeButton}
-                onChange={setButtonChecked}
-              />
-            </PanelRow>
-            {props.attributes.includeButton
-            ?(<PanelRow>
+            <CheckboxControl
+              label="Include a Jump to Article button"
+              help="Would you like to include a Jump to Article button?"
+              checked={ props.attributes.includeButton }
+              onChange={ setButtonChecked }
+            />
+          </PanelRow>
+          { props.attributes.includeButton ?
+            ( <PanelRow>
               <TextControl
                 label="ID of the element the button will jump to"
-                value={props.attributes.anchor}
-                onChange={(anchor) => props.setAttributes({ anchor })}
+                value={ props.attributes.anchor }
+                onChange={ ( anchor ) => props.setAttributes( { anchor } ) }
               />
-            </PanelRow>):""}
-          </PanelBody>
+            </PanelRow> ) : '' }
+        </PanelBody>
       </InspectorControls>,
 
-      <div className={"bulma-blocks-editor-site-hero"}>
+      <div className={ 'bulma-blocks-editor-site-hero' }>
         <div className="content">
           <span>Add Page Title</span>
           <div className="field">
             <div className="control">
               <input
-                value={props.attributes.pageTitle}
+                value={ props.attributes.pageTitle }
                 className="input"
                 id="siteHeroTitleInput"
                 type="text"
                 placeholder="Page Title..."
-                onChange={(e) => {
-                  props.setAttributes({ pageTitle: e.target.value });
-                }}
+                onChange={ ( e ) => {
+                  props.setAttributes( { pageTitle: e.target.value } );
+                } }
               ></input>
             </div>
           </div>
@@ -248,15 +254,15 @@ registerBlockType("purdue-blocks/site-hero", {
             <div className="control">
               <textarea
                 value={
-                  props.attributes.subText !== ""
-                    ? props.attributes.subText
-                    : ""
+                  props.attributes.subText !== '' ?
+                    props.attributes.subText :
+                    ''
                 }
                 className="textarea"
                 placeholder="Add intro copy here..."
-                onChange={(e) => {
-                  props.setAttributes({ subText: e.target.value });
-                }}
+                onChange={ ( e ) => {
+                  props.setAttributes( { subText: e.target.value } );
+                } }
               ></textarea>
             </div>
           </div>
@@ -265,72 +271,72 @@ registerBlockType("purdue-blocks/site-hero", {
           <span>Choose a Hero Image</span>
           <MediaUploadCheck>
             <MediaUpload
-              onSelect={(img) => {
+              onSelect={ ( img ) => {
                 const aspectRatio = img.width / img.height;
-                if (aspectRatio !== 2) {
-                  props.setAttributes({
+                if ( aspectRatio !== 2 ) {
+                  props.setAttributes( {
                     imgError: true,
-                  });
+                  } );
                 } else {
-                  props.setAttributes({
+                  props.setAttributes( {
                     imgUrl: img.sizes.full.url,
                     altText:
-                      props.attributes.altText !== ""
-                        ? props.attributes.altText
-                        : img.alt,
+                      props.attributes.altText !== '' ?
+                        props.attributes.altText :
+                        img.alt,
                     imgError: false,
-                  });
+                  } );
                 }
-              }}
-              render={({ open }) => {
-                return props.attributes.imgUrl !== "" &&
-                  !props.attributes.imgError ? (
-                  <div className={"bulma-blocks-editor-site-hero__preview"}>
-                    <figure className={"image"}>
-                      <img
-                        alt={props.attributes.altText}
-                        src={props.attributes.imgUrl}
-                      />
-                    </figure>
-                    <Button
-                      className={"bulma-blocks-editor-site-hero__button"}
-                      onClick={open}
-                    >
-                      Select a New Image
-                    </Button>
-                  </div>
-                ) : props.attributes.imgError ? (
-                  <div className={"bulma-blocks-editor-site-hero__container"}>
-                    <p
-                      className={
-                        "bulma-blocks-editor-site-hero__description bulma-blocks-editor-site-hero__description--error"
-                      }
-                    >
-                      The image you selected had the wrong aspect ratio. Please
-                      make sure your image has a 2:1 aspect ratio.
-                    </p>
-                    <Button
-                      className={"bulma-blocks-editor-site-hero__button"}
-                      onClick={open}
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={"bulma-blocks-editor-site-hero__container"}>
-                    <p className={"bulma-blocks-editor-site-hero__description"}>
-                      Pick an image from the media library. The image should be
-                      2:1 aspect ratio and will be resized automatically.
-                    </p>
-                    <Button
-                      className={"bulma-blocks-editor-site-hero__button"}
-                      onClick={open}
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                );
-              }}
+              } }
+              render={ ( { open } ) => {
+                return props.attributes.imgUrl !== '' &&
+                  ! props.attributes.imgError ? (
+                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                      <figure className={ 'image' }>
+                        <img
+                          alt={ props.attributes.altText }
+                          src={ props.attributes.imgUrl }
+                        />
+                      </figure>
+                      <Button
+                        className={ 'bulma-blocks-editor-site-hero__button' }
+                        onClick={ open }
+                      >
+                        Select a New Image
+                      </Button>
+                    </div>
+                  ) : props.attributes.imgError ? (
+                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                      <p
+                        className={
+                          'bulma-blocks-editor-site-hero__description bulma-blocks-editor-site-hero__description--error'
+                        }
+                      >
+                        The image you selected had the wrong aspect ratio. Please
+                        make sure your image has a 2:1 aspect ratio.
+                      </p>
+                      <Button
+                        className={ 'bulma-blocks-editor-site-hero__button' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
+                        Pick an image from the media library. The image should be
+                        2:1 aspect ratio and will be resized automatically.
+                      </p>
+                      <Button
+                        className={ 'bulma-blocks-editor-site-hero__button' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                    </div>
+                  );
+              } }
             />
           </MediaUploadCheck>
         </div>
@@ -349,8 +355,8 @@ registerBlockType("purdue-blocks/site-hero", {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: (props) => {
-    const returned = !props.attributes.styleToggle ? (
+  save: ( props ) => {
+    const returned = ! props.attributes.styleToggle ? (
       // 50/50 Hero
       <div className="bulma-blocks-50-50-hero">
         <div className="hero is-medium">
@@ -358,43 +364,43 @@ registerBlockType("purdue-blocks/site-hero", {
             <div className="container">
               <div className="content">
                 <h1>
-                  {props.attributes.pageTitle ||
-                    select("core/editor").getCurrentPost().title}
+                  { props.attributes.pageTitle ||
+                    select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <p>{props.attributes.subText}</p>
-                {props.attributes.includeSocial ? (
+                <p>{ props.attributes.subText }</p>
+                { props.attributes.includeSocial ? (
                   <div className="level is-mobile">
                     <div className="level-left">
-                      {Object.keys(props.attributes.checkedSocials).map(
-                        (faSlug) => {
+                      { Object.keys( props.attributes.checkedSocials ).map(
+                        ( faSlug ) => {
                           return (
                             <div className="level-item">
                               <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href={`${
-                                  socials.find((item) => item.faSlug === faSlug)
+                                href={ `${
+                                  socials.find( ( item ) => item.faSlug === faSlug )
                                     .share
                                 }${
                                   props.attributes.currUrl ||
-                                  select("core/editor").getPermalink()
-                                }`}
+                                  select( 'core/editor' ).getPermalink()
+                                }` }
                                 className="icon"
                               >
-                                <i className={`fab fa-lg fa-${faSlug}`}></i>
+                                <i className={ `fab fa-lg fa-${ faSlug }` }></i>
                               </a>
                             </div>
                           );
                         }
-                      )}
+                      ) }
                     </div>
                   </div>
                 ) : (
-                  ""
-                )}
-                {props.attributes.includeButton && props.attributes.anchor? (
-                  <a href={`#${props.attributes.anchor}`} class="jump-button">jump to articles <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
-                ) : ""
+                  ''
+                ) }
+                { props.attributes.includeButton && props.attributes.anchor ? (
+                  <a href={ `#${ props.attributes.anchor }` } className="jump-button">jump to articles <i className="fas fa-arrow-down" aria-hidden="true"></i></a>
+                ) : ''
                 }
               </div>
             </div>
@@ -403,8 +409,8 @@ registerBlockType("purdue-blocks/site-hero", {
             <span
               className="background-image"
               role="img"
-              style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
-              aria-label={props.attributes.altText}
+              style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+              aria-label={ props.attributes.altText }
             />
           </div>
         </div>
@@ -416,43 +422,43 @@ registerBlockType("purdue-blocks/site-hero", {
             <div className="container">
               <div className="content">
                 <h1>
-                  {props.attributes.pageTitle ||
-                    select("core/editor").getCurrentPost().title}
+                  { props.attributes.pageTitle ||
+                    select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <p>{props.attributes.subText}</p>
-                {props.attributes.includeSocial ? (
+                <p>{ props.attributes.subText }</p>
+                { props.attributes.includeSocial ? (
                   <div className="level is-mobile">
                     <div className="level-left">
-                      {Object.keys(props.attributes.checkedSocials).map(
-                        (faSlug) => {
+                      { Object.keys( props.attributes.checkedSocials ).map(
+                        ( faSlug ) => {
                           return (
                             <div className="level-item">
                               <a
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                href={`${
-                                  socials.find((item) => item.faSlug === faSlug)
+                                href={ `${
+                                  socials.find( ( item ) => item.faSlug === faSlug )
                                     .share
                                 }${
                                   props.attributes.currUrl ||
-                                  select("core/editor").getPermalink()
-                                }`}
+                                  select( 'core/editor' ).getPermalink()
+                                }` }
                                 className="icon"
                               >
-                                <i className={`fab fa-lg fa-${faSlug}`}></i>
+                                <i className={ `fab fa-lg fa-${ faSlug }` }></i>
                               </a>
                             </div>
                           );
                         }
-                      )}
+                      ) }
                     </div>
                   </div>
                 ) : (
-                  ""
-                )}
-                 {props.attributes.includeButton && props.attributes.anchor? (
-                  <a href={`#${props.attributes.anchor}`} class="jump-button">jump to articles <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
-                ) : ""
+                  ''
+                ) }
+                { props.attributes.includeButton && props.attributes.anchor ? (
+                  <a href={ `#${ props.attributes.anchor }` } className="jump-button">jump to articles <i className="fas fa-arrow-down" aria-hidden="true"></i></a>
+                ) : ''
                 }
               </div>
             </div>
@@ -461,8 +467,8 @@ registerBlockType("purdue-blocks/site-hero", {
             <span
               className="background-image"
               role="img"
-              style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
-              aria-label={props.attributes.altText}
+              style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+              aria-label={ props.attributes.altText }
             />
           </div>
         </div>
@@ -470,4 +476,4 @@ registerBlockType("purdue-blocks/site-hero", {
     );
     return returned;
   },
-});
+} );
