@@ -86,17 +86,6 @@ function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 	);
 }
 
-// function purdue_blocks_block_categories( $categories, $post ) {
-// 	return array_merge(
-// 			array(
-// 					array(
-// 							'slug' => 'purdue-blocks',
-//               'title' => __( 'Purdue Blocks', 'purdue-blocks' )
-// 					),
-//         ),
-//         $categories
-// 	);
-// }
 add_filter( 'block_categories', 'purdue_blocks_block_categories', 1, 2 );
 
 // Hook: Block assets.
