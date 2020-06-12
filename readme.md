@@ -6,6 +6,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.5.0] 2020-06-11
+#### Added
+- Jump Button
+- Testimonial Block
+- Drupal support
+#### Updated
+- IE display bugs
+- Site Hero bugs
+
 ### [1.4.0] 2020-05-26
 #### Added
 - Add Proof Point block
