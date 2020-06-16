@@ -53,11 +53,12 @@
          height: auto;
          margin-bottom: 0;
          padding: 0;
- 
+         width:calc(40% - 24px);
          @include touch {
            max-width: 100%;
            min-height: 0px;
            height: auto;
+           width:100%;
          }
  
          @include desktop {
@@ -193,11 +194,12 @@
       }
        .content {
          color: white !important;
-         width: auto;
+         width: calc(50% - 24px);
          max-width: 30rem;
  
          @include touch {
            max-width: 100%;
+           width:100%
          }
  
          h1 {
