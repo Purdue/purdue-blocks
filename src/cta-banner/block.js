@@ -8,8 +8,8 @@
  */
 
 //  Import CSS.
-import "./editor.scss";
-import "./style.scss";
+import './editor.scss';
+import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -37,9 +37,9 @@ const { select } = wp.data;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/cta-banner", {
+registerBlockType( 'purdue-blocks/cta-banner', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("CTA Banner"), // Block title.
+  title: __( 'CTA Banner' ), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -57,7 +57,7 @@ registerBlockType("purdue-blocks/cta-banner", {
       ></path>
     </svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
   /**
@@ -73,12 +73,12 @@ registerBlockType("purdue-blocks/cta-banner", {
    */
 
   attributes: {
-    type: { type: "string", default: "gold" },
-    imgUrl: { type: "string", default: "" },
-    altText: { type: "string", default: "" },
-    ctaDesc: { type: "string", default: "" },
-    ctaUrl: { type: "string", default: "" },
-    ctaText: { type: "string", default: "" },
+    type: { type: 'string', default: 'gold' },
+    imgUrl: { type: 'string', default: '' },
+    altText: { type: 'string', default: '' },
+    ctaDesc: { type: 'string', default: '' },
+    ctaUrl: { type: 'string', default: '' },
+    ctaText: { type: 'string', default: '' },
   },
 
   supports: {
@@ -87,11 +87,10 @@ registerBlockType("purdue-blocks/cta-banner", {
 
   // Block description in side panel
   description: __(
-    "This block is for adding a CTA banner on the page."
+    'This block is for adding a CTA banner on the page.'
   ),
 
-  edit: (props) => {
- 
+  edit: ( props ) => {
     return [
       <InspectorControls>
         <PanelBody>
@@ -112,122 +111,122 @@ registerBlockType("purdue-blocks/cta-banner", {
             />
           </PanelRow>
         </PanelBody>
-        {props.attributes.type === 'image'?(
-        <PanelBody>
-          <PanelRow>
-            <TextareaControl
-              label="Hero Image Alt Text"
-              value={props.attributes.altText}
-              onChange={(altText) => props.setAttributes({ altText })}
-            />
-          </PanelRow>
-        </PanelBody>):''}
+        { props.attributes.type === 'image' ? (
+          <PanelBody>
+            <PanelRow>
+              <TextareaControl
+                label="Hero Image Alt Text"
+                value={ props.attributes.altText }
+                onChange={ ( altText ) => props.setAttributes( { altText } ) }
+              />
+            </PanelRow>
+          </PanelBody> ) : '' }
       </InspectorControls>,
 
-      <div className={"pu-blocks-editor-cta-banner"}>
+      <div className={ 'pu-blocks-editor-cta-banner' }>
         <div className="content">
-        {props.attributes.type !== 'image' ? (
-          <div className="field">
-            <label class="label">CTA Description Text</label>
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaDesc !== ""
-                    ? props.attributes.ctaDesc
-                    : ""
-                }
-                className="input"
-                type="text"
-                placeholder="CTA Description Text..."
-                onChange={(e) => {
-                  props.setAttributes({ ctaDesc: e.target.value });
-                }}
-              ></input>
-            </div>
-          </div>) : ''}
-          {props.attributes.type !== 'gray' ? (
-          <div className="field">
-            <label class="label">CTA Button Text</label>
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaText !== ""
-                    ? props.attributes.ctaText
-                    : ""
-                }
-                className="input"
-                type="text"
-                placeholder="CTA Button Text..."
-                onChange={(e) => {
-                  props.setAttributes({ ctaText: e.target.value });
-                }}
-              ></input>
-            </div>
-          </div>):''}
-          <div className="field">
-              <label class="label">CTA Link URL</label>
+          { props.attributes.type !== 'image' ? (
+            <div className="field">
+              <label className="label">CTA Description Text</label>
               <div className="control">
                 <input
                   value={
-                    props.attributes.ctaUrl !== "" ? props.attributes.ctaUrl : ""
+                    props.attributes.ctaDesc !== '' ?
+                      props.attributes.ctaDesc :
+                      ''
                   }
                   className="input"
                   type="text"
-                  placeholder="CTA URL..."
-                  onChange={(e) => {
-                    props.setAttributes({ ctaUrl: e.target.value });
-                  }}
+                  placeholder="CTA Description Text..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { ctaDesc: e.target.value } );
+                  } }
                 ></input>
               </div>
-            </div>      
+            </div> ) : '' }
+          { props.attributes.type !== 'gray' ? (
+            <div className="field">
+              <label className="label">CTA Button Text</label>
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.ctaText !== '' ?
+                      props.attributes.ctaText :
+                      ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="CTA Button Text..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { ctaText: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div> ) : '' }
+          <div className="field">
+            <label className="label">CTA Link URL</label>
+            <div className="control">
+              <input
+                value={
+                  props.attributes.ctaUrl !== '' ? props.attributes.ctaUrl : ''
+                }
+                className="input"
+                type="text"
+                placeholder="CTA URL..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { ctaUrl: e.target.value } );
+                } }
+              ></input>
+            </div>
           </div>
-          {props.attributes.type === 'image'?(
-        <div className="content">
-          <span>Choose a Background Image</span>
-          <MediaUploadCheck>
-            <MediaUpload
-              onSelect={(img) => {
-                  props.setAttributes({
-                    imgUrl: img.sizes.full.url,
+        </div>
+        { props.attributes.type === 'image' ? (
+          <div className="content">
+            <span>Choose a Background Image</span>
+            <MediaUploadCheck>
+              <MediaUpload
+                onSelect={ ( img ) => {
+                  props.setAttributes( {
+                    imgUrl: img.url,
                     altText:
-                      props.attributes.altText !== ""
-                        ? props.attributes.altText
-                        : img.alt,
-                  });
-              }}
-              render={({ open }) => {
-                return props.attributes.imgUrl !== "" ? (
-                  <div className={"pu-blocks-editor-cta-banner__preview"}>
-                    <figure className={"image"}>
-                      <img
-                        alt={props.attributes.altText}
-                        src={props.attributes.imgUrl}
-                      />
-                    </figure>
-                    <Button
-                      className={"pu-blocks-editor-cta-banner__button"}
-                      onClick={open}
-                    >
-                      Select a New Image
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={"pu-blocks-editor-cta-banner__container"}>
-                    <p className={"purdue-blocks-editor-cta-banner__description"}>
-                      Pick an image from the media library. The recommended aspect ratio is 3:2.
-                    </p>
-                    <Button
-                      className={"pu-blocks-editor-cta-banner__button"}
-                      onClick={open}
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                );
-              }}
-            />
-          </MediaUploadCheck>
-        </div>):''}
+                      props.attributes.altText !== '' ?
+                        props.attributes.altText :
+                        img.alt,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return props.attributes.imgUrl !== '' ? (
+                    <div className={ 'pu-blocks-editor-cta-banner__preview' }>
+                      <figure className={ 'image' }>
+                        <img
+                          alt={ props.attributes.altText }
+                          src={ props.attributes.imgUrl }
+                        />
+                      </figure>
+                      <Button
+                        className={ 'pu-blocks-editor-cta-banner__button' }
+                        onClick={ open }
+                      >
+                        Select a New Image
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className={ 'pu-blocks-editor-cta-banner__container' }>
+                      <p className={ 'purdue-blocks-editor-cta-banner__description' }>
+                        Pick an image from the media library. The recommended aspect ratio is 3:2.
+                      </p>
+                      <Button
+                        className={ 'pu-blocks-editor-cta-banner__button' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                    </div>
+                  );
+                } }
+              />
+            </MediaUploadCheck>
+          </div> ) : '' }
       </div>,
     ];
   },
@@ -243,50 +242,50 @@ registerBlockType("purdue-blocks/cta-banner", {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: (props) => {
+  save: ( props ) => {
     const returned = (
-      <div  className={`pu-cta-banner${props.attributes.type === 'gold' ? ' pu-cta-banner-gold' : ''}${props.attributes.type === 'black' ? ' pu-cta-banner-black' : ''}
-      ${props.attributes.type === 'gray' ? ' pu-cta-banner-gray' : ''}${props.attributes.type === 'image' ? ' pu-cta-banner-image' : ''}`}
-      style={props.attributes.type === 'image'&& props.attributes.imgUrl ? { backgroundImage: `url(${props.attributes.imgUrl})` }:''}
-      aria-label={props.attributes.type === 'image'&& props.attributes.altText ? props.attributes.altText:''}>
+      <div className={ `pu-cta-banner${ props.attributes.type === 'gold' ? ' pu-cta-banner-gold' : '' }${ props.attributes.type === 'black' ? ' pu-cta-banner-black' : '' }
+      ${ props.attributes.type === 'gray' ? ' pu-cta-banner-gray' : '' }${ props.attributes.type === 'image' ? ' pu-cta-banner-image' : '' }` }
+        style={ props.attributes.type === 'image' && props.attributes.imgUrl ? { backgroundImage: `url(${ props.attributes.imgUrl })` } : '' }
+        aria-label={ props.attributes.type === 'image' && props.attributes.altText ? props.attributes.altText : '' }>
         <div className="container">
-          {props.attributes.type === 'gray'?(
-              <a
-              href={props.attributes.ctaUrl}
+          { props.attributes.type === 'gray' ? (
+            <a
+              href={ props.attributes.ctaUrl }
               className="pu-cta-banner-gray__desc"
             >
-              {props.attributes.ctaDesc}
-            </a>):''}
-            {props.attributes.type === 'image'?(
-              <a
-              href={props.attributes.ctaUrl}
+              { props.attributes.ctaDesc }
+            </a> ) : '' }
+          { props.attributes.type === 'image' ? (
+            <a
+              href={ props.attributes.ctaUrl }
               className="pu-cta-banner-image__button"
             >
-              {props.attributes.ctaText}
-            </a>):''}
-            {props.attributes.type === 'gold'?(
-              <p className="pu-cta-banner-gold__desc">{props.attributes.ctaDesc}</p>
-            ):''}
-            {props.attributes.type === 'gold'?(
-              <a
-              href={props.attributes.ctaUrl}
+              { props.attributes.ctaText }
+            </a> ) : '' }
+          { props.attributes.type === 'gold' ? (
+            <p className="pu-cta-banner-gold__desc">{ props.attributes.ctaDesc }</p>
+          ) : '' }
+          { props.attributes.type === 'gold' ? (
+            <a
+              href={ props.attributes.ctaUrl }
               className="pu-cta-banner-gold__button"
             >
-              {props.attributes.ctaText}
-            </a>):''}
-            {props.attributes.type === 'black'?(
-              <p className="pu-cta-banner-black__desc">{props.attributes.ctaDesc}</p>
-            ):''}
-            {props.attributes.type === 'black'?(
-              <a
-              href={props.attributes.ctaUrl}
+              { props.attributes.ctaText }
+            </a> ) : '' }
+          { props.attributes.type === 'black' ? (
+            <p className="pu-cta-banner-black__desc">{ props.attributes.ctaDesc }</p>
+          ) : '' }
+          { props.attributes.type === 'black' ? (
+            <a
+              href={ props.attributes.ctaUrl }
               className="pu-cta-banner-black__button"
             >
-              {props.attributes.ctaText}
-            </a>):''}
+              { props.attributes.ctaText }
+            </a> ) : '' }
         </div>
       </div>
     );
     return returned;
   },
-});
+} );
