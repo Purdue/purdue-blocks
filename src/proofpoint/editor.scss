@@ -23,6 +23,13 @@
       display: flex;
       margin-bottom: 1rem;
     }
+    .field{
+      .control{
+        input{
+          background-color:#fff;
+        }
+      }
+    }
   }
 
   &__container {

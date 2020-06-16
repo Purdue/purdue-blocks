@@ -4,11 +4,25 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-
+ .block-editor-block-list__layout{
+  .block-editor-block-list__block{
+    .is-selected{
+      &>.block-editor-block-list__block-edit{
+        &:before{
+          box-shadow:none !important;
+          border:none !important;
+        }
+      }
+    }
+  }
+}
+.editor-styles-wrapper [data-block]{
+  margin-top:1rem !important;
+  margin-bottom:1rem !important;
+}
 .purdue-blocks-editor-list {
 
   padding: 0.875rem;
-
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -20,6 +34,9 @@
     flex: 0 1 100%;
     .field {
       .control {
+        input{
+          background: white;
+        }
         .block-editor-inner-blocks{
           .block-editor-block-list__layout{
             .block-editor-block-list__block[data-block]{

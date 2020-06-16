@@ -4,7 +4,9 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-
+.block-editor-writing-flow{
+  background:#fff;
+}
 .bulma-blocks-editor-site-hero {
 
   padding: 0.875rem;
@@ -25,7 +27,7 @@
     }
     .field {
       .control {
-        textarea {
+        textarea,input {
           background: white;
         }
       }
