@@ -272,14 +272,15 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <MediaUploadCheck>
             <MediaUpload
               onSelect={ ( img ) => {
-                const aspectRatio = img.width / img.height;
+                let aspectRatio = '';
+                img.height ? ( aspectRatio = img.width / img.height ) : ( aspectRatio = img.width / img.media_details.height );
                 if ( aspectRatio !== 2 ) {
                   props.setAttributes( {
                     imgError: true,
                   } );
                 } else {
                   props.setAttributes( {
-                    imgUrl: img.sizes.full.url,
+                    imgUrl: img.url,
                     altText:
                       props.attributes.altText !== '' ?
                         props.attributes.altText :

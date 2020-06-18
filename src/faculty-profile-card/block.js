@@ -8,8 +8,8 @@
  */
 
 //  Import CSS.
-import "./editor.scss";
-import "./style.scss";
+import './editor.scss';
+import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -28,24 +28,24 @@ const { select } = wp.data;
 // Array of social media share options.
 const socials = [
   {
-    faSlug: "facebook-square",
-    name: "Facebook",
-    share: "https://www.facebook.com/",
+    faSlug: 'facebook-square',
+    name: 'Facebook',
+    share: 'https://www.facebook.com/',
   },
   {
-    faSlug: "twitter-square",
-    name: "Twitter",
-    share: "https://twitter.com/",
+    faSlug: 'twitter-square',
+    name: 'Twitter',
+    share: 'https://twitter.com/',
   },
   {
-    faSlug: "linkedin",
-    name: "LinkedIn",
-    share: "https://www.linkedin.com/in/",
+    faSlug: 'linkedin',
+    name: 'LinkedIn',
+    share: 'https://www.linkedin.com/in/',
   },
   {
-    faSlug: "instagram",
-    name: "Instagram",
-    share: "https://www.instagram.com/",
+    faSlug: 'instagram',
+    name: 'Instagram',
+    share: 'https://www.instagram.com/',
   },
 ];
 
@@ -62,9 +62,9 @@ const socials = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/faculty-profile-card", {
+registerBlockType( 'purdue-blocks/faculty-profile-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Faculty Profile Card"), // Block title.
+  title: __( 'Faculty Profile Card' ), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -82,7 +82,7 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
       ></path>
     </svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
   /**
@@ -98,13 +98,13 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
    */
 
   attributes: {
-    profilePhoto: { type: "string", default: "" },
-    altText: { type: "string", default: "" },
-    phone: { type: "string", default: "" },
-    email: { type: "string", default: "" },
-    personalLink: { type: "string", default: "" },
-    includeSocial: { type: "boolean", default: false },
-    checkedSocials: { type: "object", default: {} },
+    profilePhoto: { type: 'string', default: '' },
+    altText: { type: 'string', default: '' },
+    phone: { type: 'string', default: '' },
+    email: { type: 'string', default: '' },
+    personalLink: { type: 'string', default: '' },
+    includeSocial: { type: 'boolean', default: false },
+    checkedSocials: { type: 'object', default: {} },
   },
 
   supports: {
@@ -113,21 +113,21 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
 
   // Block description in side panel
   description: __(
-    "This block renders a card that can contain a photo, the contact information, and the social media links for a faculty member."
+    'This block renders a card that can contain a photo, the contact information, and the social media links for a faculty member.'
   ),
 
-  edit: (props) => {
+  edit: ( props ) => {
     const checkedSocials = props.attributes.checkedSocials;
 
     const setChecked = () => {
-      if (props.attributes.includeSocial) {
-        props.setAttributes({
+      if ( props.attributes.includeSocial ) {
+        props.setAttributes( {
           includeSocial: false,
-        });
+        } );
       } else {
-        props.setAttributes({
+        props.setAttributes( {
           includeSocial: true,
-        });
+        } );
       }
     };
 
@@ -137,8 +137,8 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
           <PanelRow>
             <TextareaControl
               label="Profile Picture Alt Text"
-              value={props.attributes.altText}
-              onChange={(altText) => props.setAttributes({ altText })}
+              value={ props.attributes.altText }
+              onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
         </PanelBody>
@@ -147,108 +147,108 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
             <CheckboxControl
               label="Include Social Media Links"
               help="Would you like to include this faculty member's social media account links?"
-              checked={props.attributes.includeSocial}
-              onChange={setChecked}
+              checked={ props.attributes.includeSocial }
+              onChange={ setChecked }
             />
           </PanelRow>
-          {props.attributes.includeSocial ? (
+          { props.attributes.includeSocial ? (
             <PanelRow className="social-check-list">
-              {socials.map(({ faSlug, name }) => {
+              { socials.map( ( { faSlug, name } ) => {
                 return (
                   <PanelRow>
                     <CheckboxControl
                       className="social-check-list__item"
-                      label={name}
+                      label={ name }
                       checked={
-                        checkedSocials[name]
-                          ? checkedSocials[name].checked
-                          : false
+                        checkedSocials[ name ] ?
+                          checkedSocials[ name ].checked :
+                          false
                       }
-                      onChange={(check) => {
-                        if (check) {
-                          checkedSocials[name] = {};
-                          checkedSocials[name].slug = faSlug;
-                          checkedSocials[name].checked = true;
-                          console.log(checkedSocials);
+                      onChange={ ( check ) => {
+                        if ( check ) {
+                          checkedSocials[ name ] = {};
+                          checkedSocials[ name ].slug = faSlug;
+                          checkedSocials[ name ].checked = true;
+                          console.log( checkedSocials );
                         } else {
-                          delete checkedSocials[name];
+                          delete checkedSocials[ name ];
                         }
-                        props.setAttributes({
+                        props.setAttributes( {
                           includeSocial: true,
                           checkedSocials: { ...checkedSocials },
-                        });
-                      }}
+                        } );
+                      } }
                     />
-                    {checkedSocials[name] !== undefined &&
-                    checkedSocials[name].checked === true ? (
-                      <TextControl
-                        label={`${name} Profile Link`}
+                    { checkedSocials[ name ] !== undefined &&
+                    checkedSocials[ name ].checked === true ? (
+                        <TextControl
+                        label={ `${ name } Profile Link` }
                         type="text"
-                        value={checkedSocials[name].link}
-                        onChange={(link) => {
-                          checkedSocials[name].link = link;
-                          props.setAttributes({
-                            checkedSocials: { ...checkedSocials },
-                          });
-                        }}
-                      />
-                    ) : (
-                      ""
-                    )}
+                        value={ checkedSocials[ name ].link }
+                        onChange={ ( link ) => {
+                            checkedSocials[ name ].link = link;
+                            props.setAttributes( {
+                              checkedSocials: { ...checkedSocials },
+                            } );
+                          } }
+                        />
+                      ) : (
+                        ''
+                      ) }
                   </PanelRow>
                 );
-              })}
+              } ) }
             </PanelRow>
           ) : (
-            ""
-          )}
+            ''
+          ) }
         </PanelBody>
       </InspectorControls>,
 
-      <div className={"pu-blocks-editor-faculty-profile"}>
+      <div className={ 'pu-blocks-editor-faculty-profile' }>
         <div className="content">
           <span>Choose a Profile Picture</span>
           <MediaUploadCheck>
             <MediaUpload
-              onSelect={(img) => {
-                props.setAttributes({
-                  profilePhoto: img.sizes.full.url,
+              onSelect={ ( img ) => {
+                props.setAttributes( {
+                  profilePhoto: img.url,
                   altText:
-                    props.attributes.altText !== ""
-                      ? props.attributes.altText
-                      : img.alt,
-                });
-              }}
-              render={({ open }) => {
-                return props.attributes.profilePhoto !== "" ? (
-                  <div className={"bulma-blocks-editor-site-hero__preview"}>
-                    <figure className={"image"}>
+                    props.attributes.altText !== '' ?
+                      props.attributes.altText :
+                      img.alt,
+                } );
+              } }
+              render={ ( { open } ) => {
+                return props.attributes.profilePhoto !== '' ? (
+                  <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                    <figure className={ 'image' }>
                       <img
-                        alt={props.attributes.altText}
-                        src={props.attributes.profilePhoto}
+                        alt={ props.attributes.altText }
+                        src={ props.attributes.profilePhoto }
                       />
                     </figure>
                     <Button
-                      className={"bulma-blocks-editor-site-hero__button"}
-                      onClick={open}
+                      className={ 'bulma-blocks-editor-site-hero__button' }
+                      onClick={ open }
                     >
                       Select a New Image
                     </Button>
                   </div>
                 ) : (
-                  <div className={"bulma-blocks-editor-site-hero__container"}>
-                    <p className={"bulma-blocks-editor-site-hero__description"}>
+                  <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                    <p className={ 'bulma-blocks-editor-site-hero__description' }>
                       Pick a hero image from the media library.
                     </p>
                     <Button
-                      className={"bulma-blocks-editor-site-hero__button"}
-                      onClick={open}
+                      className={ 'bulma-blocks-editor-site-hero__button' }
+                      onClick={ open }
                     >
                       Open Media Library
                     </Button>
                   </div>
                 );
-              }}
+              } }
             />
           </MediaUploadCheck>
         </div>
@@ -258,14 +258,14 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
             <div className="control">
               <input
                 value={
-                  props.attributes.phone !== "" ? props.attributes.phone : ""
+                  props.attributes.phone !== '' ? props.attributes.phone : ''
                 }
                 className="input"
                 type="text"
                 placeholder="Phone Number..."
-                onChange={(e) => {
-                  props.setAttributes({ phone: e.target.value });
-                }}
+                onChange={ ( e ) => {
+                  props.setAttributes( { phone: e.target.value } );
+                } }
               ></input>
             </div>
           </div>
@@ -274,14 +274,14 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
             <div className="control">
               <input
                 value={
-                  props.attributes.email !== "" ? props.attributes.email : ""
+                  props.attributes.email !== '' ? props.attributes.email : ''
                 }
                 className="input"
                 type="text"
                 placeholder="Email..."
-                onChange={(e) => {
-                  props.setAttributes({ email: e.target.value });
-                }}
+                onChange={ ( e ) => {
+                  props.setAttributes( { email: e.target.value } );
+                } }
               ></input>
             </div>
           </div>
@@ -290,16 +290,16 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
             <div className="control">
               <input
                 value={
-                  props.attributes.personalLink !== ""
-                    ? props.attributes.personalLink
-                    : ""
+                  props.attributes.personalLink !== '' ?
+                    props.attributes.personalLink :
+                    ''
                 }
                 className="input"
                 type="text"
                 placeholder="Personal Site..."
-                onChange={(e) => {
-                  props.setAttributes({ personalLink: e.target.value });
-                }}
+                onChange={ ( e ) => {
+                  props.setAttributes( { personalLink: e.target.value } );
+                } }
               ></input>
             </div>
           </div>
@@ -319,95 +319,95 @@ registerBlockType("purdue-blocks/faculty-profile-card", {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: (props) => {
+  save: ( props ) => {
     const returned = (
       <div className="faculty-profile-card box">
         <div className="media">
           <div className="media-left">
             <div className="image">
-              <img src={props.attributes.profilePhoto}></img>
+              <img src={ props.attributes.profilePhoto }></img>
             </div>
           </div>
           <div className="media-content">
             <div className="content">
               <ul>
-                {props.attributes.phone !== "" ? (
+                { props.attributes.phone !== '' ? (
                   <li>
                     <i className="fas fa-phone" aria-hidden="true" />
                     <div className="profile-info-item">
-                      <p>{props.attributes.phone}</p>
+                      <p>{ props.attributes.phone }</p>
                       <span>Phone</span>
                     </div>
                   </li>
                 ) : (
-                  ""
-                )}
-                {props.attributes.email !== "" ? (
+                  ''
+                ) }
+                { props.attributes.email !== '' ? (
                   <li>
                     <i className="fas fa-envelope" aria-hidden="true" />
                     <div className="profile-info-item">
                       <a
                         target="_blank"
-                        href={`mailto:${props.attributes.email}`}
+                        href={ `mailto:${ props.attributes.email }` }
                       >
-                        {props.attributes.email}
+                        { props.attributes.email }
                       </a>
                       <span>Email</span>
                     </div>
                   </li>
                 ) : (
-                  ""
-                )}
-                {props.attributes.personalLink !== "" ? (
+                  ''
+                ) }
+                { props.attributes.personalLink !== '' ? (
                   <li>
                     <i className="fas fa-desktop" aria-hidden="true" />
                     <div className="profile-info-item">
                       <a
                         target="_blank"
                         href={
-                          props.attributes.personalLink.includes("https://")
-                            ? props.attributes.personalLink
-                            : `https://${props.attributes.personalLink}`
+                          props.attributes.personalLink.includes( 'https://' ) ?
+                            props.attributes.personalLink :
+                            `https://${ props.attributes.personalLink }`
                         }
                       >
-                        {props.attributes.personalLink}
+                        { props.attributes.personalLink }
                       </a>
                       <span>Personal Website</span>
                     </div>
                   </li>
                 ) : (
-                  ""
-                )}
+                  ''
+                ) }
               </ul>
             </div>
           </div>
         </div>
 
-        {props.attributes.includeSocial ? (
+        { props.attributes.includeSocial ? (
           <div className="level is-mobile">
             <div className="level-right content">
               <p className="level-item">Follow Me: </p>
-              {Object.keys(props.attributes.checkedSocials).map((social) => {
+              { Object.keys( props.attributes.checkedSocials ).map( ( social ) => {
                 return (
                   <a
                     target="_blank"
                     className="level-item"
-                    href={`${props.attributes.checkedSocials[social].link}`}
+                    href={ `${ props.attributes.checkedSocials[ social ].link }` }
                   >
                     <i
-                      className={`fab fa-${props.attributes.checkedSocials[social].slug}`}
+                      className={ `fab fa-${ props.attributes.checkedSocials[ social ].slug }` }
                       aria-hidden="true"
                     />
                   </a>
                 );
-              })}
+              } ) }
             </div>
           </div>
         ) : (
-          ""
-        )}
+          ''
+        ) }
       </div>
     );
     return returned;
   },
-});
+} );
