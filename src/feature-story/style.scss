@@ -139,7 +139,7 @@
           order: 1;
         }
       }
-      @include touch {
+      @include mobile {
         position: relative;
         height: 20rem;
         width: 100%;
