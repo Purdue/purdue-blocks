@@ -46,7 +46,7 @@
     .story-content{
       width:50%;
       background-color:#fff;
-      box-shadow: -4px 2px 18px #00000033;
+      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
       padding:3.5rem 4.5rem;
       @include touch {
         width:100%;
@@ -89,7 +89,9 @@
       @include touch {
         order: 2;
       }
-
+      @include mobile {
+        box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      }
       .content {
         width: auto;
         max-width: 50%;
@@ -145,10 +147,31 @@
         width: 100%;
         flex-basis: auto;
         order: 1;
-      }
-
-      @include mobile {
         height: 17rem;
+      }
+    }
+    .shadow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 1;
+      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      &-reversed{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 1;
+        box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+        @include mobile {
+          display:none;
+        }
+      }
+      @include mobile {
+        display:none;
       }
     }
     .background-image {
