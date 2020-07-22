@@ -6,6 +6,11 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.7.0] 2020-07-22
+#### Added
+- Titled Navigation Block
+- Image Showcase Block
+
 ### [1.5.0] 2020-06-11
 #### Added
 - Jump Button
