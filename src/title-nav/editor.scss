@@ -1,0 +1,49 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.editor-title-nav {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    color: black !important;
+
+  }
+
+  .block-editor-block-list__layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &>.wp-block {
+      margin: 0 !important;
+    }
+  }
+}
+
+.outline-on {
+  .editor-title-nav-link {
+    &__input {
+      border: 2px solid #CFB991;
+      border-radius: 100%;
+      padding: 6.075px 1rem;
+
+      &.isCurrent {
+        background-color: #CFB991 !important;
+      }
+    }
+  }
+
+  .editor-title-nav__title {
+    border: 4px solid #CFB991;
+    border-radius: 100%;
+    padding: 6.075px 1.25rem;
+  }
+}

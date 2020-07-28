@@ -18,6 +18,9 @@ import './faculty-profile-card/block.js';
 import './feature-story/block.js';
 import './proofpoint/block.js'
 import './testimonial/block.js'
+import './image-showcase/block.js'
+import './title-nav/block.js'
+import './title-nav/title-nav-link/block.js'
 
 // const { updateCategory } = wp.blocks;
 // const { SVG, Path } = wp.components;

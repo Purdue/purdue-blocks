@@ -1,0 +1,73 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+@import "../scss/bulma-utilities";
+
+
+.pu-image-showcase {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.has-decoration {
+  padding: 2rem 1.5rem;
+  position: relative;
+
+  @include mobile {
+    padding: 1rem 0.75rem;
+  }
+
+  @include widescreen {
+    padding: 2rem 0;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: #8e6f3e;
+    width: 73.4%;
+    bottom: 0;
+    right: 0;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: #8e6f3e;
+    width: 73.4%;
+    top: 0;
+    left: 0;
+  }
+
+  @include mobile {
+    &:after {
+      width: 100%
+    }
+
+    &:before {
+      width: 100%
+    }
+  }
+
+  .column {
+
+    @include mobile {
+      padding: 1.5rem 0.75rem;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    @include widescreen {
+      padding: 1.5rem;
+    }
+
+    @include fullhd {
+      padding: 2rem;
+    }
+  }
+}
