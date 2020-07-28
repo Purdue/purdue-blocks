@@ -88,3 +88,15 @@ function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 
 // Hook: Block assets.
 add_action( 'init', 'purdue_blocks_cgb_block_assets' );
+
+add_theme_support( 'post-thumbnails' );
+
+add_image_size( 'hero_mobile', 768, 384);
+
+add_filter( 'image_size_names_choose', 'hero_image_sizes' );
+
+function hero_image_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'hero_mobile' => __( 'Hero mobile' ),
+    ) );
+}
