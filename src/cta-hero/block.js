@@ -173,7 +173,7 @@ registerBlockType( 'purdue-blocks/cta-hero', {
               onSelect={ ( img ) => {
                 props.setAttributes( {
                   imgUrl: img.url,
-                  imgMoUrl: img.sizes ? img.sizes.hero_mobile.url : img.url,
+                  imgMoUrl: img.sizes ? ( img.sizes.hero_mobile ? img.sizes.hero_mobile.url : img.url ) : img.url,
                   altText:
                     props.attributes.altText !== '' ?
                       props.attributes.altText :
