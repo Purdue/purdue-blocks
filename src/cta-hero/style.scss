@@ -53,7 +53,7 @@
         @include mobile {
           position: relative;
           order: 1;
-          height: 11.25rem;
+          height: 11.75rem;
         }
 
         &:before {
@@ -76,7 +76,7 @@
           order: 2;
           width: 100%;
           background-color: black;
-          padding: 2.375rem 1.5rem;
+          padding: 2.1875rem 1.5rem;
         }
       }
 
@@ -101,7 +101,8 @@
           font-weight: 700;
           font-size: 5rem;
           color: white !important;
-          margin-bottom: 3.25rem;
+          margin-bottom: 3.75rem;
+          line-height:85px;
 
           @include touch {
             font-size: 4.0625rem;
@@ -109,7 +110,8 @@
 
           @include mobile {
             font-size: 2.8125rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.1875rem;
+            line-height:50px;
           }
         }
 
