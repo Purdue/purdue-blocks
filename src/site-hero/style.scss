@@ -30,6 +30,7 @@
          align-items: flex-start;
          justify-content: flex-start;
          padding:2.1875rem 1.5rem 2.8125rem !important;
+         box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
        }
  
        @include desktop {
@@ -145,6 +146,19 @@
          background-size: cover;
        }
      }
+     .shadow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40%;
+      height: 100%;
+      z-index: 1;
+      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      @include mobile {
+        display:none;
+      }
+
+    }
    }
    .jump-button {
      font-family: "United Sans";
