@@ -464,6 +464,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
               </div>
             </div>
           </div>
+          <div className="shadow"></div>
           <div className="hero-image">
             <span
               className="background-image"

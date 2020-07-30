@@ -23,6 +23,7 @@
      max-width:318px;
      width:100%;
      margin-left:0;
+     margin-right:0;
    }
    &__white{
      background-color:#fff;
@@ -39,7 +40,6 @@
      }
      .pu-proofpoint__highlighted,.pu-proofpoint__content{
        color:#cfb991;
-       text-transform: none;
      }
      .pu-proofpoint__button {
        font-family: "United Sans";
@@ -58,20 +58,21 @@
        letter-spacing: 0.9px;
        &:hover {
          cursor: pointer;
-         background: #fff;
+         background: #cfb991;
          color: #000;
        }
      }
    }
    &__border{
      border-top:solid 5px #000;
-     box-shadow: 0px 2px 5px #00000072;
+     box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
    }
    &__highlighted{
      font-size: 4.6875rem;
      line-height:4.6875rem;
      margin-bottom:0.5rem !important;
      text-align:center;
+     text-transform: uppercase;
      &-narrow{
        font-family: "United Sans Condensed";
      }
@@ -83,12 +84,13 @@
    &__content{
      font-weight:700;
      font-size:1.25rem;
-     text-transform:uppercase;
      text-align:center;
      line-height:1.875rem;
      margin-bottom:1rem !important;
      &-narrow{
        font-family: "United Sans Condensed";
+       letter-spacing: 0.1em;
+       text-transform:uppercase !important;
      }
      &-wide{
        font-family: "United Sans";
@@ -100,7 +102,7 @@
      font-size:1.25rem;
      text-transform:capitalize;
      text-align:center;
-     line-height:1.875rem;
+     line-height:1.5625rem;
      font-style:italic;
    }
    &__button {

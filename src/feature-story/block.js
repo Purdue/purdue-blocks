@@ -282,6 +282,9 @@ registerBlockType( 'purdue-blocks/feature-story', {
             aria-label={ props.attributes.altText }
           />
         </div>
+        <div className={ `${
+          props.attributes.contentAlign === 'left' ? 'shadow' : 'shadow-reversed'
+        }` }></div>
         <div className="hero-body">
           <div className="container">
             <div className={ `content${

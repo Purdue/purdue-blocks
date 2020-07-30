@@ -187,16 +187,16 @@ registerBlockType( 'purdue-blocks/testimonial', {
       <div className="pu-blocks-testimonial">
         <div className="testimonial__section container">
           <h2>Testimonials</h2>
-          <div className="testimonial__list columns">
+          <div className="testimonial__list columns is-multiline">
             { posts.map( post =>{
               if ( props.attributes.selectedPosts && props.attributes.selectedPosts.length > 0 ) {
                 return (
                   props.attributes.selectedPosts.map( selectedPost => {
                     if ( post.id == selectedPost ) {
-                      return (
-                        <div className="column">
-                          <div className="testimonial__item">
-                            { props.attributes.selectedPosts.length === 2 ? (
+                      if ( props.attributes.selectedPosts.length === 2 ) {
+                        return (
+                          <div className="column is-full-mobile is-full-tablet is-half-desktop">
+                            <div className="testimonial__item">
                               <div className="testimonial__body testimonial__body--small">
                                 { post.img ? ( <img src={ post.img.source_url } alt={ post.img.alt_text } /> ) : '' }
                                 { ! post.excerpt.raw ? ( <p className="testimonial__content">{ post.content.raw.replace( /<!--(?!>)[\S\s]*?-->/g, '' ).replace( /(<([^>]+)>)/ig, '' ) }</p> ) :
@@ -204,13 +204,20 @@ registerBlockType( 'purdue-blocks/testimonial', {
                                 <p className="testimonial__name">{ post.acf.name }</p>
                                 <p className="testimonial__info">{ post.acf.persons_information }</p>
                               </div>
-                            ) : ( <div className="testimonial__body testimonial__body--big">
+                            </div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <div className="column">
+                          <div className="testimonial__item testimonial--big">
+                            <div className="testimonial__body testimonial__body--big">
                               { post.img ? ( <img src={ post.img.source_url } alt={ post.img.alt_text } /> ) : '' }
                               { ! post.excerpt.raw ? ( <p className="testimonial__content">{ post.content.raw.replace( /<!--(?!>)[\S\s]*?-->/g, '' ).replace( /(<([^>]+)>)/ig, '' ) }</p> ) :
                                 ( <p className="testimonial__content">{ post.excerpt.raw }</p> ) }
                               <p className="testimonial__name">{ post.acf.name }</p>
                               <p className="testimonial__info">{ post.acf.persons_information }</p>
-                            </div> ) }
+                            </div>
                           </div>
                         </div>
                       );

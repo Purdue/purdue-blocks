@@ -70,6 +70,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
     pageTitle: { type: 'string', default: '' },
     subText: { type: 'string', default: '' },
     imgUrl: { type: 'string', default: '' },
+    imgMoUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
   },
 
@@ -147,6 +148,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
               onSelect={ ( img ) => {
                 props.setAttributes( {
                   imgUrl: img.url,
+                  imgMoUrl: img.sizes ? ( img.sizes.hero_mobile ? img.sizes.hero_mobile.url : img.url ) : img.url,
                   altText:
                     props.attributes.altText !== '' ?
                       props.attributes.altText :
@@ -154,35 +156,34 @@ registerBlockType( 'purdue-blocks/title-hero', {
                 } );
               } }
               render={ ( { open } ) => {
-                return props.attributes.imgUrl !== '' &&
-                  ! props.attributes.imgError ? (
-                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
-                      <figure className={ 'image' }>
-                        <img
-                          alt={ props.attributes.altText }
-                          src={ props.attributes.imgUrl }
-                        />
-                      </figure>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Select a New Image
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
-                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                        Pick a hero image from the media library.
-                      </p>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Open Media Library
-                      </Button>
-                    </div>
-                  );
+                return props.attributes.imgUrl !== '' ? (
+                  <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                    <figure className={ 'image' }>
+                      <img
+                        alt={ props.attributes.altText }
+                        src={ props.attributes.imgUrl }
+                      />
+                    </figure>
+                    <Button
+                      className={ 'bulma-blocks-editor-site-hero__button' }
+                      onClick={ open }
+                    >
+                      Select a New Image
+                    </Button>
+                  </div>
+                ) : (
+                  <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                    <p className={ 'bulma-blocks-editor-site-hero__description' }>
+                      Pick a hero image from the media library.
+                    </p>
+                    <Button
+                      className={ 'bulma-blocks-editor-site-hero__button' }
+                      onClick={ open }
+                    >
+                      Open Media Library
+                    </Button>
+                  </div>
+                );
               } }
             />
           </MediaUploadCheck>
@@ -209,9 +210,15 @@ registerBlockType( 'purdue-blocks/title-hero', {
           <div className="hero-body">
             <div
               className="background-image"
-              style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
               aria-label={ props.attributes.altText }
-            ></div>
+            >
+              <style dangerouslySetInnerHTML={ { __html: `
+              .background-image {background-image: url(${ props.attributes.imgUrl });}
+              @media (max-width: 767px) {
+                .background-image {background-image: url(${ props.attributes.imgMoUrl });}
+              }
+            ` } }></style>
+            </div>
             <div className="container">
               <div className="content">
                 <h1>

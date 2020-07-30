@@ -21,7 +21,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      padding-bottom: 3rem !important;
+      padding: 17.25rem 1.5rem 3.75rem !important;
       margin: 0 !important;
 
       @include touch {
@@ -32,7 +32,7 @@
 
       @include mobile { 
         flex-direction: column;
-        padding: 0;
+        padding: 0 !important;
       }
 
       @include desktop {
@@ -77,7 +77,7 @@
           order: 2;
           width: 100%;
           background-color: black;
-          padding: 2.375rem 1.5rem;
+          padding: 2.1875rem 1.5rem;
         }
       }
 
@@ -108,7 +108,8 @@
           }
 
           @include mobile {
-            font-size: 2.125rem;
+            font-size: 2.1875rem;
+            line-height: 2.5rem;
             margin-bottom: 1rem;
           }
         }

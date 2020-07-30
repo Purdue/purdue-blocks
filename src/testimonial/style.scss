@@ -4,100 +4,107 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
+ @import "../scss/bulma-utilities";
 
-.pu-blocks-testimonial {
-
-  padding: 0.875rem;
-  display: flex;
-  flex-direction:column;
-  align-items: center;
-  justify-content: center;
-  color: $black;
-  background: #f3f3f3;
-  margin:0 !important;
-  .error-message{
-    font-size: 1.125rem;
-    color:red;
-  }
-  .container{
-    width:100%;
-  }
-  h2{
-    font-size: 2.1875rem !important;
-    font-weight:700 !important;
-    color:#000 !important;
-    text-align:center;
-    margin: 0 0 2.25rem !important;
-    @media (max-width:1023px){
-      font-size: 1.875rem !important;
-    }
-  }
-  .testimonial__section{
-    padding:6rem 0;
-    @media (max-width:1023px){
-      padding:6rem 1.5rem;
-    }
-
-  }
-  .testimonial__list{
-    margin:0!important;
-    padding:0!important;
-    list-style: none !important;
-    display:flex;
-    flex-direction: row;
-    width:100%;
-    justify-content: space-around;
-  }
-  .testimonial__item{
-    padding:2.5rem;
-    background-color:#fff;
-    box-shadow: 0px 3px 6px #0000004D;
-    border: 1px solid #DEDEDE;
-    display:flex;
-    justify-content: center;
-    height: 100%;
-  }
-  .testimonial__body{
-    width:100%;
-    img{
-      width:90px;
-      height:90px;
-    }
-    .testimonial__content{
-      margin-top:2rem;
-      margin-bottom:2rem;
-      font-family:"Source Serif Pro";
-      q { quotes: '\201c' '\201d'; }
-      &:before{
-        content: open-quote;
-      }
-      &:after{
-        content: close-quote;
-      }
-    }
-    .testimonial__name{
-      margin-top:0;
-      margin-bottom:0.5rem;
-      font-family:"Source Serif Pro";
-      font-weight: 700;
-    }
-    .testimonial__info{
-      margin-top:0;
-      margin-bottom:0;
-      font-family:"Source Serif Pro";
-      font-weight: 400;
-      color: #8E6F3E;
-    }
-    &--small{
-      max-width: 432px;
-      text-align:left;
-    }
-    &--big{
-      max-width: 888px;
-      text-align:center;
-    }
-  }
-
-}
-
+ .pu-blocks-testimonial {
+ 
+   display: flex;
+   flex-direction:column;
+   align-items: center;
+   justify-content: center;
+   color: $black;
+   background: #f3f3f3;
+   margin:0 !important;
+   padding:5.9375rem 1.5rem;
+   @include mobile{
+     padding:2.1875rem 1.5rem;
+   }
+   .error-message{
+     font-size: 1.125rem;
+     color:red;
+   }
+   .container{
+     width:100%;
+   }
+   h2{
+     font-size: 2rem !important;
+     font-weight:700 !important;
+     color:#000 !important;
+     text-align:center;
+     margin: 0 0 3.125rem !important;
+     @include mobile{
+       margin: 0 0 1.875rem !important;
+       font-size: 1.875rem !important;
+     }
+   }
+   .testimonial__list{
+     padding:0!important;
+     list-style: none !important;
+     display:flex;
+     flex-direction: row;
+     justify-content: space-around;
+   }
+   .testimonial__item{
+     padding:2.1875rem 7.3125rem 4.0625rem;
+     background-color:#fff;
+     box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+     border: 1px solid #DEDEDE;
+     display:flex;
+     justify-content: center;
+     height: 100%;
+     @include mobile{
+       padding:2.1875rem 1rem;
+     }
+     &--big{
+       padding:2.5rem 8.125rem 3.125rem;
+     }
+   }
+   .testimonial__body{
+     width:100%;
+     img{
+       width:90px;
+       height:90px;
+     }
+     .testimonial__content{
+       margin-top:2.5rem;
+       margin-bottom:2.5rem;
+       font-family:"Source Serif Pro";
+       line-height:1.875rem;
+       q { quotes: '\201c' '\201d'; }
+       &:before{
+         content: open-quote;
+       }
+       &:after{
+         content: close-quote;
+       }
+     }
+     .testimonial__name{
+       margin-top:0;
+       margin-bottom:0.5rem;
+       font-family:"Source Serif Pro";
+       font-weight: 600;
+       line-height:1.875rem;
+     }
+     .testimonial__info{
+       margin-top:0;
+       margin-bottom:0;
+       font-family:"Source Serif Pro";
+       font-weight: 400;
+       font-size: 1rem;
+       line-height:1.5625rem;
+       color: #8E6F3E;
+     }
+     &--small{
+       text-align:left;
+     }
+     &--big{
+       text-align:center;
+       @include mobile{
+         text-align:left;
+       }
+     }
+   }
+ 
+ }
+ 
+ 

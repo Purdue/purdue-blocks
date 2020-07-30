@@ -77,6 +77,7 @@ registerBlockType( 'purdue-blocks/cta-hero', {
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
     imgUrl: { type: 'string', default: '' },
+    imgMoUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
   },
 
@@ -172,6 +173,7 @@ registerBlockType( 'purdue-blocks/cta-hero', {
               onSelect={ ( img ) => {
                 props.setAttributes( {
                   imgUrl: img.url,
+                  imgMoUrl: img.sizes ? ( img.sizes.hero_mobile ? img.sizes.hero_mobile.url : img.url ) : img.url,
                   altText:
                     props.attributes.altText !== '' ?
                       props.attributes.altText :
@@ -234,9 +236,15 @@ registerBlockType( 'purdue-blocks/cta-hero', {
           <div className="hero-body">
             <div
               className="background-image"
-              style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
               aria-label={ props.attributes.altText }
-            ></div>
+            >
+              <style dangerouslySetInnerHTML={ { __html: `
+              .background-image {background-image: url(${ props.attributes.imgUrl });}
+              @media (max-width: 767px) {
+                .background-image {background-image: url(${ props.attributes.imgMoUrl });}
+              }
+            ` } }></style>
+            </div>
             <div className="container">
               <div className="content">
                 <h1>

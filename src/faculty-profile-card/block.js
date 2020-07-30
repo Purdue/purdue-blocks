@@ -181,11 +181,11 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                     />
                     { checkedSocials[ name ] !== undefined &&
                     checkedSocials[ name ].checked === true ? (
-                        <TextControl
-                        label={ `${ name } Profile Link` }
-                        type="text"
-                        value={ checkedSocials[ name ].link }
-                        onChange={ ( link ) => {
+                      <TextControl
+                          label={ `${ name } Profile Link` }
+                          type="text"
+                          value={ checkedSocials[ name ].link }
+                          onChange={ ( link ) => {
                             checkedSocials[ name ].link = link;
                             props.setAttributes( {
                               checkedSocials: { ...checkedSocials },
@@ -383,8 +383,8 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           </div>
         </div>
 
-        { props.attributes.includeSocial ? (
-          <div className="level is-mobile">
+        <div className="level is-mobile">
+          { props.attributes.includeSocial ? (
             <div className="level-right content">
               <p className="level-item">Follow Me: </p>
               { Object.keys( props.attributes.checkedSocials ).map( ( social ) => {
@@ -402,10 +402,10 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 );
               } ) }
             </div>
-          </div>
-        ) : (
-          ''
-        ) }
+          ) : (
+            ''
+          ) }
+        </div>
       </div>
     );
     return returned;
