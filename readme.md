@@ -6,6 +6,12 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.7.1] 2020-07-22
+#### Added
+- Mobile hero image support for title hero and CTA hero blocks in Wordpress
+#### Adjusted
+- Updated styles to match style guide
+
 ### [1.7.0] 2020-07-22
 #### Added
 - Titled Navigation Block
