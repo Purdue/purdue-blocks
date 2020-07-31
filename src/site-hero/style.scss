@@ -220,9 +220,10 @@
            color: white !important;
            font-size: 1.875rem;
            font-weight:700;
+           line-height: 35px;
            @include tablet {
              font-size: 2.8125rem !important;
-             line-height: 35px;
+             line-height: 50px;
            }
          }
  
