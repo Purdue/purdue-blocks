@@ -202,6 +202,7 @@ registerBlockType( 'purdue-blocks/card', {
             } }
             placeholder="Add Title (Optional)"
             keepPlaceholderOnFocus={ true }
+            formattingControls={ [] }
           >
           </RichText>
         </div>
@@ -214,6 +215,7 @@ registerBlockType( 'purdue-blocks/card', {
               props.setAttributes( { subText: text } )
             } }
             placeholder="Add Text (Optional)"
+            formattingControls={ [] }
           >
           </RichText>
           { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
