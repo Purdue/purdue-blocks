@@ -21,7 +21,6 @@ const {
   TextareaControl,
   TextControl,
   RadioControl,
-  Button,
 } = wp.components;
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
 
@@ -67,11 +66,11 @@ registerBlockType( 'purdue-blocks/card', {
 
   attributes: {
     hasLink: { type: 'boolean', default: false },
-    title: { type: 'string', source: 'html', selector: 'p' },
-    subText: { type: 'string', source: 'html', selector: 'p' },
+    title: { type: 'string', source: 'html', selector: 'p.title' },
+    subText: { type: 'string', source: 'html', selector: 'p.content' },
     link: { type: 'string', default: '' },
     linkText: { type: 'string', default: '' },
-    imgUrl: { type: 'string', default: 'http://placehold.it/100' },
+    imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
     backgroundColor: { type: 'string', default: 'white' },
@@ -186,7 +185,7 @@ registerBlockType( 'purdue-blocks/card', {
                   style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
                   aria-label={ props.attributes.altText }
                 >
-                  <button onClick={ open }>{ props.attributes.imgUrl !== 'http://placehold.it/100' ? 'Select a new image' : 'Select an image (optional)' }</button>
+                  <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</button>
                 </div>
               );
             } }
@@ -196,7 +195,7 @@ registerBlockType( 'purdue-blocks/card', {
           <RichText
             tagname="p"
             value={ props.attributes.title }
-            className={ 'title is-3' }
+            className={ 'title' }
             onChange={ ( text ) => {
               props.setAttributes( { title: text } )
             } }
@@ -247,8 +246,16 @@ registerBlockType( 'purdue-blocks/card', {
           <figure className="image">
             <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
           </figure> : '' }
-        { props.attributes.title ? <p className={ 'title is-3' }>{ props.attributes.title }</p> : '' }
-        { props.attributes.subText ? <p className={ 'content' }>{ props.attributes.subText }</p> : '' }
+        { props.attributes.title ? ( <RichText.Content
+          className={ 'title' }
+          tagName="p"
+          value={ props.attributes.title }
+        /> ) : '' }
+        { props.attributes.subText ? ( <RichText.Content
+          className={ 'content' }
+          tagName="p"
+          value={ props.attributes.subText }
+        /> ) : '' }
         { props.attributes.linkText ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
       </a> :
       <div
@@ -258,8 +265,16 @@ registerBlockType( 'purdue-blocks/card', {
           <figure className="image">
             <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
           </figure> : '' }
-        { props.attributes.title ? <p className={ 'title is-3' }>{ props.attributes.title }</p> : '' }
-        { props.attributes.subText ? <p className={ 'content' }>{ props.attributes.subText }</p> : '' }
+        { props.attributes.title ? ( <RichText.Content
+          className={ 'title' }
+          tagName="p"
+          value={ props.attributes.title }
+        /> ) : '' }
+        { props.attributes.subText ? ( <RichText.Content
+          className={ 'content' }
+          tagName="p"
+          value={ props.attributes.subText }
+        /> ) : '' }
       </div>
     );
     return returned;
