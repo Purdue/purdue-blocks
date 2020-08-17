@@ -18,15 +18,9 @@
     "test:unit": "wp-scripts test-unit-js"
   },
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
     "bulma": "^0.8.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-react": "^7.10.4",
     "@wordpress/scripts": "^12.1.1",
     "ignore-emit-webpack-plugin": "^2.0.2"
   }
