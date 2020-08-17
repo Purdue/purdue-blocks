@@ -1,14 +1,16 @@
-document.querySelectorAll('.accordion-title').forEach((el) => {
-
-    el.addEventListener('click',(e)=>{
-        if (el.getAttribute('aria-expanded') && el !== e.target) {
-            el.setAttribute('aria-expanded', 'false');
-            el.parentElement.classList.remove('is-open')
-        } else if (el === e.target){
-            const expanded = el.getAttribute('aria-expanded') === "false" ? true : false;
-            el.setAttribute('aria-expanded', expanded);
-            el.parentElement.classList.contains('is-open')?el.parentElement.classList.remove('is-open'):el.parentElement.classList.add('is-open')
-        }
+const accordions=document.querySelectorAll('.accordion-title');
+accordions.forEach((el) => {
+    el.addEventListener('click',(event)=>{
+        accordions.forEach((element)=>{
+            if (element !== event.target) {
+                element.setAttribute('aria-expanded', 'false');
+                element.parentElement.classList.remove('is-open')
+            } else if (element === event.target){
+                const expanded = el.getAttribute('aria-expanded') === "false" ? true : false;
+                element.setAttribute('aria-expanded', expanded);
+                element.parentElement.classList.contains('is-open')?el.parentElement.classList.remove('is-open'):el.parentElement.classList.add('is-open')
+            }
+        })
     })
 
 }) 
