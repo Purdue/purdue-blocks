@@ -27,7 +27,7 @@ const {
 const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
-  [ 'core/paragraph', { placeholder: 'Add content'}],
+  [ 'core/paragraph', { placeholder: 'Add content' } ],
 ];
 
 /**
@@ -43,7 +43,7 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/accrordion', {
+registerBlockType( 'purdue-blocks/accordion', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Accordion' ), // Block title.
   icon: {
@@ -71,9 +71,9 @@ registerBlockType( 'purdue-blocks/accrordion', {
    */
 
   attributes: {
-    title: { type: 'string', source: 'html',selector:'.accordion-title'},
-    titleLevel:{type: 'string', default: 'p'},
-    id:{type: 'string', default: ''}
+    title: { type: 'string', source: 'html', selector: '.accordion-title' },
+    titleLevel: { type: 'string', default: 'p' },
+    id: { type: 'string', default: '' },
   },
 
   supports: {
@@ -86,49 +86,49 @@ registerBlockType( 'purdue-blocks/accrordion', {
   ),
 
   edit: ( props ) => {
-    const id=props.clientId;
-    props.setAttributes({id:id});
+    const id = props.clientId;
+    props.setAttributes( { id: id } );
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
-              <SelectControl
-                label="Heading level of the title"
-                value={ props.attributes.titleLevel }
-                options={ [
-                  { label: 'H2', value: 'h2' },
-                  { label: 'H3', value: 'h3' },
-                  { label: 'H4', value: 'h4' },
-                  { label: 'H5', value: 'h5' },
-                  { label: 'H6', value: 'h6' },
-                  { label: 'P', value: 'p' },
-                ] }
-                onChange={ ( titleLevel ) => {
-                  props.setAttributes( { titleLevel } )
-                } }
-              />
-            </PanelRow>
+            <SelectControl
+              label="Heading level of the title"
+              value={ props.attributes.titleLevel }
+              options={ [
+                { label: 'H2', value: 'h2' },
+                { label: 'H3', value: 'h3' },
+                { label: 'H4', value: 'h4' },
+                { label: 'H5', value: 'h5' },
+                { label: 'H6', value: 'h6' },
+                { label: 'P', value: 'p' },
+              ] }
+              onChange={ ( titleLevel ) => {
+                props.setAttributes( { titleLevel } )
+              } }
+            />
+          </PanelRow>
         </PanelBody>
       </InspectorControls>,
 
-      <div className='accordion-editor'>
-          <RichText
-            tagname={props.setAttributes.titleLevel }
-            value={ props.attributes.title }
-            className={ 'accordion-title' }
-            onChange={ ( text ) => {
-              props.setAttributes( { title: text } )
-            } }
-            placeholder="Add Title"
-            keepPlaceholderOnFocus={ true }
-            allowedFormats={ [] }
-          >
-          </RichText>
+      <div className="accordion-editor">
+        <RichText
+          tagname={ props.setAttributes.titleLevel }
+          value={ props.attributes.title }
+          className={ 'accordion-title' }
+          onChange={ ( text ) => {
+            props.setAttributes( { title: text } )
+          } }
+          placeholder="Add Title"
+          keepPlaceholderOnFocus={ true }
+          allowedFormats={ [] }
+        >
+        </RichText>
         <div className="accordion-content">
           <InnerBlocks
-                template={ BLOCKS_TEMPLATE }
-                allowedBlocks={ [ 'core/paragraph', 'core/list', 'core/table' ] }
-              />
+            template={ BLOCKS_TEMPLATE }
+            allowedBlocks={ [ 'core/paragraph', 'core/list', 'core/table' ] }
+          />
         </div>
       </div>,
     ];
@@ -146,19 +146,18 @@ registerBlockType( 'purdue-blocks/accrordion', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-
-    const returned = ( 
-      <div className='accordion'>
+    const returned = (
+      <div className="accordion">
         <RichText.Content
-          id={`title-${props.attributes.id}`}
-          className={'accordion-title' }
+          id={ `title-${ props.attributes.id }` }
+          className={ 'accordion-title' }
           tagName={ props.attributes.titleLevel }
           value={ props.attributes.title }
-          aria-controls={`content-${props.attributes.id}`} 
-          aria-expanded={'false'}
+          aria-controls={ `content-${ props.attributes.id }` }
+          aria-expanded={ 'false' }
         />
-        <div id={`content-${props.attributes.id}`} className={'accordion-content' }>
-          <InnerBlocks.Content/>
+        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
+          <InnerBlocks.Content />
         </div>
       </div>
     );
