@@ -8,8 +8,8 @@
  */
 
 //  Import CSS.
-import './editor.scss';
-import './style.scss';
+// import './editor.scss';
+// import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -348,6 +348,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                     <div className="profile-info-item">
                       <a
                         target="_blank"
+                        rel="noopener noreferrer"
                         href={ `mailto:${ props.attributes.email }` }
                       >
                         { props.attributes.email }
@@ -364,6 +365,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                     <div className="profile-info-item">
                       <a
                         target="_blank"
+                        rel="noopener noreferrer"
                         href={
                           props.attributes.personalLink.includes( 'https://' ) ?
                             props.attributes.personalLink :
@@ -391,6 +393,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 return (
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="level-item"
                     href={ `${ props.attributes.checkedSocials[ social ].link }` }
                   >

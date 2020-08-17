@@ -1,16 +1,9 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-nested-ternary */
-
 /**
- * BLOCK: Bulma Container
- *
- * Bulma container block: https://bulma.io/documentation/layout/container/.
+ * WordPress dependencies
  */
-
 //  Import CSS.
-import './editor.scss';
-import './style.scss';
-
+// import './editor.scss';
+// import './style.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
