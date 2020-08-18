@@ -5,6 +5,9 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.7.2] 2020-08-18
+#### Added
+- Card block
 
 ### [1.7.1] 2020-07-30
 #### Added
