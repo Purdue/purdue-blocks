@@ -20,4 +20,5 @@ import './testimonial/block.js';
 import './image-showcase/block.js';
 import './title-nav/block.js';
 import './title-nav/title-nav-link/block.js';
+import './card/block.js'
 import './accordion/block.js';
