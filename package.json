@@ -1,10 +1,10 @@
 {
   "name": "purdue-blocks-cgb-guten-block",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "private": true,
   "scripts": {
     "build": "wp-scripts build",
-    "start": "wp-scripts start",
+    "start": "wp-scripts start"
   },
   "dependencies": {
     "bulma": "^0.8.2"
