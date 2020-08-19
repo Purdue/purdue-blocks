@@ -3,12 +3,14 @@
   "version": "1.7.2",
   "private": true,
   "scripts": {
-    "start": "cgb-scripts start",
-    "build": "cgb-scripts build",
-    "eject": "cgb-scripts eject"
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
   },
   "dependencies": {
-    "bulma": "^0.8.2",
-    "cgb-scripts": "1.23.0"
+    "bulma": "^0.8.2"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^12.1.1",
+    "ignore-emit-webpack-plugin": "^2.0.2"
   }
 }

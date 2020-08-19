@@ -29,40 +29,59 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 	// Register block styles for both frontend + backend.
+	$styleFilePath =glob( plugin_dir_path(  __DIR__ ) . 'build/style.*.css',GLOB_BRACE );
+	$styleFileURI = plugin_dir_url(  __DIR__ ). 'build/' . basename($styleFilePath[0]);
+
+	$editorFilePath = glob( plugin_dir_path( __DIR__ ) . '/build/editor.*.css',GLOB_BRACE );
+	$editorFileURI = plugin_dir_url(  __DIR__ ). 'build/' . basename($editorFilePath[0]);
+
+	$blockFilePath = glob( plugin_dir_path( __DIR__ ) . '/build/block.*.js',GLOB_BRACE );
+	$blockFileURI = plugin_dir_url(  __DIR__ ). 'build/' . basename($blockFilePath[0]);
+
+	$frontFilePath = glob( plugin_dir_path( __DIR__ ) . '/build/frontend.*.js',GLOB_BRACE );
+	$frontFileURI = plugin_dir_url(  __DIR__ ). 'build/' . basename($frontFilePath[0]);
+
 	wp_register_style(
 		'purdue_blocks-cgb-style-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
-		is_admin() ? array( 'wp-editor' ) : null, // Dependency to include the CSS after it.
+		$styleFileURI, // Block style CSS.
+		null, // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: File modification time.
 	);
 
 	// Register block editor script for backend.
 	wp_register_script(
 		'purdue_blocks-cgb-block-js', // Handle.
-		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
+		$blockFileURI, // Block.build.js: We register the block here. Built with Webpack.
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' ), // Dependencies, defined above.
 		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
 		true // Enqueue the script in the footer.
 	);
-
+	// Register block editor script for frontend.
+	wp_register_script(
+		'purdue_blocks-cgb-frontend-js', // Handle.
+		$frontFileURI, // Block.build.js: We register the block here. Built with Webpack.
+		'',
+		null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
+		true // Enqueue the script in the footer.
+	);
 	// Register block editor styles for backend.
 	wp_register_style(
 		'purdue_blocks-cgb-block-editor-css', // Handle.
-		plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
+		$editorFileURI, // Block editor CSS.
 		array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 		null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
 	);
 
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
-	wp_localize_script(
-		'purdue_blocks-cgb-block-js',
-		'cgbGlobal', // Array containing dynamic data for a JS Global.
-		[
-			'pluginDirPath' => plugin_dir_path( __DIR__ ),
-			'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
-			// Add more data here that you want to access from `cgbGlobal` object.
-		]
-	);
+	// wp_localize_script(
+	// 	'purdue_blocks-cgb-block-js',
+	// 	'cgbGlobal', // Array containing dynamic data for a JS Global.
+	// 	[
+	// 		'pluginDirPath' => plugin_dir_path( __DIR__ ),
+	// 		'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
+	// 		// Add more data here that you want to access from `cgbGlobal` object.
+	// 	]
+	// );
 
 	/**
 	 * Register Gutenberg block on server-side.
@@ -75,8 +94,9 @@ function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 	 * @since 1.16.0
 	 */
 	register_block_type(
-		'cgb/block-purdue-blocks', array(
+		'purdue-blocks/site-hero', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
+			'script'         => 'purdue_blocks-cgb-frontend-js',
 			'style'         => 'purdue_blocks-cgb-style-css',
 			// Enqueue blocks.build.js in the editor only.
 			'editor_script' => 'purdue_blocks-cgb-block-js',
