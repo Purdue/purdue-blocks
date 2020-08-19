@@ -4,52 +4,72 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
+ @import '../scss/bulma-utilities';
 
-.cta-card {
-  &.card {
-    width: 100%;
-    max-width: 318px;
-  }
-
-  .card-image {
-    max-height: 159px;
-    overflow: hidden;
-  }
-
-  .card-content {
-    background-color: black;
-    padding: 1.8rem 2rem 2rem;
-
-    p {
-      font-weight: 700;
-      font-size: 29px;
-      color: #cfb991;
-      font-family: acumin-pro;
-      line-height: 1.3;
-      margin-bottom: 2rem !important;
-    }
-
-  }
-
-  &__button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "United Sans";
-    font-size: 20px;
-    font-weight: 700;
-    padding: 1rem;
-    text-transform: uppercase;
+ .square-card {
+    height:100%;
+    box-shadow:none;
+    border-radius: 0;
+    text-align:center;
+    padding:2.75rem;
+    border:1px solid #8E6F3E;
+    background-color:#fff;
+    display:block;
     text-decoration: none;
-    color: #cfb991;
-    border: 2px #cfb991 solid;
-    transition: all ease 0.1s ;
-    letter-spacing: 2px;
-
-    &:hover {
-      background: #cfb991;
-      color: black;
+    @include mobile{
+      padding:2.75rem 1.25rem;
     }
+    &.background-gold{
+      background-color:#CFB991;
+    }
+    &.border-black{
+      border:1px solid #000;
+    }
+    .image {
+      margin-bottom:1.625rem !important;
+      img{
+        height:100px;
+        width:auto;
+      }
+    }
+    p.title{
+        font-family:"United Sans", Impact, "Arial Black", "sans serif";;
+        margin:0 auto!important;
+        text-transform:uppercase;
+        font-size:1.5625rem;
+        line-height:1.48;
+        font-weight:700 !important;
+        color:#000;
+    }
+    p.content{
+        margin:1rem auto;
+        width:100%;
+        color:#000;
+    }
+    .read-more-button{
+      font-family:"United Sans",Impact, "Arial Black", "sans serif";
+      font-weight:800;
+      font-size:1.125rem;
+      text-transform:uppercase;
+      color:#8e6f3e;
+      margin-top:1.625rem;
+      span{
+        color:inherit;
+        position:relative;
+        &:after{
+          content: "\f105";
+          display: inline-block;
+          font-family: "Font Awesome 5 Free";
+          margin-left: 0.7rem;
+          bottom:-4px;
+          position:absolute;
+        }
+      }
+    }
+    
+}
+a.square-card:hover{
+  .read-more-button{
+    color:#000;
   }
 }

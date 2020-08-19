@@ -13,6 +13,7 @@ import './cta-hero/block.js';
 import './title-hero/block.js';
 import './list/block.js';
 import './cta-banner/block.js';
+import './cta-button/block.js';
 import './faculty-profile-card/block.js';
 import './feature-story/block.js';
 import './proofpoint/block.js';
@@ -22,3 +23,4 @@ import './title-nav/block.js';
 import './title-nav/title-nav-link/block.js';
 import './card/block.js'
 import './accordion/block.js';
+import './cta-card/block.js';
