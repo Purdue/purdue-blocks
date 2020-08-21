@@ -1,4 +1,5 @@
 // title-hero test
+jest.setTimeout(30000)
 import {
     createNewPost,
     enablePageDialogAccept,
