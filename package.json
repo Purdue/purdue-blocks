@@ -11,6 +11,7 @@
     "bulma": "^0.8.2"
   },
   "devDependencies": {
+    "@wordpress/e2e-test-utils": "^4.11.2",
     "@wordpress/scripts": "^12.1.1",
     "ignore-emit-webpack-plugin": "^2.0.2"
   }
