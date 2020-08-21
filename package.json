@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "wp-scripts build",
-    "start": "wp-scripts start"
+    "start": "wp-scripts start",
+    "tests": "wp-scripts test-e2e"
   },
   "dependencies": {
     "bulma": "^0.8.2"
