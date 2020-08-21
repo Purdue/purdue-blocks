@@ -6,45 +6,96 @@
 
  @import '../scss/bulma-utilities';
 
- .square-card {
+ .cta-card-horizonal {
     height:100%;
-    box-shadow:none;
-    border-radius: 0;
-    text-align:center;
-    padding:2.75rem;
-    border:1px solid #8E6F3E;
-    background-color:#fff;
-    display:block;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
     text-decoration: none;
+    display:block;
+    color:#000;
+    &.cta-card-small{
+      padding:2.1875rem;
+      @include mobile{
+        padding:0.8rem 0.8rem 2rem; 
+      }
+      p.content{
+        font-size:1rem !important;
+        line-height:1.75 !important;
+        width:100%;
+      }
+    }
+    &.cta-card-large{
+      padding:2.8125rem;
+      @include mobile{
+        padding:0.8rem 0.8rem 2rem; 
+      }
+     p{
+        font-size:1.125rem !important;
+        line-height:1.67 !important;
+        width:100%;
+        @include mobile{
+          padding:0 0.5rem; 
+        }
+      }
+      ul,ol{
+        font-size:1.125rem !important;
+        font-weight:600;
+        width:100%;
+        @include mobile{
+          padding:0 0.5rem; 
+        }
+      }
+      ul{
+        list-style:none !important;
+        margin-left:1em;
+        li:before{
+          content: ">";
+          display: block;
+          height: 0;
+          width: 0;
+          left: -0.7em;
+          top:-0.1em;
+          position: relative;
+        }
+
+      }
+    }
+    &.cta-card-left{
+      .columns{
+        flex-direction: row;
+      }
+    }
+    &.cta-card-right{
+      .columns{
+        flex-direction: row-reverse;
+      }
+    }
     @include mobile{
       padding:2.75rem 1.25rem;
     }
-    &.background-gold{
-      background-color:#CFB991;
-    }
-    &.border-black{
-      border:1px solid #000;
-    }
-    .image {
-      margin-bottom:1.625rem !important;
-      img{
-        height:100px;
-        width:auto;
+    .title{
+      font-family:acumin-pro-semi-condensed,
+      "Franklin Gothic",
+      sans-serif;
+      font-size:1.5625rem;
+      line-height:1.4;
+      font-weight:600 !important;
+      color:#000;
+      margin-bottom:1rem!important;
+      text-transform: none;
+      width:100%;
+      @include mobile{
+        padding:0 0.5rem; 
       }
     }
-    p.title{
-        font-family:"United Sans", Impact, "Arial Black", "sans serif";;
-        margin:0 auto!important;
-        text-transform:uppercase;
-        font-size:1.5625rem;
-        line-height:1.48;
-        font-weight:700 !important;
-        color:#000;
-    }
-    p.content{
-        margin:1rem auto;
-        width:100%;
-        color:#000;
+    .content{
+      font-family:acumin-pro,
+      "Franklin Gothic",
+      sans-serif;
+      width:100%;
+      color:#000;
+      @include mobile{
+        padding:0 0.5rem; 
+      }
     }
     .read-more-button{
       font-family:"United Sans",Impact, "Arial Black", "sans serif";
@@ -53,6 +104,10 @@
       text-transform:uppercase;
       color:#8e6f3e;
       margin-top:1.625rem;
+      letter-spacing:50;
+      @include mobile{
+        padding:0 0.5rem; 
+      }
       span{
         color:inherit;
         position:relative;
@@ -68,7 +123,9 @@
     }
     
 }
-a.square-card:hover{
+a.cta-card-horizonal:hover,a.cta-card-horizonal:focus{
+  color:#000;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   .read-more-button{
     color:#000;
   }
