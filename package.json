@@ -5,7 +5,8 @@
   "scripts": {
     "build": "wp-scripts build",
     "start": "wp-scripts start",
-    "tests": "wp-scripts test-e2e -u",
+    "tests": "wp-scripts test-e2e",
+    "updateSnap": "wp-scripts test-e2e -u",
     "env": "wp-env"
   },
   "dependencies": {
