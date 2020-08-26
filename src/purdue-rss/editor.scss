@@ -1,0 +1,81 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ .cta-card-horizonal {
+  height:100%;
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+  background-color:#fff;
+  text-decoration: none;
+  &.cta-card-small{
+    padding:2.1875rem;
+  }
+  &.cta-card-large{
+    padding:2.8125rem;
+  }
+  &.cta-card-left{
+    flex-direction: row;
+  }
+  &.cta-card-right{
+    flex-direction: row-reverse;
+  }
+  .image{
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-color:#ededed;
+      button{
+        border:none;
+        background:none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        &:hover{
+          background:rgba(255,255,255,0.8);
+        }
+      }
+  }
+  .title{
+      font-family:acumin-pro-semi-condensed,
+      "Franklin Gothic",
+      sans-serif;
+      font-size:1.5625rem;
+      line-height:1.4;
+      font-weight:600 !important;
+      color:#000;
+  }
+  .content{
+    font-family:acumin-pro,
+    "Franklin Gothic",
+    sans-serif;
+    font-size:1rem;
+    line-height:1.75;
+    width:100%;
+    color:#000;
+  }
+  .read-more-button{
+    font-family:"United Sans",Impact, "Arial Black", "sans serif";
+    font-weight:800;
+    font-size:1.125rem;
+    text-transform:uppercase;
+    color:#8e6f3e;
+    margin-top:1.625rem;
+    span{
+      color:inherit;
+      position:relative;
+      &:after{
+        content: ">";
+        display: inline-block;
+        margin-left: 0.7rem;
+        bottom:-4px;
+        position:absolute;
+      }
+    }
+  }
+  
+}
