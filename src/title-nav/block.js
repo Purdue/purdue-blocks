@@ -74,7 +74,7 @@ registerBlockType( 'purdue-blocks/title-nav', {
   attributes: {
     hasOutline: { type: 'boolean', default: false },
     addButton: { type: 'boolean', default: false },
-    numLinks: { type: 'number' },
+    numLinks: { type: 'number', default: 1 },
     titleText: { source: 'html', selector: 'h2' },
     buttonText: { type: 'string', default: '' },
     buttonLink: { type: 'string', default: '' },
@@ -90,8 +90,7 @@ registerBlockType( 'purdue-blocks/title-nav', {
   ),
 
   edit: ( props ) => {
-    if ( ! props.attributes.numLinks ) {
-      props.setAttributes( { numLinks: 1 } );
+    if ( props.attributes.numLinks === 1) {
       updateInner( props, 1, 1 );
     }
     return [
@@ -102,10 +101,11 @@ registerBlockType( 'purdue-blocks/title-nav', {
             <RangeControl
               className={ 'bulma-columns-range-control' }
               label="Number of Navigation Items"
-              value={ props.attributes.numLinks || 1 }
+              value={ props.attributes.numLinks}
               min={ 1 }
               max={ 15 }
               onChange={ ( numLinks ) => {
+                console.log(numLinks)
                 updateInner( props, props.attributes.numLinks, numLinks );
                 props.setAttributes( { numLinks } );
               } }
@@ -207,7 +207,10 @@ const updateInner = ( props, oldNum, newNum ) => {
   const select = wp.data.select( 'core/block-editor' );
   let innerBlocks = select.getBlock( props.clientId ).innerBlocks;
 
-  const newLink = newNum > oldNum;
+  console.log(`newnum: ${newNum}, oldnum: ${oldNum}`)
+
+  const adding = newNum > oldNum;
+  const triedZero = newNum === 0
 
   if ( oldNum === 1 && oldNum === newNum ) {
     const firstBlock = createBlock( 'purdue-blocks/title-nav-link' );
@@ -215,14 +218,22 @@ const updateInner = ( props, oldNum, newNum ) => {
     wp.data
       .dispatch( 'core/block-editor' )
       .replaceInnerBlocks( props.clientId, innerBlocks, false );
-  } else if ( newLink ) {
-    const newLinkToAdd = createBlock( 'purdue-blocks/title-nav-link' );
-    innerBlocks.push( newLinkToAdd );
+  } else if ( adding && !triedZero ) {
+    const newToAdd = newNum - oldNum
+
+    for(let i = 0; i < newToAdd; i++) {
+      const newLinkToAdd = createBlock( 'purdue-blocks/title-nav-link' );
+      innerBlocks.push( newLinkToAdd );
+    }
     wp.data
       .dispatch( 'core/block-editor' )
       .replaceInnerBlocks( props.clientId, innerBlocks, false );
-  } else {
-    innerBlocks.pop();
+  } else if (!adding && !triedZero) {
+    const removingNum = oldNum - newNum
+
+    for(let i = 0; i < removingNum; i++) {
+      innerBlocks.pop();
+    }
     wp.data
       .dispatch( 'core/block-editor' )
       .replaceInnerBlocks( props.clientId, innerBlocks, false );
