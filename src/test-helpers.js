@@ -4,16 +4,20 @@ import {
     insertBlock,
 } from '@wordpress/e2e-test-utils';
 
+// Selects a block with the given name
 export const selectBlockByName = async ( name ) => {
     const clientId = ( await getAllBlocks() ).find( ( block ) => block.name === name ).clientId
     await selectBlockByClientId(clientId);
 };
 
+// Clicks an element on the page given an html element and inner text of the element
+// useful for clicking buttons or links with text
 export const clickElementByText = async ( elementExpression, text ) => {
     const [ element ] = await page.$x( `//${ elementExpression }[contains(text(),"${ text }")]` );
     await element.click();
 };
 
+// Used to select settings on sidebar by clicking the corresponding label for the control
 export const selectOption = async ( label, value ) => {
     const [ selectEl ] = await page.$x( `//label[@class="components-base-control__label"][contains(text(),"${ label }")]/following-sibling::select[@class="components-select-control__input"]` );
     const selectId = await page.evaluate(
@@ -23,6 +27,7 @@ export const selectOption = async ( label, value ) => {
     await page.select( `#${ selectId }`, value );
 };
 
+// Used when panel bodies on the side bar may be closed by default to open them so settings can be accessed
 export const openSidebarPanelWithTitle = async ( title ) => {
     // Check if sidebar panel exists
     await page.waitForXPath( `//div[contains(@class,"edit-post-sidebar")]//button[@class="components-button components-panel__body-toggle"][contains(text(),"${ title }")]` );
@@ -36,10 +41,12 @@ export const openSidebarPanelWithTitle = async ( title ) => {
     }
 };
 
+// Used to open the sidebar which is closed by default
 export const openSidebar = async () => {
     await page.click('.edit-post-header__settings [aria-label="Settings"]')
 }
 
+// Wrapper for the startup used by most tests
 export const blockStartup = async ({blockTitle, blockName}) => {
     await insertBlock( blockTitle )
     await selectBlockByName( blockName )
