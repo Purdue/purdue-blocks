@@ -22,12 +22,12 @@ describe( 'Title Hero Block', () => {
         await createNewPost();
     } );
 
-    // Tests can be added here by using the it() function
     it( 'Block should be available.', async () => {
         await insertBlock( 'Title Hero' )
 
-        expect(await page.$('[data-type="purdue-blocks/title-hero"]')).not.toBeNull()
 
+        // tests that the block is properly inserted and matches the existing snapshot
+        expect(await page.$('[data-type="purdue-blocks/title-hero"]')).not.toBeNull()
         expect( await getEditedPostContent()).toMatchSnapshot()
     } )
 
@@ -37,8 +37,13 @@ describe( 'Title Hero Block', () => {
         // open media library
         await clickElementByText('button', 'Open Media Library')
 
-        // media library title is there?
+        // tests that media library does open
         expect(await page.$(`div.media-frame-title`)).not.toBeNull()
+
+        /*
+        NOTE: explore further to see how media items can be spoofed so that the actual
+              image urls can be properly snapshotted and tested.
+        */
     })
 
     it( 'Title should be editable.', async () => {
@@ -46,11 +51,15 @@ describe( 'Title Hero Block', () => {
 
         const typeString = "Test Title"
         
+        // focus the text box then type into it with the virtual keyboard
         await page.focus( `[data-type="purdue-blocks/title-hero"] input` );
         await page.keyboard.type(typeString, {delay: 10})
 
         const editedContent = await getEditedPostContent()
 
+        // tests: 
+        // a. save output properly contains the correct string 
+        // b. save output matches the existing snapshot
         expect( editedContent.includes(`<h1>${typeString}</h1>`)).toBe(true)
         expect( editedContent).toMatchSnapshot()
     })
@@ -60,11 +69,15 @@ describe( 'Title Hero Block', () => {
 
         const typeString = "Test intro copy here."
         
+        // focus the textarea then type into it with the virtual keyboard
         await page.focus( `[data-type="purdue-blocks/title-hero"] textarea` );
         await page.keyboard.type(typeString, {delay: 10})
 
         const editedContent = await getEditedPostContent()
 
+        // tests: 
+        // a. save output properly contains the correct string 
+        // b. save output matches the existing snapshot
         expect( editedContent.includes(`<p>${typeString}</p>`)).toBe(true)
         expect( editedContent).toMatchSnapshot()
     })
@@ -74,11 +87,15 @@ describe( 'Title Hero Block', () => {
 
         const typeString = "Image alt text."
         
+        // focus the text box then type into it with the virtual keyboard
         await clickElementByText('label', 'Hero Image Alt Text')
         await page.keyboard.type(typeString, {delay: 10})
 
         const editedContent = await getEditedPostContent()
 
+        // tests: 
+        // a. save output properly contains the correct string 
+        // b. save output matches the existing snapshot
         expect( editedContent.includes(`<div class="background-image" aria-label="${typeString}">`)).toBe(true)
         expect( editedContent).toMatchSnapshot()
     })
