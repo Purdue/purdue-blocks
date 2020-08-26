@@ -5,13 +5,14 @@ import {
     enablePageDialogAccept,
     getEditedPostContent,
     insertBlock,
-    selectOption,
 } from '@wordpress/e2e-test-utils';
 
 import {
-    selectBlockByName,
-    clickElementByText
+    clickElementByText,
+    blockStartup
 } from '../test-helpers'
+
+const block = {blockTitle: 'Title Hero', blockName: 'purdue-blocks/title-hero'}
 
 describe( 'Title Hero Block', () => {
     beforeAll( async () => {
@@ -31,8 +32,7 @@ describe( 'Title Hero Block', () => {
     } )
 
     it( 'Button should open Media Library.', async () => {
-        await insertBlock( 'Title Hero' )
-        await selectBlockByName( 'purdue-blocks/title-hero')
+        await blockStartup(block)
 
         // open media library
         await clickElementByText('button', 'Open Media Library')
@@ -42,8 +42,7 @@ describe( 'Title Hero Block', () => {
     })
 
     it( 'Title should be editable.', async () => {
-        await insertBlock( 'Title Hero' )
-        await selectBlockByName( 'purdue-blocks/title-hero')
+        await blockStartup(block)
 
         const typeString = "Test Title"
         
@@ -57,8 +56,7 @@ describe( 'Title Hero Block', () => {
     })
 
     it( 'Intro copy should be editable.', async () => {
-        await insertBlock( 'Title Hero' )
-        await selectBlockByName( 'purdue-blocks/title-hero')
+        await blockStartup(block)
 
         const typeString = "Test intro copy here."
         
@@ -68,6 +66,20 @@ describe( 'Title Hero Block', () => {
         const editedContent = await getEditedPostContent()
 
         expect( editedContent.includes(`<p>${typeString}</p>`)).toBe(true)
+        expect( editedContent).toMatchSnapshot()
+    })
+
+    it( 'Image alt text should be editable.', async () => {
+        await blockStartup(block)
+
+        const typeString = "Image alt text."
+        
+        await clickElementByText('label', 'Hero Image Alt Text')
+        await page.keyboard.type(typeString, {delay: 10})
+
+        const editedContent = await getEditedPostContent()
+
+        expect( editedContent.includes(`<div class="background-image" aria-label="${typeString}">`)).toBe(true)
         expect( editedContent).toMatchSnapshot()
     })
 } );
