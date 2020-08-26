@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Titled Navigation Block Block should be available. 1`] = `
-"<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":1} -->
+"<!-- wp:purdue-blocks/title-nav -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
 <!-- /wp:purdue-blocks/title-nav-link --></ul></section>
@@ -9,7 +9,23 @@ exports[`Titled Navigation Block Block should be available. 1`] = `
 `;
 
 exports[`Titled Navigation Block Navigation links added correctly. 1`] = `
-"<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":8} -->
+"<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":3} -->
+<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link -->
+
+<!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link -->
+
+<!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
+<!-- /wp:purdue-blocks/title-nav -->"
+`;
+
+exports[`Titled Navigation Block Navigation links update correctly. 1`] = `
+"<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":2} -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
 <!-- /wp:purdue-blocks/title-nav-link -->

@@ -9,7 +9,8 @@ import {
 
 import {
     clickElementByText,
-    blockStartup
+    blockStartup,
+    updateRangeInput
 } from '../test-helpers'
 
 const block = {blockTitle: 'Titled Navigation', blockName: 'purdue-blocks/title-nav'}
@@ -34,15 +35,32 @@ describe( 'Titled Navigation Block', () => {
     it( 'Navigation links added correctly.', async () => {
         await blockStartup(block)
 
-        const addLinks = "3"
-        
-        // double click in the range field to highlight current text
-        await page.click( `[aria-label="Number of Navigation Items"]`, {clickCount: 2} );
-        await page.keyboard.type(addLinks, {delay: 10})
+        const addLinks = 3
+        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, addLinks)
 
         const linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
 
         expect( linksNum ).toEqual(addLinks)
+        expect( await getEditedPostContent() ).toMatchSnapshot()
+
+    })
+
+    it( 'Navigation links update correctly.', async () => {
+        await blockStartup(block)
+
+        let update = 5
+        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
+        
+        let linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
+        expect( linksNum ).toEqual(update)
+
+        update = 2
+        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
+
+
+        linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
+        expect( linksNum ).toEqual(update)
+
         expect( await getEditedPostContent() ).toMatchSnapshot()
 
     })
