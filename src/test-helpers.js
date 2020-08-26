@@ -52,3 +52,13 @@ export const blockStartup = async ({blockTitle, blockName}) => {
     await selectBlockByName( blockName )
     await openSidebar()
 }
+
+// wrapper for the process of cleanly updating a range input in the sidebar
+export const updateRangeInput = async (selector, number) => {
+    await page.click( selector );
+        
+    await page.keyboard.down('ControlLeft');
+    await page.keyboard.press('KeyA');
+    await page.keyboard.up('ControlLeft');
+    await page.keyboard.type(`${number}`, {delay: 10})
+}
