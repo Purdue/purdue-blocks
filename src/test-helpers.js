@@ -1,12 +1,12 @@
 import {
     getAllBlocks,
     selectBlockByClientId,
+    insertBlock,
 } from '@wordpress/e2e-test-utils';
 
 export const selectBlockByName = async ( name ) => {
-    await selectBlockByClientId(
-        ( await getAllBlocks() ).find( ( block ) => block.name === name ).clientId
-    );
+    const clientId = ( await getAllBlocks() ).find( ( block ) => block.name === name ).clientId
+    await selectBlockByClientId(clientId);
 };
 
 export const clickElementByText = async ( elementExpression, text ) => {
@@ -35,3 +35,13 @@ export const openSidebarPanelWithTitle = async ( title ) => {
         await panel.click();
     }
 };
+
+export const openSidebar = async () => {
+    await page.click('.edit-post-header__settings [aria-label="Settings"]')
+}
+
+export const blockStartup = async ({blockTitle, blockName}) => {
+    await insertBlock( blockTitle )
+    await selectBlockByName( blockName )
+    await openSidebar()
+}
