@@ -130,7 +130,7 @@ registerBlockType( 'purdue-blocks/title-nav', {
             />
           </PanelRow>
           { props.attributes.addButton ? (
-            <PanelBody>
+            <PanelBody title={'button-controls'}>
               <PanelRow>
                 <TextControl
                   label="Button Text"
