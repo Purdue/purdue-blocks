@@ -27,6 +27,11 @@ export const selectOption = async ( label, value ) => {
     await page.select( `#${ selectId }`, value );
 };
 
+export const clickCheckbox = async (label) => {
+    const [ selectEl ] = await page.$x( `//label[@class="components-checkbox-control__label"][contains(text(),"${ label }")]` );
+    await selectEl.click()
+}
+
 // Used when panel bodies on the side bar may be closed by default to open them so settings can be accessed
 export const openSidebarPanelWithTitle = async ( title ) => {
     // Check if sidebar panel exists
