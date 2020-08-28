@@ -25,11 +25,11 @@ const {
   Button,
   ToolbarGroup,
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks,BlockControls } = wp.blockEditor;
 const { apiFetch } = wp;
 const { useState } = wp.element;
-const { pencil, rss } = wp.icons;
 
+import { pencil, rss } from '@wordpress/icons';
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Add content' } ],
 ];
@@ -86,6 +86,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
     data:[],
+    error:{ type: 'string', default: '' },
   },
 
   supports: {
@@ -94,7 +95,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
   // Block description in side panel
   description: __(
-    'Create a call-to-action card with an image and text. The link to the card is optional.'
+    'Display entries from RSS feed.'
   ),
 
   edit: ( props ) => {
@@ -102,19 +103,124 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     const onSubmitURL = (e) => {
       // setState( { error: false, validated: false } );
       e.preventDefault();
+      if ( props.attributes.feedURL ) {
+        setIsEditing( false );
+      }
       apiFetch( { 
         path: '/purduerssfeed/v2/getFeed/?url=' + props.attributes.feedURL,
         method: 'GET'
-      }).then(response => new window.DOMParser().parseFromString(response, "text/xml")) 
-      .then(data => {
-        props.setAttributes({data:data.querySelectorAll("item")});
+      }).then(response => {
+        if(response){
+          if(JSON.parse(response).error){
+          props.setAttributes({error:JSON.parse(response).error});
+          props.setAttributes({data:null});
+          }else{
+            props.setAttributes({data:JSON.parse(response)});
+            props.setAttributes({error:""});
+          }
+        }
       })
     };
-    console.log(props.attributes.data);
-    const list=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(el => {
-       return (<h2>test</h2>   )
-    }):"";
-    
+    let itemList=[];
+    if(props.attributes.data&&props.attributes.data.length>0){
+      if(props.attributes.type==="withImage"){
+          for(let i=0;i<3;i++){
+            const data=[...props.attributes.data][i];
+             itemList[i]=
+               <div className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
+                <div className={"card feed-item"}>
+                  <a href={data.link[0]}>
+                    {data.imgURL&&data.imgURL!==""?
+                      <div className={"card-bg-image image is-2by1"} 
+                      role="img"
+                      style={{backgroundImage:`url(${ data.imgURL })`}}
+                      aria-label={ data.imgALT }
+                      >
+                      </div>:""}                   
+                    <div className="card-content">
+                      <div className="media">
+                        <div className="media-content">
+                          <p className="title is-4">
+                            {data.title[0]}									
+                          </p>
+                        </div>
+                      </div>
+                    <div className="read-more-button">
+                      <span>Read More</span>
+                    </div>
+                  </div>
+                  </a>
+                </div>
+               </div>
+          }
+      }
+      if(props.attributes.type==="withoutImage"){
+        for(let i=0;i<4;i++){
+          const data=[...props.attributes.data][i];
+          itemList[i]=
+            <a className={"meida feed-item-noimage"} href={data.link[0]}>                 
+              <div className="media-left">
+                    <p className="month">
+                      {data.month}									
+                    </p>
+                    <p className="day">
+                      {data.day}									
+                    </p>
+                </div>
+              <div className="media-content">
+                <div className="content">
+                  <p className="title">
+                    {data.title[0]}	
+                  </p>
+                  <p className="desc">
+                    {data.text}	
+                  </p>
+                </div>											
+              </div>
+            </a>
+        }
+      }
+      if(props.attributes.type==="all"){
+         itemList=[...props.attributes.data].map(data => {
+          return (
+            <div className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
+            <div className={"card feed-item"}>
+              <a href={data.link[0]}>
+                {data.imgURL&&data.imgURL!==""?
+                  <div className={"card-bg-image image is-2by1"} 
+                  role="img"
+                  style={{backgroundImage:`url(${ data.imgURL })`}}
+                  aria-label={ data.imgALT }
+                  >
+                  </div>:""}                   
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-content">
+                      <p className="subtitle">
+                        {data.date}									
+                      </p>
+                      <p className="title is-4">
+                        {data.title[0]}									
+                      </p>
+                    </div>
+                  </div>
+                <div className="content-text">
+                  {data.text}												
+                </div>
+                <div className="read-more-button">
+                  <span>Read More</span>
+                </div>
+              </div>
+              </a>
+            </div>
+           </div>
+          )
+       });
+      }
+    }
+
+    const [ isEditing, setIsEditing ] = useState( ! props.attributes.feedURL );
+
     const toolbarControls = [
       {
         icon: pencil,
@@ -131,22 +237,21 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
         <PanelBody>
           <PanelRow>
             <RadioControl
-              label="Layout of the News feed"
-              help="Choose Large if there will be a lot of text or lists on the card. Otherwise choose Small."
-              selected={ props.attributes.cardType }
+              label="Layout of the RSS feed"
+              selected={ props.attributes.type }
               options={ [
                 { label: 'Recent news with image', value: 'withImage' },
                 { label: 'Recent news without image', value: 'withoutImage' },
                 { label: 'All News/Events', value: 'all' },
               ] }
-              onChange={ ( option ) => {
-                props.setAttributes( { cardType: option } )
+              onChange={ ( type ) => {
+                props.setAttributes( { type } )
               } }
             />
           </PanelRow>
           <PanelRow>
             <SelectControl
-              label="Heading level of the title"
+              label="Heading level of the Header"
               value={ props.attributes.titleLevel }
               options={ [
                 { label: 'H2', value: 'h2' },
@@ -206,71 +311,92 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             </PanelRow> : '' }
         </PanelBody>
       </InspectorControls>,
-
-      <div className={ `news-feed-editor${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }
-      >				
-        <form
-        onSubmit={ onSubmitURL }
-        className="wp-block-rss__placeholder-form"
-        >
-          <TextControl
-            placeholder={ __( 'Enter URL here…' ) }
-            value={ props.attributes.feedURL }
-            onChange={ ( value ) =>
-              props.setAttributes( { feedURL: value } )
-            }
-            className="wp-block-rss__placeholder-input"
-          />
-          <Button isPrimary type="submit">
-            { __( 'Use URL' ) }
-          </Button>
-        </form>
-        <div className={'news-feed'}>
-          <RichText
-            tagname={ props.setAttributes.titleLevel }
-            value={ props.attributes.title }
-            className={ 'feed-header' }
-            onChange={ ( text ) => {
-              props.setAttributes( { title: text } )
-            } }
-            placeholder="Add Title (Optional)"
-            keepPlaceholderOnFocus={ true }
-            allowedFormats={ [] }
-          >
-          </RichText>
-          <div className={'feed-items'}>
-            test
-            {list}
-          </div>
-          <div className={'feed-image'}>
-            <MediaUploadCheck>
-              <MediaUpload
-                onSelect={ ( img ) => {
-                  props.setAttributes( {
-                    imgUrl: img.url,
-                    altText:
-                        props.attributes.altText !== '' ?
-                          props.attributes.altText :
-                          img.alt,
-                  } );
-                } }
-                render={ ( { open } ) => {
-                  return (
-                    <div className={ 'image is-3by2' }
-                      role="img"
-                      style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
-                      aria-label={ props.attributes.altText }
-                    >
-                      <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</button>
-                    </div>
-                  );
-                } }
+      <div>
+      {isEditing?
+        <div className={ 'news-feed-editor'}>		
+          <p>Enter feed URL in the box and then click "Use URL" to retrive the feed</p>		
+            <form onSubmit={ onSubmitURL }
+            className="rss-form"
+            >
+              <TextControl
+                placeholder={ __( 'Enter URL here…' ) }
+                value={ props.attributes.feedURL }
+                onChange={ ( value ) =>
+                  props.setAttributes( { feedURL: value } )
+                }
+                className="rss-input"
               />
-            </MediaUploadCheck>
-          </div>
-        </div>
-
-      </div>,
+              <Button isPrimary type="submit">
+                { __( 'Use URL' ) }
+              </Button>
+            </form>
+          </div>: 
+          <div className={'news-feed'}>
+            <RichText
+              className={ 'feed-header' }
+              tagname={ props.setAttributes.titleLevel }
+              value={ props.attributes.title }
+              onChange={ ( text ) => {
+                props.setAttributes( { title: text } )
+              } }
+              placeholder="Add A Header (Optional)"
+              keepPlaceholderOnFocus={ true }
+              allowedFormats={ [] }
+            >
+            </RichText>
+            {props.attributes.type==="withImage"||props.attributes.type==="all"?(
+            <div className={'columns is-multiline feed-items components-disabled'}>
+              {itemList}
+            </div>):""}
+            {props.attributes.type==="withImage"&&props.attributes.linkText ? (
+            <div className="read-more-button components-disabled">
+              <a href={props.attributes.link}
+                target={ props.attributes.external ? '_blank' : '_self' }
+                rel="noopener noreferrer"
+              >
+                { props.attributes.linkText }
+                </a>
+              </div>) : '' }
+            {props.attributes.type==="withoutImage"?(
+            <div className={'feed-grid'}>
+              <div className={'feed-image'}>
+                <MediaUploadCheck>
+                  <MediaUpload
+                    onSelect={ ( img ) => {
+                      props.setAttributes( {
+                        imgUrl: img.url,
+                        altText:
+                            props.attributes.altText !== '' ?
+                              props.attributes.altText :
+                              img.alt,
+                      } );
+                    } }
+                    render={ ( { open } ) => {
+                      return (
+                        <div className={ 'image is-3by2' }
+                          role="img"
+                          style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+                          aria-label={ props.attributes.altText }
+                        >
+                          <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</button>
+                        </div>
+                      );
+                    } }
+                  />
+                </MediaUploadCheck>
+              </div>
+              <div className={'feed-items components-disabled'}>
+                {itemList}
+              </div>
+                <a className="button components-disabled" href={props.attributes.link}
+                  target={ props.attributes.external ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
+                >
+                  { props.attributes.linkText }
+                  </a>
+            </div>):""}
+          </div>}
+        </div>,
     ];
   },
 
@@ -286,12 +412,144 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    console.log("test");
-    console.log(props.attributes.data);
-    const list=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(el => {
-      return (<h2>test</h2>   )
-   }):"";
-    return (<div>{list}</div>);
+    let itemList=[];
+    if(props.attributes.data&&props.attributes.data.length>0){
+      if(props.attributes.type==="withImage"){
+          for(let i=0;i<3;i++){
+            const data=[...props.attributes.data][i];
+             itemList[i]=
+               <div className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
+                <div className={"card feed-item"}>
+                  <a href={data.link[0]}>
+                    {data.imgURL&&data.imgURL!==""?
+                      <div className={"card-bg-image image is-2by1"} 
+                      role="img"
+                      style={{backgroundImage:`url(${ data.imgURL })`}}
+                      aria-label={ data.imgALT }
+                      >
+                      </div>:""}                   
+                    <div className="card-content">
+                      <div className="media">
+                        <div className="media-content">
+                          <p className="title is-4">
+                            {data.title[0]}									
+                          </p>
+                        </div>
+                      </div>
+                    <div className="read-more-button">
+                      <span>Read More</span>
+                    </div>
+                  </div>
+                  </a>
+                </div>
+               </div>
+          }
+      }
+      if(props.attributes.type==="withoutImage"){
+        for(let i=0;i<4;i++){
+          const data=[...props.attributes.data][i];
+          itemList[i]=
+            <a className={"meida feed-item-noimage"} href={data.link[0]}>                 
+              <div className="media-left">
+                    <p className="month">
+                      {data.month}									
+                    </p>
+                    <p className="day">
+                      {data.day}									
+                    </p>
+                </div>
+              <div className="media-content">
+                <div className="content">
+                  <p className="title">
+                    {data.title[0]}	
+                  </p>
+                  <p className="desc">
+                    {data.text}	
+                  </p>
+                </div>											
+              </div>
+            </a>
+        }
+      }
+      if(props.attributes.type==="all"){
+         itemList=[...props.attributes.data].map(data => {
+          return (
+            <div className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
+            <div className={"card feed-item"}>
+              <a href={data.link[0]}>
+                {data.imgURL&&data.imgURL!==""?
+                  <div className={"card-bg-image image is-2by1"} 
+                  role="img"
+                  style={{backgroundImage:`url(${ data.imgURL })`}}
+                  aria-label={ data.imgALT }
+                  >
+                  </div>:""}                   
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-content">
+                      <p className="subtitle">
+                        {data.date}									
+                      </p>
+                      <p className="title is-4">
+                        {data.title[0]}									
+                      </p>
+                    </div>
+                  </div>
+                <div className="content-text">
+                  {data.text}												
+                </div>
+                <div className="read-more-button">
+                  <span>Read More</span>
+                </div>
+              </div>
+              </a>
+            </div>
+           </div>
+          )
+       });
+      }
+    }
+    return (
+      <div className={'news-feed'}>
+         <div className={'container'}>
+          { props.attributes.title ? ( 
+          <RichText.Content
+            className={ 'feed-header' }
+            tagName={ props.attributes.titleLevel }
+            value={ props.attributes.title }
+          /> ) : '' }
+          {props.attributes.type==="withImage"||props.attributes.type==="all"?(
+          <div className={'columns is-multiline feed-items'}>
+            {itemList}
+          </div>):''}
+          {props.attributes.type==="withImage"&&props.attributes.linkText ? (
+          <div className="read-more-button">
+            <a href={props.attributes.link}
+              target={ props.attributes.external ? '_blank' : '_self' }
+              rel="noopener noreferrer"
+            >
+              { props.attributes.linkText }
+              </a>
+            </div>) : '' }
+          {props.attributes.type==="withoutImage"?(
+          <div className={'feed-grid'}>
+            { props.attributes.imgUrl ?
+            <figure className="feed-image is-3by2">
+              <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
+            </figure> : '' }
+            <div className={'feed-items'}>
+              {itemList}
+            </div>
+              <a className="button" href={props.attributes.link}
+                target={ props.attributes.external ? '_blank' : '_self' }
+                rel="noopener noreferrer"
+              >
+                { props.attributes.linkText }
+                </a>
+          </div>):''}
+        </div>
+    </div>
+    );
   },
 } );
 

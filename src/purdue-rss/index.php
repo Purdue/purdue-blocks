@@ -21,9 +21,53 @@ add_action( 'rest_api_init', function () {
     ) );
 } );
 function feed_url_endpoint($data){
-    $c = curl_init();
-    curl_setopt($c, CURLOPT_URL, $data['url']);
-    curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-    $result = curl_exec($c);
-    return wp_send_json($result);
+
+    $results=[];
+    $invalidurl = false;
+    if(@simplexml_load_file($data['url'])){
+        $rss = simplexml_load_file($data['url']);
+    }else{
+        $invalidurl = true;
+        $results[error]="Invalid RSS feed URL.";
+    }
+    if(!empty($rss)){
+       foreach ($rss->channel->item as $item) {   
+           $title = $item->title;
+           $link = $item->link;
+           $description = $item->description;
+           $imgURLMatch = preg_match("/img src=\"([^\"]+)\"/", $description, $matchimgURL);
+           if($imgURLMatch){
+               $imgURL=$matchimgURL[1];
+           }else{
+               $imgURL='';
+           }
+           $imgALTMatch = preg_match("/<img[^>]+alt=\"([^>]*)\"[^>]*>/iU", $description, $matchimgALT);
+           if($imgALTMatch){
+               $imgALT=$matchimgALT[1];
+           }else{
+               $imgALT='';
+           }
+           $text=substr(strip_tags($description), 0, 300)."...";
+           $postDate = $item->pubDate;
+           $date = date('M d, Y',strtotime($postDate));
+           $month = date('M',strtotime($postDate));
+           $day = date('d',strtotime($postDate));
+           $node=array(
+               'title'=>$title,
+               'link'=>$link,
+               'date'=>$date,
+               'month'=>$month,
+               'day'=>$day,
+               'imgURL'=>$imgURL,
+               'imgALT'=>$imgALT,
+               'text'=>$text,
+           );
+           array_push($results, $node);
+       }	 
+   }else{
+    if(!$invalidurl){
+        $results[error]="No item found";
+    }
+   }
+    return json_encode($results);
 }	
