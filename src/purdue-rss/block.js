@@ -344,11 +344,12 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               allowedFormats={ [] }
             >
             </RichText>
-            {props.attributes.type==="withImage"||props.attributes.type==="all"?(
+            {props.attributes.error!==""? <p className="error">{props.attributes.error}</p>:""}
+            {props.attributes.data&&(props.attributes.type==="withImage"||props.attributes.type==="all")?(
             <div className={'columns is-multiline feed-items components-disabled'}>
               {itemList}
             </div>):""}
-            {props.attributes.type==="withImage"&&props.attributes.linkText ? (
+            {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.linkText ? (
             <div className="read-more-button components-disabled">
               <a href={props.attributes.link}
                 target={ props.attributes.external ? '_blank' : '_self' }
@@ -357,7 +358,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
                 { props.attributes.linkText }
                 </a>
               </div>) : '' }
-            {props.attributes.type==="withoutImage"?(
+            {props.attributes.data&&props.attributes.type==="withoutImage"?(
             <div className={'feed-grid'}>
               <div className={'feed-image'}>
                 <MediaUploadCheck>
@@ -518,11 +519,12 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             tagName={ props.attributes.titleLevel }
             value={ props.attributes.title }
           /> ) : '' }
-          {props.attributes.type==="withImage"||props.attributes.type==="all"?(
+          {props.attributes.error!==""? <p className="error">{props.attributes.error}</p>:""}
+          {props.attributes.data&&(props.attributes.type==="withImage"||props.attributes.type==="all")?(
           <div className={'columns is-multiline feed-items'}>
             {itemList}
           </div>):''}
-          {props.attributes.type==="withImage"&&props.attributes.linkText ? (
+          {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.linkText ? (
           <div className="read-more-button">
             <a href={props.attributes.link}
               target={ props.attributes.external ? '_blank' : '_self' }
@@ -531,7 +533,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               { props.attributes.linkText }
               </a>
             </div>) : '' }
-          {props.attributes.type==="withoutImage"?(
+          {props.attributes.data&&props.attributes.type==="withoutImage"?(
           <div className={'feed-grid'}>
             { props.attributes.imgUrl ?
             <figure className="feed-image is-3by2">
