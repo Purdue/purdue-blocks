@@ -4,14 +4,12 @@
  * CSS for both Frontend+Backend.
  */
 
- @import '../scss/bulma-utilities';
-
  .cta-card-horizonal {
     height:100%;
     box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
     text-decoration: none;
     display:block;
-    color:#000;
+    color:$black;
     &.cta-card-small{
       padding:2.1875rem;
       @include mobile{
@@ -73,13 +71,11 @@
       padding:2.75rem 1.25rem;
     }
     .title{
-      font-family:acumin-pro-semi-condensed,
-      "Franklin Gothic",
-      sans-serif;
+      font-family:$acumin-pro-semicondensed;
       font-size:1.5625rem;
       line-height:1.4;
       font-weight:600 !important;
-      color:#000;
+      color:$black;
       margin-bottom:1rem!important;
       text-transform: none;
       width:100%;
@@ -88,21 +84,19 @@
       }
     }
     .content{
-      font-family:acumin-pro,
-      "Franklin Gothic",
-      sans-serif;
+      font-family:$acumin-pro;
       width:100%;
-      color:#000;
+      color:$black;
       @include mobile{
         padding:0 0.5rem; 
       }
     }
     .read-more-button{
-      font-family:"United Sans",Impact, "Arial Black", "sans serif";
+      font-family:$united-sans;
       font-weight:800;
       font-size:1.125rem;
       text-transform:uppercase;
-      color:#8e6f3e;
+      color:$aged-gold;
       margin-top:1.625rem;
       letter-spacing:50;
       @include mobile{
@@ -124,9 +118,9 @@
     
 }
 a.cta-card-horizonal:hover,a.cta-card-horizonal:focus{
-  color:#000;
+  color:$black;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   .read-more-button{
-    color:#000;
+    color:$black;
   }
 }

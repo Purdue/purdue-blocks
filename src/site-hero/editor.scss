@@ -5,7 +5,7 @@
  * which makes it higher in priority.
  */
 .block-editor-writing-flow{
-  background:#fff;
+  background:$white;
 }
 .bulma-blocks-editor-site-hero {
 
@@ -14,8 +14,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  color: #000;
-  background: #f3f3f3;
+  color: $black;
+  background: $gray-1;
   margin-bottom: 1.75rem;
 
   .content {
@@ -39,7 +39,7 @@
     flex-direction: column;
     align-items: flex-start;
     // padding: 1rem;
-    background: #f3f3f3;
+    background: $gray-1;
     color: black;
     font-family: sans-serif;
   }

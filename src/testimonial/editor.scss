@@ -12,8 +12,8 @@
   flex-direction:column;
   align-items: center;
   justify-content: center;
-  color: #000;
-  background: #f3f3f3;
+  color: $black;
+  background: $gray-1;
   margin:0 !important;
   .error-message{
     font-size: 1.125rem;
@@ -25,7 +25,7 @@
   h2{
     font-size: 2.1875rem;
     font-weight:700;
-    color:#000 !important;
+    color:$black !important;
     text-align:center;
     margin: 0 0 2.25rem !important;
     @media (max-width:1023px){
@@ -50,7 +50,7 @@
   }
   .testimonial__item{
     padding:2.5rem;
-    background-color:#fff;
+    background-color:$white;
     box-shadow: 0px 3px 6px #0000004D;
     border: 1px solid #DEDEDE;
     display:flex;
@@ -60,8 +60,8 @@
   .testimonial__body{
     width:100%;
     img{
-      width:90px;
-      height:90px;
+      width:5.625rem;
+      height:5.625rem;
     }
     .testimonial__content{
       margin-top:2rem;
@@ -70,22 +70,22 @@
     .testimonial__name{
       margin-top:0;
       margin-bottom:0.5rem;
-      font-family:"Source Serif Pro";
+      font-family:$source-serif-pro;
       font-weight: 700;
     }
     .testimonial__info{
       margin-top:0;
       margin-bottom:0;
-      font-family:"Source Serif Pro";
+      font-family:$source-serif-pro;
       font-weight: 400;
-      color: #8E6F3E;
+      color: $aged-gold;
     }
     &--small{
-      max-width: 432px;
+      max-width: 27rem;
       text-align:left;
     }
     &--big{
-      max-width: 888px;
+      max-width: 55.5rem;
       text-align:center;
     }
   }

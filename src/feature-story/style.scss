@@ -4,14 +4,12 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
 .pu-feature-story {
   h2 {
     font-weight:600;
     font-size: 2rem !important;
     margin-bottom: 3.125rem !important;
-    line-height:38px !important;
+    line-height:2.375rem !important;
     @include touch{
       font-size:1.875rem !important;
       margin-bottom:2.1875rem !important;
@@ -19,7 +17,7 @@
   }
   &__narrow{
     padding:6rem 1.5rem;
-    background-color:#ededed;
+    background-color:$gray-2;
     & + &{
       padding-top:0;
       margin-top:-2rem;
@@ -46,7 +44,7 @@
     }
     .story-content{
       width:50%;
-      background-color:#fff;
+      background-color:$white;
       box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
       padding:3.5rem 4.5rem;
       @include touch {
@@ -75,9 +73,9 @@
   .hero {
     display: flex;
     position: relative;
-    color:#000;
+    color:$black;
     font-size:1.125rem;
-    font-family: acumin-pro;
+    font-family: $acumin-pro;
     @include touch {
       flex-direction: column;
       flex-wrap: nowrap;
@@ -192,24 +190,24 @@
     }
   }
   &__button {
-    font-family: "United Sans";
+    font-family: $united-sans;
     font-weight: 700;
     font-size: 1.125rem;
     text-transform: uppercase;
     display: inline-flex;
     justify-content: center;
     padding: 0.75rem 1rem;
-    background: #000;
-    border: 2px solid #000;
-    color: #cfb991;
+    background: $black;
+    border: 2px solid $black;
+    color: $boiler-gold;
     text-decoration: none;
     transition: all ease 0.2s;
     margin-top:2rem;
     letter-spacing:0.9px;
-    min-width: 230px;
+    min-width: 14.375rem;
     &:hover {
       cursor: pointer;
-      background: #fff;
+      background: $white;
     }
     @include touch{
       margin-top:1.375rem;

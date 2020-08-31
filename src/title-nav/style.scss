@@ -4,9 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
-
 .pu-title-nav {
   display: flex;
   flex-direction: row;
@@ -35,7 +32,7 @@
     background: black;
     font-size: 18px;
     font-weight: bold;
-    color: #CFB991;
+    color: $boiler-gold;
     border: 2px solid black;
     text-decoration: none;
     text-transform: uppercase;
@@ -53,7 +50,7 @@
     font-size: 45px !important;
     margin: 0 !important;
     line-height: 1 !important;
-    border: 4px solid #CFB991;
+    border: 4px solid $boiler-gold;
     border-radius: 100%;
     padding: 1.1rem 1.84rem;
     font-family: "United Sans" !important;
@@ -109,20 +106,20 @@
           left: 0;
           height: 24px;
           width: 24px;
-          border: 2px solid #CFB991;
+          border: 2px solid $boiler-gold;
           border-radius: 100%;
         }
 
         &.isCurrent {
           &:after {
             z-index: 0;
-            background: #CFB991 !important;
+            background: $boiler-gold !important;
           }
         }
 
         &:hover {
           &:after {
-            background: #CFB991 !important;
+            background: $boiler-gold !important;
           }
         }
       }

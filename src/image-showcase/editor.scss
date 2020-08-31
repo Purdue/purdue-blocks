@@ -13,7 +13,7 @@
   // }
 
   // display: block;
-  // color: #000;
+  // color: $black;
   // margin-bottom: 1.75rem;
 
   .editor-image-showcase__preview {
@@ -34,7 +34,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    background: #f3f3f3;
+    background: $gray-1;
     color: black;
     font-family: sans-serif;
   }

@@ -4,8 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
- @import "../scss/bulma-utilities";
-
  .pu-cta-banner {
    padding:1.71875rem 1.5rem;
     @include touch{
@@ -19,7 +17,7 @@
     }
   }
   &-gray{
-    background-color: #555960;
+    background-color: $steel-gray;
     padding:2.1875rem 1.5rem;
     .container{
       align-items:center;
@@ -28,17 +26,17 @@
     &__desc{
       width:100%;
       text-align:center;
-      color:#fff;
+      color:$white;
       text-decoration:underline;
       text-transform:capitalize;
-      font-family:acumin-pro;
+      font-family:$acumin-pro;
       font-size:1.875rem;
       font-weight:600;
       font-style:italic;
       line-height:2.5rem;
       &:hover{
         text-decoration:none;
-        color:#fff;
+        color:$white;
       }
       @include mobile{
         font-size:1.25rem;
@@ -47,7 +45,7 @@
     }
   }
   &-gold{
-    background-color: #cfb991;
+    background-color: $boiler-gold;
     .container{
       align-items:center;
       justify-content: space-between;
@@ -56,7 +54,7 @@
       }
     }
     &__desc{
-      font-family: "United Sans Extended";
+      font-family: $united-sans-extended;
       font-size:1.375rem;
       font-weight:700;
       line-height:2.5rem;
@@ -73,23 +71,23 @@
       }
     }
     &__button {
-      font-family: "United Sans";
+      font-family: $united-sans;
       font-weight: 700;
       font-size: 1.125rem;
       text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
       padding: 0.75rem 1rem;
-      background: #000;
-      border: 2px solid #000;
-      color: #cfb991;
+      background: $black;
+      border: 2px solid $black;
+      color: $boiler-gold;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:250px;
+      min-width:15.625rem;
       letter-spacing: 0.9px;
       &:hover {
         cursor: pointer;
-        background: #fff;
+        background: $white;
       }
       @include touch{
         margin-top:2.1875rem;
@@ -97,7 +95,7 @@
     }
   }
   &-black{
-    background-color: #000;
+    background-color: $black;
     .container{
       align-items:center;
       justify-content: space-between;
@@ -106,13 +104,13 @@
       }
     }
     &__desc{
-      font-family: acumin-pro;
+      font-family: $acumin-pro;
       font-size:1.375rem;
       font-weight:600;
       line-height:1.875rem;
       margin-bottom:0 !important;
       margin-right:2rem;
-      color:#cfb991;
+      color:$boiler-gold;
       @include touch{
         line-height:2.125rem;
         text-align: center;
@@ -120,24 +118,24 @@
       }
     }
     &__button {
-      font-family: "United Sans";
+      font-family: $united-sans;
       font-weight: 700;
       font-size: 1.125rem;
       text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
       padding: 0.75rem 1rem;
-      background: #000;
-      border: 2px solid #cfb991;
-      color: #fff;
+      background: $black;
+      border: 2px solid $boiler-gold;
+      color: $white;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:250px;
+      min-width:15.625rem;
       letter-spacing: 0.9px;
       &:hover {
         cursor: pointer;
-        background: #cfb991;
-        color:#000;
+        background: $boiler-gold;
+        color:$black;
       }
       @include touch{
         margin-top:2.1875rem;
@@ -156,24 +154,24 @@
       justify-content: center;
     }
     &__button {
-      font-family: "United Sans";
+      font-family: $united-sans;
       font-weight: 700;
       font-size: 1.125rem;
       text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
       background: rgba(0, 0, 0, 0.65);
-      color: #fff;
+      color: $white;
       padding:1rem;
-      border: 2px solid #fff;
+      border: 2px solid $white;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:250px;
+      min-width:15.625rem;
       letter-spacing: 0.9px;
       &:hover {
         cursor: pointer;
-        background: #000;
-        color:#fff;
+        background: $black;
+        color:$white;
       }
       @include mobile{
         min-width:100%;
@@ -181,24 +179,24 @@
     }
   }
   &__button {
-    font-family: "United Sans";
+    font-family: $united-sans;
     font-weight: 700;
     font-size: 1.125rem;
     text-transform: uppercase;
     display: inline-flex;
     justify-content: center;
     padding: 0.75rem 1rem;
-    background: #000;
-    border: 2px solid #000;
-    color: #cfb991;
+    background: $black;
+    border: 2px solid $black;
+    color: $boiler-gold;
     text-decoration: none;
     transition: all ease 0.2s;
     margin-top:2rem;
-    min-width:250px;
+    min-width:15.625rem;
     letter-spacing: 0.9px;
     &:hover {
       cursor: pointer;
-      background: #fff;
+      background: $white;
     }
   }
  }

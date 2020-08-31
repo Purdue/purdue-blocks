@@ -4,9 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
-
 .pu-image-showcase {
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -28,7 +25,7 @@
     content: '';
     position: absolute;
     height: 2px;
-    background: #8e6f3e;
+    background: $aged-gold;
     width: 73.4%;
     bottom: 0;
     right: 0;
@@ -38,7 +35,7 @@
     content: '';
     position: absolute;
     height: 2px;
-    background: #8e6f3e;
+    background: $aged-gold;
     width: 73.4%;
     top: 0;
     left: 0;

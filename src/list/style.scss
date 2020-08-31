@@ -4,24 +4,22 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
 .pu-list {
   width:100%;
-  background-color: #ededed;
+  background-color: $gray-2;
   h2{
-    font-family: "Source Serif Pro";
+    font-family: $source-serif-pro;
     font-size: 1.375rem !important;
-    color:#000;
+    color:$black;
     margin:0 !important;
     padding:0.9375rem 1.875rem;
-    border-bottom: solid 1px #000;
+    border-bottom: solid 1px $black;
     text-align:center;
   }
   ul, ol{
     margin: 0 2.25rem 0 3rem !important;
     padding: 1.875rem 0 !important;
-    font-family: acumin-pro;
+    font-family: $acumin-pro;
     font-size:1rem;
     font-weight:600;
     line-height:1.3125rem;
@@ -36,7 +34,7 @@
     list-style:none !important;
     li:before{
       content: "";
-      border-color: transparent #000;
+      border-color: transparent $black;
       border-style: solid;
       border-width: 0.35em 0 0.35em 0.45em;
       display: block;
@@ -48,11 +46,11 @@
     }
   }
   a{
-    color:#000;
+    color:$black;
     text-decoration:underline;
     &:hover{
       text-decoration:none;
-      color:#000;
+      color:$black;
     }
   }
 }

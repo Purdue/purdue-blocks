@@ -4,8 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
 .pu-cta-hero {
   .hero {
     position: relative;
@@ -97,12 +95,12 @@
         }
 
         h1 {
-          font-family: acumin-pro;
+          font-family: $acumin-pro;
           font-weight: 700;
           font-size: 5rem;
           color: white !important;
           margin-bottom: 3.75rem;
-          line-height:85px;
+          line-height:5.3125rem;
 
           @include touch {
             font-size: 4.0625rem;
@@ -111,13 +109,13 @@
           @include mobile {
             font-size: 2.8125rem;
             margin-bottom: 2.1875rem;
-            line-height:50px;
+            line-height:3.125rem;
           }
         }
 
         p {
           font-size: 1.5rem;
-          font-family: "United Sans";
+          font-family: $united-sans;
           text-transform: uppercase;
           width: 85%;
 
@@ -131,7 +129,7 @@
 
   &__button {
     min-width: 250px;
-    font-family: "United Sans";
+    font-family: $united-sans;
     font-weight: 700;
     font-size: 1.125rem;
     text-transform: uppercase;
@@ -139,14 +137,14 @@
     justify-content: center;
     padding: 0.75rem 1rem;
     background: transparent;
-    border: 2px solid #cfb991;
+    border: 2px solid $boiler-gold;
     color: white;
     text-decoration: none;
     transition: all ease 0.2s;
 
     &:hover {
       cursor: pointer;
-      background: #cfb991;
+      background: $boiler-gold;
       color: black;
     }
   }
