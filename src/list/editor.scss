@@ -27,7 +27,7 @@
   align-items: flex-start;
   justify-content: space-between;
   color: $black;
-  background: $gray-1;
+  background: $secondary-background-gray;
   margin-bottom: 1.75rem;
 
   .content {
@@ -58,7 +58,7 @@
     flex-direction: column;
     align-items: flex-start;
     // padding: 1rem;
-    background: $gray-1;
+    background: $secondary-background-gray;
     color: black;
     font-family: sans-serif;
   }

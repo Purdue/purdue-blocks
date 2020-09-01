@@ -11,7 +11,7 @@
    align-items: center;
    justify-content: center;
    color: $black;
-   background: $gray-1;
+   background: $secondary-background-gray;
    margin:0 !important;
    padding:5.9375rem 1.5rem;
    @include mobile{
@@ -46,7 +46,7 @@
      padding:2.1875rem 7.3125rem 4.0625rem;
      background-color:$white;
      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
-     border: 1px solid $gray-2;
+     border: 1px solid $primary-background-gray;
      display:flex;
      justify-content: center;
      height: 100%;

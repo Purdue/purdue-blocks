@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   color: $black;
-  background: $gray-1;
+  background: $secondary-background-gray;
   margin:0 !important;
   .error-message{
     font-size: 1.125rem;
@@ -52,7 +52,7 @@
     padding:2.5rem;
     background-color:$white;
     box-shadow: 0px 3px 6px #0000004D;
-    border: 1px solid $gray-2;
+    border: 1px solid $primary-background-gray;
     display:flex;
     justify-content: center;
     height: 100%;
