@@ -57,14 +57,14 @@
   }
 
   &__button {
-    border: #00c4a7 1px solid;
+    border: $teal 1px solid;
     border-radius: 0.25rem;
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
 
     &:hover {
-      background-color: #00c4a7;
+      background-color: $teal;
       border-color: transparent;
       color: white;
     }

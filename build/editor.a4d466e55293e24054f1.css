@@ -1,0 +1,867 @@
+@-webkit-keyframes spinAround {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.block-editor-writing-flow {
+  background: #ffffff; }
+
+.bulma-blocks-editor-site-hero {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .bulma-blocks-editor-site-hero .content {
+    flex: 0 1 48%; }
+    .bulma-blocks-editor-site-hero .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .bulma-blocks-editor-site-hero .content .field .control textarea, .bulma-blocks-editor-site-hero .content .field .control input {
+      background: white; }
+  .bulma-blocks-editor-site-hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .bulma-blocks-editor-site-hero__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .bulma-blocks-editor-site-hero__heading .dashicons {
+      margin-right: 0.75rem; }
+  .bulma-blocks-editor-site-hero__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .bulma-blocks-editor-site-hero__description--error {
+      color: red !important; }
+  .bulma-blocks-editor-site-hero__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .bulma-blocks-editor-site-hero__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .bulma-blocks-editor-site-hero__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.pu-blocks-editor-cta-banner {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .pu-blocks-editor-cta-banner .content {
+    flex: 0 1 48%; }
+    .pu-blocks-editor-cta-banner .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .pu-blocks-editor-cta-banner .content .field .control textarea, .pu-blocks-editor-cta-banner .content .field .control input {
+      background: white; }
+  .pu-blocks-editor-cta-banner__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .pu-blocks-editor-cta-banner__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .pu-blocks-editor-cta-banner__heading .dashicons {
+      margin-right: 0.75rem; }
+  .pu-blocks-editor-cta-banner__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .pu-blocks-editor-cta-banner__description--error {
+      color: red !important; }
+  .pu-blocks-editor-cta-banner__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .pu-blocks-editor-cta-banner__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .pu-blocks-editor-cta-banner__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.bulma-blocks-editor-cta-hero {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .bulma-blocks-editor-cta-hero .content {
+    flex: 0 1 48%; }
+    .bulma-blocks-editor-cta-hero .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .bulma-blocks-editor-cta-hero .content .field .label {
+      font-size: 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+      .bulma-blocks-editor-cta-hero .content .field .label:hover {
+        cursor: default; }
+    .bulma-blocks-editor-cta-hero .content .field .control textarea, .bulma-blocks-editor-cta-hero .content .field .control input {
+      background: white; }
+  .bulma-blocks-editor-cta-hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .bulma-blocks-editor-cta-hero__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .bulma-blocks-editor-cta-hero__heading .dashicons {
+      margin-right: 0.75rem; }
+  .bulma-blocks-editor-cta-hero__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .bulma-blocks-editor-cta-hero__description--error {
+      color: red !important; }
+  .bulma-blocks-editor-cta-hero__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .bulma-blocks-editor-cta-hero__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .bulma-blocks-editor-cta-hero__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.bulma-blocks-editor-link-card {
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .bulma-blocks-editor-link-card .content {
+    width: 100%;
+    max-width: 30rem; }
+    .bulma-blocks-editor-link-card .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .bulma-blocks-editor-link-card .content:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+    .bulma-blocks-editor-link-card .content .field .control input {
+      background-color: #ffffff; }
+  .bulma-blocks-editor-link-card__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+    .bulma-blocks-editor-link-card__container p {
+      text-align: center; }
+  .bulma-blocks-editor-link-card__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .bulma-blocks-editor-link-card__heading .dashicons {
+      margin-right: 0.75rem; }
+  .bulma-blocks-editor-link-card__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .bulma-blocks-editor-link-card__description--error {
+      color: red !important; }
+  .bulma-blocks-editor-link-card__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .bulma-blocks-editor-link-card__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .bulma-blocks-editor-link-card__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.pu-blocks-editor-faculty-profile {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .pu-blocks-editor-faculty-profile .content {
+    flex: 0 1 48%; }
+    .pu-blocks-editor-faculty-profile .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .pu-blocks-editor-faculty-profile .content .field .label {
+      font-size: 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+      .pu-blocks-editor-faculty-profile .content .field .label:hover {
+        cursor: default; }
+    .pu-blocks-editor-faculty-profile .content .field .control textarea, .pu-blocks-editor-faculty-profile .content .field .control input {
+      background: white; }
+  .pu-blocks-editor-faculty-profile__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .pu-blocks-editor-faculty-profile__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .pu-blocks-editor-faculty-profile__heading .dashicons {
+      margin-right: 0.75rem; }
+  .pu-blocks-editor-faculty-profile__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .pu-blocks-editor-faculty-profile__description--error {
+      color: red !important; }
+  .pu-blocks-editor-faculty-profile__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .pu-blocks-editor-faculty-profile__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .pu-blocks-editor-faculty-profile__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+.social-check-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; }
+  .social-check-list .components-base-control.social-check-list__item {
+    margin-bottom: 0.5rem; }
+    .social-check-list .components-base-control.social-check-list__item .components-base-control__field {
+      margin-bottom: 0; }
+  .social-check-list .components-panel__row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.purdue-blocks-editor-feature-story {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .purdue-blocks-editor-feature-story .content {
+    flex: 0 1 48%; }
+    .purdue-blocks-editor-feature-story .content > span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .purdue-blocks-editor-feature-story .content .field .control input {
+      background-color: #ffffff; }
+    .purdue-blocks-editor-feature-story .content .field .control .block-editor-inner-blocks .block-editor-block-list__block {
+      background: white;
+      border: solid 1px #7e8993;
+      border-radius: 5px;
+      font-size: 13px !important;
+      margin-top: 1rem; }
+      .purdue-blocks-editor-feature-story .content .field .control .block-editor-inner-blocks .block-editor-block-list__block .block-editor-block-mover__description {
+        display: none; }
+    .purdue-blocks-editor-feature-story .content .field .control .block-editor-inner-blocks p {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0.375rem 0.5rem;
+      font-size: 13px !important; }
+  .purdue-blocks-editor-feature-story__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .purdue-blocks-editor-feature-story__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .purdue-blocks-editor-feature-story__heading .dashicons {
+      margin-right: 0.75rem; }
+  .purdue-blocks-editor-feature-story__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .purdue-blocks-editor-feature-story__description--error {
+      color: red !important; }
+  .purdue-blocks-editor-feature-story__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .purdue-blocks-editor-feature-story__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .purdue-blocks-editor-feature-story__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.pu-blocks-editor-testimonial {
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  background: #f3f3f3;
+  margin: 0 !important; }
+  .pu-blocks-editor-testimonial .error-message {
+    font-size: 1.125rem;
+    color: red; }
+  .pu-blocks-editor-testimonial .container {
+    width: 100%; }
+  .pu-blocks-editor-testimonial h2 {
+    font-size: 2.1875rem;
+    font-weight: 700;
+    color: #000000 !important;
+    text-align: center;
+    margin: 0 0 2.25rem !important; }
+    @media screen and (max-width: 767px) {
+      .pu-blocks-editor-testimonial h2 {
+        font-size: 1.875rem; } }
+  .pu-blocks-editor-testimonial .testimonial__section {
+    padding: 3rem 0; }
+    @media screen and (max-width: 767px) {
+      .pu-blocks-editor-testimonial .testimonial__section {
+        padding: 3rem 1.5rem; } }
+  .pu-blocks-editor-testimonial .testimonial__list {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around; }
+  .pu-blocks-editor-testimonial .testimonial__item {
+    padding: 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #0000004D;
+    border: 1px solid #ededed;
+    display: flex;
+    justify-content: center;
+    height: 100%; }
+  .pu-blocks-editor-testimonial .testimonial__body {
+    width: 100%; }
+    .pu-blocks-editor-testimonial .testimonial__body img {
+      width: 5.625rem;
+      height: 5.625rem; }
+    .pu-blocks-editor-testimonial .testimonial__body .testimonial__content {
+      margin-top: 2rem;
+      margin-bottom: 2rem; }
+    .pu-blocks-editor-testimonial .testimonial__body .testimonial__name {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-family: source-serif-pro, Georgia, serif;
+      font-weight: 700; }
+    .pu-blocks-editor-testimonial .testimonial__body .testimonial__info {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-family: source-serif-pro, Georgia, serif;
+      font-weight: 400;
+      color: #8e6f3e; }
+    .pu-blocks-editor-testimonial .testimonial__body--small {
+      max-width: 27rem;
+      text-align: left; }
+    .pu-blocks-editor-testimonial .testimonial__body--big {
+      max-width: 55.5rem;
+      text-align: center; }
+  .pu-blocks-editor-testimonial .content {
+    flex: 0 1 48%; }
+    .pu-blocks-editor-testimonial .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .pu-blocks-editor-testimonial .content .field .control textarea {
+      background: white; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.bulma-blocks-editor-cta-hero {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .bulma-blocks-editor-cta-hero .content {
+    flex: 0 1 48%; }
+    .bulma-blocks-editor-cta-hero .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .bulma-blocks-editor-cta-hero .content .field .label {
+      font-size: 0.75rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
+      .bulma-blocks-editor-cta-hero .content .field .label:hover {
+        cursor: default; }
+    .bulma-blocks-editor-cta-hero .content .field .control textarea, .bulma-blocks-editor-cta-hero .content .field .control input {
+      background: white; }
+  .bulma-blocks-editor-cta-hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .bulma-blocks-editor-cta-hero__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .bulma-blocks-editor-cta-hero__heading .dashicons {
+      margin-right: 0.75rem; }
+  .bulma-blocks-editor-cta-hero__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+    .bulma-blocks-editor-cta-hero__description--error {
+      color: red !important; }
+  .bulma-blocks-editor-cta-hero__button {
+    border: #00c4a7 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent; }
+    .bulma-blocks-editor-cta-hero__button:hover {
+      background-color: #00c4a7;
+      border-color: transparent;
+      color: white; }
+  .bulma-blocks-editor-cta-hero__preview .bulma-blocks-editor-site-hero__button {
+    margin-top: 0.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.editor-title-nav {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; }
+  .editor-title-nav__title {
+    color: black !important; }
+  .editor-title-nav .block-editor-block-list__layout {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; }
+    .editor-title-nav .block-editor-block-list__layout > .wp-block {
+      margin: 0 !important; }
+
+.outline-on .editor-title-nav-link__input {
+  border: 2px solid #CFB991;
+  border-radius: 100%;
+  padding: 6.075px 1rem; }
+  .outline-on .editor-title-nav-link__input.isCurrent {
+    background-color: #CFB991 !important; }
+
+.outline-on .editor-title-nav__title {
+  border: 4px solid #CFB991;
+  border-radius: 100%;
+  padding: 6.075px 1.25rem; }
+
+.editor-title-nav-link {
+  padding: 1rem; }
+  .editor-title-nav-link__input {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.05); }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.editor-image-showcase .editor-image-showcase__preview {
+  padding: 0.75rem; }
+
+.editor-image-showcase__imgGroup {
+  display: flex;
+  margin-bottom: 1.5rem; }
+
+.editor-image-showcase figure.image {
+  padding-right: 0.5rem; }
+
+.editor-image-showcase__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #f3f3f3;
+  color: black;
+  font-family: sans-serif; }
+
+.editor-image-showcase__heading {
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center; }
+  .editor-image-showcase__heading .dashicons {
+    margin-right: 0.75rem; }
+
+.editor-image-showcase__description {
+  font-size: 0.85rem !important;
+  margin: 0 !important;
+  margin-bottom: 0.75rem !important; }
+
+.editor-image-showcase__button {
+  border: #00c4a7 1px solid;
+  border-radius: 0.25rem;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.85rem;
+  background-color: transparent; }
+  .editor-image-showcase__button:hover {
+    background-color: #00c4a7;
+    border-color: transparent;
+    color: white; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.block-editor-block-list__layout .block-editor-block-list__block .is-selected > .block-editor-block-list__block-edit:before {
+  box-shadow: none !important;
+  border: none !important; }
+
+.editor-styles-wrapper [data-block] {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important; }
+
+.purdue-blocks-editor-list {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .purdue-blocks-editor-list .content {
+    flex: 0 1 100%; }
+    .purdue-blocks-editor-list .content .field .control input {
+      background: white; }
+    .purdue-blocks-editor-list .content .field .control .block-editor-inner-blocks .block-editor-block-list__layout .block-editor-block-list__block[data-block] {
+      border: solid 1px #7e8993;
+      border-radius: 5px;
+      background: white;
+      font-size: 13px !important; }
+  .purdue-blocks-editor-list__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .purdue-blocks-editor-list__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .purdue-blocks-editor-list__heading .dashicons {
+      margin-right: 0.75rem; }
+  .purdue-blocks-editor-list__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.purdue-blocks-editor-proofpoint {
+  padding: 0.875rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  color: #000000;
+  background: #f3f3f3;
+  margin-bottom: 1.75rem; }
+  .purdue-blocks-editor-proofpoint .content {
+    flex: 0 1 100%; }
+    .purdue-blocks-editor-proofpoint .content span {
+      display: flex;
+      margin-bottom: 1rem; }
+    .purdue-blocks-editor-proofpoint .content .field .control input {
+      background-color: #ffffff; }
+  .purdue-blocks-editor-proofpoint__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #f3f3f3;
+    color: black;
+    font-family: sans-serif; }
+  .purdue-blocks-editor-proofpoint__heading {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center; }
+    .purdue-blocks-editor-proofpoint__heading .dashicons {
+      margin-right: 0.75rem; }
+  .purdue-blocks-editor-proofpoint__description {
+    width: 80%;
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    margin-bottom: 0.75rem !important; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.square-card {
+  height: 100%;
+  box-shadow: none;
+  border-radius: 0;
+  text-align: center;
+  padding: 2.75rem 1.25rem;
+  border: 1px solid #8e6f3e;
+  background-color: #ffffff;
+  display: block;
+  text-decoration: none; }
+  .square-card.background-gold {
+    background-color: #CFB991; }
+  .square-card.border-black {
+    border: 1px solid #000000; }
+  .square-card .image {
+    height: 6.25rem;
+    width: 6.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ededed; }
+    .square-card .image button {
+      width: 6.25rem;
+      height: 6.25rem;
+      border: none;
+      background: none;
+      cursor: pointer; }
+      .square-card .image button:hover {
+        background: rgba(255, 255, 255, 0.8); }
+  .square-card .title {
+    font-family: "United Sans", Impact, "Arial Black", "sans serif";
+    margin-top: 1.625rem !important;
+    margin-bottom: 0 !important;
+    text-transform: uppercase;
+    font-size: 1.5625rem;
+    line-height: 1.48;
+    font-weight: 700 !important;
+    color: #000000; }
+  .square-card .content {
+    max-width: 22.5rem;
+    margin: 1rem auto 0;
+    width: 100%;
+    color: #000000; }
+  .square-card .read-more-button {
+    font-family: "United Sans", Impact, "Arial Black", "sans serif";
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: #8e6f3e;
+    margin-top: 1.625rem; }
+    .square-card .read-more-button span {
+      color: inherit;
+      position: relative; }
+      .square-card .read-more-button span:after {
+        content: ">";
+        display: inline-block;
+        margin-left: 0.7rem;
+        bottom: -0.25rem;
+        position: absolute; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.accordion-editor {
+  border: solid 1px #6f727b;
+  border-radius: 0.625rem;
+  padding: 0 1.875rem; }
+  .accordion-editor .accordion-title {
+    margin-top: 1rem;
+    font-weight: 700 !important; }
+    .accordion-editor .accordion-title:after {
+      border-left: 3px solid #6f727b;
+      border-top: 3px solid #6f727b;
+      width: 0.625rem;
+      content: '';
+      height: 0.625rem;
+      transform: rotate(-135deg);
+      position: absolute;
+      right: 2rem;
+      top: 1.5rem; }
+
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.cta-card-horizonal {
+  height: 100%;
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+  background-color: #ffffff;
+  text-decoration: none; }
+  .cta-card-horizonal.cta-card-small {
+    padding: 2.1875rem; }
+  .cta-card-horizonal.cta-card-large {
+    padding: 2.8125rem; }
+  .cta-card-horizonal.cta-card-left {
+    flex-direction: row; }
+  .cta-card-horizonal.cta-card-right {
+    flex-direction: row-reverse; }
+  .cta-card-horizonal .image {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: #ededed; }
+    .cta-card-horizonal .image button {
+      border: none;
+      background: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer; }
+      .cta-card-horizonal .image button:hover {
+        background: rgba(255, 255, 255, 0.8); }
+  .cta-card-horizonal .title {
+    font-family: acumin-pro-semi-condensed, "Franklin Gothic", sans-serif;
+    font-size: 1.5625rem;
+    line-height: 1.4;
+    font-weight: 600 !important;
+    color: #000000; }
+  .cta-card-horizonal .content {
+    font-family: acumin-pro, "Franklin Gothic", sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    width: 100%;
+    color: #000000; }
+  .cta-card-horizonal .read-more-button {
+    font-family: "United Sans", Impact, "Arial Black", "sans serif";
+    font-weight: 800;
+    font-size: 1.125rem;
+    text-transform: uppercase;
+    color: #8e6f3e;
+    margin-top: 1.625rem; }
+    .cta-card-horizonal .read-more-button span {
+      color: inherit;
+      position: relative; }
+      .cta-card-horizonal .read-more-button span:after {
+        content: ">";
+        display: inline-block;
+        margin-left: 0.7rem;
+        bottom: -0.25rem;
+        position: absolute; }
+

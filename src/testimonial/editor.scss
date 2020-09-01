@@ -28,13 +28,13 @@
     color:$black !important;
     text-align:center;
     margin: 0 0 2.25rem !important;
-    @media (max-width:1023px){
+     @include mobile{
       font-size: 1.875rem;
     }
   }
   .testimonial__section{
     padding:3rem 0;
-    @media (max-width:1023px){
+     @include mobile{
       padding:3rem 1.5rem;
     }
 
@@ -52,7 +52,7 @@
     padding:2.5rem;
     background-color:$white;
     box-shadow: 0px 3px 6px #0000004D;
-    border: 1px solid #DEDEDE;
+    border: 1px solid $gray-2;
     display:flex;
     justify-content: center;
     height: 100%;
