@@ -17,7 +17,7 @@ import {
 
 const block = {blockTitle: 'Titled Navigation', blockName: 'purdue-blocks/title-nav'}
 
-describe( 'Titled Navigation Block', () => {
+describe( '🔬 Titled Navigation Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
@@ -25,7 +25,7 @@ describe( 'Titled Navigation Block', () => {
         await createNewPost();
     } );
 
-    it( 'Block should be available.', async () => {
+    test( 'Block should be available.', async () => {
         await insertBlock( 'Titled Navigation' )
 
 
@@ -34,111 +34,124 @@ describe( 'Titled Navigation Block', () => {
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
-    it( 'Navigation links added correctly.', async () => {
-        await blockStartup(block)
+    describe( '🔬 Block Editor Fields', () => {
+        test( 'Richtext editor should update output correctly.', async () => {
+            await blockStartup(block)
 
-        const addLinks = 3
-        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, addLinks)
+            const typeString = 'Title Test'
 
-        const linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
-
-        expect( linksNum ).toEqual(addLinks)
-        expect( await getEditedPostContent() ).toMatchSnapshot()
-
+            // focus the title richtext editor and type in it.
+            await page.focus('.block-editor-rich-text__editable.editor-title-nav__title')
+            await page.keyboard.type(typeString, {delay: 10})
+            
+            const editedContent = await getEditedPostContent()
+            
+            expect( editedContent.includes(`<h2 class="pu-title-nav__title">${typeString}</h2>`)).toBe(true)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
+        })
     })
 
-    it( 'Navigation links update correctly.', async () => {
-        await blockStartup(block)
+    describe( '🔬 Side Panel Settings', () => {
 
-        let update = 5
-        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
+        // Test settings in side panel
+        test( 'Outline should be added correctly.', async () => {
+            await blockStartup(block)
+    
+            //click to check the checkbox, outline should be on
+            await clickCheckbox('Give Menu Items an Outline?')
+            
+            let editedContent = await getEditedPostContent()
+            
+            expect( editedContent.includes('{"hasOutline":true}')).toBe(true)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
+            
+    
+            // click to uncheck the checkbox, outline should now turn off
+            await clickCheckbox('Give Menu Items an Outline?')
+            
+            editedContent = await getEditedPostContent()
+            
+            expect( editedContent.includes('{"hasOutline":true}')).toBe(false)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
+        })
+
+        describe( '🔬 Adding/Removing Navigation Links', () => {
+
+            // test settings to do with adding and removing the inner navigation links
+            test( 'Navigation links added correctly.', async () => {
+                await blockStartup(block)
         
-        let linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
-        expect( linksNum ).toEqual(update)
-
-        update = 2
-        await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
-
-
-        linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
-        expect( linksNum ).toEqual(update)
-
-        expect( await getEditedPostContent() ).toMatchSnapshot()
-
-    })
-
-    it( 'Outline should be added correctly.', async () => {
-        await blockStartup(block)
-
-        //click to check the checkbox, outline should be on
-        await clickCheckbox('Give Menu Items an Outline?')
+                const addLinks = 3
+                await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, addLinks)
         
-        let editedContent = await getEditedPostContent()
+                const linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
         
-        expect( editedContent.includes('{"hasOutline":true}')).toBe(true)
-        expect( await getEditedPostContent() ).toMatchSnapshot()
+                expect( linksNum ).toEqual(addLinks)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
         
-
-        // click to uncheck the checkbox, outline should now turn off
-        await clickCheckbox('Give Menu Items an Outline?')
+            })
         
-        editedContent = await getEditedPostContent()
+            test( 'Number of navigation links update correctly.', async () => {
+                await blockStartup(block)
         
-        expect( editedContent.includes('{"hasOutline":true}')).toBe(false)
-        expect( await getEditedPostContent() ).toMatchSnapshot()
-    })
-
-    it( 'CTA button checkbox should toggle controls.', async () => {
-        await blockStartup(block)
-
-        // click the checkbox to show button controls
-        await clickCheckbox('Add a CTA Button?')
-        // incase the controls are not expanded by default
-        await openSidebarPanelWithTitle('Button Controls')
-
-        const buttonControls = await page.$('.components-panel__body.is-opened')
-
-        expect(buttonControls).not.toBeNull()
-
-    })
-
-    it( 'CTA button controls should update output correctly.', async () => {
-        await blockStartup(block)
-
-        // click the checkbox to show button controls
-        await clickCheckbox('Add a CTA Button?')
-        // incase the controls are not expanded by default
-        await openSidebarPanelWithTitle('Button Controls')
-
-        const typeString = 'Button Text'
-        const typeUrl = 'https://www.purdue.edu'
-
-        await clickElementByText('label', 'Button Text')
-        await page.keyboard.type(typeString, {delay: 10})
-
-        await clickElementByText('label', 'Button Link')
-        await page.keyboard.type(typeUrl, {delay: 10})
-
-        const editedContent = await getEditedPostContent()
+                let update = 5
+                await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
+                
+                let linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
+                expect( linksNum ).toEqual(update)
         
-        expect( editedContent.includes('{"addButton":true,')).toBe(true)
-        expect( editedContent.includes(`"buttonText":"${typeString}"`)).toBe(true)
-        expect( editedContent.includes(`"buttonLink":"${typeUrl}"}`)).toBe(true)
-        expect( await getEditedPostContent() ).toMatchSnapshot()
-    })
-
-    it( 'Richtext editor should update output correctly.', async () => {
-        await blockStartup(block)
-
-        const typeString = 'Title Test'
-
-        // focus the title richtext editor and type in it.
-        await page.focus('.block-editor-rich-text__editable.editor-title-nav__title')
-        await page.keyboard.type(typeString, {delay: 10})
+                update = 2
+                await updateRangeInput(`.components-input-control__input[aria-label="Number of Navigation Items"]`, update)
         
-        const editedContent = await getEditedPostContent()
         
-        expect( editedContent.includes(`<h2 class="pu-title-nav__title">${typeString}</h2>`)).toBe(true)
-        expect( await getEditedPostContent() ).toMatchSnapshot()
+                linksNum = await page.$$eval(`[data-type="purdue-blocks/title-nav-link"]`, array => array.length)
+                expect( linksNum ).toEqual(update)
+        
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+        
+            })
+        })
+
+        describe( '🔬 CTA Button Settings', () => {
+            test( 'CTA button checkbox should toggle controls.', async () => {
+                await blockStartup(block)
+        
+                // click the checkbox to show button controls
+                await clickCheckbox('Add a CTA Button?')
+                // incase the controls are not expanded by default
+                await openSidebarPanelWithTitle('Button Controls')
+        
+                const buttonControls = await page.$('.components-panel__body.is-opened')
+        
+                expect(buttonControls).not.toBeNull()
+        
+            })
+        
+            test( 'CTA button controls should update output correctly.', async () => {
+                await blockStartup(block)
+        
+                // click the checkbox to show button controls
+                await clickCheckbox('Add a CTA Button?')
+                // incase the controls are not expanded by default
+                await openSidebarPanelWithTitle('Button Controls')
+        
+                const typeString = 'Button Text'
+                const typeUrl = 'https://www.purdue.edu'
+        
+                await clickElementByText('label', 'Button Text')
+                await page.keyboard.type(typeString, {delay: 10})
+        
+                await clickElementByText('label', 'Button Link')
+                await page.keyboard.type(typeUrl, {delay: 10})
+        
+                const editedContent = await getEditedPostContent()
+                
+                expect( editedContent.includes('{"addButton":true,')).toBe(true)
+                expect( editedContent.includes(`"buttonText":"${typeString}"`)).toBe(true)
+                expect( editedContent.includes(`"buttonLink":"${typeUrl}"}`)).toBe(true)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+            })
+        })
+    
     })
 } );
