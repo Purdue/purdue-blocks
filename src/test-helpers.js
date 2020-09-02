@@ -27,6 +27,11 @@ export const selectOption = async ( label, value ) => {
     await page.select( `#${ selectId }`, value );
 };
 
+export const clickCheckbox = async (label) => {
+    const [ selectEl ] = await page.$x( `//label[@class="components-checkbox-control__label"][contains(text(),"${ label }")]` );
+    await selectEl.click()
+}
+
 // Used when panel bodies on the side bar may be closed by default to open them so settings can be accessed
 export const openSidebarPanelWithTitle = async ( title ) => {
     // Check if sidebar panel exists
@@ -51,4 +56,14 @@ export const blockStartup = async ({blockTitle, blockName}) => {
     await insertBlock( blockTitle )
     await selectBlockByName( blockName )
     await openSidebar()
+}
+
+// wrapper for the process of cleanly updating a range input in the sidebar
+export const updateRangeInput = async (selector, number) => {
+    await page.click( selector );
+        
+    await page.keyboard.down('ControlLeft');
+    await page.keyboard.press('KeyA');
+    await page.keyboard.up('ControlLeft');
+    await page.keyboard.type(`${number}`, {delay: 10})
 }

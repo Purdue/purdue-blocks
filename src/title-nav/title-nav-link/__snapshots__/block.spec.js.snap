@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Titled Navigation Link Block Block should exist at minimum one. 1`] = `
+"<!-- wp:purdue-blocks/title-nav -->
+<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
+<!-- /wp:purdue-blocks/title-nav -->"
+`;
+
+exports[`Titled Navigation Link Block Current page checkbox should add correct style. 1`] = `
+"<!-- wp:purdue-blocks/title-nav -->
+<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link {\\"isCurrent\\":true} -->
+<li class=\\"isCurrent\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
+<!-- /wp:purdue-blocks/title-nav -->"
+`;
+
+exports[`Titled Navigation Link Block Richtext editor should update output correctly. 1`] = `
+"<!-- wp:purdue-blocks/title-nav -->
+<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\">Text</li>
+<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
+<!-- /wp:purdue-blocks/title-nav -->"
+`;
