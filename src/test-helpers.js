@@ -60,10 +60,21 @@ export const blockStartup = async ({blockTitle, blockName}) => {
 
 // wrapper for the process of cleanly updating a range input in the sidebar
 export const updateRangeInput = async (selector, number) => {
+    // check if testing on mac or pc
+    // Use appropriate method
+    const isOSX = await page.evaluate('navigator.userAgent.indexOf("Mac OS X") != -1')
+
+    if ( isOSX ) {
+
     await page.click( selector );
-        
-    await page.keyboard.down('ControlLeft');
-    await page.keyboard.press('KeyA');
-    await page.keyboard.up('ControlLeft');
-    await page.keyboard.type(`${number}`, {delay: 10})
+      await page.click(selector, { clickCount: 3 });
+      await page.keyboard.type(`${number}`, {delay: 10})
+    } else {
+      await page.click( selector );
+      await page.keyboard.down('ControlLeft');
+      await page.keyboard.press('KeyA');
+      await page.keyboard.up('ControlLeft');
+      await page.keyboard.type(`${number}`, {delay: 10})
+    }
+
 }
