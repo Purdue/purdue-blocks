@@ -32,6 +32,11 @@ export const clickCheckbox = async (label) => {
     await selectEl.click()
 }
 
+export const clickRadio = async (labelText, value) => {
+    const [selectEl] = await page.$x( `//div[@class="components-radio-control__option"][../label='${labelText}']//input[@value='${value}']` )
+    await selectEl.click()
+}
+
 // Used when panel bodies on the side bar may be closed by default to open them so settings can be accessed
 export const openSidebarPanelWithTitle = async ( title ) => {
     // Check if sidebar panel exists
