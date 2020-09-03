@@ -86,7 +86,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
     data:[],
-    error:{ type: 'string', default: '' },
+    error:{ type: 'string', default: 'Loading...' },
   },
 
   supports: {
@@ -99,7 +99,6 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
   ),
 
   edit: ( props ) => {
-
     const onSubmitURL = (e) => {
       // setState( { error: false, validated: false } );
       e.preventDefault();
@@ -228,7 +227,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
         onClick: () => setIsEditing( true ),
       },
     ];
-    
+
     return [
       <BlockControls>
         <ToolbarGroup controls={ toolbarControls } />
@@ -349,7 +348,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             <div className={'columns is-multiline feed-items components-disabled'}>
               {itemList}
             </div>):""}
-            {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.linkText ? (
+            {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.hasLink ? (
             <div className="read-more-button components-disabled">
               <a href={props.attributes.link}
                 target={ props.attributes.external ? '_blank' : '_self' }
@@ -389,12 +388,13 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               <div className={'feed-items components-disabled'}>
                 {itemList}
               </div>
+              {props.attributes.hasLink?
                 <a className="button components-disabled" href={props.attributes.link}
                   target={ props.attributes.external ? '_blank' : '_self' }
                   rel="noopener noreferrer"
                 >
                   { props.attributes.linkText }
-                  </a>
+                  </a>:""}
             </div>):""}
           </div>}
         </div>,
@@ -524,7 +524,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
           <div className={'columns is-multiline feed-items'}>
             {itemList}
           </div>):''}
-          {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.linkText ? (
+          {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.hasLink ? (
           <div className="read-more-button">
             <a href={props.attributes.link}
               target={ props.attributes.external ? '_blank' : '_self' }
@@ -542,12 +542,13 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             <div className={'feed-items'}>
               {itemList}
             </div>
+            {props.attributes.hasLink?
               <a className="button" href={props.attributes.link}
                 target={ props.attributes.external ? '_blank' : '_self' }
                 rel="noopener noreferrer"
               >
                 { props.attributes.linkText }
-                </a>
+                </a>:""}
           </div>):''}
         </div>
     </div>
