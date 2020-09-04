@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Proofpoint Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/title-nav -->
+<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
+<li class=\\"\\"></li>
+<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
+<!-- /wp:purdue-blocks/title-nav -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint CTA fields CTA text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"ctaText\\":\\"CTA text\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint CTA fields CTA url field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"ctaUrl\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint body text fields Content Text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"content\\":\\"Content text test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__content pu-proofpoint__content-narrow\\">Content text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint body text fields Highlighted Text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"highlighted\\":\\"Highlighted text test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow\\">Highlighted text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint body text fields Proofpoint source field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"source\\":\\"Proofpoint source test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__source\\">Proofpoint source test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color controls Add border checkbox correctly adds borders 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"color\\":\\"white\\",\\"border\\":true} -->
+<div class=\\"pu-proofpoint pu-proofpoint__white pu-proofpoint__border\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color controls White background option reveals add border checkbox 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"color\\":\\"white\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__white\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Text Style Settings Content text style radio controls 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"contentfontStyle\\":\\"wide\\",\\"content\\":\\"Content text test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__content pu-proofpoint__content-wide\\">Content text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Text Style Settings Content text style radio controls 2`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"content\\":\\"Content text test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__content pu-proofpoint__content-narrow\\">Content text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Text Style Settings Highlighted text style radio controls 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"highlighted\\":\\"Highlighted text test.\\",\\"headerfontStyle\\":\\"wide\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__highlighted pu-proofpoint__highlighted-wide\\">Highlighted text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Text Style Settings Highlighted text style radio controls 2`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"highlighted\\":\\"Highlighted text test.\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow\\">Highlighted text test.</p></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
