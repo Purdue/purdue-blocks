@@ -44,6 +44,18 @@ exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color co
 <!-- /wp:purdue-blocks/proofpoint -->"
 `;
 
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color controls Button color on white background updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"color\\":\\"white\\",\\"buttonColor\\":\\"white\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__white\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color controls Button color on white background updates output correctly 2`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"color\\":\\"white\\"} -->
+<div class=\\"pu-proofpoint pu-proofpoint__white\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
 exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color controls White background option reveals add border checkbox 1`] = `
 "<!-- wp:purdue-blocks/proofpoint {\\"color\\":\\"white\\"} -->
 <div class=\\"pu-proofpoint pu-proofpoint__white\\"><div class=\\"container\\"></div></div>

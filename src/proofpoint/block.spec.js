@@ -127,6 +127,24 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( editedContent.includes(`"border":true`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
+
+            test('Button color on white background updates output correctly', async () => {
+                await blockStartup(block)
+
+                await clickRadio('Background Color', 'white')
+                await clickRadio('Button Color', 'white')
+
+                let editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"buttonColor":"white"`)).toBe(true)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+
+
+                await clickRadio('Button Color', 'black')
+
+                editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"buttonColor":"white"`)).toBe(false)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+            })
         })
 
         describe('🔬 Text Style Settings', () => {
