@@ -262,21 +262,25 @@
       grid-column: 3/4!important;
       display: block;
       width: 100%;
-      img{
+      .image{
         width:100%;
         display:block;
+        background-size: cover;
+        background-color:$steam-gray;
       }
       @include mobile{
         margin-bottom:1.875rem !important;
       }
       button{
         border:none;
-        background:$steam-gray;
         position: absolute;
         top: 0;
         width: 100%;
         height: 100%;
+        text-align:center;
+        display: block;
         cursor: pointer;
+        color:$black;
         &:hover{
           background:rgba(255,255,255,0.8);
         }
@@ -300,6 +304,7 @@
       transition: all ease 0.2s;
       letter-spacing:0.9px;
       width:100%;
+      max-width: 19.875rem;
       &:hover {
         cursor: pointer;
         background: #fff;

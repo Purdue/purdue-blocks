@@ -115,8 +115,7 @@
                     display: inline-block;
                     font-family: "Font Awesome 5 Free";
                     margin-left: 1rem;
-                    position: absolute;
-                    top: -0.3rem;
+                    position: relative;
                   }
                 }
               }
@@ -145,7 +144,6 @@
         text-align: right;
         font-size:1.25rem;
         margin-top: 3.125rem;
-        margin-right:1.5rem;
         text-transform: uppercase;
         @include mobile{
           text-align: center;
@@ -161,8 +159,7 @@
             display: inline-block;
             font-family: "Font Awesome 5 Free";
             margin-left: 0.7rem;
-            bottom:-5px;
-            position:absolute;
+            position:relative;
           }
           &:hover{
             color:$aged-gold;
@@ -281,6 +278,7 @@
           transition: all ease 0.2s;
           letter-spacing:0.9px;
           width:100%;
+          max-width: 19.875rem;
           &:hover {
             cursor: pointer;
             background: #fff;
