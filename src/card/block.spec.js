@@ -33,7 +33,7 @@ describe( '🔬 Card Block', () => {
     } )
 
     describe( '🔬 Block Editor Fields', () => {
-        test( '🔬 Button should open Media Library.', async () => {
+        test( '🔎 Button should open Media Library.', async () => {
             await blockStartup(block)
 
             // open media library
@@ -47,7 +47,7 @@ describe( '🔬 Card Block', () => {
                 image urls can be properly snapshotted and tested.
             */
         })
-        test( '🔬 Title Richtext editor should be editable.', async () => {
+        test( '🔎 Title Richtext editor should be editable.', async () => {
             await blockStartup(block)
 
             const typeString = "Test Title"
@@ -65,7 +65,7 @@ describe( '🔬 Card Block', () => {
             expect( editedContent).toMatchSnapshot()
         })
 
-        test( '🔬 Text Richtext editor should be editable.', async () => {
+        test( '🔎 Text Richtext editor should be editable.', async () => {
             await blockStartup(block)
 
             const typeString = "Test text here."
@@ -84,7 +84,7 @@ describe( '🔬 Card Block', () => {
         })
     })
     describe( '🔬 Side Panel Settings', () => {
-        test( '🔬 Gold background color should be selectable.', async () => {
+        test( '🔎 Gold background color should be selectable.', async () => {
             await blockStartup(block)
 
             // select the radio button with the virtual keyboard
@@ -95,7 +95,7 @@ describe( '🔬 Card Block', () => {
             expect( editedContent.includes(`"backgroundColor":"white"`)).toBe(false)
             expect( editedContent).toMatchSnapshot()
         })
-        test( '🔬 Black border color should be selectable.', async () => {
+        test( '🔎 Black border color should be selectable.', async () => {
             await blockStartup(block)
         
             // select the radio button with the virtual keyboard
@@ -106,7 +106,7 @@ describe( '🔬 Card Block', () => {
             expect( editedContent.includes(`"borderColor":"gold"`)).toBe(false)
             expect( editedContent).toMatchSnapshot()
         })
-        test( '🔬 Image alt text should be editable.', async () => {
+        test( '🔎 Image alt text should be editable.', async () => {
             await blockStartup(block)
 
             const typeString = "Image alt text."
@@ -124,7 +124,7 @@ describe( '🔬 Card Block', () => {
             // expect( editedContent).toMatchSnapshot()
         })
         describe( '🔬 Link can be added to the card', () => {
-            test( '🔬 "Add a link to this card?" checkbox reveals link inputs', async () => {
+            test( '🔎 "Add a link to this card?" checkbox reveals link inputs', async () => {
                 await blockStartup(block)
 
                 await clickCheckbox('Add a link to this card?')
@@ -141,7 +141,7 @@ describe( '🔬 Card Block', () => {
                 expect( editedContent.includes('{"hasLink":true}')).toBe(false)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('🔬 Link text field updates output correctly', async () => {
+            test('🔎 Link text field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "CTA text"
@@ -153,7 +153,7 @@ describe( '🔬 Card Block', () => {
                 expect( editedContent.includes(`<div class="read-more-button"><span>${typeString}</span></div>`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('🔬 Link url field updates output correctly', async () => {
+            test('🔎 Link url field updates output correctly', async () => {
                 await blockStartup(block)
                 await clickCheckbox('Add a link to this card?')
                 const typeString = "https://www.purdue.edu"
@@ -165,7 +165,7 @@ describe( '🔬 Card Block', () => {
                 expect( editedContent.includes(`<a href="${typeString}" target="_self" class="square-card" rel="noopener noreferrer"></a>`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('🔬 Link can be opened in new tab', async () => {
+            test('🔎 Link can be opened in new tab', async () => {
                 await blockStartup(block)
 
                 const typeString = "https://www.purdue.edu"

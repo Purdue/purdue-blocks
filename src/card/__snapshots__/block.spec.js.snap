@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 Text Richtext editor should be editable. 1`] = `
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔎 Text Richtext editor should be editable. 1`] = `
 "<!-- wp:purdue-blocks/card -->
 <div class=\\"square-card\\"><p class=\\"content\\">Test text here.</p></div>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 Title Richtext editor should be editable. 1`] = `
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔎 Title Richtext editor should be editable. 1`] = `
 "<!-- wp:purdue-blocks/card -->
 <div class=\\"square-card\\"><p class=\\"title\\">Test Title</p></div>
 <!-- /wp:purdue-blocks/card -->"
@@ -18,43 +18,43 @@ exports[`🔬 Card Block 🔬 Block should be available. 1`] = `
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Black border color should be selectable. 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔎 Black border color should be selectable. 1`] = `
 "<!-- wp:purdue-blocks/card {\\"borderColor\\":\\"black\\"} -->
 <div class=\\"square-card border-black\\"></div>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Gold background color should be selectable. 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔎 Gold background color should be selectable. 1`] = `
 "<!-- wp:purdue-blocks/card {\\"backgroundColor\\":\\"gold\\"} -->
 <div class=\\"square-card background-gold\\"></div>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 "Add a link to this card?" checkbox reveals link inputs 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 "Add a link to this card?" checkbox reveals link inputs 1`] = `
 "<!-- wp:purdue-blocks/card {\\"hasLink\\":true} -->
 <a href=\\"\\" target=\\"_self\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"></a>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 "Add a link to this card?" checkbox reveals link inputs 2`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 "Add a link to this card?" checkbox reveals link inputs 2`] = `
 "<!-- wp:purdue-blocks/card -->
 <div class=\\"square-card\\"></div>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 Link can be opened in new tab 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link can be opened in new tab 1`] = `
 "<!-- wp:purdue-blocks/card {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\",\\"external\\":true} -->
 <a href=\\"https://www.purdue.edu\\" target=\\"_blank\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"></a>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 Link text field updates output correctly 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link text field updates output correctly 1`] = `
 "<!-- wp:purdue-blocks/card {\\"hasLink\\":true,\\"linkText\\":\\"CTA text\\"} -->
 <a href=\\"\\" target=\\"_self\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"><div class=\\"read-more-button\\"><span>CTA text</span></div></a>
 <!-- /wp:purdue-blocks/card -->"
 `;
 
-exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 Link url field updates output correctly 1`] = `
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link url field updates output correctly 1`] = `
 "<!-- wp:purdue-blocks/card {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\"} -->
 <a href=\\"https://www.purdue.edu\\" target=\\"_self\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"></a>
 <!-- /wp:purdue-blocks/card -->"
