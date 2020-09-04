@@ -133,9 +133,7 @@ describe( '🔬 Card Block', () => {
                 
                 expect( editedContent.includes('{"hasLink":true}')).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
-                
-        
-                // click to uncheck the checkbox, outline should now turn off
+ 
                 await clickCheckbox('Add a link to this card?')
                 
                 editedContent = await getEditedPostContent()
