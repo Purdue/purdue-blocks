@@ -30,6 +30,18 @@ exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Gold background color sho
 <!-- /wp:purdue-blocks/card -->"
 `;
 
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 "Add a link to this card?" checkbox reveals link inputs 1`] = `
+"<!-- wp:purdue-blocks/card {\\"hasLink\\":true} -->
+<a href=\\"\\" target=\\"_self\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"></a>
+<!-- /wp:purdue-blocks/card -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 "Add a link to this card?" checkbox reveals link inputs 2`] = `
+"<!-- wp:purdue-blocks/card -->
+<div class=\\"square-card\\"></div>
+<!-- /wp:purdue-blocks/card -->"
+`;
+
 exports[`🔬 Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔬 Link can be opened in new tab 1`] = `
 "<!-- wp:purdue-blocks/card {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\",\\"external\\":true} -->
 <a href=\\"https://www.purdue.edu\\" target=\\"_blank\\" class=\\"square-card\\" rel=\\"noopener noreferrer\\"></a>

@@ -128,14 +128,20 @@ describe( '🔬 Card Block', () => {
                 await blockStartup(block)
 
                 await clickCheckbox('Add a link to this card?')
+                      
+                let editedContent = await getEditedPostContent()
+                
+                expect( editedContent.includes('{"hasLink":true}')).toBe(true)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+                
         
-                const linkInputs = await page.$x(
-                    `//label[@class = "components-checkbox-control__label"][.="Call to action text" or .="Link address" or .="Open link in new tab?"]`
-                )
-        
-                // check that the checkboxes appear and that the correct number exist, 3
-                expect(linkInputs).not.toBeNull()
-                expect(linkInputs.length).toBe(1)
+                // click to uncheck the checkbox, outline should now turn off
+                await clickCheckbox('Add a link to this card?')
+                
+                editedContent = await getEditedPostContent()
+                
+                expect( editedContent.includes('{"hasLink":true}')).toBe(false)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
             })
             test('🔬 Link text field updates output correctly', async () => {
                 await blockStartup(block)
