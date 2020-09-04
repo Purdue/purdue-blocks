@@ -378,7 +378,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
                           style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
                           aria-label={ props.attributes.altText }
                         >
-                          <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</button>
+                          <Button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</Button>
                         </div>
                       );
                     } }
