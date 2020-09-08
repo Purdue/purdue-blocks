@@ -26,7 +26,7 @@ describe( '🔬 Purdue RSS Block', () => {
         await createNewPost();
     } );
 
-    test( 'Block should be available.', async () => {
+    test( '🔎 Block should be available.', async () => {
         await insertBlock( 'Purdue RSS feed' )
 
 

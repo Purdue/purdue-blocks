@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Purdue RSS Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;

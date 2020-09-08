@@ -17,7 +17,10 @@ add_action( 'rest_api_init', function () {
         'args' => array(
             'url'
         ),				
-        'callback' => 'feed_url_endpoint'
+        'callback' => 'feed_url_endpoint',
+        'permission_callback' => function () {
+            return ture;
+        }
     ) );
 } );
 function feed_url_endpoint($data){
