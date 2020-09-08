@@ -4,14 +4,11 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
-
 .pu-title-nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: "United Sans" !important;
+  font-family: $united-sans !important;
   padding: 3rem 0 !important;
 
   @include mobile {
@@ -33,9 +30,9 @@
   &__cta {
     width: 100%;
     background: black;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
-    color: #CFB991;
+    color: $boiler-gold;
     border: 2px solid black;
     text-decoration: none;
     text-transform: uppercase;
@@ -50,13 +47,13 @@
   }
 
   &__title {
-    font-size: 45px !important;
+    font-size: 2.8125rem !important;
     margin: 0 !important;
     line-height: 1 !important;
-    border: 4px solid #CFB991;
+    border: 0.25rem solid $boiler-gold;
     border-radius: 100%;
     padding: 1.1rem 1.84rem;
-    font-family: "United Sans" !important;
+    font-family: $united-sans !important;
 
     @include mobile {
       margin-bottom: 2rem !important;
@@ -77,8 +74,8 @@
       margin: 0 0.35rem !important;
       font-size: 0.8125rem;
       line-height: 1 !important;
-      height: 24px;
-      width: 24px;
+      height: 1.5rem;
+      width: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -107,22 +104,22 @@
           position: absolute;
           top: 0;
           left: 0;
-          height: 24px;
-          width: 24px;
-          border: 2px solid #CFB991;
+          height: 1.5rem;
+          width: 1.5rem;
+          border: 2px solid $boiler-gold;
           border-radius: 100%;
         }
 
         &.isCurrent {
           &:after {
             z-index: 0;
-            background: #CFB991 !important;
+            background: $boiler-gold !important;
           }
         }
 
         &:hover {
           &:after {
-            background: #CFB991 !important;
+            background: $boiler-gold !important;
           }
         }
       }

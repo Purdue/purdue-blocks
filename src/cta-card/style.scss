@@ -4,52 +4,122 @@
  * CSS for both Frontend+Backend.
  */
 
-@import "../scss/bulma-utilities";
-
-.cta-card {
-  &.card {
-    width: 100%;
-    max-width: 318px;
-  }
-
-  .card-image {
-    max-height: 159px;
-    overflow: hidden;
-  }
-
-  .card-content {
-    background-color: black;
-    padding: 1.8rem 2rem 2rem;
-
-    p {
-      font-weight: 700;
-      font-size: 29px;
-      color: #cfb991;
-      font-family: acumin-pro;
-      line-height: 1.3;
-      margin-bottom: 2rem !important;
-    }
-
-  }
-
-  &__button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-family: "United Sans";
-    font-size: 20px;
-    font-weight: 700;
-    padding: 1rem;
-    text-transform: uppercase;
+ .cta-card-horizonal {
+    height:100%;
+    box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
     text-decoration: none;
-    color: #cfb991;
-    border: 2px #cfb991 solid;
-    transition: all ease 0.1s ;
-    letter-spacing: 2px;
-
-    &:hover {
-      background: #cfb991;
-      color: black;
+    display:block;
+    color:$black;
+    &.cta-card-small{
+      padding:2.1875rem;
+      @include mobile{
+        padding:0.8rem 0.8rem 2rem; 
+      }
+      p.content{
+        font-size:1rem !important;
+        line-height:1.75 !important;
+        width:100%;
+      }
     }
+    &.cta-card-large{
+      padding:2.8125rem;
+      @include mobile{
+        padding:0.8rem 0.8rem 2rem; 
+      }
+     p{
+        font-size:1.125rem !important;
+        line-height:1.67 !important;
+        width:100%;
+        @include mobile{
+          padding:0 0.5rem; 
+        }
+      }
+      ul,ol{
+        font-size:1.125rem !important;
+        font-weight:600;
+        width:100%;
+        @include mobile{
+          padding:0 0.5rem; 
+        }
+      }
+      ul{
+        list-style:none !important;
+        margin-left:1em;
+        li:before{
+          content: ">";
+          display: block;
+          height: 0;
+          width: 0;
+          left: -0.7em;
+          top:-0.1em;
+          position: relative;
+        }
+
+      }
+    }
+    &.cta-card-left{
+      .columns{
+        flex-direction: row;
+      }
+    }
+    &.cta-card-right{
+      .columns{
+        flex-direction: row-reverse;
+      }
+    }
+    @include mobile{
+      padding:2.75rem 1.25rem;
+    }
+    .title{
+      font-family:$acumin-pro-semicondensed;
+      font-size:1.5625rem;
+      line-height:1.4;
+      font-weight:600 !important;
+      color:$black;
+      margin-bottom:1rem!important;
+      text-transform: none;
+      width:100%;
+      @include mobile{
+        padding:0 0.5rem; 
+      }
+    }
+    .content{
+      font-family:$acumin-pro;
+      width:100%;
+      color:$black;
+      @include mobile{
+        padding:0 0.5rem; 
+      }
+    }
+    .read-more-button{
+      font-family:$united-sans;
+      font-weight:800;
+      font-size:1.125rem;
+      text-transform:uppercase;
+      color:$aged-gold;
+      margin-top:1.625rem;
+      letter-spacing:50;
+      @include mobile{
+        padding:0 0.5rem; 
+      }
+      span{
+        color:inherit;
+        position:relative;
+        &:after{
+          content: "\f105";
+          display: inline-block;
+          font-family: "Font Awesome 5 Free";
+          margin-left: 0.7rem;
+          position:absolute;
+        }
+      }
+    }
+    
+}
+a.cta-card-horizonal:hover,a.cta-card-horizonal:focus{
+  color:$black;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  .read-more-button{
+    color:$black;
   }
 }

@@ -31,18 +31,18 @@
 .outline-on {
   .editor-title-nav-link {
     &__input {
-      border: 2px solid #CFB991;
+      border: 2px solid $boiler-gold;
       border-radius: 100%;
       padding: 6.075px 1rem;
 
       &.isCurrent {
-        background-color: #CFB991 !important;
+        background-color: $boiler-gold !important;
       }
     }
   }
 
   .editor-title-nav__title {
-    border: 4px solid #CFB991;
+    border: 4px solid $boiler-gold;
     border-radius: 100%;
     padding: 6.075px 1.25rem;
   }

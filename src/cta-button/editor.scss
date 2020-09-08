@@ -5,23 +5,30 @@
  * which makes it higher in priority.
  */
 
-.purdue-blocks-editor-proofpoint {
+.bulma-blocks-editor-link-card {
 
   padding: 0.875rem;
 
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   color: $black;
   background: $secondary-background-gray;
   margin-bottom: 1.75rem;
 
   .content {
-    flex: 0 1 100%;
+    width: 100%;
+    max-width: 30rem;
 
     span {
       display: flex;
       margin-bottom: 1rem;
+    }
+
+    &:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .field{
       .control{
@@ -33,13 +40,17 @@
   }
 
   &__container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    // padding: 1rem;
+    align-items: center;
     background: $secondary-background-gray;
     color: black;
     font-family: sans-serif;
+
+    p {
+      text-align: center;
+    }
   }
 
   &__heading {
@@ -59,6 +70,28 @@
     margin: 0 !important;
     margin-bottom: 0.75rem !important;
 
+    &--error {
+      color: red !important;
+    }
   }
 
+  &__button {
+    border: $teal 1px solid;
+    border-radius: 0.15rem;
+    padding: 0.35rem 0.45rem;
+    font-size: 0.85rem;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $teal;
+      border-color: transparent;
+      color: white;
+    }
+  }
+
+  &__preview {
+    .bulma-blocks-editor-site-hero__button {
+      margin-top: 0.5rem;
+    }
+  }
 }
