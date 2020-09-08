@@ -110,112 +110,28 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
       }).then(response => {
         if(response){
           if(JSON.parse(response).error){
-          props.setAttributes({error:JSON.parse(response).error});
-          props.setAttributes({data:null});
+            props.setAttributes({error:JSON.parse(response).error});
+            props.setAttributes({data:null});
           }else{
             props.setAttributes({data:JSON.parse(response)});
             props.setAttributes({error:""});
+            console.log(JSON.parse(response)[0].id);
           }
         }
       })
     };
-    let itemList=[];
-    if(props.attributes.data&&props.attributes.data.length>0){
-      if(props.attributes.type==="withImage"){
-          for(let i=0;i<3;i++){
-            const data=[...props.attributes.data][i];
-             itemList[i]=
-               <div className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
-                <div className={"card feed-item"}>
-                  <a href={data.link[0]}>
-                    {data.imgURL&&data.imgURL!==""?
-                      <div className={"card-bg-image image is-2by1"} 
-                      role="img"
-                      style={{backgroundImage:`url(${ data.imgURL })`}}
-                      aria-label={ data.imgALT }
-                      >
-                      </div>:""}                   
-                    <div className="card-content">
-                      <div className="media">
-                        <div className="media-content">
-                          <p className="title is-4">
-                            {data.title[0]}									
-                          </p>
-                        </div>
-                      </div>
-                    <div className="read-more-button">
-                      <span>Read More</span>
-                    </div>
-                  </div>
-                  </a>
-                </div>
-               </div>
-          }
-      }
-      if(props.attributes.type==="withoutImage"){
-        for(let i=0;i<4;i++){
-          const data=[...props.attributes.data][i];
-          itemList[i]=
-            <a className={"meida feed-item-noimage"} href={data.link[0]}>                 
-              <div className="media-left">
-                    <p className="month">
-                      {data.month}									
-                    </p>
-                    <p className="day">
-                      {data.day}									
-                    </p>
-                </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="title">
-                    {data.title[0]}	
-                  </p>
-                  <p className="desc">
-                    {data.text}	
-                  </p>
-                </div>											
-              </div>
-            </a>
-        }
-      }
-      if(props.attributes.type==="all"){
-         itemList=[...props.attributes.data].map(data => {
-          return (
-            <div className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
-            <div className={"card feed-item"}>
-              <a href={data.link[0]}>
-                {data.imgURL&&data.imgURL!==""?
-                  <div className={"card-bg-image image is-2by1"} 
-                  role="img"
-                  style={{backgroundImage:`url(${ data.imgURL })`}}
-                  aria-label={ data.imgALT }
-                  >
-                  </div>:""}                   
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="subtitle">
-                        {data.date}									
-                      </p>
-                      <p className="title is-4">
-                        {data.title[0]}									
-                      </p>
-                    </div>
-                  </div>
-                <div className="content-text">
-                  {data.text}												
-                </div>
-                <div className="read-more-button">
-                  <span>Read More</span>
-                </div>
-              </div>
-              </a>
-            </div>
-           </div>
-          )
-       });
-      }
-    }
+
+    const itemListImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 3).map(data => {
+        return (itemImage(data))
+        }):"";
+    
+    const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
+      return (itemNoImage(data))
+      }):"";
+
+    const itemListAll=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(data => {
+      return (itemAll(data))
+      }):"";
 
     const [ isEditing, setIsEditing ] = useState( ! props.attributes.feedURL );
 
@@ -345,7 +261,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             {props.attributes.error!==""? <p className="error">{props.attributes.error}</p>:""}
             {props.attributes.data&&(props.attributes.type==="withImage"||props.attributes.type==="all")?(
             <div className={'columns is-multiline feed-items components-disabled'}>
-              {itemList}
+              {props.attributes.type==="withImage"?itemListImage:itemListAll}
             </div>):""}
             {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.hasLink ? (
             <div className="read-more-button components-disabled">
@@ -385,7 +301,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
                 </MediaUploadCheck>
               </div>
               <div className={'feed-items components-disabled'}>
-                {itemList}
+                {itemListWithoutImage}
               </div>
               {props.attributes.hasLink?
                 <a className="button components-disabled" href={props.attributes.link}
@@ -412,103 +328,17 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    let itemList=[];
-    if(props.attributes.data&&props.attributes.data.length>0){
-      if(props.attributes.type==="withImage"){
-          for(let i=0;i<3;i++){
-            const data=[...props.attributes.data][i];
-             itemList[i]=
-               <div className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
-                <div className={"card feed-item"}>
-                  <a href={data.link[0]}>
-                    {data.imgURL&&data.imgURL!==""?
-                      <div className={"card-bg-image image is-2by1"} 
-                      role="img"
-                      style={{backgroundImage:`url(${ data.imgURL })`}}
-                      aria-label={ data.imgALT }
-                      >
-                      </div>:""}                   
-                    <div className="card-content">
-                      <div className="media">
-                        <div className="media-content">
-                          <p className="title is-4">
-                            {data.title[0]}									
-                          </p>
-                        </div>
-                      </div>
-                    <div className="read-more-button">
-                      <span>Read More</span>
-                    </div>
-                  </div>
-                  </a>
-                </div>
-               </div>
-          }
-      }
-      if(props.attributes.type==="withoutImage"){
-        for(let i=0;i<4;i++){
-          const data=[...props.attributes.data][i];
-          itemList[i]=
-            <a className={"meida feed-item-noimage"} href={data.link[0]}>                 
-              <div className="media-left">
-                    <p className="month">
-                      {data.month}									
-                    </p>
-                    <p className="day">
-                      {data.day}									
-                    </p>
-                </div>
-              <div className="media-content">
-                <div className="content">
-                  <p className="title">
-                    {data.title[0]}	
-                  </p>
-                  <p className="desc">
-                    {data.text}	
-                  </p>
-                </div>											
-              </div>
-            </a>
-        }
-      }
-      if(props.attributes.type==="all"){
-         itemList=[...props.attributes.data].map(data => {
-          return (
-            <div className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
-            <div className={"card feed-item"}>
-              <a href={data.link[0]}>
-                {data.imgURL&&data.imgURL!==""?
-                  <div className={"card-bg-image image is-2by1"} 
-                  role="img"
-                  style={{backgroundImage:`url(${ data.imgURL })`}}
-                  aria-label={ data.imgALT }
-                  >
-                  </div>:""}                   
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-content">
-                      <p className="subtitle">
-                        {data.date}									
-                      </p>
-                      <p className="title is-4">
-                        {data.title[0]}									
-                      </p>
-                    </div>
-                  </div>
-                <div className="content-text">
-                  {data.text}												
-                </div>
-                <div className="read-more-button">
-                  <span>Read More</span>
-                </div>
-              </div>
-              </a>
-            </div>
-           </div>
-          )
-       });
-      }
-    }
+    const itemListImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 3).map(data => {
+      return (itemImage(data))
+      }):"";
+  
+    const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
+      return (itemNoImage(data))
+      }):"";
+
+    const itemListAll=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(data => {
+      return (itemAll(data))
+      }):"";
     return (
       <div className={'news-feed'}>
          <div className={'container'}>
@@ -521,7 +351,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
           {props.attributes.error!==""? <p className="error">{props.attributes.error}</p>:""}
           {props.attributes.data&&(props.attributes.type==="withImage"||props.attributes.type==="all")?(
           <div className={'columns is-multiline feed-items'}>
-            {itemList}
+            {props.attributes.type==="withImage"?itemListImage:itemListAll}
           </div>):''}
           {props.attributes.data&&props.attributes.type==="withImage"&&props.attributes.hasLink ? (
           <div className="read-more-button">
@@ -539,7 +369,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
             </figure> : '' }
             <div className={'feed-items'}>
-              {itemList}
+              {itemListWithoutImage}
             </div>
             {props.attributes.hasLink?
               <a className="button" href={props.attributes.link}
@@ -555,3 +385,91 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
   },
 } );
 
+function itemImage(data){
+  return (
+    <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
+      <div className={"card feed-item"}>
+        <a href={data.link[0]}>
+          {data.imgURL&&data.imgURL!==""?
+            <div className={"card-bg-image image is-2by1"} 
+            role="img"
+            style={{backgroundImage:`url(${ data.imgURL })`}}
+            aria-label={ data.imgALT }
+            >
+            </div>:""}                   
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content">
+                <p className="title is-4">
+                  {data.title[0]}									
+                </p>
+              </div>
+            </div>
+          <div className="read-more-button">
+            <span>Read More</span>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+  );
+}
+function itemNoImage(data){
+  return (
+    <a key={data.id} className={"meida feed-item-noimage"} href={data.link[0]}>                 
+      <div className="media-left">
+            <p className="month">
+              {data.month}									
+            </p>
+            <p className="day">
+              {data.day}									
+            </p>
+        </div>
+      <div className="media-content">
+        <div className="content">
+          <p className="title">
+            {data.title[0]}	
+          </p>
+          <p className="desc">
+            {data.text}	
+          </p>
+        </div>											
+      </div>
+    </a>
+  );
+}
+function itemAll(data){
+  return (
+    <div key={data.id} className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
+      <div className={"card feed-item"}>
+        <a href={data.link[0]}>
+          {data.imgURL&&data.imgURL!==""?
+            <div className={"card-bg-image image is-2by1"} 
+            role="img"
+            style={{backgroundImage:`url(${ data.imgURL })`}}
+            aria-label={ data.imgALT }
+            >
+            </div>:""}                   
+          <div className="card-content">
+            <div className="media">
+              <div className="media-content">
+                <p className="subtitle">
+                  {data.date}									
+                </p>
+                <p className="title is-4">
+                  {data.title[0]}									
+                </p>
+              </div>
+            </div>
+          <div className="content-text">
+            {data.text}												
+          </div>
+          <div className="read-more-button">
+            <span>Read More</span>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+  );
+}

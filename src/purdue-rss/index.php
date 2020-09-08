@@ -34,7 +34,8 @@ function feed_url_endpoint($data){
         $results[error]="Invalid RSS feed URL.";
     }
     if(!empty($rss)){
-       foreach ($rss->channel->item as $item) {   
+        $id=0; 
+       foreach ($rss->channel->item as $item) {  
            $title = $item->title;
            $link = $item->link;
            $description = $item->description;
@@ -56,6 +57,7 @@ function feed_url_endpoint($data){
            $month = date('M',strtotime($postDate));
            $day = date('d',strtotime($postDate));
            $node=array(
+               'id'=>$id,
                'title'=>$title,
                'link'=>$link,
                'date'=>$date,
@@ -66,6 +68,7 @@ function feed_url_endpoint($data){
                'text'=>$text,
            );
            array_push($results, $node);
+           ++$id;
        }	 
    }else{
     if(!$invalidurl){
