@@ -11,28 +11,28 @@
   border-radius: 0;
   text-align:center;
   padding:2.75rem 1.25rem;
-  border:1px solid #8E6F3E;
-  background-color:#fff;
+  border:1px solid $aged-gold;
+  background-color:$white;
   display:block;
   text-decoration: none;
   &.background-gold{
-    background-color:#CFB991;
+    background-color:$boiler-gold;
   }
   &.border-black{
-    border:1px solid #000;
+    border:1px solid $black;
   }
   .image{
-      height:100px;
-      width:100px;
+      height:6.25rem;
+      width:6.25rem;
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
       margin-left:auto;
       margin-right:auto;
-      background-color:#ededed;
+      background-color:$primary-background-gray;
       button{
-        width:100px;
-        height:100px;
+        width:6.25rem;
+        height:6.25rem;
         border:none;
         background:none;
         cursor: pointer;
@@ -42,27 +42,27 @@
       }
   }
   .title{
-      font-family:"United Sans", Impact, "Arial Black", "sans serif";;
+      font-family:$united-sans;
       margin-top:1.625rem !important;
       margin-bottom:0 !important;
       text-transform:uppercase;
       font-size:1.5625rem;
       line-height:1.48;
       font-weight:700 !important;
-      color:#000;
+      color:$black;
   }
   .content{
-      max-width:360px;
+      max-width:22.5rem;
       margin:1rem auto 0;
       width:100%;
-      color:#000;
+      color:$black;
   }
   .read-more-button{
-    font-family:"United Sans",Impact, "Arial Black", "sans serif";
+    font-family:$united-sans;
     font-weight:800;
     font-size:1.125rem;
     text-transform:uppercase;
-    color:#8e6f3e;
+    color:$aged-gold;
     margin-top:1.625rem;
     span{
       color:inherit;
@@ -71,7 +71,6 @@
         content: ">";
         display: inline-block;
         margin-left: 0.7rem;
-        bottom:-4px;
         position:absolute;
       }
     }

@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`🔬 Proofpoint Block Block should be available. 1`] = `
-"<!-- wp:purdue-blocks/title-nav -->
-<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
-<li class=\\"\\"></li>
-<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
-<!-- /wp:purdue-blocks/title-nav -->"
+"<!-- wp:purdue-blocks/proofpoint -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
 `;
 
 exports[`🔬 Proofpoint Block 🔬 Block Editor Fields 🔬 Proofpoint CTA fields CTA text field updates output correctly 1`] = `

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 List Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/list -->
+<div class=\\"pu-list\\"><!-- wp:list -->
+<ul><li></li></ul>
+<!-- /wp:list --></div>
+<!-- /wp:purdue-blocks/list -->"
+`;
+
+exports[`🔬 List Block 🔬 Block Editor Fields List Header field 1`] = `
+"<!-- wp:purdue-blocks/list {\\"header\\":\\"List Header Test\\"} -->
+<div class=\\"pu-list\\"><h2>List Header Test</h2><!-- wp:list -->
+<ul><li></li></ul>
+<!-- /wp:list --></div>
+<!-- /wp:purdue-blocks/list -->"
+`;
+
+exports[`🔬 List Block 🔬 Block Editor Fields 🔬 WP Core List Field Add ordered list in inner core list block field 1`] = `
+"<!-- wp:purdue-blocks/list -->
+<div class=\\"pu-list\\"><!-- wp:list {\\"ordered\\":true} -->
+<ol><li>list item 1</li><li>list item 2</li><li>list item 3</li></ol>
+<!-- /wp:list --></div>
+<!-- /wp:purdue-blocks/list -->"
+`;
+
+exports[`🔬 List Block 🔬 Block Editor Fields 🔬 WP Core List Field Add unordered list in inner core list block field 1`] = `
+"<!-- wp:purdue-blocks/list -->
+<div class=\\"pu-list\\"><!-- wp:list -->
+<ul><li>list item 1</li><li>list item 2</li><li>list item 3</li></ul>
+<!-- /wp:list --></div>
+<!-- /wp:purdue-blocks/list -->"
+`;

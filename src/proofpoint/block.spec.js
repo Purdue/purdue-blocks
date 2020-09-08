@@ -27,11 +27,11 @@ describe( '🔬 Proofpoint Block', () => {
     } );
 
     test( 'Block should be available.', async () => {
-        await insertBlock( 'Titled Navigation' )
+        await insertBlock( 'Proof Point' )
 
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/title-nav"]')).not.toBeNull()
+        expect(await page.$('[data-type="purdue-blocks/proofpoint"]')).not.toBeNull()
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
