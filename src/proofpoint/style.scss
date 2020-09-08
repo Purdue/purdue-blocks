@@ -4,8 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
- @import "../scss/bulma-utilities";
-
  .pu-proofpoint {
    width:100%;
    display:flex;
@@ -26,23 +24,23 @@
      margin-right:0;
    }
    &__white{
-     background-color:#fff;
-     color:#000;
+     background-color:$white;
+     color:$black;
      .pu-proofpoint__source{
-       color:#555960
+       color:$steel-gray
      }
    }
    &__black{
-     background-color:#000;
-     color:#fff;
+     background-color:$black;
+     color:$white;
      .pu-proofpoint__source{
-       color:#C4BFC0;
+       color:$steam-gray;
      }
      .pu-proofpoint__highlighted,.pu-proofpoint__content{
-       color:#cfb991;
+       color:$boiler-gold;
      }
      .pu-proofpoint__button {
-       font-family: "United Sans";
+       font-family: $united-sans;
        font-weight: 700;
        font-size: 1.125rem;
        text-transform: uppercase;
@@ -50,21 +48,21 @@
        justify-content: center;
        padding: 0.75rem 1rem;
        background: rgba(0, 0, 0, 0);
-       border: 2px solid #cfb991;
-       color: #fff;
+       border: 2px solid $boiler-gold;
+       color: $white;
        text-decoration: none;
        transition: all ease 0.2s;
-       min-width:250px;
+       min-width:15.625rem;
        letter-spacing: 0.9px;
        &:hover {
          cursor: pointer;
-         background: #cfb991;
-         color: #000;
+         background: $boiler-gold;
+         color: $black;
        }
      }
    }
    &__border{
-     border-top:solid 5px #000;
+     border-top:solid 5px $black;
      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
    }
    &__highlighted{
@@ -74,10 +72,10 @@
      text-align:center;
      text-transform: uppercase;
      &-narrow{
-       font-family: "United Sans Condensed";
+       font-family: $united-sans-condensed;
      }
      &-wide{
-       font-family: "United Sans Extended";
+       font-family: $united-sans-extended;
        font-weight:300;
      }
    }
@@ -88,12 +86,12 @@
      line-height:1.875rem;
      margin-bottom:1rem !important;
      &-narrow{
-       font-family: "United Sans Condensed";
+       font-family: $united-sans-condensed;
        letter-spacing: 0.1em;
        text-transform:uppercase !important;
      }
      &-wide{
-       font-family: "United Sans";
+       font-family: $united-sans;
      }
    }
    &__source{
@@ -106,32 +104,32 @@
      font-style:italic;
    }
    &__button {
-     font-family: "United Sans";
+     font-family: $united-sans;
      font-weight: 700;
      font-size: 1.125rem;
      text-transform: uppercase;
      display: inline-flex;
      justify-content: center;
      padding: 0.75rem 1rem;
-     background: #000;
-     border: 2px solid #000;
-     color: #cfb991;
+     background: $black;
+     border: 2px solid $black;
+     color: $boiler-gold;
      text-decoration: none;
      transition: all ease 0.2s;
      letter-spacing:0.9px;
      width:80%;
      &:hover {
        cursor: pointer;
-       background: #fff;
+       background: $white;
      }
      &-white{
-       border: 2px solid #8e6f3e;
-       color: #000;
-       background: #fff;
+       border: 2px solid $aged-gold;
+       color: $black;
+       background: $white;
        &:hover {
          cursor: pointer;
-         background: #cfb991;
-         color: #000;
+         background: $boiler-gold;
+         color: $black;
        }
      }
    }

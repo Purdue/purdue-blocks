@@ -4,8 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
- @import "../../node_modules/bulma/bulma.sass";
-
  .bulma-blocks-40-60-hero {
    .hero {
      position: relative;
@@ -92,18 +90,18 @@
            font-weight: 700;
            font-size: 2.8125rem;
            color: black !important;
-           line-height:50px;
+           line-height:3.125rem;
             width:100%;
            @include tablet {
                font-size: 4.0625rem !important;
-               line-height:70px;
+               line-height:4.375rem;
            }
          }
  
          p {
           font-size: 1.5625rem;
-          line-height:40px;
-           font-family: "United Sans";
+          line-height:2.5rem;
+           font-family: $united-sans;
            text-transform: uppercase;
            width: 85%;
            &:last-of-type{
@@ -112,7 +110,7 @@
  
            @include mobile {
              font-size: 1.25rem;
-             line-height:30px;
+             line-height:1.875rem;
            }
          }
        }
@@ -161,11 +159,11 @@
     }
    }
    .jump-button {
-     font-family: "United Sans";
+     font-family: $united-sans;
      font-weight: 400;
      font-size: 1.25rem;
      text-transform: capitalize;
-     color: #8e6f3e !important;
+     color: $aged-gold !important;
      text-decoration:none;
      margin-top:1.5rem;
      display:block;
@@ -216,20 +214,20 @@
          }
  
          h1 {
-           font-family: acumin-pro-semi-condensed;
+           font-family: $acumin-pro-semicondensed;
            color: white !important;
            font-size: 1.875rem;
            font-weight:700;
-           line-height: 35px;
+           line-height: 2.1875rem;
            @include tablet {
              font-size: 2.8125rem !important;
-             line-height: 50px;
+             line-height: 3.125rem;
            }
          }
  
          p {
            font-size: 1.25rem;
-           font-family: acumin-pro;
+           font-family: $acumin-pro;
            &:last-of-type{
              margin-bottom:0;
            }
@@ -299,11 +297,11 @@
      }
    }
    .jump-button {
-     font-family: "United Sans";
+     font-family: $united-sans;
      font-weight: 400;
      font-size: 1.25rem;
      text-transform: capitalize;
-     color: #CEB991 !important;
+     color: $boiler-gold !important;
      text-decoration:none;
      margin-top:1.5rem;
      display:block;

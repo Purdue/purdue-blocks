@@ -19,10 +19,15 @@ const {
   PanelRow,
   CheckboxControl,
   TextareaControl,
-  Button,
+  TextControl,
+  RadioControl,
+  SelectControl,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 
+const BLOCKS_TEMPLATE = [
+  [ 'core/paragraph', { placeholder: 'Add content' } ],
+];
 /**
  * Register: aa Gutenberg Block.
  *
@@ -39,23 +44,15 @@ const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
 registerBlockType( 'purdue-blocks/cta-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'CTA Card' ), // Block title.
-  icon: (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="fas"
-      data-icon="external-link-square-alt"
-      className="svg-inline--fa fa-external-link-square-alt fa-w-14"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 448 512"
-    >
-      <path
-        fill="#8E6F3E"
-        d="M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
-      ></path>
-    </svg>
-  ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  icon: {
+    // Specifying a background color to appear with the icon e.g.: in the inserter.
+    background: '#fff',
+    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
+    foreground: '#8e6f3e',
+    // Specifying a dashicon for the block
+    src: 'excerpt-view',
+
+  }, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
@@ -72,9 +69,14 @@ registerBlockType( 'purdue-blocks/cta-card', {
    */
 
   attributes: {
-    subText: { type: 'string', default: '' },
+    cardType: { type: 'string', default: "small" },
+    title: { type: 'string', source: 'html', selector: '.title' },
+    titleLevel: { type: 'string', default: 'p' },
+    subText: { type: 'string', source: 'html', selector: 'p.content' },
+    hasLink: { type: 'boolean', default: false },
     link: { type: 'string', default: '' },
-    ctaText: { type: 'string', default: '' },
+    linkText: { type: 'string', default: '' },
+    imgLocation:{ type: 'string', default: 'left' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
@@ -86,13 +88,58 @@ registerBlockType( 'purdue-blocks/cta-card', {
 
   // Block description in side panel
   description: __(
-    'Create a card with an image, some text, and a call to action button.'
+    'Create a call-to-action card with an image and text. The link to the card is optional.'
   ),
 
   edit: ( props ) => {
     return [
       <InspectorControls>
         <PanelBody>
+          <PanelRow>
+            <RadioControl
+              label="Card type"
+              help="Choose Large if there will be a lot of text or lists on the card. Otherwise choose Small."
+              selected={ props.attributes.cardType }
+              options={ [
+                { label: 'Large', value: 'large' },
+                { label: 'Small', value: 'small' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { cardType: option } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <SelectControl
+              label="Heading level of the title"
+              value={ props.attributes.titleLevel }
+              options={ [
+                { label: 'H2', value: 'h2' },
+                { label: 'H3', value: 'h3' },
+                { label: 'H4', value: 'h4' },
+                { label: 'H5', value: 'h5' },
+                { label: 'H6', value: 'h6' },
+                { label: 'P', value: 'p' },
+              ] }
+              onChange={ ( titleLevel ) => {
+                props.setAttributes( { titleLevel } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Align image"
+              help="Choose to place the image to the left or right."
+              selected={ props.attributes.imgLocation }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Right', value: 'right' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { imgLocation: option } )
+              } }
+            />
+          </PanelRow>
           <PanelRow>
             <TextareaControl
               label="Image Alt Text"
@@ -102,119 +149,109 @@ registerBlockType( 'purdue-blocks/cta-card', {
           </PanelRow>
           <PanelRow>
             <CheckboxControl
-              label="Open link in new tab?"
-              checked={ props.attributes.external }
+              label="Add a link to this card?"
+              checked={ props.attributes.hasLink }
               onChange={ () =>
-                props.setAttributes( { external: ! props.attributes.external } )
+                props.setAttributes( { hasLink: ! props.attributes.hasLink } )
               }
             />
           </PanelRow>
+          { props.attributes.hasLink ?
+            ( <PanelRow>
+              <TextControl
+                label="Call to action text"
+                value={ props.attributes.linkText }
+                onChange={ ( linkText ) => props.setAttributes( { linkText } ) }
+              />
+            </PanelRow> ) : '' }
+          { props.attributes.hasLink ? (
+            <PanelRow>
+              <TextControl
+                label="Link address"
+                value={ props.attributes.link }
+                onChange={ ( link ) => props.setAttributes( { link } ) }
+              />
+            </PanelRow> ) : '' }
+
+          { props.attributes.hasLink ?
+            <PanelRow>
+              <CheckboxControl
+                label="Open link in new tab?"
+                checked={ props.attributes.external }
+                onChange={ () =>
+                  props.setAttributes( { external: ! props.attributes.external } )
+                }
+              />
+            </PanelRow> : '' }
         </PanelBody>
       </InspectorControls>,
 
-      <div className={ 'bulma-blocks-editor-link-card' }>
-        <div className="content">
-          <span>Choose an image.</span>
-          <MediaUploadCheck>
-            <MediaUpload
-              onSelect={ ( img ) => {
-                props.setAttributes( {
-                  imgUrl: img.url,
-                  altText:
-                    props.attributes.altText !== '' ?
-                      props.attributes.altText :
-                      img.alt,
-                } );
-              } }
-              render={ ( { open } ) => {
-                return props.attributes.imgUrl !== '' ? (
-                  <div className={ 'bulma-blocks-editor-link-card__preview' }>
-                    <figure className={ 'image' }>
-                      <img
-                        alt={ props.attributes.altText }
-                        src={ props.attributes.imgUrl }
-                      />
-                    </figure>
-                    <Button
-                      className={ 'bulma-blocks-editor-link-card__button' }
-                      onClick={ open }
+      <div className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }
+      >
+        <div className={'columns is-multiline'}>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+            <MediaUploadCheck>
+              <MediaUpload
+                onSelect={ ( img ) => {
+                  props.setAttributes( {
+                    imgUrl: img.url,
+                    altText:
+                        props.attributes.altText !== '' ?
+                          props.attributes.altText :
+                          img.alt,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return (
+                    <div className={ 'image is-3by2' }
+                      role="img"
+                      style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+                      aria-label={ props.attributes.altText }
                     >
-                      Select a New Image
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={ 'bulma-blocks-editor-link-card__container' }>
-                    <p className={ 'bulma-blocks-editor-link-card__description' }>
-                      Pick an image from the media library.
-                    </p>
-                    <Button
-                      className={ 'bulma-blocks-editor-link-card__button' }
-                      onClick={ open }
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                );
-              } }
-            />
-          </MediaUploadCheck>
-        </div>
-        <div className="content">
-          <span>Add Link Card text.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.subText !== '' ?
-                    props.attributes.subText :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="Card text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { subText: e.target.value } );
+                      <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</button>
+                    </div>
+                  );
                 } }
-              ></input>
+              />
+            </MediaUploadCheck>
+          </div>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-third-desktop is-two-third-tablet is-full-mobile' }`}>
+            <div className="title">
+              <RichText
+                tagname={ props.setAttributes.titleLevel }
+                value={ props.attributes.title }
+                className={ 'title' }
+                onChange={ ( text ) => {
+                  props.setAttributes( { title: text } )
+                } }
+                placeholder="Add Title (Optional)"
+                keepPlaceholderOnFocus={ true }
+                allowedFormats={ [] }
+              >
+              </RichText>
+            </div>
+            <div className="content">
+            { props.attributes.cardType === 'small' ? (
+              <RichText
+                tagname="p"
+                value={ props.attributes.subText }
+                className={ 'content' }
+                onChange={ ( text ) => {
+                  props.setAttributes( { subText: text } )
+                } }
+                placeholder="Add Text (Optional)"
+                allowedFormats={ [] }
+              >
+              </RichText>):(
+                  <InnerBlocks
+                  template={ BLOCKS_TEMPLATE }
+                  allowedBlocks={ [ 'core/paragraph', 'core/list'] }
+                  />
+              )}
+              { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
             </div>
           </div>
-        </div>
-        <div className="content">
-          <span>Add the text for the cta button.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaText !== '' ?
-                    props.attributes.ctaText :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="CTA Text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { ctaText: e.target.value } );
-                } }
-              ></input>
-            </div>
           </div>
-          <span>Add the link.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.link !== '' ? props.attributes.link : ''
-                }
-                className="input"
-                type="text"
-                placeholder="Paste permalink or url..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { link: e.target.value } );
-                } }
-              ></input>
-            </div>
-          </div>
-        </div>
       </div>,
     ];
   },
@@ -231,22 +268,56 @@ registerBlockType( 'purdue-blocks/cta-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = (
-      <div
+    const returned = ( props.attributes.hasLink === true ?
+      <a
+        href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
-        className={ 'card cta-card' }
-        rel="noopener noreferrer"
+        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
       >
-        <div className={ 'card-image' }>
-          <figure className="image">
-            <img src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
-          </figure>
+        <div className={'columns is-multiline'}>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+            <figure className="image is-3by2">
+              <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
+            </figure>
+          </div>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
+            { props.attributes.title ? ( <RichText.Content
+              className={ 'title' }
+              tagName={ props.attributes.titleLevel }
+              value={ props.attributes.title }
+            /> ) : '' }
+            { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
+              className={ 'content' }
+              tagName="p"
+              value={ props.attributes.subText }
+            /> ) : '' }
+            { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
+            { props.attributes.linkText ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
+          </div>
         </div>
-        <div className={ 'card-content' }>
-          <p>{ props.attributes.subText }</p>
-          <a href={ props.attributes.link } className={ 'cta-card__button' }>
-            { props.attributes.ctaText }
-          </a>
+      </a> :
+      <div
+        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
+      >
+        <div className={'columns is-multiline'}>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+            <figure className="image is-3by2">
+              <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
+            </figure>
+          </div>
+          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
+            { props.attributes.title ? ( <RichText.Content
+              className={ 'title' }
+              tagName={ props.attributes.titleLevel }
+              value={ props.attributes.title }
+            /> ) : '' }
+            { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
+              className={ 'content' }
+              tagName="p"
+              value={ props.attributes.subText }
+            /> ) : '' }
+            { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
+          </div>
         </div>
       </div>
     );

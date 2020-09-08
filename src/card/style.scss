@@ -4,54 +4,52 @@
  * CSS for both Frontend+Backend.
  */
 
- @import '../scss/bulma-utilities';
-
  .square-card {
     height:100%;
     box-shadow:none;
     border-radius: 0;
     text-align:center;
     padding:2.75rem;
-    border:1px solid #8E6F3E;
-    background-color:#fff;
+    border:1px solid $aged-gold;
+    background-color:$white;
     display:block;
     text-decoration: none;
     @include mobile{
       padding:2.75rem 1.25rem;
     }
     &.background-gold{
-      background-color:#CFB991;
+      background-color:$boiler-gold;
     }
     &.border-black{
-      border:1px solid #000;
+      border:1px solid $black;
     }
     .image {
       margin-bottom:1.625rem !important;
       img{
-        height:100px;
+        height:6.25rem;
         width:auto;
       }
     }
     p.title{
-        font-family:"United Sans", Impact, "Arial Black", "sans serif";;
+        font-family:$united-sans;
         margin:0 auto!important;
         text-transform:uppercase;
         font-size:1.5625rem;
         line-height:1.48;
         font-weight:700 !important;
-        color:#000;
+        color:$black;
     }
     p.content{
         margin:1rem auto;
         width:100%;
-        color:#000;
+        color:$black;
     }
     .read-more-button{
-      font-family:"United Sans",Impact, "Arial Black", "sans serif";
+      font-family:$united-sans;
       font-weight:800;
       font-size:1.125rem;
       text-transform:uppercase;
-      color:#8e6f3e;
+      color:$aged-gold;
       margin-top:1.625rem;
       span{
         color:inherit;
@@ -61,7 +59,6 @@
           display: inline-block;
           font-family: "Font Awesome 5 Free";
           margin-left: 0.7rem;
-          bottom:-4px;
           position:absolute;
         }
       }
@@ -70,6 +67,6 @@
 }
 a.square-card:hover{
   .read-more-button{
-    color:#000;
+    color:$black;
   }
 }

@@ -4,16 +4,14 @@
  * CSS for both Frontend+Backend.
  */
 
- @import "../scss/bulma-utilities";
-
  .pu-blocks-testimonial {
  
    display: flex;
    flex-direction:column;
    align-items: center;
    justify-content: center;
-   color: #000;
-   background: #f3f3f3;
+   color: $black;
+   background: $secondary-background-gray;
    margin:0 !important;
    padding:5.9375rem 1.5rem;
    @include mobile{
@@ -29,7 +27,7 @@
    h2{
      font-size: 2rem !important;
      font-weight:700 !important;
-     color:#000 !important;
+     color:$black !important;
      text-align:center;
      margin: 0 0 3.125rem !important;
      @include mobile{
@@ -46,9 +44,9 @@
    }
    .testimonial__item{
      padding:2.1875rem 7.3125rem 4.0625rem;
-     background-color:#fff;
+     background-color:$white;
      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
-     border: 1px solid #DEDEDE;
+     border: 1px solid $primary-background-gray;
      display:flex;
      justify-content: center;
      height: 100%;
@@ -62,13 +60,13 @@
    .testimonial__body{
      width:100%;
      img{
-       width:90px;
-       height:90px;
+       width:5.625rem;
+       height:5.625rem;
      }
      .testimonial__content{
        margin-top:2.5rem;
        margin-bottom:2.5rem;
-       font-family:"Source Serif Pro";
+       font-family:$source-serif-pro;
        line-height:1.875rem;
        q { quotes: '\201c' '\201d'; }
        &:before{
@@ -81,18 +79,18 @@
      .testimonial__name{
        margin-top:0;
        margin-bottom:0.5rem;
-       font-family:"Source Serif Pro";
+       font-family:$source-serif-pro;
        font-weight: 600;
        line-height:1.875rem;
      }
      .testimonial__info{
        margin-top:0;
        margin-bottom:0;
-       font-family:"Source Serif Pro";
+       font-family:$source-serif-pro;
        font-weight: 400;
        font-size: 1rem;
        line-height:1.5625rem;
-       color: #8E6F3E;
+       color: $aged-gold;
      }
      &--small{
        text-align:left;

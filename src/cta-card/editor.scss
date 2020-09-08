@@ -5,93 +5,72 @@
  * which makes it higher in priority.
  */
 
-.bulma-blocks-editor-link-card {
-
-  padding: 0.875rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #000;
-  background: #f3f3f3;
-  margin-bottom: 1.75rem;
-
-  .content {
-    width: 100%;
-    max-width: 30rem;
-
-    span {
-      display: flex;
-      margin-bottom: 1rem;
-    }
-
-    &:first-child {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .field{
-      .control{
-        input{
-          background-color:#fff;
+ .cta-card-horizonal {
+  height:100%;
+  box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+  background-color:$white;
+  text-decoration: none;
+  &.cta-card-small{
+    padding:2.1875rem;
+  }
+  &.cta-card-large{
+    padding:2.8125rem;
+  }
+  &.cta-card-left{
+    flex-direction: row;
+  }
+  &.cta-card-right{
+    flex-direction: row-reverse;
+  }
+  .image{
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-color:$primary-background-gray;
+      button{
+        border:none;
+        background:none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        &:hover{
+          background:rgba(255,255,255,0.8);
         }
+      }
+  }
+  .title{
+      font-family:$acumin-pro-semicondensed;
+      font-size:1.5625rem;
+      line-height:1.4;
+      font-weight:600 !important;
+      color:$black;
+  }
+  .content{
+    font-family:$acumin-pro;
+    font-size:1rem;
+    line-height:1.75;
+    width:100%;
+    color:$black;
+  }
+  .read-more-button{
+    font-family:$united-sans;
+    font-weight:800;
+    font-size:1.125rem;
+    text-transform:uppercase;
+    color:$aged-gold;
+    margin-top:1.625rem;
+    span{
+      color:inherit;
+      position:relative;
+      &:after{
+        content: ">";
+        display: inline-block;
+        margin-left: 0.7rem;
+        position:absolute;
       }
     }
   }
-
-  &__container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #f3f3f3;
-    color: black;
-    font-family: sans-serif;
-
-    p {
-      text-align: center;
-    }
-  }
-
-  &__heading {
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-
-    .dashicons {
-      margin-right: 0.75rem;
-    }
-  }
-
-  &__description {
-    width: 80%;
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-    margin-bottom: 0.75rem !important;
-
-    &--error {
-      color: red !important;
-    }
-  }
-
-  &__button {
-    border: #00c4a7 1px solid;
-    border-radius: 0.15rem;
-    padding: 0.35rem 0.45rem;
-    font-size: 0.85rem;
-    background-color: transparent;
-
-    &:hover {
-      background-color: #00c4a7;
-      border-color: transparent;
-      color: white;
-    }
-  }
-
-  &__preview {
-    .bulma-blocks-editor-site-hero__button {
-      margin-top: 0.5rem;
-    }
-  }
+  
 }
