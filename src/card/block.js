@@ -21,6 +21,7 @@ const {
   TextareaControl,
   TextControl,
   RadioControl,
+  Button,
 } = wp.components;
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
 
@@ -39,7 +40,7 @@ const { RichText, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockE
  */
 registerBlockType( 'purdue-blocks/card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Card' ), // Block title.
+  title: __( 'Custom Card' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
@@ -185,7 +186,7 @@ registerBlockType( 'purdue-blocks/card', {
                   style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
                   aria-label={ props.attributes.altText }
                 >
-                  <button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</button>
+                  <Button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</Button>
                 </div>
               );
             } }
