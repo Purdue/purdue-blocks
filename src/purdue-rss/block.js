@@ -100,7 +100,6 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
   edit: ( props ) => {
     const onSubmitURL = (e) => {
-      // setState( { error: false, validated: false } );
       e.preventDefault();
       if ( props.attributes.feedURL ) {
         setIsEditing( false );

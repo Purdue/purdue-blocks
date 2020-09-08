@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Title Hero Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/title-hero -->
+<div class=\\"pu-title-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><p></p></div></div></div></div></div>
+<!-- /wp:purdue-blocks/title-hero -->"
+`;
+
+exports[`Title Hero Block Image alt text should be editable. 1`] = `
+"<!-- wp:purdue-blocks/title-hero {\\"altText\\":\\"Image alt text.\\"} -->
+<div class=\\"pu-title-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"Image alt text.\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><p></p></div></div></div></div></div>
+<!-- /wp:purdue-blocks/title-hero -->"
+`;
+
+exports[`Title Hero Block Intro copy should be editable. 1`] = `
+"<!-- wp:purdue-blocks/title-hero {\\"subText\\":\\"Test intro copy here.\\"} -->
+<div class=\\"pu-title-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><p>Test intro copy here.</p></div></div></div></div></div>
+<!-- /wp:purdue-blocks/title-hero -->"
+`;
+
+exports[`Title Hero Block Title should be editable. 1`] = `
+"<!-- wp:purdue-blocks/title-hero {\\"pageTitle\\":\\"Test Title\\"} -->
+<div class=\\"pu-title-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1>Test Title</h1><p></p></div></div></div></div></div>
+<!-- /wp:purdue-blocks/title-hero -->"
+`;
