@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 CTA Card Block 🔬 Block Editor Fields 🔬 Card Content Richtext fields 🔎 Text Richtext field. 1`] = `
+"<!-- wp:purdue-blocks/cta-card -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"><p class=\\"content\\">Test text here.</p></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Block Editor Fields 🔬 Card Content Richtext fields 🔎 Title Richtext field. 1`] = `
+"<!-- wp:purdue-blocks/cta-card -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"><p class=\\"title\\">Test Title</p></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/cta-card -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Card Image Settings 🔎 Image Alignment Options Radio Buttons 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"imgLocation\\":\\"right\\"} -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-right\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Card Image Settings 🔎 Image alt text field 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"altText\\":\\"Image alt text.\\"} -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"Image alt text.\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 General Card Settings 🔎 Card Size Options Radio Buttons. 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"cardType\\":\\"large\\"} -->
+<div class=\\" cta-card-horizonal cta-card-large cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-one-third-desktop is-one-third-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-two-thirds-desktop is-two-thirds-tablet is-full-mobile\\"><!-- wp:paragraph {\\"placeholder\\":\\"Add content\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 "Add a link to this card?" checkbox reveals link inputs 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"hasLink\\":true} -->
+<a href=\\"\\" target=\\"_self\\" class=\\"cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></a>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 "Add a link to this card?" checkbox reveals link inputs 2`] = `
+"<!-- wp:purdue-blocks/cta-card -->
+<div class=\\" cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></div>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link can be opened in new tab 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\",\\"external\\":true} -->
+<a href=\\"https://www.purdue.edu\\" target=\\"_blank\\" class=\\"cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></a>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"hasLink\\":true,\\"linkText\\":\\"CTA text\\"} -->
+<a href=\\"\\" target=\\"_self\\" class=\\"cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"><div class=\\"read-more-button\\"><span>CTA text</span></div></div></div></a>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
+
+exports[`🔬 CTA Card Block 🔬 Side Panel Settings 🔬 Link can be added to the card 🔎 Link url field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/cta-card {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\"} -->
+<a href=\\"https://www.purdue.edu\\" target=\\"_self\\" class=\\"cta-card-horizonal cta-card-small cta-card-left\\" rel=\\"noopener noreferrer\\"><div class=\\"columns is-multiline\\"><div class=\\"column is-two-fifths-desktop is-two-fifths-tablet is-full-mobile\\"><figure class=\\"image is-3by2\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"column is-three-fifths-desktop is-three-fifths-tablet is-full-mobile\\"></div></div></a>
+<!-- /wp:purdue-blocks/cta-card -->"
+`;
