@@ -16,7 +16,12 @@ export const clickElementByText = async ( elementExpression, text ) => {
     const [ element ] = await page.$x( `//${ elementExpression }[contains(text(),"${ text }")]` );
     await element.click();
 };
-
+// Clicks an element on the page given an html element and aria text of the element
+// useful for clicking buttons on the toolbar
+export const clickElementByAria = async ( elementExpression, text ) => {
+    const [ element ] = await page.$x( `//${ elementExpression }[@aria-label="${ text }"]` );
+    await element.click();
+};
 // Used to select settings on sidebar by clicking the corresponding label for the control
 export const selectOption = async ( label, value ) => {
     const [ selectEl ] = await page.$x( `//label[@class="components-base-control__label"][contains(text(),"${ label }")]/following-sibling::select[@class="components-select-control__input"]` );
