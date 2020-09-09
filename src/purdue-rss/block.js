@@ -115,22 +115,32 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
           }else{
             props.setAttributes({data:JSON.parse(response)});
             props.setAttributes({error:""});
-            console.log(JSON.parse(response)[0].id);
           }
         }
       })
     };
 
-    const itemListImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 3).map(data => {
-        return (itemImage(data))
-        }):"";
-    
+    const itemListImage=props.attributes.data&&props.attributes.data.length>0?props.attributes.data.slice(0, 3).map(data => {
+      return (    
+      <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
+          {itemImage(data)}
+      </div>)
+      }):"";
+  
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
-      return (itemNoImage(data))
+      return (
+        <div key={data.id}>
+          {itemNoImage(data)}
+        </div>
+        )
       }):"";
 
     const itemListAll=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(data => {
-      return (itemAll(data))
+      return (
+        <div key={data.id} className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
+          {itemAll(data)}
+        </div>
+      )
       }):"";
 
     const [ isEditing, setIsEditing ] = useState( ! props.attributes.feedURL );
@@ -328,16 +338,27 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const itemListImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 3).map(data => {
-      return (itemImage(data))
+    const itemListImage=props.attributes.data&&props.attributes.data.length>0?props.attributes.data.slice(0, 3).map(data => {
+      return (    
+      <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
+          {itemImage(data)}
+      </div>)
       }):"";
   
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
-      return (itemNoImage(data))
+      return (
+        <div key={data.id}>
+          {itemNoImage(data)}
+        </div>
+        )
       }):"";
 
     const itemListAll=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(data => {
-      return (itemAll(data))
+      return (
+        <div key={data.id} className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
+          {itemAll(data)}
+        </div>
+      )
       }):"";
     return (
       <div className={'news-feed'}>
@@ -387,36 +408,34 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
 function itemImage(data){
   return (
-    <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
-      <div className={"card feed-item"}>
-        <a href={data.link[0]}>
-          {data.imgURL&&data.imgURL!==""?
-            <div className={"card-bg-image image is-2by1"} 
-            role="img"
-            style={{backgroundImage:`url(${ data.imgURL })`}}
-            aria-label={ data.imgALT }
-            >
-            </div>:""}                   
-          <div className="card-content">
-            <div className="media">
-              <div className="media-content">
-                <p className="title is-4">
-                  {data.title[0]}									
-                </p>
-              </div>
+    <div className={"card feed-item"}>
+      <a href={data.link}>
+        {data.imgURL&&data.imgURL!==""?
+          <div className={"card-bg-image image is-2by1"} 
+          role="img"
+          style={{backgroundImage:`url(${ data.imgURL })`}}
+          aria-label={ data.imgALT }
+          >
+          </div>:""}                   
+        <div className="card-content">
+          <div className="media">
+            <div className="media-content">
+              <p className="title is-4">
+                {data.title}									
+              </p>
             </div>
-          <div className="read-more-button">
-            <span>Read More</span>
           </div>
+        <div className="read-more-button">
+          <span>Read More</span>
         </div>
-        </a>
       </div>
+      </a>
     </div>
   );
 }
 function itemNoImage(data){
   return (
-    <a key={data.id} className={"meida feed-item-noimage"} href={data.link[0]}>                 
+    <a className={"meida feed-item-noimage"} href={data.link}>                 
       <div className="media-left">
             <p className="month">
               {data.month}									
@@ -428,7 +447,7 @@ function itemNoImage(data){
       <div className="media-content">
         <div className="content">
           <p className="title">
-            {data.title[0]}	
+            {data.title}	
           </p>
           <p className="desc">
             {data.text}	
@@ -440,36 +459,34 @@ function itemNoImage(data){
 }
 function itemAll(data){
   return (
-    <div key={data.id} className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
-      <div className={"card feed-item"}>
-        <a href={data.link[0]}>
-          {data.imgURL&&data.imgURL!==""?
-            <div className={"card-bg-image image is-2by1"} 
-            role="img"
-            style={{backgroundImage:`url(${ data.imgURL })`}}
-            aria-label={ data.imgALT }
-            >
-            </div>:""}                   
-          <div className="card-content">
-            <div className="media">
-              <div className="media-content">
-                <p className="subtitle">
-                  {data.date}									
-                </p>
-                <p className="title is-4">
-                  {data.title[0]}									
-                </p>
-              </div>
+    <div className={"card feed-item"}>
+      <a href={data.link}>
+        {data.imgURL&&data.imgURL!==""?
+          <div className={"card-bg-image image is-2by1"} 
+          role="img"
+          style={{backgroundImage:`url(${ data.imgURL })`}}
+          aria-label={ data.imgALT }
+          >
+          </div>:""}                   
+        <div className="card-content">
+          <div className="media">
+            <div className="media-content">
+              <p className="subtitle">
+                {data.date}									
+              </p>
+              <p className="title is-4">
+                {data.title}									
+              </p>
             </div>
-          <div className="content-text">
-            {data.text}												
           </div>
-          <div className="read-more-button">
-            <span>Read More</span>
-          </div>
+        <div className="content-text">
+          {data.text}												
         </div>
-        </a>
+        <div className="read-more-button">
+          <span>Read More</span>
+        </div>
       </div>
+      </a>
     </div>
   );
 }

@@ -51,15 +51,18 @@ function feed_url_endpoint($data){
            }else{
                $imgALT='';
            }
-           $text=substr(strip_tags($description), 0, 300)."...";
+           $text="";
+           if(strlen(strip_tags($description))>0){
+            $text=substr(strip_tags($description), 0, 300)."...";
+           }
            $postDate = $item->pubDate;
            $date = date('M d, Y',strtotime($postDate));
            $month = date('M',strtotime($postDate));
            $day = date('d',strtotime($postDate));
            $node=array(
                'id'=>$id,
-               'title'=>$title,
-               'link'=>$link,
+               'title'=>strval($title),
+               'link'=>strval($link),
                'date'=>$date,
                'month'=>$month,
                'day'=>$day,

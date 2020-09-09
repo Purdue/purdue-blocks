@@ -47,12 +47,14 @@
               background-repeat: no-repeat;
             }        
             .card-content {
-              padding: 0 2.5rem 2.5rem;
+              padding: 1rem 2.5rem 2.5rem;
+              &:first-child{
+                padding-top: 2.5rem;
+              }
               @include touch{
                 padding: 0 1.5rem 2.5rem;
               }
               .title {
-                margin-top: 1rem;
                 font-family: $acumin-pro-semicondensed;
                 font-weight: 600;
                 font-size:1.5625rem;
