@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Card Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/cta-button -->
+<div target=\\"_self\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"card-content\\"><p></p><a href=\\"\\" class=\\"cta-card__button\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔎 Card Text Field 1`] = `
+"<!-- wp:purdue-blocks/cta-button {\\"subText\\":\\"Test Title\\"} -->
+<div target=\\"_self\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"card-content\\"><p>Test Title</p><a href=\\"\\" class=\\"cta-card__button\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 CTA Button Setting Fields 🔎 CTA Button Text Field 1`] = `
+"<!-- wp:purdue-blocks/cta-button {\\"ctaText\\":\\"CTA text test\\"} -->
+<div target=\\"_self\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"card-content\\"><p></p><a href=\\"\\" class=\\"cta-card__button\\">CTA text test</a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 CTA Button Setting Fields 🔎 CTA Link Field 1`] = `
+"<!-- wp:purdue-blocks/cta-button {\\"link\\":\\"Https://www.purdue.edu\\"} -->
+<div target=\\"_self\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"card-content\\"><p></p><a href=\\"Https://www.purdue.edu\\" class=\\"cta-card__button\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔎 Image alt text should be editable. 1`] = `
+"<!-- wp:purdue-blocks/cta-button {\\"altText\\":\\"Image alt text.\\"} -->
+<div target=\\"_self\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"Image alt text.\\"/></figure></div><div class=\\"card-content\\"><p></p><a href=\\"\\" class=\\"cta-card__button\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Settings 🔎 Open Link in New Tab Chackbox 1`] = `
+"<!-- wp:purdue-blocks/cta-button {\\"external\\":true} -->
+<div target=\\"_blank\\" class=\\"card cta-card\\" rel=\\"noopener noreferrer\\"><div class=\\"card-image\\"><figure class=\\"image\\"><img src=\\"\\" alt=\\"\\"/></figure></div><div class=\\"card-content\\"><p></p><a href=\\"\\" class=\\"cta-card__button\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-button -->"
+`;
