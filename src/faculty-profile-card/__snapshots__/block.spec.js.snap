@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Faculty Profile Card Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul></ul></div></div></div><div class=\\"level is-mobile\\"></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Block Editor Fields 🔬 Personal Info Fields 🔎 Add Email Address Field 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"email\\":\\"test@test.test\\"} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul><li><i class=\\"fas fa-envelope\\" aria-hidden=\\"true\\"></i><div class=\\"profile-info-item\\"><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" href=\\"mailto:test@test.test\\">test@test.test</a><span>Email</span></div></li></ul></div></div></div><div class=\\"level is-mobile\\"></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Block Editor Fields 🔬 Personal Info Fields 🔎 Add Personal Website Field 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"personalLink\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul><li><i class=\\"fas fa-desktop\\" aria-hidden=\\"true\\"></i><div class=\\"profile-info-item\\"><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" href=\\"https://www.purdue.edu\\">https://www.purdue.edu</a><span>Personal Website</span></div></li></ul></div></div></div><div class=\\"level is-mobile\\"></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Block Editor Fields 🔬 Personal Info Fields 🔎 Add Phone Number Field 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"phone\\":\\"123 456 7890\\"} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul><li><i class=\\"fas fa-phone\\" aria-hidden=\\"true\\"></i><div class=\\"profile-info-item\\"><p>123 456 7890</p><span>Phone</span></div></li></ul></div></div></div><div class=\\"level is-mobile\\"></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Side Panel Settings 🔎 Image alt text field 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"altText\\":\\"Image alt text.\\"} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul></ul></div></div></div><div class=\\"level is-mobile\\"></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Side Panel Settings 🔬 Social Share Links 🔎 "Include Social Share Links" checkbox reveals individual checkboxes 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"includeSocial\\":true} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul></ul></div></div></div><div class=\\"level is-mobile\\"><div class=\\"level-right content\\"><p class=\\"level-item\\">Follow Me: </p></div></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
+
+exports[`🔬 Faculty Profile Card Block 🔬 Side Panel Settings 🔬 Social Share Links 🔎 Social links added correctly 1`] = `
+"<!-- wp:purdue-blocks/faculty-profile-card {\\"includeSocial\\":true,\\"checkedSocials\\":{\\"Facebook\\":{\\"slug\\":\\"facebook-square\\",\\"checked\\":true},\\"Twitter\\":{\\"slug\\":\\"twitter-square\\",\\"checked\\":true},\\"LinkedIn\\":{\\"slug\\":\\"linkedin\\",\\"checked\\":true},\\"Instagram\\":{\\"slug\\":\\"instagram\\",\\"checked\\":true}}} -->
+<div class=\\"faculty-profile-card box\\"><div class=\\"media\\"><div class=\\"media-left\\"><div class=\\"image\\"><img src=\\"\\"/></div></div><div class=\\"media-content\\"><div class=\\"content\\"><ul></ul></div></div></div><div class=\\"level is-mobile\\"><div class=\\"level-right content\\"><p class=\\"level-item\\">Follow Me: </p><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" class=\\"level-item\\" href=\\"undefined\\"><i class=\\"fab fa-facebook-square\\" aria-hidden=\\"true\\"></i></a><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" class=\\"level-item\\" href=\\"undefined\\"><i class=\\"fab fa-twitter-square\\" aria-hidden=\\"true\\"></i></a><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" class=\\"level-item\\" href=\\"undefined\\"><i class=\\"fab fa-linkedin\\" aria-hidden=\\"true\\"></i></a><a target=\\"_blank\\" rel=\\"noopener noreferrer\\" class=\\"level-item\\" href=\\"undefined\\"><i class=\\"fab fa-instagram\\" aria-hidden=\\"true\\"></i></a></div></div></div>
+<!-- /wp:purdue-blocks/faculty-profile-card -->"
+`;
