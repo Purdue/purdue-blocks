@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Card Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/feature-story -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 CTA Button fields 🔎 CTA Text Field 1`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"ctaText\\":\\"CTA Text test.\\"} -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 CTA Button fields 🔎 CTA URL Field 1`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"ctaUrl\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 Main content fields 🔎 Content Body Field 1`] = `
+"<!-- wp:purdue-blocks/feature-story -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p>Content main body test.</p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Block Editor Fields 🔬 Main content fields 🔎 Story Header Field 1`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"header\\":\\"Content Header test.\\"} -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><h2>Content Header test.</h2><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Fields 🔎 Content alignment option radio buttons 1`] = `
+"<!-- wp:purdue-blocks/feature-story -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Fields 🔎 Content alignment option radio buttons 2`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"contentAlign\\":\\"right\\"} -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image-reversed\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow-reversed\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content content-reversed\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Fields 🔎 Full width option checkbox 1`] = `
+"<!-- wp:purdue-blocks/feature-story -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Fields 🔎 Full width option checkbox 2`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"style\\":false} -->
+<div class=\\"pu-feature-story pu-feature-story__narrow\\"><div class=\\"container pu-feature-story__container\\"><div class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"\\"></div><div class=\\"story-content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;
+
+exports[`🔬 Card Block 🔬 Side Panel Fields 🔎 Image alt text field. 1`] = `
+"<!-- wp:purdue-blocks/feature-story {\\"altText\\":\\"Image alt text.\\"} -->
+<div class=\\"pu-feature-story\\"><div class=\\"hero is-medium\\"><div class=\\"hero-image\\"><span class=\\"background-image\\" role=\\"img\\" style=\\"background-image:url()\\" aria-label=\\"Image alt text.\\"></span></div><div class=\\"shadow\\"></div><div class=\\"hero-body\\"><div class=\\"container\\"><div class=\\"content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Body content copy\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div></div></div></div>
+<!-- /wp:purdue-blocks/feature-story -->"
+`;

@@ -42,7 +42,7 @@ const BLOCKS_TEMPLATE = [
  */
 registerBlockType( 'purdue-blocks/feature-story', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Featured story' ), // Block title.
+  title: __( 'Featured Story' ), // Block title.
   icon: (
     <svg
       aria-hidden="true"
