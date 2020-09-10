@@ -10,6 +10,7 @@
     "env": "wp-env"
   },
   "dependencies": {
+    "@wordpress/icons": "^2.4.0",
     "bulma": "^0.8.2"
   },
   "devDependencies": {
