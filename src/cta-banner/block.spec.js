@@ -17,7 +17,7 @@ import {
 
 const block = {blockTitle: 'CTA Banner', blockName: 'purdue-blocks/cta-banner'}
 
-describe( '🔬 Proofpoint Block', () => {
+describe( '🔬 CTA Banner Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
