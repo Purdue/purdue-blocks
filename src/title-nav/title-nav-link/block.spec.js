@@ -12,15 +12,12 @@ import {
 import {
     clickElementByText,
     blockStartup,
-    updateRangeInput,
     clickCheckbox,
-    openSidebarPanelWithTitle,
-    openSidebar
 } from '../../test-helpers'
 
 const block = {blockTitle: 'Titled Navigation', blockName: 'purdue-blocks/title-nav'}
 
-describe( 'Titled Navigation Link Block', () => {
+describe( '🔬 Titled Navigation Link Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
@@ -28,7 +25,7 @@ describe( 'Titled Navigation Link Block', () => {
         await createNewPost();
     } );
 
-    it( 'Block should exist at minimum one.', async () => {
+    test( '🔎 Block should exist at minimum one.', async () => {
         await blockStartup(block)
 
         // tests that the block is properly inserted and matches the existing snapshot
@@ -36,7 +33,7 @@ describe( 'Titled Navigation Link Block', () => {
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
-    it( 'Current page checkbox should add correct style.', async () => {
+    test( '🔎 Current page checkbox should add correct style.', async () => {
         await blockStartup(block)
 
         // select title-nav-link
@@ -59,7 +56,7 @@ describe( 'Titled Navigation Link Block', () => {
         expect( await getEditedPostContent() ).toMatchSnapshot()
     })
 
-    it( 'Richtext editor should update output correctly.', async () => {
+    test( '🔎 Richtext editor should update output correctly.', async () => {
         await blockStartup(block)
 
         const typeString = 'Text'
