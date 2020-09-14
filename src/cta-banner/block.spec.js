@@ -9,10 +9,7 @@ import {
 import {
     clickElementByText,
     blockStartup,
-    updateRangeInput,
-    clickCheckbox,
     clickRadio,
-    openSidebarPanelWithTitle
 } from '../test-helpers'
 
 const block = {blockTitle: 'CTA Banner', blockName: 'purdue-blocks/cta-banner'}
@@ -26,10 +23,10 @@ describe( '🔬 CTA Banner Block', () => {
     } );
 
     test( '🔎 Block should be available.', async () => {
-        await insertBlock( 'CTA Banner' )
+        await insertBlock( block.blockTitle )
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/cta-banner"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
