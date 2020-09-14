@@ -4,7 +4,6 @@ import {
     createNewPost,
     enablePageDialogAccept,
     getEditedPostContent,
-    insertBlock,
     getAllBlocks,
     selectBlockByClientId
 } from '@wordpress/e2e-test-utils';
