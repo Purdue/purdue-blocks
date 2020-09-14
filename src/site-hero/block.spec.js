@@ -28,17 +28,17 @@ describe( '🔬 Site Hero Block', () => {
     } );
 
     it( 'Block should be available.', async () => {
-        await insertBlock( 'Site Hero' )
+        await insertBlock( block.blockTitle )
 
 
         // tests that the block is properly inserted
-        expect(await page.$('[data-type="purdue-blocks/site-hero"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
     } )
 
     describe ( '🔬 Block Editor Fields', () => {
         
         // test fields and settings that appear in the editor in the block area.
-        test( 'Button should open Media Library.', async () => {
+        test( '🔎 Button should open Media Library.', async () => {
             await blockStartup(block)
     
             // open media library
@@ -53,7 +53,7 @@ describe( '🔬 Site Hero Block', () => {
             */
         })
     
-        test( 'Title should be editable.', async () => {
+        test( '🔎 Title should be editable.', async () => {
             await blockStartup(block)
     
             const typeString = "Test Title"
@@ -69,7 +69,7 @@ describe( '🔬 Site Hero Block', () => {
             expect( editedContent.includes(`<h1>${typeString}</h1>`)).toBe(true)
         })
     
-        test( 'Intro copy should be editable.', async () => {
+        test( '🔎 Intro copy should be editable.', async () => {
             await blockStartup(block)
     
             const typeString = "Test intro copy here."
@@ -89,7 +89,7 @@ describe( '🔬 Site Hero Block', () => {
     describe('🔬 Side Panel Settings', () => {
 
         // Test settings found in block settings sidebar.
-        test( 'Hero layout correctly toggled.', async () => {
+        test( '🔎 Hero layout correctly toggled.', async () => {
             await blockStartup(block)
     
             // first toggle to 40/60 hero
@@ -109,7 +109,7 @@ describe( '🔬 Site Hero Block', () => {
             expect( editedContent.includes(`"styleToggle":true`)).toBe(false)
         })
     
-        test( 'Image alt text should be editable.', async () => {
+        test( '🔎 Image alt text should be editable.', async () => {
             await blockStartup(block)
     
             const typeString = "Image alt text."
@@ -138,7 +138,7 @@ describe( '🔬 Site Hero Block', () => {
         describe('🔬 "Jump to Article" Button',  () => {
 
             // test the settings for adding a jump to article button
-            test( 'Add "Jump to Article" Button', async () => {
+            test( '🔎 Add "Jump to Article" Button', async () => {
                 await blockStartup(block)
     
                 await clickCheckbox('Include a Jump to Article button')
@@ -148,7 +148,7 @@ describe( '🔬 Site Hero Block', () => {
                 expect( editedContent.includes('"include-social":true'))
             })
 
-            test( 'Add anchor via id', async () => {
+            test( '🔎 Add anchor via id', async () => {
                 await blockStartup(block)
                 await clickCheckbox('Include a Jump to Article button')
 
@@ -167,7 +167,7 @@ describe( '🔬 Site Hero Block', () => {
         describe('🔬 Social Share Links', () => {
 
             // test settings in the sidebar for adding the social share links to the hero
-            test( '"Include Social Share Links" checkbox reveals individual checkboxes', async () => {
+            test( '🔎 "Include Social Share Links" checkbox reveals individual checkboxes', async () => {
                 await blockStartup(block)
         
                 await clickCheckbox('Include Social Share Links')
@@ -182,7 +182,7 @@ describe( '🔬 Site Hero Block', () => {
                 
             })
 
-            test( 'Social links added corrctly', async () => {
+            test( '🔎 Social links added corrctly', async () => {
                 await blockStartup(block)
                 await clickCheckbox('Include Social Share Links')
 
