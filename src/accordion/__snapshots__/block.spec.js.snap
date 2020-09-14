@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`🔬 Accordion Block Block should be available. 1`] = `
-"<!-- wp:purdue-blocks/title-nav -->
-<section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
-<li class=\\"\\"></li>
-<!-- /wp:purdue-blocks/title-nav-link --></ul></section>
-<!-- /wp:purdue-blocks/title-nav -->"
+exports[`🔬 Accordion Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/accordion {\\"id\\":\\"279ec068-cece-41e9-86a6-98ce85503787\\"} -->
+<div class=\\"accordion\\"><p id=\\"title-279ec068-cece-41e9-86a6-98ce85503787\\" class=\\"accordion-title\\" aria-controls=\\"content-279ec068-cece-41e9-86a6-98ce85503787\\" aria-expanded=\\"false\\"></p><div id=\\"content-279ec068-cece-41e9-86a6-98ce85503787\\" class=\\"accordion-content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Add content\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div></div>
+<!-- /wp:purdue-blocks/accordion -->"
 `;
