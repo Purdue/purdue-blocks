@@ -1,3 +1,4 @@
+// Accordion Block Test Suite
 
 jest.setTimeout(30000)
 import {
@@ -9,12 +10,7 @@ import {
 
 import {
     selectOption,
-    clickElementByText,
     blockStartup,
-    updateRangeInput,
-    clickCheckbox,
-    clickRadio,
-    openSidebarPanelWithTitle
 } from '../test-helpers'
 
 const block = {blockTitle: 'Accordion', blockName: 'purdue-blocks/accordion'}
@@ -27,7 +23,7 @@ describe( '🔬 Accordion Block', () => {
         await createNewPost();
     } );
 
-    test( 'Block should be available.', async () => {
+    test( '🔎 Block should be available.', async () => {
         await insertBlock( 'Titled Navigation' )
 
 
@@ -37,7 +33,7 @@ describe( '🔬 Accordion Block', () => {
     } )
 
     describe( '🔬 Richtext Block Fields', () => {
-        test( 'Title updates output correctly', async () => {
+        test( '🔎 Title updates output correctly', async () => {
             await blockStartup(block)
 
             const typeString = "Accordion Title Test"
@@ -48,7 +44,7 @@ describe( '🔬 Accordion Block', () => {
             expect( editedContent.includes(`>${typeString}</p>`)).toBe(true)
         })
 
-        test( 'Content updates output correctly', async () => {
+        test( '🔎 Content updates output correctly', async () => {
             await blockStartup(block)
 
             const typeString = "Accordion content test string"
@@ -61,7 +57,7 @@ describe( '🔬 Accordion Block', () => {
     })
 
     describe( '🔬 Side Panel Settings', () => {
-        test( 'Heading level dropdown selector', async () => {
+        test( '🔎 Heading level dropdown selector', async () => {
             await blockStartup(block)
 
             await selectOption('Heading level of the title', 'h2')
