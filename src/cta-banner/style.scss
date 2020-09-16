@@ -5,9 +5,12 @@
  */
 
  .pu-cta-banner {
-   padding:1.71875rem 1.5rem;
+   padding:1.71875rem $side-padding-desktop;
     @include touch{
-      padding:2.8125rem 1.5rem;
+      padding:2.8125rem $side-padding-tablet;
+    }
+    @include mobile{
+      padding:2.8125rem $side-padding-mobile;
     }
   .container{
     display:flex;
@@ -18,7 +21,13 @@
   }
   &-gray{
     background-color: $steel-gray;
-    padding:2.1875rem 1.5rem;
+    padding:2.1875rem $side-padding-desktop;
+    @include touch{
+      padding:2.1875rem $side-padding-tablet;
+    }
+    @include mobile{
+      padding:2.1875rem $side-padding-mobile;
+    }
     .container{
       align-items:center;
       justify-content: center;

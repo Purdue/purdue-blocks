@@ -20,17 +20,19 @@
        align-items: flex-end;
        justify-content: flex-end;
        margin: 0 !important;
-       padding:2.3125rem 1.5rem 8.4375rem !important;
+       padding:2.3125rem $side-padding-desktop 8.4375rem !important;
 
        @include touch {
          order: 2;
          height: auto;
          align-items: flex-start;
          justify-content: flex-start;
-         padding:2.1875rem 1.5rem 2.8125rem !important;
+         padding:2.1875rem $side-padding-tablet 2.8125rem !important;
          box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
        }
- 
+       @include mobile {
+        padding:2.1875rem $side-padding-mobile 2.8125rem !important;
+      }
        @include desktop {
          order: 1;
          justify-content: flex-end;
@@ -195,11 +197,15 @@
        display: flex;
        align-items: center;
        z-index: 2;
-       padding: 7rem 1.5rem !important;
+       padding: 7rem $side-padding-desktop !important;
        @include touch {
          order: 2;
-         padding: 1rem 1.5rem 2.8125rem !important;
+         padding: 1rem $side-padding-tablet 2.8125rem !important;
        }
+       @include mobile {
+        order: 2;
+        padding: 1rem $side-padding-mobile 2.8125rem !important;
+      }
       .container{
         width:100%;
       }

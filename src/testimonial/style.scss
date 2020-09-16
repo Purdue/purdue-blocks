@@ -13,9 +13,12 @@
    color: $black;
    background: $secondary-background-gray;
    margin:0 !important;
-   padding:5.9375rem 1.5rem;
+   padding:5.9375rem $side-padding-desktop;
+   @include touch{
+    padding:2.1875rem $side-padding-tablet;
+  }
    @include mobile{
-     padding:2.1875rem 1.5rem;
+     padding:2.1875rem $side-padding-mobile;
    }
    .error-message{
      font-size: 1.125rem;

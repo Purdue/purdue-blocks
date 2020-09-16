@@ -4,13 +4,13 @@
  * CSS for both Frontend+Backend.
  */
 
-.pu-image-showcase {
+.section.pu-image-showcase {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
 .has-decoration {
-  padding: 2rem 1.5rem;
+  padding: 2rem $side-padding-desktop;
   position: relative;
 
   @include mobile {
