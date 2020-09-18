@@ -5,6 +5,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.9.0] 2020-09-10
+#### Added
+- Purdue RSS block
+- End-to-end testing suites for Purdue RSS block
+
+### [1.8.0] 2020-09-10
+#### Added
+- End-to-end testing suites for each block
+
 ### [1.7.3] 2020-08-19
 #### Added
 - Card block

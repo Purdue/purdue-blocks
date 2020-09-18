@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 CTA Hero Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/cta-hero -->
+<div class=\\"pu-cta-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><a href=\\"\\" class=\\"pu-cta-hero__button\\"></a></div></div></div></div></div>
+<!-- /wp:purdue-blocks/cta-hero -->"
+`;
+
+exports[`🔬 CTA Hero Block 🔬 Block Editor Fields 🔎 Page Title Field 1`] = `
+"<!-- wp:purdue-blocks/cta-hero {\\"pageTitle\\":\\"CTA Hero page title test.\\"} -->
+<div class=\\"pu-cta-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1>CTA Hero page title test.</h1><a href=\\"\\" class=\\"pu-cta-hero__button\\"></a></div></div></div></div></div>
+<!-- /wp:purdue-blocks/cta-hero -->"
+`;
+
+exports[`🔬 CTA Hero Block 🔬 Block Editor Fields 🔬 CTA Button Settings Fields 🔎 CTA text field 1`] = `
+"<!-- wp:purdue-blocks/cta-hero {\\"ctaText\\":\\"CTA Hero button text test.\\"} -->
+<div class=\\"pu-cta-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><a href=\\"\\" class=\\"pu-cta-hero__button\\">CTA Hero button text test.</a></div></div></div></div></div>
+<!-- /wp:purdue-blocks/cta-hero -->"
+`;
+
+exports[`🔬 CTA Hero Block 🔬 Block Editor Fields 🔬 CTA Button Settings Fields 🔎 CTA url field 1`] = `
+"<!-- wp:purdue-blocks/cta-hero {\\"ctaUrl\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"pu-cta-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><a href=\\"https://www.purdue.edu\\" class=\\"pu-cta-hero__button\\"></a></div></div></div></div></div>
+<!-- /wp:purdue-blocks/cta-hero -->"
+`;
+
+exports[`🔬 CTA Hero Block 🔬 Side Panel Settings 🔎 Image alt text field. 1`] = `
+"<!-- wp:purdue-blocks/cta-hero {\\"altText\\":\\"Image alt text.\\"} -->
+<div class=\\"pu-cta-hero\\"><div class=\\"hero is-large\\"><div class=\\"hero-body\\"><div class=\\"background-image\\" aria-label=\\"Image alt text.\\"><style>
+              .background-image {background-image: url();}
+              @media (max-width: 767px) {
+                .background-image {background-image: url();}
+              }
+            </style></div><div class=\\"container\\"><div class=\\"content\\"><h1></h1><a href=\\"\\" class=\\"pu-cta-hero__button\\"></a></div></div></div></div></div>
+<!-- /wp:purdue-blocks/cta-hero -->"
+`;

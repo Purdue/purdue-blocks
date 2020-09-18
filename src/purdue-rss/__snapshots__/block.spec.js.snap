@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Purdue RSS Block 🔎 Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Feed URL Editor 🔎 Feed URL can be submitted 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"feedURL\\":\\"https://www.purdue.edu/\\",\\"data\\":null,\\"error\\":\\"Invalid RSS feed URL.\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"feed-header\\">Header text</p><p class=\\"error\\">Invalid RSS feed URL.</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Feed URL Editor 🔎 Feed URL is editable 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"feedURL\\":\\"https://www.purdue.edu/\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Feeds Display Editor 🔎 Header field should be editable 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"feedURL\\":\\"https://www.purdue.edu/\\",\\"data\\":null,\\"error\\":\\"Invalid RSS feed URL.\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"feed-header\\">Header text</p><p class=\\"error\\">Invalid RSS feed URL.</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Layout of the RSS feed should be selectable 🔎 All News/Events should be selectable. 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"type\\":\\"all\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Layout of the RSS feed should be selectable 🔎 Recent news without image should be selectable. 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"type\\":\\"withoutImage\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Link can be added 🔎 "Add a link to the news/events page?" checkbox reveals link inputs 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"hasLink\\":true} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Link can be added 🔎 "Add a link to the news/events page?" checkbox reveals link inputs 2`] = `
+"<!-- wp:purdue-blocks/purdue-rss -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Link can be added 🔎 Link can be opened in new tab 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"hasLink\\":true,\\"external\\":true} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Link can be added 🔎 Link text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"hasLink\\":true,\\"linkText\\":\\"CTA text\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;
+
+exports[`🔬 Purdue RSS Block 🔬 Block Editor Fields 🔬 Side Panel Settings 🔬 Link can be added 🔎 Link url field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/purdue-rss {\\"hasLink\\":true,\\"link\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"news-feed\\"><div class=\\"container\\"><p class=\\"error\\">Loading...</p></div></div>
+<!-- /wp:purdue-blocks/purdue-rss -->"
+`;

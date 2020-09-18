@@ -1,6 +1,6 @@
 {
   "name": "purdue-blocks-cgb-guten-block",
-  "version": "1.7.3",
+  "version": "1.9.0",
   "private": true,
   "scripts": {
     "build": "wp-scripts build",
@@ -10,6 +10,7 @@
     "env": "wp-env"
   },
   "dependencies": {
+    "@wordpress/icons": "^2.4.0",
     "bulma": "^0.8.2"
   },
   "devDependencies": {
