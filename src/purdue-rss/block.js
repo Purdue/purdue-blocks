@@ -129,7 +129,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
   
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
-        <div key={data.id}>
+        <div key={data.id} class="feed-item-noimage">
           {itemNoImage(data)}
         </div>
         )
@@ -347,7 +347,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
   
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
-        <div key={data.id}>
+        <div key={data.id} class="feed-item-noimage">
           {itemNoImage(data)}
         </div>
         )
