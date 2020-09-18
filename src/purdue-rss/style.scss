@@ -6,9 +6,9 @@
 
  .news-feed{
     background:#ededed;
-    padding:6rem 1.5rem;
+    padding:6rem $side-padding-tablet;
     @include mobile{
-      padding:2.1875rem 1.5rem;
+      padding:2.1875rem $side-padding-mobile;
     }
     .container{
       .feed-header{
