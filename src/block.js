@@ -25,3 +25,4 @@ import './card/block.js'
 import './accordion/block.js';
 import './cta-card/block.js';
 import './purdue-rss/block.js';
+import './anchor-link-navigation/block.js';

@@ -1,0 +1,59 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .accordion{
+   border:1px solid $cool-gray;
+   border-radius: 0.625rem;
+   font-family:$acumin-pro;
+   margin:1rem 0;
+  .accordion-title{
+    padding: 2.1875rem 1.875rem;
+    margin:0 !important;
+    font-size:1.125rem;
+    font-weight:700;
+    line-height:1.875rem;
+    &:after{
+      font-family: "Font Awesome 5 Free"; 
+      content: "\f078";
+      color:$cool-gray;
+      position: absolute;
+      right:1.5rem;
+    }
+  }  
+  .accordion-content{
+    display:none;
+    padding: 0 1.875rem 2.1875rem;
+    margin-top:-1rem;
+    height:0;
+    opacity: 0;
+    p{
+      line-height:1.875rem;
+      &:not(:last-child){
+        margin-bottom:0.625rem;
+      }
+    }
+  }
+  &.is-open{
+      .accordion-title{
+          &:after{
+            font-family: "Font Awesome 5 Free"; 
+            content: "\f077";
+            color:$cool-gray;
+          }
+      }  
+      .accordion-content{
+        display:block;
+        height:auto;
+        opacity: 1;
+        animation: fadeIn 1s;
+      }
+  }
+
+ }
+ @keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
