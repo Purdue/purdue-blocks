@@ -66,11 +66,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
    * @returns {Mixed} JSX Component.
    */
 
-  attributes: {
-    title: { type: 'string', source: 'html', selector: '.accordion-title' },
-    titleLevel: { type: 'string', default: 'p' },
-    id: { type: 'string', default: '' },
-  },
+  attributes: {},
 
   supports: {
     className: false,
@@ -82,8 +78,6 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   ),
 
   edit: ( props ) => {
-    const id = props.clientId;
-    props.setAttributes( { id: id } );
     return [
       <div className="anchor-link-block-editor">
             Preview/Publish the page to see the anchor link navigation menu.
