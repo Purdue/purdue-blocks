@@ -1,0 +1,11 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ .anchor-link-block-editor{
+  background-color:$primary-background-gray;
+  text-align:center;
+}

@@ -39,9 +39,9 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/anchor-link-navigation', {
+registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Anchor Link Navigation Block' ), // Block title.
+  title: __( 'Page Layout With Sidebar' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
@@ -67,6 +67,9 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
    */
 
   attributes: {
+    title: { type: 'string', source: 'html', selector: '.accordion-title' },
+    titleLevel: { type: 'string', default: 'p' },
+    id: { type: 'string', default: '' },
   },
 
   supports: {
@@ -79,6 +82,8 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   ),
 
   edit: ( props ) => {
+    const id = props.clientId;
+    props.setAttributes( { id: id } );
     return [
       <div className="anchor-link-block-editor">
             Preview/Publish the page to see the anchor link navigation menu.
