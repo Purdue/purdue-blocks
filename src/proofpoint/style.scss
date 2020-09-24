@@ -63,7 +63,7 @@
    }
    &__border{
      border-top:solid 5px $black;
-     box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+     box-shadow: $box-shadow;
    }
    &__highlighted{
      font-size: 4.6875rem;

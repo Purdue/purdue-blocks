@@ -28,7 +28,7 @@
          align-items: flex-start;
          justify-content: flex-start;
          padding:2.1875rem $side-padding-tablet 2.8125rem !important;
-         box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+         box-shadow: $box-shadow;
        }
        @include mobile {
         padding:2.1875rem $side-padding-mobile 2.8125rem !important;
@@ -153,7 +153,7 @@
       width: 40%;
       height: 100%;
       z-index: 1;
-      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      box-shadow: $box-shadow;
       @include mobile {
         display:none;
       }

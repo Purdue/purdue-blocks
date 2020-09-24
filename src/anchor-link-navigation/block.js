@@ -26,10 +26,6 @@ const {
 } = wp.components;
 const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 
-const BLOCKS_TEMPLATE = [
-  [ 'core/paragraph', { placeholder: 'Add content' } ],
-];
-
 /**
  * Register: aa Gutenberg Block.
  *
@@ -43,9 +39,9 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/accordion', {
+registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Accordion' ), // Block title.
+  title: __( 'Anchor Link Navigation Block' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
@@ -82,54 +78,15 @@ registerBlockType( 'purdue-blocks/accordion', {
 
   // Block description in side panel
   description: __(
-    'Create a single accordion.'
+    'Create a menu from the headers that have an HTML anchor.'
   ),
 
   edit: ( props ) => {
     const id = props.clientId;
     props.setAttributes( { id: id } );
     return [
-      <InspectorControls>
-        <PanelBody>
-          <PanelRow>
-            <SelectControl
-              label="Heading level of the title"
-              value={ props.attributes.titleLevel }
-              options={ [
-                { label: 'H2', value: 'h2' },
-                { label: 'H3', value: 'h3' },
-                { label: 'H4', value: 'h4' },
-                { label: 'H5', value: 'h5' },
-                { label: 'H6', value: 'h6' },
-                { label: 'P', value: 'p' },
-              ] }
-              onChange={ ( titleLevel ) => {
-                props.setAttributes( { titleLevel } )
-              } }
-            />
-          </PanelRow>
-        </PanelBody>
-      </InspectorControls>,
-
-      <div className="accordion-editor">
-        <RichText
-          tagname={ props.setAttributes.titleLevel }
-          value={ props.attributes.title }
-          className={ 'accordion-title' }
-          onChange={ ( text ) => {
-            props.setAttributes( { title: text } )
-          } }
-          placeholder="Add Title"
-          keepPlaceholderOnFocus={ true }
-          allowedFormats={ [] }
-        >
-        </RichText>
-        <div className="accordion-content">
-          <InnerBlocks
-            template={ BLOCKS_TEMPLATE }
-            allowedBlocks={ [ 'core/paragraph', 'core/list', 'core/table' ] }
-          />
-        </div>
+      <div className="anchor-link-block-editor">
+            Preview/Publish the page to see the anchor link navigation menu.
       </div>,
     ];
   },
@@ -147,18 +104,9 @@ registerBlockType( 'purdue-blocks/accordion', {
    */
   save: ( props ) => {
     const returned = (
-      <div className="accordion">
-        <RichText.Content
-          id={ `title-${ props.attributes.id }` }
-          className={ 'accordion-title' }
-          tagName={ props.attributes.titleLevel }
-          value={ props.attributes.title }
-          aria-controls={ `content-${ props.attributes.id }` }
-          aria-expanded={ 'false' }
-        />
-        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
-          <InnerBlocks.Content />
-        </div>
+      <div className="anchor-link-block">
+        <div class="anchor-link-block-links"></div>
+        <button id="to-top-sidebar" class="to-top-sidebar"><span>Back To Top</span></button>
       </div>
     );
     return returned;
