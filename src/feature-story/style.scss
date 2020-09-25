@@ -16,7 +16,7 @@
     }
   }
   &__narrow{
-    padding:6rem 1.5rem;
+    padding:6rem $side-padding-desktop;
     background-color:$primary-background-gray;
     & + &{
       padding-top:0;
@@ -26,10 +26,10 @@
       }
     }
     @include touch {
-      padding:2.5rem 1.5rem;
+      padding:2.5rem $side-padding-tablet;
     }
     @include mobile {
-      padding:2rem 1.5rem;
+      padding:2rem $side-padding-mobile;
     }
   }
   &__container{
@@ -86,14 +86,14 @@
       display: flex;
       align-items: center;
       z-index: 2;
-      padding: 10.375rem 1.5rem !important;
+      padding: 10.375rem $side-padding-desktop !important;
       @include touch {
         order: 2;
-        padding: 6rem 1.5rem !important;
+        padding: 6rem $side-padding-tablet !important;
       }
       @include mobile {
         box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
-        padding: 2.1875rem 1.5rem 2.8125rem !important;
+        padding: 2.1875rem $side-padding-mobile 2.8125rem !important;
       }
       .content {
         width: auto;

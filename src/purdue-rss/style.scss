@@ -6,9 +6,12 @@
 
  .news-feed{
     background:#ededed;
-    padding:6rem 1.5rem;
+    padding:6rem $side-padding-desktop;
+    @include touch{
+      padding:2.1875rem $side-padding-tablet;
+    }
     @include mobile{
-      padding:2.1875rem 1.5rem;
+      padding:2.1875rem $side-padding-mobile;
     }
     .container{
       .feed-header{
@@ -47,12 +50,9 @@
               background-repeat: no-repeat;
             }        
             .card-content {
-              padding: 1rem 2.5rem 2.5rem;
-              &:first-child{
-                padding-top: 2.5rem;
-              }
+              padding: 2.5rem 2.5rem;
               @include touch{
-                padding: 0 1.5rem 2.5rem;
+                padding: 1.5rem 2.5rem;
               }
               .title {
                 font-family: $acumin-pro-semicondensed;
@@ -68,8 +68,7 @@
                 font-size: 1.125rem;
                 color: $aged-gold;
                 text-transform: uppercase;
-                margin-bottom: 1rem;
-                margin-top: 2.8rem;
+                padding-bottom: 1rem;
               }
           
               .media {
@@ -281,6 +280,7 @@
           letter-spacing:0.9px;
           width:100%;
           max-width: 19.875rem;
+          margin-top:2.1875rem;
           &:hover {
             cursor: pointer;
             background: #fff;

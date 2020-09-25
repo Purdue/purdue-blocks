@@ -19,13 +19,14 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
-      padding: 17.25rem 1.5rem 3.75rem !important;
+      padding: 17.25rem $side-padding-desktop 3.75rem !important;
       margin: 0 !important;
 
       @include touch {
         height: auto;
         align-items: flex-start;
         justify-content: flex-start;
+        padding: 17.25rem $side-padding-tablet 3.75rem !important;
       }
 
       @include mobile { 
@@ -75,7 +76,7 @@
           order: 2;
           width: 100%;
           background-color: black;
-          padding: 2.1875rem 1.5rem;
+          padding: 2.1875rem $side-padding-mobile;
         }
       }
 
