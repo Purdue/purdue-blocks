@@ -45,7 +45,7 @@
     .story-content{
       width:50%;
       background-color:$white;
-      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      box-shadow: $box-shadow;
       padding:3.5rem 4.5rem;
       @include touch {
         width:100%;
@@ -92,7 +92,7 @@
         padding: 6rem $side-padding-tablet !important;
       }
       @include mobile {
-        box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+        box-shadow: $box-shadow;
         padding: 2.1875rem $side-padding-mobile 2.8125rem !important;
       }
       .content {
@@ -163,7 +163,7 @@
       width: 50%;
       height: 100%;
       z-index: 1;
-      box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+      box-shadow: $box-shadow;
       &-reversed{
         position: absolute;
         right: 0;
@@ -171,7 +171,7 @@
         width: 50%;
         height: 100%;
         z-index: 1;
-        box-shadow: 0 0.5em 1em -0.125em rgba(0, 0, 0, 0.1), 0 0px 0 1px rgba(0, 0, 0, 0.02);
+        box-shadow: $box-shadow;
         @include mobile {
           display:none;
         }

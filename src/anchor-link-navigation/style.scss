@@ -1,0 +1,52 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .anchor-link-block{
+   position:sticky;
+   box-shadow:$box-shadow;
+   top:2rem;
+   &-link{
+    display:block;
+    font-family:$acumin-pro;
+    font-size:1.125rem;
+    color:$steel-gray;
+    text-decoration:none;
+    border-left:solid 5px $aged-gold;
+    padding:1.0625rem 2.25rem;
+    &:hover{
+      color:$black;
+    }
+    &.is-active{
+       font-weight:700;    
+       border-left:solid 5px $black; 
+       color:$black;
+     }
+  }
+  .to-top-sidebar{
+    font-family:$acumin-pro-condensed;
+    font-weight:600;
+    font-size:1.25rem;
+    border: none;
+    width:100%;
+    box-shadow:$box-shadow;
+    padding:1.0625rem 2.25rem;
+    cursor:pointer;
+    &:focus{
+      outline:none;
+    }
+    span{
+      color:inherit;
+      position:relative;
+      &:after{
+        content: "\f0aa";
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        margin-left: 0.7rem;
+        position:relative;
+      }
+    }
+  }
+ }
