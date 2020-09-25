@@ -8,12 +8,9 @@ import {
 } from '@wordpress/e2e-test-utils';
 
 import {
-    clickElementByText,
     blockStartup,
-    updateRangeInput,
     clickCheckbox,
     clickRadio,
-    openSidebarPanelWithTitle
 } from '../test-helpers'
 
 const block = {blockTitle: 'Proof Point', blockName: 'purdue-blocks/proofpoint'}
@@ -27,17 +24,17 @@ describe( '🔬 Proofpoint Block', () => {
     } );
 
     test( 'Block should be available.', async () => {
-        await insertBlock( 'Proof Point' )
+        await insertBlock( block.blockTitle )
 
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/proofpoint"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
     describe('🔬 Block Editor Fields', () => {
         describe('🔬 Proofpoint body text fields', () => {
-            test('Highlighted Text field updates output correctly', async () => {
+            test('🔎 Highlighted Text field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "Highlighted text test."
@@ -49,7 +46,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( editedContent.includes(`"highlighted":"${typeString}"`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('Content Text field updates output correctly', async () => {
+            test('🔎 Content Text field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "Content text test."
@@ -61,7 +58,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( editedContent.includes(`"content":"${typeString}"`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('Proofpoint source field updates output correctly', async () => {
+            test('🔎 Proofpoint source field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "Proofpoint source test."
@@ -76,7 +73,7 @@ describe( '🔬 Proofpoint Block', () => {
         })
 
         describe('🔬 Proofpoint CTA fields', () => {
-            test('CTA text field updates output correctly', async () => {
+            test('🔎 CTA text field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "CTA text"
@@ -88,7 +85,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( editedContent.includes(`"ctaText":"${typeString}"`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
-            test('CTA url field updates output correctly', async () => {
+            test('🔎 CTA url field updates output correctly', async () => {
                 await blockStartup(block)
 
                 const typeString = "https://www.purdue.edu"
@@ -105,7 +102,7 @@ describe( '🔬 Proofpoint Block', () => {
 
     describe('🔬 Side Panel Settings', () => {
         describe('🔬 Background color controls', () => {
-            test('White background option reveals add border checkbox', async () => {
+            test('🔎 White background option reveals add border checkbox', async () => {
                 await blockStartup(block)
 
                 await clickRadio('Background Color', 'white')
@@ -117,7 +114,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
 
-            test('Add border checkbox correctly adds borders', async () => {
+            test('🔎 Add border checkbox correctly adds borders', async () => {
                 await blockStartup(block)
 
                 await clickRadio('Background Color', 'white')
@@ -128,7 +125,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
 
-            test('Button color on white background updates output correctly', async () => {
+            test('🔎 Button color on white background updates output correctly', async () => {
                 await blockStartup(block)
 
                 await clickRadio('Background Color', 'white')
@@ -148,7 +145,7 @@ describe( '🔬 Proofpoint Block', () => {
         })
 
         describe('🔬 Text Style Settings', () => {
-            test('Highlighted text style radio controls', async () => {
+            test('🔎 Highlighted text style radio controls', async () => {
                 await blockStartup(block)
 
                 // type in some content so that the p el is added to output to test text style setting
@@ -172,7 +169,7 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
 
-            test('Content text style radio controls', async () => {
+            test('🔎 Content text style radio controls', async () => {
                 await blockStartup(block)
 
                 // type in some content so that the p el is added to output to test text style setting

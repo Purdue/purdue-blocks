@@ -7,11 +7,7 @@ import {
 } from '@wordpress/e2e-test-utils';
 
 import {
-    clickElementByText,
     blockStartup,
-    updateRangeInput,
-    clickCheckbox,
-    openSidebarPanelWithTitle
 } from '../test-helpers'
 
 const block = {blockTitle: 'List', blockName: 'purdue-blocks/list'}
@@ -24,16 +20,16 @@ describe( '🔬 List Block', () => {
         await createNewPost();
     } );
 
-    test( 'Block should be available.', async () => {
-        await insertBlock( 'List' )
+    test( '🔎 Block should be available.', async () => {
+        await insertBlock( block.blockTitle )
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/list"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
     describe('🔬 Block Editor Fields', () => {
-        test('List Header field', async () => {
+        test('🔎 List Header field', async () => {
             await blockStartup(block)
 
             const typeString = 'List Header Test'
@@ -49,7 +45,7 @@ describe( '🔬 List Block', () => {
         })
 
         describe('🔬 WP Core List Field', () => {
-            test('Add unordered list in inner core list block field', async () => {
+            test('🔎 Add unordered list in inner core list block field', async () => {
                 await blockStartup(block)
     
                 const listItem1 = 'list item 1'
@@ -69,7 +65,7 @@ describe( '🔬 List Block', () => {
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
 
-            test('Add ordered list in inner core list block field', async () => {
+            test('🔎 Add ordered list in inner core list block field', async () => {
                 await blockStartup(block)
     
                 const listItem1 = 'list item 1'

@@ -9,7 +9,6 @@ import {
 import {
     clickElementByText,
     blockStartup,
-    clickRadio,
     clickCheckbox
 } from '../test-helpers'
 

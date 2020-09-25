@@ -25,10 +25,10 @@ describe( '🔬 Card Block', () => {
     } );
 
     test( '🔬 Block should be available.', async () => {
-        await insertBlock( 'Custom Card' )
+        await insertBlock( block.blockTitle )
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/card"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent()).toMatchSnapshot()
     } )
 

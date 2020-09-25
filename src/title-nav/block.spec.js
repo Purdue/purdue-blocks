@@ -25,17 +25,17 @@ describe( '🔬 Titled Navigation Block', () => {
         await createNewPost();
     } );
 
-    test( 'Block should be available.', async () => {
-        await insertBlock( 'Titled Navigation' )
+    test( '🔎 Block should be available.', async () => {
+        await insertBlock( block.blockTitle )
 
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/title-nav"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent() ).toMatchSnapshot()
     } )
 
     describe( '🔬 Block Editor Fields', () => {
-        test( 'Richtext editor should update output correctly.', async () => {
+        test( '🔎 Richtext editor should update output correctly.', async () => {
             await blockStartup(block)
 
             const typeString = 'Title Test'
@@ -54,7 +54,7 @@ describe( '🔬 Titled Navigation Block', () => {
     describe( '🔬 Side Panel Settings', () => {
 
         // Test settings in side panel
-        test( 'Outline should be added correctly.', async () => {
+        test( '🔎 Outline should be added correctly.', async () => {
             await blockStartup(block)
     
             //click to check the checkbox, outline should be on
@@ -78,7 +78,7 @@ describe( '🔬 Titled Navigation Block', () => {
         describe( '🔬 Adding/Removing Navigation Links', () => {
 
             // test settings to do with adding and removing the inner navigation links
-            test( 'Navigation links added correctly.', async () => {
+            test( '🔎 Navigation links added correctly.', async () => {
                 await blockStartup(block)
         
                 const addLinks = 3
@@ -91,7 +91,7 @@ describe( '🔬 Titled Navigation Block', () => {
         
             })
         
-            test( 'Number of navigation links update correctly.', async () => {
+            test( '🔎 Number of navigation links update correctly.', async () => {
                 await blockStartup(block)
         
                 let update = 5
@@ -113,7 +113,7 @@ describe( '🔬 Titled Navigation Block', () => {
         })
 
         describe( '🔬 CTA Button Settings', () => {
-            test( 'CTA button checkbox should toggle controls.', async () => {
+            test( '🔎 CTA button checkbox should toggle controls.', async () => {
                 await blockStartup(block)
         
                 // click the checkbox to show button controls
@@ -127,7 +127,7 @@ describe( '🔬 Titled Navigation Block', () => {
         
             })
         
-            test( 'CTA button controls should update output correctly.', async () => {
+            test( '🔎 CTA button controls should update output correctly.', async () => {
                 await blockStartup(block)
         
                 // click the checkbox to show button controls
