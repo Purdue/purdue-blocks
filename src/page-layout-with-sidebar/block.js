@@ -25,7 +25,12 @@ const {
   Button,
 } = wp.components;
 const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
-
+const BLOCKS_TEMPLATE_1 = [
+  [ 'core/paragraph', { placeholder: 'Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' } ],
+];
+const BLOCKS_TEMPLATE_2 = [
+  [ 'core/paragraph', { placeholder: 'Lorem Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' } ],
+];
 /**
  * Register: aa Gutenberg Block.
  *
@@ -67,9 +72,8 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
    */
 
   attributes: {
-    title: { type: 'string', source: 'html', selector: '.accordion-title' },
-    titleLevel: { type: 'string', default: 'p' },
-    id: { type: 'string', default: '' },
+    sidebarLocationDesktop: { type: 'string', default: 'right' },
+    sidebarLocationMobile: { type: 'string', default: 'below' },
   },
 
   supports: {
@@ -78,16 +82,61 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
 
   // Block description in side panel
   description: __(
-    'Create a menu from the headers that have an HTML anchor.'
+    'A layout pattern with a main content area and a sidebar area.'
   ),
 
   edit: ( props ) => {
-    const id = props.clientId;
-    props.setAttributes( { id: id } );
     return [
-      <div className="anchor-link-block-editor">
-            Preview/Publish the page to see the anchor link navigation menu.
-      </div>,
+      <InspectorControls>
+      <PanelBody>
+        <PanelRow>
+          <RadioControl
+            label="Sidebar location on desktop"
+            help="Choose to place sidebar on the left/right side of the main content."
+            selected={ props.attributes.sidebarLocationDesktop }
+            options={ [
+              { label: 'Left', value: 'left' },
+              { label: 'Right', value: 'right' },
+            ] }
+            onChange={ ( option ) => {
+              props.setAttributes( { sidebarLocationDesktop: option } )
+            } }
+          />
+        </PanelRow>
+        <PanelRow>
+          <RadioControl
+              label="Sidebar location on mobile"
+              help="Choose to place sidebar above/below the main content."
+              selected={ props.attributes.sidebarLocationMobile }
+              options={ [
+                { label: 'Above', value: 'above' },
+                { label: 'Below', value: 'below' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { sidebarLocationMobile: option } )
+              } }
+            />
+        </PanelRow>
+      </PanelBody>
+    </InspectorControls>,
+
+    <div className="section">
+      <div className="container">
+        <div className={`columns is-multiline${props.attributes.sidebarLocationDesktop === 'left' ? ' column-desktop-reverse' : ''}
+        ${props.attributes.sidebarLocationMobile === 'above' ? ' column-mobile-reverse' : ''}`}>
+          <div className="column is-8">
+            <InnerBlocks
+              template={ BLOCKS_TEMPLATE_1 }
+            />
+          </div>
+          <div className="column is-3">
+            <InnerBlocks
+              template={ BLOCKS_TEMPLATE_2 }
+            />
+          </div>
+        </div>
+      </div>
+    </div>,
     ];
   },
 
@@ -104,10 +153,19 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
    */
   save: ( props ) => {
     const returned = (
-      <div className="anchor-link-block">
-        <div class="anchor-link-block-links"></div>
-        <button id="to-top-sidebar" class="to-top-sidebar"><span>Back To Top</span></button>
+      <div className="section">
+      <div className="container">
+        <div className={`columns is-multiline${props.attributes.sidebarLocationDesktop === 'left' ? ' column-desktop-reverse' : ''}
+        ${props.attributes.sidebarLocationMobile === 'above' ? ' column-mobile-reverse' : ''}`}>
+          <div className="column is-8">
+            <InnerBlocks.Content />
+          </div>
+          <div className="column is-3">
+            <InnerBlocks.Content />
+          </div>
       </div>
+      </div>
+    </div>
     );
     return returned;
   },

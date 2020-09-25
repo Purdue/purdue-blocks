@@ -66,8 +66,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
    * @returns {Mixed} JSX Component.
    */
 
-  attributes: {
-  },
+  attributes: {},
 
   supports: {
     className: false,
