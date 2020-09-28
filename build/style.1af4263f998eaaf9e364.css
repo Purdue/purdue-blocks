@@ -9034,7 +9034,8 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
     .anchor-link-block-link.is-active {
       font-weight: 700;
       color: #000000;
-      border-left: solid 5px #000000; }
+      border-left: solid 5px #000000;
+      color: #000000; }
   .anchor-link-block .to-top-sidebar {
     font-family: acumin-pro-condensed, "Franklin Gothic", sans-serif;
     font-weight: 600;

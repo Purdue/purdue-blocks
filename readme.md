@@ -5,6 +5,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+
+### [1.10.0] 2020-09-25
+#### Added
+- Anchor link navigation block
+
+#### Updated
+- Clean up test suites to bring them all up to date and remove unnecessary commeents and references.
+- Style updates and fixes for the RSS feed block
+
 ### [1.9.0] 2020-09-10
 #### Added
 - Purdue RSS block

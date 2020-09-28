@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`🔬 Titled Navigation Block Block should be available. 1`] = `
+exports[`🔬 Titled Navigation Block 🔎 Block should be available. 1`] = `
 "<!-- wp:purdue-blocks/title-nav -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -8,7 +8,7 @@ exports[`🔬 Titled Navigation Block Block should be available. 1`] = `
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Block Editor Fields Richtext editor should update output correctly. 1`] = `
+exports[`🔬 Titled Navigation Block 🔬 Block Editor Fields 🔎 Richtext editor should update output correctly. 1`] = `
 "<!-- wp:purdue-blocks/title-nav -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\">Title Test</h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -16,7 +16,7 @@ exports[`🔬 Titled Navigation Block 🔬 Block Editor Fields Richtext editor s
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings Outline should be added correctly. 1`] = `
+exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔎 Outline should be added correctly. 1`] = `
 "<!-- wp:purdue-blocks/title-nav {\\"hasOutline\\":true} -->
 <section class=\\"section pu-title-nav has-outline\\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -24,7 +24,7 @@ exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings Outline should be
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings Outline should be added correctly. 2`] = `
+exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔎 Outline should be added correctly. 2`] = `
 "<!-- wp:purdue-blocks/title-nav -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -32,7 +32,7 @@ exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings Outline should be
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Removing Navigation Links Navigation links added correctly. 1`] = `
+exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Removing Navigation Links 🔎 Navigation links added correctly. 1`] = `
 "<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":3} -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -48,7 +48,7 @@ exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Remov
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Removing Navigation Links Number of navigation links update correctly. 1`] = `
+exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Removing Navigation Links 🔎 Number of navigation links update correctly. 1`] = `
 "<!-- wp:purdue-blocks/title-nav {\\"numLinks\\":2} -->
 <section class=\\"section pu-title-nav \\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>
@@ -60,7 +60,7 @@ exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 Adding/Remov
 <!-- /wp:purdue-blocks/title-nav -->"
 `;
 
-exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 CTA Button Settings CTA button controls should update output correctly. 1`] = `
+exports[`🔬 Titled Navigation Block 🔬 Side Panel Settings 🔬 CTA Button Settings 🔎 CTA button controls should update output correctly. 1`] = `
 "<!-- wp:purdue-blocks/title-nav {\\"addButton\\":true,\\"buttonText\\":\\"Button Text\\",\\"buttonLink\\":\\"https://www.purdue.edu\\"} -->
 <section class=\\"section pu-title-nav \\"><div class=\\"columns\\"><div class=\\"column is-8 pu-title-nav__left\\"><h2 class=\\"pu-title-nav__title\\"></h2><ul class=\\"pu-title-nav__menu\\"><!-- wp:purdue-blocks/title-nav-link -->
 <li class=\\"\\"></li>

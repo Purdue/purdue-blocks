@@ -14,7 +14,7 @@ import {
 
 const block = {blockTitle: 'Title Hero', blockName: 'purdue-blocks/title-hero'}
 
-describe( 'Title Hero Block', () => {
+describe( '🔬 Title Hero Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
@@ -22,16 +22,16 @@ describe( 'Title Hero Block', () => {
         await createNewPost();
     } );
 
-    it( 'Block should be available.', async () => {
-        await insertBlock( 'Title Hero' )
+    test( '🔎 Block should be available.', async () => {
+        await insertBlock( block.blockTitle )
 
 
         // tests that the block is properly inserted and matches the existing snapshot
-        expect(await page.$('[data-type="purdue-blocks/title-hero"]')).not.toBeNull()
+        expect(await page.$(`[data-type="${block.blockName}"]`)).not.toBeNull()
         expect( await getEditedPostContent()).toMatchSnapshot()
     } )
 
-    it( 'Button should open Media Library.', async () => {
+    test( '🔎 Button should open Media Library.', async () => {
         await blockStartup(block)
 
         // open media library
@@ -46,12 +46,12 @@ describe( 'Title Hero Block', () => {
         */
     })
 
-    it( 'Title should be editable.', async () => {
+    test( '🔎 Title should be editable.', async () => {
         await blockStartup(block)
 
         const typeString = "Test Title"
         
-        // focus the text box then type into it with the virtual keyboard
+        // focus the text box then type into test with the virtual keyboard
         await page.focus( `[data-type="purdue-blocks/title-hero"] input` );
         await page.keyboard.type(typeString, {delay: 10})
 
@@ -64,7 +64,7 @@ describe( 'Title Hero Block', () => {
         expect( editedContent).toMatchSnapshot()
     })
 
-    it( 'Intro copy should be editable.', async () => {
+    test( '🔎 Intro copy should be editable.', async () => {
         await blockStartup(block)
 
         const typeString = "Test intro copy here."
@@ -82,7 +82,7 @@ describe( 'Title Hero Block', () => {
         expect( editedContent).toMatchSnapshot()
     })
 
-    it( 'Image alt text should be editable.', async () => {
+    test( '🔎 Image alt text should be editable.', async () => {
         await blockStartup(block)
 
         const typeString = "Image alt text."
