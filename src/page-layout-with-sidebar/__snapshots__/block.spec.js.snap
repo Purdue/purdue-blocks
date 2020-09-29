@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Page Layout With Sidebar Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/page-layout-with-sidebar -->
+<div class=\\"section\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-8\\"} -->
+<div class=\\"wp-block-column column is-8\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-3\\"} -->
+<div class=\\"wp-block-column column is-3\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/page-layout-with-sidebar -->"
+`;
+
+exports[`🔬 Page Layout With Sidebar Block 🔬 Side Panel Settings 🔎 Sidebar Location On Desktop Options 1`] = `
+"<!-- wp:purdue-blocks/page-layout-with-sidebar {\\"sidebarLocationDesktop\\":\\"left\\"} -->
+<div class=\\"section desktop-reverse\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-8\\"} -->
+<div class=\\"wp-block-column column is-8\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-3\\"} -->
+<div class=\\"wp-block-column column is-3\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/page-layout-with-sidebar -->"
+`;
+
+exports[`🔬 Page Layout With Sidebar Block 🔬 Side Panel Settings 🔎 Sidebar Location On Desktop Options 2`] = `
+"<!-- wp:purdue-blocks/page-layout-with-sidebar -->
+<div class=\\"section\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-8\\"} -->
+<div class=\\"wp-block-column column is-8\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-3\\"} -->
+<div class=\\"wp-block-column column is-3\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/page-layout-with-sidebar -->"
+`;
+
+exports[`🔬 Page Layout With Sidebar Block 🔬 Side Panel Settings 🔎 Sidebar Location On Mobile Options 1`] = `
+"<!-- wp:purdue-blocks/page-layout-with-sidebar {\\"sidebarLocationMobile\\":\\"above\\"} -->
+<div class=\\"section mobile-reverse\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-8\\"} -->
+<div class=\\"wp-block-column column is-8\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-3\\"} -->
+<div class=\\"wp-block-column column is-3\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/page-layout-with-sidebar -->"
+`;
+
+exports[`🔬 Page Layout With Sidebar Block 🔬 Side Panel Settings 🔎 Sidebar Location On Mobile Options 2`] = `
+"<!-- wp:purdue-blocks/page-layout-with-sidebar -->
+<div class=\\"section\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-8\\"} -->
+<div class=\\"wp-block-column column is-8\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-3\\"} -->
+<div class=\\"wp-block-column column is-3\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/page-layout-with-sidebar -->"
+`;

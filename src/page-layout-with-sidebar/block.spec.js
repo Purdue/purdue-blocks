@@ -39,14 +39,14 @@ describe( '🔬 Page Layout With Sidebar Block', () => {
             await clickRadio('Sidebar Location On Desktop', 'left')
 
             let editedContent = await getEditedPostContent()
-            expect( editedContent.includes(`"sidebarLocationDesktop":"right"`)).toBe(false)
+            expect( editedContent.includes(`"sidebarLocationDesktop":"left"`)).toBe(true)
             expect( await getEditedPostContent() ).toMatchSnapshot()
 
 
             await clickRadio('Sidebar Location On Desktop', 'right')
 
             editedContent = await getEditedPostContent()
-            expect( editedContent.includes(`"sidebarLocationDesktop":"right"`)).toBe(true)
+            expect( editedContent.includes(`"sidebarLocationDesktop":"left"`)).toBe(false)
             expect( await getEditedPostContent() ).toMatchSnapshot()
         })
         test('🔎 Sidebar Location On Mobile Options', async () => {
@@ -55,14 +55,14 @@ describe( '🔬 Page Layout With Sidebar Block', () => {
             await clickRadio('Sidebar Location On Mobile', 'above')
 
             let editedContent = await getEditedPostContent()
-            expect( editedContent.includes(`"sidebarLocationMobile":"below"`)).toBe(false)
+            expect( editedContent.includes(`"sidebarLocationMobile":"above"`)).toBe(true)
             expect( await getEditedPostContent() ).toMatchSnapshot()
 
 
-            await clickRadio('Sidebar Location On Mobile', 'right')
+            await clickRadio('Sidebar Location On Mobile', 'below')
 
             editedContent = await getEditedPostContent()
-            expect( editedContent.includes(`"sidebarLocationMobile":"below"`)).toBe(true)
+            expect( editedContent.includes(`"sidebarLocationMobile":"above"`)).toBe(false)
             expect( await getEditedPostContent() ).toMatchSnapshot()
         })
     })
