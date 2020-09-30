@@ -40,9 +40,9 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
+registerBlockType( 'purdue-blocks/page-layout', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Page Layout With Sidebar' ), // Block title.
+  title: __( 'Page Layout' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
    */
 
   attributes: {
+    withSidebar:{ type: "boolean", default: false },
     sidebarLocationDesktop: { type: 'string', default: 'right' },
     sidebarLocationMobile: { type: 'string', default: 'below' },
   },
@@ -76,13 +77,33 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
   },
   // Block description in side panel
   description: __(
-    'A layout pattern with a main content area and a sidebar area.'
+    'A layout pattern with a main content area and/or a sidebar area.'
   ),
 
   edit: ( props ) => {
+    const setChecked = () => {
+      if (props.attributes.withSidebar) {
+        props.setAttributes({
+          withSidebar: false,
+        });
+      } else {
+        props.setAttributes({
+          withSidebar: true,
+        });
+      }
+    };
     return [
       <InspectorControls>
       <PanelBody>
+        <PanelRow>
+            <CheckboxControl
+              label="Add Sidebar?"
+              help="Would you like to add border to this page?"
+              checked={props.attributes.withSidebar}
+              onChange={setChecked}
+            />
+        </PanelRow>
+        {props.attributes.withSidebar?(
         <PanelRow>
           <RadioControl
             label="Sidebar Location On Desktop"
@@ -97,6 +118,8 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
             } }
           />
         </PanelRow>
+        ):''}
+        {props.attributes.withSidebar?(
         <PanelRow>
           <RadioControl
               label="Sidebar Location On Mobile"
@@ -111,16 +134,16 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
               } }
             />
         </PanelRow>
+        ):''}
       </PanelBody>
     </InspectorControls>,
-
-    <div className={`section${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
-      <div className="container">
+    <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}`}>
+      <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
         {createElement(InnerBlocks,{
-         template:[
-          [ 'core/columns', {'className': 'page-layout columns is-multiline'}, [
-            [ 'core/column', {'className': 'column is-8'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]] ],
-            [ 'core/column', {'className': 'column is-3'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+        template:[
+          [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
+            [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]] ],
+            [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
         ]
         ]]})}
       </div>
@@ -141,9 +164,9 @@ registerBlockType( 'purdue-blocks/page-layout-with-sidebar', {
    */
   save: ( props ) => {
     const returned = (
-      <div className={`section${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
-        <div className="container">
-              <InnerBlocks.Content />
+      <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}`}>
+        <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
+            <InnerBlocks.Content />
         </div>
       </div>
     );

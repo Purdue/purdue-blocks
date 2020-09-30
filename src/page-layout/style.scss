@@ -1,0 +1,45 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .section{
+  .container{
+    .page-layout-columns.columns{
+      justify-content:center;
+      @include mobile{
+        display:block;
+      }
+      .column{
+        margin:0;
+      }
+      .page-layout-sidebar{
+        display:none;
+      }       
+    }
+  }
+   &.page-layout-with-sidebar{
+    .container{
+      .page-layout-columns.columns{
+        justify-content:space-between;
+        .page-layout-sidebar{
+          display:block;
+        }       
+      }
+      &.desktop-reverse{
+        .page-layout-columns.columns{
+          flex-direction:row-reverse;
+        }
+      }
+      &.mobile-reverse{
+        .page-layout-columns.columns{
+          @include mobile{
+            display:flex;
+            flex-direction:column-reverse;
+          }
+        }
+      }
+   }
+  }
+}
