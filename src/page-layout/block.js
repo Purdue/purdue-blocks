@@ -97,8 +97,8 @@ registerBlockType( 'purdue-blocks/page-layout', {
       <PanelBody>
         <PanelRow>
             <CheckboxControl
-              label="Add Sidebar?"
-              help="Would you like to add border to this page?"
+              label="Add A Sidebar?"
+              help="Would you like to add sidebar to this page?"
               checked={props.attributes.withSidebar}
               onChange={setChecked}
             />

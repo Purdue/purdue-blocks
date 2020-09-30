@@ -33,9 +33,18 @@ describe( '🔬 Page Layout Block', () => {
     } )
 
     describe('🔬 Side Panel Settings', () => {
-        test('🔎 Sidebar Location On Desktop Options', async () => {
+        test('🔎 Add Sidebar checkbox', async () => {
             await blockStartup(block)
 
+            await clickCheckbox('Add A Sidebar?')
+                
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`"withSidebar":true`)).toBe(true)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
+        })
+        test('🔎 Sidebar Location On Desktop Options', async () => {
+            await blockStartup(block)
+            await clickCheckbox('Add A Sidebar?')
             await clickRadio('Sidebar Location On Desktop', 'left')
 
             let editedContent = await getEditedPostContent()
@@ -51,7 +60,7 @@ describe( '🔬 Page Layout Block', () => {
         })
         test('🔎 Sidebar Location On Mobile Options', async () => {
             await blockStartup(block)
-
+            await clickCheckbox('Add A Sidebar?')
             await clickRadio('Sidebar Location On Mobile', 'above')
 
             let editedContent = await getEditedPostContent()
