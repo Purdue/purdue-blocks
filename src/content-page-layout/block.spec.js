@@ -13,9 +13,9 @@ import {
     clickRadio,
 } from '../test-helpers'
 
-const block = {blockTitle: 'Page Layout', blockName: 'purdue-blocks/page-layout'}
+const block = {blockTitle: 'Content Page Layout', blockName: 'purdue-blocks/content-page-layout'}
 
-describe( '🔬 Page Layout Block', () => {
+describe( '🔬 Content Page Layout Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );

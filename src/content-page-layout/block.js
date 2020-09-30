@@ -40,9 +40,9 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/page-layout', {
+registerBlockType( 'purdue-blocks/content-page-layout', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Page Layout' ), // Block title.
+  title: __( 'Content Page Layout' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
@@ -77,7 +77,7 @@ registerBlockType( 'purdue-blocks/page-layout', {
   },
   // Block description in side panel
   description: __(
-    'A layout pattern with a main content area and/or a sidebar area.'
+    'A content page layout with a main content area with/without a sidebar area.'
   ),
 
   edit: ( props ) => {
