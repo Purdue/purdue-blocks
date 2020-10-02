@@ -11,11 +11,12 @@ import {
     blockStartup,
     clickCheckbox,
     clickRadio,
+    clickElementByText,
 } from '../test-helpers'
 
-const block = {blockTitle: 'Proof Point', blockName: 'purdue-blocks/proofpoint'}
+const block = {blockTitle: 'Sidebar CTA', blockName: 'purdue-blocks/sidebar-cta'}
 
-describe( '🔬 Proofpoint Block', () => {
+describe( '🔬 Sidebar CTA Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
@@ -33,161 +34,93 @@ describe( '🔬 Proofpoint Block', () => {
     } )
 
     describe('🔬 Block Editor Fields', () => {
-        describe('🔬 Proofpoint body text fields', () => {
-            test('🔎 Highlighted Text field updates output correctly', async () => {
-                await blockStartup(block)
+        test('🔎 Header Text field updates output correctly', async () => {
+            await blockStartup(block)
 
-                const typeString = "Highlighted text test."
-    
-                await page.focus('input[placeholder="Highlighted Text..."]')
-                await page.keyboard.type(typeString, {delay: 10})
-    
-                const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"highlighted":"${typeString}"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
-            test('🔎 Content Text field updates output correctly', async () => {
-                await blockStartup(block)
+            const typeString = "Header text test."
 
-                const typeString = "Content text test."
-    
-                await page.focus('input[placeholder="Content Text..."]')
-                await page.keyboard.type(typeString, {delay: 10})
-    
-                const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"content":"${typeString}"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
-            test('🔎 Proofpoint source field updates output correctly', async () => {
-                await blockStartup(block)
+            await page.focus( '.block-editor-rich-text__editable.header' );
+            await page.keyboard.type(typeString, {delay: 10})
 
-                const typeString = "Proofpoint source test."
-    
-                await page.focus('input[placeholder="Source of Text..."]')
-                await page.keyboard.type(typeString, {delay: 10})
-    
-                const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"source":"${typeString}"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`<p class="header">${typeString}</p>`)).toBe(true)
+            expect( editedContent).toMatchSnapshot()
         })
+        test('🔎 Content Text field updates output correctly', async () => {
+            await blockStartup(block)
 
-        describe('🔬 Proofpoint CTA fields', () => {
-            test('🔎 CTA text field updates output correctly', async () => {
-                await blockStartup(block)
+            const typeString = "Content text test."
 
-                const typeString = "CTA text"
-    
-                await page.focus('input[placeholder="CTA Text..."]')
-                await page.keyboard.type(typeString, {delay: 10})
-    
-                const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"ctaText":"${typeString}"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
-            test('🔎 CTA url field updates output correctly', async () => {
-                await blockStartup(block)
+            await page.focus( '.block-editor-rich-text__editable.content' );
+            await page.keyboard.type(typeString, {delay: 10})
 
-                const typeString = "https://www.purdue.edu"
-    
-                await page.focus('input[placeholder="CTA URL..."]')
-                await page.keyboard.type(typeString, {delay: 10})
-    
-                const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"ctaUrl":"${typeString}"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
-        })        
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`<p class="content">${typeString}</p>`)).toBe(true)
+            expect( editedContent).toMatchSnapshot()
+        })
+        test('🔎 Button Text field updates output correctly', async () => {
+            await blockStartup(block)
+
+            const typeString = "Button Text"
+            
+            await page.focus( '.block-editor-rich-text__editable.cta-button' );
+            await page.keyboard.type(typeString, {delay: 10})
+
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`<a href="" class="cta-button" target="_self" rel="noopener noreferrer">${typeString}</a>`)).toBe(true)
+            expect( editedContent).toMatchSnapshot()
+        })    
     })
 
     describe('🔬 Side Panel Settings', () => {
         describe('🔬 Background color controls', () => {
-            test('🔎 White background option reveals add border checkbox', async () => {
+            test('🔎 Black background option is slectable', async () => {
                 await blockStartup(block)
 
-                await clickRadio('Background Color', 'white')
-
-                const [borderCheckbox] = await page.$x( `//label[@class="components-checkbox-control__label"][contains(text(),"Add border?")]` )
-
-                expect( borderCheckbox ).not.toBeNull()
-                expect( borderCheckbox ).not.toBe(undefined)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-            })
-
-            test('🔎 Add border checkbox correctly adds borders', async () => {
-                await blockStartup(block)
-
-                await clickRadio('Background Color', 'white')
-                await clickCheckbox('Add border?')
-                
+                await clickRadio('Background Color', 'black')
                 const editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"border":true`)).toBe(true)
+                expect( editedContent.includes(`"backgroundColor":"black"`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
+            test('🔎 Gray background option is slectable', async () => {
+                await blockStartup(block)
 
-            test('🔎 Button color on white background updates output correctly', async () => {
+                await clickRadio('Background Color', 'gray')
+                const editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"backgroundColor":"gray"`)).toBe(true)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+            })
+            test('🔎 White background option is slectable', async () => {
                 await blockStartup(block)
 
                 await clickRadio('Background Color', 'white')
-                await clickRadio('Button Color', 'white')
-
-                let editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"buttonColor":"white"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-
-
-                await clickRadio('Button Color', 'black')
-
-                editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"buttonColor":"white"`)).toBe(false)
+                const editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"backgroundColor":"gray"`)).toBe(false)
+                expect( editedContent.includes(`"backgroundColor":"black"`)).toBe(false)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
         })
 
-        describe('🔬 Text Style Settings', () => {
-            test('🔎 Highlighted text style radio controls', async () => {
+        describe('🔬 Button Link Settings', () => {
+            test('🔎 Link URL field updates output correctly ', async () => {
                 await blockStartup(block)
 
-                // type in some content so that the p el is added to output to test text style setting
-                const typeString = "Highlighted text test."
-                await page.focus('input[placeholder="Highlighted Text..."]')
+                const typeString = "https://www.purdue.edu"
+                await clickElementByText('label', 'Link URL')
                 await page.keyboard.type(typeString, {delay: 10})
 
-                const [wideControl] = await page.$x( `//div[@class="components-radio-control__option"][../label='Highlighted Text Style']//input[@value='wide']` )
-                await wideControl.click()
-                
-                let editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"headerfontStyle":"wide"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-
-                // then test that it swaps back correctly
-                const [narrowControl] = await page.$x( `//div[@class="components-radio-control__option"][../label='Highlighted Text Style']//input[@value='narrow']` )
-                await narrowControl.click()
-                
-                editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"headerfontStyle":"wide"`)).toBe(false)
+                const editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"ctaUrl":"${typeString}"`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
 
-            test('🔎 Content text style radio controls', async () => {
+            test('🔎 Link can be opened in new tab', async () => {
                 await blockStartup(block)
 
-                // type in some content so that the p el is added to output to test text style setting
-                const typeString = "Content text test."
-                await page.focus('input[placeholder="Content Text..."]')
-                await page.keyboard.type(typeString, {delay: 10})
+                await clickCheckbox('Open link in new tab?')
 
-                await clickRadio('Content Text Style', 'wide')
-                
-                let editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"contentfontStyle":"wide"`)).toBe(true)
-                expect( await getEditedPostContent() ).toMatchSnapshot()
-
-                // then test that it swaps back correctly
-                await clickRadio('Content Text Style', 'narrow')
-                
-                editedContent = await getEditedPostContent()
-                expect( editedContent.includes(`"contentfontStyle":"wide"`)).toBe(false)
+                const editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"external":true`)).toBe(true)
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
         })

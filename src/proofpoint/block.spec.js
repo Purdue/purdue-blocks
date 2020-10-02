@@ -191,5 +191,16 @@ describe( '🔬 Proofpoint Block', () => {
                 expect( await getEditedPostContent() ).toMatchSnapshot()
             })
         })
+        describe('🔬 Button Link Setting', () => {
+            test('🔎 Link can be opened in new tab', async () => {
+                await blockStartup(block)
+
+                await clickCheckbox('Open link in new tab?')
+
+                const editedContent = await getEditedPostContent()
+                expect( editedContent.includes(`"external":true`)).toBe(true)
+                expect( await getEditedPostContent() ).toMatchSnapshot()
+            })
+        })
     })
 })
