@@ -188,7 +188,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             </PanelRow>
           </PanelBody>
           <PanelBody>
-          <h2>Button Link settings</h2>
+          <h2>Button Link setting</h2>
             <PanelRow>
               <CheckboxControl
                 label="Open link in new tab?"
