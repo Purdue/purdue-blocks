@@ -342,6 +342,8 @@ registerBlockType( 'purdue-blocks/feature-story', {
               <a
                 href={ props.attributes.ctaUrl }
                 className="pu-feature-story__button"
+                target={ props.attributes.external ? '_blank' : '_self' }
+                rel="noopener noreferrer"
               >
                 { props.attributes.ctaText }
               </a> ) }

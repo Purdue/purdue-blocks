@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`🔬 Accordion Block 🔎 Block should be available. 1`] = `
-"<!-- wp:purdue-blocks/accordion {\\"id\\":\\"064ad0ee-4e9d-4fbd-8427-3c9c8ec2ac4d\\"} -->
-<div class=\\"accordion\\"><p id=\\"title-064ad0ee-4e9d-4fbd-8427-3c9c8ec2ac4d\\" class=\\"accordion-title\\" aria-controls=\\"content-064ad0ee-4e9d-4fbd-8427-3c9c8ec2ac4d\\" aria-expanded=\\"false\\"></p><div id=\\"content-064ad0ee-4e9d-4fbd-8427-3c9c8ec2ac4d\\" class=\\"accordion-content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Add content\\"} -->
+"<!-- wp:purdue-blocks/accordion {\\"id\\":\\"2204d791-d5bd-4462-8bf6-27d2e1916595\\"} -->
+<div class=\\"accordion\\"><p id=\\"title-2204d791-d5bd-4462-8bf6-27d2e1916595\\" class=\\"accordion-title\\" aria-controls=\\"content-2204d791-d5bd-4462-8bf6-27d2e1916595\\" aria-expanded=\\"false\\"></p><div id=\\"content-2204d791-d5bd-4462-8bf6-27d2e1916595\\" class=\\"accordion-content\\"><!-- wp:paragraph {\\"placeholder\\":\\"Add content\\"} -->
 <p></p>
 <!-- /wp:paragraph --></div></div>
 <!-- /wp:purdue-blocks/accordion -->"
