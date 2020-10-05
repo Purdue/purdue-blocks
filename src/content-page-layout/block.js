@@ -139,13 +139,13 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
     </InspectorControls>,
     <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}`}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
-        {createElement(InnerBlocks,{
-        template:[
+        <InnerBlocks
+        template={[
           [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
             [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]] ],
             [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
         ]
-        ]]})}
+        ]]} />
       </div>
     </div>,
     ];
