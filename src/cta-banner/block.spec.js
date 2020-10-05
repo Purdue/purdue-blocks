@@ -10,6 +10,7 @@ import {
     clickElementByText,
     blockStartup,
     clickRadio,
+    clickCheckbox
 } from '../test-helpers'
 
 const block = {blockTitle: 'CTA Banner', blockName: 'purdue-blocks/cta-banner'}
@@ -136,6 +137,15 @@ describe( '🔬 CTA Banner Block', () => {
             expect( editedContent).toMatchSnapshot()
             expect( editedContent.includes(`aria-label="${typeString}"`)).toBe(true)
             expect( editedContent.includes(`"altText":"${typeString}"`)).toBe(true)
+        })
+        test('🔎 Link can be opened in new tab', async () => {
+            await blockStartup(block)
+
+            await clickCheckbox('Open link in new tab?')
+
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`"external":true`)).toBe(true)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
         })
     })
 })

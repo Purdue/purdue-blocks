@@ -85,6 +85,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     source: { type: "string", default: "" },
     ctaUrl: { type: "string", default: "" },
     ctaText: { type: "string", default: "" },
+    external: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -186,6 +187,18 @@ registerBlockType("purdue-blocks/proofpoint", {
               />
             </PanelRow>
           </PanelBody>
+          <PanelBody>
+          <h2>Button Link setting</h2>
+            <PanelRow>
+              <CheckboxControl
+                label="Open link in new tab?"
+                checked={ props.attributes.external }
+                onChange={ () =>
+                  props.setAttributes( { external: ! props.attributes.external } )
+                }
+              />
+            </PanelRow>
+        </PanelBody>
       </InspectorControls>,
 
       <div className={"purdue-blocks-editor-proofpoint"}>
@@ -324,11 +337,15 @@ registerBlockType("purdue-blocks/proofpoint", {
                   (<a
                   href={props.attributes.ctaUrl}
                   className="pu-proofpoint__button pu-proofpoint__button-white"
+                  target={ props.attributes.external ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
                 >
                   {props.attributes.ctaText}
                 </a>):(<a
                   href={props.attributes.ctaUrl}
                   className="pu-proofpoint__button"
+                  target={ props.attributes.external ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
                 >
                   {props.attributes.ctaText}
                 </a>)}

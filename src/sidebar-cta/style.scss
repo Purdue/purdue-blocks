@@ -1,0 +1,93 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .purdue-blocks-sidebar-cta{
+    text-align:center;
+    background-color:$white;
+    box-shadow:$box-shadow;
+    border-top: 4.5px solid $black;
+    padding:1.875rem 1.25rem;
+    margin-bottom:2rem;
+    .header{
+      font-family:$united-sans-condensed;
+      font-size:1.5rem;
+      font-weight:700;
+      color:$aged-gold;
+      letter-spacing:0.1rem;
+      text-transform: uppercase;
+      margin:0 0.375rem !important;
+    }
+    .content{
+      font-family:$acumin-pro;
+      font-size:1.125rem;
+      color:$black;
+      line-height:1.875rem;
+      text-align:left;
+      margin:1.875rem 0.375rem !important;
+    }
+    .cta-button{
+      font-family: $united-sans;
+      font-weight: 700;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+      display: inline-flex;
+      justify-content: center;
+      padding: 1.125rem 1rem;
+      background: $black;
+      border: 2px solid $black;
+      color: $boiler-gold;
+      text-decoration: none;
+      transition: all ease 0.2s;
+      width:100%;
+      letter-spacing: 0.05em;
+      &:hover {
+        cursor: pointer;
+        background: $white;
+        color: $aged-gold;
+      }
+    }
+    &-black{
+      background-color:$black;
+      border-top: 4.5px solid $boiler-gold;
+      .header{
+        color:$boiler-gold;
+      }
+      .content{
+        color:$white;
+      }
+      .cta-button{
+        background: $boiler-gold;
+        border: 2px solid $boiler-gold;
+        color: $black;
+        &:hover {
+          cursor: pointer;
+          background: $black;
+          color: $white;
+        }
+      }
+    }
+    &-gray{
+      background-color:$primary-background-gray;
+      border-top: 4.5px solid $black;
+      .header{
+        color:$aged-gold;
+      }
+      .content{
+        color:$steel-gray;
+      }
+      .cta-button{
+        background: $transparent;
+        border: 2px solid $aged-gold;
+        color: $black;
+        &:hover {
+          cursor: pointer;
+          background: $boiler-gold;
+          color: $black;
+        }
+      }
+    }
+ }
+ 

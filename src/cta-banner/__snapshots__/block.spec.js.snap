@@ -3,76 +3,83 @@
 exports[`🔬 CTA Banner Block 🔎 Block should be available. 1`] = `
 "<!-- wp:purdue-blocks/cta-banner -->
 <div class=\\"pu-cta-banner pu-cta-banner-gold
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\"></a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Block Editor Fields 🔎 CTA Button Text Field 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"ctaText\\":\\"CTA Button test.\\"} -->
 <div class=\\"pu-cta-banner pu-cta-banner-gold
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\">CTA Button test.</a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\">CTA Button test.</a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Block Editor Fields 🔎 CTA Description Text Field 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"ctaDesc\\":\\"CTA Description Text test.\\"} -->
 <div class=\\"pu-cta-banner pu-cta-banner-gold
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\">CTA Description Text test.</p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\"></a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\">CTA Description Text test.</p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Block Editor Fields 🔎 CTA Link URL Field 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"ctaUrl\\":\\"https://www.purdue.edu\\"} -->
 <div class=\\"pu-cta-banner pu-cta-banner-gold
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"https://www.purdue.edu\\" class=\\"pu-cta-banner-gold__button\\"></a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"https://www.purdue.edu\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Banner type radio controls 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"black\\"} -->
 <div class=\\"pu-cta-banner pu-cta-banner-black
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-black__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-black__button\\"></a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-black__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-black__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Banner type radio controls 2`] = `
 "<!-- wp:purdue-blocks/cta-banner -->
 <div class=\\"pu-cta-banner pu-cta-banner-gold
-      \\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\"></a></div></div>
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Banner type radio controls 3`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"gray\\"} -->
 <div class=\\"pu-cta-banner
-       pu-cta-banner-gray\\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-gray__desc\\"></a></div></div>
+       pu-cta-banner-gray\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-gray__desc\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Banner type radio controls 4`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"image\\"} -->
 <div class=\\"pu-cta-banner
-       pu-cta-banner-image\\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\"></a></div></div>
+       pu-cta-banner-image\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Image banner type alt text field 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"image\\"} -->
 <div class=\\"pu-cta-banner
-       pu-cta-banner-image\\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\"></a></div></div>
+       pu-cta-banner-image\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Image banner type alt text field 2`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"image\\",\\"altText\\":\\"Image alt text.\\"} -->
 <div class=\\"pu-cta-banner
-       pu-cta-banner-image\\" style=\\"\\" aria-label=\\"Image alt text.\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\"></a></div></div>
+       pu-cta-banner-image\\" aria-label=\\"Image alt text.\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;
 
 exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Image banner type media library button 1`] = `
 "<!-- wp:purdue-blocks/cta-banner {\\"type\\":\\"image\\"} -->
 <div class=\\"pu-cta-banner
-       pu-cta-banner-image\\" style=\\"\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\"></a></div></div>
+       pu-cta-banner-image\\" aria-label=\\"\\"><div class=\\"container\\"><a href=\\"\\" class=\\"pu-cta-banner-image__button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div></div>
+<!-- /wp:purdue-blocks/cta-banner -->"
+`;
+
+exports[`🔬 CTA Banner Block 🔬 Side Panel Settings 🔎 Link can be opened in new tab 1`] = `
+"<!-- wp:purdue-blocks/cta-banner {\\"external\\":true} -->
+<div class=\\"pu-cta-banner pu-cta-banner-gold
+      \\" aria-label=\\"\\"><div class=\\"container\\"><p class=\\"pu-cta-banner-gold__desc\\"></p><a href=\\"\\" class=\\"pu-cta-banner-gold__button\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\"></a></div></div>
 <!-- /wp:purdue-blocks/cta-banner -->"
 `;

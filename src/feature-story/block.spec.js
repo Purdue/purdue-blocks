@@ -15,7 +15,7 @@ import {
 
 const block = {blockTitle: 'Featured Story', blockName: 'purdue-blocks/feature-story'}
 
-describe( '🔬 Card Block', () => {
+describe( '🔬 Featured Story Block', () => {
     beforeAll( async () => {
         await enablePageDialogAccept();
     } );
@@ -142,6 +142,15 @@ describe( '🔬 Card Block', () => {
 
             expect( editedContent.includes(`"altText":"${typeString}"`)).toBe(true)
             expect( editedContent).toMatchSnapshot()
+        })
+        test('🔎 Link can be opened in new tab', async () => {
+            await blockStartup(block)
+
+            await clickCheckbox('Open link in new tab?')
+
+            const editedContent = await getEditedPostContent()
+            expect( editedContent.includes(`"external":true`)).toBe(true)
+            expect( await getEditedPostContent() ).toMatchSnapshot()
         })
     })
 })

@@ -23,10 +23,11 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
     links.forEach((link)=>{
         link.addEventListener('click',(e)=>{
             e.preventDefault( );
-            document.querySelector(link.hash)
-                .scrollIntoView( {
-                    behavior: "smooth"
-            } );
+            const topY=document.querySelector(link.hash).getBoundingClientRect().top + window.pageYOffset -20;
+            window.scroll({
+                top: topY,
+                behavior: 'smooth'
+                })
             links.forEach((el)=>{
                 el===link?el.classList.add("is-active"):el.classList.remove("is-active")
             })

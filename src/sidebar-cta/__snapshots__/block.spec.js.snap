@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Sidebar CTA Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Block Editor Fields 🔎 Button Text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\">Button Text</a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Block Editor Fields 🔎 Content Text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><p class=\\"content\\">Content text test.</p><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Block Editor Fields 🔎 Header Text field updates output correctly 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><p class=\\"header\\">Header text test.</p><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Side Panel Settings 🔬 Background color controls 🔎 Black background option is slectable 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta {\\"backgroundColor\\":\\"black\\"} -->
+<div class=\\"purdue-blocks-sidebar-cta purdue-blocks-sidebar-cta-black
+      \\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Side Panel Settings 🔬 Background color controls 🔎 Gray background option is slectable 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta {\\"backgroundColor\\":\\"gray\\"} -->
+<div class=\\"purdue-blocks-sidebar-cta
+       purdue-blocks-sidebar-cta-gray\\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Side Panel Settings 🔬 Background color controls 🔎 White background option is slectable 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Side Panel Settings 🔬 Button Link Settings 🔎 Link URL field updates output correctly  1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta {\\"ctaUrl\\":\\"https://www.purdue.edu\\"} -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><a href=\\"https://www.purdue.edu\\" class=\\"cta-button\\" target=\\"_self\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
+
+exports[`🔬 Sidebar CTA Block 🔬 Side Panel Settings 🔬 Button Link Settings 🔎 Link can be opened in new tab 1`] = `
+"<!-- wp:purdue-blocks/sidebar-cta {\\"external\\":true} -->
+<div class=\\"purdue-blocks-sidebar-cta
+      \\"><a href=\\"\\" class=\\"cta-button\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\"></a></div>
+<!-- /wp:purdue-blocks/sidebar-cta -->"
+`;
