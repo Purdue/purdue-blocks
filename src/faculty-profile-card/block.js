@@ -66,21 +66,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Faculty Profile Card' ), // Block title.
   icon: (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="fas"
-      data-icon="object-group"
-      className="svg-inline--fa fa-object-group fa-w-16"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 576 512"
-    >
-      <path
-        fill="#8E6F3E"
-        d="M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"
-      ></path>
-    </svg>
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 77.78"><defs></defs><g id="Address-card" class="cls-1"><g class="cls-1"><path class="cls-2" d="M100,19.44V80.56a8.33,8.33,0,0,1-8.33,8.33H8.33A8.33,8.33,0,0,1,0,80.56V19.44a8.33,8.33,0,0,1,8.33-8.33H91.67A8.33,8.33,0,0,1,100,19.44Zm-8.33,0H8.33V80.56H91.67Zm-75,49.45V65.56c0-5.53,5.22-10,11.66-10,2,0,3.11,1.38,7.78,1.38s5.9-1.38,7.78-1.38c6.44,0,11.66,4.47,11.66,10v3.33a3.63,3.63,0,0,1-3.88,3.33H20.56A3.63,3.63,0,0,1,16.67,68.89Zm8.33-30A11.11,11.11,0,1,1,36.11,50,11.12,11.12,0,0,1,25,38.89ZM61.11,37.5V34.72a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39V37.5a1.39,1.39,0,0,1-1.39,1.39H62.5A1.4,1.4,0,0,1,61.11,37.5Zm0,11.11V45.83a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39v2.78A1.39,1.39,0,0,1,81.94,50H62.5A1.39,1.39,0,0,1,61.11,48.61Zm0,11.11V56.94a1.39,1.39,0,0,1,1.39-1.38H81.94a1.38,1.38,0,0,1,1.39,1.38v2.78a1.39,1.39,0,0,1-1.39,1.39H62.5A1.39,1.39,0,0,1,61.11,59.72Z" transform="translate(0 -11.11)"/></g></g></svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
