@@ -20,7 +20,8 @@
       color:$black;
     }
     &.is-active{
-       font-weight:700;    
+       font-weight:700;  
+       color:$black;  
        border-left:solid 5px $black; 
        color:$black;
      }
