@@ -63,7 +63,8 @@ registerBlockType( 'purdue-blocks/image-toggle-card', {
     secondTitle: {type: 'string', default: ""},
     linkText: {type: 'string', default: ""},
     linkUrl: {type: 'string', default: ""},
-    includeLink: {type: 'boolean', default: false}
+    includeLink: {type: 'boolean', default: false },
+    openInNewTab: {type: 'boolean', default: false }
   },
 
   supports: {
@@ -108,6 +109,15 @@ registerBlockType( 'purdue-blocks/image-toggle-card', {
               </PanelRow>
             </PanelBody>
           ) : ''}
+          <PanelRow>
+            <CheckboxControl
+              label="Open link in new tab?"
+              checked={ props.attributes.openInNewTab }
+              onChange={ () =>
+                props.setAttributes( { openInNewTab: ! props.attributes.openInNewTab } )
+              }
+            />
+          </PanelRow>
         </PanelBody>
       </InspectorControls>,
 
@@ -241,7 +251,7 @@ registerBlockType( 'purdue-blocks/image-toggle-card', {
           <span>{ props.attributes.cardTitle }</span>
 
           {props.attributes.includeLink ? (
-            <a href={props.attributes.linkUrl}>{props.attributes.linkText}</a>
+            <a href={props.attributes.linkUrl} target={props.attributes.openInNewTab ? '_blank': ''}>{props.attributes.linkText}</a>
           ) : ''}
         </div>
         <div className={`pu-image-toggle__images`}>
