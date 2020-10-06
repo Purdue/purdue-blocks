@@ -1,0 +1,95 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-image-toggle {
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ededed;
+    padding: 1.25rem;
+    flex-wrap: wrap;
+
+    span {
+      color: black;
+      display: block;
+      font-family: $acumin-pro-semicondensed;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+      font-family: $acumin-pro;
+      font-size: 18px;
+
+      &:hover {
+        cursor: pointer;
+        color: $aged-gold;
+        text-decoration: underline;
+
+      }
+    }
+  }
+
+  &__images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    img {
+      max-width: 80%;
+      max-height: 500px;
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .toggle-button {
+      border: none;
+      background: none;
+      padding: 0.4rem 0;
+      border-bottom: 3px $steam-gray solid;
+      color: $steel-gray;
+      text-transform: uppercase;
+      font-family: $acumin-pro-condensed;
+      font-weight: 700;
+      font-size: 18px;
+
+      &:first-of-type {
+        padding-right: 2rem;
+      }
+      &:last-of-type {
+        text-align: right;
+        padding-left: 2rem;
+      }
+
+      &.selected {
+        border-color: $aged-gold;
+        color: black;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
