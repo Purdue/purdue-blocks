@@ -31,7 +31,7 @@ const { RichText, InspectorControls, InnerBlocks, MediaUploadCheck, MediaUpload 
  */
 registerBlockType( 'purdue-blocks/image-toggle-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Image Toggle Card Block' ), // Block title.
+  title: __( 'Image Toggle Card' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',

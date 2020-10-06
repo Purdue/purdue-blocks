@@ -41,7 +41,7 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
  */
 registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Anchor Link Navigation Block' ), // Block title.
+  title: __( 'Anchor Link Navigation' ), // Block title.
   icon: {
     // Specifying a background color to appear with the icon e.g.: in the inserter.
     background: '#fff',
