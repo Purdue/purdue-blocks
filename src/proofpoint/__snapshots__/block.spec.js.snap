@@ -60,6 +60,12 @@ exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Background color co
 <!-- /wp:purdue-blocks/proofpoint -->"
 `;
 
+exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Button Link Setting 🔎 Link can be opened in new tab 1`] = `
+"<!-- wp:purdue-blocks/proofpoint {\\"external\\":true} -->
+<div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"></div></div>
+<!-- /wp:purdue-blocks/proofpoint -->"
+`;
+
 exports[`🔬 Proofpoint Block 🔬 Side Panel Settings 🔬 Text Style Settings 🔎 Content text style radio controls 1`] = `
 "<!-- wp:purdue-blocks/proofpoint {\\"contentfontStyle\\":\\"wide\\",\\"content\\":\\"Content text test.\\"} -->
 <div class=\\"pu-proofpoint pu-proofpoint__black\\"><div class=\\"container\\"><p class=\\"pu-proofpoint__content pu-proofpoint__content-wide\\">Content text test.</p></div></div>

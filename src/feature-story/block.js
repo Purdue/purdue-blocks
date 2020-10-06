@@ -82,6 +82,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
     contentAlign: { type: 'string', default: 'left' },
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
+    external: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -140,6 +141,18 @@ registerBlockType( 'purdue-blocks/feature-story', {
             />
           </PanelRow>
         </PanelBody>
+        <PanelBody>
+          <h2>CTA Button Link setting</h2>
+            <PanelRow>
+              <CheckboxControl
+                label="Open link in new tab?"
+                checked={ props.attributes.external }
+                onChange={ () =>
+                  props.setAttributes( { external: ! props.attributes.external } )
+                }
+              />
+            </PanelRow>
+          </PanelBody>
       </InspectorControls>,
 
       <div className={ 'purdue-blocks-editor-feature-story' }>
@@ -299,6 +312,8 @@ registerBlockType( 'purdue-blocks/feature-story', {
                 <a
                   href={ props.attributes.ctaUrl }
                   className="pu-feature-story__button"
+                  target={ props.attributes.external ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
                 >
                   { props.attributes.ctaText }
                 </a> ) }
@@ -327,6 +342,8 @@ registerBlockType( 'purdue-blocks/feature-story', {
               <a
                 href={ props.attributes.ctaUrl }
                 className="pu-feature-story__button"
+                target={ props.attributes.external ? '_blank' : '_self' }
+                rel="noopener noreferrer"
               >
                 { props.attributes.ctaText }
               </a> ) }
