@@ -95,6 +95,9 @@
         box-shadow: $box-shadow;
         padding: 2.1875rem $side-padding-mobile 2.8125rem !important;
       }
+      .container{
+        width:100%;
+      }
       .content {
         width: auto;
         max-width: 50%;
