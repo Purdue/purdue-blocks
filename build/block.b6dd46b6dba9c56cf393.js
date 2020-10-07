@@ -6490,14 +6490,21 @@ registerBlockType('purdue-blocks/accordion', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Accordion'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 43.01 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrows-alt-v",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "cls-2",
+    d: "M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z",
+    transform: "translate(-28.49)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -6679,14 +6686,24 @@ registerBlockType('purdue-blocks/anchor-link-navigation', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Anchor Link Navigation'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("rect", {
+    width: "100",
+    height: "100",
+    rx: "8.55"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrow-right",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-fff",
+    d: "M47.85,9.91a4.54,4.54,0,0,1,6.43,0L91.16,46.77a4.53,4.53,0,0,1,0,6.44L54.28,90.09a4.54,4.54,0,0,1-6.43,0l-4.21-4.22a4.55,4.55,0,0,1,.08-6.5L66.58,57.59H12.05A4.54,4.54,0,0,1,7.5,53V47a4.54,4.54,0,0,1,4.55-4.55H66.58L43.72,20.63a4.52,4.52,0,0,1-.08-6.5Z"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -6865,14 +6882,21 @@ registerBlockType('purdue-blocks/card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Custom Card'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "clone",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-d9ab28",
+    d: "M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z",
+    transform: "translate(0 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7179,14 +7203,21 @@ registerBlockType('purdue-blocks/content-page-layout', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Content Page Layout'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Columns",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-d9ab28",
+    d: "M100,15.62V84.38a9.38,9.38,0,0,1-9.38,9.37H9.37A9.38,9.38,0,0,1,0,84.38V15.62A9.38,9.38,0,0,1,9.37,6.25H90.62A9.38,9.38,0,0,1,100,15.62ZM43.75,31.25H12.5v50H43.75Zm43.75,0H56.25v50H87.5Z",
+    transform: "translate(0 -6.25)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7672,18 +7703,20 @@ registerBlockType('purdue-blocks/cta-button', {
   title: __('CTA Button'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "external-link-square-alt",
-    className: "svg-inline--fa fa-external-link-square-alt fa-w-14",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 448 512"
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "clone",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
-  })),
+    class: "color-9c9795",
+    d: "M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z",
+    transform: "translate(0 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -9417,14 +9450,24 @@ registerBlockType('purdue-blocks/image-toggle-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Image Toggle Card'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("rect", {
+    width: "100",
+    height: "100",
+    rx: "8.55"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "lightbulb",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-fff",
+    d: "M78.15,37.21a28,28,0,0,1-7,18.51c-2.66,3-6.83,9.41-8.38,14.74H55.12a8.9,8.9,0,0,1,.36-2.29,50.5,50.5,0,0,1,9.93-17.51,20.46,20.46,0,1,0-30.82,0A50.45,50.45,0,0,1,44.54,68.2a7.82,7.82,0,0,1,.34,2.25v0H37.2c-1.55-5.33-5.72-11.7-8.38-14.74A28.14,28.14,0,1,1,78.15,37.21ZM52.56,24.41A2.56,2.56,0,0,1,50,27,10.25,10.25,0,0,0,39.76,37.21a2.56,2.56,0,1,1-5.11,0A15.37,15.37,0,0,1,50,21.85,2.56,2.56,0,0,1,52.56,24.41ZM37.21,75.59H62.79v6.9a2.55,2.55,0,0,1-.43,1.42L58.44,89.8a2.58,2.58,0,0,1-2.14,1.14H43.69a2.58,2.58,0,0,1-2.13-1.14l-3.92-5.89a2.54,2.54,0,0,1-.42-1.42Z"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.

@@ -8212,7 +8212,8 @@ label.panel-block {
         font-size: 5rem;
         text-transform: uppercase;
         color: white !important;
-        margin-bottom: 0; }
+        margin-bottom: 0;
+        line-height: 1.125; }
         @media screen and (max-width: 1023px) {
           .pu-title-hero .hero .hero-body .content h1 {
             font-size: 4.0625rem; } }

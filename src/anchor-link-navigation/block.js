@@ -42,15 +42,9 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Anchor Link Navigation' ), // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view',
-
-  }, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  icon: (
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><rect width="100" height="100" rx="8.55"/><g id="Arrow-right" class="cls-1"><g class="cls-1"><path class="color-fff" d="M47.85,9.91a4.54,4.54,0,0,1,6.43,0L91.16,46.77a4.53,4.53,0,0,1,0,6.44L54.28,90.09a4.54,4.54,0,0,1-6.43,0l-4.21-4.22a4.55,4.55,0,0,1,.08-6.5L66.58,57.59H12.05A4.54,4.54,0,0,1,7.5,53V47a4.54,4.54,0,0,1,4.55-4.55H66.58L43.72,20.63a4.52,4.52,0,0,1-.08-6.5Z"/></g></g></svg>
+  ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
