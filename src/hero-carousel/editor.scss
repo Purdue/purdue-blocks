@@ -1,0 +1,71 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.carousel {
+  width: 100%;
+  margin-bottom: 36px;
+  .item {
+    height: 414px;
+    a {
+      text-decoration: none;
+    }
+    .cardFigure {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      overflow: hidden;
+      padding: 0 24px 50px 24px;
+      width: 100%;
+      .cardCategory {
+        background-color: #CFB991;
+        color: #000;
+        font-family: 'acumin-pro-condensed', sans-serif;
+        font-size: 18px;
+        margin-bottom: 6px;
+        padding: 6px 26px;
+        width: fit-content;
+      }
+      .cardTitle {
+        background-color: #FFFFFFBF;
+        color: #000;
+        font-family: 'United Sans', sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        line-height: 45px;
+        padding: 13px;
+        width: 80%;
+      }
+    }
+  }
+}
+.bulma-blocks-editor-site-hero__button.is-danger {
+  border-color: red;
+  transition: all .3s ease;
+  &:hover {
+    background-color: red
+  }
+}
+.bulma-blocks-editor-site-hero__button {
+  transition: all .3s ease;
+}
+.components-button.is-button.is-default {
+  align-items: center;
+  border: #00c4a7 1px solid;
+  border-radius: 0.15rem;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.85rem;
+  background-color: transparent;
+  transition: all .3s ease;
+  &:hover {
+    background-color: #00c4a7;
+    border-color: transparent;
+    color: white;
+  }
+}

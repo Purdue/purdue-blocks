@@ -1,0 +1,32 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ /*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+
+ .icon-group {
+   padding: 0 0 15px 0;
+   display: flex;
+   .icon-item {
+     background-color: #000;
+     height: 54px;
+     margin: 4px;
+     width: 54px;
+     &-icon-placeholder {
+       align-items: center;
+       color: #fff;
+       display: flex;
+       font-size: 27px;
+       height: 100%;
+       justify-content: center;
+       width: 100%;
+     }
+   }
+ }

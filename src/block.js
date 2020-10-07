@@ -28,3 +28,10 @@ import './purdue-rss/block.js';
 import './anchor-link-navigation/block.js';
 import './content-page-layout/block.js';
 import './sidebar-cta/block.js';
+//Developertown blocks
+import './hero-carousel/block.js'
+import './video-embed/block.js'
+import './homepage-link-card/block.js'
+import './video-carousel/block.js'
+import './icon-group/block.js'
+import './podcast/block.js'

@@ -1,0 +1,33 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+ .carousel-video {
+   .item {
+     height: auto;
+     margin-bottom: 15px;
+   }
+ }
+ .purdue_video {
+   height: 0;
+   margin-bottom: 10px;
+   max-width: 1344px;
+   overflow: hidden;
+   position: relative;
+   padding-left: 20px;
+   padding-right: 20px;
+   padding-top: 20px;
+   padding-bottom: 56.25%;
+
+   iframe,
+   object,
+   embed {
+     height: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     width: 100%;
+   }
+ }
