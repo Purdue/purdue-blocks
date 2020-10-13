@@ -13,6 +13,12 @@
       }
       .column{
         margin:0;
+        &.is-full-tablet.wp-block-column{
+          @include touch{
+            flex-basis:auto !important;
+            width:100% !important;
+          }
+        }
       }
       .page-layout-sidebar{
         display:none;

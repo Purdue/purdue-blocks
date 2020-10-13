@@ -16,10 +16,38 @@
 
     span {
       color: black;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: $acumin-pro-semicondensed;
       font-size: 25px;
       font-weight: 500;
+    }
+
+    &--icon {
+      display: block;
+      max-width: 2rem;
+      max-height: 2rem;
+      margin-left: 1rem;
+
+      .cls-1{
+        isolation:isolate;
+      }
+      .cls-2{
+          fill:#cfb991;
+      }
+
+      .color-9c9795 {
+          fill: #9c9795;
+      }
+
+      .color-d9ab28 {
+          fill: #d9ab28;
+      }
+
+      .color-fff {
+          fill: #fff;
+      }
     }
 
     a {

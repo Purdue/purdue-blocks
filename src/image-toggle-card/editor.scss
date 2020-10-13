@@ -19,6 +19,70 @@
     padding: 0.75rem;
   }
 
+  &__icon-selector {
+    padding: 1rem 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    #iconSelectorButton {
+      margin-right: 1rem;
+    }
+
+    &--popup {
+      z-index: 999;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      grid-template-columns: repeat(4, 65px);
+      flex-wrap: wrap;
+      background: white;
+      border: 1px black solid;
+      width: auto;
+      height: auto;
+      max-height: calc(195px + 1.5rem);
+      padding: 0.75rem;
+      overflow-y: scroll;
+
+      &.open {
+        display: grid;
+      }
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 65px;
+      width: 65px;
+      border: none;
+      background: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      svg {
+        max-height: 50px;
+        max-width: 50px;
+      }
+    }
+
+    &--selected-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 65px;
+      width: 65px;
+
+      svg {
+        max-height: 50px;
+        max-width: 50px;
+      }
+    }
+  }
+
   &__inputs {
     width: 100%;
     display: flex;
@@ -37,6 +101,9 @@
 
   figure.image {
     padding-right: 0.5rem;
+    img {
+      max-height: 200px;
+    }
   }
 
   &__container {
