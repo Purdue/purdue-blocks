@@ -2,8 +2,6 @@
 // import './editor.scss';
 // import './style.scss';
 // (function(wp, $, Drupal, drupalSettings, DrupalGutenberg) {
-  const { __ } = wp.i18n; // Import __() from wp.i18n
-
   // const __ = Drupal.t;
   const {
     registerBlockType,
@@ -109,7 +107,7 @@
     },
     edit: ( props ) => {
       const handleAddContentCard = () => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards.push( {
           imgUrl: '',
           title: '',
@@ -120,28 +118,28 @@
       }; //End handleAddContentCard
 
       const handleRemoveContentCard = ( index ) => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards.splice( index, 1 );
         props.setAttributes( { contentCards } );
       }; //End handleRemoveContentCard
 
       const handleChangeContentCardImg = ( imgUrl, index ) => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards[ index ].imgUrl = imgUrl.url;
         props.setAttributes( { contentCards } );
       }; // End handleChangeContentCardImg
       const handleChangeContentCardTitle = ( title, index ) => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards[ index ].title = title;
         props.setAttributes( { contentCards } );
       }; // End handleChangeContentCardTitle
       const handleChangeContentCardCategory = ( categoryName, index ) => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards[ index ].categoryName = categoryName;
         props.setAttributes( { contentCards } );
       }; // End handleChangeContentCardCategory
       const handleChangeContentCardTarget = ( targetUrl, index ) => {
-        const contentCards = props.attributes.contentCards;
+        const contentCards = [ ...props.attributes.contentCards ];
         contentCards[ index ].targetUrl = targetUrl;
         props.setAttributes( { contentCards } );
       }; // End handleChangeContentCardTarget
@@ -264,7 +262,6 @@
 
     },
     save: ( props ) => {
-      if ( props.attributes.contentCards.length ) {
       const contentCardFields = props.attributes.contentCards.map( ( card, index ) => {
         return <div key={ index } className='item'>
                   <a href={ card.targetUrl }>
@@ -279,7 +276,7 @@
         <div className={ props.className } className='carousel'>
           { contentCardFields }
         </div>
-      );}
+      );
     },
   });
 

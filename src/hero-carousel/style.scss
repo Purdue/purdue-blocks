@@ -4,6 +4,8 @@
  * CSS for both Frontend+Backend.
  */
 
+@import "../scss/bulma-utilities";
+
 .wp-block-purdue-blocks-hero-carousel {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
