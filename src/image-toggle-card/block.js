@@ -159,10 +159,12 @@ registerBlockType( 'purdue-blocks/image-toggle-card', {
             multiple
             gallery
             onSelect={ ( imgs ) => {
-              props.setAttributes( { images: imgs } )
+              if(imgs.length > 0 && imgs.length < 3) {
+                props.setAttributes( { images: imgs } )
+              }
             } }
             render={ ( { open } ) => {
-              return props.attributes.images.length > 0 ? (
+              return (props.attributes.images.length > 0 && props.attributes.images.length < 3) ? (
                 <div className={ 'image-toggle-card-block-editor__preview' }>
                   <div className={ 'image-toggle-card-block-editor__imgGroup' }>
                     { props.attributes.images.map( img => {
