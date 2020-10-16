@@ -6,6 +6,16 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.13.0] 2020-10-16
+#### Updated
+- Fixed issues with some blocks having broken styles in Internet Explorer
+- Fixed issues with the Image Toggle Block via 1.11.0 and added some new features in the editor
+  - Toggle buttons did not work when there were multiple image toggle cards on the page.
+  - Fixed a block crash associated with the save function not outputting the same html due to not adding some attributes to the anchor element that wordpress adds automatically on the front-end.
+  - Added an optional icon selector menu to add an icon next to the heading.
+  - Updated the media upload check to allow for only a single image to be chosen, and show toggle button options based on whether one or two images were selected.
+  - Added checking and blocking for if more than 2 images were selected.
+
 ### [1.12.0] 2020-10-06
 #### Added
 - New Icons for all Purdue Blocks
