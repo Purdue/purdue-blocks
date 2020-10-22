@@ -1163,71 +1163,6 @@
  * which makes it higher in priority.
  */
 /**
- * #.# Styles
- *
- * CSS for both Frontend+Backend.
- */
-.carousel {
-  width: 100%;
-  margin-bottom: 36px; }
-  .carousel .item {
-    height: 414px; }
-    .carousel .item a {
-      text-decoration: none; }
-    .carousel .item .cardFigure {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      justify-content: flex-end;
-      overflow: hidden;
-      padding: 0 24px 50px 24px;
-      width: 100%; }
-      .carousel .item .cardFigure .cardCategory {
-        background-color: #CFB991;
-        color: #000;
-        font-family: 'acumin-pro-condensed', sans-serif;
-        font-size: 18px;
-        margin-bottom: 6px;
-        padding: 6px 26px;
-        width: -webkit-fit-content;
-        width: -moz-fit-content;
-        width: fit-content; }
-      .carousel .item .cardFigure .cardTitle {
-        background-color: #FFFFFFBF;
-        color: #000;
-        font-family: 'United Sans', sans-serif;
-        font-size: 40px;
-        font-weight: 600;
-        line-height: 45px;
-        padding: 13px;
-        width: 80%; }
-
-.bulma-blocks-editor-site-hero__button.is-danger {
-  border-color: red;
-  transition: all .3s ease; }
-  .bulma-blocks-editor-site-hero__button.is-danger:hover {
-    background-color: red; }
-
-.bulma-blocks-editor-site-hero__button {
-  transition: all .3s ease; }
-
-.components-button.is-button.is-default {
-  align-items: center;
-  border: #00c4a7 1px solid;
-  border-radius: 0.15rem;
-  padding: 0.35rem 0.45rem;
-  font-size: 0.85rem;
-  background-color: transparent;
-  transition: all .3s ease; }
-  .components-button.is-button.is-default:hover {
-    background-color: #00c4a7;
-    border-color: transparent;
-    color: white; }
-
-/**
  * #.# Editor Styles
  *
  * CSS for just Backend enqueued after style.scss
@@ -1312,35 +1247,6 @@
       color: white; }
   .bulma-blocks-editor-home-card__preview .bulma-blocks-editor-site-hero__button {
     margin-top: 0.5rem; }
-
-/**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
- */
-.carousel-video .item {
-  height: auto;
-  margin-bottom: 15px; }
-
-.purdue_video {
-  height: 0;
-  margin-bottom: 10px;
-  max-width: 1344px;
-  overflow: hidden;
-  position: relative;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 20px;
-  padding-bottom: 56.25%; }
-  .purdue_video iframe,
-  .purdue_video object,
-  .purdue_video embed {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%; }
 
 /**
  * #.# Editor Styles

@@ -80,16 +80,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
   attributes: {
     iconGroup: {
       type: 'array',
-      default: {
-        icon: {
-          type: 'string',
-          default: '',
-        },
-        iconUrl: {
-          type: 'string',
-          default: '',
-        },
-      },
+      default: []
     },
   },
 

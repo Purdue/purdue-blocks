@@ -112,10 +112,7 @@ registerBlockType( 'purdue-blocks/podcast', {
     episodeNumber: { type: 'string', default: '' },
     episodeTitle: { type: 'string', default: '' },
     fullDescription: { type: 'string', default: '' },
-    listenOnUrls: { type: 'array', default: {
-        chennelname: { type: 'string', default: '' },
-        chennelUrl: { type: 'string', default: '' },
-      },
+    listenOnUrls: { type: 'array', default: []
     },
   },
 
