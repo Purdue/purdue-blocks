@@ -152,7 +152,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
             />
           </PanelRow>:''
             }
-          { props.attributes.hasLink ?
+          { props.attributes.cardType ==="small"&&props.attributes.hasLink ?
             ( <PanelRow>
               <TextControl
                 label="Call to action text"
@@ -160,7 +160,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
                 onChange={ ( linkText ) => props.setAttributes( { linkText } ) }
               />
             </PanelRow> ) : '' }
-          { props.attributes.hasLink ? (
+          { props.attributes.cardType ==="small"&&props.attributes.hasLink ? (
             <PanelRow>
               <TextControl
                 label="Link address"
@@ -169,7 +169,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
               />
             </PanelRow> ) : '' }
 
-          { props.attributes.hasLink ?
+          { props.attributes.cardType ==="small"&&props.attributes.hasLink ?
             <PanelRow>
               <CheckboxControl
                 label="Open link in new tab?"
@@ -244,7 +244,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
                   allowedBlocks={ [ 'core/paragraph', 'core/list'] }
                   />
               )}
-              { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
+              { props.attributes.cardType ==="small"&&props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
             </div>
           </div>
           </div>
@@ -264,7 +264,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = ( props.attributes.hasLink === true ?
+    const returned = ( props.attributes.cardType ==="small"&&props.attributes.hasLink === true ?
       <a
         href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
