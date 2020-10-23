@@ -141,6 +141,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
+          { props.attributes.cardType ==="small" ?
           <PanelRow>
             <CheckboxControl
               label="Add a link to this card?"
@@ -149,7 +150,8 @@ registerBlockType( 'purdue-blocks/cta-card', {
                 props.setAttributes( { hasLink: ! props.attributes.hasLink } )
               }
             />
-          </PanelRow>
+          </PanelRow>:''
+            }
           { props.attributes.hasLink ?
             ( <PanelRow>
               <TextControl

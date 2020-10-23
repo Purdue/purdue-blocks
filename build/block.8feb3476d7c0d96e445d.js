@@ -8113,7 +8113,7 @@ registerBlockType('purdue-blocks/cta-card', {
           altText: altText
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+    })), props.attributes.cardType === "small" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
       label: "Add a link to this card?",
       checked: props.attributes.hasLink,
       onChange: function onChange() {
@@ -8121,7 +8121,7 @@ registerBlockType('purdue-blocks/cta-card', {
           hasLink: !props.attributes.hasLink
         });
       }
-    })), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    })) : '', props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
       label: "Call to action text",
       value: props.attributes.linkText,
       onChange: function onChange(linkText) {
