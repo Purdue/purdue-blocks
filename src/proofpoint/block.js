@@ -42,7 +42,7 @@ const BLOCKS_TEMPLATE = [
  */
 registerBlockType("purdue-blocks/proofpoint", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Proof Point"), // Block title.
+  title: __("Reasons to Believe"), // Block title.
   icon: (
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 100"><defs></defs><g id="Bookmark" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M87.5,9.37V100L50,78.12,12.5,100V9.37A9.38,9.38,0,0,1,21.87,0H78.13A9.38,9.38,0,0,1,87.5,9.37Zm-9.37,1.18A1.18,1.18,0,0,0,77,9.37H23.05a1.18,1.18,0,0,0-1.18,1.18V83.68L50,67.27,78.13,83.68Z" transform="translate(-12.5 0)"/></g></g></svg>
     ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
@@ -81,7 +81,7 @@ registerBlockType("purdue-blocks/proofpoint", {
 
   // Block description in side panel
   description: __(
-    "This block adds a proofpoint card."
+    "This block adds a Reasons to Believe card."
   ),
 
   edit: (props) => {
