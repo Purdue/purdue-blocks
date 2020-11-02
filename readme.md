@@ -6,6 +6,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.13.1] 2020-11-2
+#### Updated
+- Fixed large CTA-card link issue
+- Fixed proofpoint font color issue
+- Fix CTA-card and featured story background issues
+- Added the link card and latest post icons to the toggle block
+- Fixed the size of icons on the front end of the toggle block
+- Added check to determine if a certain icon should have a white background depending on a data field on the svg string
+
 ### [1.13.0] 2020-10-16
 #### Updated
 - Fixed issues with some blocks having broken styles in Internet Explorer
