@@ -13,7 +13,7 @@ import {
     clickRadio,
 } from '../test-helpers'
 
-const block = {blockTitle: 'Proof Point', blockName: 'purdue-blocks/proofpoint'}
+const block = {blockTitle: 'Reasons to Believe', blockName: 'purdue-blocks/proofpoint'}
 
 describe( '🔬 Proofpoint Block', () => {
     beforeAll( async () => {

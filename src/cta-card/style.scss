@@ -10,6 +10,7 @@
     text-decoration: none;
     display:block;
     color:$black;
+    background-color:$white;
     &.cta-card-small{
       padding:2.1875rem;
       @include mobile{
@@ -34,9 +35,22 @@
           padding:0 0.5rem; 
         }
       }
+      p.title{
+        font-family:$acumin-pro-semicondensed;
+        font-size:1.5625rem !important; 
+        line-height:1.4 !important;
+        font-weight:600 !important;
+        color:$black;
+        margin-bottom:1rem !important;
+        text-transform: none;
+        width:100%;
+        @include mobile{
+          padding:0 0.5rem; 
+        }
+      }
       ul,ol{
-        font-size:1.125rem !important;
-        font-weight:600;
+        font-size:1.25rem !important;
+        font-weight:700;
         width:100%;
         @include mobile{
           padding:0 0.5rem; 
@@ -45,16 +59,24 @@
       ul{
         list-style:none !important;
         margin-left:1em;
-        li:before{
-          content: ">";
-          display: block;
-          height: 0;
-          width: 0;
-          left: -0.7em;
-          top:-0.1em;
-          position: relative;
+        li{
+          &:before{
+            content: ">";
+            display: block;
+            height: 0;
+            width: 0;
+            left: -0.7em;
+            position: relative;
+            color: $aged-gold;
+          }
+          a{
+            color: $aged-gold;
+            text-decoration: none;
+            &:hover{
+              text-decoration: underline;
+            }
+          }
         }
-
       }
     }
     &.cta-card-left{
@@ -72,11 +94,11 @@
     }
     .title{
       font-family:$acumin-pro-semicondensed;
-      font-size:1.5625rem;
-      line-height:1.4;
+      font-size:1.5625rem !important; 
+      line-height:1.4 !important;
       font-weight:600 !important;
       color:$black;
-      margin-bottom:1rem!important;
+      margin-bottom:1rem !important;
       text-transform: none;
       width:100%;
       @include mobile{

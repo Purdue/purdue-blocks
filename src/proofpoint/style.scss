@@ -26,17 +26,17 @@
    &__white{
      background-color:$white;
      color:$black;
-     .pu-proofpoint__source{
+     p.pu-proofpoint__source{
        color:$steel-gray
      }
    }
    &__black{
      background-color:$black;
      color:$white;
-     .pu-proofpoint__source{
+     p.pu-proofpoint__source{
        color:$steam-gray;
      }
-     .pu-proofpoint__highlighted,.pu-proofpoint__content{
+     p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
        color:$boiler-gold;
      }
      .pu-proofpoint__button {
