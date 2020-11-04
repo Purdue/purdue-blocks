@@ -37,7 +37,7 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
         })
     })
     window.addEventListener('scroll', () => {
-        const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollPos = anchorHeaders[0].scrollTop-20;
         anchorHeaders.forEach((header)=>{
             if ( header.offsetTop <= scrollPos ) {
                 const id = "#"+header.id
