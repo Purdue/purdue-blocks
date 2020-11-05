@@ -6,6 +6,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.13.2] 2020-11-4
+#### Updated
+- Fixed link font issue
+
 ### [1.13.1] 2020-11-2
 #### Updated
 - Fixed large CTA-card link issue
