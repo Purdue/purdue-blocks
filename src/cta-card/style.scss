@@ -20,6 +20,7 @@
         font-size:1rem !important;
         line-height:1.75 !important;
         width:100%;
+        font-weight:400;
       }
     }
     &.cta-card-large{
@@ -109,6 +110,7 @@
       font-family:$acumin-pro;
       width:100%;
       color:$black;
+      font-weight:400;
       @include mobile{
         padding:0 0.5rem; 
       }

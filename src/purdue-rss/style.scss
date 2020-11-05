@@ -89,7 +89,7 @@
                 text-overflow: ellipsis;
                 overflow: hidden;
                 color: #707070;
-          
+                font-weight:400;
                 @media (-webkit-min-device-pixel-ratio: 0) {
                   display: -webkit-box;
                   -webkit-line-clamp: 3;
@@ -240,6 +240,7 @@
                 font-size:1.125rem;
                 color:$cool-gray;
                 line-height:1.38;
+                font-weight:400;
                 @include mobile{
                   font-size:1rem;
                   line-height:1.5625;
