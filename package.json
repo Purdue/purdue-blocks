@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@wordpress/icons": "^2.4.0",
-    "bulma": "^0.8.2"
+    "bulma": "^0.9.1"
   },
   "devDependencies": {
     "@wordpress/e2e-test-utils": "^4.11.2",
