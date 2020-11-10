@@ -1,0 +1,79 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .custom-side-menu{
+  position:sticky;
+  box-shadow:$box-shadow;
+  top:2rem;
+  .custom-side-menu-top{
+    list-style:none;
+    margin:0 !important;
+    padding:0;
+    .custom-side-menu-item{
+      margin:0 !important;
+      a{
+        display:block;
+        font-family:$acumin-pro;
+        font-size:1.125rem;
+        color:$steel-gray;
+        text-decoration:none;
+        padding:0.9375rem 1.875rem;
+        border-left:solid 5px $boiler-gold;
+        font-weight:400;
+        margin:0;
+        &:hover{
+          color:$black;
+        }
+        &.is-active{
+          font-weight:700;  
+          color:$black;  
+          border-left:solid 5px $black; 
+          color:$black;
+        }
+      }
+      .custom-side-menu-item-submenu{
+        list-style:none;
+        margin:0 !important;
+        padding:0;
+        .custom-side-menu-item-subitem{
+          margin:0 !important;
+          a{
+            padding:0 3.125rem 0.9375rem;
+          }
+        }
+      }
+    }
+  }
+ .to-top-sidebar{
+   font-family:$acumin-pro-condensed;
+   font-weight:600;
+   font-size:1.25rem;
+   border: none;
+   width:100%;
+   box-shadow:$box-shadow;
+   padding:1.0625rem 2.25rem;
+   background-color:$primary-background-gray;
+   cursor:pointer;
+   &:focus{
+     outline:none;
+   }
+   .text{
+     color:inherit;
+     position:relative;
+     &:after{
+       content: "\f0aa";
+       display: inline-block;
+       font-family: "Font Awesome 5 Free";
+       margin-left: 0.7rem;
+       position:relative;
+     }
+   }
+ }
+ div.to-top-sidebar{
+    height:3.9375rem;
+    background-color:$primary-background-gray;
+ }
+}
