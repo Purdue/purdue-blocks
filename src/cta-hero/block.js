@@ -285,12 +285,16 @@ registerBlockType("purdue-blocks/cta-hero", {
                 ) : (
                   ""
                 )}
-                <a
-                  href={props.attributes.ctaUrl}
-                  className="pu-cta-hero__button"
-                >
-                  {props.attributes.ctaText}
-                </a>
+                {props.attributes.ctaText !== "" ? (
+                  <a
+                    href={props.attributes.ctaUrl}
+                    className="pu-cta-hero__button"
+                  >
+                    {props.attributes.ctaText}
+                  </a>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
