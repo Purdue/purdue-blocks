@@ -37,13 +37,29 @@ const { select } = wp.data;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/cta-hero', {
+registerBlockType("purdue-blocks/cta-hero", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'CTA Hero' ), // Block title.
+  title: __("CTA Hero"), // Block title.
   icon: (
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Window-maximize" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z" transform="translate(0 -7.24)"/></g></g></svg>
+    <svg
+      id="Layer_1"
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 87.5"
+    >
+      <defs></defs>
+      <g id="Window-maximize" class="cls-1">
+        <g class="cls-1">
+          <path
+            class="color-9c9795"
+            d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z"
+            transform="translate(0 -7.24)"
+          />
+        </g>
+      </g>
+    </svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
   /**
@@ -59,12 +75,13 @@ registerBlockType( 'purdue-blocks/cta-hero', {
    */
 
   attributes: {
-    pageTitle: { type: 'string', default: '' },
-    ctaUrl: { type: 'string', default: '' },
-    ctaText: { type: 'string', default: '' },
-    imgUrl: { type: 'string', default: '' },
-    imgMoUrl: { type: 'string', default: '' },
-    altText: { type: 'string', default: '' },
+    pageTitle: { type: "string", default: "" },
+    ctaOptionalSub: { type: "string", default: "" },
+    ctaUrl: { type: "string", default: "" },
+    ctaText: { type: "string", default: "" },
+    imgUrl: { type: "string", default: "" },
+    imgMoUrl: { type: "string", default: "" },
+    altText: { type: "string", default: "" },
   },
 
   supports: {
@@ -73,14 +90,14 @@ registerBlockType( 'purdue-blocks/cta-hero', {
 
   // Block description in side panel
   description: __(
-    'This block should be used at the top of the page. Choose a page title, an image, and the settings for the cta button.'
+    "This block should be used at the top of the page. Choose a page title, an image, and the settings for the cta button."
   ),
 
-  edit: ( props ) => {
-    if ( props.attributes.pageTitle === '' ) {
-      props.setAttributes( {
-        pageTitle: select( 'core/editor' ).getCurrentPost().title,
-      } );
+  edit: (props) => {
+    if (props.attributes.pageTitle === "") {
+      props.setAttributes({
+        pageTitle: select("core/editor").getCurrentPost().title,
+      });
     }
 
     return [
@@ -89,30 +106,48 @@ registerBlockType( 'purdue-blocks/cta-hero', {
           <PanelRow>
             <TextareaControl
               label="Hero Image Alt Text"
-              value={ props.attributes.altText }
-              onChange={ ( altText ) => props.setAttributes( { altText } ) }
+              value={props.attributes.altText}
+              onChange={(altText) => props.setAttributes({ altText })}
             />
           </PanelRow>
         </PanelBody>
       </InspectorControls>,
 
-      <div className={ 'bulma-blocks-editor-cta-hero' }>
+      <div className={"bulma-blocks-editor-cta-hero"}>
         <div className="content">
           <span>Add Page Title</span>
           <div className="field">
             <div className="control">
               <input
                 value={
-                  props.attributes.pageTitle !== '' ?
-                    props.attributes.pageTitle :
-                    ''
+                  props.attributes.pageTitle !== ""
+                    ? props.attributes.pageTitle
+                    : ""
                 }
                 className="input"
                 type="text"
                 placeholder="Page Title..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { pageTitle: e.target.value } );
-                } }
+                onChange={(e) => {
+                  props.setAttributes({ pageTitle: e.target.value });
+                }}
+              ></input>
+            </div>
+          </div>
+          <span>Add Optional Subtext</span>
+          <div className="field">
+            <div className="control">
+              <input
+                value={
+                  props.attributes.ctaOptionalSub !== ""
+                    ? props.attributes.ctaOptionalSub
+                    : ""
+                }
+                className="input"
+                type="textarea"
+                placeholder="Optional Subtext..."
+                onChange={(e) => {
+                  props.setAttributes({ ctaOptionalSub: e.target.value });
+                }}
               ></input>
             </div>
           </div>
@@ -122,16 +157,16 @@ registerBlockType( 'purdue-blocks/cta-hero', {
             <div className="control">
               <input
                 value={
-                  props.attributes.ctaText !== '' ?
-                    props.attributes.ctaText :
-                    ''
+                  props.attributes.ctaText !== ""
+                    ? props.attributes.ctaText
+                    : ""
                 }
                 className="input"
                 type="text"
                 placeholder="CTA Text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { ctaText: e.target.value } );
-                } }
+                onChange={(e) => {
+                  props.setAttributes({ ctaText: e.target.value });
+                }}
               ></input>
             </div>
           </div>
@@ -140,14 +175,14 @@ registerBlockType( 'purdue-blocks/cta-hero', {
             <div className="control">
               <input
                 value={
-                  props.attributes.ctaUrl !== '' ? props.attributes.ctaUrl : ''
+                  props.attributes.ctaUrl !== "" ? props.attributes.ctaUrl : ""
                 }
                 className="input"
                 type="text"
                 placeholder="CTA URL..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { ctaUrl: e.target.value } );
-                } }
+                onChange={(e) => {
+                  props.setAttributes({ ctaUrl: e.target.value });
+                }}
               ></input>
             </div>
           </div>
@@ -156,47 +191,51 @@ registerBlockType( 'purdue-blocks/cta-hero', {
           <span>Choose a Hero Image</span>
           <MediaUploadCheck>
             <MediaUpload
-              onSelect={ ( img ) => {
-                props.setAttributes( {
+              onSelect={(img) => {
+                props.setAttributes({
                   imgUrl: img.url,
-                  imgMoUrl: img.sizes ? ( img.sizes.hero_mobile ? img.sizes.hero_mobile.url : img.url ) : img.url,
+                  imgMoUrl: img.sizes
+                    ? img.sizes.hero_mobile
+                      ? img.sizes.hero_mobile.url
+                      : img.url
+                    : img.url,
                   altText:
-                    props.attributes.altText !== '' ?
-                      props.attributes.altText :
-                      img.alt,
-                } );
-              } }
-              render={ ( { open } ) => {
-                return props.attributes.imgUrl !== '' &&
-                  ! props.attributes.imgError ? (
-                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
-                      <figure className={ 'image' }>
-                        <img
-                          alt={ props.attributes.altText }
-                          src={ props.attributes.imgUrl }
-                        />
-                      </figure>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Select a New Image
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
-                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                        Pick a hero image from the media library.
-                      </p>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Open Media Library
-                      </Button>
-                    </div>
-                  );
-              } }
+                    props.attributes.altText !== ""
+                      ? props.attributes.altText
+                      : img.alt,
+                });
+              }}
+              render={({ open }) => {
+                return props.attributes.imgUrl !== "" &&
+                  !props.attributes.imgError ? (
+                  <div className={"bulma-blocks-editor-site-hero__preview"}>
+                    <figure className={"image"}>
+                      <img
+                        alt={props.attributes.altText}
+                        src={props.attributes.imgUrl}
+                      />
+                    </figure>
+                    <Button
+                      className={"bulma-blocks-editor-site-hero__button"}
+                      onClick={open}
+                    >
+                      Select a New Image
+                    </Button>
+                  </div>
+                ) : (
+                  <div className={"bulma-blocks-editor-site-hero__container"}>
+                    <p className={"bulma-blocks-editor-site-hero__description"}>
+                      Pick a hero image from the media library.
+                    </p>
+                    <Button
+                      className={"bulma-blocks-editor-site-hero__button"}
+                      onClick={open}
+                    >
+                      Open Media Library
+                    </Button>
+                  </div>
+                );
+              }}
             />
           </MediaUploadCheck>
         </div>
@@ -215,34 +254,47 @@ registerBlockType( 'purdue-blocks/cta-hero', {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: ( props ) => {
+  save: (props) => {
     const returned = (
       <div className="pu-cta-hero">
         <div className="hero is-large">
           <div className="hero-body">
             <div
               className="background-image"
-              aria-label={ props.attributes.altText }
+              aria-label={props.attributes.altText}
             >
-              <style dangerouslySetInnerHTML={ { __html: `
-              .background-image {background-image: url(${ props.attributes.imgUrl });}
+              <style
+                dangerouslySetInnerHTML={{
+                  __html: `
+              .background-image {background-image: url(${props.attributes.imgUrl});}
               @media (max-width: 767px) {
-                .background-image {background-image: url(${ props.attributes.imgMoUrl });}
+                .background-image {background-image: url(${props.attributes.imgMoUrl});}
               }
-            ` } }></style>
+            `,
+                }}
+              ></style>
             </div>
             <div className="container">
               <div className="content">
                 <h1>
-                  { props.attributes.pageTitle ||
-                    select( 'core/editor' ).getCurrentPost().title }
+                  {props.attributes.pageTitle ||
+                    select("core/editor").getCurrentPost().title}
                 </h1>
-                <a
-                  href={ props.attributes.ctaUrl }
-                  className="pu-cta-hero__button"
-                >
-                  { props.attributes.ctaText }
-                </a>
+                {props.attributes.ctaOptionalSub !== "" ? (
+                  <p>{props.attributes.ctaOptionalSub}</p>
+                ) : (
+                  ""
+                )}
+                {props.attributes.ctaText !== "" ? (
+                  <a
+                    href={props.attributes.ctaUrl}
+                    className="pu-cta-hero__button"
+                  >
+                    {props.attributes.ctaText}
+                  </a>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -251,4 +303,4 @@ registerBlockType( 'purdue-blocks/cta-hero', {
     );
     return returned;
   },
-} );
+});
