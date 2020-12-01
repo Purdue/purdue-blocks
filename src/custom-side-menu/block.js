@@ -17,6 +17,8 @@ const {
 const { InspectorControls } = wp.blockEditor;
 const { withSelect } = wp.data;
 const { apiFetch } = wp;
+import ServerSideRender from '@wordpress/server-side-render';
+
 // Array of social media share options.
 /**
  * Register: aa Gutenberg Block.
@@ -55,11 +57,11 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
    * @returns {Mixed} JSX Component.
    */
 
-  attributes: {
-    menuItems: { type: 'array', default: [] },
-    selectedMenu: { type: 'string', default: '' },
-    toTop: { type: 'boolean', default: true },
-  },
+  // attributes: {
+  //   menuItems: { type: 'array', default: [] },
+  //   selectedMenu: { type: 'string', default: '' },
+  //   toTop: { type: 'boolean', default: true },
+  // },
 
   // Block description in side panel
   description: __(
@@ -107,10 +109,7 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
             options={ options }
             onChange={ ( selectedMenu ) => {
               props.setAttributes( { selectedMenu } );
-              selectedMenu!==''?(async function(){
-                var result = await getMenuItems(selectedMenu, menus)
-                props.setAttributes( { menuItems: result.items } );
-              })():'';
+              console.log(selectedMenu);
             } }
           />
         </PanelRow>
@@ -125,17 +124,11 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
         </PanelRow>
       </PanelBody>
     </InspectorControls>,
-      <div className="custom-side-menu-editor components-disabled">
-        {props.attributes.selectedMenu===''?
-        <div className="empty-message">
-        Select a menu from the right panel
-        </div>:(<div className="custom-side-menu">
-          <ul className="custom-side-menu-top">
-          { printMenu(props.attributes.menuItems)}
-          </ul>
-          {props.attributes.toTop?
-          <button class="to-top-sidebar"><span class="editor">Back To Top</span></button>:<div class="to-top-sidebar"></div>}
-        </div>)}
+      <div className="custom-side-menu-editor components-disabled">         
+            <ServerSideRender
+              block="purdue-blocks/custom-side-menu"
+              attributes={ props.attributes }
+            />
       </div>
     ];
   } ),
@@ -151,17 +144,6 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: ( props ) => {
-    return (
-      <div className="custom-side-menu">
-        <ul className="custom-side-menu-top">
-          {props.attributes.selectedMenu!==''?printMenu(props.attributes.menuItems):''}
-        </ul>
-        {props.attributes.toTop?
-          <button id="to-top-sidebar" class="to-top-sidebar"><span class="text">Back To Top</span></button>:<div class="to-top-sidebar"></div>}
-      </div>
-    )
-  },
 
 } );
 
