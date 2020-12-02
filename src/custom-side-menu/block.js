@@ -57,12 +57,6 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
    * @returns {Mixed} JSX Component.
    */
 
-  // attributes: {
-  //   menuItems: { type: 'array', default: [] },
-  //   selectedMenu: { type: 'string', default: '' },
-  //   toTop: { type: 'boolean', default: true },
-  // },
-
   // Block description in side panel
   description: __(
     'Select a menu to create a side navigation for this page. It requires the installation of "WP-REST-API V2 Menus" to work.'
