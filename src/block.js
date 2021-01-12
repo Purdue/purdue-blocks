@@ -31,3 +31,4 @@ import './image-toggle-card/block.js'
 import './content-page-layout/block.js';
 import './sidebar-cta/block.js';
 import './purdue-news/block.js';
+import './custom-side-menu/block.js';
