@@ -64,7 +64,7 @@ registerBlockType( 'purdue-blocks/testimonial', {
 
   // Block description in side panel
   description: __(
-    'This block adds a row of one or two testimonials to your page.'
+    'This block adds a row of one or two testimonials to your page. It pulls from testimonial posts from this site and requires the installation of acf-to-rest-api to work.'
   ),
   edit: withSelect( ( select )=> {
     const posts = wp.data.select( 'core' ).getEntityRecords( 'postType', 'test_post', { per_page: -1, _embed: true } );

@@ -5,3 +5,4 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 import "./accordion/frontend.js";
 import "./anchor-link-navigation/frontend.js";
 import "./image-toggle-card/frontend.js"
+import "./custom-side-menu/frontend.js"
