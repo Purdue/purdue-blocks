@@ -6,7 +6,7 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
-### [1.14.0] 2020-11-4
+### [1.14.1] 2020-11-4
 #### Added
 - add optional subtext option to cta hero
 - added custom side menu block
