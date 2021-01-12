@@ -6,6 +6,20 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.14.0] 2020-11-4
+#### Added
+- add optional subtext option to cta hero
+- added custom side menu block
+- Added heading level select box in featured story block
+- Added News block rendered by PHP to make it dynamic
+
+#### Updated
+- cta button of cta hero is now optional
+- Add "Position" property to accordion container
+- Fix Anchor link navigation Js
+- Add more description to testimonial block
+- Center button text on CTA banner
+
 ### [1.13.2] 2020-11-4
 #### Updated
 - Fixed link font issue
