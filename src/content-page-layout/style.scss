@@ -8,11 +8,17 @@
   .container{
     .page-layout-columns.columns{
       justify-content:center;
-      @include mobile{
+      @include touch{
         display:block;
       }
       .column{
         margin:0;
+        &.is-full-tablet.wp-block-column{
+          @include touch{
+            flex-basis:auto !important;
+            width:100% !important;
+          }
+        }
       }
       .page-layout-sidebar{
         display:none;
@@ -34,7 +40,7 @@
       }
       &.mobile-reverse{
         .page-layout-columns.columns{
-          @include mobile{
+          @include touch{
             display:flex;
             flex-direction:column-reverse;
           }

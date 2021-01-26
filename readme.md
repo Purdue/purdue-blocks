@@ -6,6 +6,53 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.14.1] 2021-1-12
+#### Added
+- add optional subtext option to cta hero
+- added custom side menu block
+- Added heading level select box in featured story block
+- Added News block rendered by PHP to make it dynamic
+
+#### Updated
+- cta button of cta hero is now optional
+- Add "Position" property to accordion container
+- Fix Anchor link navigation Js
+- Add more description to testimonial block
+- Center button text on CTA banner
+
+### [1.13.2] 2020-11-4
+#### Updated
+- Fixed link font issue
+
+### [1.13.1] 2020-11-2
+#### Updated
+- Fixed large CTA-card link issue
+- Fixed proofpoint font color issue
+- Fix CTA-card and featured story background issues
+- Added the link card and latest post icons to the toggle block
+- Fixed the size of icons on the front end of the toggle block
+- Added check to determine if a certain icon should have a white background depending on a data field on the svg string
+
+### [1.13.0] 2020-10-16
+#### Updated
+- Fixed issues with some blocks having broken styles in Internet Explorer
+- Fixed issues with the Image Toggle Block via 1.11.0 and added some new features in the editor
+  - Toggle buttons did not work when there were multiple image toggle cards on the page.
+  - Fixed a block crash associated with the save function not outputting the same html due to not adding some attributes to the anchor element that wordpress adds automatically on the front-end.
+  - Added an optional icon selector menu to add an icon next to the heading.
+  - Updated the media upload check to allow for only a single image to be chosen, and show toggle button options based on whether one or two images were selected.
+  - Added checking and blocking for if more than 2 images were selected.
+
+### [1.12.0] 2020-10-06
+#### Added
+- New Icons for all Purdue Blocks
+
+### [1.11.0] 2020-10-06
+#### Added
+- Page Layout Block
+- Image Toggle Block
+- Sidebar CTA Block
+
 ### [1.10.0] 2020-09-25
 #### Added
 - Anchor link navigation block

@@ -8,6 +8,7 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
+
 import './site-hero/block.js';
 import './cta-hero/block.js';
 import './title-hero/block.js';
@@ -26,6 +27,7 @@ import './accordion/block.js';
 import './cta-card/block.js';
 import './purdue-rss/block.js';
 import './anchor-link-navigation/block.js';
+import './image-toggle-card/block.js'
 import './content-page-layout/block.js';
 import './sidebar-cta/block.js';
 //Developertown blocks
@@ -33,3 +35,5 @@ import './video-embed/block.js'
 import './homepage-link-card/block.js'
 import './icon-group/block.js'
 import './podcast/block.js'
+import './purdue-news/block.js';
+import './custom-side-menu/block.js';

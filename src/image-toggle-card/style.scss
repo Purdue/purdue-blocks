@@ -1,0 +1,167 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-image-toggle {
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ededed;
+    padding: 1rem;
+    flex-wrap: wrap;
+
+    span {
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $acumin-pro-semicondensed;
+      font-size: 25px;
+      font-weight: 500;
+    }
+
+    &.has-header-black {
+      background: #000;
+
+      span {
+        color: white;
+      }
+
+      a {
+        color: $dust-gold;
+        text-decoration: underline;
+        font-family: $acumin-pro;
+        font-size: 18px;
+        font-weight: 700;
+  
+        &:hover {
+          cursor: pointer;
+          text-decoration: none;
+  
+        }
+      }
+    }
+
+    &--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      width: 3rem;
+      height: 3rem;
+      margin-left: 1rem;
+
+      &.has-bg-white {
+        background: white;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        max-width: 2rem;
+        max-height: 2rem;
+      }
+
+      .cls-1{
+        isolation:isolate;
+      }
+      .cls-2{
+          fill:#cfb991;
+      }
+
+      .color-9c9795 {
+          fill: #9c9795;
+      }
+
+      .color-d9ab28 {
+          fill: #d9ab28;
+      }
+
+      .color-fff {
+          fill: #fff;
+      }
+
+      .color-black {
+        fill: #000;
+      }
+
+      .color-bulma {
+        fill: #55c0a5;
+      }
+    }
+
+    a {
+      color: $aged-gold;
+      text-decoration: underline;
+      font-family: $acumin-pro;
+      font-size: 18px;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: none;
+
+      }
+    }
+  }
+
+  &__images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+
+    img {
+      max-width: 80%;
+      max-height: 500px;
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .toggle-button {
+      border: none;
+      background: none;
+      padding: 0.4rem 0;
+      border-bottom: 3px $steam-gray solid;
+      color: $steel-gray;
+      text-transform: uppercase;
+      font-family: $acumin-pro-condensed;
+      font-weight: 700;
+      font-size: 18px;
+
+      &:first-of-type {
+        padding-right: 2rem;
+      }
+      &:last-of-type {
+        text-align: right;
+        padding-left: 2rem;
+      }
+
+      &.selected {
+        border-color: $aged-gold;
+        color: black;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

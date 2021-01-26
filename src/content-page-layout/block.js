@@ -43,15 +43,9 @@ const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 registerBlockType( 'purdue-blocks/content-page-layout', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Content Page Layout' ), // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view',
-
-  }, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  icon: (
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Columns" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M100,15.62V84.38a9.38,9.38,0,0,1-9.38,9.37H9.37A9.38,9.38,0,0,1,0,84.38V15.62A9.38,9.38,0,0,1,9.37,6.25H90.62A9.38,9.38,0,0,1,100,15.62ZM43.75,31.25H12.5v50H43.75Zm43.75,0H56.25v50H87.5Z" transform="translate(0 -6.25)"/></g></g></svg>
+  ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 

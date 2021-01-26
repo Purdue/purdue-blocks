@@ -19,7 +19,7 @@ add_action( 'rest_api_init', function () {
         ),				
         'callback' => 'feed_url_endpoint',
         'permission_callback' => function () {
-            return ture;
+            return true;
         }
     ) );
 } );

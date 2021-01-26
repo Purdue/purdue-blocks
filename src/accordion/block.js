@@ -46,15 +46,9 @@ const BLOCKS_TEMPLATE = [
 registerBlockType( 'purdue-blocks/accordion', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Accordion' ), // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view',
-
-  }, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  icon: (
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.01 100"><defs></defs><g id="Arrows-alt-v" class="cls-1"><g class="cls-1"><path class="cls-2" d="M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z" transform="translate(-28.49)"/></g></g></svg>
+  ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 

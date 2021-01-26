@@ -7,6 +7,9 @@ headers.forEach((header)=>{
 })
 const anchorLinkBlocks=document.querySelectorAll(".anchor-link-block-links")
 const href=window.location.href
+function is_IE() {
+    return (window.navigator.userAgent.match(/MSIE|Trident/) !== null);
+}
 if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.length>0){
     anchorLinkBlocks.forEach((block)=>{
             anchorHeaders.forEach((header)=>{
@@ -22,7 +25,7 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
     const links=document.querySelectorAll('a.anchor-link-block-link')
     links.forEach((link)=>{
         link.addEventListener('click',(e)=>{
-            e.preventDefault( );
+            is_IE()?'':e.preventDefault( );
             const topY=document.querySelector(link.hash).getBoundingClientRect().top + window.pageYOffset -20;
             window.scroll({
                 top: topY,
@@ -34,9 +37,8 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
         })
     })
     window.addEventListener('scroll', () => {
-        const scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
         anchorHeaders.forEach((header)=>{
-            if ( header.offsetTop <= scrollPos ) {
+            if ( header.getBoundingClientRect().top <= 20 ) {
                 const id = "#"+header.id
                 links.forEach((el)=>{
                     el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
