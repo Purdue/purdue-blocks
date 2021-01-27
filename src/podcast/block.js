@@ -442,7 +442,7 @@ registerBlockType( 'purdue-blocks/podcast', {
    */
   save: ( props ) => {
     const videoFields = props.attributes.listenOnUrls.map( ( card, index ) => {
-      return  <a key={ index } className='item' href={ card.chennelUrl } target="_blank">
+      return  <a key={ index } className='item' href={ card.chennelUrl } target="_blank" rel="noopener noreferrer">
                   { card.chennelname }
               </a>;
     } );
@@ -456,10 +456,8 @@ registerBlockType( 'purdue-blocks/podcast', {
         </div>
       </div>
       <div className="columns purdue_podcast_desc">
-        <div className="column is-one-quarter">
+        <div className="column">
           <img className="purdue_podcast_episode_cover_image" src={ props.attributes.coverImage } alt={ props.attributes.altText } />
-        </div>
-        <div className="column is-three-quarters">
           <div className="purdue_podcast_episode_short_desc">
             <RichText.Content tagName="div" multiline="p" value={ props.attributes.shortDescription } />
           </div>
@@ -485,7 +483,7 @@ registerBlockType( 'purdue-blocks/podcast', {
                 <div className="purdue_podcast_controls_black_elapsed">00:00:00</div>
                 <div className="purdue_podcast_controls_black_timeline"><span className="time_elapsed"></span></div>
                 <div className="purdue_podcast_controls_black_total">00:00:00</div>
-                <div className="purdue_podcast_controls_black_volume"><i class="fas fa-volume-up"></i><i class="fas fa-volume-mute hidden"></i></div>
+                <div className="purdue_podcast_controls_black_volume"><i class="fas fa-volume-up  podcast-volume"></i><i class="fas fa-volume-mute hidden"></i></div>
                 <div className="purdue_podcast_controls_black_speed"><button class="pcast-speed">1x</button></div>
                 { props.attributes.isChecked ? (
                 <audio src={ props.attributes.urlText }></audio> ) : (
@@ -494,22 +492,7 @@ registerBlockType( 'purdue-blocks/podcast', {
               }
               </div>
             </div>
-            <div class="modal">
-              <div class="modal-background"></div>
-                <div class="modal-content">
-                  <div class="top_article_data">
-                    <div class="top_article_data_share">
-                      <a id="share_text" class="top_article_data_share_text " target="_blank" aria-label={`Share link https://youtu.be/${ post_id }`} href={`https://youtu.be/${ post_id }`} title="Share link">{`https://youtu.be/${ post_id }`}</a>
-                      <a class="top_article_data_share_button" href={`https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/${ post_id }`} title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                      <a class="top_article_data_share_button" href={`https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/${ post_id }`} title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                      <a class="top_article_data_share_button" href={`https://twitter.com/intent/tweet?text=https://youtu.be/${ post_id }`} title="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                      <a class="top_article_data_share_button" href={`mailto:?subject=&body=https://youtu.be/${ post_id }`} title="{{ Drupal.t('Share via Email') }}" target="_blank"><i class="fas fa-envelope"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <button class="modal-close is-large" aria-label="close"></button>
-              </div>
-            </div>
+
             <div className="purdue_podcast_episode_box">
               <div className="purdue_podcast_episode_number">
                 {__('Espisode # ')}{ props.attributes.episodeNumber }
@@ -523,7 +506,20 @@ registerBlockType( 'purdue-blocks/podcast', {
                 <RichText.Content tagName="div" multiline="p" value={ props.attributes.fullDescription } />
               </div>
               <div className="purdue_podcast_controls_pause_share">
-                <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share"></i> Share</button>
+                <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share share-icon"></i> Share</button>
+                <div class="podcast-modal">
+                <button class="modal-close podcast-modal-close is-large" aria-label="close"></button>
+                    <div class="modal-content">
+                        <div class="top_article_data_share">
+                          <span id="share_text" class="top_article_data_share_text ">Share</span>
+                          <a class="top_article_data_share_button facebook_share_button" href='' title="Share on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                          <a class="top_article_data_share_button instagram_share_button" href='' title="Share on Linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                          <a class="top_article_data_share_button twitter_share_button" href='' title="Share on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                          <a class="top_article_data_share_button email_share_button" href='' title="{{ Drupal.t('Share via Email') }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

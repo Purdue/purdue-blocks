@@ -116,6 +116,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
       const iconGroup = [ ...props.attributes.iconGroup ];
       iconGroup[ index ].iconUrl = iconUrl;
       props.setAttributes( { iconGroup } );
+      console.log(iconUrl)
     }; // End handleChangeiconGroupUrl
 
     let iconFields,
@@ -177,7 +178,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
   save: ( props ) => {
     const iconFields = props.attributes.iconGroup.map( ( card, index ) => {
       return  <div key={ index } className='icon-item'>
-                <a href={ card.iconUrl } target="_blank" >
+                <a href={ card.iconUrl } target="_blank" rel="noopener noreferrer">
                   <div className='icon-item-icon-placeholder'>
                     <div dangerouslySetInnerHTML={{ __html: card.icon }} />
                   </div>

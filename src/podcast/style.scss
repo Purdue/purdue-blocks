@@ -4,9 +4,18 @@
  * CSS for both Frontend+Backend.
  */
 
-.purdue_podcast {
+ .purdue_podcast {
+  @media screen and (max-width: 767px) {
+		padding: 0 16px;
+	}
   &_desc {
     margin-bottom: 50px !important;
+    @media screen and (max-width: 767px) {
+  		display: flex;
+      .column.is-one-quarter {
+        height: fit-content;
+      }
+  	}
   }
   &_podcast_name {
     color: #000;
@@ -25,8 +34,15 @@
   }
   &_episode {
     &_cover_image {
-      width: 100%;
+      width: 318px;
       height: auto;
+      float: left;
+      margin-right: 56px;
+      @media screen and (max-width: 767px) {
+        height: auto;
+    		width: 100px;
+        margin-right: 16px;
+    	}
     }
     &_box {
       box-shadow: 0px 3px 6px #0000003D;
@@ -86,6 +102,10 @@
       padding-left: 40px;
       position: relative;
       width: 20%;
+      @media screen and (max-width: 767px) {
+        padding-left: 16px;
+        width: 50%;
+      }
       &_share {
         margin-top: 30px;
         text-align: right;
@@ -125,6 +145,15 @@
           right: -27px;
           top: -10px;
           width: 59px;
+          @media screen and (max-width: 767px) {
+            display: block;
+            font-size: 18px;
+            height: 50px;
+            padding: 2px 6px;
+            right: -23px;
+            top: -6px;
+            width: 46px;
+          }
           &:focus {
             outline: none;
           }
@@ -137,6 +166,9 @@
             height: 80%;
             justify-content: center;
             width: 87%;
+            @media screen and (max-width: 767px) {
+              margin: 0 auto;
+            }
           }
         }
       }
@@ -147,12 +179,24 @@
       padding-left: 35px;
       padding-right: 15px;
       width: 75%;
+      @media screen and (max-width: 767px) {
+        justify-content: center;
+        width: 50%;
+      }
       &_total, &_elapsed {
         color: $white;
         font-size: 12px;
         font-weight: 600;
         text-align: center;
         width: 15%;
+      }
+      @media screen and (max-width: 767px) {
+        &_total {
+          display: none;
+        }
+        &_elapsed {
+          width: 50%;
+        }
       }
       &_timeline {
         background-color: #ededed;
@@ -163,6 +207,9 @@
         overflow: hidden;
         position: relative;
         width: 66%;
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
         .time_elapsed {
           background-color: #ddb945;
           display: block;
@@ -178,28 +225,62 @@
         text-align: center;
         width: 7%;
       }
+      @media screen and (max-width: 767px) {
+        &_volume {
+          width: 25%;
+        }
+      }
       &_speed {
+        @media screen and (max-width: 767px) {
+          width: 25%;
+        }
         .pcast-speed {
           background-color: transparent;
           border: $white 1px solid;
           border-radius: 4px;
           color: $white;
           margin-left: 8px;
+          line-height: 0.8;
+          height: 20px;
+          @media screen and (max-width: 767px) {
+            display: block;
+            margin: 0 auto;
+          }
         }
       }
     }
   }
-  .modal {
-    position: absolute;
-    &-close {
-      position: absolute;
-    }
+  .podcast-modal {
+      align-items: flex-end;
+      background-color: rgba(0,0,0,0.75);
+      color: #fff;
+      display: none;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      left: 0;
+      padding: 20% 15%;
+      position: fixed;
+      text-align: center;
+      top: 0;
+      width: 100vw;
+      z-index: 999;
+      @include mobile{
+        padding: 20% 5%;
+      }
+      &-close {
+        position: absolute;
+      }
     .top_article_data_share {
       margin: 0 auto;
       padding: 0;
       text-align: center;
+      display:flex;
+      justify-content:center;
+      font-size: 1.5rem;
       &_button {
         color: #fff !important;
+        margin:0 1rem;
         &:hover {
           color: darken(#fff, 15%) !important;
         }
@@ -207,12 +288,13 @@
       &_text {
         color: #fff;
         display: block;
-        font-size: 18px;
         font-weight: 600;
-        padding-bottom: 30px;
         text-transform: none;
-        width: 100%;
+        padding-right:1rem;
       }
     }
   }
+}
+.share-icon{
+  margin-right:0.5rem;
 }

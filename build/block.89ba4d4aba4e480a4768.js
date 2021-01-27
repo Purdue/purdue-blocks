@@ -6490,14 +6490,21 @@ registerBlockType('purdue-blocks/accordion', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Accordion'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 43.01 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrows-alt-v",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "cls-2",
+    d: "M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z",
+    transform: "translate(-28.49)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -6677,16 +6684,26 @@ var _wp$blockEditor = wp.blockEditor,
 
 registerBlockType('purdue-blocks/anchor-link-navigation', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __('Anchor Link Navigation Block'),
+  title: __('Anchor Link Navigation'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("rect", {
+    width: "100",
+    height: "100",
+    rx: "8.55"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrow-right",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-fff",
+    d: "M47.85,9.91a4.54,4.54,0,0,1,6.43,0L91.16,46.77a4.53,4.53,0,0,1,0,6.44L54.28,90.09a4.54,4.54,0,0,1-6.43,0l-4.21-4.22a4.55,4.55,0,0,1,.08-6.5L66.58,57.59H12.05A4.54,4.54,0,0,1,7.5,53V47a4.54,4.54,0,0,1,4.55-4.55H66.58L43.72,20.63a4.52,4.52,0,0,1-.08-6.5Z"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -6768,12 +6785,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _cta_card_block_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./cta-card/block.js */ "./src/cta-card/block.js");
 /* harmony import */ var _purdue_rss_block_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./purdue-rss/block.js */ "./src/purdue-rss/block.js");
 /* harmony import */ var _anchor_link_navigation_block_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./anchor-link-navigation/block.js */ "./src/anchor-link-navigation/block.js");
-/* harmony import */ var _content_page_layout_block_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./content-page-layout/block.js */ "./src/content-page-layout/block.js");
-/* harmony import */ var _sidebar_cta_block_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./sidebar-cta/block.js */ "./src/sidebar-cta/block.js");
-/* harmony import */ var _video_embed_block_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./video-embed/block.js */ "./src/video-embed/block.js");
-/* harmony import */ var _homepage_link_card_block_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./homepage-link-card/block.js */ "./src/homepage-link-card/block.js");
-/* harmony import */ var _icon_group_block_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./icon-group/block.js */ "./src/icon-group/block.js");
-/* harmony import */ var _podcast_block_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./podcast/block.js */ "./src/podcast/block.js");
+/* harmony import */ var _image_toggle_card_block_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./image-toggle-card/block.js */ "./src/image-toggle-card/block.js");
+/* harmony import */ var _content_page_layout_block_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./content-page-layout/block.js */ "./src/content-page-layout/block.js");
+/* harmony import */ var _sidebar_cta_block_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./sidebar-cta/block.js */ "./src/sidebar-cta/block.js");
+/* harmony import */ var _video_embed_block_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./video-embed/block.js */ "./src/video-embed/block.js");
+/* harmony import */ var _homepage_link_card_block_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./homepage-link-card/block.js */ "./src/homepage-link-card/block.js");
+/* harmony import */ var _icon_group_block_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./icon-group/block.js */ "./src/icon-group/block.js");
+/* harmony import */ var _podcast_block_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./podcast/block.js */ "./src/podcast/block.js");
+/* harmony import */ var _purdue_news_block_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./purdue-news/block.js */ "./src/purdue-news/block.js");
+/* harmony import */ var _custom_side_menu_block_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./custom-side-menu/block.js */ "./src/custom-side-menu/block.js");
 /**
  * Gutenberg Blocks
  *
@@ -6803,7 +6823,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
  //Developertown blocks
+
+
 
 
 
@@ -6872,14 +6895,21 @@ registerBlockType('purdue-blocks/card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Custom Card'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "clone",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-d9ab28",
+    d: "M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z",
+    transform: "translate(0 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7186,14 +7216,21 @@ registerBlockType('purdue-blocks/content-page-layout', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Content Page Layout'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Columns",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-d9ab28",
+    d: "M100,15.62V84.38a9.38,9.38,0,0,1-9.38,9.37H9.37A9.38,9.38,0,0,1,0,84.38V15.62A9.38,9.38,0,0,1,9.37,6.25H90.62A9.38,9.38,0,0,1,100,15.62ZM43.75,31.25H12.5v50H43.75Zm43.75,0H56.25v50H87.5Z",
+    transform: "translate(0 -6.25)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7381,18 +7418,20 @@ registerBlockType('purdue-blocks/cta-banner', {
   title: __('CTA Banner'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 75 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Bookmark",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "cls-2",
+    d: "M87.5,9.37V100L50,78.12,12.5,100V9.37A9.38,9.38,0,0,1,21.87,0H78.13A9.38,9.38,0,0,1,87.5,9.37Zm-9.37,1.18A1.18,1.18,0,0,0,77,9.37H23.05a1.18,1.18,0,0,0-1.18,1.18V83.68L50,67.27,78.13,83.68Z",
+    transform: "translate(-12.5 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7677,18 +7716,20 @@ registerBlockType('purdue-blocks/cta-button', {
   title: __('CTA Button'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "external-link-square-alt",
-    className: "svg-inline--fa fa-external-link-square-alt fa-w-14",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 448 512"
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "clone",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M448 80v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h352c26.51 0 48 21.49 48 48zm-88 16H248.029c-21.313 0-32.08 25.861-16.971 40.971l31.984 31.987L67.515 364.485c-4.686 4.686-4.686 12.284 0 16.971l31.029 31.029c4.687 4.686 12.285 4.686 16.971 0l195.526-195.526 31.988 31.991C358.058 263.977 384 253.425 384 231.979V120c0-13.255-10.745-24-24-24z"
-  })),
+    class: "color-9c9795",
+    d: "M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z",
+    transform: "translate(0 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -7933,14 +7974,21 @@ registerBlockType('purdue-blocks/cta-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('CTA Card'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "clone",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "cls-2",
+    d: "M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z",
+    transform: "translate(0 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -8078,7 +8126,7 @@ registerBlockType('purdue-blocks/cta-card', {
           altText: altText
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+    })), props.attributes.cardType === "small" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
       label: "Add a link to this card?",
       checked: props.attributes.hasLink,
       onChange: function onChange() {
@@ -8086,7 +8134,7 @@ registerBlockType('purdue-blocks/cta-card', {
           hasLink: !props.attributes.hasLink
         });
       }
-    })), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    })) : '', props.attributes.cardType === "small" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
       label: "Call to action text",
       value: props.attributes.linkText,
       onChange: function onChange(linkText) {
@@ -8094,7 +8142,7 @@ registerBlockType('purdue-blocks/cta-card', {
           linkText: linkText
         });
       }
-    })) : '', props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    })) : '', props.attributes.cardType === "small" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
       label: "Link address",
       value: props.attributes.link,
       onChange: function onChange(link) {
@@ -8102,7 +8150,7 @@ registerBlockType('purdue-blocks/cta-card', {
           link: link
         });
       }
-    })) : '', props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+    })) : '', props.attributes.cardType === "small" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
       label: "Open link in new tab?",
       checked: props.attributes.external,
       onChange: function onChange() {
@@ -8168,7 +8216,7 @@ registerBlockType('purdue-blocks/cta-card', {
     }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       template: BLOCKS_TEMPLATE,
       allowedBlocks: ['core/paragraph', 'core/list']
-    }), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }), props.attributes.cardType === "small" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "read-more-button"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, props.attributes.linkText)) : ''))))];
   },
@@ -8185,7 +8233,7 @@ registerBlockType('purdue-blocks/cta-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: function save(props) {
-    var returned = props.attributes.hasLink === true ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    var returned = props.attributes.cardType === "small" && props.attributes.hasLink === true ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: props.attributes.link,
       target: props.attributes.external ? '_blank' : '_self',
       className: "cta-card-horizonal".concat(props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large').concat(props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right'),
@@ -8294,25 +8342,27 @@ var select = wp.data.select;
  *                             registered; otherwise `undefined`.
  */
 
-registerBlockType('purdue-blocks/cta-hero', {
+registerBlockType("purdue-blocks/cta-hero", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __('CTA Hero'),
+  title: __("CTA Hero"),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Window-maximize",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "color-9c9795",
+    d: "M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z",
+    transform: "translate(0 -7.24)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: 'purdue-blocks',
+  category: "purdue-blocks",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
 
@@ -8329,39 +8379,43 @@ registerBlockType('purdue-blocks/cta-hero', {
    */
   attributes: {
     pageTitle: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
+    },
+    ctaOptionalSub: {
+      type: "string",
+      default: ""
     },
     ctaUrl: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     },
     ctaText: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     },
     imgUrl: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     },
     imgMoUrl: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     },
     altText: {
-      type: 'string',
-      default: ''
+      type: "string",
+      default: ""
     }
   },
   supports: {
     className: false
   },
   // Block description in side panel
-  description: __('This block should be used at the top of the page. Choose a page title, an image, and the settings for the cta button.'),
+  description: __("This block should be used at the top of the page. Choose a page title, an image, and the settings for the cta button."),
   edit: function edit(props) {
-    if (props.attributes.pageTitle === '') {
+    if (props.attributes.pageTitle === "") {
       props.setAttributes({
-        pageTitle: select('core/editor').getCurrentPost().title
+        pageTitle: select("core/editor").getCurrentPost().title
       });
     }
 
@@ -8374,7 +8428,7 @@ registerBlockType('purdue-blocks/cta-hero', {
         });
       }
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: 'bulma-blocks-editor-cta-hero'
+      className: "bulma-blocks-editor-cta-hero"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Add Page Title"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -8382,13 +8436,27 @@ registerBlockType('purdue-blocks/cta-hero', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "control"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
-      value: props.attributes.pageTitle !== '' ? props.attributes.pageTitle : '',
+      value: props.attributes.pageTitle !== "" ? props.attributes.pageTitle : "",
       className: "input",
       type: "text",
       placeholder: "Page Title...",
       onChange: function onChange(e) {
         props.setAttributes({
           pageTitle: e.target.value
+        });
+      }
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Add Optional Subtext"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
+      value: props.attributes.ctaOptionalSub !== "" ? props.attributes.ctaOptionalSub : "",
+      className: "input",
+      type: "textarea",
+      placeholder: "Optional Subtext...",
+      onChange: function onChange(e) {
+        props.setAttributes({
+          ctaOptionalSub: e.target.value
         });
       }
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Add CTA Button Text and URL"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -8398,7 +8466,7 @@ registerBlockType('purdue-blocks/cta-hero', {
     }, "CTA Text"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "control"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
-      value: props.attributes.ctaText !== '' ? props.attributes.ctaText : '',
+      value: props.attributes.ctaText !== "" ? props.attributes.ctaText : "",
       className: "input",
       type: "text",
       placeholder: "CTA Text...",
@@ -8414,7 +8482,7 @@ registerBlockType('purdue-blocks/cta-hero', {
     }, "CTA URL"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "control"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
-      value: props.attributes.ctaUrl !== '' ? props.attributes.ctaUrl : '',
+      value: props.attributes.ctaUrl !== "" ? props.attributes.ctaUrl : "",
       className: "input",
       type: "text",
       placeholder: "CTA URL...",
@@ -8430,27 +8498,27 @@ registerBlockType('purdue-blocks/cta-hero', {
         props.setAttributes({
           imgUrl: img.url,
           imgMoUrl: img.sizes ? img.sizes.hero_mobile ? img.sizes.hero_mobile.url : img.url : img.url,
-          altText: props.attributes.altText !== '' ? props.attributes.altText : img.alt
+          altText: props.attributes.altText !== "" ? props.attributes.altText : img.alt
         });
       },
       render: function render(_ref) {
         var open = _ref.open;
-        return props.attributes.imgUrl !== '' && !props.attributes.imgError ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-          className: 'bulma-blocks-editor-site-hero__preview'
+        return props.attributes.imgUrl !== "" && !props.attributes.imgError ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "bulma-blocks-editor-site-hero__preview"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
-          className: 'image'
+          className: "image"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
           alt: props.attributes.altText,
           src: props.attributes.imgUrl
         })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-          className: 'bulma-blocks-editor-site-hero__button',
+          className: "bulma-blocks-editor-site-hero__button",
           onClick: open
         }, "Select a New Image")) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-          className: 'bulma-blocks-editor-site-hero__container'
+          className: "bulma-blocks-editor-site-hero__container"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
-          className: 'bulma-blocks-editor-site-hero__description'
+          className: "bulma-blocks-editor-site-hero__description"
         }, "Pick a hero image from the media library."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
-          className: 'bulma-blocks-editor-site-hero__button',
+          className: "bulma-blocks-editor-site-hero__button",
           onClick: open
         }, "Open Media Library"));
       }
@@ -8486,13 +8554,221 @@ registerBlockType('purdue-blocks/cta-hero', {
       className: "container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, props.attributes.pageTitle || select('core/editor').getCurrentPost().title), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, props.attributes.pageTitle || select("core/editor").getCurrentPost().title), props.attributes.ctaOptionalSub !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, props.attributes.ctaOptionalSub) : "", props.attributes.ctaText !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: props.attributes.ctaUrl,
       className: "pu-cta-hero__button"
-    }, props.attributes.ctaText))))));
+    }, props.attributes.ctaText) : "")))));
     return returned;
   }
 });
+
+/***/ }),
+
+/***/ "./src/custom-side-menu/block.js":
+/*!***************************************!*\
+  !*** ./src/custom-side-menu/block.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * BLOCK: Custom menu
+ *
+ */
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
+
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    SelectControl = _wp$components.SelectControl,
+    CheckboxControl = _wp$components.CheckboxControl;
+var InspectorControls = wp.blockEditor.InspectorControls;
+var withSelect = wp.data.withSelect;
+var _wp = wp,
+    apiFetch = _wp.apiFetch;
+ // Array of social media share options.
+
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+
+var menus = [];
+registerBlockType('purdue-blocks/custom-side-menu', {
+  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+  title: __('Custom Side Menu'),
+  // Block title.
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 85 82.85"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrow-right",
+    class: "color-dust-gold"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "cls-1",
+    d: "M47.85,9.91a4.54,4.54,0,0,1,6.42,0h0L91.16,46.77a4.53,4.53,0,0,1,0,6.41l0,0L54.28,90.09a4.54,4.54,0,0,1-6.42,0h0l-4.21-4.22a4.55,4.55,0,0,1,0-6.43l.07-.07L66.58,57.59H12.05A4.54,4.54,0,0,1,7.5,53.06V47A4.54,4.54,0,0,1,12,42.45H66.58L43.72,20.63a4.52,4.52,0,0,1-.19-6.39l.11-.11Z",
+    transform: "translate(-7.5 -8.58)"
+  }))),
+  // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  category: 'purdue-blocks',
+  // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  keywords: [],
+
+  /**
+   * The edit function describes the structure of your block in the context of the editor.
+   * This represents what the editor will render when the block is used.
+   *
+   * The "edit" property must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Component.
+   */
+  // Block description in side panel
+  description: __('Select a menu to create a side navigation for this page. It requires the installation of "WP-REST-API V2 Menus" to work.'),
+  edit: withSelect(function (select) {
+    var response = apiFetch({
+      path: '/menus/v1/menus/',
+      method: 'GET'
+    }).then(function (res) {
+      menus = res;
+      return res;
+    });
+    return {
+      menus: menus,
+      response: response
+    };
+  })(function (props) {
+    var menus = props.menus,
+        response = props.response;
+
+    if (!response) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "custom-side-menu"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+        className: "error-message"
+      }, "Loading..."));
+    }
+
+    if (response.length === 0) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        className: "custom-side-menu"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+        className: "error-message"
+      }, "No menus found!"));
+    }
+
+    var options = [{
+      value: '',
+      label: 'Select a menu'
+    }];
+
+    for (var i = 0; i < menus.length; i++) {
+      var option = {
+        value: menus[i].term_id,
+        label: menus[i].name
+      };
+      options.push(option);
+    }
+
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+      label: __('Select a menu:'),
+      value: props.attributes.selectedMenu,
+      options: options,
+      onChange: function onChange(selectedMenu) {
+        props.setAttributes({
+          selectedMenu: selectedMenu
+        });
+        console.log(selectedMenu);
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+      label: "Add a back to top button at the bottom?",
+      checked: props.attributes.toTop,
+      onChange: function onChange() {
+        return props.setAttributes({
+          toTop: !props.attributes.toTop
+        });
+      }
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "custom-side-menu-editor components-disabled"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_1___default.a, {
+      block: "purdue-blocks/custom-side-menu",
+      attributes: props.attributes
+    }))];
+  })
+  /**
+   * The save function defines the way in which the different attributes should be combined
+   * into the final markup, which is then serialized by Gutenberg into post_content.
+   *
+   * The "save" property must be specified and must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Frontend HTML.
+   */
+
+});
+
+function getMenuItems(selectedMenu, menus) {
+  var menu = menus.find(function (menu) {
+    return menu.term_id == selectedMenu;
+  });
+  return apiFetch({
+    path: '/menus/v1/menus/' + menu.slug,
+    method: 'GET'
+  }).then(function (res) {
+    return res;
+  });
+}
+
+function printMenu(menuItems) {
+  return menuItems.map(function (menuItem) {
+    if (menuItem.child_items && menuItem.child_items.length > 0) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+        className: "custom-side-menu-item"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+        href: menuItem.url
+      }, menuItem.title), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("ul", {
+        className: "custom-side-menu-item-submenu"
+      }, menuItem.child_items.map(function (items) {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+          className: "custom-side-menu-item-subitem"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+          href: items.url
+        }, items.title));
+      })));
+    } else {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("li", {
+        className: "custom-side-menu-item"
+      }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+        href: menuItem.url
+      }, menuItem.title));
+    }
+  });
+}
 
 /***/ }),
 
@@ -8581,18 +8857,20 @@ registerBlockType('purdue-blocks/faculty-profile-card', {
   title: __('Faculty Profile Card'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 576 512"
+    viewBox: "0 0 100 77.78"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    id: "Address-card",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-352 96c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H86.4C74 384 64 375.4 64 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2zM512 312c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16zm0-64c0 4.4-3.6 8-8 8H360c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h144c4.4 0 8 3.6 8 8v16z"
-  })),
+    class: "cls-2",
+    d: "M100,19.44V80.56a8.33,8.33,0,0,1-8.33,8.33H8.33A8.33,8.33,0,0,1,0,80.56V19.44a8.33,8.33,0,0,1,8.33-8.33H91.67A8.33,8.33,0,0,1,100,19.44Zm-8.33,0H8.33V80.56H91.67Zm-75,49.45V65.56c0-5.53,5.22-10,11.66-10,2,0,3.11,1.38,7.78,1.38s5.9-1.38,7.78-1.38c6.44,0,11.66,4.47,11.66,10v3.33a3.63,3.63,0,0,1-3.88,3.33H20.56A3.63,3.63,0,0,1,16.67,68.89Zm8.33-30A11.11,11.11,0,1,1,36.11,50,11.12,11.12,0,0,1,25,38.89ZM61.11,37.5V34.72a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39V37.5a1.39,1.39,0,0,1-1.39,1.39H62.5A1.4,1.4,0,0,1,61.11,37.5Zm0,11.11V45.83a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39v2.78A1.39,1.39,0,0,1,81.94,50H62.5A1.39,1.39,0,0,1,61.11,48.61Zm0,11.11V56.94a1.39,1.39,0,0,1,1.39-1.38H81.94a1.38,1.38,0,0,1,1.39,1.38v2.78a1.39,1.39,0,0,1-1.39,1.39H62.5A1.39,1.39,0,0,1,61.11,59.72Z",
+    transform: "translate(0 -11.11)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -8893,7 +9171,8 @@ var _wp$components = wp.components,
     TextareaControl = _wp$components.TextareaControl,
     Button = _wp$components.Button,
     RadioControl = _wp$components.RadioControl,
-    CheckboxControl = _wp$components.CheckboxControl;
+    CheckboxControl = _wp$components.CheckboxControl,
+    SelectControl = _wp$components.SelectControl;
 var _wp$blockEditor = wp.blockEditor,
     InspectorControls = _wp$blockEditor.InspectorControls,
     MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
@@ -8921,18 +9200,20 @@ registerBlockType('purdue-blocks/feature-story', {
   title: __('Featured Story'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 68.75 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "lightbulb",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "cls-2",
+    d: "M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z",
+    transform: "translate(-15.62)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -8981,6 +9262,10 @@ registerBlockType('purdue-blocks/feature-story', {
     external: {
       type: 'boolean',
       default: false
+    },
+    headerLevel: {
+      type: 'string',
+      default: 'h2'
     }
   },
   supports: {
@@ -9020,6 +9305,33 @@ registerBlockType('purdue-blocks/feature-story', {
       onChange: function onChange(option) {
         props.setAttributes({
           contentAlign: option
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+      label: "Heading level of the header",
+      value: props.attributes.headerLevel,
+      options: [{
+        label: 'H1',
+        value: 'h1'
+      }, {
+        label: 'H2',
+        value: 'h2'
+      }, {
+        label: 'H3',
+        value: 'h3'
+      }, {
+        label: 'H4',
+        value: 'h4'
+      }, {
+        label: 'H5',
+        value: 'h5'
+      }, {
+        label: 'H6',
+        value: 'h6'
+      }],
+      onChange: function onChange(headerLevel) {
+        props.setAttributes({
+          headerLevel: headerLevel
         });
       }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextareaControl, {
@@ -9161,7 +9473,17 @@ registerBlockType('purdue-blocks/feature-story', {
       className: "container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content".concat(props.attributes.contentAlign === 'left' ? '' : ' content-reversed')
-    }, !props.attributes.header ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, props.attributes.header), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null), !props.attributes.ctaUrl || !props.attributes.ctaText ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    }, props.attributes.header && props.attributes.headerLevel === 'h1' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h2' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h3' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h4' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h4", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h5' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h5", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h6' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h6", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null), !props.attributes.ctaUrl || !props.attributes.ctaText ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: props.attributes.ctaUrl,
       className: "pu-feature-story__button",
       target: props.attributes.external ? '_blank' : '_self',
@@ -9179,7 +9501,17 @@ registerBlockType('purdue-blocks/feature-story', {
       "aria-label": props.attributes.altText
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "story-content"
-    }, !props.attributes.header ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, props.attributes.header), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null), !props.attributes.ctaUrl || !props.attributes.ctaText ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+    }, props.attributes.header && props.attributes.headerLevel === 'h1' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h2' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h2", null, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h3' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h3", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h4' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h4", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h5' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h5", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', props.attributes.header && props.attributes.headerLevel === 'h6' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h6", {
+      class: "featured-story-header"
+    }, props.attributes.header) : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null), !props.attributes.ctaUrl || !props.attributes.ctaText ? '' : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       href: props.attributes.ctaUrl,
       className: "pu-feature-story__button",
       target: props.attributes.external ? '_blank' : '_self',
@@ -9247,7 +9579,7 @@ var _wp$blockEditor = wp.blockEditor,
 
 registerBlockType('purdue-blocks/link-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __('Homapage Link Card'),
+  title: __('Homepage Link Card'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
     "aria-hidden": "true",
@@ -9640,6 +9972,7 @@ registerBlockType('purdue-blocks/icon-group', {
       props.setAttributes({
         iconGroup: iconGroup
       });
+      console.log(iconUrl);
     }; // End handleChangeiconGroupUrl
 
 
@@ -9703,7 +10036,8 @@ registerBlockType('purdue-blocks/icon-group', {
         className: "icon-item"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
         href: card.iconUrl,
-        target: "_blank"
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
         className: "icon-item-icon-placeholder"
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
@@ -9770,18 +10104,20 @@ registerBlockType('purdue-blocks/image-showcase', {
   title: __('Image Showcase'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "far",
-    "data-icon": "file-image",
-    className: "svg-inline--fa fa-file-image fa-w-12",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 384 512"
+    viewBox: "0 0 68.75 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "lightbulb",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm32-48h224V288l-23.5-23.5c-4.7-4.7-12.3-4.7-17 0L176 352l-39.5-39.5c-4.7-4.7-12.3-4.7-17 0L80 352v64zm48-240c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z"
-  })),
+    class: "color-9c9795",
+    d: "M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z",
+    transform: "translate(-15.62)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -9883,6 +10219,426 @@ registerBlockType('purdue-blocks/image-showcase', {
 
 /***/ }),
 
+/***/ "./src/image-toggle-card/block.js":
+/*!****************************************!*\
+  !*** ./src/image-toggle-card/block.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _icon_assets_exports__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./icon-assets/_exports */ "./src/image-toggle-card/icon-assets/_exports.js");
+
+
+/* eslint-disable react/jsx-key */
+
+/* eslint-disable no-nested-ternary */
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
+
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    CheckboxControl = _wp$components.CheckboxControl,
+    TextareaControl = _wp$components.TextareaControl,
+    TextControl = _wp$components.TextControl,
+    RadioControl = _wp$components.RadioControl,
+    SelectControl = _wp$components.SelectControl,
+    Button = _wp$components.Button;
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
+    MediaUpload = _wp$blockEditor.MediaUpload;
+
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+
+registerBlockType("purdue-blocks/image-toggle-card", {
+  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+  title: __("Image Toggle Card"),
+  // Block title.
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("rect", {
+    width: "100",
+    height: "100",
+    rx: "8.55"
+  }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "lightbulb",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
+    class: "color-fff",
+    d: "M78.15,37.21a28,28,0,0,1-7,18.51c-2.66,3-6.83,9.41-8.38,14.74H55.12a8.9,8.9,0,0,1,.36-2.29,50.5,50.5,0,0,1,9.93-17.51,20.46,20.46,0,1,0-30.82,0A50.45,50.45,0,0,1,44.54,68.2a7.82,7.82,0,0,1,.34,2.25v0H37.2c-1.55-5.33-5.72-11.7-8.38-14.74A28.14,28.14,0,1,1,78.15,37.21ZM52.56,24.41A2.56,2.56,0,0,1,50,27,10.25,10.25,0,0,0,39.76,37.21a2.56,2.56,0,1,1-5.11,0A15.37,15.37,0,0,1,50,21.85,2.56,2.56,0,0,1,52.56,24.41ZM37.21,75.59H62.79v6.9a2.55,2.55,0,0,1-.43,1.42L58.44,89.8a2.58,2.58,0,0,1-2.14,1.14H43.69a2.58,2.58,0,0,1-2.13-1.14l-3.92-5.89a2.54,2.54,0,0,1-.42-1.42Z"
+  })))),
+  // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  category: "purdue-blocks",
+  // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  keywords: [],
+
+  /**
+   * The edit function describes the structure of your block in the context of the editor.
+   * This represents what the editor will render when the block is used.
+   *
+   * The "edit" property must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Component.
+   */
+  attributes: {
+    images: {
+      type: "array",
+      default: []
+    },
+    cardTitle: {
+      type: "string",
+      default: ""
+    },
+    firstTitle: {
+      type: "string",
+      default: ""
+    },
+    secondTitle: {
+      type: "string",
+      default: ""
+    },
+    linkText: {
+      type: "string",
+      default: ""
+    },
+    linkUrl: {
+      type: "string",
+      default: ""
+    },
+    includeLink: {
+      type: "boolean",
+      default: false
+    },
+    openInNewTab: {
+      type: "boolean",
+      default: false
+    },
+    icon: {
+      type: "string",
+      default: ""
+    },
+    cardStyle: {
+      type: "string",
+      default: ""
+    }
+  },
+  supports: {
+    className: false
+  },
+  // Block description in side panel
+  description: __("Add a block with up to two images that can be toggled with an optional link."),
+  edit: function edit(props) {
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+      label: "Card Header Style",
+      value: props.attributes.cardStyle,
+      options: [{
+        value: "",
+        label: "Light Gray"
+      }, {
+        value: "has-header-black",
+        label: "Black"
+      }],
+      onChange: function onChange(cardStyle) {
+        props.setAttributes({
+          cardStyle: cardStyle
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+      label: "Add a link to this card?",
+      checked: props.attributes.includeLink,
+      onChange: function onChange() {
+        return props.setAttributes({
+          includeLink: !props.attributes.includeLink
+        });
+      }
+    })), props.attributes.includeLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+      label: "Link Text",
+      value: props.attributes.linkText,
+      onChange: function onChange(linkText) {
+        return props.setAttributes({
+          linkText: linkText
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+      label: "Link URL",
+      value: props.attributes.linkUrl,
+      onChange: function onChange(linkUrl) {
+        return props.setAttributes({
+          linkUrl: linkUrl
+        });
+      }
+    }))) : "", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+      label: "Open link in new tab?",
+      checked: props.attributes.openInNewTab,
+      onChange: function onChange() {
+        return props.setAttributes({
+          openInNewTab: !props.attributes.openInNewTab
+        });
+      }
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "image-toggle-card-block-editor"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "image-toggle-card-block-editor__inputs"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", null, "Card Heading"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
+      value: props.attributes.cardTitle !== "" ? props.attributes.cardTitle : "",
+      className: "input",
+      type: "text",
+      placeholder: "Card Heading...",
+      onChange: function onChange(e) {
+        props.setAttributes({
+          cardTitle: e.target.value
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "image-toggle-card-block-editor__icon-selector"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+      id: "iconSelectorButton",
+      onClick: openIconSelector,
+      className: "image-toggle-card-block-editor__button"
+    }, "Select Optional Icon"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      id: "iconPopup",
+      className: "image-toggle-card-block-editor__icon-selector--popup"
+    }, Object.values(_icon_assets_exports__WEBPACK_IMPORTED_MODULE_1__).map(function (icon) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+        className: "image-toggle-card-block-editor__icon-selector--icon",
+        dangerouslySetInnerHTML: {
+          __html: icon
+        },
+        onClick: function onClick(e) {
+          props.setAttributes({
+            icon: icon
+          });
+        }
+      });
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "image-toggle-card-block-editor__icon-selector--selected-icon",
+      dangerouslySetInnerHTML: {
+        __html: props.attributes.icon
+      }
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+      multiple: true,
+      gallery: true,
+      onSelect: function onSelect(imgs) {
+        if (imgs.length > 0 && imgs.length < 3) {
+          props.setAttributes({
+            images: imgs
+          });
+        }
+      },
+      render: function render(_ref) {
+        var open = _ref.open;
+        return props.attributes.images.length > 0 && props.attributes.images.length < 3 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "image-toggle-card-block-editor__preview"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "image-toggle-card-block-editor__imgGroup"
+        }, props.attributes.images.map(function (img) {
+          return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("figure", {
+            className: "image"
+          }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+            alt: "",
+            src: img.url
+          }));
+        })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          className: "image-toggle-card-block-editor__button",
+          onClick: open
+        }, "Select New Images")) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "image-toggle-card-block-editor__container"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+          className: "image-toggle-card-block-editor__heading"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+          className: "dashicons dashicons-format-image"
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, "Image Toggle Card")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", {
+          className: "image-toggle-card-block-editor__description"
+        }, "Pick up to two images from the media library."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          className: "image-toggle-card-block-editor__button",
+          onClick: open
+        }, "Open Media Library"));
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      style: {
+        color: "gray",
+        paddingLeft: "0.75rem",
+        paddingBottom: "0.5rem"
+      }
+    }, "Note: Toggle buttons will only appear when two images are selected."), props.attributes.images.length > 1 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "image-toggle-card-block-editor__inputs"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", null, "First Image Title"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
+      value: props.attributes.firstTitle !== "" ? props.attributes.firstTitle : "",
+      className: "input",
+      type: "text",
+      placeholder: "First Image Title...",
+      onChange: function onChange(e) {
+        props.setAttributes({
+          firstTitle: e.target.value
+        });
+      }
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "field"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("label", null, "Second Image Title"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "control"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("input", {
+      value: props.attributes.secondTitle !== "" ? props.attributes.secondTitle : "",
+      className: "input",
+      type: "text",
+      placeholder: "Second Image Title...",
+      onChange: function onChange(e) {
+        props.setAttributes({
+          secondTitle: e.target.value
+        });
+      }
+    })))) : "")];
+  },
+
+  /**
+   * The save function defines the way in which the different attributes should be combined
+   * into the final markup, which is then serialized by Gutenberg into post_content.
+   *
+   * The "save" property must be specified and must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Frontend HTML.
+   */
+  save: function save(props) {
+    var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "pu-image-toggle box"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "pu-image-toggle__heading".concat(props.attributes.cardStyle !== "" ? " ".concat(props.attributes.cardStyle) : "")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, props.attributes.cardTitle, "\xA0", props.attributes.icon !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      className: "pu-image-toggle__heading--icon".concat(props.attributes.icon.includes("data-bg=\"true\"") ? " has-bg-white" : ""),
+      dangerouslySetInnerHTML: {
+        __html: props.attributes.icon
+      }
+    }) : ""), props.attributes.includeLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
+      href: props.attributes.linkUrl,
+      target: props.attributes.openInNewTab ? "_blank" : "",
+      rel: "noopener noreferrer"
+    }, props.attributes.linkText) : ""), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "pu-image-toggle__images"
+    }, props.attributes.images.map(function (img, index) {
+      return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
+        className: "".concat(index === 0 ? "show" : ""),
+        alt: img.alt,
+        src: img.url
+      });
+    })), props.attributes.images.length > 1 ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "pu-image-toggle__buttons"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+      className: "toggle-button selected"
+    }, props.attributes.firstTitle), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+      className: "toggle-button"
+    }, props.attributes.secondTitle)) : "");
+    return returned;
+  }
+});
+
+var openIconSelector = function openIconSelector(e) {
+  var clicked = e.target;
+  var popup = clicked.nextSibling;
+
+  if (popup.classList.contains("open")) {
+    popup.classList.remove("open");
+  } else {
+    popup.classList.add("open");
+  }
+};
+
+/***/ }),
+
+/***/ "./src/image-toggle-card/icon-assets/_exports.js":
+/*!*******************************************************!*\
+  !*** ./src/image-toggle-card/icon-assets/_exports.js ***!
+  \*******************************************************/
+/*! exports provided: siteHero, ctaHero, titleHero, list, sidebarCta, anchorLinkNavigation, ctaBanner, proofpoint, ctaButton, card, ctaCard, featureStory, testimonial, imageShowcase, imageToggleCard, facultyProfileCard, titleNav, accordion, purdueRss, contentPageLayout, latestPosts, linkCard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "siteHero", function() { return siteHero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ctaHero", function() { return ctaHero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "titleHero", function() { return titleHero; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "list", function() { return list; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sidebarCta", function() { return sidebarCta; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "anchorLinkNavigation", function() { return anchorLinkNavigation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ctaBanner", function() { return ctaBanner; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "proofpoint", function() { return proofpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ctaButton", function() { return ctaButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "card", function() { return card; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ctaCard", function() { return ctaCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "featureStory", function() { return featureStory; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testimonial", function() { return testimonial; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imageShowcase", function() { return imageShowcase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "imageToggleCard", function() { return imageToggleCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "facultyProfileCard", function() { return facultyProfileCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "titleNav", function() { return titleNav; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "accordion", function() { return accordion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "purdueRss", function() { return purdueRss; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "contentPageLayout", function() { return contentPageLayout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "latestPosts", function() { return latestPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linkCard", function() { return linkCard; });
+var accordion = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.01 100"><defs></defs><g id="Arrows-alt-v" class="cls-1"><g class="cls-1"><path class="cls-2" d="M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z" transform="translate(-28.49)"/></g></g></svg>';
+var anchorLinkNavigation = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><rect width="100" height="100" rx="8.55"/><g id="Arrow-right" class="cls-1"><g class="cls-1"><path class="color-fff" d="M47.85,9.91a4.54,4.54,0,0,1,6.43,0L91.16,46.77a4.53,4.53,0,0,1,0,6.44L54.28,90.09a4.54,4.54,0,0,1-6.43,0l-4.21-4.22a4.55,4.55,0,0,1,.08-6.5L66.58,57.59H12.05A4.54,4.54,0,0,1,7.5,53V47a4.54,4.54,0,0,1,4.55-4.55H66.58L43.72,20.63a4.52,4.52,0,0,1-.08-6.5Z"/></g></g></svg>';
+var card = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><g id="clone" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z" transform="translate(0 0)"/></g></g></svg>';
+var contentPageLayout = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Columns" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M100,15.62V84.38a9.38,9.38,0,0,1-9.38,9.37H9.37A9.38,9.38,0,0,1,0,84.38V15.62A9.38,9.38,0,0,1,9.37,6.25H90.62A9.38,9.38,0,0,1,100,15.62ZM43.75,31.25H12.5v50H43.75Zm43.75,0H56.25v50H87.5Z" transform="translate(0 -6.25)"/></g></g></svg>';
+var ctaBanner = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 100"><defs></defs><g id="Bookmark" class="cls-1"><g class="cls-1"><path class="cls-2" d="M87.5,9.37V100L50,78.12,12.5,100V9.37A9.38,9.38,0,0,1,21.87,0H78.13A9.38,9.38,0,0,1,87.5,9.37Zm-9.37,1.18A1.18,1.18,0,0,0,77,9.37H23.05a1.18,1.18,0,0,0-1.18,1.18V83.68L50,67.27,78.13,83.68Z" transform="translate(-12.5 0)"/></g></g></svg>';
+var ctaButton = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><g id="clone" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z" transform="translate(0 0)"/></g></g></svg>';
+var ctaCard = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><g id="clone" class="cls-1"><g class="cls-1"><path class="cls-2" d="M100,9.38V71.87a9.38,9.38,0,0,1-9.37,9.38H81.25v9.37A9.38,9.38,0,0,1,71.87,100H9.37A9.38,9.38,0,0,1,0,90.62V28.13a9.38,9.38,0,0,1,9.37-9.38h9.38V9.38A9.38,9.38,0,0,1,28.12,0H90.63A9.38,9.38,0,0,1,100,9.38ZM71.87,89.45v-8.2H28.12a9.38,9.38,0,0,1-9.37-9.38V28.13h-8.2A1.17,1.17,0,0,0,9.37,29.3V89.45a1.17,1.17,0,0,0,1.18,1.17H70.7A1.17,1.17,0,0,0,71.87,89.45ZM90.63,70.7V10.55a1.17,1.17,0,0,0-1.18-1.17H29.3a1.17,1.17,0,0,0-1.18,1.17V70.7a1.17,1.17,0,0,0,1.18,1.17H89.45A1.17,1.17,0,0,0,90.63,70.7Z" transform="translate(0 0)"/></g></g></svg>';
+var ctaHero = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Window-maximize" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z" transform="translate(0 -7.24)"/></g></g></svg>';
+var facultyProfileCard = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 77.78"><defs></defs><g id="Address-card" class="cls-1"><g class="cls-1"><path class="cls-2" d="M100,19.44V80.56a8.33,8.33,0,0,1-8.33,8.33H8.33A8.33,8.33,0,0,1,0,80.56V19.44a8.33,8.33,0,0,1,8.33-8.33H91.67A8.33,8.33,0,0,1,100,19.44Zm-8.33,0H8.33V80.56H91.67Zm-75,49.45V65.56c0-5.53,5.22-10,11.66-10,2,0,3.11,1.38,7.78,1.38s5.9-1.38,7.78-1.38c6.44,0,11.66,4.47,11.66,10v3.33a3.63,3.63,0,0,1-3.88,3.33H20.56A3.63,3.63,0,0,1,16.67,68.89Zm8.33-30A11.11,11.11,0,1,1,36.11,50,11.12,11.12,0,0,1,25,38.89ZM61.11,37.5V34.72a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39V37.5a1.39,1.39,0,0,1-1.39,1.39H62.5A1.4,1.4,0,0,1,61.11,37.5Zm0,11.11V45.83a1.4,1.4,0,0,1,1.39-1.39H81.94a1.39,1.39,0,0,1,1.39,1.39v2.78A1.39,1.39,0,0,1,81.94,50H62.5A1.39,1.39,0,0,1,61.11,48.61Zm0,11.11V56.94a1.39,1.39,0,0,1,1.39-1.38H81.94a1.38,1.38,0,0,1,1.39,1.38v2.78a1.39,1.39,0,0,1-1.39,1.39H62.5A1.39,1.39,0,0,1,61.11,59.72Z" transform="translate(0 -11.11)"/></g></g></svg>';
+var featureStory = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.75 100"><defs></defs><g id="lightbulb" class="cls-1"><g class="cls-1"><path class="cls-2" d="M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z" transform="translate(-15.62)"/></g></g></svg>';
+var imageShowcase = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.75 100"><defs></defs><g id="lightbulb" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z" transform="translate(-15.62)"/></g></g></svg>';
+var imageToggleCard = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs></defs><rect width="100" height="100" rx="8.55"/><g id="lightbulb" class="cls-1"><g class="cls-1"><path class="color-fff" d="M78.15,37.21a28,28,0,0,1-7,18.51c-2.66,3-6.83,9.41-8.38,14.74H55.12a8.9,8.9,0,0,1,.36-2.29,50.5,50.5,0,0,1,9.93-17.51,20.46,20.46,0,1,0-30.82,0A50.45,50.45,0,0,1,44.54,68.2a7.82,7.82,0,0,1,.34,2.25v0H37.2c-1.55-5.33-5.72-11.7-8.38-14.74A28.14,28.14,0,1,1,78.15,37.21ZM52.56,24.41A2.56,2.56,0,0,1,50,27,10.25,10.25,0,0,0,39.76,37.21a2.56,2.56,0,1,1-5.11,0A15.37,15.37,0,0,1,50,21.85,2.56,2.56,0,0,1,52.56,24.41ZM37.21,75.59H62.79v6.9a2.55,2.55,0,0,1-.43,1.42L58.44,89.8a2.58,2.58,0,0,1-2.14,1.14H43.69a2.58,2.58,0,0,1-2.13-1.14l-3.92-5.89a2.54,2.54,0,0,1-.42-1.42Z"/></g></g></svg>';
+var list = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 97.47"><defs></defs><g id="Arrow-right" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M47.47,2.84a5.34,5.34,0,0,1,7.57,0L98.43,46.21a5.34,5.34,0,0,1,0,7.56L55,97.16a5.34,5.34,0,0,1-7.57,0l-4.95-5a5.35,5.35,0,0,1,.09-7.65L69.5,58.93H5.36A5.35,5.35,0,0,1,0,53.57V46.43a5.35,5.35,0,0,1,5.36-5.36H69.5L42.61,15.45a5.31,5.31,0,0,1-.09-7.65Z" transform="translate(0 -1.27)"/></g></g></svg>';
+var proofpoint = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 100"><defs></defs><g id="Bookmark" class="cls-1"><g class="cls-1"><path class="color-9c9795" d="M87.5,9.37V100L50,78.12,12.5,100V9.37A9.38,9.38,0,0,1,21.87,0H78.13A9.38,9.38,0,0,1,87.5,9.37Zm-9.37,1.18A1.18,1.18,0,0,0,77,9.37H23.05a1.18,1.18,0,0,0-1.18,1.18V83.68L50,67.27,78.13,83.68Z" transform="translate(-12.5 0)"/></g></g></svg>';
+var purdueRss = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 66.67"><defs></defs><g id="newspaper" class="cls-1"><g class="cls-1"><path class="cls-2" d="M100,21.83V80.16a4.17,4.17,0,0,1-4.17,4.17H9.72A9.73,9.73,0,0,1,0,74.6V27.38a4.17,4.17,0,0,1,4.17-4.17h7.42a8.34,8.34,0,0,1,7.85-5.55H95.83A4.17,4.17,0,0,1,100,21.83ZM9.72,76a1.39,1.39,0,0,0,1.39-1.39v-43H8.33V74.6A1.39,1.39,0,0,0,9.72,76Zm82-50H19.44V74.6a9.1,9.1,0,0,1-.1,1.39H91.67ZM27.78,53.08V36.41a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08V53.08a2.08,2.08,0,0,1-2.08,2.08H29.86A2.08,2.08,0,0,1,27.78,53.08Zm0,8.33a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H29.86a2.08,2.08,0,0,1-2.08-2.08Zm6.94-13.2H48.61V41.27H34.72Zm26.39-11.8a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Z" transform="translate(0 -17.66)"/></g></g></svg>';
+var sidebarCta = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 97.47"><defs></defs><g id="Arrow-right" class="cls-1"><g class="cls-1"><path class="cls-2" d="M47.47,2.84a5.34,5.34,0,0,1,7.57,0L98.43,46.21a5.34,5.34,0,0,1,0,7.56L55,97.16a5.34,5.34,0,0,1-7.57,0l-4.95-5a5.35,5.35,0,0,1,.09-7.65L69.5,58.93H5.36A5.35,5.35,0,0,1,0,53.57V46.43a5.35,5.35,0,0,1,5.36-5.36H69.5L42.61,15.45a5.31,5.31,0,0,1-.09-7.65Z" transform="translate(0 -1.27)"/></g></g></svg>';
+var siteHero = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Window-maximize" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z" transform="translate(0 -7.24)"/></g></g></svg>';
+var testimonial = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.75 100"><defs></defs><g id="lightbulb" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z" transform="translate(-15.62)"/></g></g></svg>';
+var titleHero = '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Window-maximize" class="cls-1"><g class="cls-1"><path class="cls-2" d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z" transform="translate(0 -7.24)"/></g></g></svg>';
+var titleNav = '<svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="ellipsis-h" className="svg-inline--fa fa-ellipsis-h fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#8E6F3E" d="M328 256c0 39.8-32.2 72-72 72s-72-32.2-72-72 32.2-72 72-72 72 32.2 72 72zm104-72c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72zm-352 0c-39.8 0-72 32.2-72 72s32.2 72 72 72 72-32.2 72-72-32.2-72-72-72z"></path></svg>';
+var latestPosts = '<svg version="1.1" id="Layer_1" data-bg="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 87.5" style="enable-background:new 0 0 100 87.5;" xml:space="preserve"><g class="color-black"><path d="M100,9.4v68.8c0,5.2-4.2,9.4-9.4,9.4H9.4c-5.2,0-9.4-4.2-9.4-9.4V9.4C0,4.2,4.2,0,9.4,0h81.2C95.8,0,100,4.2,100,9.4zM90.6,76.9V10.6c0-0.6-0.5-1.2-1.2-1.2H10.6c-0.6,0-1.2,0.5-1.2,1.2v66.4c0,0.7,0.5,1.2,1.1,1.2c0,0,0,0,0,0h78.9C90.1,78.2,90.6,77.6,90.6,76.9C90.6,77,90.6,77,90.6,76.9L90.6,76.9z"/><rect x="37.5" y="29.7" width="43.7" height="9.4"/><rect x="20.3" y="29.7" width="9.4" height="9.4"/><rect x="37.5"y="48.4" width="43.7" height="9.4"/><rect x="20.3" y="48.4" width="9.4" height="9.4"/></g></svg>';
+var linkCard = '<svg version="1.1" id="Layer_1" data-bg="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve"><path class="color-bulma" d="M100,89.3c0,5.9-4.8,10.7-10.7,10.7H10.7C4.8,100,0,95.2,0,89.3V10.7C0,4.8,4.8,0,10.7,0h78.6C95.2,0,100,4.8,100,10.7V89.3z M55.4,14.3c-3,0-5.4,2.4-5.4,5.4c0,1.4,0.6,2.8,1.6,3.8l7.1,7.1L15.1,74.2c-1,1-1,2.7,0,3.8l6.9,6.9c1,1,2.7,1,3.8,0l43.7-43.6l7.1,7.1c2.1,2.1,5.5,2.1,7.6,0c1-1,1.6-2.4,1.6-3.8v-25c0-3-2.4-5.4-5.3-5.4L55.4,14.3z"/></svg>';
+
+
+/***/ }),
+
 /***/ "./src/list/block.js":
 /*!***************************!*\
   !*** ./src/list/block.js ***!
@@ -9933,18 +10689,20 @@ registerBlockType("purdue-blocks/list", {
   title: __("List"),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 100 97.47"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrow-right",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "color-d9ab28",
+    d: "M47.47,2.84a5.34,5.34,0,0,1,7.57,0L98.43,46.21a5.34,5.34,0,0,1,0,7.56L55,97.16a5.34,5.34,0,0,1-7.57,0l-4.95-5a5.35,5.35,0,0,1,.09-7.65L69.5,58.93H5.36A5.35,5.35,0,0,1,0,53.57V46.43a5.35,5.35,0,0,1,5.36-5.36H69.5L42.61,15.45a5.31,5.31,0,0,1-.09-7.65Z",
+    transform: "translate(0 -1.27)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "purdue-blocks",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -10565,7 +11323,8 @@ registerBlockType('purdue-blocks/podcast', {
         key: index,
         className: "item",
         href: card.chennelUrl,
-        target: "_blank"
+        target: "_blank",
+        rel: "noopener noreferrer"
       }, card.chennelname);
     });
     return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
@@ -10582,14 +11341,12 @@ registerBlockType('purdue-blocks/podcast', {
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
       className: "columns purdue_podcast_desc"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      className: "column is-one-quarter"
+      className: "column"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("img", {
       className: "purdue_podcast_episode_cover_image",
       src: props.attributes.coverImage,
       alt: props.attributes.altText
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      className: "column is-three-quarters"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
       className: "purdue_podcast_episode_short_desc"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])(RichText.Content, {
       tagName: "div",
@@ -10633,7 +11390,7 @@ registerBlockType('purdue-blocks/podcast', {
     }, "00:00:00"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
       className: "purdue_podcast_controls_black_volume"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      class: "fas fa-volume-up"
+      class: "fas fa-volume-up  podcast-volume"
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
       class: "fas fa-volume-mute hidden"
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
@@ -10644,54 +11401,6 @@ registerBlockType('purdue-blocks/podcast', {
       src: props.attributes.urlText
     }) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("audio", {
       src: props.attributes.internalFile
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      class: "modal"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      class: "modal-background"
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      class: "modal-content"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      class: "top_article_data"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
-      class: "top_article_data_share"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-      id: "share_text",
-      class: "top_article_data_share_text ",
-      target: "_blank",
-      "aria-label": "Share link https://youtu.be/".concat(post_id),
-      href: "https://youtu.be/".concat(post_id),
-      title: "Share link"
-    }, "https://youtu.be/".concat(post_id)), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-      class: "top_article_data_share_button",
-      href: "https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/".concat(post_id),
-      title: "Share on Facebook",
-      target: "_blank"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      class: "fab fa-facebook-f"
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-      class: "top_article_data_share_button",
-      href: "https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/".concat(post_id),
-      title: "Share on Linkedin",
-      target: "_blank"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      class: "fab fa-linkedin-in"
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-      class: "top_article_data_share_button",
-      href: "https://twitter.com/intent/tweet?text=https://youtu.be/".concat(post_id),
-      title: "Share on Twitter",
-      target: "_blank"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      class: "fab fa-twitter"
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
-      class: "top_article_data_share_button",
-      href: "mailto:?subject=&body=https://youtu.be/".concat(post_id),
-      title: "{{ Drupal.t('Share via Email') }}",
-      target: "_blank"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      class: "fas fa-envelope"
-    }))))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("button", {
-      class: "modal-close is-large",
-      "aria-label": "close"
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
       className: "purdue_podcast_episode_box"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
@@ -10714,8 +11423,52 @@ registerBlockType('purdue-blocks/podcast', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("button", {
       className: "purdue_podcast_controls_pause_share_share"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
-      className: "fas fa-share"
-    }), " Share"))))));
+      className: "fas fa-share share-icon"
+    }), " Share"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+      class: "podcast-modal"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("button", {
+      class: "modal-close podcast-modal-close is-large",
+      "aria-label": "close"
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+      class: "modal-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("div", {
+      class: "top_article_data_share"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("span", {
+      id: "share_text",
+      class: "top_article_data_share_text "
+    }, "Share"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+      class: "top_article_data_share_button facebook_share_button",
+      href: "",
+      title: "Share on Facebook",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
+      class: "fab fa-facebook-f"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+      class: "top_article_data_share_button instagram_share_button",
+      href: "",
+      title: "Share on Linkedin",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
+      class: "fab fa-linkedin-in"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+      class: "top_article_data_share_button twitter_share_button",
+      href: "",
+      title: "Share on Twitter",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
+      class: "fab fa-twitter"
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("a", {
+      class: "top_article_data_share_button email_share_button",
+      href: "",
+      title: "{{ Drupal.t('Share via Email') }}",
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("i", {
+      class: "fas fa-envelope"
+    })))))))))));
   }
 });
 
@@ -10781,21 +11534,23 @@ var BLOCKS_TEMPLATE = [['core/paragraph', {
 
 registerBlockType("purdue-blocks/proofpoint", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Proof Point"),
+  title: __("Reasons to Believe"),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 75 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Bookmark",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "color-9c9795",
+    d: "M87.5,9.37V100L50,78.12,12.5,100V9.37A9.38,9.38,0,0,1,21.87,0H78.13A9.38,9.38,0,0,1,87.5,9.37Zm-9.37,1.18A1.18,1.18,0,0,0,77,9.37H23.05a1.18,1.18,0,0,0-1.18,1.18V83.68L50,67.27,78.13,83.68Z",
+    transform: "translate(-12.5 0)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "purdue-blocks",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -10862,7 +11617,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     className: false
   },
   // Block description in side panel
-  description: __("This block adds a proofpoint card."),
+  description: __("This block adds a Reasons to Believe card."),
   edit: function edit(props) {
     var setChecked = function setChecked() {
       if (props.attributes.border) {
@@ -11075,6 +11830,282 @@ registerBlockType("purdue-blocks/proofpoint", {
 
 /***/ }),
 
+/***/ "./src/purdue-news/block.js":
+/*!**********************************!*\
+  !*** ./src/purdue-news/block.js ***!
+  \**********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/index.js");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+/* eslint-disable react/jsx-key */
+
+/* eslint-disable no-nested-ternary */
+
+/**
+ * BLOCK: Bulma Container
+ *
+ * Bulma container block: https://bulma.io/documentation/layout/container/.
+ */
+//  Import CSS.
+// import './editor.scss';
+// import './style.scss';
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
+
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    CheckboxControl = _wp$components.CheckboxControl,
+    TextareaControl = _wp$components.TextareaControl,
+    TextControl = _wp$components.TextControl,
+    RadioControl = _wp$components.RadioControl,
+    SelectControl = _wp$components.SelectControl,
+    Button = _wp$components.Button,
+    ToolbarGroup = _wp$components.ToolbarGroup,
+    Disabled = _wp$components.Disabled;
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
+    MediaUpload = _wp$blockEditor.MediaUpload,
+    InnerBlocks = _wp$blockEditor.InnerBlocks,
+    BlockControls = _wp$blockEditor.BlockControls,
+    useBlockProps = _wp$blockEditor.useBlockProps;
+var _wp = wp,
+    apiFetch = _wp.apiFetch;
+var useState = wp.element.useState;
+
+
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+
+registerBlockType('purdue-blocks/purdue-news', {
+  title: __('Purdue News'),
+  description: __('Display entries from RSS feed.'),
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 66.67"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    id: "newspaper",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("path", {
+    class: "cls-2",
+    d: "M100,21.83V80.16a4.17,4.17,0,0,1-4.17,4.17H9.72A9.73,9.73,0,0,1,0,74.6V27.38a4.17,4.17,0,0,1,4.17-4.17h7.42a8.34,8.34,0,0,1,7.85-5.55H95.83A4.17,4.17,0,0,1,100,21.83ZM9.72,76a1.39,1.39,0,0,0,1.39-1.39v-43H8.33V74.6A1.39,1.39,0,0,0,9.72,76Zm82-50H19.44V74.6a9.1,9.1,0,0,1-.1,1.39H91.67ZM27.78,53.08V36.41a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08V53.08a2.08,2.08,0,0,1-2.08,2.08H29.86A2.08,2.08,0,0,1,27.78,53.08Zm0,8.33a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H29.86a2.08,2.08,0,0,1-2.08-2.08Zm6.94-13.2H48.61V41.27H34.72Zm26.39-11.8a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Z",
+    transform: "translate(0 -17.66)"
+  })))),
+  category: 'purdue-blocks',
+  // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  keywords: [],
+
+  /**
+  * The edit function describes the structure of your block in the context of the editor.
+  * This represents what the editor will render when the block is used.
+  *
+  * The "edit" property must be a valid function.
+  *
+  * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+  *
+  * @param {Object} props Props.
+  * @returns {Mixed} JSX Component.
+  */
+  edit: function edit(props) {
+    var onSubmitURL = function onSubmitURL(e) {
+      e.preventDefault();
+
+      if (props.attributes.feedURL) {
+        setIsEditing(false);
+      }
+    };
+
+    var _useState = useState(!props.attributes.feedURL),
+        _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 2),
+        isEditing = _useState2[0],
+        setIsEditing = _useState2[1];
+
+    var toolbarControls = [{
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_2__["pencil"],
+      title: __('Edit RSS URL'),
+      onClick: function onClick() {
+        return setIsEditing(true);
+      }
+    }];
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(BlockControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(ToolbarGroup, {
+      controls: toolbarControls
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
+      label: "Layout of the RSS feed",
+      selected: props.attributes.type,
+      options: [{
+        label: 'Recent news with image',
+        value: 'withImage'
+      }, {
+        label: 'Recent news without image',
+        value: 'withoutImage'
+      }, {
+        label: 'All News/Events',
+        value: 'all'
+      }],
+      onChange: function onChange(type) {
+        props.setAttributes({
+          type: type
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      label: "Add a header to this region?",
+      value: props.attributes.header,
+      onChange: function onChange(header) {
+        return props.setAttributes({
+          header: header
+        });
+      }
+    })), props.attributes.header ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(SelectControl, {
+      label: "Heading level of the Header",
+      value: props.attributes.headerLevel,
+      options: [{
+        label: 'H2',
+        value: 'h2'
+      }, {
+        label: 'H3',
+        value: 'h3'
+      }, {
+        label: 'H4',
+        value: 'h4'
+      }, {
+        label: 'H5',
+        value: 'h5'
+      }, {
+        label: 'H6',
+        value: 'h6'
+      }, {
+        label: 'P',
+        value: 'p'
+      }],
+      onChange: function onChange(headerLevel) {
+        props.setAttributes({
+          headerLevel: headerLevel
+        });
+      }
+    })) : '', props.attributes.type === "withoutImage" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Choose a hero Image")) : '', props.attributes.type === "withoutImage" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUpload, {
+      onSelect: function onSelect(img) {
+        props.setAttributes({
+          imgUrl: img.url,
+          altText: props.attributes.altText !== '' ? props.attributes.altText : img.alt
+        });
+      },
+      render: function render(_ref) {
+        var open = _ref.open;
+        return props.attributes.imgUrl !== '' ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+          className: 'purdue-blocks-editor-news__preview'
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("figure", {
+          className: 'image'
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("img", {
+          alt: props.attributes.altText,
+          src: props.attributes.imgUrl
+        })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+          className: 'purdue-blocks-editor-feature-story__button',
+          onClick: open
+        }, "Select a New Image")) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+          className: 'purdue-blocks-editor-news__container'
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", {
+          className: 'purdue-blocks-editor-news__description'
+        }, "Pick an image from the media library. The recommended aspect ratio is 3:2."), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+          className: 'purdue-blocks-editor-feature-story__button',
+          onClick: open
+        }, "Open Media Library"));
+      }
+    }))) : "", props.attributes.type === "withoutImage" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextareaControl, {
+      label: "Image Alt Text",
+      value: props.attributes.altText,
+      onChange: function onChange(altText) {
+        return props.setAttributes({
+          altText: altText
+        });
+      }
+    })) : "", props.attributes.type !== "all" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CheckboxControl, {
+      label: "Add a link to the news/events page?",
+      checked: props.attributes.hasLink,
+      onChange: function onChange() {
+        return props.setAttributes({
+          hasLink: !props.attributes.hasLink
+        });
+      }
+    })) : "", props.attributes.type !== "all" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      label: "Link text",
+      value: props.attributes.linkText,
+      onChange: function onChange(linkText) {
+        return props.setAttributes({
+          linkText: linkText
+        });
+      }
+    })) : '', props.attributes.type !== "all" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      label: "Link URL",
+      value: props.attributes.link,
+      onChange: function onChange(link) {
+        return props.setAttributes({
+          link: link
+        });
+      }
+    })) : '', props.attributes.type !== "all" && props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CheckboxControl, {
+      label: "Open link in new tab?",
+      checked: props.attributes.external,
+      onChange: function onChange() {
+        return props.setAttributes({
+          external: !props.attributes.external
+        });
+      }
+    })) : '')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", null, isEditing ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: 'news-feed-editor'
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("p", null, "Enter feed URL in the box and then click \"Use URL\" to retrive the feed"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("form", {
+      onSubmit: onSubmitURL,
+      className: "rss-form"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      placeholder: __('Enter URL here…'),
+      value: props.attributes.feedURL,
+      onChange: function onChange(value) {
+        return props.setAttributes({
+          feedURL: value
+        });
+      },
+      className: "rss-input"
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Button, {
+      isPrimary: true,
+      type: "submit"
+    }, __('Use URL')))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(Disabled, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      block: "purdue-blocks/purdue-news",
+      attributes: props.attributes
+    })))];
+  }
+});
+
+/***/ }),
+
 /***/ "./src/purdue-rss/block.js":
 /*!*********************************!*\
   !*** ./src/purdue-rss/block.js ***!
@@ -11153,14 +12184,21 @@ registerBlockType('purdue-blocks/purdue-rss', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __('Purdue RSS feed'),
   // Block title.
-  icon: {
-    // Specifying a background color to appear with the icon e.g.: in the inserter.
-    background: '#fff',
-    // Specifying a color for the icon (optional: if not set, a readable color will be automatically defined)
-    foreground: '#8e6f3e',
-    // Specifying a dashicon for the block
-    src: 'excerpt-view'
-  },
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 66.67"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("g", {
+    id: "newspaper",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("path", {
+    class: "cls-2",
+    d: "M100,21.83V80.16a4.17,4.17,0,0,1-4.17,4.17H9.72A9.73,9.73,0,0,1,0,74.6V27.38a4.17,4.17,0,0,1,4.17-4.17h7.42a8.34,8.34,0,0,1,7.85-5.55H95.83A4.17,4.17,0,0,1,100,21.83ZM9.72,76a1.39,1.39,0,0,0,1.39-1.39v-43H8.33V74.6A1.39,1.39,0,0,0,9.72,76Zm82-50H19.44V74.6a9.1,9.1,0,0,1-.1,1.39H91.67ZM27.78,53.08V36.41a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08V53.08a2.08,2.08,0,0,1-2.08,2.08H29.86A2.08,2.08,0,0,1,27.78,53.08Zm0,8.33a2.08,2.08,0,0,1,2.08-2.08H53.47a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H29.86a2.08,2.08,0,0,1-2.08-2.08Zm6.94-13.2H48.61V41.27H34.72Zm26.39-11.8a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Zm0,12.5a2.08,2.08,0,0,1,2.08-2.08H81.25a2.08,2.08,0,0,1,2.08,2.08v4.17a2.08,2.08,0,0,1-2.08,2.08H63.19a2.08,2.08,0,0,1-2.08-2.08Z",
+    transform: "translate(0 -17.66)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -11665,18 +12703,20 @@ registerBlockType("purdue-blocks/sidebar-cta", {
   title: __("Sidebar CTA"),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 100 97.47"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Arrow-right",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "cls-2",
+    d: "M47.47,2.84a5.34,5.34,0,0,1,7.57,0L98.43,46.21a5.34,5.34,0,0,1,0,7.56L55,97.16a5.34,5.34,0,0,1-7.57,0l-4.95-5a5.35,5.35,0,0,1,.09-7.65L69.5,58.93H5.36A5.35,5.35,0,0,1,0,53.57V46.43a5.35,5.35,0,0,1,5.36-5.36H69.5L42.61,15.45a5.31,5.31,0,0,1-.09-7.65Z",
+    transform: "translate(0 -1.27)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "purdue-blocks",
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -11927,18 +12967,20 @@ registerBlockType('purdue-blocks/site-hero', {
   title: __('Site Hero'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("g", {
+    id: "Window-maximize",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "color-d9ab28",
+    d: "M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z",
+    transform: "translate(0 -7.24)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -12341,18 +13383,20 @@ registerBlockType('purdue-blocks/testimonial', {
   title: __('Testimonial'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 68.75 100"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "lightbulb",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "color-d9ab28",
+    d: "M84.38,34.38A34.21,34.21,0,0,1,75.87,57c-3.25,3.71-8.35,11.49-10.24,18H56.26v0a11,11,0,0,1,.43-2.79A61.73,61.73,0,0,1,68.82,50.81a25,25,0,1,0-37.64,0A61.7,61.7,0,0,1,43.33,72.23,9.49,9.49,0,0,1,43.74,75v0H34.37c-1.89-6.51-7-14.29-10.24-18A34.37,34.37,0,1,1,84.38,34.38ZM53.12,18.75A3.12,3.12,0,0,1,50,21.88a12.51,12.51,0,0,0-12.5,12.5,3.13,3.13,0,0,1-6.25,0A18.77,18.77,0,0,1,50,15.63,3.11,3.11,0,0,1,53.12,18.75ZM34.38,81.25H65.62v8.43a3.11,3.11,0,0,1-.52,1.73L60.3,98.6a3.1,3.1,0,0,1-2.6,1.4H42.3a3.1,3.1,0,0,1-2.6-1.4l-4.79-7.19a3.11,3.11,0,0,1-.52-1.73Z",
+    transform: "translate(-15.62)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -12380,7 +13424,7 @@ registerBlockType('purdue-blocks/testimonial', {
     }
   },
   // Block description in side panel
-  description: __('This block adds a row of one or two testimonials to your page.'),
+  description: __('This block adds a row of one or two testimonials to your page. It pulls from testimonial posts from this site and requires the installation of acf-to-rest-api to work.'),
   edit: withSelect(function (select) {
     var posts = wp.data.select('core').getEntityRecords('postType', 'test_post', {
       per_page: -1,
@@ -12617,18 +13661,20 @@ registerBlockType('purdue-blocks/title-hero', {
   title: __('Title Hero'),
   // Block title.
   icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("svg", {
-    "aria-hidden": "true",
-    focusable: "false",
-    "data-prefix": "fas",
-    "data-icon": "object-group",
-    className: "svg-inline--fa fa-object-group fa-w-16",
-    role: "img",
+    id: "Layer_1",
+    "data-name": "Layer 1",
     xmlns: "http://www.w3.org/2000/svg",
-    viewBox: "0 0 512 512"
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    id: "Window-maximize",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("g", {
+    class: "cls-1"
   }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("path", {
-    fill: "#8E6F3E",
-    d: "M480 128V96h20c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v20H64V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v40c0 6.627 5.373 12 12 12h20v320H12c-6.627 0-12 5.373-12 12v40c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-20h384v20c0 6.627 5.373 12 12 12h40c6.627 0 12-5.373 12-12v-40c0-6.627-5.373-12-12-12h-20V128zM96 276V140c0-6.627 5.373-12 12-12h168c6.627 0 12 5.373 12 12v136c0 6.627-5.373 12-12 12H108c-6.627 0-12-5.373-12-12zm320 96c0 6.627-5.373 12-12 12H236c-6.627 0-12-5.373-12-12v-52h72c13.255 0 24-10.745 24-24v-72h84c6.627 0 12 5.373 12 12v136z"
-  })),
+    class: "cls-2",
+    d: "M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z",
+    transform: "translate(0 -7.24)"
+  })))),
   // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks',
   // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
@@ -13472,6 +14518,17 @@ registerBlockType('purdue-blocks/video-embed', {
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["primitives"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/server-side-render":
+/*!***************************************************!*\
+  !*** external {"this":["wp","serverSideRender"]} ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["serverSideRender"]; }());
 
 /***/ })
 

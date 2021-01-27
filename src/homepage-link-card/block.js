@@ -39,7 +39,7 @@ const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
  */
 registerBlockType( 'purdue-blocks/link-card', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Homapage Link Card' ), // Block title.
+  title: __( 'Homepage Link Card' ), // Block title.
   icon: (
     <svg
       aria-hidden="true"
