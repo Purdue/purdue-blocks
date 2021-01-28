@@ -3,159 +3,213 @@
  *
  * CSS for both Frontend+Backend.
  */
-.purdue_video {
-  height: 0;
-  margin-bottom: 60px;
-  max-width: 1344px;
-  // overflow: hidden;
-  position: relative;
-  padding-bottom: 56.25%;
 
-  iframe,
-  object,
-  embed {
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-  &_controls {
-    background-color: #000;
-    bottom: 0;
-    display: flex;
-    height: 50px;
-    position: absolute;
-    width: 100%;
-    z-index: 99;
-    .hidden {
-      display: none;
-    }
-    &_pause {
-      align-items: center;
-      background-color: #cfb991;
-      box-sizing: content-box;
-      display: flex;
-      height: 100%;
-      max-width: 190px;
-      padding-left: 40px;
-      position: relative;
-      width: 24%;
-      &_share {
-        &_share {
-          align-items: center;
-          background-color: transparent;
-          border: #000 1px solid;
-          border-radius: 5px;
-          box-sizing: border-box;
-          cursor: pointer;
-          display: inline-flex;
-          font-size: 100%;
-          font-weight: 700;
-          padding: 5% 19%;
-          transition: all .3s ease;
-          width: 100%;
-          &:hover {
-            background-color: rgba(255,255,255,0.5);
-          }
-          &:focus {
-            outline: none;
-          }
-          .fas {
-            padding-right: 10px;
-          }
-        }
-        &_play {
-          align-items: center;
-          background-color: #cfb991;
-          border: none;
-          border-radius: 60px;
-          cursor: pointer;
-          display: flex;
-          font-size: 28px;
-          height: 75px;
-          justify-content: center;
-          position: absolute;
-          right: -27px;
-          top: -13px;
-          width: 68px;
-          &:focus {
-            outline: none;
-          }
-          &_border {
-            align-items: center;
-            border: #000 1px solid;
-            border-radius: 60px;
-            box-sizing: border-box;
-            display: flex;
-            height: 80%;
-            justify-content: center;
-            width: 87%;
-          }
-        }
-      }
-    }
-    &_black {
-      display: flex;
-      align-items: center;
-      padding-left: 40px;
-      width: 75%;
-      &_total, &_elapsed {
-        color: $white;
-        font-size: 18px;
-        font-weight: 600;
-        text-align: center;
-        width: 15%;
-      }
-      &_timeline {
-        background-color: #ededed;
-        border-radius: 5px;
-        cursor: pointer;
-        flex-grow: 1;
-        height: 7px;
-        overflow: hidden;
-        position: relative;
-        width: 66%;
-        .time_elapsed {
-          background-color: #ddb945;
-          height: 100%;
-          left: 0;
-          position: absolute;
-        }
-      }
-      &_volume, &_fullscreen {
-        color: $white;
-        cursor: pointer;
-        font-size: 18px;
-        text-align: center;
-        width: 7%;
-      }
-    }
-  }
-  .modal {
-    position: absolute;
-    &-close {
-      position: absolute;
-    }
-    .top_article_data_share {
-      margin: 0 auto;
-      padding: 0;
-      text-align: center;
-      &_button {
-        color: #fff !important;
-        &:hover {
-          color: darken(#fff, 15%) !important;
-        }
-      }
-      &_text {
-        color: #fff;
-        display: block;
-        font-size: 18px;
-        font-weight: 600;
-        padding-bottom: 30px;
-        text-transform: none;
-        width: 100%;
-      }
-    }
-  }
-}
+ .purdue_video {
+   height: 0;
+   margin-bottom: 60px;
+   max-width: 1344px;
+   // overflow: hidden;
+   position: relative;
+   padding-bottom: 56.25%;
+   @media screen and (max-width: 767px) {
+     margin-left: 16px;
+     margin-right: 16px;
+   }
+ 
+   iframe,
+   object,
+   embed {
+     height: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     width: 100%;
+   }
+   &_controls {
+     background-color: #000;
+     bottom: 0;
+     display: flex;
+     height: 50px;
+     position: absolute;
+     width: 100%;
+     z-index: 99;
+     @media screen and (max-width: 767px) {
+       height: 40px;
+     }
+     .hidden {
+       display: none;
+     }
+     &_pause {
+       align-items: center;
+       background-color: #cfb991;
+       box-sizing: content-box;
+       display: flex;
+       height: 100%;
+       max-width: 190px;
+       padding-left: 40px;
+       position: relative;
+       width: 24%;
+       @media screen and (max-width: 767px) {
+         padding-left: 16px;
+         width: 50%;
+       }
+       &_share {
+         &_share {
+           align-items: center;
+           background-color: transparent;
+           border: #000 1px solid;
+           border-radius: 5px;
+           box-sizing: border-box;
+           cursor: pointer;
+           display: inline-flex;
+           font-size: 100%;
+           font-weight: 700;
+           padding: 5% 19%;
+           transition: all .3s ease;
+           width: auto;
+           @media screen and (max-width: 767px) {
+             font-size: 80%;
+             width: auto;
+           }
+           &:hover {
+             background-color: rgba(255,255,255,0.5);
+           }
+           &:focus {
+             outline: none;
+           }
+           .fas {
+             padding-right: 10px;
+           }
+         }
+         &_play {
+           align-items: center;
+           background-color: #cfb991;
+           border: none;
+           border-radius: 60px;
+           cursor: pointer;
+           display: flex;
+           font-size: 28px;
+           height: 75px;
+           justify-content: center;
+           position: absolute;
+           right: -27px;
+           top: -13px;
+           width: 68px;
+           @media screen and (max-width: 767px) {
+             display: block;
+             font-size: 16px;
+             height: 50px;
+             padding: 2px 6px;
+             top: -5px;
+             width: 45px;
+           }
+           &:focus {
+             outline: none;
+           }
+           &_border {
+             align-items: center;
+             border: #000 1px solid;
+             border-radius: 60px;
+             box-sizing: border-box;
+             display: flex;
+             height: 80%;
+             justify-content: center;
+             margin: 0 auto;
+             width: 87%;
+           }
+         }
+       }
+     }
+     &_black {
+       display: flex;
+       align-items: center;
+       padding-left: 40px;
+       width: 75%;
+       @media screen and (max-width: 767px) {
+         width: 50%;
+       }
+       &_total, &_elapsed {
+         color: $white;
+         font-size: 18px;
+         font-weight: 600;
+         text-align: center;
+         width: 15%;
+         @media screen and (max-width: 767px) {
+           font-size: 16px;
+         }
+       }
+       @media screen and (max-width: 767px) {
+         &_total {
+           display: none;
+         }
+         &_elapsed {
+           text-align: left;
+           width: 55%;
+         }
+       }
+       &_timeline {
+         background-color: #ededed;
+         border-radius: 5px;
+         cursor: pointer;
+         flex-grow: 1;
+         height: 7px;
+         overflow: hidden;
+         position: relative;
+         width: 66%;
+         @media screen and (max-width: 767px) {
+           display: none;
+         }
+         .time_elapsed {
+           background-color: #ddb945;
+           height: 100%;
+           left: 0;
+           position: absolute;
+         }
+       }
+       &_volume, &_fullscreen {
+         color: $white;
+         cursor: pointer;
+         font-size: 18px;
+         text-align: center;
+         width: 7%;
+         @media screen and (max-width: 767px) {
+           width: 20%;
+         }
+       }
+     }
+   }
+   .modal {
+     position: absolute;
+     &-close {
+       position: absolute;
+     }
+     .top_article_data_share {
+       margin: 0 auto;
+       padding: 0;
+       text-align: center;
+       &_button {
+         color: #fff !important;
+         margin:0 0.5rem;
+         &:hover {
+           color: darken(#fff, 15%) !important;
+         }
+         svg{
+           font-size:1.5rem;
+         }
+       }
+       &_text {
+         color: #fff;
+         display: block;
+         font-size: 18px;
+         font-weight: 600;
+         padding-bottom: 30px;
+         text-transform: none;
+         width: 100%;
+       }
+     }
+   }
+ }
+ .video-embed__share{
+   margin-right:10px;
+ }
+ 

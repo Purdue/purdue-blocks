@@ -85,10 +85,6 @@ registerBlockType( 'purdue-blocks/video-embed', {
   ),
 
   edit: ( props ) => {
-    const handleChangeUrlText = ( urlText ) => {
-      this.urlText = urlText;
-      props.setAttributes( { urlText } );
-    };
     const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     const match = props.attributes.urlText.match( regExp );
     const video_id = (match&&match[7].length==11)? match[7] : false;
@@ -100,7 +96,7 @@ registerBlockType( 'purdue-blocks/video-embed', {
             className="purdue_video_url"
             placeholder="YouTube URL"
             value={ props.attributes.urlText }
-            onChange={ ( urlText ) => handleChangeUrlText( urlText ) }
+            onChange={ ( urlText ) => props.setAttributes( {urlText} ) }
           />
           </PanelRow>
         </PanelBody>
@@ -133,7 +129,7 @@ registerBlockType( 'purdue-blocks/video-embed', {
         <div className="purdue_video_controls">
           <div className="purdue_video_controls_pause">
             <div className="purdue_video_controls_pause_share">
-              <button className="purdue_video_controls_pause_share_share"><i className="fas fa-share"></i> Share</button>
+              <button className="purdue_video_controls_pause_share_share"><i className="fas fa-share video-embed__share"></i> Share</button>
               <button id="play" className="purdue_video_controls_pause_share_play">
                 <span className="purdue_video_controls_pause_share_play_border"><i className="fas fa-play"></i><i class="fas fa-pause hidden"></i></span>
               </button>
@@ -153,11 +149,11 @@ registerBlockType( 'purdue-blocks/video-embed', {
           <div class="modal-content">
             <div class="top_article_data">
               <div class="top_article_data_share">
-                <a id="share_text" class="top_article_data_share_text " target="_blank" aria-label={`Share link https://youtu.be/${ video_id }`} href={`https://youtu.be/${ video_id }`} title="Share link">{`https://youtu.be/${ video_id }`}</a>
-                <a class="top_article_data_share_button" href={`https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/${ video_id }`} title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a class="top_article_data_share_button" href={`https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/${ video_id }`} title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a class="top_article_data_share_button" href={`https://twitter.com/intent/tweet?text=https://youtu.be/${ video_id }`} title="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a class="top_article_data_share_button" href={`mailto:?subject=&body=https://youtu.be/${ video_id }`} title="{{ Drupal.t('Share via Email') }}" target="_blank"><i class="fas fa-envelope"></i></a>
+                <a id="share_text" class="top_article_data_share_text " target="_blank" aria-label={`Share link https://youtu.be/${ video_id }`} href={`https://youtu.be/${ video_id }`} title="Share link" rel="noopener noreferrer">{`https://youtu.be/${ video_id }`}</a>
+                <a class="top_article_data_share_button" href={`https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/${ video_id }`} title="Share on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a class="top_article_data_share_button" href={`https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/${ video_id }`} title="Share on Linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                <a class="top_article_data_share_button" href={`https://twitter.com/intent/tweet?text=https://youtu.be/${ video_id }`} title="Share on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                <a class="top_article_data_share_button" href={`mailto:?subject=&body=https://youtu.be/${ video_id }`} title="{{ Drupal.t('Share via Email') }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
               </div>
             </div>
           </div>

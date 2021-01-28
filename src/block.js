@@ -30,10 +30,12 @@ import './anchor-link-navigation/block.js';
 import './image-toggle-card/block.js'
 import './content-page-layout/block.js';
 import './sidebar-cta/block.js';
-//Developertown blocks
-import './video-embed/block.js'
-import './homepage-link-card/block.js'
-import './icon-group/block.js'
-import './podcast/block.js'
 import './purdue-news/block.js';
 import './custom-side-menu/block.js';
+//Developertown blocks
+import './video-embed/block.js'
+import './icon-group/block.js'
+import './podcast/block.js'
+import './ad-banner/block.js'
+
+
