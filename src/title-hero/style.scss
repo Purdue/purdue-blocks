@@ -36,6 +36,49 @@
       @include desktop {
         order: 1;
       }
+      &.with-lead-in{
+        @include touch { 
+          flex-direction: column;
+          padding: 0 !important;
+        }
+        .container {
+          @include touch {
+            order: 2;
+            width: 100%;
+            background-color: black;
+            padding: 4rem $side-padding-mobile;
+          }
+          @include mobile {
+            padding: 2.1875rem $side-padding-mobile;
+          }
+        }
+        .background-image {
+          @include touch {
+            position: relative;
+            order: 1;
+            height: 24rem;
+          }
+          @include mobile {
+            height: 11.25rem;
+          }
+          &:before {
+            @include touch { 
+              background: none;
+            }
+          }
+        }
+        .content {
+          @include touch {
+            max-width: 100%;
+            min-height: 0px;
+          }
+          h1{
+            @include touch{
+              margin-bottom:1.5rem;
+            }
+          }
+        }
+      }
       .container{
         width:100%;
       }
@@ -67,6 +110,12 @@
   
           @include mobile { 
             background: none;
+          }
+        }
+        &.has-border{
+          border:1.25rem solid $boiler-gold;
+          @include mobile { 
+            border:1rem solid $boiler-gold;
           }
         }
       }
@@ -102,7 +151,9 @@
           color: white !important;
           margin-bottom: 0;
           line-height: 1.125;
-
+          &:last-child{
+            margin-bottom:0;
+          }
           @include touch {
             font-size: 4.0625rem;
           }
@@ -111,6 +162,46 @@
             font-size: 2.1875rem;
             line-height: 2.5rem;
             margin-bottom: 1rem;
+          }
+          .lead-in{
+            font-family: $united-sans;
+            font-weight: 800;
+            font-size: 2.25rem;
+            text-transform: uppercase;
+            color: $black;
+            line-height: 1.11;
+            max-width:34.375rem;
+            padding:0.625rem 1.875rem;
+            background:$boiler-gold;
+            display:inline-block;
+            @include touch {
+              font-size: 2rem;
+              padding:0.625rem 1.875rem;
+            }
+            @include mobile {
+              font-size: 1rem;
+              padding:0.5rem 1rem;
+            }
+          }
+          .main-title{
+            font-family: $acumin-pro-extracondensed;
+            font-weight: 400;
+            font-size: 10rem;
+            font-style:italic;
+            text-transform: uppercase;
+            line-height:0.9;
+            color: $white;
+            padding:1rem 0 1.25rem 6.25rem;
+            display:block;
+            @include touch {
+              font-size: 6.875rem;
+              padding:1.5rem 0 0 0;
+            }
+            @include mobile {
+              font-size: 3.4375rem;
+              line-height:1;
+              padding:1rem 0 0 0;
+            }
           }
         }
 

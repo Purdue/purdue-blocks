@@ -14,7 +14,7 @@
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
-const { PanelBody, PanelRow, TextareaControl, Button } = wp.components;
+const { PanelBody, PanelRow, TextControl, TextareaControl, Button, CheckboxControl } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
 const { select } = wp.data;
 
@@ -54,7 +54,10 @@ registerBlockType( 'purdue-blocks/title-hero', {
 
   attributes: {
     pageTitle: { type: 'string', default: '' },
+    addSubtitle: { type: 'boolean', default: false },
+    subTitle: { type: 'string', default: '' },
     subText: { type: 'string', default: '' },
+    addBorder: { type: 'boolean', default: false },
     imgUrl: { type: 'string', default: '' },
     imgMoUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
@@ -75,10 +78,56 @@ registerBlockType( 'purdue-blocks/title-hero', {
         pageTitle: select( 'core/editor' ).getCurrentPost().title,
       } );
     }
-
+    const setChecked = () => {
+      if (props.attributes.addSubtitle) {
+        props.setAttributes({
+          addSubtitle: false,
+        });
+      } else {
+        props.setAttributes({
+          addSubtitle: true,
+        });
+      }
+    };
+    const setBorderChecked = () => {
+      if (props.attributes.addBorder) {
+        props.setAttributes({
+          addBorder: false,
+        });
+      } else {
+        props.setAttributes({
+          addBorder: true,
+        });
+      }
+    };
     return [
       <InspectorControls>
         <PanelBody>
+        <PanelRow>
+            <CheckboxControl
+              label="Add A Lead-in?"
+              help="Would you like to add a Lead-in placed on the top of the title?"
+              checked={props.attributes.addSubtitle}
+              onChange={setChecked}
+            />
+        </PanelRow>
+        {props.attributes.addSubtitle?(
+          <PanelRow>
+          <TextControl
+            label="Subtitle"
+            value={ props.attributes.subTitle }
+            onChange={ ( subTitle ) => props.setAttributes( { subTitle } ) }
+          />
+        </PanelRow>
+        ):''}
+        <PanelRow>
+            <CheckboxControl
+              label="Add A border?"
+              help="Would you like to add a gold border around the hero image?"
+              checked={props.attributes.addBorder}
+              onChange={setBorderChecked}
+            />
+        </PanelRow>
           <PanelRow>
             <TextareaControl
               label="Hero Image Alt Text"
@@ -109,7 +158,9 @@ registerBlockType( 'purdue-blocks/title-hero', {
               ></input>
             </div>
           </div>
-          <span>Add the intro copy here.</span>
+          {props.attributes.addSubtitle?"":
+          <span>Add the intro copy here.</span>}
+           {props.attributes.addSubtitle?"":
           <div className="field">
             <div className="control">
               <textarea
@@ -125,7 +176,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
                 } }
               ></textarea>
             </div>
-          </div>
+          </div>}
         </div>
         <div className="content">
           <span>Choose a Hero Image</span>
@@ -193,9 +244,9 @@ registerBlockType( 'purdue-blocks/title-hero', {
     const returned = (
       <div className="pu-title-hero">
         <div className="hero is-large">
-          <div className="hero-body">
+          <div className={`hero-body${props.attributes.addSubtitle?" with-lead-in":""}`}>
             <div
-              className="background-image"
+              className={`background-image${props.attributes.addBorder?" has-border":""}`}
               aria-label={ props.attributes.altText }
             >
               <style dangerouslySetInnerHTML={ { __html: `
@@ -207,11 +258,21 @@ registerBlockType( 'purdue-blocks/title-hero', {
             </div>
             <div className="container">
               <div className="content">
+                {props.attributes.addSubtitle?
+                <h1 className="has-lead-in">
+                  <span className="lead-in">{ props.attributes.subTitle }</span>
+                  <span className="main-title">
+                { props.attributes.pageTitle ||
+                  select( 'core/editor' ).getCurrentPost().title }
+                  </span>                  
+                </h1>:
                 <h1>
                   { props.attributes.pageTitle ||
                     select( 'core/editor' ).getCurrentPost().title }
-                </h1>
-                <p>{ props.attributes.subText }</p>
+                </h1>}  
+                {props.attributes.addSubtitle?
+                "":                            
+                <p>{ props.attributes.subText }</p>}
               </div>
             </div>
           </div>
