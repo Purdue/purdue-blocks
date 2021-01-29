@@ -65,6 +65,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
     withSidebar:{ type: "boolean", default: false },
     sidebarLocationDesktop: { type: 'string', default: 'right' },
     sidebarLocationMobile: { type: 'string', default: 'below' },
+    bgColor: { type: 'string', default: '' },
   },
   supports: {
     className: false,
@@ -129,9 +130,28 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
             />
         </PanelRow>
         ):''}
+        <PanelRow>
+          <SelectControl
+            label="Background Color"
+            value={ props.attributes.bgColor }
+            options={
+              [
+                { value: '', label: 'None' },
+                { value: 'has-background-black', label: 'Black' },
+                { value: 'has-background-grey-lighter', label: 'Light Gray' },
+                { value: 'has-background-black-ter', label: 'Dark Gray' },
+                { value: 'has-background-boiler-gold', label: 'Boilermaker Gold' },
+              ]
+            }
+            onChange={ ( bgColor ) => {
+              props.setAttributes( { bgColor } )
+              console.log(props.attributes.bgColor)
+            } }
+          />
+        </PanelRow>
       </PanelBody>
     </InspectorControls>,
-    <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}`}>
+    <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
         <InnerBlocks
         template={[
@@ -158,7 +178,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
    */
   save: ( props ) => {
     const returned = (
-      <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}`}>
+      <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
         <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
             <InnerBlocks.Content />
         </div>
