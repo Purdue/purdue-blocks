@@ -19,7 +19,13 @@ module.exports = {
   module: {
     // ...defaultConfig.module,
     rules: [
-	  ...defaultConfig.module.rules,
+    ...defaultConfig.module.rules,
+    { test: /\.(woff|woff2|eot|ttf|otf)$/,
+      loader: 'file-loader',
+      options: {
+        outputPath: '../fonts',
+      }
+    }
 	],
   },
   optimization: {
