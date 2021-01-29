@@ -6,6 +6,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.15.0] 2021-1-29
+#### Added
+- Added in blocks built in the Content Hub:
+  - Icon-group
+  - Podcast
+  - Video Embed
+  - Ad Banner
+- Added the lead-in and border options to the Title Hero block
+
 ### [1.14.1] 2021-1-12
 #### Added
 - add optional subtext option to cta hero
