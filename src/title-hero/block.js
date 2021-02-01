@@ -114,7 +114,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
         {props.attributes.addSubtitle?(
           <PanelRow>
           <TextControl
-            label="Subtitle"
+            label="Lead-in"
             value={ props.attributes.subTitle }
             onChange={ ( subTitle ) => props.setAttributes( { subTitle } ) }
           />
