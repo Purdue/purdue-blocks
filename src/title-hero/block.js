@@ -271,8 +271,8 @@ registerBlockType( 'purdue-blocks/title-hero', {
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>}  
                 {props.attributes.addSubtitle?
-                "":                            
-                <p>{ props.attributes.subText }</p>}
+                "": props.attributes.subText?                           
+                <p>{ props.attributes.subText }</p>:""}
               </div>
             </div>
           </div>
