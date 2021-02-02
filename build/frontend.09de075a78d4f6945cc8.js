@@ -14961,11 +14961,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _podcast_frontend_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./podcast/frontend.js */ "./src/podcast/frontend.js");
 /* harmony import */ var _video_embed_frontend_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./video-embed/frontend.js */ "./src/video-embed/frontend.js");
 /* harmony import */ var _video_embed_frontend_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_video_embed_frontend_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _title_hero_frontend_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./title-hero/frontend.js */ "./src/title-hero/frontend.js");
+/* harmony import */ var _title_hero_frontend_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_title_hero_frontend_js__WEBPACK_IMPORTED_MODULE_7__);
 
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
+
 
 
 
@@ -15608,6 +15611,26 @@ jQuery(".purdue_podcast_episode_player").length > 0 && function () {
 
   e.Modernizr = k;
 }(window, document);
+
+/***/ }),
+
+/***/ "./src/title-hero/frontend.js":
+/*!************************************!*\
+  !*** ./src/title-hero/frontend.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var titleHero = document.querySelector('.pu-title-hero');
+
+if (titleHero) {
+  var h1 = titleHero.querySelector('h1');
+  var subtext = h1.nextElementSibling;
+
+  if (subtext && subtext.innerHTML === "") {
+    h1.style.marginBottom = "0";
+  }
+}
 
 /***/ }),
 

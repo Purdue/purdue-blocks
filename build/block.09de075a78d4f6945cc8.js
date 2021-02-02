@@ -13898,7 +13898,7 @@ registerBlockType('purdue-blocks/title-hero', {
       className: "lead-in"
     }, props.attributes.subTitle), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
       className: "main-title"
-    }, props.attributes.pageTitle || select('core/editor').getCurrentPost().title)) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, props.attributes.pageTitle || select('core/editor').getCurrentPost().title), props.attributes.addSubtitle ? "" : props.attributes.subText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, props.attributes.subText) : "")))));
+    }, props.attributes.pageTitle || select('core/editor').getCurrentPost().title)) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("h1", null, props.attributes.pageTitle || select('core/editor').getCurrentPost().title), props.attributes.addSubtitle ? "" : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, props.attributes.subText))))));
     return returned;
   }
 });
