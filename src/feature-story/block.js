@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
     imgUrl: { type: 'string', default: '' },
     linkImg: { type: 'boolean', default: false },
     altText: { type: 'string', default: '' },
+    caption: { type: 'string', default: '' },
     contentAlign: { type: 'string', default: 'left' },
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
@@ -156,6 +157,13 @@ registerBlockType( 'purdue-blocks/feature-story', {
               label="Featured Image Alt Text"
               value={ props.attributes.altText }
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextareaControl
+              label="Image Caption"
+              value={ props.attributes.caption }
+              onChange={ ( caption ) => props.setAttributes( { caption } ) }
             />
           </PanelRow>
         </PanelBody>
@@ -324,6 +332,10 @@ registerBlockType( 'purdue-blocks/feature-story', {
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           />
+          {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
         </a>:        
         <div className={ `${
           props.attributes.contentAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
@@ -334,6 +346,10 @@ registerBlockType( 'purdue-blocks/feature-story', {
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           />
+          {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
         </div>}
         <div className={ `${
           props.attributes.contentAlign === 'left' ? 'shadow' : 'shadow-reversed'
@@ -396,13 +412,24 @@ registerBlockType( 'purdue-blocks/feature-story', {
                 role="img"
                 style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
                 aria-label={ props.attributes.altText }
-              ></div></a>:
+              ></div>
+              {props.attributes.caption?
+                <span
+                className="feature-story-caption">{props.attributes.caption}</span>
+              :""}
+              </a>:
           <div
             className="background-image"
             role="img"
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
-          ></div>}
+          >
+            {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
+          </div>
+          }
           <div className="story-content">
           { props.attributes.header&&props.attributes.headerLevel==='h1' ? 
                 <h1 class="featured-story-header">
