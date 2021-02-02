@@ -159,6 +159,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
             />
           </PanelRow>
         </PanelBody>
+        {props.attributes.ctaUrl?
         <PanelBody>
           <h2>CTA Button Link setting</h2>
             <PanelRow>
@@ -178,7 +179,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
               onChange={ setImgLinkChecked }
             />
           </PanelRow>
-          </PanelBody>
+          </PanelBody>:""}
       </InspectorControls>,
 
       <div className={ 'purdue-blocks-editor-feature-story' }>
@@ -311,7 +312,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
   save: ( props ) => {
     const returned = props.attributes.style ? ( <div className="pu-feature-story">
       <div className="hero is-medium">
-        {props.attributes.linkImg?
+        {props.attributes.linkImg&&props.attributes.ctaUrl?
         <a className={ `${
           props.attributes.contentAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
         }` } href={ props.attributes.ctaUrl }
@@ -385,7 +386,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
         <div className={ `container pu-feature-story__container${
           props.attributes.contentAlign === 'left' ? '' : ' pu-feature-story__container-reversed'
         }` }>
-           {props.attributes.linkImg?
+           {props.attributes.linkImg&&props.attributes.ctaUrl?
            <a href={ props.attributes.ctaUrl }
            className="background-image-link"
            target={ props.attributes.external ? '_blank' : '_self' }
