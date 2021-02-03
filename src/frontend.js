@@ -8,5 +8,6 @@ import "./image-toggle-card/frontend.js"
 import "./custom-side-menu/frontend.js"
 import "./podcast/frontend.js"
 import "./video-embed/frontend.js"
+import "./title-hero/frontend.js"
 
 

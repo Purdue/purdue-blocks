@@ -66,7 +66,9 @@ registerBlockType( 'purdue-blocks/feature-story', {
     style: { type: 'boolean', default: true },
     header: { type: 'string', default: '' },
     imgUrl: { type: 'string', default: '' },
+    linkImg: { type: 'boolean', default: false },
     altText: { type: 'string', default: '' },
+    caption: { type: 'string', default: '' },
     contentAlign: { type: 'string', default: 'left' },
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
@@ -92,6 +94,17 @@ registerBlockType( 'purdue-blocks/feature-story', {
       } else {
         props.setAttributes( {
           style: true,
+        } );
+      }
+    };
+    const setImgLinkChecked = () => {
+      if ( props.attributes.linkImg ) {
+        props.setAttributes( {
+          linkImg: false,
+        } );
+      } else {
+        props.setAttributes( {
+          linkImg: true,
         } );
       }
     };
@@ -146,7 +159,15 @@ registerBlockType( 'purdue-blocks/feature-story', {
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
+          <PanelRow>
+            <TextareaControl
+              label="Image Caption"
+              value={ props.attributes.caption }
+              onChange={ ( caption ) => props.setAttributes( { caption } ) }
+            />
+          </PanelRow>
         </PanelBody>
+        {props.attributes.ctaUrl?
         <PanelBody>
           <h2>CTA Button Link setting</h2>
             <PanelRow>
@@ -157,8 +178,16 @@ registerBlockType( 'purdue-blocks/feature-story', {
                   props.setAttributes( { external: ! props.attributes.external } )
                 }
               />
-            </PanelRow>
-          </PanelBody>
+            </PanelRow>        
+            <PanelRow>
+            <CheckboxControl
+              label="Link image?"
+              help="Would you like to add the same link to image?"
+              checked={ props.attributes.linkImg }
+              onChange={ setImgLinkChecked }
+            />
+          </PanelRow>
+          </PanelBody>:""}
       </InspectorControls>,
 
       <div className={ 'purdue-blocks-editor-feature-story' }>
@@ -291,6 +320,23 @@ registerBlockType( 'purdue-blocks/feature-story', {
   save: ( props ) => {
     const returned = props.attributes.style ? ( <div className="pu-feature-story">
       <div className="hero is-medium">
+        {props.attributes.linkImg&&props.attributes.ctaUrl?
+        <a className={ `${
+          props.attributes.contentAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
+        }` } href={ props.attributes.ctaUrl }
+        target={ props.attributes.external ? '_blank' : '_self' }
+        rel="noopener noreferrer">
+          <span
+            className="background-image"
+            role="img"
+            style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+            aria-label={ props.attributes.altText }
+          />
+          {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
+        </a>:        
         <div className={ `${
           props.attributes.contentAlign === 'left' ? 'hero-image' : 'hero-image-reversed'
         }` }>
@@ -300,7 +346,11 @@ registerBlockType( 'purdue-blocks/feature-story', {
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           />
-        </div>
+          {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
+        </div>}
         <div className={ `${
           props.attributes.contentAlign === 'left' ? 'shadow' : 'shadow-reversed'
         }` }></div>
@@ -352,12 +402,34 @@ registerBlockType( 'purdue-blocks/feature-story', {
         <div className={ `container pu-feature-story__container${
           props.attributes.contentAlign === 'left' ? '' : ' pu-feature-story__container-reversed'
         }` }>
+           {props.attributes.linkImg&&props.attributes.ctaUrl?
+           <a href={ props.attributes.ctaUrl }
+           className="background-image-link"
+           target={ props.attributes.external ? '_blank' : '_self' }
+           rel="noopener noreferrer">
+                <div
+                className="background-image"
+                role="img"
+                style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+                aria-label={ props.attributes.altText }
+              ></div>
+              {props.attributes.caption?
+                <span
+                className="feature-story-caption">{props.attributes.caption}</span>
+              :""}
+              </a>:
           <div
             className="background-image"
             role="img"
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
-          ></div>
+          >
+            {props.attributes.caption?
+            <span
+            className="feature-story-caption">{props.attributes.caption}</span>
+          :""}
+          </div>
+          }
           <div className="story-content">
           { props.attributes.header&&props.attributes.headerLevel==='h1' ? 
                 <h1 class="featured-story-header">
