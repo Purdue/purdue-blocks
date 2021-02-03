@@ -1,0 +1,54 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.info-box-hero-editor {
+  .image {
+    
+    padding: 7rem 0;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    button {
+      border: none;
+      background: #CFB991;
+      color: black;
+      padding: 0.4rem 0.65rem;
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .info-box-content {
+      position: relative;
+      padding: 3rem 5rem;
+      background: white;
+      color: black;
+      max-width: 75%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+
+    }
+    &:after {
+      content: '';
+      border: 5px solid #DAA000;
+      position: absolute;
+      width: 100%;
+      max-width: calc(75% - 6rem);
+      height: auto;
+      top: 4rem;
+      bottom: 4rem;
+
+    }
+  }
+}
