@@ -210,11 +210,13 @@ registerBlockType("purdue-blocks/info-box-hero", {
                 tagName={props.attributes.titleLevel}
                 value={props.attributes.title}
               />
+              {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
               <RichText.Content
                 className={"content"}
                 tagName="p"
                 value={props.attributes.subText}
-              />
+              /> : ''}
+              
             </div>
           </div>
         </div>
