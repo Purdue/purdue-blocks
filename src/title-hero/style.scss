@@ -11,21 +11,47 @@
       flex-direction: column;
       flex-wrap: nowrap;
     }
-
+    .hero-video-control{
+      position:absolute;
+      z-index:10;
+      bottom:3.25rem;
+      right:3.25rem;
+      color:$boiler-gold;
+      @include mobile{
+        display:none;
+      }
+      .video-pause-button,.video-play-button{
+        cursor: pointer;
+        background: none;
+        color: #CFB991;
+        border: 0;
+        padding: 0;
+        display:inline-block;
+        &.hide{
+          display:none;
+        }
+        i,svg{
+          border: 1px solid white;
+          border-radius: 50%;
+          background-color: black;
+          font-size:3.25rem;
+        }
+      }
+    }
     .hero-body {
       position: relative;
       background: White;
       z-index: 2;
       display: flex;
       align-items: flex-end;
-      padding: 17.25rem $side-padding-desktop 3.75rem !important;
+      padding: 16.25rem $side-padding-desktop 3.75rem !important;
       margin: 0 !important;
 
       @include touch {
         height: auto;
         align-items: flex-start;
         justify-content: flex-start;
-        padding: 17.25rem $side-padding-tablet 3.75rem !important;
+        padding: 16.25rem $side-padding-tablet 3.75rem !important;
       }
 
       @include mobile { 
@@ -116,6 +142,39 @@
           border:1.25rem solid $boiler-gold;
           @include mobile { 
             border:1rem solid $boiler-gold;
+          }
+        }
+        .hero-video-container{
+          position: absolute;
+          left: 50%;
+          top: 0;
+          min-width: 100%;
+          transform: translateX(-50%);
+          height: 100%;
+          display: block;
+          overflow: hidden;
+          @include mobile {
+            display:none;
+          }
+          video{
+            min-width: 100%;
+            height: auto;
+            min-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width:unset;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index:1;
           }
         }
       }

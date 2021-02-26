@@ -8,8 +8,7 @@ Relevant changes are documented below.
 ### [1.15.1] 2021-2-2
 #### Updated
 - Added option to add the link link to image in featured story block
-- Added option to add the image caption in featured story block
-- Hid the margin bottom of title when subtext's empty in Title Hero block
+- Hid the subtext when it's empty in Title Hero block
 
 ### [1.15.0] 2021-1-29
 #### Added
