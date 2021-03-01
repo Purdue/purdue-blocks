@@ -58,7 +58,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
 
   attributes: {
     pageTitle: { type: 'string', default: '' },
-    blockStyle: { type: 'string', default: 'acumin' },
+    blockStyle: { type: 'string', default: 'united' },
     addSubtitle: { type: 'boolean', default: false },
     subTitle: { type: 'string', default: '' },
     subText: { type: 'string', default: '' },
@@ -78,7 +78,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
 
   // Block description in side panel
   description: __(
-    'This block should be used at the top of the page. Choose a page title, an image, and the settings for the cta button.'
+    'This block should be used at the top of the page.'
   ),
 
   edit: ( props ) => {
@@ -90,11 +90,11 @@ registerBlockType( 'purdue-blocks/title-hero', {
 
     if (props.attributes.addSubtitle) {
       props.setAttributes({
-        blockStyle: "united",
+        blockStyle: "acumin",
       });
     } else {
       props.setAttributes({
-        blockStyle: "acumin",
+        blockStyle: "united",
       });
     }
 
@@ -123,7 +123,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
               ] }
               onChange={ ( option ) => {
                 props.setAttributes( { blockStyle: option } )
-                option==="acumin"? props.setAttributes( { addSubtitle: false } ): props.setAttributes( { addSubtitle: true } )
+                option==="united"? props.setAttributes( { addSubtitle: false } ): props.setAttributes( { addSubtitle: true } )
               } }
             />
         </PanelRow>
@@ -336,7 +336,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
     const returned = (
       <div className="pu-title-hero">
         <div className="hero is-large">
-          <div className={`hero-body${props.attributes.addSubtitle?" with-lead-in":""}`}>
+          <div className={`hero-body${props.attributes.backgroundType==="video"?" hero-body-with-video":""}${props.attributes.addSubtitle?" with-lead-in":""}`}>
             <div
               className={`background-image${props.attributes.addBorder?" has-border":""}`}
               aria-label={ props.attributes.altText }
@@ -352,6 +352,24 @@ registerBlockType( 'purdue-blocks/title-hero', {
                 <video muted="" loop="" autoplay="" playsinline="">
                     <source type={props.attributes.videoMIME} src={props.attributes.videoUrl}></source>
                 </video>
+              </div>:""}
+              {props.attributes.backgroundType==="video"?
+              <div class="hero-video-control">
+                <button class="video-pause-button">
+                  <span class="sr-only">Pause
+                  </span>
+                  <span>
+                    <i class="fas fa-pause-circle" aria-hidden="true"></i>
+                  </span>
+                </button>
+                <button class="video-play-button hide">
+                  <span class="sr-only">Play
+                  </span>
+                  <span>
+                    <i class="fas fa-play-circle" aria-hidden="true"></i>
+                  </span>
+                </button>
+
               </div>:""}
             </div>
             <div className="container">
@@ -374,24 +392,6 @@ registerBlockType( 'purdue-blocks/title-hero', {
               </div>
             </div>
           </div>
-          {props.attributes.backgroundType==="video"?
-              <div class="hero-video-control">
-                <button class="video-pause-button">
-                  <span class="sr-only">Pause
-                  </span>
-                  <span>
-                    <i class="fas fa-pause-circle" aria-hidden="true"></i>
-                  </span>
-                </button>
-                <button class="video-play-button hide">
-                  <span class="sr-only">Play
-                  </span>
-                  <span>
-                    <i class="fas fa-play-circle" aria-hidden="true"></i>
-                  </span>
-                </button>
-
-              </div>:""}
         </div>
       </div>
     );
