@@ -5,6 +5,15 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.15.3] 2021-3-2
+#### Updated
+- Added info box hero block
+- Removed modernizr code
+
+### [1.15.2] 2021-2-2
+#### Updated
+- Added image caption to featured story block.
+
 ### [1.15.1] 2021-2-2
 #### Updated
 - Added option to add the link link to image in featured story block
