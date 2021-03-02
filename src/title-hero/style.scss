@@ -266,15 +266,18 @@
             line-height: 1.11;
             max-width:34.375rem;
             padding:0.625rem 1.875rem;
+            margin-bottom:1rem;
             background:$boiler-gold;
             display:inline-block;
             @include touch {
               font-size: 2rem;
               padding:0.625rem 1.875rem;
+              margin-bottom:1.5rem;
             }
             @include mobile {
               font-size: 1rem;
               padding:0.5rem 1rem;
+              margin-bottom:1rem;
             }
           }
           .main-title{
@@ -285,16 +288,16 @@
             text-transform: uppercase;
             line-height:0.9;
             color: $white;
-            padding:1rem 0 0 6.25rem;
+            padding:0 0 0 6.25rem;
             display:block;
             @include touch {
               font-size: 6.875rem;
-              padding:1.5rem 0 0 0;
+              padding:0;
             }
             @include mobile {
               font-size: 3.4375rem;
               line-height:1;
-              padding:1rem 0 0 0;
+              padding:0;
             }
           }
         }
