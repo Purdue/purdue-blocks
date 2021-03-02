@@ -17,7 +17,7 @@
   .media {
     padding: 2.1875rem;
 
-    @include touch {
+    @include mobile {
       flex-direction: column;
       padding: 0.9375rem;
     }
@@ -25,7 +25,7 @@
     .media-left {
       margin-right: 2.1875rem;
 
-      @include touch {
+      @include mobile {
         margin: 0 0 2.325rem 0;
       }
       
@@ -37,6 +37,10 @@
         width: 100%;
         height: auto;
         max-width: 19.125rem;
+
+        @include mobile {
+          max-width: 100%;
+        }
       }
     }
 
@@ -52,7 +56,13 @@
           font-size: 1.25rem;
 
           &:not(:last-child) {
-            margin-bottom: 1.125rem;
+            margin-bottom: 1.25rem;
+          }
+
+          &:nth-child(3) {
+            svg {
+              margin-right: calc(1.25rem - 2.5px);
+            }
           }
 
           svg {
@@ -79,10 +89,15 @@
               font-size: 1.125rem;
               font-weight: 400;
               font-family: $acumin-pro;
+
+              &:hover {
+                color: $aged-gold;
+                text-decoration: underline;
+              }
             }
 
             span {
-              display: block;
+              display: none;
               font-size: 1rem;
               font-weight: 300;
               color: $steel-gray;
@@ -94,19 +109,69 @@
     }
   }
 
+  &>.content {
+    margin: 0 !important;
+    padding: 0 2.1875rem 2.1875rem;
+    color: $steel-gray;
+
+    @include touch {
+      padding: 0 0.9375rem 2.1875rem;
+    }
+  }
+
   .level {
     background: black;
-    padding: 0.75rem 1.5625rem;
-    justify-content: flex-end;
-    height:54px;
-    @include mobile {
-      padding: 0.75rem 1rem;
+    padding: 1.25rem 2.1875rem;
+    height:auto;
+    flex-wrap: wrap;
+
+    @include touch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .level-left {
+
+      margin-right: 6.25rem;
+
+      .level-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+  
+        .faculty-name {
+          color: $boiler-gold;
+          font-family: $united-sans;
+          font-size: 1.375rem;
+          margin-bottom: 0;
+        }
+        .faculty-title {
+          color: $steam-gray;
+          font-size: 1.125rem;
+          font-style: italic;
+        }
+
+        @include touch {
+          text-align: center;
+          align-items: center;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      @include touch{
+        margin-right: 0;
+      }
+
     }
 
     .level-right {
 
-      @include mobile {
+      @include touch {
+        display: flex;
+        flex-direction: row;
         width: 100%;
+        margin: 0;
         max-width: 20rem;
         justify-content: space-between;
       }
@@ -117,8 +182,9 @@
         &:not(:last-child) {
           margin-right: 1.5625rem;
 
-          @include mobile {
+          @include touch {
             margin-right: 0;
+            margin-bottom: 0;
           }
         }
       }
