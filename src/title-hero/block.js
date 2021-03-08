@@ -69,7 +69,6 @@ registerBlockType( 'purdue-blocks/title-hero', {
     altText: { type: 'string', default: '' },
     videoUrl: { type: 'string', default: '' },
     videoId: { type: 'string', default: '' },
-    videoMIME: { type: 'string', default: '' },
   },
 
   supports: {
@@ -232,15 +231,13 @@ registerBlockType( 'purdue-blocks/title-hero', {
                   props.setAttributes( {
                     videoUrl: video.url,
                     videoId: video.id,
-                    videoMIME: video.mime,
                   } );
                 } }
                 render={ ( { open } ) => {
                   return props.attributes.videoUrl !== '' ? (
                     <div className={ 'bulma-blocks-editor-site-hero__preview' }>
                       <Disabled>
-                        <video muted="" playsinline="">
-                            <source type={props.attributes.videoMIME} src={props.attributes.videoUrl}></source>
+                        <video muted playsinline="" src={props.attributes.videoUrl}>
                         </video>
                       </Disabled>
                       <Button
@@ -349,9 +346,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
             ` } }></style>
               {props.attributes.backgroundType==="video"?
               <div class="hero-video-container">
-                <video muted="" loop="" autoplay="" playsinline="">
-                    <source type={props.attributes.videoMIME} src={props.attributes.videoUrl}></source>
-                </video>
+                <video muted="" loop="" autoplay="" playsinline="" src={props.attributes.videoUrl}/>
               </div>:""}
               {props.attributes.backgroundType==="video"?
               <div class="hero-video-control">
