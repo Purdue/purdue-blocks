@@ -222,7 +222,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
         <div className="media-container">
         {props.attributes.backgroundType==="video"?
           <div className="media-content">
-            <span>Choose a Hero Video</span>
+            <span>Choose a Hero Video (Recommand size: less than 10 MB)</span>
             <MediaUploadCheck>
               <MediaUpload
                 accept="video"
