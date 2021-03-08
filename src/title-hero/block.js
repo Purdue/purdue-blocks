@@ -336,7 +336,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
     const returned = (
       <div className="pu-title-hero">
         <div className="hero is-large">
-          <div className={`hero-body${props.attributes.backgroundType==="video"?" hero-body-with-video":""}${props.attributes.addSubtitle?" with-lead-in":""}`}>
+          <div className={`hero-body${props.attributes.addSubtitle?" with-lead-in":""}`}>
             <div
               className={`background-image${props.attributes.addBorder?" has-border":""}`}
               aria-label={ props.attributes.altText }
