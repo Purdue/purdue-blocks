@@ -5,27 +5,53 @@
  */
 
 .pu-title-hero {
+
   .hero {
     position: relative;
     @include touch {
       flex-direction: column;
       flex-wrap: nowrap;
     }
-
+    .hero-video-control{
+      position:absolute;
+      z-index:10;
+      bottom:3.25rem;
+      right:3.25rem;
+      @include mobile{
+        display:none;
+      }
+      .video-pause-button,.video-play-button{
+        cursor: pointer;
+        background: none;
+        color: $rush-gold;
+        border: 0;
+        padding: 0;
+        display:inline-block;
+        &.hide{
+          display:none;
+        }
+        i,svg{
+          border: 1px solid $white;
+          border-radius: 50%;
+          background-color: $black;
+          font-size:2.5rem;
+        }
+      }
+    }
     .hero-body {
       position: relative;
-      background: White;
+      background: $white;
       z-index: 2;
       display: flex;
       align-items: flex-end;
-      padding: 17.25rem $side-padding-desktop 3.75rem !important;
+      padding: 16.25rem $side-padding-desktop 3.75rem !important;
       margin: 0 !important;
 
       @include touch {
         height: auto;
         align-items: flex-start;
         justify-content: flex-start;
-        padding: 17.25rem $side-padding-tablet 3.75rem !important;
+        padding: 16.25rem $side-padding-tablet 3.75rem !important;
       }
 
       @include mobile { 
@@ -36,7 +62,9 @@
       @include desktop {
         order: 1;
       }
+
       &.with-lead-in{
+        padding: 16.25rem $side-padding-desktop 5rem !important;
         @include touch { 
           flex-direction: column;
           padding: 0 !important;
@@ -46,7 +74,7 @@
             order: 2;
             width: 100%;
             background-color: black;
-            padding: 4rem $side-padding-mobile;
+            padding: 3rem $side-padding-mobile;
           }
           @include mobile {
             padding: 2.1875rem $side-padding-mobile;
@@ -56,10 +84,7 @@
           @include touch {
             position: relative;
             order: 1;
-            height: 24rem;
-          }
-          @include mobile {
-            height: 11.25rem;
+            height: 50vw;
           }
           &:before {
             @include touch { 
@@ -74,13 +99,10 @@
           }
           h1{
             @include touch{
-              margin-bottom:1.5rem;
+              margin-bottom:0.5rem;
             }
           }
         }
-      }
-      .container{
-        width:100%;
       }
       .background-image {
         position: absolute;
@@ -96,9 +118,8 @@
         @include mobile {
           position: relative;
           order: 1;
-          height: 11.25rem;
+          height: 50vw;
         }
-
         &:before {
           content: '';
           position: absolute;
@@ -117,14 +138,52 @@
           @include mobile { 
             border:1rem solid $boiler-gold;
           }
+          .hero-video-control{
+            right:2rem;
+            bottom:2rem;
+          }
+        }
+        .hero-video-container{
+          position: absolute;
+          left: 50%;
+          top: 0;
+          min-width: 100%;
+          transform: translateX(-50%);
+          height: 100%;
+          display: block;
+          overflow: hidden;
+          @include mobile {
+            display:none;
+          }
+          video{
+            min-width: 100%;
+            height: auto;
+            min-height: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width:unset;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+            z-index:1;
+          }
         }
       }
 
       .container {
+        width:100%;
         @include mobile {
           order: 2;
           width: 100%;
-          background-color: black;
+          background-color: $black;
           padding: 2.1875rem $side-padding-mobile;
         }
       }
@@ -163,6 +222,9 @@
             line-height: 2.5rem;
             margin-bottom: 1rem;
           }
+          &.has-lead-in{
+            line-height:2.8125rem;;
+          }
           .lead-in{
             font-family: $united-sans;
             font-weight: 800;
@@ -172,15 +234,18 @@
             line-height: 1.11;
             max-width:34.375rem;
             padding:0.625rem 1.875rem;
+            margin-bottom:1rem;
             background:$boiler-gold;
             display:inline-block;
             @include touch {
               font-size: 2rem;
               padding:0.625rem 1.875rem;
+              margin-bottom:1.5rem;
             }
             @include mobile {
               font-size: 1rem;
               padding:0.5rem 1rem;
+              margin-bottom:1rem;
             }
           }
           .main-title{
@@ -191,16 +256,16 @@
             text-transform: uppercase;
             line-height:0.9;
             color: $white;
-            padding:1rem 0 1.25rem 6.25rem;
+            padding:0 0 0 6.25rem;
             display:block;
             @include touch {
               font-size: 6.875rem;
-              padding:1.5rem 0 0 0;
+              padding:0;
             }
             @include mobile {
               font-size: 3.4375rem;
               line-height:1;
-              padding:1rem 0 0 0;
+              padding:0;
             }
           }
         }

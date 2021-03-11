@@ -5,17 +5,22 @@
  * which makes it higher in priority.
  */
 
-.bulma-blocks-editor-cta-hero {
+.purdue-blocks-editor-title-hero {
 
   padding: 0.875rem;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   color: $black;
   background: $secondary-background-gray;
   margin-bottom: 1.75rem;
-
+  .media-container{
+    display:flex;
+    flex-direction:row;
+    .media-content{
+      flex:1;
+    }
+    .media-content:not(:last-child){
+      margin-right:2rem;
+    }
+  }
   .content {
     flex: 0 1 48%;
 
