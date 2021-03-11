@@ -10,14 +10,26 @@
   padding: 0.875rem;
 
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   color: $black;
   background: $secondary-background-gray;
   margin-bottom: 1.75rem;
 
+  .columns {
+    width: 100%;
+    margin: 0;
+  }
+
+  .main-info {
+    width: 100%;
+
+    textarea {
+      height: 5.5rem;
+    }
+  }
+
   .content {
-    flex: 0 1 48%;
 
     span {
       display: flex;

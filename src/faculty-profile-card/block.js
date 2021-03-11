@@ -89,6 +89,10 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     phone: { type: 'string', default: '' },
     email: { type: 'string', default: '' },
     personalLink: { type: 'string', default: '' },
+    extraLink: { type: 'string', default: '' },
+    name: { type: 'string', default: '' },
+    title: { type: 'string', default: '' },
+    bio: { type: 'string', default: '' },
     includeSocial: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
   },
@@ -192,53 +196,54 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
       </InspectorControls>,
 
       <div className={ 'pu-blocks-editor-faculty-profile' }>
-        <div className="content">
-          <span>Choose a Profile Picture</span>
-          <MediaUploadCheck>
-            <MediaUpload
-              onSelect={ ( img ) => {
-                props.setAttributes( {
-                  profilePhoto: img.url,
-                  altText:
-                    props.attributes.altText !== '' ?
-                      props.attributes.altText :
-                      img.alt,
-                } );
-              } }
-              render={ ( { open } ) => {
-                return props.attributes.profilePhoto !== '' ? (
-                  <div className={ 'bulma-blocks-editor-site-hero__preview' }>
-                    <figure className={ 'image' }>
-                      <img
-                        alt={ props.attributes.altText }
-                        src={ props.attributes.profilePhoto }
-                      />
-                    </figure>
-                    <Button
-                      className={ 'bulma-blocks-editor-site-hero__button' }
-                      onClick={ open }
-                    >
-                      Select a New Image
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={ 'bulma-blocks-editor-site-hero__container' }>
-                    <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                      Pick a hero image from the media library.
-                    </p>
-                    <Button
-                      className={ 'bulma-blocks-editor-site-hero__button' }
-                      onClick={ open }
-                    >
-                      Open Media Library
-                    </Button>
-                  </div>
-                );
-              } }
-            />
-          </MediaUploadCheck>
-        </div>
-        <div className="content">
+        <div className="columns">
+          <div className="content column">
+            <span>Choose a Profile Picture</span>
+            <MediaUploadCheck>
+              <MediaUpload
+                onSelect={ ( img ) => {
+                  props.setAttributes( {
+                    profilePhoto: img.url,
+                    altText:
+                      props.attributes.altText !== '' ?
+                        props.attributes.altText :
+                        img.alt,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return props.attributes.profilePhoto !== '' ? (
+                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                      <figure className={ 'image' }>
+                        <img
+                          alt={ props.attributes.altText }
+                          src={ props.attributes.profilePhoto }
+                        />
+                      </figure>
+                      <Button
+                        className={ 'bulma-blocks-editor-site-hero__button' }
+                        onClick={ open }
+                      >
+                        Select a New Image
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
+                        Pick a hero image from the media library.
+                      </p>
+                      <Button
+                        className={ 'bulma-blocks-editor-site-hero__button' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                    </div>
+                  );
+                } }
+              />
+            </MediaUploadCheck>
+          </div>
+          <div className="content column">
           <span>Add Phone Number</span>
           <div className="field">
             <div className="control">
@@ -289,6 +294,74 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               ></input>
             </div>
           </div>
+          <span>Add Optional Google Scholar Link</span>
+          <div className="field">
+            <div className="control">
+              <input
+                value={
+                  props.attributes.extraLink !== '' ?
+                    props.attributes.extraLink :
+                    ''
+                }
+                className="input"
+                type="text"
+                placeholder="Google Scholar Link..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { extraLink: e.target.value } );
+                } }
+              ></input>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className="content main-info">
+          <span>Faculty Name</span>
+          <div className="field">
+            <div className="control">
+              <input
+                value={
+                  props.attributes.name !== '' ? props.attributes.name : ''
+                }
+                className="input"
+                type="text"
+                placeholder="Faculty Name..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { name: e.target.value } );
+                } }
+              ></input>
+            </div>
+          </div>
+          <span>Faculty Position</span>
+          <div className="field">
+            <div className="control">
+              <input
+                value={
+                  props.attributes.title !== '' ? props.attributes.title : ''
+                }
+                className="input"
+                type="text"
+                placeholder="Faculty Position..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { title: e.target.value } );
+                } }
+              ></input>
+            </div>
+          </div>
+          <span>Optional Faculty Bio</span>
+          <div className="field">
+            <div className="control">
+              <textarea
+                value={
+                  props.attributes.bio !== '' ? props.attributes.bio : ''
+                }
+                className="input"
+                placeholder="Faculty Bio..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { bio: e.target.value } );
+                } }
+              ></textarea>
+            </div>
+          </div>
         </div>
       </div>,
     ];
@@ -306,7 +379,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = (
+    const returned = props.attributes.name == '' ? (
       <div className="faculty-profile-card box">
         <div className="media">
           <div className="media-left">
@@ -366,12 +439,158 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ) : (
                   ''
                 ) }
+                { props.attributes.extraLink !== '' ? (
+                  <li>
+                    <i className="fas fa-link" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={
+                          props.attributes.extraLink.includes( 'https://' ) ?
+                            props.attributes.extraLink :
+                            `https://${ props.attributes.extraLink }`
+                        }
+                      >
+                        Google Scholar Website
+                      </a>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+              </ul>
+            </div>
+          </div>
+        </div>
+        {props.attributes.bio !== '' ? (
+          <div className="content">
+            <p>{props.attributes.bio}</p>
+          </div>
+        ) : ''}
+        <div className="level is-mobile">
+          { props.attributes.includeSocial ? (
+            <div className="level-right content">
+              <p className="level-item">Follow Me: </p>
+              { Object.keys( props.attributes.checkedSocials ).map( ( social ) => {
+                return (
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="level-item"
+                    href={ `${ props.attributes.checkedSocials[ social ].link }` }
+                  >
+                    <i
+                      className={ `fab fa-${ props.attributes.checkedSocials[ social ].slug }` }
+                      aria-hidden="true"
+                    />
+                  </a>
+                );
+              } ) }
+            </div>
+          ) : (
+            ''
+          ) }
+        </div>
+      </div>
+    ) : (
+      <div className="faculty-profile-card box">
+        <div className="media">
+          <div className="media-left">
+            <div className="image">
+              <img src={ props.attributes.profilePhoto }></img>
+            </div>
+          </div>
+          <div className="media-content">
+            <div className="content">
+              <ul>
+                { props.attributes.phone !== '' ? (
+                  <li>
+                    <i className="fas fa-phone" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <p>{ props.attributes.phone }</p>
+                      <span>Phone</span>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+                { props.attributes.email !== '' ? (
+                  <li>
+                    <i className="fas fa-envelope" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={ `mailto:${ props.attributes.email }` }
+                      >
+                        { props.attributes.email }
+                      </a>
+                      <span>Email</span>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+                { props.attributes.personalLink !== '' ? (
+                  <li>
+                    <i className="fas fa-desktop" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={
+                          props.attributes.personalLink.includes( 'https://' ) ?
+                            props.attributes.personalLink :
+                            `https://${ props.attributes.personalLink }`
+                        }
+                      >
+                        { props.attributes.personalLink }
+                      </a>
+                      <span>Personal Website</span>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+                { props.attributes.extraLink !== '' ? (
+                  <li>
+                    <i className="fas fa-link" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={
+                          props.attributes.extraLink.includes( 'https://' ) ?
+                            props.attributes.extraLink :
+                            `https://${ props.attributes.extraLink }`
+                        }
+                      >
+                        Google Scholar Website
+                      </a>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
               </ul>
             </div>
           </div>
         </div>
 
-        <div className="level is-mobile">
+        {props.attributes.bio !== '' ? (
+          <div className="content">
+            <p>{props.attributes.bio}</p>
+          </div>
+        ) : ''}
+
+        <div className="level">
+          <div className="level-left">
+            <div className="level-item">
+              <p className="faculty-name">{props.attributes.name}</p>
+              <p className="faculty-title">{props.attributes.title}</p>
+            </div>
+          </div>
           { props.attributes.includeSocial ? (
             <div className="level-right content">
               <p className="level-item">Follow Me: </p>
