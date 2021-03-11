@@ -5,6 +5,16 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.15.4] 2021-3-11
+#### Updated
+- Title Hero Block
+ - Add video option to title hero block.
+ - Add Hero style options
+ - Hide lead-in text when it's empty
+- Faculty Profile Block
+ - add name, position, bio, and google scholar link
+ - updated card styles
+
 ### [1.15.3] 2021-3-2
 #### Updated
 - Added info box hero block
