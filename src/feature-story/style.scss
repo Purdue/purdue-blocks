@@ -4,7 +4,7 @@
  * CSS for both Frontend+Backend.
  */
 
-.pu-feature-story {
+ .pu-feature-story {
   background-color:$white;
   h2,.featured-story-header {
     font-weight:600;
@@ -38,9 +38,9 @@
   &__container{
 
     display:flex;
-    flex-direction:row;
+    flex-direction:row-reverse;
     &-reversed{
-      flex-direction:row-reverse;
+      flex-direction:row;
     }
     @include touch {
       flex-direction:column;
@@ -56,6 +56,16 @@
       }
       p{
         line-height:1.875rem;
+      }
+      &.header-color-black{
+        h1,h2,h3,h4,h5,h6{
+          color:$black !important;
+        }
+      }
+      &.header-color-steel{
+        h1,h2,h3,h4,h5,h6{
+          color:$steel-gray !important;
+        }
       }
     }
     .background-image-link{
@@ -139,6 +149,16 @@
           @include mobile {
             max-width: 100%;
             padding-left:0 !important;
+          }
+        }
+        &.header-color-black{
+          h1,h2,h3,h4,h5,h6{
+            color:$black !important;
+          }
+        }
+        &.header-color-steel{
+          h1,h2,h3,h4,h5,h6{
+            color:$steel-gray !important;
           }
         }
         @include touch {
