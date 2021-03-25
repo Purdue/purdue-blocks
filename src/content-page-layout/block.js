@@ -145,7 +145,6 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
             }
             onChange={ ( bgColor ) => {
               props.setAttributes( { bgColor } )
-              console.log(props.attributes.bgColor)
             } }
           />
         </PanelRow>
@@ -154,12 +153,14 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
     <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
         <InnerBlocks
-        template={[
-          [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
-            [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]] ],
-            [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-        ]
-        ]]} />
+          template={[
+            [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
+              [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]] ],
+              [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+          ]
+          ]]} 
+          templateInsertUpdatesSelection={ false }
+        />
       </div>
     </div>,
     ];
