@@ -123,8 +123,8 @@ registerBlockType("purdue-blocks/purdue-button", {
                 label="Font style"
                 selected={ props.attributes.fontStyle }
                 options={ [
-                  { label: 'Primary (Regular and capitalized)', value: 'primary' },
-                  { label: 'Narrow (Condesed and non-Capitalized', value: 'narrow' },
+                  { label: 'Primary (Regular and uppercase)', value: 'primary' },
+                  { label: 'Narrow (Condesed and capitalized', value: 'narrow' },
                 ] }
                 onChange={ ( option ) => {
                   props.setAttributes( { fontStyle: option } )
