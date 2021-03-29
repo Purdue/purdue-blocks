@@ -115,7 +115,6 @@ registerBlockType( 'purdue-blocks/accordion', {
           } }
           placeholder="Add Title"
           keepPlaceholderOnFocus={ true }
-          allowedFormats={ ['core/bold', 'core/italic','core/link'] }
         >
         </RichText>
         <div className="accordion-content">
