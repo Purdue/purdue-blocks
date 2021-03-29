@@ -74,6 +74,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
+    height: { type: "string", default: "100" },
   },
 
   supports: {
@@ -101,6 +102,20 @@ registerBlockType( 'purdue-blocks/cta-card', {
               onChange={ ( option ) => {
                 props.setAttributes( { cardType: option } )
               } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Height of the card"
+              help="100%: the height of the card will be 100% height of its parent container; Auto: the height of the card will depend upon the height of its children."
+              selected={props.attributes.height}
+              options={[
+                { label: "100%", value: "100" },
+                { label: "Auto", value: "auto" },
+              ]}
+              onChange={(option) => {
+                props.setAttributes({ height: option });
+              }}
             />
           </PanelRow>
           <PanelRow>
@@ -222,7 +237,6 @@ registerBlockType( 'purdue-blocks/cta-card', {
                 } }
                 placeholder="Add Title (Optional)"
                 keepPlaceholderOnFocus={ true }
-                allowedFormats={ [] }
               >
               </RichText>
             </div>
@@ -236,7 +250,6 @@ registerBlockType( 'purdue-blocks/cta-card', {
                   props.setAttributes( { subText: text } )
                 } }
                 placeholder="Add Text (Optional)"
-                allowedFormats={ [] }
               >
               </RichText>):(
                   <InnerBlocks
@@ -268,7 +281,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
       <a
         href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
-        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
+        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        rel="noopener noreferrer"
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
@@ -293,7 +306,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
         </div>
       </a> :
       <div
-        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
+        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        rel="noopener noreferrer"
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>

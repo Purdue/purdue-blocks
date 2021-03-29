@@ -11,6 +11,9 @@
     display:block;
     color:$black;
     background-color:$white;
+    &.cta-card--height-auto{
+      height:auto;
+    }
     &.cta-card-small{
       padding:2.1875rem;
       @include mobile{
