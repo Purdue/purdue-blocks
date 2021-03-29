@@ -11,17 +11,20 @@
    margin:1rem 0;
    position: relative;
   .accordion-title{
-    padding: 2.1875rem 1.875rem;
+    padding: 2.1875rem 3rem 2.1875rem 1.875rem;
     margin:0 !important;
     font-size:1.125rem;
     font-weight:700;
     line-height:1.875rem;
+    position:relative;
     &:after{
       font-family: "Font Awesome 5 Free"; 
       content: "\f078";
       color:$cool-gray;
       position: absolute;
       right:1.5rem;
+      top:50%;
+      transform: translateY(-50%);
     }
   }  
   .accordion-content{
