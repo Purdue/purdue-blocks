@@ -13,6 +13,7 @@ const {
   CheckboxControl,
   TextareaControl,
   TextControl,
+  RadioControl,
   Button,
   ToggleControl,
 } = wp.components;
@@ -83,7 +84,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
     subText: { type: 'string' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
-    imgError: { type: 'boolean' },
     includeSocial: { type: 'boolean' },
     includeButton: { type: 'boolean' },
     anchor: { type: 'string', default: '' },
@@ -137,19 +137,26 @@ registerBlockType( 'purdue-blocks/site-hero', {
         } );
       }
     };
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
+  
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
-            <ToggleControl
-              label="Hero Style Toggle"
-              help={ props.attributes.styleToggle ? '40/60 Hero' : '50/50 Hero' }
-              checked={ props.attributes.styleToggle }
-              onChange={ () =>
-                props.setAttributes( {
-                  styleToggle: ! props.attributes.styleToggle,
-                } )
-              }
+            <RadioControl
+              label="Hero Style"
+              selected={ props.attributes.styleToggle ? '4060' : '5050' }
+              options={ [
+                { label: '50/50', value: '5050' },
+                { label: '40/60', value: '4060' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { styleToggle: option === '4060'} )
+              } }
             />
           </PanelRow>
         </PanelBody>
@@ -251,26 +258,17 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <MediaUploadCheck>
             <MediaUpload
               onSelect={ ( img ) => {
-                let aspectRatio = '';
-                img.height ? ( aspectRatio = img.width / img.height ) : ( aspectRatio = img.width / img.media_details.height );
-                if ( aspectRatio !== 2 ) {
-                  props.setAttributes( {
-                    imgError: true,
-                  } );
-                } else {
-                  props.setAttributes( {
-                    imgUrl: img.url,
-                    altText:
-                      props.attributes.altText !== '' ?
-                        props.attributes.altText :
-                        img.alt,
-                    imgError: false,
-                  } );
-                }
+                props.setAttributes( {
+                  imgUrl: img.url,
+                  altText:
+                    props.attributes.altText !== '' ?
+                      props.attributes.altText :
+                      img.alt,
+                } );
               } }
               render={ ( { open } ) => {
-                return props.attributes.imgUrl !== '' &&
-                  ! props.attributes.imgError ? (
+                console.log(props.attributes.imgUrl)
+                return props.attributes.imgUrl !== '' ? (
                     <div className={ 'bulma-blocks-editor-site-hero__preview' }>
                       <figure className={ 'image' }>
                         <img
@@ -284,29 +282,14 @@ registerBlockType( 'purdue-blocks/site-hero', {
                       >
                         Select a New Image
                       </Button>
-                    </div>
-                  ) : props.attributes.imgError ? (
-                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
-                      <p
-                        className={
-                          'bulma-blocks-editor-site-hero__description bulma-blocks-editor-site-hero__description--error'
-                        }
-                      >
-                        The image you selected had the wrong aspect ratio. Please
-                        make sure your image has a 2:1 aspect ratio.
-                      </p>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Open Media Library
+                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
                       </Button>
                     </div>
                   ) : (
                     <div className={ 'bulma-blocks-editor-site-hero__container' }>
                       <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                        Pick an image from the media library. The image should be
-                        2:1 aspect ratio and will be resized automatically.
+                        Pick an image from the media library.
                       </p>
                       <Button
                         className={ 'bulma-blocks-editor-site-hero__button' }
