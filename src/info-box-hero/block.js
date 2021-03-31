@@ -91,6 +91,11 @@ registerBlockType("purdue-blocks/info-box-hero", {
   ),
 
   edit: (props) => {
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -141,12 +146,17 @@ registerBlockType("purdue-blocks/info-box-hero", {
                   style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                   aria-label={props.attributes.altText}
                 >
-                  <button onClick={open}>
-                    {props.attributes.imgUrl !== ""
-                      ? "Select a new image"
-                      : "Select an image"}
-                  </button>
-
+                  <div class="buttons-container">
+                    <button onClick={open}>
+                      {props.attributes.imgUrl !== ""
+                        ? "Select a new image"
+                        : "Select an image"}
+                    </button>
+                    {props.attributes.imgUrl !== ""?
+                      <button class="remove-button" onClick={removeMedia}>
+                          Remove image
+                      </button>:""}
+                    </div>
                   <div className={`info-box-content`}>
                     <div className="title">
                       <RichText
