@@ -267,7 +267,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
                 } );
               } }
               render={ ( { open } ) => {
-                console.log(props.attributes.imgUrl)
                 return props.attributes.imgUrl !== '' ? (
                     <div className={ 'bulma-blocks-editor-site-hero__preview' }>
                       <figure className={ 'image' }>
