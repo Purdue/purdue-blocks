@@ -69,7 +69,9 @@
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
-
+    &:not(:last-child){
+      margin-right:1rem;
+    }
     &:hover {
       background-color: $teal;
       border-color: transparent;
