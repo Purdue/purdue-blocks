@@ -98,6 +98,11 @@ registerBlockType( 'purdue-blocks/feature-story', {
         } );
       }
     };
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -290,10 +295,13 @@ registerBlockType( 'purdue-blocks/feature-story', {
                       />
                     </figure>
                     <Button
-                      className={ 'purdue-blocks-editor-feature-story__button' }
+                      className={ 'bulma-blocks-editor-site-hero__button' }
                       onClick={ open }
                     >
                       Select a New Image
+                    </Button>
+                    <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
                     </Button>
                   </div>
                 ) : (
