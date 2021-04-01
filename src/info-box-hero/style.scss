@@ -4,7 +4,7 @@
  * CSS for both Frontend+Backend.
  */
 
-.info-box-hero {
+ .info-box-hero {
 
 
   .image {
@@ -37,6 +37,11 @@
       @include mobile{
         padding: 4.5rem 1.25rem;
       }
+    }
+
+    @include mobile {
+      background-image: none !important;
+      background-color: #555960;
     }
   }
 
