@@ -27,6 +27,7 @@
 
     #iconSelectorButton {
       margin-right: 1rem;
+      line-height:1.5rem;
     }
 
     &--popup {
@@ -143,7 +144,7 @@
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
-
+    margin-right:1rem;
     &:hover {
       background-color: $teal;
       border-color: transparent;

@@ -177,7 +177,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
     return (
       <section className={ 'section pu-image-showcase' } >
         <div className={ 'columns is-centered has-decoration is-mobile' }>
-          { props.attributes.images.map( img => {
+          { props.attributes.images?props.attributes.images.map( img => {
             return (
               <div className="column is-2-fullhd is-2-widescreen is-4-desktop is-4-tablet is-4-mobile">
                 <figure className="image is-square">
@@ -185,7 +185,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
                 </figure>
               </div>
             )
-          } ) }
+          } ):"" }
         </div>
         {props.attributes.includeCopy ? (
           <div className="container">

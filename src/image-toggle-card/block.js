@@ -97,6 +97,16 @@ registerBlockType("purdue-blocks/image-toggle-card", {
   ),
 
   edit: (props) => {
+    const removeIcon = () => {
+      props.setAttributes({
+        icon: ''
+      });
+    }
+    const removeMedia = () => {
+      props.setAttributes({
+        images: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -202,6 +212,11 @@ registerBlockType("purdue-blocks/image-toggle-card", {
                   );
                 })}
               </div>
+              {props.attributes.icon?
+                <Button className={ 'image-toggle-card-block-editor__button' } onClick={removeIcon}>
+                      Remove Icon
+                </Button>:""
+              }
               <div
                 className="image-toggle-card-block-editor__icon-selector--selected-icon"
                 dangerouslySetInnerHTML={{ __html: props.attributes.icon }}
@@ -236,6 +251,9 @@ registerBlockType("purdue-blocks/image-toggle-card", {
                     onClick={open}
                   >
                     Select New Images
+                  </Button>
+                  <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove images
                   </Button>
                 </div>
               ) : (
@@ -335,7 +353,6 @@ registerBlockType("purdue-blocks/image-toggle-card", {
           }`}
         >
           <span>
-            {props.attributes.cardTitle}&nbsp;
             {props.attributes.icon !== "" ? (
               <span
                 className={`pu-image-toggle__heading--icon${
@@ -347,7 +364,8 @@ registerBlockType("purdue-blocks/image-toggle-card", {
               ></span>
             ) : (
               ""
-            )}
+            )}&nbsp;
+            {props.attributes.cardTitle}
           </span>
 
           {props.attributes.includeLink ? (
@@ -363,7 +381,7 @@ registerBlockType("purdue-blocks/image-toggle-card", {
           )}
         </div>
         <div className={`pu-image-toggle__images`}>
-          {props.attributes.images.map((img, index) => {
+          {props.attributes.images?props.attributes.images.map((img, index) => {
             return (
               <img
                 className={`${index === 0 ? "show" : ""}`}
@@ -371,7 +389,7 @@ registerBlockType("purdue-blocks/image-toggle-card", {
                 src={img.url}
               />
             );
-          })}
+          }):""}
         </div>
         {props.attributes.images.length > 1 ? (
           <div className={`pu-image-toggle__buttons`}>
