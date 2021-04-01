@@ -146,7 +146,11 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
         onClick: () => setIsEditing( true ),
       },
     ];
-
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <BlockControls>
         <ToolbarGroup controls={ toolbarControls } />
@@ -184,13 +188,22 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               } }
             />
           </PanelRow>
-          <PanelRow>
+          {
+            props.attributes.imgUrl?<PanelRow>
             <TextareaControl
               label="Image Alt Text"
               value={ props.attributes.altText }
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
-            />
-          </PanelRow>
+            />          
+          </PanelRow>:""
+          }
+          {
+            props.attributes.imgUrl?<PanelRow>        
+            <Button className={ 'remove-image-button' } onClick={removeMedia}>
+                Remove image
+            </Button>
+          </PanelRow>:""
+          }
           <PanelRow>
             <CheckboxControl
               label="Add a link to the news/events page?"
