@@ -1,0 +1,30 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+ .purdue-button-block-editor-width{
+   &--full-mobile{
+    display:inline-block;
+    width:auto;
+    &:not(:last-child){
+      margin-right:1rem;
+    }
+    @include mobile{
+      display:block;
+      width:100%;
+      &:not(:last-child){
+        margin-right:1rem;
+      }
+    }
+  }
+  &--auto{
+  display:inline-block;
+  width:auto;
+  &:not(:last-child){
+    margin-right:1rem;
+  }
+  }
+
+}
