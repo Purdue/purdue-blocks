@@ -5,6 +5,37 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.16.0] 2021-4-29
+#### Minor Version Update
+This version includes many UX improvements and other look & feel updates to Purdue Blocks.
+- **Button Block**
+  - added the purdue button block
+- **Feature Story Block**
+  - Updated options panel to be more user friendly
+  - Added header color options
+- **Site Hero Block**
+  - Updated options panel to use radio buttons for hero style selection rather than the toggle switch
+  - Removed validation that forced a user to select a 2x1 image even on the 40/60 hero
+- **Info Box Hero Block**
+  - Removed the hero image on mobile screen size and replaces with flat #555960 color background
+- **Title Hero Block**
+  - Updated options panel to be more user friendly
+  - Forego the use of different images for desktop and mobile, just use one image for both with inline bg
+- **CTA Hero Block**
+  - Forego the use of different images for desktop and mobile, just use one image for both with inline bg
+- **Image Toggle Block**
+  - Swap order of the icon and heading text; the icon is now on the left and heading on the right
+  - Add the Info Box Hero icon to the selector component
+  - Added paragraph field as built-in part of the block
+- **Accordion Block**
+  - The arrow will now be centered when the text wraps to two more more lines
+- **CTA Card Block**
+  - Added header color options
+  - Added height options
+- **Additional**
+  - Anchor Link Navigation, List, and Sidebar CTA blocks have had their names updated with added 'Right Column - ' at the beginning of each
+  - Blocks that have an image or video selector now include a button to remove that media alongside the button that allows the user to select new media
+
 ### [1.15.4] 2021-3-11
 #### Updated
 - Title Hero Block
