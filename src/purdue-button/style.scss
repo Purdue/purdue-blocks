@@ -1,0 +1,118 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .purdue-blocks__button{
+     font-family: $united-sans;
+     font-weight: 700;
+     font-size: 1.125rem;
+     text-transform: uppercase;
+     text-align:center;
+     display: inline-flex;
+     justify-content: center;
+     padding: 0.75rem 0.5rem;
+     background: $black;
+     border: 2px solid $black;
+     color: $boiler-gold;
+     text-decoration: none;
+     transition: all ease 0.2s;
+     letter-spacing:0.05em;
+     width:auto;
+     margin-bottom:0.5rem;
+     &:not(:last-child){
+      margin-right:0.5rem;
+    }
+    &:hover {
+      cursor: pointer;
+      background: $white;
+      color:$aged-gold;
+    }
+    &__text{
+      flex-shrink:1;
+    }
+    &.purdue-blocks__button--outline{
+      background: $white;
+      border: 2px solid $black;
+      color: $aged-gold;
+      &:hover {
+        cursor: pointer;
+        background: $black;
+        color:$boiler-gold;
+     }
+    }
+    &.purdue-blocks__button--gold-light{
+      background: $boiler-gold;
+      border: 2px solid $aged-gold;
+      color: $black;
+      &:hover {
+        cursor: pointer;
+        background: $white;
+        color:$black;
+      }
+      &.purdue-blocks__button--outline{
+        background: $white;
+        border: 2px solid $aged-gold;
+        color: $black;
+        &:hover {
+          cursor: pointer;
+          background: $boiler-gold;
+          color:$black;
+        }
+      }
+    }
+    &.purdue-blocks__button--gold-dark{
+      background: $boiler-gold;
+      border: 2px solid $boiler-gold;
+      color: $black;
+      &:hover {
+        cursor: pointer;
+        background: $black;
+        color:$white;
+      } 
+      &.purdue-blocks__button--outline{
+        background: none;
+        border: 2px solid $boiler-gold;
+        color: $white;
+        &:hover {
+          cursor: pointer;
+          background: $boiler-gold;
+          color:$black;
+        }
+      }
+    }
+    &.purdue-blocks__button--opaque{
+      background: $opaque;
+      border: 2px solid $white;
+      color: $white;
+      &:hover {
+        cursor: pointer;
+        background: $black;
+        color:$white;
+     }
+    }
+    &.purdue-blocks__button--full{
+      width:100%;
+      margin-right:0;
+    }
+    &.purdue-blocks__button--full-mobile{
+      @include mobile{
+        width:100%;
+        margin-right:0;
+      }
+    }
+    &.purdue-blocks__button--narrow{
+      font-family: $united-sans-condensed;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-transform: capitalize;
+      letter-spacing:0.001em;
+    }
+ }
+ .shrink-padding{
+   width:2.5rem;
+   flex-shrink:10;
+ }
+ 
+ 
