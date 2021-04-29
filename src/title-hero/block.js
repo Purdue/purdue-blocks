@@ -108,6 +108,16 @@ registerBlockType( 'purdue-blocks/title-hero', {
         });
       }
     };
+    const removeVideo = () => {
+      props.setAttributes({
+        videoUrl: ''
+      });
+    }
+    const removeImage = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -246,6 +256,9 @@ registerBlockType( 'purdue-blocks/title-hero', {
                       >
                         Select a New Video
                       </Button>
+                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeVideo}>
+                        Remove video
+                      </Button>
                     </div>
                   ) : (
                     <div className={ 'bulma-blocks-editor-site-hero__container' }>
@@ -294,6 +307,9 @@ registerBlockType( 'purdue-blocks/title-hero', {
                       >
                         Select a New Image
                       </Button>
+                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeImage}>
+                        Remove image
+                      </Button>
                     </div>
                   ) : (
                     <div className={ 'bulma-blocks-editor-site-hero__container' }>
@@ -337,13 +353,8 @@ registerBlockType( 'purdue-blocks/title-hero', {
             <div
               className={`background-image${props.attributes.addBorder?" has-border":""}`}
               aria-label={ props.attributes.altText }
+              style={{backgroundImage: `url(${props.attributes.imgUrl})`}}
             >
-              <style dangerouslySetInnerHTML={ { __html: `
-              .background-image {background-image: url(${ props.attributes.imgUrl });}
-              @media (max-width: 767px) {
-                .background-image {background-image: url(${ props.attributes.imgMoUrl });}
-              }
-            ` } }></style>
               {props.attributes.backgroundType==="video"?
               <div class="hero-video-container">
                 <video muted="" loop="" autoplay="" playsinline="" src={props.attributes.videoUrl}/>
