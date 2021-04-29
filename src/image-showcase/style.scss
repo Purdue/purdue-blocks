@@ -4,9 +4,30 @@
  * CSS for both Frontend+Backend.
  */
 
-.section.pu-image-showcase {
+ .section.pu-image-showcase {
   padding-left: 0 !important;
   padding-right: 0 !important;
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+
+  @include touch {
+    padding-top: 45px !important;
+    padding-bottom: 45px !important;
+  }
+
+  .columns {
+    .column{
+      text-align: center;
+      p{
+        font-family:$source-serif-pro;
+      }
+    }
+  }
+}
+
+.columns.has-decoration {
+  margin-bottom: 2rem !important;
+  margin-top: 0 !important;
 }
 
 .has-decoration {

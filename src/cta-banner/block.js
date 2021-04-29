@@ -79,6 +79,11 @@ registerBlockType( 'purdue-blocks/cta-banner', {
   ),
 
   edit: ( props ) => {
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -103,7 +108,7 @@ registerBlockType( 'purdue-blocks/cta-banner', {
           <PanelBody>
             <PanelRow>
               <TextareaControl
-                label="Hero Image Alt Text"
+                label="Image Alt Text"
                 value={ props.attributes.altText }
                 onChange={ ( altText ) => props.setAttributes( { altText } ) }
               />
@@ -209,10 +214,13 @@ registerBlockType( 'purdue-blocks/cta-banner', {
                       >
                         Select a New Image
                       </Button>
+                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
+                      </Button>
                     </div>
                   ) : (
                     <div className={ 'pu-blocks-editor-cta-banner__container' }>
-                      <p className={ 'purdue-blocks-editor-cta-banner__description' }>
+                      <p className={ 'pu-blocks-editor-cta-banner__description' }>
                         Pick an image from the media library. The recommended aspect ratio is 3:2.
                       </p>
                       <Button

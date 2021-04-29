@@ -22,6 +22,7 @@ const {
   TextControl,
   RadioControl,
   SelectControl,
+  Button
 } = wp.components;
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 
@@ -74,6 +75,8 @@ registerBlockType( 'purdue-blocks/cta-card', {
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
+    height: { type: "string", default: "100" },
+    headerColor: { type: 'string', default: 'black' },
   },
 
   supports: {
@@ -86,6 +89,11 @@ registerBlockType( 'purdue-blocks/cta-card', {
   ),
 
   edit: ( props ) => {
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -104,6 +112,20 @@ registerBlockType( 'purdue-blocks/cta-card', {
             />
           </PanelRow>
           <PanelRow>
+            <RadioControl
+              label="Height of the card"
+              help="100%: the height of the card will be 100% height of its parent container; Auto: the height of the card will depend upon the height of its children."
+              selected={props.attributes.height}
+              options={[
+                { label: "100%", value: "100" },
+                { label: "Auto", value: "auto" },
+              ]}
+              onChange={(option) => {
+                props.setAttributes({ height: option });
+              }}
+            />
+          </PanelRow>
+          <PanelRow>
             <SelectControl
               label="Heading level of the title"
               value={ props.attributes.titleLevel }
@@ -117,6 +139,20 @@ registerBlockType( 'purdue-blocks/cta-card', {
               ] }
               onChange={ ( titleLevel ) => {
                 props.setAttributes( { titleLevel } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <SelectControl
+              label="Color the header"
+              value={ props.attributes.headerColor }
+              options={ [
+                { label: 'Black', value: 'black' },
+                { label: 'Digital Gold', value: 'gold' },
+                { label: 'Steel', value: 'steel' },
+              ] }
+              onChange={ ( headerColor ) => {
+                props.setAttributes( { headerColor } )
               } }
             />
           </PanelRow>
@@ -141,6 +177,12 @@ registerBlockType( 'purdue-blocks/cta-card', {
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
+          { props.attributes.imgUrl ?
+          <PanelRow>
+            <Button className={ 'remove-image-button' } onClick={removeMedia}>
+                Remove image
+            </Button>
+          </PanelRow>:""}
           { props.attributes.cardType ==="small" ?
           <PanelRow>
             <CheckboxControl
@@ -216,7 +258,11 @@ registerBlockType( 'purdue-blocks/cta-card', {
               <RichText
                 tagname={ props.setAttributes.titleLevel }
                 value={ props.attributes.title }
-                className={ 'title' }
+                className={ `title${
+                  props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+                }${
+                  props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+                }` }
                 onChange={ ( text ) => {
                   props.setAttributes( { title: text } )
                 } }
@@ -236,7 +282,6 @@ registerBlockType( 'purdue-blocks/cta-card', {
                   props.setAttributes( { subText: text } )
                 } }
                 placeholder="Add Text (Optional)"
-                allowedFormats={ [] }
               >
               </RichText>):(
                   <InnerBlocks
@@ -268,7 +313,8 @@ registerBlockType( 'purdue-blocks/cta-card', {
       <a
         href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
-        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
+        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        
+        rel="noopener noreferrer"
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
@@ -278,7 +324,11 @@ registerBlockType( 'purdue-blocks/cta-card', {
           </div>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
             { props.attributes.title ? ( <RichText.Content
-              className={ 'title' }
+              className={ `title${
+                props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+              }${
+                props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+              }` }
               tagName={ props.attributes.titleLevel }
               value={ props.attributes.title }
             /> ) : '' }
@@ -293,7 +343,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
         </div>
       </a> :
       <div
-        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }        rel="noopener noreferrer"
+        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        rel="noopener noreferrer"
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
@@ -303,7 +353,11 @@ registerBlockType( 'purdue-blocks/cta-card', {
           </div>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
             { props.attributes.title ? ( <RichText.Content
-              className={ 'title' }
+              className={ `title${
+                props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+              }${
+                props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+              }` }
               tagName={ props.attributes.titleLevel }
               value={ props.attributes.title }
             /> ) : '' }

@@ -5,69 +5,69 @@
  */
 
  .square-card {
-    height:100%;
-    box-shadow:none;
-    border-radius: 0;
-    text-align:center;
-    padding:2.75rem;
-    border:1px solid $aged-gold;
-    background-color:$white;
-    display:block;
-    text-decoration: none;
-    @include mobile{
-      padding:2.75rem 1.25rem;
+  height:100%;
+  box-shadow:none;
+  border-radius: 0;
+  text-align:center;
+  padding:2.75rem;
+  border:1px solid $aged-gold;
+  background-color:$white;
+  display:block;
+  text-decoration: none;
+  @include mobile{
+    padding:2.75rem 1.25rem;
+  }
+  &.background-gold{
+    background-color:$boiler-gold;
+  }
+  &.border-black{
+    border:1px solid $black;
+  }
+  .image {
+    margin-bottom:1.625rem !important;
+    img{
+      height:6.25rem;
+      width:auto;
     }
-    &.background-gold{
-      background-color:$boiler-gold;
-    }
-    &.border-black{
-      border:1px solid $black;
-    }
-    .image {
-      margin-bottom:1.625rem !important;
-      img{
-        height:6.25rem;
-        width:auto;
-      }
-    }
-    p.title{
-        font-family:$united-sans;
-        margin:0 auto!important;
-        text-transform:uppercase;
-        font-size:1.5625rem;
-        line-height:1.48;
-        font-weight:700 !important;
-        color:$black;
-    }
-    p.content{
-        margin:1rem auto;
-        width:100%;
-        color:$black;
-        font-weight:400 !important;
-    }
-    .read-more-button{
+  }
+  p.title{
       font-family:$united-sans;
-      font-weight:800;
-      font-size:1.125rem;
+      margin:0 auto!important;
       text-transform:uppercase;
-      color:$aged-gold;
-      margin-top:1.625rem;
-      span{
-        color:inherit;
+      font-size:1.5625rem;
+      line-height:1.48;
+      font-weight:700 !important;
+      color:$black;
+  }
+  p.content{
+      margin:1rem auto;
+      width:100%;
+      color:$black;
+      font-weight:400 !important;
+  }
+  .read-more-button{
+    font-family:$united-sans;
+    font-weight:800;
+    font-size:1.125rem;
+    text-transform:uppercase;
+    color:$aged-gold;
+    margin-top:1.625rem;
+    span{
+      color:inherit;
+      position:relative;
+      &:after{
+        content: "\f105";
+        display: inline-block;
+        font-family: "Font Awesome 5 Free";
+        margin-left: 0.7rem;
         position:relative;
-        &:after{
-          content: "\f105";
-          display: inline-block;
-          font-family: "Font Awesome 5 Free";
-          margin-left: 0.7rem;
-          position:relative;
-        }
       }
     }
-    
+  }
+  
 }
 a.square-card:hover{
-  .read-more-button{
-    color:$black;
-  }
+.read-more-button{
+  color:$black;
+}
 }

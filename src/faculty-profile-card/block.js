@@ -120,7 +120,11 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         } );
       }
     };
-
+    const removeMedia = () => {
+      props.setAttributes({
+        profilePhoto: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -225,6 +229,9 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                       >
                         Select a New Image
                       </Button>
+                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
+                    </Button>
                     </div>
                   ) : (
                     <div className={ 'bulma-blocks-editor-site-hero__container' }>

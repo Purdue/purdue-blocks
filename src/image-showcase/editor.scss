@@ -5,7 +5,7 @@
  * which makes it higher in priority.
  */
 
-.editor-image-showcase {
+ .editor-image-showcase {
   // &--selected {
   //   .editor-inner-blocks {
   //     padding: 1px 0.875rem;
@@ -15,6 +15,37 @@
   // display: block;
   // color: $black;
   // margin-bottom: 1.75rem;
+
+  background: $secondary-background-gray;
+
+  .field {
+    padding: 1rem;
+    .control {
+      input{
+        background-color:$white;
+      }
+      .block-editor-inner-blocks{
+        .block-editor-block-list__block{
+          background: white;
+          border: solid 1px #7e8993;
+          border-radius:5px;
+          font-size:13px !important;            
+          margin-top:1rem;
+          .block-editor-block-mover__description{
+            display:none;
+          }
+        }
+        p{
+          margin-top:0;
+          margin-bottom:0;
+          padding:0.375rem 0.5rem;
+          font-size:13px !important;
+        }
+
+      }
+
+    }
+  }
 
   .editor-image-showcase__preview {
     padding: 0.75rem;
@@ -34,7 +65,6 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    background: $secondary-background-gray;
     color: black;
     font-family: sans-serif;
   }
@@ -62,6 +92,7 @@
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
+    margin-right:1rem;
 
     &:hover {
       background-color: $teal;

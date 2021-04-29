@@ -5,7 +5,7 @@
  * which makes it higher in priority.
  */
 
-.pu-blocks-editor-cta-banner {
+ .pu-blocks-editor-cta-banner {
 
   padding: 0.875rem;
 
@@ -69,6 +69,9 @@
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
+    &:not(:last-child){
+      margin-right:1rem;
+    }
 
     &:hover {
       background-color: $teal;
