@@ -14,9 +14,17 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
 const {
+  PanelBody,
+  PanelRow,
+  CheckboxControl,
   Button,
 } = wp.components;
-const { MediaUploadCheck, MediaUpload } = wp.blockEditor;
+
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+
+const BLOCKS_TEMPLATE = [
+  [ 'core/paragraph', { placeholder: 'Body content copy' } ],
+];
 
 /**
  * Register: aa Gutenberg Block.
@@ -54,6 +62,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
 
   attributes: {
     images: { type: 'array', default: [] },
+    includeCopy: {type: 'boolean', default: false}
   },
 
   supports: {
@@ -66,7 +75,25 @@ registerBlockType( 'purdue-blocks/image-showcase', {
   ),
 
   edit: ( props ) => {
+    const removeMedia = () => {
+      props.setAttributes({
+        images: ''
+      });
+    }
     return [
+      <InspectorControls>
+        <PanelBody>
+          <PanelRow>
+            <CheckboxControl
+              label="Include Body Content?"
+              checked={ props.attributes.includeCopy }
+              onChange={ () =>
+                props.setAttributes( { includeCopy: ! props.attributes.includeCopy } )
+              }
+            />
+          </PanelRow>
+        </PanelBody>
+      </InspectorControls>,
       <div className={ 'editor-image-showcase' }>
         <MediaUploadCheck>
           <MediaUpload
@@ -96,6 +123,9 @@ registerBlockType( 'purdue-blocks/image-showcase', {
                   >
                     Select New Images
                   </Button>
+                  <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove images
+                  </Button>
                 </div>
               ) : (
                 <div className={ 'editor-image-showcase__container' }>
@@ -117,6 +147,17 @@ registerBlockType( 'purdue-blocks/image-showcase', {
             } }
           />
         </MediaUploadCheck>
+        
+        {props.attributes.includeCopy ? (
+          <div className="field">
+            <div className="control">
+              <InnerBlocks
+                template={ BLOCKS_TEMPLATE }
+                allowedBlocks={ [ 'core/paragraph', 'core/list' ] }
+              />
+            </div>
+          </div>
+        ) : ''}
       </div>,
     ];
   },
@@ -136,7 +177,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
     return (
       <section className={ 'section pu-image-showcase' } >
         <div className={ 'columns is-centered has-decoration is-mobile' }>
-          { props.attributes.images.map( img => {
+          { props.attributes.images?props.attributes.images.map( img => {
             return (
               <div className="column is-2-fullhd is-2-widescreen is-4-desktop is-4-tablet is-4-mobile">
                 <figure className="image is-square">
@@ -144,8 +185,17 @@ registerBlockType( 'purdue-blocks/image-showcase', {
                 </figure>
               </div>
             )
-          } ) }
+          } ):"" }
         </div>
+        {props.attributes.includeCopy ? (
+          <div className="container">
+            <div className="columns is-centered is-mobile">
+              <div className="column is-8">
+                <InnerBlocks.Content />
+              </div>
+            </div>
+          </div>
+        ) : ''}
       </section>
     )
   },

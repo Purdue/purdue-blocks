@@ -83,7 +83,11 @@ registerBlockType( 'purdue-blocks/purdue-news', {
         onClick: () => setIsEditing( true ),
       },
     ];
-
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <BlockControls>
         <ToolbarGroup controls={ toolbarControls } />
@@ -160,6 +164,9 @@ registerBlockType( 'purdue-blocks/purdue-news', {
                         onClick={ open }
                       >
                         Select a New Image
+                      </Button>
+                      <Button className={ 'bulma-blocks-editor-site-hero__button purdue-news__remove-image-button' } onClick={removeMedia}>
+                        Remove image
                       </Button>
                     </div>
                   ) : (

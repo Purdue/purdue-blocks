@@ -5,7 +5,7 @@
  * which makes it higher in priority.
  */
 
-.blocks-editor-banner {
+ .blocks-editor-banner {
   padding: 0.875rem;
   display: flex;
   flex-direction: column;
@@ -83,7 +83,6 @@
     font-size: 0.85rem;
     background-color: transparent;
     margin-bottom: 25px;
-
     &:hover {
       background-color: #00c4a7;
       border-color: transparent;
@@ -96,4 +95,8 @@
       margin-top: 0.5rem;
     }
   }
+}
+
+.bulma-blocks-editor-link-card__button {
+  margin-right:1rem;
 }

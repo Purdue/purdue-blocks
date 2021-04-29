@@ -76,6 +76,11 @@ registerBlockType( 'purdue-blocks/cta-button', {
   ),
 
   edit: ( props ) => {
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -126,6 +131,9 @@ registerBlockType( 'purdue-blocks/cta-button', {
                       onClick={ open }
                     >
                       Select a New Image
+                    </Button>
+                    <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                      Remove image
                     </Button>
                   </div>
                 ) : (

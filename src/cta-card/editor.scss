@@ -74,3 +74,17 @@
   }
   
 }
+.remove-image-button{
+  border: $aged-gold 1px solid;
+  border-radius: 0.15rem;
+  padding: 0.35rem 0.45rem;
+  font-size: 0.85rem;
+  background-color: transparent;
+  margin-bottom:1rem;
+  margin-top:-1rem;
+  &:hover {
+    background-color: $aged-gold;
+    border-color: transparent;
+    color: white;
+  }
+}

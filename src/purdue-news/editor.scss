@@ -5,16 +5,19 @@
  * which makes it higher in priority.
  */
  .purdue-blocks-editor-news__preview{
-   .image{
-     margin-bottom:0.5rem;
-   }
- }
- .components-disabled{
-  .read-more-button a:after,.read-more-button span:after{
-    content: ">" !important;
-    display: inline-block;
-    margin-left: 0.7rem;
-    bottom: 0;
-    position: relative !important;
+  .image{
+    margin-bottom:0.5rem;
   }
+}
+.components-disabled{
+ .read-more-button a:after,.read-more-button span:after{
+   content: ">" !important;
+   display: inline-block;
+   margin-left: 0.7rem;
+   bottom: 0;
+   position: relative !important;
  }
+}
+.purdue-news__remove-image-button{
+  margin-top:0.5rem;
+}
