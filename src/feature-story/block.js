@@ -74,6 +74,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
     ctaText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
     headerLevel: { type: 'string', default: 'h2' },
+    headerColor: { type: 'string', default: 'gold' },
   },
 
   supports: {
@@ -86,17 +87,6 @@ registerBlockType( 'purdue-blocks/feature-story', {
   ),
 
   edit: ( props ) => {
-    const setChecked = () => {
-      if ( props.attributes.style ) {
-        props.setAttributes( {
-          style: false,
-        } );
-      } else {
-        props.setAttributes( {
-          style: true,
-        } );
-      }
-    };
     const setImgLinkChecked = () => {
       if ( props.attributes.linkImg ) {
         props.setAttributes( {
@@ -108,27 +98,39 @@ registerBlockType( 'purdue-blocks/feature-story', {
         } );
       }
     };
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
-            <CheckboxControl
-              label="Full width"
-              help="Would you like this featured story row to take up the full screen width?"
-              checked={ props.attributes.style }
-              onChange={ setChecked }
+            <RadioControl
+              label="Block Styles"
+              help="Full Width: Takes up the full width of the screen;
+              Aligned: Includes normal page margins."
+              selected={ props.attributes.style?"full":"aligned" }
+              options={ [
+                { label: 'Aligned', value: 'aligned' },
+                { label: 'Full width', value: 'full' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { style: option==="full"?true:false } )
+              } }
             />
           </PanelRow>
         </PanelBody>
         <PanelBody>
           <PanelRow>
             <RadioControl
-              label="Align content"
-              help="Choose to place the content to the left or right."
+              label="Image Alignment"
+              help="Choose to place the image to the left or right."
               selected={ props.attributes.contentAlign }
               options={ [
-                { label: 'Left', value: 'left' },
-                { label: 'Right', value: 'right' },
+                { label: 'Left', value: 'right' },
+                { label: 'Right', value: 'left' },
               ] }
               onChange={ ( option ) => {
                 props.setAttributes( { contentAlign: option } )
@@ -149,6 +151,20 @@ registerBlockType( 'purdue-blocks/feature-story', {
               ] }
               onChange={ ( headerLevel ) => {
                 props.setAttributes( { headerLevel } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <SelectControl
+              label="Color the header"
+              value={ props.attributes.headerColor }
+              options={ [
+                { label: 'Black', value: 'black' },
+                { label: 'Digital Gold', value: 'gold' },
+                { label: 'Steel', value: 'steel' },
+              ] }
+              onChange={ ( headerColor ) => {
+                props.setAttributes( { headerColor } )
               } }
             />
           </PanelRow>
@@ -279,10 +295,13 @@ registerBlockType( 'purdue-blocks/feature-story', {
                       />
                     </figure>
                     <Button
-                      className={ 'purdue-blocks-editor-feature-story__button' }
+                      className={ 'bulma-blocks-editor-site-hero__button' }
                       onClick={ open }
                     >
                       Select a New Image
+                    </Button>
+                    <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
                     </Button>
                   </div>
                 ) : (
@@ -358,6 +377,10 @@ registerBlockType( 'purdue-blocks/feature-story', {
           <div className="container">
             <div className={ `content${
               props.attributes.contentAlign === 'left' ? '' : ' content-reversed'
+            }${
+              props.attributes.headerColor === 'black' ? ' header-color-black' : ''
+            }${
+              props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
             }` }>
               { props.attributes.header&&props.attributes.headerLevel==='h1' ? 
                 <h1 class="featured-story-header">
@@ -430,7 +453,11 @@ registerBlockType( 'purdue-blocks/feature-story', {
           :""}
           </div>
           }
-          <div className="story-content">
+          <div className={`story-content${
+              props.attributes.headerColor === 'black' ? ' header-color-black' : ''
+            }${
+              props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+            }`}>
           { props.attributes.header&&props.attributes.headerLevel==='h1' ? 
                 <h1 class="featured-story-header">
                   { props.attributes.header }
