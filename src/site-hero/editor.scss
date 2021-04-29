@@ -4,7 +4,7 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.block-editor-writing-flow{
+ .block-editor-writing-flow{
   background:$white;
 }
 .bulma-blocks-editor-site-hero {
@@ -72,7 +72,9 @@
     padding: 0.35rem 0.45rem;
     font-size: 0.85rem;
     background-color: transparent;
-
+    &:not(:last-child){
+      margin-right:1rem;
+    }
     &:hover {
       background-color: $teal;
       border-color: transparent;
