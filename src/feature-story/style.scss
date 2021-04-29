@@ -4,7 +4,7 @@
  * CSS for both Frontend+Backend.
  */
 
-.pu-feature-story {
+ .pu-feature-story {
   background-color:$white;
   h2,.featured-story-header {
     font-weight:600;
@@ -13,6 +13,7 @@
     margin-bottom: 3.125rem !important;
     line-height:2.375rem !important;
     color:$aged-gold !important;
+    padding:0;
     @include touch{
       font-size:1.875rem !important;
       margin-bottom:2.1875rem !important;
@@ -38,9 +39,9 @@
   &__container{
 
     display:flex;
-    flex-direction:row;
+    flex-direction:row-reverse;
     &-reversed{
-      flex-direction:row-reverse;
+      flex-direction:row;
     }
     @include touch {
       flex-direction:column;
@@ -56,6 +57,19 @@
       }
       p{
         line-height:1.875rem;
+        padding:0;
+      }
+      &.header-color-black{
+        h1,h2,h3,h4,h5,h6{
+          color:$black !important;
+          padding:0;
+        }
+      }
+      &.header-color-steel{
+        h1,h2,h3,h4,h5,h6{
+          color:$steel-gray !important;
+          padding:0;
+        }
       }
     }
     .background-image-link{
@@ -141,6 +155,18 @@
             padding-left:0 !important;
           }
         }
+        &.header-color-black{
+          h1,h2,h3,h4,h5,h6{
+            color:$black !important;
+            padding:0;
+          }
+        }
+        &.header-color-steel{
+          h1,h2,h3,h4,h5,h6{
+            color:$steel-gray !important;
+            padding:0;
+          }
+        }
         @include touch {
           padding-right:3rem;
         }
@@ -150,6 +176,7 @@
         }
         p{
           line-height:1.875rem;
+          padding:0;
         }
       }
     }
