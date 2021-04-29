@@ -99,7 +99,11 @@ registerBlockType("purdue-blocks/cta-hero", {
         pageTitle: select("core/editor").getCurrentPost().title,
       });
     }
-
+    const removeMedia = () => {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    }
     return [
       <InspectorControls>
         <PanelBody>
@@ -221,6 +225,9 @@ registerBlockType("purdue-blocks/cta-hero", {
                     >
                       Select a New Image
                     </Button>
+                    <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                        Remove image
+                    </Button>
                   </div>
                 ) : (
                   <div className={"bulma-blocks-editor-site-hero__container"}>
@@ -262,17 +269,8 @@ registerBlockType("purdue-blocks/cta-hero", {
             <div
               className="background-image"
               aria-label={props.attributes.altText}
+              style={{backgroundImage: `url(${props.attributes.imgUrl})`}}
             >
-              <style
-                dangerouslySetInnerHTML={{
-                  __html: `
-              .background-image {background-image: url(${props.attributes.imgUrl});}
-              @media (max-width: 767px) {
-                .background-image {background-image: url(${props.attributes.imgMoUrl});}
-              }
-            `,
-                }}
-              ></style>
             </div>
             <div className="container">
               <div className="content">
