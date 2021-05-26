@@ -125,7 +125,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      z-index: 2;
+      z-index: 6;
       padding: 10.375rem $side-padding-desktop !important;
       @include touch {
         order: 2;
@@ -264,7 +264,7 @@
     letter-spacing:0.9px;
     min-width: #{"min(14.375rem,100%)"};
     text-align:center;
-    display:block;
+    display:inline-block;
     &:hover {
       cursor: pointer;
       background: $white;
@@ -298,7 +298,7 @@
     width:1521px;
     margin: 75px calc((100% - 1521px)/2);
     border: 5px solid $black;
-    z-index:100;
+    z-index:5;
     @media (max-width: 1580px){
       width: calc(50% - 128px);
       height:calc(100% - 128px);
@@ -316,6 +316,10 @@
   }
   &__button-container {
     display:inline-block;
+    min-width: #{"min(14.375rem,100%)"};
+    .pu-feature-story__button{
+      display:block;
+    }
   }
   &.pu-feature-story__black{
     background-color:$black;

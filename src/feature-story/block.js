@@ -525,7 +525,9 @@ registerBlockType( 'purdue-blocks/feature-story', {
                   { props.attributes.header }
                 </h6> :'' }
               <InnerBlocks.Content />
-              { ( ! props.attributes.ctaUrl || ! props.attributes.ctaText )||props.attributes.addCta2 ? '' : (
+              { ( ! props.attributes.ctaUrl || ! props.attributes.ctaText )? '' : (
+                props.attributes.addCta2&&props.attributes.ctaText2&&props.attributes.style&&!props.attributes.linkImg?
+                <div className="pu-feature-story__button-container">
                 <a
                   href={ props.attributes.ctaUrl }
                   className={`pu-feature-story__button${props.attributes.buttonOption==="gold"?" pu-feature-story__button--gold":""}`}
@@ -533,26 +535,25 @@ registerBlockType( 'purdue-blocks/feature-story', {
                   rel="noopener noreferrer"
                 >
                   { props.attributes.ctaText }
-                </a> ) }
-                { props.attributes.ctaUrl && props.attributes.addCta2&&props.attributes.style&&!props.attributes.linkImg ? (
-                  <div className="pu-feature-story__button-container">
-                    <a
-                      href={ props.attributes.ctaUrl }
-                      className={`pu-feature-story__button${props.attributes.buttonOption==="gold"?" pu-feature-story__button--gold":""}`}
-                      target={ props.attributes.external ? '_blank' : '_self' }
-                      rel="noopener noreferrer"
-                    >
-                      { props.attributes.ctaText }
-                    </a>
-                    <a
-                      href={ props.attributes.ctaUrl2 }
-                      className="pu-feature-story__button pu-feature-story__button--second"
-                      target={ props.attributes.external2 ? '_blank' : '_self' }
-                      rel="noopener noreferrer"
-                    >
-                      { props.attributes.ctaText2 }
-                    </a>  
-                </div>):"" }
+                </a>
+                <a
+                  href={ props.attributes.ctaUrl2 }
+                  className="pu-feature-story__button pu-feature-story__button--second"
+                  target={ props.attributes.external2 ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
+                >
+                  { props.attributes.ctaText2 }
+                </a>  
+            </div>:
+                <a
+                  href={ props.attributes.ctaUrl }
+                  className={`pu-feature-story__button${props.attributes.buttonOption==="gold"?" pu-feature-story__button--gold":""}`}
+                  target={ props.attributes.external ? '_blank' : '_self' }
+                  rel="noopener noreferrer"
+                >
+                  { props.attributes.ctaText }
+                </a>
+              )}
             </div>
           </div>
         </div>
