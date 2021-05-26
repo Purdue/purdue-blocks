@@ -96,6 +96,7 @@ registerBlockType("purdue-blocks/purdue-button", {
                 ] }
                 onChange={ ( option ) => {
                   props.setAttributes( { buttonStyle: option } )
+                  props.setAttributes( { backgroundColor: "black" } )
                 } }
               />
             </PanelRow>

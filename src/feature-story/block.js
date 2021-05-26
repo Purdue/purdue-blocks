@@ -73,8 +73,16 @@ registerBlockType( 'purdue-blocks/feature-story', {
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
     external: { type: 'boolean', default: false },
+    addCta2: { type: 'boolean', default: false },
+    ctaUrl2: { type: 'string', default: '' },
+    ctaText2: { type: 'string', default: '' },
+    external2: { type: 'boolean', default: false },
     headerLevel: { type: 'string', default: 'h2' },
     headerColor: { type: 'string', default: 'gold' },
+    buttonOption: { type: 'string', default: 'black' },
+    backgroundColor: { type: 'string', default: 'white' },
+    addBorder: { type: 'boolean', default: false },
+    borderColor: { type: 'string', default: "gold" },
   },
 
   supports: {
@@ -137,9 +145,27 @@ registerBlockType( 'purdue-blocks/feature-story', {
               } }
             />
           </PanelRow>
+          {props.attributes.style?
+            <PanelRow>
+              <RadioControl
+                label="Background Color"
+                help="Choose the background color of the content area."
+                selected={ props.attributes.backgroundColor }
+                options={ [
+                  { label: 'White', value: 'white' },
+                  { label: 'Black', value: 'black' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { backgroundColor: option } )
+                  props.setAttributes( { headerColor: "gold" } )
+                  props.setAttributes( { borderColor: "gold" } )
+                } }
+              />
+            </PanelRow>:""
+          }
           <PanelRow>
             <SelectControl
-              label="Heading level of the header"
+              label="Heading Level of the Header"
               value={ props.attributes.headerLevel }
               options={ [
                 { label: 'H1', value: 'h1' },
@@ -156,13 +182,16 @@ registerBlockType( 'purdue-blocks/feature-story', {
           </PanelRow>
           <PanelRow>
             <SelectControl
-              label="Color the header"
+              label="Color of the Header"
               value={ props.attributes.headerColor }
-              options={ [
+              options={ props.attributes.backgroundColor==="white"?[
                 { label: 'Black', value: 'black' },
                 { label: 'Digital Gold', value: 'gold' },
                 { label: 'Steel', value: 'steel' },
-              ] }
+              ]:[
+              { label: 'Boiler Gold', value: 'gold' },
+              { label: 'White', value: 'white' },
+            ] }
               onChange={ ( headerColor ) => {
                 props.setAttributes( { headerColor } )
               } }
@@ -203,7 +232,91 @@ registerBlockType( 'purdue-blocks/feature-story', {
               onChange={ setImgLinkChecked }
             />
           </PanelRow>
+          {props.attributes.style&&props.attributes.backgroundColor==="white"?
+            <PanelRow>
+              <SelectControl
+                label="Button Color"
+                help="Choose the color of this button."
+                selected={ props.attributes.buttonOption }
+                options={ [
+                  { label: 'Black', value: 'black' },
+                  { label: 'Gold', value: 'gold' },
+                ]}
+                onChange={ ( option ) => {
+                  props.setAttributes( { buttonOption: option } )
+                } }
+              />
+            </PanelRow>:""
+          }
+          {props.attributes.style&&!props.attributes.linkImg?
+            <PanelRow>
+            <CheckboxControl
+              label="Add a Secondary CTA Button?"
+              help="Would you like to add a secondary CTA button below the primary one?"
+              checked={ props.attributes.addCta2 }
+              onChange={ () =>
+                props.setAttributes( { addCta2: ! props.attributes.addCta2 } ) }
+            />
+          </PanelRow>:""
+          }
+          { props.attributes.style&&!props.attributes.linkImg&&props.attributes.addCta2 ? (
+            <PanelRow>
+              <TextControl
+                label="Secondary CTA Button Link Text"
+                value={ props.attributes.ctaText2 }
+                onChange={ ( ctaText2 ) => props.setAttributes( { ctaText2 } ) }
+              />
+            </PanelRow> ) : '' }
+
+          { props.attributes.style&&!props.attributes.linkImg&&props.attributes.addCta2 ?
+            <PanelRow>
+              <TextControl
+                label="Secondary CTA Button Link URL"
+                value={ props.attributes.ctaUrl2 }
+                onChange={ ( ctaUrl2 ) => props.setAttributes( { ctaUrl2 } ) }
+              />
+            </PanelRow> : '' }
+          {props.attributes.style&&!props.attributes.linkImg&&props.attributes.addCta2?
+            <PanelRow>
+            <CheckboxControl
+              label="Open the link of Secondary CTA Button in a new tab?"
+              checked={ props.attributes.external2 }
+              onChange={ () =>
+                props.setAttributes( { external2: ! props.attributes.external2 } ) }
+            />
+          </PanelRow>:""
+          }
           </PanelBody>:""}
+          {props.attributes.style&&!props.attributes.caption?
+          <PanelBody>
+            <PanelRow>
+              <CheckboxControl
+                label="Add a Border?"
+                checked={ props.attributes.addBorder }
+                onChange={ () =>
+                  props.setAttributes( { addBorder: ! props.attributes.addBorder } ) }
+              />
+            </PanelRow>
+            {props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder?
+            <PanelRow>
+              <SelectControl
+                label="Color of the Border"
+                value={ props.attributes.borderColor }
+                options={ props.attributes.backgroundColor==="white"?[
+                  { label: 'Black', value: 'black' },
+                  { label: 'Rush Gold', value: 'gold' },
+                ]:[
+                { label: 'Boiler Gold', value: 'gold' },
+                { label: 'White', value: 'white' },
+              ] }
+                onChange={ ( borderColor ) => {
+                  props.setAttributes( { borderColor } )
+                } }
+              />
+            </PanelRow>:""
+            }
+          </PanelBody>:""
+          }
       </InspectorControls>,
 
       <div className={ 'purdue-blocks-editor-feature-story' }>
@@ -337,7 +450,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = props.attributes.style ? ( <div className="pu-feature-story">
+    const returned = props.attributes.style ? ( <div className={`pu-feature-story${props.attributes.backgroundColor==="black"?" pu-feature-story__black":""}`}>
       <div className="hero is-medium">
         {props.attributes.linkImg&&props.attributes.ctaUrl?
         <a className={ `${
@@ -370,6 +483,9 @@ registerBlockType( 'purdue-blocks/feature-story', {
             className="feature-story-caption">{props.attributes.caption}</span>
           :""}
         </div>}
+        {props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder?
+        <div className={`pu-feature-story__border${props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder&&props.attributes.borderColor==="gold"?" pu-feature-story__border--gold":""}`}></div>:""
+        }
         <div className={ `${
           props.attributes.contentAlign === 'left' ? 'shadow' : 'shadow-reversed'
         }` }></div>
@@ -378,9 +494,11 @@ registerBlockType( 'purdue-blocks/feature-story', {
             <div className={ `content${
               props.attributes.contentAlign === 'left' ? '' : ' content-reversed'
             }${
-              props.attributes.headerColor === 'black' ? ' header-color-black' : ''
+              props.attributes.backgroundColor==="white"&&props.attributes.headerColor === 'black' ? ' header-color-black' : ''
             }${
-              props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+              props.attributes.backgroundColor==="white"&&props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+            }${
+              props.attributes.backgroundColor==="black"&&props.attributes.headerColor === 'white' ? ' header-color-white' : ''
             }` }>
               { props.attributes.header&&props.attributes.headerLevel==='h1' ? 
                 <h1 class="featured-story-header">
@@ -407,15 +525,34 @@ registerBlockType( 'purdue-blocks/feature-story', {
                   { props.attributes.header }
                 </h6> :'' }
               <InnerBlocks.Content />
-              { ( ! props.attributes.ctaUrl || ! props.attributes.ctaText ) ? '' : (
+              { ( ! props.attributes.ctaUrl || ! props.attributes.ctaText )||props.attributes.addCta2 ? '' : (
                 <a
                   href={ props.attributes.ctaUrl }
-                  className="pu-feature-story__button"
+                  className={`pu-feature-story__button${props.attributes.buttonOption==="gold"?" pu-feature-story__button--gold":""}`}
                   target={ props.attributes.external ? '_blank' : '_self' }
                   rel="noopener noreferrer"
                 >
                   { props.attributes.ctaText }
                 </a> ) }
+                { props.attributes.ctaUrl && props.attributes.addCta2&&props.attributes.style&&!props.attributes.linkImg ? (
+                  <div className="pu-feature-story__button-container">
+                    <a
+                      href={ props.attributes.ctaUrl }
+                      className={`pu-feature-story__button${props.attributes.buttonOption==="gold"?" pu-feature-story__button--gold":""}`}
+                      target={ props.attributes.external ? '_blank' : '_self' }
+                      rel="noopener noreferrer"
+                    >
+                      { props.attributes.ctaText }
+                    </a>
+                    <a
+                      href={ props.attributes.ctaUrl2 }
+                      className="pu-feature-story__button pu-feature-story__button--second"
+                      target={ props.attributes.external2 ? '_blank' : '_self' }
+                      rel="noopener noreferrer"
+                    >
+                      { props.attributes.ctaText2 }
+                    </a>  
+                </div>):"" }
             </div>
           </div>
         </div>
