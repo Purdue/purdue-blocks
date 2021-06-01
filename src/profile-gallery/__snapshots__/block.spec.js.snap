@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`🔬 Content Page Layout Block Block should be available. 1`] = `
+"<!-- wp:purdue-blocks/content-page-layout -->
+<div class=\\"section\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
+
+exports[`🔬 Content Page Layout Block 🔬 Side Panel Settings 🔎 Add Sidebar checkbox 1`] = `
+"<!-- wp:purdue-blocks/content-page-layout {\\"withSidebar\\":true} -->
+<div class=\\"section page-layout-with-sidebar\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
+
+exports[`🔬 Content Page Layout Block 🔬 Side Panel Settings 🔎 Sidebar Location On Desktop Options 1`] = `
+"<!-- wp:purdue-blocks/content-page-layout {\\"withSidebar\\":true,\\"sidebarLocationDesktop\\":\\"left\\"} -->
+<div class=\\"section page-layout-with-sidebar\\"><div class=\\"container desktop-reverse\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
+
+exports[`🔬 Content Page Layout Block 🔬 Side Panel Settings 🔎 Sidebar Location On Desktop Options 2`] = `
+"<!-- wp:purdue-blocks/content-page-layout {\\"withSidebar\\":true} -->
+<div class=\\"section page-layout-with-sidebar\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
+
+exports[`🔬 Content Page Layout Block 🔬 Side Panel Settings 🔎 Sidebar Location On Mobile Options 1`] = `
+"<!-- wp:purdue-blocks/content-page-layout {\\"withSidebar\\":true,\\"sidebarLocationMobile\\":\\"above\\"} -->
+<div class=\\"section page-layout-with-sidebar\\"><div class=\\"container mobile-reverse\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
+
+exports[`🔬 Content Page Layout Block 🔬 Side Panel Settings 🔎 Sidebar Location On Mobile Options 2`] = `
+"<!-- wp:purdue-blocks/content-page-layout {\\"withSidebar\\":true} -->
+<div class=\\"section page-layout-with-sidebar\\"><div class=\\"container\\"><!-- wp:columns {\\"className\\":\\"page-layout-columns columns is-multiline\\"} -->
+<div class=\\"wp-block-columns page-layout-columns columns is-multiline\\"><!-- wp:column {\\"className\\":\\"column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"} -->
+<div class=\\"wp-block-column column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main\\"><!-- wp:paragraph {\\"placeholder\\":\\"Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {\\"className\\":\\"column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"} -->
+<div class=\\"wp-block-column column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar\\"><!-- wp:paragraph {\\"placeholder\\":\\"Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.\\"} -->
+<p></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div></div>
+<!-- /wp:purdue-blocks/content-page-layout -->"
+`;
