@@ -35,6 +35,7 @@ import "./purdue-news/block.js";
 import "./custom-side-menu/block.js";
 import "./purdue-button/block.js";
 import "./profile-gallery/block.js"
+import "./mini-hero/block.js"
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";
