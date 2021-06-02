@@ -38,7 +38,7 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
     })
     window.addEventListener('scroll', () => {
         anchorHeaders.forEach((header)=>{
-            if ( header.getBoundingClientRect().top <= 20 ) {
+            if ( Math.abs(header.getBoundingClientRect().top) <= 30 ) {
                 const id = "#"+header.id
                 links.forEach((el)=>{
                     el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
