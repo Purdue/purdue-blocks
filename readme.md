@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.17.0] 2021-6-2
+#### Minor Version Update
+  - Added Mini Hero Block
+
 ### [1.17.0] 2021-6-1
 #### Minor Version Update
   - Added Profile Gallery Block
