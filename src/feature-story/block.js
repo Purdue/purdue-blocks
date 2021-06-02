@@ -163,6 +163,38 @@ registerBlockType( 'purdue-blocks/feature-story', {
               />
             </PanelRow>:""
           }
+          </PanelBody>
+          {props.attributes.style&&!props.attributes.caption?
+          <PanelBody>
+            <PanelRow>
+              <CheckboxControl
+                label="Add a Border?"
+                checked={ props.attributes.addBorder }
+                onChange={ () =>
+                  props.setAttributes( { addBorder: ! props.attributes.addBorder } ) }
+              />
+            </PanelRow>
+            {props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder?
+            <PanelRow>
+              <SelectControl
+                label="Color of the Border"
+                value={ props.attributes.borderColor }
+                options={ props.attributes.backgroundColor==="white"?[
+                  { label: 'Black', value: 'black' },
+                  { label: 'Rush Gold', value: 'gold' },
+                ]:[
+                { label: 'Boiler Gold', value: 'gold' },
+                { label: 'White', value: 'white' },
+              ] }
+                onChange={ ( borderColor ) => {
+                  props.setAttributes( { borderColor } )
+                } }
+              />
+            </PanelRow>:""
+            }
+          </PanelBody>:""
+          }
+          <PanelBody>
           <PanelRow>
             <SelectControl
               label="Heading Level of the Header"
@@ -195,20 +227,6 @@ registerBlockType( 'purdue-blocks/feature-story', {
               onChange={ ( headerColor ) => {
                 props.setAttributes( { headerColor } )
               } }
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextareaControl
-              label="Featured Image Alt Text"
-              value={ props.attributes.altText }
-              onChange={ ( altText ) => props.setAttributes( { altText } ) }
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextareaControl
-              label="Image Caption"
-              value={ props.attributes.caption }
-              onChange={ ( caption ) => props.setAttributes( { caption } ) }
             />
           </PanelRow>
         </PanelBody>
@@ -287,36 +305,22 @@ registerBlockType( 'purdue-blocks/feature-story', {
           </PanelRow>:""
           }
           </PanelBody>:""}
-          {props.attributes.style&&!props.attributes.caption?
-          <PanelBody>
-            <PanelRow>
-              <CheckboxControl
-                label="Add a Border?"
-                checked={ props.attributes.addBorder }
-                onChange={ () =>
-                  props.setAttributes( { addBorder: ! props.attributes.addBorder } ) }
-              />
-            </PanelRow>
-            {props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder?
-            <PanelRow>
-              <SelectControl
-                label="Color of the Border"
-                value={ props.attributes.borderColor }
-                options={ props.attributes.backgroundColor==="white"?[
-                  { label: 'Black', value: 'black' },
-                  { label: 'Rush Gold', value: 'gold' },
-                ]:[
-                { label: 'Boiler Gold', value: 'gold' },
-                { label: 'White', value: 'white' },
-              ] }
-                onChange={ ( borderColor ) => {
-                  props.setAttributes( { borderColor } )
-                } }
-              />
-            </PanelRow>:""
-            }
-          </PanelBody>:""
-          }
+        <PanelBody>
+          <PanelRow>
+            <TextareaControl
+              label="Featured Image Alt Text"
+              value={ props.attributes.altText }
+              onChange={ ( altText ) => props.setAttributes( { altText } ) }
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextareaControl
+              label="Image Caption"
+              value={ props.attributes.caption }
+              onChange={ ( caption ) => props.setAttributes( { caption } ) }
+            />
+          </PanelRow>
+        </PanelBody>
       </InspectorControls>,
 
       <div className={ 'purdue-blocks-editor-feature-story' }>
