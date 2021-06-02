@@ -129,22 +129,6 @@ registerBlockType( 'purdue-blocks/feature-story', {
               } }
             />
           </PanelRow>
-        </PanelBody>
-        <PanelBody>
-          <PanelRow>
-            <RadioControl
-              label="Image Alignment"
-              help="Choose to place the image to the left or right."
-              selected={ props.attributes.contentAlign }
-              options={ [
-                { label: 'Left', value: 'right' },
-                { label: 'Right', value: 'left' },
-              ] }
-              onChange={ ( option ) => {
-                props.setAttributes( { contentAlign: option } )
-              } }
-            />
-          </PanelRow>
           {props.attributes.style?
             <PanelRow>
               <RadioControl
@@ -163,9 +147,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
               />
             </PanelRow>:""
           }
-          </PanelBody>
           {props.attributes.style&&!props.attributes.caption?
-          <PanelBody>
             <PanelRow>
               <CheckboxControl
                 label="Add a Border?"
@@ -173,7 +155,8 @@ registerBlockType( 'purdue-blocks/feature-story', {
                 onChange={ () =>
                   props.setAttributes( { addBorder: ! props.attributes.addBorder } ) }
               />
-            </PanelRow>
+            </PanelRow>:""
+          }
             {props.attributes.style&&!props.attributes.caption&&props.attributes.addBorder?
             <PanelRow>
               <SelectControl
@@ -192,8 +175,21 @@ registerBlockType( 'purdue-blocks/feature-story', {
               />
             </PanelRow>:""
             }
-          </PanelBody>:""
-          }
+          <PanelRow>
+            <RadioControl
+              label="Image Alignment"
+              help="Choose to place the image to the left or right."
+              selected={ props.attributes.contentAlign }
+              options={ [
+                { label: 'Left', value: 'right' },
+                { label: 'Right', value: 'left' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { contentAlign: option } )
+              } }
+            />
+          </PanelRow>
+          </PanelBody>
           <PanelBody>
           <PanelRow>
             <SelectControl
