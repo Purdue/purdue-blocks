@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.18.1] 2021-6-3
+#### Updated
+  - Resolve issues in the Profile Galelry Block with the modal not being scrollable on mobile or if window height was too short.
+
 ### [1.18.0] 2021-6-2
 #### Minor Version Update
   - Added Mini Hero Block
