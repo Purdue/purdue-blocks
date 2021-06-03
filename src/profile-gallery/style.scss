@@ -14,7 +14,7 @@
     margin-bottom: 1rem;
     &:hover{
       .modal-open-button {
-        border: 5px solid $boiler-gold;
+        box-shadow: inset 0 0 0 5px $boiler-gold;
       }
     }
     .image {
@@ -78,7 +78,6 @@
     }
 
     @media (max-width: 767px) {
-      overflow: scroll;
       line-height:1.5625;
     }
   }
@@ -95,9 +94,10 @@
     justify-content: center;
     background: rgba(0, 0, 0, 0.85);
     padding: 5rem 0;
+    overflow: auto;
 
     @media (max-width: 1024px) {
-      padding: 10rem 1.5rem;
+      padding: 5rem 1.5rem;
     }
 
     @media (max-width: 767px) {
@@ -120,6 +120,7 @@
         max-height:100%;
         padding: 7rem;
         overflow: hidden;
+        margin-bottom: 5rem;
 
         @media (max-width: 1216px) {
           padding: 6.5rem 5.125rem;
@@ -127,7 +128,7 @@
 
         @media (max-width: 767px) {
           padding: 5rem 1.5rem;
-          overflow: scroll;
+          margin-bottom: 1.5rem;
         }
       }
     }
