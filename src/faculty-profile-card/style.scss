@@ -134,12 +134,12 @@
     .level-left {
 
       margin-right: 6.25rem;
-
+      max-width: 100%;
       .level-item {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-  
+        max-width: 100%;
         .faculty-name {
           color: $boiler-gold;
           font-family: $united-sans;
