@@ -5,289 +5,289 @@
  */
 
  .news-feed{
-  background:#ededed;
-  padding:6rem $side-padding-desktop;
-  @include touch{
-    padding:2.1875rem $side-padding-tablet;
-  }
-  @include mobile{
-    padding:2.1875rem $side-padding-mobile;
-  }
-  .container{
-    .feed-header{
-      font-family:$acumin-pro-semicondensed;
-      font-weight: 600;
-      font-size:2rem;
-      margin-bottom:3.125rem;
-      color:$black;
-      @include mobile{
-        font-size:1.875rem;
-        font-weight: 700;
-        margin-bottom:1.875rem;
-      }
+    background:#ededed;
+    padding:6rem $side-padding-desktop;
+    @include touch{
+      padding:2.1875rem $side-padding-tablet;
     }
-    .error{
-      font-family:$acumin-pro-semicondensed;
-      font-weight: 600;
-      font-size:1.5rem;
-      color:$aged-gold;
-      text-align:center;
+    @include mobile{
+      padding:2.1875rem $side-padding-mobile;
     }
-    .feed-items{
-      .column{
-        .card.feed-item{
-          height: 100%;
-          box-shadow: $box-shadow;
-          transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-          a{
-            text-decoration: none;
-          }
-          .card-bg-image{
-            background-size: cover;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            background-position: center;
-            background-repeat: no-repeat;
-          }        
-          .card-content {
-            padding: 2.5rem 2.5rem;
-            @include touch{
-              padding: 1.5rem 2.5rem;
-            }
-            .title {
-              font-family: $acumin-pro-semicondensed;
-              font-weight: 600;
-              font-size:1.5625rem !important;
-              line-height: 1.35;
-              text-decoration: none;
-            }
-        
-            .subtitle {
-              font-family: $united-sans;
-              font-weight: 800;
-              font-size: 1.125rem;
-              color: $aged-gold;
-              text-transform: uppercase;
-              padding-bottom: 1rem;
-            }
-        
-            .media {
-              margin-bottom: 1rem;
-              .media-content {
-                @include mobile {
-                  overflow: hidden;
-                }
-              }
-            }
-        
-            .content-text {
-              margin-bottom: 1.25rem;
-              font-family: $acumin-pro;
-              font-size: 1.125rem;
-              line-height: 1.5;
-              max-height: 5.5rem;
-              text-overflow: ellipsis;
-              overflow: hidden;
-              color: #707070;
-              font-weight:400;
-              @media (-webkit-min-device-pixel-ratio: 0) {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                /* number of lines to show */
-                -webkit-box-orient: vertical;
-              }
-            }
-        
-            .read-more-button {
-              margin-top: 1.25rem;
-              font-family: $united-sans;
-              font-weight: 800;
-              font-size: 1.125rem;
-              color: $aged-gold;
-              text-transform: uppercase;
-              text-align:left !important;
-        
-              span {
-                color: inherit;
-                position: relative;
-        
-                &:after {
-                  content: "\f105";
-                  display: inline-block;
-                  font-family: "Font Awesome 5 Free";
-                  margin-left: 1rem;
-                  position: relative;
-                }
-              }
-            }
-          }
-          &:hover,
-          &:focus {
-            box-shadow: $box-shadow-hover;
-        
-            .card-content {
-              .title {
-                text-decoration: underline;
-              }
-            }
-        
-            .read-more-button {
-              color: #000;
-            }
-          }
-        }
-      }
-    }
-    .read-more-button{
-      font-family:$united-sans;
-      font-weight: 700;
-      letter-spacing:50;
-      text-align: right;
-      font-size:1.25rem;
-      margin-top: 3.125rem;
-      text-transform: uppercase;
-      @include mobile{
-        text-align: center;
-        margin-top: 2.1875rem;
-        margin-right:0;
-      }
-      a{
+    .container{
+      .feed-header{
+        font-family:$acumin-pro-semicondensed;
+        font-weight: 600;
+        font-size:2rem;
+        margin-bottom:3.125rem;
         color:$black;
-        position:relative;
-        text-decoration: none;
-        &:after{
-          content: "\f105";
-          display: inline-block;
-          font-family: "Font Awesome 5 Free";
-          margin-left: 0.7rem;
-          position:relative;
+        @include mobile{
+          font-size:1.875rem;
+          font-weight: 700;
+          margin-bottom:1.875rem;
         }
-        &:hover{
-          color:$aged-gold;
-        }
-
       }
-    }
-    .feed-grid{
-      display:grid;
-      grid-template-columns: 8fr 1fr 3fr;
-      grid-template-rows: auto 48px 1fr;
-      @include mobile{
-        display:block;
+      .error{
+        font-family:$acumin-pro-semicondensed;
+        font-weight: 600;
+        font-size:1.5rem;
+        color:$aged-gold;
+        text-align:center;
       }
       .feed-items{
-        grid-row: 1/4!important;
-        grid-column: 1/2!important;
-        padding:3.75rem;
-        background:$white;
-        @include mobile{
-          padding:1.25rem;
-        }
-        .feed-item-noimage{
-          display:flex;
-          text-decoration: none;
-          color:$black;
-          &:not(:last-child){
-            border-bottom: 1px solid $steam-gray;
-            padding-bottom:1.5rem;
+        .column{
+          .card.feed-item{
+            height: 100%;
+            box-shadow: $box-shadow;
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            a{
+              text-decoration: none;
+            }
+            .card-bg-image{
+              background-size: cover;
+              display: block;
+              width: 100%;
+              box-sizing: border-box;
+              background-position: center;
+              background-repeat: no-repeat;
+            }        
+            .card-content {
+              padding: 2.5rem 2.5rem;
+              @include touch{
+                padding: 1.5rem 2.5rem;
+              }
+              .title {
+                font-family: $acumin-pro-semicondensed;
+                font-weight: 600;
+                font-size:1.5625rem !important;
+                line-height: 1.35;
+                text-decoration: none;
+              }
+          
+              .subtitle {
+                font-family: $united-sans;
+                font-weight: 800;
+                font-size: 1.125rem;
+                color: $aged-gold;
+                text-transform: uppercase;
+                padding-bottom: 1rem;
+              }
+          
+              .media {
+                margin-bottom: 1rem;
+                .media-content {
+                  @include mobile {
+                    overflow: hidden;
+                  }
+                }
+              }
+          
+              .content-text {
+                margin-bottom: 1.25rem;
+                font-family: $acumin-pro;
+                font-size: 1.125rem;
+                line-height: 1.5;
+                max-height: 5.5rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                color: #707070;
+                font-weight:400;
+                @media (-webkit-min-device-pixel-ratio: 0) {
+                  display: -webkit-box;
+                  -webkit-line-clamp: 3;
+                  /* number of lines to show */
+                  -webkit-box-orient: vertical;
+                }
+              }
+          
+              .read-more-button {
+                margin-top: 1.25rem;
+                font-family: $united-sans;
+                font-weight: 800;
+                font-size: 1.125rem;
+                color: $aged-gold;
+                text-transform: uppercase;
+                text-align:left !important;
+          
+                span {
+                  color: inherit;
+                  position: relative;
+          
+                  &:after {
+                    content: "\f105";
+                    display: inline-block;
+                    font-family: "Font Awesome 5 Free";
+                    margin-left: 1rem;
+                    position: relative;
+                  }
+                }
+              }
+            }
+            &:hover,
+            &:focus {
+              box-shadow: $box-shadow-hover;
+          
+              .card-content {
+                .title {
+                  text-decoration: underline;
+                }
+              }
+          
+              .read-more-button {
+                color: #000;
+              }
+            }
           }
-          &:not(:first-child){
-            padding-top:1.5rem;
+        }
+      }
+      .read-more-button{
+        font-family:$united-sans;
+        font-weight: 700;
+        letter-spacing:50;
+        text-align: right;
+        font-size:1.25rem;
+        margin-top: 3.125rem;
+        text-transform: uppercase;
+        @include mobile{
+          text-align: center;
+          margin-top: 2.1875rem;
+          margin-right:0;
+        }
+        a{
+          color:$black;
+          position:relative;
+          text-decoration: none;
+          &:after{
+            content: "\f105";
+            display: inline-block;
+            font-family: "Font Awesome 5 Free";
+            margin-left: 0.7rem;
+            position:relative;
           }
           &:hover{
-            .media-content{
-            text-decoration:underline;
-            }
+            color:$aged-gold;
           }
-          .media-left{
-            margin-right:4rem;
-            @include mobile{
-              margin-right:1.8125rem;
-            }
-            .month{
-              font-family:$source-serif-pro;
-              font-size:1.25rem;
-              font-weight:600;
-              line-height:1.25;
-              @include mobile{
-                font-size:1.0625rem;
-                line-height:1.17;
-              }
-            }
-            .day{
-              font-family:$united-sans-condensed;
-              font-size:4rem;
-              font-weight:700;
-              line-height:1;
-              @include mobile{
-                font-size:2.9375rem;
-                line-height:1;
-              }
-            }
-          }
-          .media-content{
-            .title{
-              font-family:$source-serif-pro;
-              font-size:1.5rem;
-              line-height:1.45;
-              @include mobile{
-                font-size:1.25rem;
-                line-height:1.25;
-              }
-            }
-            .desc{
-              font-family:$acumin-pro;
-              font-size:1.125rem;
-              color:$cool-gray;
-              line-height:1.38;
-              font-weight:400;
-              @include mobile{
-                font-size:1rem;
-                line-height:1.5625;
-              }
-            }
-          }
+
         }
       }
-      .feed-image{
-        grid-row: 1/2!important;
-        grid-column: 3/4!important;
-        display: block;
-        width: 100%;
-        img{
-          width:100%;
+      .feed-grid{
+        display:grid;
+        grid-template-columns: 8fr 1fr 3fr;
+        grid-template-rows: auto 48px 1fr;
+        @include mobile{
           display:block;
         }
-        @include mobile{
-          margin-bottom:1.875rem !important;
+        .feed-items{
+          grid-row: 1/4!important;
+          grid-column: 1/2!important;
+          padding:3.75rem;
+          background:$white;
+          @include mobile{
+            padding:1.25rem;
+          }
+          .feed-item-noimage{
+            display:flex;
+            text-decoration: none;
+            color:$black;
+            &:not(:last-child){
+              border-bottom: 1px solid $steam-gray;
+              padding-bottom:1.5rem;
+            }
+            &:not(:first-child){
+              padding-top:1.5rem;
+            }
+            &:hover{
+              .media-content{
+              text-decoration:underline;
+              }
+            }
+            .media-left{
+              margin-right:4rem;
+              @include mobile{
+                margin-right:1.8125rem;
+              }
+              .month{
+                font-family:$source-serif-pro;
+                font-size:1.25rem;
+                font-weight:600;
+                line-height:1.25;
+                @include mobile{
+                  font-size:1.0625rem;
+                  line-height:1.17;
+                }
+              }
+              .day{
+                font-family:$united-sans-condensed;
+                font-size:4rem;
+                font-weight:700;
+                line-height:1;
+                @include mobile{
+                  font-size:2.9375rem;
+                  line-height:1;
+                }
+              }
+            }
+            .media-content{
+              .title{
+                font-family:$source-serif-pro;
+                font-size:1.5rem;
+                line-height:1.45;
+                @include mobile{
+                  font-size:1.25rem;
+                  line-height:1.25;
+                }
+              }
+              .desc{
+                font-family:$acumin-pro;
+                font-size:1.125rem;
+                color:$cool-gray;
+                line-height:1.38;
+                font-weight:400;
+                @include mobile{
+                  font-size:1rem;
+                  line-height:1.5625;
+                }
+              }
+            }
+          }
         }
-      }
-      .button{
-        grid-row: 3/4!important;
-        grid-column: 3/4!important;
-        background:none;
-        font-family: "United Sans";
-        font-weight: 700;
-        font-size: 1.125rem;
-        text-transform: uppercase;
-        display: inline-flex;
-        justify-content: center;
-        padding: 0.75rem 1rem;
-        border: 2px solid $aged-gold;
-        border-radius: 0;
-        color: $black !important;
-        text-decoration: none;
-        transition: all ease 0.2s;
-        letter-spacing:0.9px;
-        width:100%;
-        max-width: 19.875rem;
-        margin-top:2.1875rem;
-        &:hover {
-          cursor: pointer;
-          background: #fff;
+        .feed-image{
+          grid-row: 1/2!important;
+          grid-column: 3/4!important;
+          display: block;
+          width: 100%;
+          img{
+            width:100%;
+            display:block;
+          }
+          @include mobile{
+            margin-bottom:1.875rem !important;
+          }
+        }
+        .button{
+          grid-row: 3/4!important;
+          grid-column: 3/4!important;
+          background:none;
+          font-family: "United Sans";
+          font-weight: 700;
+          font-size: 1.125rem;
+          text-transform: uppercase;
+          display: inline-flex;
+          justify-content: center;
+          padding: 0.75rem 1rem;
+          border: 2px solid $aged-gold;
+          border-radius: 0;
+          color: $black !important;
+          text-decoration: none;
+          transition: all ease 0.2s;
+          letter-spacing:0.9px;
+          width:100%;
+          max-width: 19.875rem;
+          margin-top:2.1875rem;
+          &:hover {
+            cursor: pointer;
+            background: #fff;
+          }
         }
       }
     }
-  }
-}
+ }

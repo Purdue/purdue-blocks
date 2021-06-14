@@ -1,0 +1,120 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ /*!
+ * Font Awesome Free 5.14.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+ .purdue-block-quote-group-editor{
+    background:$secondary-background-gray;
+    padding:2rem;
+    .purdue-block-editor-quote{
+        background:$white;
+        padding:2rem;
+        &:not(:last-child){
+            margin-bottom:4rem;
+        }
+        .purdue-block-quote__content{
+           textarea{
+               background:none;
+               color:inherit;
+               font-size:inherit;
+               font-weight:inherit;
+               font-family:inherit;
+           } 
+        }
+        .purdue-block-quote__name{
+           input{
+               background:none;
+               color:inherit;
+               font-size:inherit;
+               font-weight:inherit;
+               font-family:inherit;
+               border-top:none;
+               border-left: none;
+               border-right: none;
+               border-radius:none;
+           } 
+        }
+        .purdue-block-quote__title{
+           input{
+               background:none;
+               color:inherit;
+               font-size:inherit;
+               font-weight:inherit;
+               font-family:inherit;
+               border-top:none;
+               border-left: none;
+               border-right: none;
+               border-radius:none;
+           } 
+        }
+    }
+    
+    &.background-black{
+        .purdue-block-editor-quote{
+            background:$black;
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: $railway-gray;
+                opacity: 1; /* Firefox */
+              }
+            .purdue-block-quote{
+                &__name{
+                    color:$boiler-gold;
+                }
+                &__content, &__title{
+                    color:$white;
+                }    
+                &__content:before{
+                    content: url("data:image/svg+xml,%3Csvg id='a0504d04-9b36-4161-9e96-0df9ef04a0f8' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.e81869df-a2a1-43e6-b57a-73c0b7fb3aff%7Bisolation:isolate;%7D.a57e61e9-3a10-43ec-a713-7f0e05c75db1%7Bfill:%23555960;%7D%3C/style%3E%3C/defs%3E%3Cg id='adeed551-22a0-4d35-bd25-a37eb4c4d028' data-name=' ' class='e81869df-a2a1-43e6-b57a-73c0b7fb3aff'%3E%3Cg class='e81869df-a2a1-43e6-b57a-73c0b7fb3aff'%3E%3Cpath class='a57e61e9-3a10-43ec-a713-7f0e05c75db1' d='M0,20.458,20.458,0H55.584V23.16015H34.74023L32.03809,25.8623V45.1621H55.584v57.51367H0Zm76.042,0L96.50049,0h34.73974V23.16015h-20.458l-2.70215,2.70215V45.1621h23.16015v57.51367H76.042Z' transform='translate(0 0.00001)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                } 
+                &__content:after{
+                    content: url("data:image/svg+xml,%3Csvg id='bab62a63-c027-4eab-878a-8fc63ea730db' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.aaab6de0-9fb0-43f2-bc4f-fd4de26843f5%7Bisolation:isolate;%7D.aaff3c56-0a26-44a5-ba08-5d2a4eb99938%7Bfill:%23555960;%7D%3C/style%3E%3C/defs%3E%3Cg id='ea1399df-6668-438c-9a09-d9f638b84008' data-name=' ' class='aaab6de0-9fb0-43f2-bc4f-fd4de26843f5'%3E%3Cg class='aaab6de0-9fb0-43f2-bc4f-fd4de26843f5'%3E%3Cpath class='aaff3c56-0a26-44a5-ba08-5d2a4eb99938' d='M131.24023,82.21777l-20.458,20.458h-35.126V79.51562H96.5l2.70215-2.70214V57.51367H75.65625V0h55.584Zm-76.042,0-20.45849,20.458H0V79.51562H20.458l2.70215-2.70214V57.51367H0V0H55.19824Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");          }
+            }  
+        }
+      }
+      &.background-black-ter{
+        .purdue-block-editor-quote{
+            background:$steel-gray;
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color:$steam-gray;
+                opacity: 1; /* Firefox */
+              }
+            .purdue-block-quote{
+                &__name{
+                    color:$boiler-gold;
+                }
+                &__title{
+                    color:$primary-background-gray;
+                }
+                &__content{
+                    color:$primary-background-gray;
+                    &:before{
+                    content: url("data:image/svg+xml,%3Csvg id='a0504d04-9b36-4161-9e96-0df9ef04a0f8' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.e81869df-a2a1-43e6-b57a-73c0b7fb3aff%7Bisolation:isolate;%7D.a57e61e9-3a10-43ec-a713-7f0e05c75db1%7Bfill:%236F727B;%7D%3C/style%3E%3C/defs%3E%3Cg id='adeed551-22a0-4d35-bd25-a37eb4c4d028' data-name=' ' class='e81869df-a2a1-43e6-b57a-73c0b7fb3aff'%3E%3Cg class='e81869df-a2a1-43e6-b57a-73c0b7fb3aff'%3E%3Cpath class='a57e61e9-3a10-43ec-a713-7f0e05c75db1' d='M0,20.458,20.458,0H55.584V23.16015H34.74023L32.03809,25.8623V45.1621H55.584v57.51367H0Zm76.042,0L96.50049,0h34.73974V23.16015h-20.458l-2.70215,2.70215V45.1621h23.16015v57.51367H76.042Z' transform='translate(0 0.00001)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                    
+                    } 
+                    &:after{
+                    content: url("data:image/svg+xml,%3Csvg id='bab62a63-c027-4eab-878a-8fc63ea730db' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.aaab6de0-9fb0-43f2-bc4f-fd4de26843f5%7Bisolation:isolate;%7D.aaff3c56-0a26-44a5-ba08-5d2a4eb99938%7Bfill:%236F727B;%7D%3C/style%3E%3C/defs%3E%3Cg id='ea1399df-6668-438c-9a09-d9f638b84008' data-name=' ' class='aaab6de0-9fb0-43f2-bc4f-fd4de26843f5'%3E%3Cg class='aaab6de0-9fb0-43f2-bc4f-fd4de26843f5'%3E%3Cpath class='aaff3c56-0a26-44a5-ba08-5d2a4eb99938' d='M131.24023,82.21777l-20.458,20.458h-35.126V79.51562H96.5l2.70215-2.70214V57.51367H75.65625V0h55.584Zm-76.042,0-20.45849,20.458H0V79.51562H20.458l2.70215-2.70214V57.51367H0V0H55.19824Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");          }
+                }
+                }
+          }
+        }
+ }
+
+ .remove-image-button{
+     &.add-quote{
+        margin:0;
+    }
+    &.remove-quote{
+        margin-top:0;
+    }
+    &.move-quote{
+        margin-top:0;
+        margin-bottom:0;
+        margin-right:1rem; 
+    }
+ }

@@ -94,6 +94,14 @@ registerBlockType( 'purdue-blocks/icon-group', {
   ),
 
   edit: ( props ) => {
+
+    if(props.attributes.iconGroup.length===0){
+      props.setAttributes( {iconGroup: [{
+        icon: '',
+        iconUrl: '',
+      }]} )
+    }
+
     const handleAddIcon = () => {
       const iconGroup = [ ...props.attributes.iconGroup ];
       iconGroup.push( {
@@ -128,13 +136,13 @@ registerBlockType( 'purdue-blocks/icon-group', {
                   <TextControl
                     className="icon-text"
                     placeholder="Paste Fontawesome HTML code"
-                    value={ props.attributes.iconGroup[ index ].icon }
+                    value={ card.icon }
                     onChange={ ( icon ) =>  handleChangeiconGroupIcon( icon, index ) }
                   />
                   <TextControl
                     className="icon-url"
                     placeholder="Link"
-                    value={ props.attributes.iconGroup[ index ].iconUrl }
+                    value={ card.iconUrl }
                     onChange={ ( iconUrl ) => handleChangeiconGroupUrl( iconUrl, index ) }
                   />
                   <Button

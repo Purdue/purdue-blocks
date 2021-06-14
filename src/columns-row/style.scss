@@ -1,0 +1,80 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-columns-row {
+  &.has-background-light-gray {
+    background: #f7f7f7 !important;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .title {
+      &--black {
+        color: black !important;
+      }
+      &--gold {
+        color: $boiler-gold !important;
+      }
+      &--aged {
+        color: $aged-gold !important;
+      }
+      &--steel {
+        color: $steel-gray !important;
+      }
+      &--white {
+        color: white !important;
+      }
+    }
+
+    .align {
+      &--left {
+        text-align: left;
+      }
+
+      &--center {
+        text-align: center;
+      }
+    }
+  }
+
+  .has-dividers {
+    & > .column:not(:last-child) {
+      border-right: 1px solid #9d9795;
+    }
+  
+    @media screen and (max-width: 765px) {
+      & > .column:not(:last-child) {
+        border-bottom: 1px solid #9d9795;
+        border-right: none;
+      }
+    }
+  
+    & > .no-border {
+      border-right: none !important;
+    }
+    
+    &.is-desktop {
+      @media screen and (max-width: 1024px) {
+        & > .column:not(:last-child) {
+          border-bottom: 1px solid #9d9795;
+          border-right: none;
+        }
+      }
+    }
+  
+    &.is-mobile {
+      @media screen and (max-width: 1024px) {
+        & > .column:not(:last-child) {
+          border-right: 1px solid #9d9795;
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
