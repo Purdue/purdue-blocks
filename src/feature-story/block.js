@@ -194,6 +194,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
           <PanelRow>
             <SelectControl
               label="Heading Level of the Header"
+              help="This only changes the HTML tag. The styles will stay the same."
               value={ props.attributes.headerLevel }
               options={ [
                 { label: 'H1', value: 'h1' },
