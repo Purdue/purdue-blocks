@@ -5,8 +5,15 @@
  */
 
 .pu-columns-row {
+  background-color: white;
+  
   &.has-background-light-gray {
     background: #f7f7f7 !important;
+  }
+
+  &+.pu-columns-row {
+    padding-top: 0 !important;
+    margin-top: -2rem;
   }
 
   .content {

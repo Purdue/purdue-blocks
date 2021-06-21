@@ -272,24 +272,28 @@ registerBlockType( 'purdue-blocks/columns-row', {
     const returned = (
       <div className={`pu-columns-row section${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}`}>
         <div className={'container'}>
-          <div className={'content'}>
-            <div className="columns is-centered">
-              <div className="column is-8">
-                {props.attributes.title !== '' && props.attributes.title !== undefined ?
-                <RichText.Content
-                  className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
-                  tagName={props.attributes.titleLevel}
-                  value={props.attributes.title}
-                /> : ''}
-                {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
-                <RichText.Content
-                  className={`align--${props.attributes.subTextAlign}`}
-                  tagName="p"
-                  value={props.attributes.subText}
-                /> : ''}
+
+          {(props.attributes.title !== '' && props.attributes.title) && (props.attributes.subText !== '' &&  props.attributes.subText) ? (
+            <div className={'content'}>
+              <div className="columns is-centered">
+                <div className="column is-8">
+                  {props.attributes.title !== '' && props.attributes.title !== undefined ?
+                  <RichText.Content
+                    className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
+                    tagName={props.attributes.titleLevel}
+                    value={props.attributes.title}
+                  /> : ''}
+                  {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
+                  <RichText.Content
+                    className={`align--${props.attributes.subTextAlign}`}
+                    tagName="p"
+                    value={props.attributes.subText}
+                  /> : ''}
+                </div>
               </div>
             </div>
-          </div>
+          ) : ''}
+
           <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}`}>
             <InnerBlocks.Content />
           </div>
