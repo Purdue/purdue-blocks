@@ -222,7 +222,6 @@ registerBlockType("purdue-blocks/purdue-button", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
-    console.log(props.attributes.buttonURL)
     const returned = (
       props.attributes.hasLink&&props.attributes.buttonURL?
         <a role="link" className={`purdue-blocks__button${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
