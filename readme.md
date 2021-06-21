@@ -5,6 +5,13 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.19.0] 2021-6-21
+#### Minor Version Update
+  - Added Columns Row block
+  - Added Quote block
+  - Added Alert strip block
+  - Updated featured story Block to add border and background clor options
+
 ### [1.18.2] 2021-6-14
 #### Updated
   - Resolve Falcuty Profile Card block overflow issue.
