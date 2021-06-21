@@ -1,0 +1,25 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.mini-hero-editor{
+  .buttons-container{
+    position:absolute;
+    bottom:0;
+    z-index:10;
+    button{
+      padding:0.5rem;
+      background:$aged-gold;
+      color:$white;
+      &:hover{
+        background:$white;
+        color:$aged-gold;
+      }
+      &.remove-button{
+        margin-left:1rem;
+      }
+    }
+  }
+}

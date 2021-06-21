@@ -5,6 +5,22 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.18.2] 2021-6-14
+#### Updated
+  - Resolve Falcuty Profile Card block overflow issue.
+
+### [1.18.1] 2021-6-3
+#### Updated
+  - Resolve issues in the Profile Galelry Block with the modal not being scrollable on mobile or if window height was too short.
+
+### [1.18.0] 2021-6-2
+#### Minor Version Update
+  - Added Mini Hero Block
+
+### [1.17.0] 2021-6-1
+#### Minor Version Update
+  - Added Profile Gallery Block
+
 ### [1.16.0] 2021-4-29
 #### Minor Version Update
 This version includes many UX improvements and other look & feel updates to Purdue Blocks.

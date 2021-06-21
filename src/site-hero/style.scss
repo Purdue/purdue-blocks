@@ -5,320 +5,320 @@
  */
 
  .bulma-blocks-40-60-hero {
-  .hero {
-    position: relative;
-    @include touch {
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-
-    .hero-body {
-      position: relative;
-      background: White;
-      z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      margin: 0 !important;
-      padding:2.3125rem $side-padding-desktop 8.4375rem !important;
-
-      @include touch {
-        order: 2;
-        height: auto;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding:2.1875rem $side-padding-tablet 2.8125rem !important;
-        box-shadow: $box-shadow;
-      }
-      @include mobile {
-       padding:2.1875rem $side-padding-mobile 2.8125rem !important;
+   .hero {
+     position: relative;
+     @include touch {
+       flex-direction: column;
+       flex-wrap: nowrap;
      }
-      @include desktop {
-        order: 1;
-      }
-       .container{
-         width:100%;
+ 
+     .hero-body {
+       position: relative;
+       background: White;
+       z-index: 2;
+       display: flex;
+       align-items: flex-end;
+       margin: 0 !important;
+       padding:2.3125rem $side-padding-desktop 8.4375rem !important;
+
+       @include touch {
+         order: 2;
+         height: auto;
+         align-items: flex-start;
+         justify-content: flex-start;
+         padding:2.1875rem $side-padding-tablet 2.8125rem !important;
+         box-shadow: $box-shadow;
        }
-      .content {
-        color: black !important;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        min-height: 40rem;
-        height: auto;
-        margin-bottom: 0;
-        padding: 0;
-        width:calc(40% - 24px);
-        @include touch {
-          max-width: 100%;
-          min-height: 0px;
-          height: auto;
+       @include mobile {
+        padding:2.1875rem $side-padding-mobile 2.8125rem !important;
+      }
+       @include desktop {
+         order: 1;
+       }
+        .container{
           width:100%;
         }
-
-        @include desktop {
-          max-width: 23rem;
-        }
-
-        @include widescreen {
-          max-width: 26rem;
-        }
-
-        @include fullhd {
-          max-width: 27rem;
-        }
-
-        .level {
-          margin-top: 2rem;
-          margin-bottom:0;
-
-          @include mobile {
-            margin: 1rem 0 0;
-          }
-        }
-
-        .level-item {
-          margin-right: 2.5rem;
-
-          a {
-            color: black !important;
-          }
-        }
-
-        h1 {
-          font-family: acumin-pro-semi-condensed;
-          font-weight: 700;
-          font-size: 2.8125rem;
-          color: black !important;
-          line-height:3.125rem;
+       .content {
+         color: black !important;
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         justify-content: flex-end;
+         min-height: 40rem;
+         height: auto;
+         margin-bottom: 0;
+         padding: 0;
+         width:calc(40% - 24px);
+         @include touch {
+           max-width: 100%;
+           min-height: 0px;
+           height: auto;
            width:100%;
-          @include tablet {
-              font-size: 4.0625rem !important;
-              line-height:4.375rem;
-          }
-        }
-
-        p {
-         font-size: 1.5625rem;
-         line-height:2.5rem;
-          font-family: $united-sans;
-          text-transform: uppercase;
-          width: 85%;
-          &:last-of-type{
-            margin-bottom:0;
-          }
-
-          @include mobile {
-            font-size: 1.25rem;
-            line-height:1.875rem;
-          }
-        }
-      }
-    }
-    
-    .hero-image {
-      z-index: 4;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 60%;
-      height: 100%;
-      @include touch {
-        position: relative;
-        height: 20rem;
-        width: 100%;
-        flex-basis: auto;
-        order: 1;
-      }
-
-      @include mobile {
-        height: 17rem;
-      }
-
-      .background-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-    .shadow {
-     position: absolute;
-     left: 0;
-     top: 0;
-     width: 40%;
-     height: 100%;
-     z-index: 1;
-     box-shadow: $box-shadow;
-     @include mobile {
-       display:none;
+         }
+ 
+         @include desktop {
+           max-width: 23rem;
+         }
+ 
+         @include widescreen {
+           max-width: 26rem;
+         }
+ 
+         @include fullhd {
+           max-width: 27rem;
+         }
+ 
+         .level {
+           margin-top: 2rem;
+           margin-bottom:0;
+ 
+           @include mobile {
+             margin: 1rem 0 0;
+           }
+         }
+ 
+         .level-item {
+           margin-right: 2.5rem;
+ 
+           a {
+             color: black !important;
+           }
+         }
+ 
+         h1 {
+           font-family: acumin-pro-semi-condensed;
+           font-weight: 700;
+           font-size: 2.8125rem;
+           color: black !important;
+           line-height:3.125rem;
+            width:100%;
+           @include tablet {
+               font-size: 4.0625rem !important;
+               line-height:4.375rem;
+           }
+         }
+ 
+         p {
+          font-size: 1.5625rem;
+          line-height:2.5rem;
+           font-family: $united-sans;
+           text-transform: uppercase;
+           width: 85%;
+           &:last-of-type{
+             margin-bottom:0;
+           }
+ 
+           @include mobile {
+             font-size: 1.25rem;
+             line-height:1.875rem;
+           }
+         }
+       }
      }
+     
+     .hero-image {
+       z-index: 4;
+       position: absolute;
+       right: 0;
+       top: 0;
+       width: 60%;
+       height: 100%;
+       @include touch {
+         position: relative;
+         height: 20rem;
+         width: 100%;
+         flex-basis: auto;
+         order: 1;
+       }
+ 
+       @include mobile {
+         height: 17rem;
+       }
+ 
+       .background-image {
+         display: block;
+         width: 100%;
+         height: 100%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+       }
+     }
+     .shadow {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40%;
+      height: 100%;
+      z-index: 1;
+      box-shadow: $box-shadow;
+      @include mobile {
+        display:none;
+      }
 
+    }
    }
-  }
-  .jump-button {
-    font-family: $united-sans;
-    font-weight: 400;
-    font-size: 1.25rem;
-    text-transform: capitalize;
-    color: $aged-gold !important;
-    text-decoration:none;
-    margin-top:1.5rem;
-    display:block;
-    svg {
-        padding-left: 0.25rem;
-    }
-
-    &:hover {
-        svg {
-            animation: bounce 0.3s infinite alternate;
-        }
-    }
-}
-}
-
-.bulma-blocks-50-50-hero {
-  .hero {
-    display: flex;
-    position: relative;
-
-    @include touch {
-      flex-direction: column;
-      flex-wrap: nowrap;
-    }
-
-    .hero-body {
-      position: relative;
-      background: black;
-      display: flex;
-      align-items: center;
-      z-index: 2;
-      padding: 7rem $side-padding-desktop !important;
-      @include touch {
+   .jump-button {
+     font-family: $united-sans;
+     font-weight: 400;
+     font-size: 1.25rem;
+     text-transform: capitalize;
+     color: $aged-gold !important;
+     text-decoration:none;
+     margin-top:1.5rem;
+     display:block;
+     svg {
+         padding-left: 0.25rem;
+     }
+ 
+     &:hover {
+         svg {
+             animation: bounce 0.3s infinite alternate;
+         }
+     }
+ }
+ }
+ 
+ .bulma-blocks-50-50-hero {
+   .hero {
+     display: flex;
+     position: relative;
+ 
+     @include touch {
+       flex-direction: column;
+       flex-wrap: nowrap;
+     }
+ 
+     .hero-body {
+       position: relative;
+       background: black;
+       display: flex;
+       align-items: center;
+       z-index: 2;
+       padding: 7rem $side-padding-desktop !important;
+       @include touch {
+         order: 2;
+         padding: 1rem $side-padding-tablet 2.8125rem !important;
+       }
+       @include mobile {
         order: 2;
-        padding: 1rem $side-padding-tablet 2.8125rem !important;
+        padding: 1rem $side-padding-mobile 2.8125rem !important;
       }
-      @include mobile {
-       order: 2;
-       padding: 1rem $side-padding-mobile 2.8125rem !important;
+      .container{
+        width:100%;
+      }
+       .content {
+         color: white !important;
+         width: calc(50% - 24px);
+         max-width: 30rem;
+ 
+         @include touch {
+           max-width: 100%;
+           width:100%
+         }
+ 
+         h1 {
+           font-family: $acumin-pro-semicondensed;
+           color: white !important;
+           font-size: 1.875rem;
+           font-weight:700;
+           line-height: 2.1875rem;
+           @include tablet {
+             font-size: 2.8125rem !important;
+             line-height: 3.125rem;
+           }
+         }
+ 
+         p {
+           font-size: 1.25rem;
+           font-family: $acumin-pro;
+           &:last-of-type{
+             margin-bottom:0;
+           }
+         }
+ 
+         .level {
+           margin-top: 2.5rem;
+           margin-bottom:0;
+         }
+ 
+         .level-item {
+           margin-right: 2.5rem;
+ 
+           a {
+             color: white !important;
+           }
+         }
+       }
      }
-     .container{
-       width:100%;
+ 
+     .hero-image {
+       position: absolute;
+       right: 0;
+       top: 0;
+       width: 50%;
+       height: 100%;
+       z-index: 4;
+ 
+       &:before {
+         content: "";
+         background: black;
+         width: 5rem;
+         height: 100%;
+         position: absolute;
+         left: 0;
+         clip-path: polygon(0 0, 0% 100%, 100% 0);
+ 
+         @include touch {
+           clip-path: polygon(0 0, 0% 100%, 100% 100%);
+           width: 100%;
+           height: 5rem;
+           left: 0;
+           bottom: -1px;
+         }
+       }
+ 
+       @include touch {
+         position: relative;
+         height: 20rem;
+         width: 100%;
+         flex-basis: auto;
+         order: 1;
+       }
+ 
+       @include mobile {
+         height: 17rem;
+       }
+ 
+       .background-image {
+         display: block;
+         width: 100%;
+         height: 100%;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+       }
      }
-      .content {
-        color: white !important;
-        width: calc(50% - 24px);
-        max-width: 30rem;
-
-        @include touch {
-          max-width: 100%;
-          width:100%
-        }
-
-        h1 {
-          font-family: $acumin-pro-semicondensed;
-          color: white !important;
-          font-size: 1.875rem;
-          font-weight:700;
-          line-height: 2.1875rem;
-          @include tablet {
-            font-size: 2.8125rem !important;
-            line-height: 3.125rem;
-          }
-        }
-
-        p {
-          font-size: 1.25rem;
-          font-family: $acumin-pro;
-          &:last-of-type{
-            margin-bottom:0;
-          }
-        }
-
-        .level {
-          margin-top: 2.5rem;
-          margin-bottom:0;
-        }
-
-        .level-item {
-          margin-right: 2.5rem;
-
-          a {
-            color: white !important;
-          }
-        }
-      }
-    }
-
-    .hero-image {
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      z-index: 4;
-
-      &:before {
-        content: "";
-        background: black;
-        width: 5rem;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        clip-path: polygon(0 0, 0% 100%, 100% 0);
-
-        @include touch {
-          clip-path: polygon(0 0, 0% 100%, 100% 100%);
-          width: 100%;
-          height: 5rem;
-          left: 0;
-          bottom: -1px;
-        }
-      }
-
-      @include touch {
-        position: relative;
-        height: 20rem;
-        width: 100%;
-        flex-basis: auto;
-        order: 1;
-      }
-
-      @include mobile {
-        height: 17rem;
-      }
-
-      .background-image {
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-    }
-  }
-  .jump-button {
-    font-family: $united-sans;
-    font-weight: 400;
-    font-size: 1.25rem;
-    text-transform: capitalize;
-    color: $boiler-gold !important;
-    text-decoration:none;
-    margin-top:1.5rem;
-    display:block;
-    svg {
-        padding-left: 0.25rem;
-    }
-
-    &:hover {
-        svg {
-            animation: bounce 0.3s infinite alternate;
-        }
-    }
-}
-}
-
-
+   }
+   .jump-button {
+     font-family: $united-sans;
+     font-weight: 400;
+     font-size: 1.25rem;
+     text-transform: capitalize;
+     color: $boiler-gold !important;
+     text-decoration:none;
+     margin-top:1.5rem;
+     display:block;
+     svg {
+         padding-left: 0.25rem;
+     }
+ 
+     &:hover {
+         svg {
+             animation: bounce 0.3s infinite alternate;
+         }
+     }
+ }
+ }
+ 
+ 

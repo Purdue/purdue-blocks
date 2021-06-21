@@ -1,0 +1,26 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+ .bulma-blocks-editor-columns {
+     .title {
+        &--black {
+          color: black !important;
+        }
+        &--gold {
+          color: $boiler-gold !important;
+        }
+        &--aged {
+          color: $aged-gold !important;
+        }
+        &--steel {
+          color: $steel-gray !important;
+        }
+        &--white {
+          color: white !important;
+        }
+      }
+ }

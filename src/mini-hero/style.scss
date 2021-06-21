@@ -1,0 +1,106 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.mini-hero {
+  &.mini-hero-light{
+    .image {
+      &:after{
+        background:$white;
+        @include mobile{
+          background:$steam-gray;
+        }
+      }
+    }
+    .mini-hero--content {
+      .title,.content{
+        color:$black;
+      }
+    }
+  }
+
+  .image {
+    background-position: center;
+    background-size: cover;
+    padding: 4rem $side-padding-desktop;
+    min-height: 275px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @include touch{
+      padding: 3rem $side-padding-tablet;
+    }
+    @include mobile{
+      padding: 2.8125rem $side-padding-mobile;
+    }
+    &:after{
+      content:"";
+      background:$black;
+      opacity:0.7;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include mobile {
+        opacity:1;
+        background:$steel-gray;
+      }
+    }
+    .container {
+      padding:0;
+      position: relative;
+    }
+
+    @include mobile {
+      background-image: none !important;
+    }
+  }
+
+  &--content {
+    position: relative;
+    padding: 0;
+    color: $white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+
+    p, h1 {
+      text-align:center;
+    }
+
+    .title {
+      font-family: $united-sans;
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.125;
+      max-width: 100%;
+      margin-bottom:1.5rem;
+      color:$white;
+      &:last-child{
+        margin-bottom:0;
+      }
+      @include mobile{
+        font-size: 2.1875rem;
+        margin-bottom:1.875rem;
+      }
+    }
+
+    .content {
+      font-size: 1.125rem;
+      font-family:$acumin-pro;
+      line-height: 1.875;
+      margin-bottom:0;
+    }
+
+    @include mobile{
+      max-width: 100%;
+      line-height: 1.5;
+    }
+  }
+
+}

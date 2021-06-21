@@ -37,14 +37,16 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
         })
     })
     window.addEventListener('scroll', () => {
-        anchorHeaders.forEach((header)=>{
-            if ( header.getBoundingClientRect().top + window.pageYOffset <= 20 ) {
-                const id = "#"+header.id
-                links.forEach((el)=>{
-                    el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
-                })
-            }
-        })
+        setTimeout(function(){
+            anchorHeaders.forEach((header)=>{ 
+                if ( header.getBoundingClientRect().top <= 30 ) {
+                    const id = "#"+header.id
+                    links.forEach((el)=>{
+                        el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
+                    })
+                }
+            })
+        }, 100)
     })
     const toTop = document.querySelector('#to-top-sidebar')
     if(toTop){

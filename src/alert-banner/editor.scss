@@ -1,0 +1,181 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.blocks-editor-alert {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  &--recommendations {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
+  }
+
+  .content {
+    margin: 0 !important;
+    flex: 0 0 65%;
+  }
+
+  .alert-link {
+    flex: 0 0 30%;
+  }
+
+  &--notice {
+
+    .alert-link {
+      a {
+        color: black;
+        cursor: text;
+      }
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .block-editor-rich-text__editable {
+      position: relative;
+      &:focus {
+        &:after {
+          content: '';
+          width: calc(100% + 1rem);
+          height: calc(100% + 1rem);
+          position: absolute;
+          left: -0.5rem;
+          top: -0.5rem;
+          border: dashed 1px black;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &.notice--gray {
+      background: #ededed;
+      border: solid 3px #9d9795;
+      .block-editor-rich-text__editable {
+        position: relative;
+        &:focus {
+          &:after {
+            border-color: #9d9795;
+          }
+        }
+      }
+    }
+    &.notice--green {
+      background: #d9f4d0;
+      border: solid 3px #5fb443;
+      .block-editor-rich-text__editable {
+        position: relative;
+        &:focus {
+          &:after {
+            border-color: #5fb443;
+          }
+        }
+      }
+    }
+    &.notice--blue {
+      background: #c4f2ff;
+      border: solid 3px #50c4e5;
+      .block-editor-rich-text__editable {
+        position: relative;
+        &:focus {
+          &:after {
+            border-color: #50c4e5;
+          }
+        }
+      }
+    }
+    &.notice--gold {
+      background: #ebd99f;
+      border: solid 3px #daaa00;
+      .block-editor-rich-text__editable {
+        position: relative;
+        &:focus {
+          &:after {
+            border-color: #daaa00;
+          }
+        }
+      }
+    }
+    &.notice--orange {
+      background: #ffeadb;
+      border: solid 3px #ed9523;
+      .block-editor-rich-text__editable {
+        position: relative;
+        &:focus {
+          &:after {
+            border-color: #ed9523;
+          }
+        }
+      }
+    }
+  }
+
+  &--alert {
+
+    .alert-link {
+      a {
+        color: black;
+        cursor: text;
+      }
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .block-editor-rich-text__editable {
+      position: relative;
+      &:focus {
+        &:after {
+          content: '';
+          width: calc(100% + 1rem);
+          height: calc(100% + 1rem);
+          position: absolute;
+          left: -0.5rem;
+          top: -0.5rem;
+          border: dashed 1px black;
+          pointer-events: none;
+        }
+      }
+    }
+
+    &.alert--red {
+      background: #aa0000;
+      color: white;
+      a {
+        color: white !important;
+        text-decoration-color: white;
+      }
+    }
+    &.alert--green {
+      background: #5fb443;
+    }
+    &.alert--blue {
+      background: #50c4e5;
+    }
+    &.alert--gold {
+      background: #daaa00;
+    }
+    &.alert--orange {
+      background: #ff9b1a;
+    }
+  }
+}

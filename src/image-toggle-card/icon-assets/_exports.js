@@ -46,6 +46,8 @@ let purdueRss =
 let sidebarCta =
   '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 97.47"><defs></defs><g id="Arrow-right" class="cls-1"><g class="cls-1"><path class="cls-2" d="M47.47,2.84a5.34,5.34,0,0,1,7.57,0L98.43,46.21a5.34,5.34,0,0,1,0,7.56L55,97.16a5.34,5.34,0,0,1-7.57,0l-4.95-5a5.35,5.35,0,0,1,.09-7.65L69.5,58.93H5.36A5.35,5.35,0,0,1,0,53.57V46.43a5.35,5.35,0,0,1,5.36-5.36H69.5L42.61,15.45a5.31,5.31,0,0,1-.09-7.65Z" transform="translate(0 -1.27)"/></g></g></svg>';
 
+let infoBoxHero = '<svg id="beee9f3b-cb8c-4d24-a612-41eb8927e111" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><style>.e149ff59-54ba-4d7a-be69-bfce58ad0af2{fill:#fff;}</style></defs><rect width="100" height="100" rx="8.55"/><g id="b8e37998-d6c2-43d8-bc0b-0305d6f0a794" data-name="Window-maximize"><path class="e149ff59-54ba-4d7a-be69-bfce58ad0af2" d="M93.5037,20.09555v59.8176a8.16129,8.16129,0,0,1-8.15259,8.15259H14.64889A8.16128,8.16128,0,0,1,6.4963,79.91315V20.09555a8.16128,8.16128,0,0,1,8.15259-8.16129H85.35111A8.16129,8.16129,0,0,1,93.5037,20.09555ZM85.35111,39.12407H14.64889V78.88646a1.02669,1.02669,0,0,0,1.02669,1.02669H84.32443a1.02669,1.02669,0,0,0,1.02668-1.02669h0Z"/></g></svg>'
+
 let siteHero =
   '<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 87.5"><defs></defs><g id="Window-maximize" class="cls-1"><g class="cls-1"><path class="color-d9ab28" d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z" transform="translate(0 -7.24)"/></g></g></svg>';
 
@@ -68,6 +70,7 @@ export {
   siteHero,
   ctaHero,
   titleHero,
+  infoBoxHero,
   list,
   sidebarCta,
   anchorLinkNavigation,
