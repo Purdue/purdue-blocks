@@ -4,7 +4,7 @@
  * CSS for both Frontend+Backend.
  */
 
- .pu-feature-story {
+.pu-feature-story {
   background-color:$white;
   h2,.featured-story-header {
     font-weight:600;
@@ -125,7 +125,7 @@
       position: relative;
       display: flex;
       align-items: center;
-      z-index: 2;
+      z-index: 6;
       padding: 10.375rem $side-padding-desktop !important;
       @include touch {
         order: 2;
@@ -177,6 +177,7 @@
         p{
           line-height:1.875rem;
           padding:0;
+          color:$black;
         }
       }
     }
@@ -263,12 +264,117 @@
     letter-spacing:0.9px;
     min-width: #{"min(14.375rem,100%)"};
     text-align:center;
+    display:inline-block;
     &:hover {
       cursor: pointer;
       background: $white;
+      color: $aged-gold;
     }
     @include touch{
       margin-top:1.375rem;
+    }
+    &.pu-feature-story__button--gold{
+      color: $black;
+      border:2px solid $aged-gold;
+      background:$boiler-gold;
+      &:hover {
+        background: $white;
+        color: $black;
+      }
+    }
+    &.pu-feature-story__button--second{
+      color: $black;
+      border:2px solid $aged-gold;
+      background:$white;
+      &:hover {
+        background: $boiler-gold;
+        color: $black;
+      }
+    }
+  }
+  &__border {
+    position:absolute;
+    height:calc(100% - 150px);
+    width:1521px;
+    margin: 75px calc((100% - 1521px)/2);
+    border: 5px solid $black;
+    z-index:5;
+    @media (max-width: 1580px){
+      width: calc(50% - 128px);
+      height:calc(100% - 128px);
+      right: 0;
+      margin: 64px;
+    }
+    @media (max-width: 767px){
+      width: calc(100% - 60px);
+      height: 212px;
+      margin: 30px;
+    }
+    &.pu-feature-story__border--gold{
+      border: 5px solid $rush-gold;
+    }
+  }
+  &__button-container {
+    display:inline-block;
+    min-width: #{"min(14.375rem,100%)"};
+    .pu-feature-story__button{
+      display:block;
+    }
+  }
+  &.pu-feature-story__black{
+    background-color:$black;
+    color:$white;
+    h2,.featured-story-header {
+      color:$boiler-gold !important;
+    }
+    .hero {
+      display: flex;
+      position: relative;
+      color:$black;
+      font-size:1.125rem;
+      font-family: $acumin-pro;
+      @include touch {
+        flex-direction: column;
+        flex-wrap: nowrap;
+      }
+      .pu-feature-story__border{
+        border: 5px solid $white;
+        &.pu-feature-story__border--gold{
+          border: 5px solid $boiler-gold;
+        }
+      }
+      .hero-body {
+        .content {
+          &.header-color-white{
+            h1,h2,h3,h4,h5,h6{
+              color:$white !important;
+              padding:0;
+            }
+          }
+          p{
+            color:$white;
+          }
+          .pu-feature-story__button{
+            color: $black;
+            border:2px solid $aged-gold;
+            background:$boiler-gold;
+            &:hover {
+              background: $white;
+              color: $black;
+            }
+            &.pu-feature-story__button--second{
+              color: $white;
+              border:2px solid $boiler-gold;
+              background:$black;
+              &:hover {
+                background: $white;
+                color: $black;
+              }
+            }
+          }
+
+        }
+      }
     }
   }
 }
