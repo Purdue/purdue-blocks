@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.19.1] 2021-6-22
+#### Updated
+  - Updated quote block: Remove remove button when there is only one quote.
+
 ### [1.19.0] 2021-6-21
 #### Minor Version Update
   - Added Columns Row block
