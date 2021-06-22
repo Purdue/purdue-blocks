@@ -247,7 +247,9 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                       >                                     
                       </Button>:""}
                     </div>):""}
-                    <hr></hr>
+                    {props.attributes.quoteGroup.length>1?
+                    <hr></hr>:""}
+                    {props.attributes.quoteGroup.length>1?
                     <PanelRow>
                       <Button
                         className={ 'remove-image-button remove-quote' }
@@ -255,7 +257,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                       >
                         Remove this Quote
                       </Button>
-                    </PanelRow>
+                    </PanelRow>:""}
                 </PanelBody>
       } );
 
