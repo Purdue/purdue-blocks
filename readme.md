@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.19.2] 2021-6-24
+#### Updated
+  - Updated Custom side menu block: adjust the height of the gray bar when there is no to top button.
+
 ### [1.19.1] 2021-6-22
 #### Updated
   - Updated quote block: Remove remove button when there is only one quote.
