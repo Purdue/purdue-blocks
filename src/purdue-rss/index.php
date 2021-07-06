@@ -28,7 +28,7 @@ add_action( 'rest_api_init', function () {
 } );
 function feed_url_endpoint($data){
 
-    $dataUrl = $request->get_param( 'url' );
+    $dataUrl = $data->get_param( 'url' );
     $results=[];
     $invalidurl = false;
     if(@simplexml_load_file($dataUrl)){
