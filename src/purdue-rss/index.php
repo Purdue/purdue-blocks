@@ -15,7 +15,10 @@ add_action( 'rest_api_init', function () {
     register_rest_route( $route_settings['path'], $route_settings['name'], array(
         'methods' => 'GET',
         'args' => array(
-            'url'
+            'url' => array(
+                    'required' => false,
+                    'type'     => 'string',
+            ),
         ),				
         'callback' => 'feed_url_endpoint',
         'permission_callback' => function () {
@@ -25,10 +28,11 @@ add_action( 'rest_api_init', function () {
 } );
 function feed_url_endpoint($data){
 
+    $dataUrl = $request->get_param( 'url' );
     $results=[];
     $invalidurl = false;
-    if(@simplexml_load_file($data['url'])){
-        $rss = simplexml_load_file($data['url']);
+    if(@simplexml_load_file($dataUrl)){
+        $rss = simplexml_load_file($dataUrl);
     }else{
         $invalidurl = true;
         $results[error]="Invalid RSS feed URL.";
