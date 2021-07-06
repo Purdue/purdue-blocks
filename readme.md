@@ -5,6 +5,11 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.19.3] 2021-7-6
+#### Fix
+  - Added missing missing TextControl reference
+  - Fixed custom rest api error
+
 ### [1.19.2] 2021-6-24
 #### Updated
   - Updated Custom side menu block: adjust the height of the gray bar when there is no to top button.
