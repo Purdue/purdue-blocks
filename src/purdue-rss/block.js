@@ -89,7 +89,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
   // Block description in side panel
   description: __(
-    'Display entries from RSS feed.'
+    'Display entries from RSS feed. Entries will not update automatically. Please use "Purdue News" block instead.' 
   ),
 
   edit: ( props ) => {
