@@ -1,0 +1,104 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .pu-blocks-tabs{
+   &__headers{
+    display:flex;
+    flex-direction:row;
+   }
+   &__header{
+      flex:1;
+      display:block;
+      height:auto;
+      text-align:center;
+      font-family:$united-sans-condensed;
+      font-size: 2.2rem;
+      border-radius: 1rem 1rem 0 0;
+      background:$black;
+      color:$boiler-gold;
+      padding:1.25rem;
+      margin-bottom:0 !important;
+      &:hover{
+        color:$white;
+      }
+      &:not(:first-child){
+        margin-left:7px;
+      }
+      &.active{
+        background:$boiler-gold;
+        color:$black;
+      }
+      @include mobile{
+        display:none;
+      }
+      &.pu-blocks-tabs__header-medium{
+        font-size: 1.8rem;
+      }
+      &.pu-blocks-tabs__header-small{
+        font-size: 1.5rem;
+      }
+      &-mobile{
+        display:none;
+        @include mobile{
+          display:flex;
+          flex-direction: row;
+          justify-content: space-between;
+          background:$black;
+          color:$boiler-gold;
+          font-family:$united-sans-condensed;
+          font-size:2.2rem;
+          padding:1.25rem;
+          width:100%;
+          text-align:left;
+          height:auto;
+          &:after{
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            content: "\f067";
+            font-size:1rem;
+            margin-right:0.5rem;
+          }
+          &:not(:last-child){
+            border-bottom:1px solid $white;
+          }
+          &:hover{
+            color:$white;
+          }
+          &.active{
+            border-bottom:none;
+            &:after{
+              font-family: "Font Awesome 5 Free"; 
+              font-weight: 900; 
+              content: "\f068";
+              font-size:1rem;
+              margin-right:0.5rem;
+            }
+          }
+          &.pu-blocks-tabs__header-medium{
+            font-size: 1.8rem;
+          }
+          &.pu-blocks-tabs__header-small{
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+    &__panel{
+      box-shadow: $box-shadow;
+      display:none;
+      &.active{
+        display:block;
+      }
+      @include mobile{
+        border:1px solid $black;
+      }
+    }
+    &.has-padding{
+     .pu-blocks-tabs__panel{
+       padding: 1rem 1.25rem;
+     }
+    }
+ }

@@ -1,0 +1,31 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.pu-blocks-editor-tabs{
+  margin-top:2rem;
+  margin-bottom:2rem;
+  &>.block-editor-inner-blocks{
+    padding:0;
+  }
+  .pu-blocks-tabs__headers{
+    button{
+      flex:1;
+      padding:0;
+      &:not(:first-child){
+        margin-left:7px;
+      }
+      .pu-blocks-tabs__header{
+        padding:1.25rem;
+      }
+    }
+  }
+  .pu-blocks-tabs__panel{
+    &>.block-editor-inner-blocks{
+      padding:0.75rem;
+    }
+  }
+}

@@ -11,5 +11,5 @@ import "./video-embed/frontend.js"
 import "./title-hero/frontend.js"
 import "./purdue-quote/frontend.js"
 import "./profile-gallery/frontend.js"
-
+import "./purdue-tabs/frontend.js"
 
