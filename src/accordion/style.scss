@@ -17,6 +17,9 @@
     font-weight:700;
     line-height:1.875rem;
     position:relative;
+    span{
+      pointer-events: none;
+    }
     &:after{
       font-family: "Font Awesome 5 Free"; 
       content: "\f078";

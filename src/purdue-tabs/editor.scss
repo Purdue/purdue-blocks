@@ -20,12 +20,18 @@
       }
       .pu-blocks-tabs__header{
         padding:1.25rem;
+        @include mobile{
+          display:block;
+        }
       }
     }
   }
   .pu-blocks-tabs__panel{
     &>.block-editor-inner-blocks{
       padding:0.75rem;
+    }
+    &.active{
+      display:block;
     }
   }
 }

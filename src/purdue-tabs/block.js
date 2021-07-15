@@ -112,7 +112,7 @@ registerBlockType("purdue-blocks/tabs", {
           </PanelRow>
           <PanelRow>
               <CheckboxControl
-                label="Add paddings to the panels?"
+                label="Add paddings to the panels on desktop?"
                 checked={ props.attributes.addPadding }
                 onChange={ () =>
                   props.setAttributes( { addPadding: ! props.attributes.addPadding } )

@@ -67,7 +67,7 @@
           &:hover{
             color:$white;
           }
-          &.active{
+          &.mobile-active{
             border-bottom:none;
             &:after{
               font-family: "Font Awesome 5 Free"; 
@@ -87,18 +87,256 @@
       }
     }
     &__panel{
-      box-shadow: $box-shadow;
       display:none;
+      height:0;
+      opacity: 0;
       &.active{
-        display:block;
+        @include tablet{
+          display:block;
+          height:auto;
+          opacity: 1;
+          animation: fadeIn 1s;
+        }
+      }
+      &.mobile-active{
+        @include mobile{
+          display:block;
+          height:auto;
+          opacity: 1;
+          animation: fadeIn 1s;
+        }
       }
       @include mobile{
         border:1px solid $black;
+        padding:0.75rem;
       }
     }
     &.has-padding{
      .pu-blocks-tabs__panel{
-       padding: 1rem 1.25rem;
+       @include tablet{
+        padding: 1rem 1.25rem;
+        box-shadow: $box-shadow;
+       }       
      }
     }
+ }
+ //three header table style
+ .three-header-table{
+   @include mobile{
+     display:none;
+   }
+   border-top:solid 2px $white;
+   thead{
+     tr{
+      border-left:solid 1px $boiler-gold !important;
+      border-right:solid 1px $boiler-gold !important;
+     }
+     td,th{
+      background-color:$boiler-gold;
+      color:$black;
+      font-family:$united-sans-condensed;
+      font-size:1.5rem;
+      text-transform:uppercase;
+      padding:0.75rem!important;
+      border-bottom:none !important;
+      position:relative;
+     }
+   }
+  tbody{
+    tr{
+      border-left:solid 1px $steel-gray;
+      border-right:solid 1px $steel-gray;
+      display:none;
+      &.show{
+        display:table-row !important;
+      }
+      th{
+        font-family:$acumin-pro;
+        font-weight:700;
+        font-size:1.125rem;
+        padding:0.75rem;
+        border-bottom:none !important;
+      }
+      td{
+        font-family:$acumin-pro;
+        font-weight:400;
+        font-size:1.125rem;
+        padding:0.75rem;
+        border-bottom:none !important;
+      }
+      &:last-child{
+        border-bottom:solid 1px $steel-gray;
+      }
+      &.spacer{
+        border-left:none;
+        border-right:none;
+        border-top:solid 1px $steel-gray;
+        td{
+          padding:0;
+          height:0.625rem;
+        }
+
+      }
+    }
+    tr.section-header-row{
+      display:table-row;
+      th{
+        background-color:$steel-gray;
+        color:$white;
+        font-family:$united-sans-condensed;
+        font-size:1.875rem;
+        text-transform:uppercase;
+        font-weight:400;
+        border-top: solid 2px $white;
+        line-height:1.3;
+        &:after{
+          font-family: "Font Awesome 5 Free"; 
+          font-weight: 900; 
+          content: "\f13a";
+          margin-right:0.5rem;
+          float:right;
+        }
+        &.is-open{
+          &:after{
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            content: "\f139";
+            margin-right:0.5rem;
+            float:right;
+          }
+        }
+      }
+    }
+  }
+   &-striped{
+     tbody{
+      tr{
+        &:nth-child(odd) {
+          background-color: $secondary-background-gray;
+        }
+      }
+     }
+   }
+ }
+ .three-header-table-mobile-section{
+   display:none;
+   @include mobile{
+     display: block;
+   }
+   &__button{
+    background-color:$steel-gray;
+    color:$white;
+    font-family:$united-sans-condensed;
+    font-size:1.875rem;
+    text-transform:uppercase;
+    font-weight:400;
+    border: none;
+    width:100%;
+    line-height:1.3;
+    text-align:left;
+    padding:0.75rem;
+    &:after{
+      font-family: "Font Awesome 5 Free"; 
+      font-weight: 900; 
+      content: "\f13a";
+      margin-right:0.5rem;
+      float:right;
+    }
+    &.is-open{
+      &:after{
+        font-family: "Font Awesome 5 Free"; 
+        font-weight: 900; 
+        content: "\f139";
+        margin-right:0.5rem;
+        float:right;
+      }
+    }    
+   }
+   &__content{
+     display:none;
+     &.show{
+        display:block;
+     }
+    .three-header-table-mobile-table{
+      border-collapse: collapse;
+      border:solid 1px $boiler-gold;
+      margin-bottom:2px !important;
+      &:first-child{
+        margin-top:2px !important;
+      }
+      tr{
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+      }
+      tbody{
+        display:none;
+        &.show{
+           display:table-row-group;
+        }
+        tr{
+          padding:0 0.75rem;
+          th{
+            position:relative;
+            border-bottom:none !important;
+            &:after{
+              content: "";
+              border-bottom: solid #6f727b;
+              border-width: 0 0 0.5px;
+              position: absolute;
+              width: 90%;
+              left: 50%;
+              bottom: 0;
+              padding: 1rem;
+              transform: translateX(-50%);
+            } 
+          }
+          &:first-child{
+            padding-top:0.75rem;
+          }
+          &:last-child{
+            padding-bottom:0.75rem;
+          }
+          &:nth-child(even) {
+            th,td{
+              background-color: $secondary-background-gray;
+            }
+
+          }
+
+        }
+       }
+       thead{
+        th{
+          background-color:$boiler-gold;
+          color:$black;
+          font-family:$united-sans-condensed;
+          font-size:1.5rem;
+          text-transform:uppercase;
+          padding:0.75rem!important;
+          border-bottom:none !important;
+          position:relative;
+          &:after{
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            content: "\f078";
+            margin-right:0.5rem;
+            float:right;
+          }
+          &.is-open{
+            &:after{
+              font-family: "Font Awesome 5 Free"; 
+              font-weight: 900; 
+              content: "\f077";
+              margin-right:0.5rem;
+              float:right;
+            }
+          }
+        }
+       }
+    }
+   }
+   &:not(last-child){
+     margin-bottom:0.625rem;
+   }
  }
