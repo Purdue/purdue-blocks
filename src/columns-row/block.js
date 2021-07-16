@@ -19,9 +19,10 @@ const {
   PanelRow,
   RadioControl,
   SelectControl,
+  Button,
   CheckboxControl
 } = wp.components;
-const { InnerBlocks, InspectorControls, RichText } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload, RichText } = wp.blockEditor;
 import { createBlock } from "@wordpress/blocks";
 const { select } = wp.data
 
@@ -72,8 +73,10 @@ registerBlockType( 'purdue-blocks/columns-row', {
     numColumns: { type: "number", default: 1 },
     dividers: { type: "boolean", default: false },
     addBackground: { type: "boolean", default: false },
-    backgroundImageUrl: { type: 'string', default: '' },
-    backgroundOverlay: { type: 'string', default: '' },
+    backgroundImageType: { type: 'string', default: 'fabric' },
+    backgroundImageUrl: { type: 'string', default: file_data.fabric_url },
+    backgroundImageAlt: { type: 'string', default: '' },
+    backgroundOverlay: { type: 'string', default: 'has-overlay-black' },
   },
   supports: {
     className: false,
@@ -99,6 +102,14 @@ registerBlockType( 'purdue-blocks/columns-row', {
       }
     }
 
+    if(props.attributes.backgroundImageType === 'fabric') {
+      props.setAttributes( { backgroundImageUrl: file_data.fabric_url } )
+      props.setAttributes( { backgroundImageAlt: '' } )
+    }else if(props.attributes.backgroundImageType === 'concrete'){
+      props.setAttributes( { backgroundImageUrl: file_data.concrete_url } )
+      props.setAttributes( { backgroundImageAlt: '' } )
+    }
+
     return [
       <InspectorControls>
           <PanelBody>
@@ -121,9 +132,93 @@ registerBlockType( 'purdue-blocks/columns-row', {
               <CheckboxControl
                 label="Add Background Image"
                 checked={props.attributes.addBackground}
-                onChange={(addBackground) => props.setAttributes({addBackground})}
+                onChange={(addBackground) => {
+                  props.setAttributes({addBackground})
+                  props.setAttributes( { bgColor: "" } )
+                }}
               />
             </PanelRow>
+            {
+              props.attributes.addBackground ? <PanelRow>
+              <RadioControl
+                label="Select Background Image"
+                selected={ props.attributes.backgroundImageType }
+                options={
+                  [
+                    { value: 'fabric', label: 'Fabric' },
+                    { value: 'concrete', label: 'Concrete' },
+                    { value: 'own', label: 'Choose Your Own Image' },
+                  ]
+                }
+                onChange={ ( backgroundImageType ) => {
+                  props.setAttributes( { backgroundImageType } )
+                } }
+              />
+            </PanelRow>:""
+            }
+        {props.attributes.addBackground && props.attributes.backgroundImageType==="own"?
+          <PanelRow>
+            <MediaUploadCheck>
+              <MediaUpload
+                onSelect={ ( img ) => {
+                  props.setAttributes( {
+                    backgroundImageUrl: img.url,
+                    backgroundImageAlt:
+                        props.attributes.backgroundImageAlt !== '' ?
+                          props.attributes.backgroundImageAlt :
+                          img.alt,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return props.attributes.backgroundImageUrl !== '' ? (
+                    <div className={ 'purdue-blocks-editor-news__preview' }>
+                      <Button
+                        className={ 'remove-image-button has-margin-left' }
+                        onClick={ open }
+                      >
+                        Select a New Image
+                      </Button>
+                      <p className={ 'has-margin-bottom' }>
+                        For best results, use an image with no people or text.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className={ 'purdue-blocks-editor-news__container' }>
+
+                      <Button
+                        className={ 'remove-image-button has-margin-left' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                      <p className={ 'has-margin-bottom' }>
+                        <i>For best results, use an image with no people or text.</i>
+                      </p>
+                    </div>
+                  );
+                } }
+              />
+            </MediaUploadCheck>
+          </PanelRow>:""}
+            {
+              props.attributes.addBackground && props.attributes.backgroundImageType!== "concrete"? <PanelRow>
+              <SelectControl
+                label="Image Overlay Color"
+                value={ props.attributes.backgroundOverlay }
+                options={
+                  [
+                    { value: 'has-overlay-black', label: 'Black' },
+                    { value: 'has-overlay-white', label: 'White' },
+                    { value: 'has-overlay-steel', label: 'Steel Gray' },
+                    { value: 'has-overlay-gold', label: 'Boilermaker Gold' },
+                  ]
+                }
+                onChange={ ( backgroundOverlay ) => {
+                  props.setAttributes( { backgroundOverlay } )
+                } }
+              />
+            </PanelRow>:""
+            }
             {
               !props.attributes.addBackground ? <PanelRow>
               <SelectControl
@@ -238,34 +333,44 @@ registerBlockType( 'purdue-blocks/columns-row', {
             </PanelRow>
           </PanelBody>
         </InspectorControls>,
-
-        <div className={`bulma-blocks-editor-columns`}>
-          <div className="title">
-            <RichText
-              tagname={props.setAttributes.titleLevel}
-              value={props.attributes.title}
-              className={`title title--${props.attributes.headerColor}`}
-              onChange={(text) => {
-                props.setAttributes({ title: text });
-              }}
-              placeholder="Add Heading"
-              keepPlaceholderOnFocus={true}
-              allowedFormats={[]}
-            ></RichText>
+        <div className={`pu-columns-row pu-columns-row-editor section
+        ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
+        ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
+        ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
+        `}
+        style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
+        aria-label={ props.attributes.backgroundImageAlt }
+        >
+          <div className={'container'}>
+           <div className={`bulma-blocks-editor-columns`}>
+            <div className="title">
+              <RichText
+                tagname={props.setAttributes.titleLevel}
+                value={props.attributes.title}
+                className={`title title--${props.attributes.headerColor}`}
+                onChange={(text) => {
+                  props.setAttributes({ title: text });
+                }}
+                placeholder="Add Heading"
+                keepPlaceholderOnFocus={true}
+                allowedFormats={[]}
+              ></RichText>
+            </div>
+            <div className="content">
+              <RichText
+                tagname="p"
+                value={props.attributes.subText}
+                className={"content"}
+                onChange={(text) => {
+                  props.setAttributes({ subText: text });
+                }}
+                placeholder="Add Sub-Text"
+                allowedFormats={[]}
+              ></RichText>
+            </div>
+            <InnerBlocks templateLock="all" />
           </div>
-          <div className="content">
-            <RichText
-              tagname="p"
-              value={props.attributes.subText}
-              className={"content"}
-              onChange={(text) => {
-                props.setAttributes({ subText: text });
-              }}
-              placeholder="Add Sub-Text"
-              allowedFormats={[]}
-            ></RichText>
-          </div>
-          <InnerBlocks templateLock="all" />
+        </div>
         </div>,
     ]
   },
@@ -283,7 +388,14 @@ registerBlockType( 'purdue-blocks/columns-row', {
    */
   save: ( props ) => {
     const returned = (
-      <div className={`pu-columns-row section${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}`}>
+      <div className={`pu-columns-row section
+                      ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
+                      ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
+                      ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
+                      `}
+            style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
+            aria-label={ props.attributes.backgroundImageAlt }
+            >
         <div className={'container'}>
 
           {(props.attributes.title !== '' && props.attributes.title) && (props.attributes.subText !== '' &&  props.attributes.subText) ? (

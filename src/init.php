@@ -73,15 +73,14 @@ function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 	);
 
 	// WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
-	// wp_localize_script(
-	// 	'purdue_blocks-cgb-block-js',
-	// 	'cgbGlobal', // Array containing dynamic data for a JS Global.
-	// 	[
-	// 		'pluginDirPath' => plugin_dir_path( __DIR__ ),
-	// 		'pluginDirUrl'  => plugin_dir_url( __DIR__ ),
-	// 		// Add more data here that you want to access from `cgbGlobal` object.
-	// 	]
-	// );
+		wp_localize_script(
+			'purdue_blocks-cgb-block-js',
+			'file_data',
+			array(
+				'fabric_url' => plugins_url( 'img/fabric.png', __FILE__ ),
+				'concrete_url' => plugins_url( 'img/concrete.png', __FILE__ )
+			)
+		);
 
 	/**
 	 * Register Gutenberg block on server-side.

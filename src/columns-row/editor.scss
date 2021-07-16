@@ -24,3 +24,22 @@
         }
       }
  }
+ .has-margin-left{
+   margin-left:1.5rem;
+ }
+ .has-margin-bottom{
+  margin-bottom:1.5rem;
+}
+.pu-columns-row-editor{
+  &.has-background-black, &.has-background-black-ter, &.has-overlay-black, &.has-overlay-steel  {
+    color: $white;
+    .block-editor-button-block-appender {
+      box-shadow: inset 0 0 0 1px $white;
+      color:$white;
+    }
+  }
+  .bulma-blocks-editor-columns{
+    color:inherit;
+  }
+
+}

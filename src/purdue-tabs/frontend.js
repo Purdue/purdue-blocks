@@ -70,14 +70,24 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
         let topHeaders=[]
         table.querySelector("thead")?topHeaders=[...table.querySelectorAll("thead tr th")]:""
         let sectionHeaderRows=[]
-        let sectionRows=[]
         if(table.querySelector("tbody")){
             const rows= [...table.querySelectorAll("tbody tr")]
+            let contentRow = []
             rows.forEach((tr,index)=>{
                 if(tr.classList.contains("section-header-row")){
                     sectionHeaderRows.push({sectionHeaderRow:tr, index:index})
+                }else if(!tr.classList.contains("spacer")){
+                    contentRow.push(tr)
                 }
             })
+            const initialHeader=sectionHeaderRows[0].sectionHeaderRow.querySelector("th")
+            initialHeader.classList.add("is-open")
+            initialHeader.setAttribute("aria-expanded","true")
+            console.log(sectionHeaderRows[0])
+            for(let i=1; i<sectionHeaderRows[1].index; i++){
+                rows[i].classList.add("show")
+            }
+
             sectionHeaderRows.forEach((row, index)=>{
                 const header = row.sectionHeaderRow.querySelector("th")
                header.addEventListener("click", ()=>{
@@ -121,7 +131,7 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
                 newSectioncontent.classList.add('three-header-table-mobile-section__content')
                 newSectioncontent.id=`section-${id}`
                 newSection.appendChild(newSectioncontent)
-                const rowTest=[...rows[1].querySelectorAll("td")]
+                const rowTest=[...contentRow[0].querySelectorAll("td")]
 
                 for (let i=0;i<rowTest.length;i++){
                     let newt = document.createElement("table"); 
