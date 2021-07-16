@@ -71,6 +71,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
     subTextAlign: { type: 'string', default: 'left' },
     numColumns: { type: "number", default: 1 },
     dividers: { type: "boolean", default: false },
+    addBackground: { type: "boolean", default: false },
+    backgroundImageUrl: { type: 'string', default: '' },
+    backgroundOverlay: { type: 'string', default: '' },
   },
   supports: {
     className: false,
@@ -115,6 +118,14 @@ registerBlockType( 'purdue-blocks/columns-row', {
               />
             </PanelRow>
             <PanelRow>
+              <CheckboxControl
+                label="Add Background Image"
+                checked={props.attributes.addBackground}
+                onChange={(addBackground) => props.setAttributes({addBackground})}
+              />
+            </PanelRow>
+            {
+              !props.attributes.addBackground ? <PanelRow>
               <SelectControl
                 label="Background Color"
                 value={ props.attributes.bgColor }
@@ -132,7 +143,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   props.setAttributes( { bgColor } )
                 } }
               />
-            </PanelRow>
+            </PanelRow>:""
+            }
+ 
           </PanelBody>
           <PanelBody>
             <PanelRow>
