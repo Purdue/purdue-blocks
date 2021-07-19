@@ -38,6 +38,19 @@
       left: 0;
     }
   } 
+  &.has-overlay-concrete {
+    color:$black;
+    &:after{
+      content: "";
+      background: $white;
+      opacity: 0.65;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  } 
   &.has-overlay-steel {
     color:$white;
     &:after{

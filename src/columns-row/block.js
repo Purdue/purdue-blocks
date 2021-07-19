@@ -337,6 +337,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
         ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
         ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
+        ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
         `}
         style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
         aria-label={ props.attributes.backgroundImageAlt }
@@ -392,6 +393,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
                       ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
+                      ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
                       `}
             style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
             aria-label={ props.attributes.backgroundImageAlt }
