@@ -5,6 +5,12 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+
+### [1.20.0] 2021-7-20
+#### Minor Version Update
+  - Added Tbs block
+  - Added background image options to Columns Row block
+
 ### [1.19.3] 2021-7-6
 #### Fix
   - Added missing missing TextControl reference
