@@ -39,6 +39,8 @@ import "./purdue-quote/block.js"
 import "./alert-banner/block.js"
 import "./mini-hero/block.js"
 import "./profile-gallery/block.js"
+import "./purdue-tabs/block.js"
+import "./purdue-tabs/purdue-tab/block.js"
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";
