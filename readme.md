@@ -6,6 +6,14 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.21.0] 2021-8-11
+#### Minor Version Update
+  - Added Video Hero Block
+  - Added Shape Seperator Block
+#### Fixed
+  - Row of columns block number of columns were resetting to one on page reload
+
+
 ### [1.20.0] 2021-7-20
 #### Minor Version Update
   - Added Tbs block
