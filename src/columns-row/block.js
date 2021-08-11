@@ -72,6 +72,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
     subTextAlign: { type: 'string', default: 'left' },
     numColumns: { type: "number", default: 1 },
     dividers: { type: "boolean", default: false },
+    centerColumns: { type: "boolean", default: false },
     addBackground: { type: "boolean", default: false },
     backgroundImageType: { type: 'string', default: 'fabric' },
     backgroundImageUrl: { type: 'string', default: file_data.fabric_url },
@@ -228,9 +229,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   [
                     { value: '', label: 'None' },
                     { value: 'has-background-black', label: 'Black' },
-                    { value: 'has-background-light-gray', label: 'Light Digital Gray' },
+                    { value: 'has-background-light-gray', label: 'Lightest Digital Gray' },
                     { value: 'has-background-grey-lighter', label: 'Medium Digital Gray' },
-                    { value: 'has-background-black-ter', label: 'Steel Gray' },
+                    { value: 'has-background-black-ter', label: 'Steel(Dark) Gray' },
                     { value: 'has-background-boiler-gold', label: 'Boilermaker Gold' },
                   ]
                 }
@@ -246,7 +247,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             <PanelRow>
             <SelectControl
                 label="Number of Columns"
-                value={ props.attributes.columnsNumber }
+                value={ props.attributes.numColumns }
                 options={
                   [
                     { value: 1, label: 'One Column' },
@@ -255,7 +256,8 @@ registerBlockType( 'purdue-blocks/columns-row', {
                     { value: 4, label: 'Four Columns' },
                   ]
                 }
-                onChange={ ( numColumns ) => {
+                onChange={ ( val ) => {
+                  let numColumns = parseInt(val)
                   updateColumns(props, props.attributes.numColumns, numColumns);
                   props.setAttributes({ numColumns });
                 } }
@@ -266,6 +268,13 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 label="Include dividers between columns?"
                 checked={props.attributes.dividers}
                 onChange={(checked) => props.setAttributes({ dividers: checked })}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Center the columns?"
+                checked={props.attributes.centerColumns}
+                onChange={(checked) => props.setAttributes({ centerColumns: checked })}
               />
             </PanelRow>
           </PanelBody>
@@ -421,7 +430,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             </div>
           ) : ''}
 
-          <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}`}>
+          <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}${props.attributes.centerColumns ? " is-centered" : ""}`}>
             <InnerBlocks.Content />
           </div>
         </div>
