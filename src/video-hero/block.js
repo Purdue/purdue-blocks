@@ -65,6 +65,7 @@ registerBlockType("purdue-blocks/video-hero", {
     buttonURL: { type: 'string', default: "" },
     external: { type: 'boolean', default: false },
     videoUrl: { type: "string", default: "" },
+    posterUrl: { type: "string", default: "" },
   },
 
   supports: {
@@ -85,6 +86,36 @@ registerBlockType("purdue-blocks/video-hero", {
     return [
       <InspectorControls>
         <PanelBody>
+
+          <PanelRow>
+            <p><strong>Select an image to replace the video as the hero on mobile devices.</strong></p>
+          </PanelRow>
+          <PanelRow>
+            <MediaUploadCheck>
+              <MediaUpload 
+                allowedTypes={['image']}
+                onSelect={(media) => {
+                  props.setAttributes({ posterUrl: media.url });
+                }}
+                render={({ open }) => {
+                  return (
+                    <div>
+                      <div class="buttons-container">
+                        <button onClick={open}>
+                          {props.attributes.posterUrl !== ""
+                            ? "Select a new image"
+                            : "Select an image"}
+                        </button>
+                      </div>
+                      {props.attributes.posterUrl !== "" ? (
+                        <img src={props.attributes.posterUrl}></img>
+                      ) : ''}
+                    </div>
+                  )
+                }}
+              />
+            </MediaUploadCheck>
+          </PanelRow>
 
           <PanelRow>
             <TextControl
@@ -110,7 +141,7 @@ registerBlockType("purdue-blocks/video-hero", {
       <div className={`video-hero-editor`}>
         <MediaUploadCheck>
           <MediaUpload
-            allowedTypes={ ['video/mp4'] }
+            allowedTypes={ ['video'] }
             onSelect={(media) => {
               props.setAttributes({ videoUrl: media.url });
             }}
@@ -174,10 +205,11 @@ registerBlockType("purdue-blocks/video-hero", {
    */
   save: (props) => {
     const returned = (
-      <div className={`video-hero`}>
-        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster="https://www.purdue.edu/hhs/images/home/videos/mentors-placeholder.jpg">
+      <div className={`video-hero video-hero--background-image`} style={{backgroundImage: `url(${props.attributes.posterUrl})`}}>
+        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''}>
           <source src={props.attributes.videoUrl} type="video/mp4" />
         </video>
+
 
         <div className="video-hero--overlay"></div>
 
