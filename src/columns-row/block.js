@@ -72,6 +72,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
     subTextAlign: { type: 'string', default: 'left' },
     numColumns: { type: "number", default: 1 },
     dividers: { type: "boolean", default: false },
+    centerColumns: { type: "boolean", default: false },
     addBackground: { type: "boolean", default: false },
     backgroundImageType: { type: 'string', default: 'fabric' },
     backgroundImageUrl: { type: 'string', default: file_data.fabric_url },
@@ -269,6 +270,13 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 onChange={(checked) => props.setAttributes({ dividers: checked })}
               />
             </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Center the columns?"
+                checked={props.attributes.centerColumns}
+                onChange={(checked) => props.setAttributes({ centerColumns: checked })}
+              />
+            </PanelRow>
           </PanelBody>
           <PanelBody>
             <PanelRow>
@@ -422,7 +430,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             </div>
           ) : ''}
 
-          <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}`}>
+          <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}${props.attributes.centerColumns ? " is-centered" : ""}`}>
             <InnerBlocks.Content />
           </div>
         </div>
