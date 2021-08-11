@@ -1,0 +1,105 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.video-hero-editor{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30rem;
+  background-color: black;
+
+  &>div {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &--video {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    pointer-events: none;
+  }
+
+  &--overlay {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.5);
+  }
+
+  .buttons-container{
+    position:absolute;
+    bottom:0;
+    left: 0;
+    z-index:10;
+    button{
+      padding:0.5rem;
+      background: $aged-gold;
+      color: $white;
+      border: 2px solid $aged-gold;
+      border-radius: 2px;
+      &:hover{
+        background:$white;
+        color:$aged-gold;
+        cursor: pointer;
+      }
+      &.remove-button{
+        margin-left:1rem;
+      }
+    }
+  }
+
+  &--content {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+
+    .title {
+      font-family: 'acumin-pro-extra-condensed';
+      font-size: 3rem;
+      color: white;
+      text-transform: uppercase;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .cta-button {
+      position: relative;
+      background: $boiler-gold;
+      padding: 0.4rem 0.6rem;
+      font-family: United Sans;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: black;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 1px;
+        background: $boiler-gold;
+        height: 3rem;
+        top: calc(100% + 1rem);
+        left: calc(50% - 0.5px);
+      }
+
+    }
+  }
+}
