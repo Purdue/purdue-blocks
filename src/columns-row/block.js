@@ -228,9 +228,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   [
                     { value: '', label: 'None' },
                     { value: 'has-background-black', label: 'Black' },
-                    { value: 'has-background-light-gray', label: 'Light Digital Gray' },
+                    { value: 'has-background-light-gray', label: 'Lightest Digital Gray' },
                     { value: 'has-background-grey-lighter', label: 'Medium Digital Gray' },
-                    { value: 'has-background-black-ter', label: 'Steel Gray' },
+                    { value: 'has-background-black-ter', label: 'Steel(Dark) Gray' },
                     { value: 'has-background-boiler-gold', label: 'Boilermaker Gold' },
                   ]
                 }
@@ -246,7 +246,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             <PanelRow>
             <SelectControl
                 label="Number of Columns"
-                value={ props.attributes.columnsNumber }
+                value={ props.attributes.numColumns }
                 options={
                   [
                     { value: 1, label: 'One Column' },
@@ -255,7 +255,8 @@ registerBlockType( 'purdue-blocks/columns-row', {
                     { value: 4, label: 'Four Columns' },
                   ]
                 }
-                onChange={ ( numColumns ) => {
+                onChange={ ( val ) => {
+                  let numColumns = parseInt(val)
                   updateColumns(props, props.attributes.numColumns, numColumns);
                   props.setAttributes({ numColumns });
                 } }
