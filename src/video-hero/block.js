@@ -143,14 +143,17 @@ registerBlockType("purdue-blocks/video-hero", {
           <MediaUpload
             allowedTypes={ ['video'] }
             onSelect={(media) => {
+              props.setAttributes({ videoUrl: "" });
               props.setAttributes({ videoUrl: media.url });
             }}
             render={({ open }) => {
               return (
                 <div>
-                  <video autobuffer="" autoplay="" className="video-hero-editor--video" loop="true" muted="" playsinline="" poster="https://www.purdue.edu/hhs/images/home/videos/mentors-placeholder.jpg">
-                    <source src={props.attributes.videoUrl} type="video/mp4" />
-                  </video>
+                  {props.attributes.videoUrl !== "" ? (
+                    <video className="video-hero-editor--video" muted="">
+                      <source src={props.attributes.videoUrl} type="video/mp4" />
+                    </video>
+                  ) : ""}
                   <div class="buttons-container">
                     <button onClick={open}>
                       {props.attributes.videoUrl !== ""
@@ -158,7 +161,9 @@ registerBlockType("purdue-blocks/video-hero", {
                         : "Select a video"}
                     </button>
                   </div>
+
                   <div className="video-hero-editor--overlay"></div>
+                  
                   <div className={`video-hero-editor--content`}>
                     <RichText
                       tagname="h1"

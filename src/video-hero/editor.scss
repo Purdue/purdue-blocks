@@ -40,6 +40,33 @@
     background: rgba($color: #000000, $alpha: 0.5);
   }
 
+  .video-hero--control{
+    position:absolute;
+    z-index:10;
+    bottom:3.25rem;
+    right:3.25rem;
+    @include mobile{
+      display:none;
+    }
+    .video-hero--pause-button,.video-hero--play-button{
+      cursor: pointer;
+      background: none;
+      color: $rush-gold;
+      border: 0;
+      padding: 0;
+      display:inline-block;
+      &.hide{
+        display:none;
+      }
+      i,svg{
+        border: 1px solid $white;
+        border-radius: 50%;
+        background-color: $black;
+        font-size:2.5rem;
+      }
+    }
+  }
+
   .buttons-container{
     position:absolute;
     bottom:0;
