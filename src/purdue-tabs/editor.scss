@@ -13,8 +13,8 @@
   }
   .pu-blocks-tabs__headers{
     button{
-      flex:1;
       padding:0;
+      height:100%;
       &:not(:first-child){
         margin-left:7px;
       }
