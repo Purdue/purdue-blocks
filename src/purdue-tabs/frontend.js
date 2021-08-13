@@ -10,32 +10,39 @@ tabGroups.forEach((tabs)=>{
         clHeader.classList.remove("pu-blocks-tabs__header")
         clHeader.classList.add("pu-blocks-tabs__header-mobile")
         tabs.insertBefore(clHeader, panels[index])
-        headers.forEach((header)=>{
-            header.addEventListener('click', ()=>{
-                const panelid=header.getAttribute("aria-control")
-                panels.forEach((panel)=>{
-                    if(panel.id===panelid){
-                        panel.classList.add('active')                 
-                    }else{
-                        panel.classList.remove('active')
-                    }
-                })
-                headers.forEach((h,index)=>{
-                    h.classList.remove('active')
-                    h.setAttribute('aria-selected',"false")
-                })
-                header.classList.add('active')
-                header.setAttribute('aria-selected',"true")
+    })
+    headers.forEach((header)=>{
+        header.addEventListener('click', ()=>{
+            console.log("click")
+            const id=header.id
+            console.log("id")
+            panels.forEach((panel)=>{
+                const label=panel.getAttribute('aria-labelledby')
+                console.log(label)
+                if(label===id){
+                    panel.classList.add('active')   
+                    console.log("the panel")              
+                }else{
+                    panel.classList.remove('active')
+                    console.log("no panel selected")
+                }
             })
+            headers.forEach((h,index)=>{
+                h.classList.remove('active')
+                h.setAttribute('aria-selected',"false")
+            })
+            header.classList.add('active')
+            header.setAttribute('aria-selected',"true")
         })
     })
     let newHeaders=[...tabs.querySelectorAll(".pu-blocks-tabs__header-mobile")]
     newHeaders.forEach((header)=>{
-        header.addEventListener('click', ()=>{
-            console.log(header.classList.contains("mobile-active"))
-            const panelid=header.getAttribute("aria-control")
+        header.addEventListener('click', (e)=>{
+            const id=header.id.substring(header.id.indexOf("-")+1)
+        
             panels.forEach((panel)=>{
-                if(panel.id===panelid){
+                const label=panel.getAttribute('aria-labelledby')
+                if(label===id){
                         panel.classList.contains('mobile-active')?panel.classList.remove('mobile-active'):panel.classList.add('mobile-active')
                                       
                 }else{
@@ -43,11 +50,10 @@ tabGroups.forEach((tabs)=>{
                 }
             })
             newHeaders.forEach((h,index)=>{
-                if(h.getAttribute("aria-control")===panelid){
+                if(h===e.target){
                     if(header.classList.contains("mobile-active")){
                         header.classList.remove('mobile-active')
                         header.setAttribute('aria-selected',"false")
-                        console.log(header.getAttribute('aria-selected'))
                     }else{
                         header.classList.add('mobile-active')
                         header.setAttribute('aria-selected',"true")
@@ -83,7 +89,7 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
             const initialHeader=sectionHeaderRows[0].sectionHeaderRow.querySelector("th")
             initialHeader.classList.add("is-open")
             initialHeader.setAttribute("aria-expanded","true")
-            console.log(sectionHeaderRows[0])
+
             for(let i=1; i<sectionHeaderRows[1].index; i++){
                 rows[i].classList.add("show")
             }
