@@ -16,10 +16,8 @@ tabGroups.forEach((tabs)=>{
             panels.forEach((panel,i)=>{
                 if(index===i){
                     panel.classList.add('active')   
-                    console.log("the panel")              
                 }else{
                     panel.classList.remove('active')
-                    console.log("no panel selected")
                 }
             })
             headers.forEach((h,i)=>{
@@ -177,10 +175,11 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
                                 newtr.appendChild(newth) 
                             }
                             let newtb = document.createElement("td"); 
-                            newtb.innerHTML = [...rows[n].querySelectorAll("td")][i].innerHTML;
-                            newtb.setAttribute('headers', `header-${id}-${i} body-${id}-${i}-${n}`)
-                            newtr.appendChild(newtb) 
-                            
+                            if([...rows[n].querySelectorAll("td")][i]){
+                                newtb.innerHTML = [...rows[n].querySelectorAll("td")][i].innerHTML;
+                                newtb.setAttribute('headers', `header-${id}-${i} body-${id}-${i}-${n}`)
+                            }
+                            newtr.appendChild(newtb)                             
                             newb.appendChild(newtr)
                         }
                     }                  
