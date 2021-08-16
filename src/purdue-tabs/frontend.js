@@ -10,44 +10,43 @@ tabGroups.forEach((tabs)=>{
         clHeader.classList.remove("pu-blocks-tabs__header")
         clHeader.classList.add("pu-blocks-tabs__header-mobile")
         tabs.insertBefore(clHeader, panels[index])
-        headers.forEach((header)=>{
-            header.addEventListener('click', ()=>{
-                const panelid=header.getAttribute("aria-control")
-                panels.forEach((panel)=>{
-                    if(panel.id===panelid){
-                        panel.classList.add('active')                 
-                    }else{
-                        panel.classList.remove('active')
-                    }
-                })
-                headers.forEach((h,index)=>{
+    })
+    headers.forEach((header, index)=>{
+        header.addEventListener('click', ()=>{
+            panels.forEach((panel,i)=>{
+                if(index===i){
+                    panel.classList.add('active')   
+                }else{
+                    panel.classList.remove('active')
+                }
+            })
+            headers.forEach((h,i)=>{
+                if(index===i){
+                    h.classList.add('active')
+                    h.setAttribute('aria-selected',"true")            
+                }else{
                     h.classList.remove('active')
                     h.setAttribute('aria-selected',"false")
-                })
-                header.classList.add('active')
-                header.setAttribute('aria-selected',"true")
+                }
             })
         })
     })
     let newHeaders=[...tabs.querySelectorAll(".pu-blocks-tabs__header-mobile")]
-    newHeaders.forEach((header)=>{
-        header.addEventListener('click', ()=>{
-            console.log(header.classList.contains("mobile-active"))
-            const panelid=header.getAttribute("aria-control")
-            panels.forEach((panel)=>{
-                if(panel.id===panelid){
-                        panel.classList.contains('mobile-active')?panel.classList.remove('mobile-active'):panel.classList.add('mobile-active')
+    newHeaders.forEach((header,index)=>{
+        header.addEventListener('click', (e)=>{      
+            panels.forEach((panel,i)=>{
+                if(index===i){
+                    panel.classList.contains('mobile-active')?panel.classList.remove('mobile-active'):panel.classList.add('mobile-active')
                                       
                 }else{
                     panel.classList.remove('mobile-active')
                 }
             })
-            newHeaders.forEach((h,index)=>{
-                if(h.getAttribute("aria-control")===panelid){
+            newHeaders.forEach((h,i)=>{
+                if(index===i){
                     if(header.classList.contains("mobile-active")){
                         header.classList.remove('mobile-active')
                         header.setAttribute('aria-selected',"false")
-                        console.log(header.getAttribute('aria-selected'))
                     }else{
                         header.classList.add('mobile-active')
                         header.setAttribute('aria-selected',"true")
@@ -83,7 +82,7 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
             const initialHeader=sectionHeaderRows[0].sectionHeaderRow.querySelector("th")
             initialHeader.classList.add("is-open")
             initialHeader.setAttribute("aria-expanded","true")
-            console.log(sectionHeaderRows[0])
+
             for(let i=1; i<sectionHeaderRows[1].index; i++){
                 rows[i].classList.add("show")
             }
@@ -169,17 +168,18 @@ if(threeHeaderTables&&threeHeaderTables.length>0){
                     }else{
                         for(let n=row.index+1; n<rows.length; n++){
                             let newtr = document.createElement("tr"); 
-                            if(rows[1].querySelector("th")){
+                            if(rows[n].querySelector("th")){
                                 let newth = document.createElement("th"); 
                                 newth.innerHTML = rows[n].querySelector("th").innerHTML;
                                 newth.id= `body-${id}-${i}-${n}` 
                                 newtr.appendChild(newth) 
                             }
                             let newtb = document.createElement("td"); 
-                            newtb.innerHTML = [...rows[n].querySelectorAll("td")][i].innerHTML;
-                            newtb.setAttribute('headers', `header-${id}-${i} body-${id}-${i}-${n}`)
-                            newtr.appendChild(newtb) 
-                            
+                            if([...rows[n].querySelectorAll("td")][i]){
+                                newtb.innerHTML = [...rows[n].querySelectorAll("td")][i].innerHTML;
+                                newtb.setAttribute('headers', `header-${id}-${i} body-${id}-${i}-${n}`)
+                            }
+                            newtr.appendChild(newtb)                             
                             newb.appendChild(newtr)
                         }
                     }                  
