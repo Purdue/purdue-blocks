@@ -15843,6 +15843,23 @@ if (videoHeroes && videoHeroes.length > 0) {
   });
 }
 
+window.addEventListener('load', function () {
+  if (videoHeroes && videoHeroes.length > 0) {
+    videoHeroes.forEach(function (videoHero) {
+      videoHero.classList.add('onload-animation');
+    });
+  }
+});
+var wH = window.innerHeight;
+window.addEventListener('scroll', function () {
+  if (videoHeroes && videoHeroes.length > 0) {
+    videoHeroes.forEach(function (videoHero) {
+      var thisMiddle = videoHero.offsetTop - window.scrollY + 0.5 * videoHero.offsetHeight;
+      if (thisMiddle <= wH * 0.5) videoHero.classList.add('scroll-animation');
+    });
+  }
+});
+
 /***/ })
 
 /******/ });
