@@ -78,6 +78,10 @@ registerBlockType( 'purdue-blocks/columns-row', {
     backgroundImageUrl: { type: 'string', default: file_data.fabric_url },
     backgroundImageAlt: { type: 'string', default: '' },
     backgroundOverlay: { type: 'string', default: 'has-overlay-black' },
+    addBottomLine: { type: "boolean", default: false },
+    addTopLine: { type: "boolean", default: false },
+    addSpace: { type: "boolean", default: true },
+    addBottomSpace: { type: "boolean", default: false },
   },
   supports: {
     className: false,
@@ -114,6 +118,21 @@ registerBlockType( 'purdue-blocks/columns-row', {
     return [
       <InspectorControls>
           <PanelBody>
+          <PanelRow>
+              <CheckboxControl
+                label="Include a guide line at the top?"
+                checked={props.attributes.addTopLine}
+                onChange={(checked) => props.setAttributes({ addTopLine: checked })}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Include a guide line at the bottom?"
+                checked={props.attributes.addBottomLine}
+                onChange={(checked) => props.setAttributes({ addBottomLine: checked })}
+              />
+            </PanelRow>
+            {props.attributes.addTopLine||props.attributes.addBottomLine?"":
             <PanelRow>
               <RadioControl
                 label="Padding Size"
@@ -128,7 +147,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   props.setAttributes( { sectionPadding: option } )
                 } }
               />
-            </PanelRow>
+            </PanelRow>}
             <PanelRow>
               <CheckboxControl
                 label="Add Background Image"
@@ -340,6 +359,20 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 }}
               />
             </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Add space below subtext?"
+                checked={props.attributes.addSpace}
+                onChange={(checked) => props.setAttributes({ addSpace: checked })}
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Add space below bottom guide line on mobile?"
+                checked={props.attributes.addBottomSpace}
+                onChange={(checked) => props.setAttributes({ addBottomSpace: checked })}
+              />
+            </PanelRow>
           </PanelBody>
         </InspectorControls>,
         <div className={`pu-columns-row pu-columns-row-editor section
@@ -347,6 +380,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
         ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
+        ${props.attributes.addTopLine ? ` pu-columns-row--line-top`:''}
+        ${props.attributes.addBottomLine ? ` pu-columns-row--line-bottom`:''}
+        ${props.attributes.addBottomSpace ? ` pu-columns-row--line-bottom-space`:''}
         `}
         style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
         aria-label={ props.attributes.backgroundImageAlt }
@@ -357,7 +393,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
               <RichText
                 tagname={props.setAttributes.titleLevel}
                 value={props.attributes.title}
-                className={`title title--${props.attributes.headerColor}`}
+                className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
                 onChange={(text) => {
                   props.setAttributes({ title: text });
                 }}
@@ -366,11 +402,11 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 allowedFormats={[]}
               ></RichText>
             </div>
-            <div className="content">
+            <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
               <RichText
                 tagname="p"
                 value={props.attributes.subText}
-                className={"content"}
+                className={`align--${props.attributes.subTextAlign} content`}
                 onChange={(text) => {
                   props.setAttributes({ subText: text });
                 }}
@@ -403,14 +439,17 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
+                      ${props.attributes.addTopLine ? ` pu-columns-row--line-top`:''}
+                      ${props.attributes.addBottomLine ? ` pu-columns-row--line-bottom`:''}
+                      ${props.attributes.addBottomSpace ? ` pu-columns-row--line-bottom-space`:''}
                       `}
             style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
             aria-label={ props.attributes.backgroundImageAlt }
             >
         <div className={'container'}>
 
-          {(props.attributes.title !== '' && props.attributes.title) && (props.attributes.subText !== '' &&  props.attributes.subText) ? (
-            <div className={'content'}>
+          {(props.attributes.title !== '' && props.attributes.title) || (props.attributes.subText !== '' &&  props.attributes.subText) ? (
+            <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
               <div className="columns is-centered">
                 <div className="column is-8">
                   {props.attributes.title !== '' && props.attributes.title !== undefined ?

@@ -9,6 +9,84 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  &.section.pu-columns-row--line-top{
+    padding-top: 4rem !important;
+    padding-bottom: 0 !important;
+    &:after{
+      content: '' !important;
+      display: block;
+      position: absolute;
+      width: 1px;
+      background: $boiler-gold;
+      height: 4rem;
+      top: 0;
+      left: calc(50% - 0.5px);
+      transform:scaleY(0);
+      transform-origin: top;
+      transition: 0.4s ease-out;
+    }
+    &:before{
+      content: none;
+    }
+    &.top-line-animate{
+      &:after{
+        transform:scaleY(1);
+      }
+    }
+    .container{
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      @include touch{
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+    }
+    &.pu-columns-row--line-bottom{
+      padding-top: 4rem !important;
+      padding-bottom: 4rem !important;
+    }
+  }
+  &.section.pu-columns-row--line-bottom{
+    padding-top: 0 !important;
+    padding-bottom: 4rem !important;
+    &:before{
+      content: '' !important;
+      display: block;
+      position: absolute;
+      width: 1px;
+      background: $boiler-gold;
+      height: 4rem;
+      bottom: 0;
+      left: calc(50% - 0.5px);
+      transform:scaleY(0);
+      transform-origin: top;
+      transition: 0.4s ease-out;
+    }
+    &:after{
+      content: none;
+    }
+    &.bottom-line-animate{
+      &:before{
+        transform:scaleY(1);
+      }
+    }
+    &.pu-columns-row--line-bottom-space{
+      @include touch{
+        padding-bottom: 6.5rem !important;
+        &:before{
+          bottom: 2.5rem;
+        }
+      }
+    }
+    .container{
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      @include touch{
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+      }
+    }
+  }
   &.has-background-light-gray {
     background: #f7f7f7 !important;
   }
@@ -88,7 +166,9 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
+    &.content--no-margin{
+      margin-bottom:0;
+    }
     .title {
       &--black {
         color: black !important;
