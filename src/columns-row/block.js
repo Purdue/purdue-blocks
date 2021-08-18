@@ -303,6 +303,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 label="Heading level of the title"
                 value={props.attributes.titleLevel}
                 options={[
+                  { label: "H1", value: "h1" },
                   { label: "H2", value: "h2" },
                   { label: "H3", value: "h3" },
                   { label: "H4", value: "h4" },

@@ -1,0 +1,96 @@
+.purdue-blocks-storyline{
+  background-color: $white;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color:$black;
+  &-gray{
+    background-color:$primary-background-gray;
+  }
+  &-dark{
+    color:$white;
+  }
+  padding: 4rem $side-padding-desktop;
+  &:after{
+    content: '' !important;
+    display: block;
+    position: absolute;
+    width: 1px;
+    background: $boiler-gold;
+    height: 100%;
+    top: 0;
+    left: calc(50% - 0.5px);
+    // transform:scaleY(0);
+    // transform-origin: top;
+    // transition: 0.4s ease-out;
+  }
+ @include touch{
+  padding: 0;
+  &:after{
+    content: none !important;
+  }
+ }
+  &.purdue-blocks-storyline-top-space{
+    padding-top:8rem;
+    &:after{
+      top: 4rem;
+      height: calc(100% - 4rem);
+    }
+    @include touch{
+      padding: 0;
+    }
+    &.purdue-blocks-storyline-bottom-space{
+      &:after{
+        height: calc(100% - 8rem);
+      }
+    }
+  }
+  &.purdue-blocks-storyline-bottom-space{
+    padding-bottom:8rem;
+    &:after{
+      height: calc(100% - 4rem);
+    }
+    @include touch{
+      padding: 0;
+    }
+  }
+  .columns-reversed{
+    flex-direction: row-reverse;
+    @include touch{
+      flex-direction: column;
+    }
+  }
+  .column.column-align-bottom{
+    padding-top:215px;
+    @include touch{
+      padding-top:0 !important;
+    }
+  }
+  .image-container{
+    padding:0 0.75rem 0 0;
+    img{
+      width:100%;
+      display:block;
+    }
+    @include touch{
+      padding-right:0;
+    }
+  }
+  .content-container{
+    padding:0 0 0 0.75rem;
+    @include touch{
+      padding:2.5rem $side-padding-tablet;
+    }
+    @include mobile{
+      padding:2.5rem $side-padding-mobile;
+    }
+    .title{
+      font-family:$united-sans !important;
+      margin:0 0 1.875rem 0 !important;
+      font-size:1.875rem !important;
+      line-height:1.1875 !important;
+      font-weight:700 !important;
+      color:$black !important;
+    }
+  }
+}
