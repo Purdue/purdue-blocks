@@ -6684,6 +6684,12 @@ readers do not read off random characters that represent icons */
   .purdue-blocks-editor-storyline .read-more-button {
     cursor: pointer; }
 
+.pu-large-image-editor .buttons-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2rem; }
+
 /**
  * #.# Editor Styles
  *

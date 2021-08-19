@@ -65,7 +65,6 @@ registerBlockType( 'purdue-blocks/story-line', {
 
   attributes: {
     storyTitle: { type: 'string', source: 'html', selector: '.story-title' },
-    // storyTitle: { type: 'string', default: '' },
     backgroundColor: { type: 'string', default: 'white' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
