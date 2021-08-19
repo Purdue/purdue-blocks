@@ -139,6 +139,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 help="Select the amount of spacing at the top and bottom of the section."
                 selected={ props.attributes.sectionPadding }
                 options={ [
+                  { label: 'None', value: 'none' },
                   { label: 'Small', value: 'small' },
                   { label: 'Medium', value: 'is-medium' },
                   { label: 'Large', value: 'is-large' },
@@ -227,6 +228,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 value={ props.attributes.backgroundOverlay }
                 options={
                   [
+                    { value: '', label: 'None' },
                     { value: 'has-overlay-black', label: 'Black' },
                     { value: 'has-overlay-white', label: 'White' },
                     { value: 'has-overlay-steel', label: 'Steel Gray' },
@@ -377,7 +379,8 @@ registerBlockType( 'purdue-blocks/columns-row', {
         </InspectorControls>,
         <div className={`pu-columns-row pu-columns-row-editor section
         ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
-        ${props.attributes.sectionPadding !== 'small'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
+        ${props.attributes.sectionPadding === 'none'?"no-padding":""}
+        ${props.attributes.sectionPadding !== 'small'&&props.attributes.sectionPadding !== 'none'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
         ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
@@ -387,7 +390,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
         aria-label={ props.attributes.backgroundImageAlt }
         >
             {props.attributes.rowType==="regular"?
-              <div className={`container`}>
+            <div className={`${props.attributes.sectionPadding !== 'none'?"container":""}`}>
               <div className={`bulma-blocks-editor-columns`}>
                 <div className="title">
                   <RichText
@@ -436,7 +439,8 @@ registerBlockType( 'purdue-blocks/columns-row', {
     const returned = (
       <div className={`pu-columns-row section
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
-                      ${props.attributes.sectionPadding !== 'small'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
+                      ${props.attributes.sectionPadding === 'none'?"no-padding":""}
+                      ${props.attributes.sectionPadding !== 'small'&&props.attributes.sectionPadding !== 'none'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
                       ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
@@ -446,7 +450,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             aria-label={ props.attributes.backgroundImageAlt }
             >
             {props.attributes.rowType==="regular"?  
-                <div className={'container'}>
+                <div className={`${props.attributes.sectionPadding !== 'none'?"container":""}`}>
                 {(props.attributes.title !== '' && props.attributes.title) || (props.attributes.subText !== '' &&  props.attributes.subText) ? (
                   <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
                     <div className="columns is-centered">

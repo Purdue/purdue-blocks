@@ -7916,6 +7916,9 @@ registerBlockType('purdue-blocks/columns-row', {
       help: "Select the amount of spacing at the top and bottom of the section.",
       selected: props.attributes.sectionPadding,
       options: [{
+        label: 'None',
+        value: 'none'
+      }, {
         label: 'Small',
         value: 'small'
       }, {
@@ -7988,6 +7991,9 @@ registerBlockType('purdue-blocks/columns-row', {
       label: "Image Overlay Color",
       value: props.attributes.backgroundOverlay,
       options: [{
+        value: '',
+        label: 'None'
+      }, {
         value: 'has-overlay-black',
         label: 'Black'
       }, {
@@ -8164,13 +8170,13 @@ registerBlockType('purdue-blocks/columns-row', {
         });
       }
     }))) : ""), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-columns-row pu-columns-row-editor section\n        ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n        ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n        ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n        ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n        "),
+      className: "pu-columns-row pu-columns-row-editor section\n        ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n        ").concat(props.attributes.sectionPadding === 'none' ? "no-padding" : "", "\n        ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.sectionPadding !== 'none' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n        ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n        ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n        "),
       style: {
         backgroundImage: "url(".concat(props.attributes.addBackground ? props.attributes.backgroundImageUrl : "", ")")
       },
       "aria-label": props.attributes.backgroundImageAlt
     }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "container"
+      className: "".concat(props.attributes.sectionPadding !== 'none' ? "container" : "")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bulma-blocks-editor-columns"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -8218,13 +8224,13 @@ registerBlockType('purdue-blocks/columns-row', {
    */
   save: function save(props) {
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-columns-row section\n                      ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n                      ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n                      ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n                      ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n                      "),
+      className: "pu-columns-row section\n                      ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n                      ").concat(props.attributes.sectionPadding === 'none' ? "no-padding" : "", "\n                      ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.sectionPadding !== 'none' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n                      ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n                      ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n                      "),
       style: {
         backgroundImage: "url(".concat(props.attributes.addBackground ? props.attributes.backgroundImageUrl : "", ")")
       },
       "aria-label": props.attributes.backgroundImageAlt
     }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: 'container'
+      className: "".concat(props.attributes.sectionPadding !== 'none' ? "container" : "")
     }, props.attributes.title !== '' && props.attributes.title || props.attributes.subText !== '' && props.attributes.subText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content".concat(props.attributes.addSpace ? '' : ' content--no-margin')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -12531,7 +12537,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
         });
       }
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-cta-hero pu-large-image pu-large-image-editor"
+      className: "pu-cta-hero pu-large-image pu-large-image-editor animate"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "hero is-large"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {

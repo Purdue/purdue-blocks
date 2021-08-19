@@ -5,7 +5,7 @@
  */
 
 .pu-columns-row {
-  background-color: white;
+  background-color: rgba(255,255,255,0);
   background-position: center;
   background-size: cover;
   position: relative;
@@ -15,7 +15,9 @@
       padding-bottom:2.5rem !important;
     }
   }
-
+  &.section.no-padding{
+    padding:0 !important;
+  }
   &--empty{
     &.section{
       padding:0 !important;

@@ -169,7 +169,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
           </PanelRow>
         </PanelBody>
       </InspectorControls>,
-      <div className="pu-cta-hero pu-large-image pu-large-image-editor">
+      <div className="pu-cta-hero pu-large-image pu-large-image-editor animate">
         <div className="hero is-large">
           <div className="hero-body">
           <MediaUploadCheck>
