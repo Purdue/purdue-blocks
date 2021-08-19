@@ -14899,28 +14899,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var columnRowTops = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll(".pu-columns-row--line-top"));
-
-var columnRowTBottoms = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll(".pu-columns-row--line-bottom"));
+var columnRowLine = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll(".pu-columns-row--empty-line"));
 
 var wH = window.innerHeight;
 window.addEventListener('scroll', function () {
-  if (columnRowTops && columnRowTops.length > 0) {
-    columnRowTops.forEach(function (t) {
+  if (columnRowLine && columnRowLine.length > 0) {
+    columnRowLine.forEach(function (t) {
       var thisTop = t.offsetTop - window.scrollY;
 
       if (thisTop <= wH * 0.5) {
-        t.classList.add('top-line-animate');
-      }
-    });
-  }
-
-  if (columnRowTBottoms && columnRowTBottoms.length > 0) {
-    columnRowTBottoms.forEach(function (t) {
-      var thisMiddle = t.offsetTop - window.scrollY + 0.5 * t.offsetHeight;
-
-      if (thisMiddle <= wH * 0.5) {
-        t.classList.add('bottom-line-animate');
+        t.classList.add('animate');
       }
     });
   }
@@ -15706,16 +15694,17 @@ if (storylines && storylines.length > 0) {
     var content = s.querySelector('.column-align-bottom');
 
     if (content) {
-      var image = s.querySelector('.image').offsetHeight;
+      var image = s.querySelector('img.image');
 
-      if (w > 1024) {
-        content.style.paddingTop = image + "px";
+      if (w > 1024 && image) {
+        content.style.paddingTop = 0.5 * image.offsetHeight + 12 + "px";
+        contents.push({
+          img: image,
+          con: content
+        });
+      } else {
+        content.style.paddingTop = 0;
       }
-
-      contents.push({
-        img: image,
-        con: content
-      });
     }
   });
   window.addEventListener('scroll', function () {
@@ -15735,10 +15724,12 @@ if (contents.length > 0) {
 
     if (w > 1024) {
       contents.forEach(function (s) {
-        s.content.style.paddingTop = s.image + "px";
+        s.con.style.paddingTop = 0.5 * img.offsetHeight + 12 + "px";
       });
     } else {
-      s.content.style.paddingTop = 12 + "px";
+      contents.forEach(function (s) {
+        s.con.style.paddingTop = 0;
+      });
     }
   });
 }

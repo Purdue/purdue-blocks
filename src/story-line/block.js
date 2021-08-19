@@ -64,7 +64,8 @@ registerBlockType( 'purdue-blocks/story-line', {
    */
 
   attributes: {
-    title: { type: 'string', source: 'html', selector: '.story-title' },
+    storyTitle: { type: 'string', source: 'html', selector: '.story-title' },
+    // storyTitle: { type: 'string', default: '' },
     backgroundColor: { type: 'string', default: 'white' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
@@ -100,7 +101,7 @@ registerBlockType( 'purdue-blocks/story-line', {
     }else{
       props.setAttributes( { backgroundImageUrl: '' } )
     }
-    console.log(props.attributes.headerLevel)
+    console.log(props.attributes.storyTitle)
     return [
       <InspectorControls>
         <PanelBody>
@@ -238,7 +239,7 @@ registerBlockType( 'purdue-blocks/story-line', {
          aria-label=''
          >
         <div className={`container`}>
-          <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : 'columns-reversed'}`}>
+          <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
             <div className={`column is-half-desktop is-full-tablet is-full-mobile`}>              
               <MediaUploadCheck>
                 <MediaUpload
@@ -259,7 +260,7 @@ registerBlockType( 'purdue-blocks/story-line', {
                           alt={ props.attributes.altText }
                         />
                         <div className="image-buttons">
-                        <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</Button>
+                        <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image' }</Button>
                         { props.attributes.imgUrl ?
                         <Button className={ 'remove-image-button' } onClick={removeMedia}>
                             Remove image
@@ -272,14 +273,14 @@ registerBlockType( 'purdue-blocks/story-line', {
               </MediaUploadCheck>
               
               </div>
-              <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? '' : ' column-align-bottom'}${props.attributes.contentAlign === 'center' ? '' : ' column-align-center'}`}>
+              <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
                 <div className="content-container">
                     <RichText
-                      tagname={ props.attributes.headerLevel }
-                      value={ props.attributes.title }
+                      tagName={ props.attributes.headerLevel }
+                      value={ props.attributes.storyTitle }
                       className={ 'story-title' }
-                      onChange={ ( text ) => {
-                        props.setAttributes( { title: text } )
+                      onChange={ ( storyTitle ) => {
+                        props.setAttributes( { storyTitle } )
                       } }
                       placeholder="Add header"
                       keepPlaceholderOnFocus={ true }
@@ -312,6 +313,8 @@ registerBlockType( 'purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    console.log(props.attributes.headerLevel)
+    console.log(props.attributes.storyTitle)
     const returned = <div className={ `purdue-blocks-storyline
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
@@ -322,7 +325,7 @@ registerBlockType( 'purdue-blocks/story-line', {
         aria-label=''
       >
       <div className={`container`}>
-          <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : 'columns-reversed'}`}>
+          <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
             <div className={`column is-half-desktop is-full-tablet is-full-mobile`}>
               <div className={`image-container`}>
               { props.attributes.imgUrl ?
@@ -330,12 +333,12 @@ registerBlockType( 'purdue-blocks/story-line', {
                 :""}
               </div>
             </div>
-            <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? '' : ' column-align-bottom'}${props.attributes.contentAlign === 'center' ? '' : ' column-align-center'}`}>
+            <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
               <div className={`content-container`}>
-                { props.attributes.title ? ( <RichText.Content
+                { props.attributes.storyTitle ? ( <RichText.Content
+                  tagName={ props.attributes.headerLevel }
+                  value={ props.attributes.storyTitle }
                   className={ 'story-title' }
-                  tagname={ props.attributes.headerLevel }
-                  value={ props.attributes.title }
                 /> ) : '' }
                 <InnerBlocks.Content />
                 {props.attributes.hasLink?

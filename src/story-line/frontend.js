@@ -6,12 +6,13 @@ if(storylines&&storylines.length>0){
     storylines.forEach((s)=>{
         const content=s.querySelector('.column-align-bottom')
         if(content){
-            const image=s.querySelector('.image').offsetHeight
-            if(w>1024){
-                content.style.paddingTop=image+"px"
+            const image=s.querySelector('img.image')   
+            if(w>1024&&image){
+                content.style.paddingTop=0.5*image.offsetHeight+12+"px"
+                contents.push({img:image,con:content})
+            }else{
+                content.style.paddingTop=0
             }
-
-            contents.push({img:image,con:content})
         }
 
     })
@@ -29,10 +30,13 @@ if(contents.length>0){
         w=window.innerWidth;
         if(w>1024){
             contents.forEach((s)=>{
-                s.content.style.paddingTop=s.image+"px"
+                s.con.style.paddingTop=0.5*img.offsetHeight+12+"px"
             })
         }else{
-            s.content.style.paddingTop=12+"px"
+            contents.forEach((s)=>{
+                s.con.style.paddingTop=0
+            })
+
         }
     })
 }

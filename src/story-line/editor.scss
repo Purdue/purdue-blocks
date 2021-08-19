@@ -1,7 +1,8 @@
 .purdue-blocks-editor-storyline{
+  border:solid 1px $primary-background-gray;
   .image-buttons{
     position:absolute;
-    bottom:1rem;
+    top:1rem;
   }
   .remove-image-button{
     background:$white;
@@ -9,5 +10,8 @@
     &:hover{
       background:$aged-gold;
     }
+  }
+  .read-more-button{
+    cursor:pointer;
   }
 }

@@ -6671,15 +6671,18 @@ readers do not read off random characters that represent icons */
         top: calc(100% + 1rem);
         left: calc(50% - 0.5px); }
 
-.purdue-blocks-editor-storyline .image-buttons {
-  position: absolute;
-  bottom: 1rem; }
-
-.purdue-blocks-editor-storyline .remove-image-button {
-  background: #ffffff;
-  margin-right: 1rem; }
-  .purdue-blocks-editor-storyline .remove-image-button:hover {
-    background: #8e6f3e; }
+.purdue-blocks-editor-storyline {
+  border: solid 1px #ededed; }
+  .purdue-blocks-editor-storyline .image-buttons {
+    position: absolute;
+    top: 1rem; }
+  .purdue-blocks-editor-storyline .remove-image-button {
+    background: #ffffff;
+    margin-right: 1rem; }
+    .purdue-blocks-editor-storyline .remove-image-button:hover {
+      background: #8e6f3e; }
+  .purdue-blocks-editor-storyline .read-more-button {
+    cursor: pointer; }
 
 /**
  * #.# Editor Styles

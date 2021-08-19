@@ -44,6 +44,7 @@ import "./purdue-tabs/purdue-tab/block.js"
 import "./shape-separator/block.js"
 import "./video-hero/block.js"
 import "./story-line/block.js"
+
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";

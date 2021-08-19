@@ -7846,28 +7846,20 @@ registerBlockType('purdue-blocks/columns-row', {
       type: 'string',
       default: 'has-overlay-black'
     },
-    addBottomLine: {
-      type: "boolean",
-      default: false
-    },
-    addTopLine: {
-      type: "boolean",
-      default: false
+    rowType: {
+      type: "string",
+      default: 'regular'
     },
     addSpace: {
       type: "boolean",
       default: true
-    },
-    addBottomSpace: {
-      type: "boolean",
-      default: false
     }
   },
   supports: {
     className: false
   },
   // Block description in side panel
-  description: __('A content page layout with a main content area with/without a sidebar area.'),
+  description: __('Add a row to the page.'),
   edit: function edit(props) {
     if (props.attributes.numColumns === 1) {
       var id = props.clientId;
@@ -7899,23 +7891,25 @@ registerBlockType('purdue-blocks/columns-row', {
       });
     }
 
-    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
-      label: "Include a guide line at the top?",
-      checked: props.attributes.addTopLine,
-      onChange: function onChange(checked) {
-        return props.setAttributes({
-          addTopLine: checked
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
+      label: "Add a row",
+      selected: props.attributes.rowType,
+      options: [{
+        value: 'regular',
+        label: 'Regular Row with content'
+      }, {
+        value: 'empty',
+        label: 'Empty Row'
+      }, {
+        value: 'emptyLine',
+        label: 'Empty Row With A Guide Line'
+      }],
+      onChange: function onChange(rowType) {
+        props.setAttributes({
+          rowType: rowType
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
-      label: "Include a guide line at the bottom?",
-      checked: props.attributes.addBottomLine,
-      onChange: function onChange(checked) {
-        return props.setAttributes({
-          addBottomLine: checked
-        });
-      }
-    })), props.attributes.addTopLine || props.attributes.addBottomLine ? "" : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
+    })), props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
       label: "Padding Size",
       help: "Select the amount of spacing at the top and bottom of the section.",
       selected: props.attributes.sectionPadding,
@@ -7934,7 +7928,7 @@ registerBlockType('purdue-blocks/columns-row', {
           sectionPadding: option
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
+    })) : "", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
       label: "Add Background Image",
       checked: props.attributes.addBackground,
       onChange: function onChange(addBackground) {
@@ -8036,7 +8030,7 @@ registerBlockType('purdue-blocks/columns-row', {
           bgColor: bgColor
         });
       }
-    })) : ""), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    })) : ""), props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
       label: "Number of Columns",
       value: props.attributes.numColumns,
       options: [{
@@ -8075,7 +8069,7 @@ registerBlockType('purdue-blocks/columns-row', {
           centerColumns: checked
         });
       }
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    }))) : "", props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
       label: "Heading level of the title",
       value: props.attributes.titleLevel,
       options: [{
@@ -8129,7 +8123,7 @@ registerBlockType('purdue-blocks/columns-row', {
           headerColor: headerColor
         });
       }
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
+    }))) : "", props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(SelectControl, {
       label: "Heading alignment",
       value: props.attributes.titleAlign,
       options: [{
@@ -8167,22 +8161,14 @@ registerBlockType('purdue-blocks/columns-row', {
           addSpace: checked
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(CheckboxControl, {
-      label: "Add space below bottom guide line on mobile?",
-      checked: props.attributes.addBottomSpace,
-      onChange: function onChange(checked) {
-        return props.setAttributes({
-          addBottomSpace: checked
-        });
-      }
-    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-columns-row pu-columns-row-editor section\n        ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n        ").concat(props.attributes.sectionPadding !== 'small' ? " ".concat(props.attributes.sectionPadding) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n        ").concat(props.attributes.addTopLine ? " pu-columns-row--line-top" : '', "\n        ").concat(props.attributes.addBottomLine ? " pu-columns-row--line-bottom" : '', "\n        ").concat(props.attributes.addBottomSpace ? " pu-columns-row--line-bottom-space" : '', "\n        "),
+    }))) : ""), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "pu-columns-row pu-columns-row-editor section\n        ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n        ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n        ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n        ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n        ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n        "),
       style: {
         backgroundImage: "url(".concat(props.attributes.addBackground ? props.attributes.backgroundImageUrl : "", ")")
       },
       "aria-label": props.attributes.backgroundImageAlt
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: 'container'
+    }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+      className: "container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bulma-blocks-editor-columns"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -8214,7 +8200,7 @@ registerBlockType('purdue-blocks/columns-row', {
       allowedFormats: []
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks, {
       templateLock: "all"
-    }))))];
+    }))) : "")];
   },
 
   /**
@@ -8230,12 +8216,12 @@ registerBlockType('purdue-blocks/columns-row', {
    */
   save: function save(props) {
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-columns-row section\n                      ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n                      ").concat(props.attributes.sectionPadding !== 'small' ? " ".concat(props.attributes.sectionPadding) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n                      ").concat(props.attributes.addTopLine ? " pu-columns-row--line-top" : '', "\n                      ").concat(props.attributes.addBottomLine ? " pu-columns-row--line-bottom" : '', "\n                      ").concat(props.attributes.addBottomSpace ? " pu-columns-row--line-bottom-space" : '', "\n                      "),
+      className: "pu-columns-row section\n                      ".concat(props.attributes.bgColor ? " ".concat(props.attributes.bgColor) : '', "\n                      ").concat(props.attributes.sectionPadding !== 'small' && props.attributes.rowType === "regular" ? " ".concat(props.attributes.sectionPadding) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? " ".concat(props.attributes.backgroundOverlay) : '', "\n                      ").concat(props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? " has-overlay-concrete" : '', "\n                      ").concat(props.attributes.rowType === "empty" ? " pu-columns-row--empty" : '', "\n                      ").concat(props.attributes.rowType === "emptyLine" ? " pu-columns-row--empty-line" : '', "\n                      "),
       style: {
         backgroundImage: "url(".concat(props.attributes.addBackground ? props.attributes.backgroundImageUrl : "", ")")
       },
       "aria-label": props.attributes.backgroundImageAlt
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: 'container'
     }, props.attributes.title !== '' && props.attributes.title || props.attributes.subText !== '' && props.attributes.subText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content".concat(props.attributes.addSpace ? '' : ' content--no-margin')
@@ -8253,7 +8239,7 @@ registerBlockType('purdue-blocks/columns-row', {
       value: props.attributes.subText
     }) : ''))) : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "columns is-multiline ".concat(props.attributes.dividers ? "has-dividers" : "").concat(props.attributes.centerColumns ? " is-centered" : "")
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null))));
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null))) : "");
     return returned;
   }
 });
@@ -17175,11 +17161,12 @@ registerBlockType('purdue-blocks/story-line', {
    * @returns {Mixed} JSX Component.
    */
   attributes: {
-    title: {
+    storyTitle: {
       type: 'string',
       source: 'html',
       selector: '.story-title'
     },
+    // storyTitle: { type: 'string', default: '' },
     backgroundColor: {
       type: 'string',
       default: 'white'
@@ -17255,7 +17242,7 @@ registerBlockType('purdue-blocks/story-line', {
       });
     }
 
-    console.log(props.attributes.headerLevel);
+    console.log(props.attributes.storyTitle);
     return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
       label: "Background Color",
       help: "Choose the background color.",
@@ -17397,7 +17384,7 @@ registerBlockType('purdue-blocks/story-line', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : 'columns-reversed')
+      className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : ' columns-reversed')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "column is-half-desktop is-full-tablet is-full-mobile"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
@@ -17420,22 +17407,22 @@ registerBlockType('purdue-blocks/story-line', {
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
           className: 'remove-image-button',
           onClick: open
-        }, props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)'), props.attributes.imgUrl ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        }, props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image'), props.attributes.imgUrl ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
           className: 'remove-image-button',
           onClick: removeMedia
         }, "Remove image") : ""));
       }
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? '' : ' column-align-bottom').concat(props.attributes.contentAlign === 'center' ? '' : ' column-align-center')
+      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content-container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
-      tagname: props.attributes.headerLevel,
-      value: props.attributes.title,
+      tagName: props.attributes.headerLevel,
+      value: props.attributes.storyTitle,
       className: 'story-title',
-      onChange: function onChange(text) {
+      onChange: function onChange(storyTitle) {
         props.setAttributes({
-          title: text
+          storyTitle: storyTitle
         });
       },
       placeholder: "Add header",
@@ -17463,6 +17450,8 @@ registerBlockType('purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: function save(props) {
+    console.log(props.attributes.headerLevel);
+    console.log(props.attributes.storyTitle);
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "purdue-blocks-storyline\n        ".concat(props.attributes.addPaddingTop ? " purdue-blocks-storyline-top-space" : '', "\n        ").concat(props.attributes.addPaddingBottom ? " purdue-blocks-storyline-bottom-space" : '', "\n        ").concat(props.attributes.backgroundColor === "gray" ? " purdue-blocks-storyline-gray" : '', "\n        ").concat(props.attributes.backgroundColor === "dark" ? " purdue-blocks-storyline-dark" : '', "\n        "),
       style: {
@@ -17472,7 +17461,7 @@ registerBlockType('purdue-blocks/story-line', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : 'columns-reversed')
+      className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : ' columns-reversed')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "column is-half-desktop is-full-tablet is-full-mobile"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -17482,13 +17471,13 @@ registerBlockType('purdue-blocks/story-line', {
       src: props.attributes.imgUrl,
       alt: props.attributes.altText
     }) : "")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? '' : ' column-align-bottom').concat(props.attributes.contentAlign === 'center' ? '' : ' column-align-center')
+      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content-container"
-    }, props.attributes.title ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
-      className: 'story-title',
-      tagname: props.attributes.headerLevel,
-      value: props.attributes.title
+    }, props.attributes.storyTitle ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
+      tagName: props.attributes.headerLevel,
+      value: props.attributes.storyTitle,
+      className: 'story-title'
     }) : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InnerBlocks.Content, null), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("a", {
       className: "read-more-button",
       href: props.attributes.ctaUrl,
