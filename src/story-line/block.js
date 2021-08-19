@@ -64,12 +64,12 @@ registerBlockType( 'purdue-blocks/story-line', {
    */
 
   attributes: {
-    title: { type: 'string', default:'' },
+    title: { type: 'string', source: 'html', selector: '.story-title' },
     backgroundColor: { type: 'string', default: 'white' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     imageAlign: { type: 'string', default: 'left' },
-    contentalign:{type: 'string', default: 'bottom'},
+    contentAlign:{type: 'string', default: 'bottom'},
     hasLink: { type: 'boolean', default: false },
     ctaUrl: { type: 'string', default: '' },
     ctaText: { type: 'string', default: '' },
@@ -100,7 +100,7 @@ registerBlockType( 'purdue-blocks/story-line', {
     }else{
       props.setAttributes( { backgroundImageUrl: '' } )
     }
-    console.log(props.attributes.title)
+    console.log(props.attributes.headerLevel)
     return [
       <InspectorControls>
         <PanelBody>
@@ -258,11 +258,13 @@ registerBlockType( 'purdue-blocks/story-line', {
                           src={ props.attributes.imgUrl }
                           alt={ props.attributes.altText }
                         />
-                        <Button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</Button>
+                        <div className="image-buttons">
+                        <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</Button>
                         { props.attributes.imgUrl ?
                         <Button className={ 'remove-image-button' } onClick={removeMedia}>
                             Remove image
-                        </Button>:""}                      
+                        </Button>:""}  
+                        </div>                    
                       </div>
                     );
                   } }
@@ -288,7 +290,8 @@ registerBlockType( 'purdue-blocks/story-line', {
                       template={ BLOCKS_TEMPLATE }
                       templateLock={ false }
                     />
-                  { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.ctaText }</span></div> : '' }
+                  { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.ctaText }</span>
+                  <span className="read-more-button-icon"></span></div> : '' }
                 </div>
               </div>
           </div>        
@@ -341,6 +344,8 @@ registerBlockType( 'purdue-blocks/story-line', {
                   rel="noopener noreferrer"
                 >
                   { props.attributes.ctaText }
+                  <span className="read-more-button-icon">
+                  </span>
                   </a>:""}
               </div> 
             </div>

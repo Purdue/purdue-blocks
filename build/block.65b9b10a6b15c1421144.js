@@ -17177,7 +17177,8 @@ registerBlockType('purdue-blocks/story-line', {
   attributes: {
     title: {
       type: 'string',
-      default: ''
+      source: 'html',
+      selector: '.story-title'
     },
     backgroundColor: {
       type: 'string',
@@ -17195,7 +17196,7 @@ registerBlockType('purdue-blocks/story-line', {
       type: 'string',
       default: 'left'
     },
-    contentalign: {
+    contentAlign: {
       type: 'string',
       default: 'bottom'
     },
@@ -17254,7 +17255,7 @@ registerBlockType('purdue-blocks/story-line', {
       });
     }
 
-    console.log(props.attributes.title);
+    console.log(props.attributes.headerLevel);
     return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
       label: "Background Color",
       help: "Choose the background color.",
@@ -17414,12 +17415,15 @@ registerBlockType('purdue-blocks/story-line', {
           className: 'image',
           src: props.attributes.imgUrl,
           alt: props.attributes.altText
-        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+        }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          className: "image-buttons"
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
+          className: 'remove-image-button',
           onClick: open
         }, props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)'), props.attributes.imgUrl ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(Button, {
           className: 'remove-image-button',
           onClick: removeMedia
-        }, "Remove image") : "");
+        }, "Remove image") : ""));
       }
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? '' : ' column-align-bottom').concat(props.attributes.contentAlign === 'center' ? '' : ' column-align-center')
@@ -17442,7 +17446,9 @@ registerBlockType('purdue-blocks/story-line', {
       templateLock: false
     }), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "read-more-button"
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, props.attributes.ctaText)) : '')))))];
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, props.attributes.ctaText), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      className: "read-more-button-icon"
+    })) : '')))))];
   },
 
   /**
@@ -17488,7 +17494,9 @@ registerBlockType('purdue-blocks/story-line', {
       href: props.attributes.ctaUrl,
       target: props.attributes.external ? '_blank' : '_self',
       rel: "noopener noreferrer"
-    }, props.attributes.ctaText) : "")))));
+    }, props.attributes.ctaText, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
+      className: "read-more-button-icon"
+    })) : "")))));
     return returned;
   }
 });

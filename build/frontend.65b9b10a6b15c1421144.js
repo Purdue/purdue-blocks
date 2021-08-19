@@ -14996,7 +14996,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _video_hero_frontend__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_video_hero_frontend__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _columns_row_frontend__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./columns-row/frontend */ "./src/columns-row/frontend.js");
 /* harmony import */ var _story_line_frontend__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./story-line/frontend */ "./src/story-line/frontend.js");
-/* harmony import */ var _story_line_frontend__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_story_line_frontend__WEBPACK_IMPORTED_MODULE_13__);
 
 
 if (window.NodeList && !NodeList.prototype.forEach) {
@@ -15687,10 +15686,62 @@ if (threeHeaderTables && threeHeaderTables.length > 0) {
 /*!************************************!*\
   !*** ./src/story-line/frontend.js ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
 
 
+var storylines = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll(".purdue-blocks-storyline"));
+
+var wH = window.innerHeight;
+var w = window.innerWidth;
+var contents = [];
+
+if (storylines && storylines.length > 0) {
+  storylines.forEach(function (s) {
+    var content = s.querySelector('.column-align-bottom');
+
+    if (content) {
+      var image = s.querySelector('.image').offsetHeight;
+
+      if (w > 1024) {
+        content.style.paddingTop = image + "px";
+      }
+
+      contents.push({
+        img: image,
+        con: content
+      });
+    }
+  });
+  window.addEventListener('scroll', function () {
+    storylines.forEach(function (t) {
+      var thisTop = t.offsetTop - window.scrollY;
+
+      if (thisTop <= wH * 0.5) {
+        t.classList.add('animate');
+      }
+    });
+  });
+}
+
+if (contents.length > 0) {
+  window.addEventListener('resize', function () {
+    w = window.innerWidth;
+
+    if (w > 1024) {
+      contents.forEach(function (s) {
+        s.content.style.paddingTop = s.image + "px";
+      });
+    } else {
+      s.content.style.paddingTop = 12 + "px";
+    }
+  });
+}
 
 /***/ }),
 

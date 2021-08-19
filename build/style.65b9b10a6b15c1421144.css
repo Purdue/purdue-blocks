@@ -12106,10 +12106,6 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
   position: relative;
   color: #000000;
   padding: 4rem 3.25rem; }
-  .purdue-blocks-storyline-gray {
-    background-color: #ededed; }
-  .purdue-blocks-storyline-dark {
-    color: #ffffff; }
   .purdue-blocks-storyline:after {
     content: '' !important;
     display: block;
@@ -12118,7 +12114,12 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
     background: #CFB991;
     height: 100%;
     top: 0;
-    left: calc(50% - 0.5px); }
+    left: calc(50% - 0.5px);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.4s ease-out; }
+  .purdue-blocks-storyline.animate:after {
+    transform: scaleY(1); }
   @media screen and (max-width: 1023px) {
     .purdue-blocks-storyline {
       padding: 0; }
@@ -12150,7 +12151,11 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
     padding-top: 215px; }
     @media screen and (max-width: 1023px) {
       .purdue-blocks-storyline .column.column-align-bottom {
-        padding-top: 0 !important; } }
+        padding-top: 0.75rem !important; } }
+  .purdue-blocks-storyline .column.column-align-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
   .purdue-blocks-storyline .image-container {
     padding: 0 0.75rem 0 0; }
     .purdue-blocks-storyline .image-container img {
@@ -12160,20 +12165,72 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
       .purdue-blocks-storyline .image-container {
         padding-right: 0; } }
   .purdue-blocks-storyline .content-container {
-    padding: 0 0 0 0.75rem; }
+    padding: 0 0 0 0.75rem;
+    width: 100%; }
     @media screen and (max-width: 1023px) {
       .purdue-blocks-storyline .content-container {
         padding: 2.5rem 1.5rem; } }
     @media screen and (max-width: 767px) {
       .purdue-blocks-storyline .content-container {
         padding: 2.5rem 1.25rem; } }
-    .purdue-blocks-storyline .content-container .title {
+    .purdue-blocks-storyline .content-container .story-title {
       font-family: "United Sans", Impact, "Arial Black", "sans serif" !important;
       margin: 0 0 1.875rem 0 !important;
-      font-size: 1.875rem !important;
+      font-size: 2rem !important;
       line-height: 1.1875 !important;
       font-weight: 700 !important;
       color: #000000 !important; }
+      @media screen and (max-width: 1023px) {
+        .purdue-blocks-storyline .content-container .story-title {
+          font-size: 1.875rem !important; } }
+    .purdue-blocks-storyline .content-container p {
+      color: #555960; }
+      .purdue-blocks-storyline .content-container p:last-child {
+        margin-bottom: 0; }
+    .purdue-blocks-storyline .content-container .read-more-button {
+      margin-top: 1.875rem;
+      color: #000000;
+      font-family: "United Sans", Impact, "Arial Black", "sans serif";
+      font-size: 1.125rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      text-decoration: none; }
+      .purdue-blocks-storyline .content-container .read-more-button:hover .read-more-button-icon {
+        box-shadow: inset 200px 0 0 0 #CFB991; }
+      .purdue-blocks-storyline .content-container .read-more-button-icon {
+        display: inline-block;
+        margin-left: 2rem;
+        border: solid 1px #8e6f3e;
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+        position: relative;
+        box-shadow: inset 0 0 0 0 #CFB991;
+        transition: ease-out 0.4s; }
+        .purdue-blocks-storyline .content-container .read-more-button-icon:after {
+          font-family: "Font Awesome 5 Free";
+          content: "\f105";
+          top: 50%;
+          left: 50%;
+          transform: translateY(-50%) translateX(-50%);
+          font-size: 1.8rem;
+          position: absolute; }
+  .purdue-blocks-storyline-gray {
+    background-color: #ededed; }
+  .purdue-blocks-storyline-dark {
+    color: #ffffff; }
+    .purdue-blocks-storyline-dark .content-container .story-title {
+      color: #ffffff !important; }
+    .purdue-blocks-storyline-dark .content-container p {
+      color: #ededed; }
+    .purdue-blocks-storyline-dark .content-container .read-more-button {
+      color: #ffffff; }
+      .purdue-blocks-storyline-dark .content-container .read-more-button:hover .read-more-button-icon {
+        color: #000000; }
+      .purdue-blocks-storyline-dark .content-container .read-more-button-icon {
+        border: solid 1px #CFB991;
+        color: #ffffff; }
 
 /**
  * #.# Styles
