@@ -20,6 +20,7 @@ const {
   CheckboxControl,
   TextareaControl,
   SelectControl,
+  TextControl,
   Button,
 } = wp.components;
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
