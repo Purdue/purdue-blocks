@@ -30,7 +30,7 @@ if(contents.length>0){
         w=window.innerWidth;
         if(w>1024){
             contents.forEach((s)=>{
-                s.con.style.paddingTop=0.5*img.offsetHeight+12+"px"
+                s.con.style.paddingTop=0.5*s.img.offsetHeight+12+"px"
             })
         }else{
             contents.forEach((s)=>{

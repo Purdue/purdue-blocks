@@ -19,7 +19,7 @@
         transition: ease-out 0.4s;
         @include touch{
           transform:none;
-          padding: 2.5rem $side-padding-tablet;
+          padding: 0;
         }
         @include mobile{
           padding: 2.5rem $side-padding-mobile;

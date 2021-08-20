@@ -312,8 +312,6 @@ registerBlockType( 'purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    console.log(props.attributes.headerLevel)
-    console.log(props.attributes.storyTitle)
     const returned = <div className={ `purdue-blocks-storyline
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}

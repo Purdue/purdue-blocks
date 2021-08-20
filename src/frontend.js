@@ -16,5 +16,6 @@ import "./video-hero/frontend"
 import "./columns-row/frontend"
 import "./story-line/frontend"
 import "./large-featured-story/frontend";
+import "./large-text/frontend";
 
 

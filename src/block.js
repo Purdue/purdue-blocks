@@ -45,7 +45,7 @@ import "./shape-separator/block.js"
 import "./video-hero/block.js"
 import "./story-line/block.js"
 import "./large-featured-story/block.js";
-
+import "./large-text/block.js";
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";

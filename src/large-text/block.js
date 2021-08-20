@@ -40,9 +40,9 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType("purdue-blocks/large-featured-story", {
+registerBlockType("purdue-blocks/large-text", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Large Image Featured Story"), // Block title.
+  title: __("Large Text"), // Block title.
   icon: (
     <svg
       id="Layer_1"
@@ -78,7 +78,8 @@ registerBlockType("purdue-blocks/large-featured-story", {
    */
 
   attributes: {
-    storyTitle: { type: 'string', source: 'html', selector: '.story-title' },
+    largeText: { type: 'string', source: 'html', selector: 'span.large-text' },
+    smallText: { type: 'string', source: 'html', selector: 'span.small-text' },
     ctaOptionalSub: { type: "string", default: "" },
     hasLink: { type: 'boolean', default: false },
     ctaUrl: { type: 'string', default: '' },
@@ -104,6 +105,8 @@ registerBlockType("purdue-blocks/large-featured-story", {
         imgUrl: ''
       });
     }
+    console.log(props.attributes.smallText)
+    var CustomTag = props.attributes.headerLevel;
     return [
       <InspectorControls>
         <PanelBody>
@@ -113,6 +116,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
               help="This only changes the HTML tag. The styles will stay the same."
               value={ props.attributes.headerLevel }
               options={ [
+                { label: 'H1', value: 'h1' },
                 { label: 'H2', value: 'h2' },
                 { label: 'H3', value: 'h3' },
                 { label: 'H4', value: 'h4' },
@@ -169,7 +173,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
           </PanelRow>
         </PanelBody>
       </InspectorControls>,
-      <div className="pu-cta-hero pu-large-image pu-large-image-editor animate">
+      <div className="pu-cta-hero pu-large-image pu-large-image-editor pu-large-text animate">
         <div className="hero is-large">
           <div className="hero-body">
           <MediaUploadCheck>
@@ -191,8 +195,8 @@ registerBlockType("purdue-blocks/large-featured-story", {
                   style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                   aria-label={props.attributes.altText}
                 >
-                  <div class="buttons-container">
-                    <button className="remove-image-button" onClick={open}>
+                  <div class="remove-button" class="buttons-container">
+                  <button className="remove-image-button" onClick={open}>
                       {props.attributes.imgUrl !== ""
                         ? "Select a new image"
                         : "Select an image"}
@@ -209,24 +213,39 @@ registerBlockType("purdue-blocks/large-featured-story", {
               </MediaUploadCheck>
                     <div className="container">
                       <div className="content">
-                        <RichText
-                          tagName={ props.attributes.headerLevel }
-                          value={ props.attributes.storyTitle }
-                          className={ 'story-title' }
-                          onChange={ ( storyTitle ) => {
-                            props.setAttributes( { storyTitle } )
-                          } }
-                          placeholder="Add header"
-                          keepPlaceholderOnFocus={ true }
-                          allowedFormats={ [] }
-                        >
-                        </RichText>
-                        <InnerBlocks
-                          template={ BLOCKS_TEMPLATE }
-                          templateLock={ false }
-                        />
-                      { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.ctaText }</span>
-                      <span className="read-more-button-icon"></span></div> : '' }
+                        <div className="columns is-centered">
+                          <div  className="column is-two-thirds-desktop is-three-quarters-tablet is-full-mobile">
+                          <CustomTag>
+                            <RichText
+                              tagName={ 'span' }
+                              value={ props.attributes.largeText }
+                              className={ 'large-text' }
+                              onChange={ ( largeText ) => {
+                                props.setAttributes( { largeText } )
+                              } }
+                              placeholder="Add Large text"
+                              keepPlaceholderOnFocus={ true }
+                              allowedFormats={ [] }
+                            >
+                            </RichText>
+
+                            <RichText
+                              tagName={ 'span' }
+                              value={ props.attributes.smallText }
+                              className={ 'small-text' }
+                              onChange={ ( smallText ) => {
+                                props.setAttributes( { smallText } )
+                              } }
+                              placeholder="Add regular text"
+                              keepPlaceholderOnFocus={ true }
+                              allowedFormats={ [] }
+                            >
+                            </RichText>
+                            </CustomTag>    
+                          { props.attributes.hasLink ? <div className="bottom-content"><div className="read-more-button"><span className="read-more-button-text">{ props.attributes.ctaText }</span>
+                          </div></div> : '' }
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -248,8 +267,9 @@ registerBlockType("purdue-blocks/large-featured-story", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    var CustomTag = props.attributes.headerLevel;
     const returned = (
-      <div className="pu-cta-hero pu-large-image">
+      <div className="pu-cta-hero pu-large-image pu-large-text">
         <div className="hero is-large">
           <div className="hero-body">
             <div
@@ -260,21 +280,30 @@ registerBlockType("purdue-blocks/large-featured-story", {
             </div>
             <div className="container">
               <div className="content">
-              { props.attributes.storyTitle ? ( <RichText.Content
-                  tagName={ props.attributes.headerLevel }
-                  value={ props.attributes.storyTitle }
-                  className={ 'story-title' }
-                /> ) : '' }
-                <InnerBlocks.Content />
-                {props.attributes.hasLink?
-                <a className="read-more-button" href={props.attributes.ctaUrl}
-                  target={ props.attributes.external ? '_blank' : '_self' }
-                  rel="noopener noreferrer"
-                >
-                  { props.attributes.ctaText }
-                  <span className="read-more-button-icon">
-                  </span>
-                  </a>:""}
+                 <div className="columns is-centered">
+                    <div  className="column is-two-thirds-desktop is-three-quarters-tablet is-full-mobile">
+                    <CustomTag>  
+                      { props.attributes.largeText ? ( <RichText.Content
+                          tagName={ 'span' }
+                          value={ props.attributes.largeText }
+                          className={ 'large-text' }
+                        /> ) : '' }
+                         { props.attributes.smallText ? ( <RichText.Content
+                          tagName={ 'span' }
+                          value={ props.attributes.smallText }
+                          className={ 'small-text' }
+                        /> ) : '' }
+                        </CustomTag>  
+                      {props.attributes.hasLink?<div className="bottom-content">
+                      <a className="read-more-button" href={props.attributes.ctaUrl}
+                        target={ props.attributes.external ? '_blank' : '_self' }
+                        rel="noopener noreferrer"
+                      ><span className="read-more-button-text">
+                        { props.attributes.ctaText }
+                        </span>
+                        </a></div>:""}
+                    </div>
+                  </div>
               </div>
             </div>
           </div>

@@ -14985,11 +14985,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _columns_row_frontend__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./columns-row/frontend */ "./src/columns-row/frontend.js");
 /* harmony import */ var _story_line_frontend__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./story-line/frontend */ "./src/story-line/frontend.js");
 /* harmony import */ var _large_featured_story_frontend__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./large-featured-story/frontend */ "./src/large-featured-story/frontend.js");
+/* harmony import */ var _large_text_frontend__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./large-text/frontend */ "./src/large-text/frontend.js");
 
 
 if (window.NodeList && !NodeList.prototype.forEach) {
   NodeList.prototype.forEach = Array.prototype.forEach;
 }
+
 
 
 
@@ -15068,6 +15070,36 @@ var wH = window.innerHeight;
 window.addEventListener('scroll', function () {
   if (largeStory && largeStory.length > 0) {
     largeStory.forEach(function (t) {
+      var thisTop = t.offsetTop - window.scrollY;
+
+      if (thisTop <= wH * 0.5) {
+        t.classList.add('animate');
+      }
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./src/large-text/frontend.js":
+/*!************************************!*\
+  !*** ./src/large-text/frontend.js ***!
+  \************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/toConsumableArray.js");
+/* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var largeText = _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0___default()(document.querySelectorAll(".pu-large-text"));
+
+var wH = window.innerHeight;
+window.addEventListener('scroll', function () {
+  if (largeText && largeText.length > 0) {
+    largeText.forEach(function (t) {
       var thisTop = t.offsetTop - window.scrollY;
 
       if (thisTop <= wH * 0.5) {
@@ -15756,7 +15788,7 @@ if (contents.length > 0) {
 
     if (w > 1024) {
       contents.forEach(function (s) {
-        s.con.style.paddingTop = 0.5 * img.offsetHeight + 12 + "px";
+        s.con.style.paddingTop = 0.5 * s.img.offsetHeight + 12 + "px";
       });
     } else {
       contents.forEach(function (s) {

@@ -1,0 +1,173 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-cta-hero.pu-large-image.pu-large-text {
+  background: none;
+  .hero {
+    &.is-large{
+      .hero-body {
+        padding:14rem $side-padding-desktop;
+        @include touch{
+          padding:10rem $side-padding-tablet;
+        }
+        @include mobile{
+          padding:4rem $side-padding-mobile;
+        }
+      }
+
+    }
+    .hero-body {
+      .background-image{
+        &:before{
+          content:none;
+        }
+        @include mobile{
+          position:absolute;
+          height:100%;
+        }
+      }
+      .container{
+        transform:none;
+        @include mobile{
+          padding:0;
+          background:none;
+        }
+        .columns{
+          width:100%;
+        }
+      }
+      .content {
+        max-width: 100%;
+        padding-left:0 !important;
+        h1,h2,h3,h4,h5,h6{
+          margin-bottom:0;
+        }
+        .large-text {
+          display:block;
+          font-family: $united-sans-condensed;
+          font-weight: 700;
+          font-size: 12rem;
+          color: transparent;
+          margin-bottom: 1rem;
+          line-height:1.05;  
+          text-transform: uppercase;
+          text-stroke:2px $boiler-gold;
+          -webkit-text-stroke: 2px $boiler-gold;
+          transform:translateY(100px);
+          transition: ease-out 0.4s;
+          opacity: 0;
+          @include touch {
+            font-size: 7rem;
+          }
+          @include mobile {
+            font-size: 5rem;
+            transform:none;
+          }
+          @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            color:$black;
+            text-shadow:
+            -1px -1px 0 $boiler-gold,
+            1px -1px 0 $boiler-gold,
+            -1px 1px 0 $boiler-gold,
+            1px 1px 0 $boiler-gold;  
+         }
+        }
+        .small-text {
+          display:block;
+          font-family: $united-sans;
+          font-weight: 700;
+          font-size: 2rem;
+          color: white !important;
+          line-height:1.2;
+          padding-left:40%;
+          width:100%;
+          transform:translateY(400px);
+          transition: ease-out 0.5s;
+          opacity: 0;
+          @include touch {
+            font-size: 1.875rem;
+            padding-left:20%;
+          }
+          @include mobile {
+            padding-left:0;
+            transform:none;
+          }
+        }
+        .bottom-content{
+          padding-left:40%;
+          transform:translateY(400px);
+          transition: ease-out 0.5s;
+          opacity: 0;
+          @include touch {
+            padding-left:20%;
+
+          }
+          @include mobile {
+            padding-left:0;
+            transform:none;
+          }
+        }
+        .read-more-button{
+          margin-top:2rem;
+          position: relative;
+          background: none;
+          border:1px solid $boiler-gold;
+          padding: 0.8rem 1.8rem 0.7rem;
+          font-family: $united-sans;
+          font-weight: 700;
+          font-size: 1.125rem;
+          text-transform: uppercase;
+          color: $white;
+          text-decoration:none;
+          text-align:center;
+          display:inline-flex;
+          min-width:200px;
+          &:after{
+            content:"";
+            width:0;
+            height:100%;
+            position:absolute;
+            top:0;
+            left:0;
+            background-color: $boiler-gold;
+            transition: ease-out 0.4s;
+          }
+          &:hover{
+            color: $black;
+            &:after{
+              width:100%;
+            }
+          }
+          &-text{
+            z-index:1;
+            width:100%;
+          }
+        }
+      }
+    }
+  }
+&.animate{
+  .hero {
+    .hero-body {
+      .background-image{
+        transform:scale(1);
+      }
+      .container{
+        transform:none;
+        @include touch{
+          transform:none;
+        }
+        .content{
+          .large-text,.small-text,.bottom-content{
+            transform:translateY(0);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+}

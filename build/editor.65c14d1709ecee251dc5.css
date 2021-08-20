@@ -6693,6 +6693,12 @@ readers do not read off random characters that represent icons */
   transform: translateX(-50%);
   top: 2rem; }
 
+.pu-large-image-editor .remove-image-button {
+  background: #ffffff;
+  margin-right: 1rem; }
+  .pu-large-image-editor .remove-image-button:hover {
+    background: #8e6f3e; }
+
 /**
  * #.# Editor Styles
  *

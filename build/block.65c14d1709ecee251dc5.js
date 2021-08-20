@@ -7299,10 +7299,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _video_hero_block_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./video-hero/block.js */ "./src/video-hero/block.js");
 /* harmony import */ var _story_line_block_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./story-line/block.js */ "./src/story-line/block.js");
 /* harmony import */ var _large_featured_story_block_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./large-featured-story/block.js */ "./src/large-featured-story/block.js");
-/* harmony import */ var _video_embed_block_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./video-embed/block.js */ "./src/video-embed/block.js");
-/* harmony import */ var _icon_group_block_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./icon-group/block.js */ "./src/icon-group/block.js");
-/* harmony import */ var _podcast_block_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./podcast/block.js */ "./src/podcast/block.js");
-/* harmony import */ var _ad_banner_block_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./ad-banner/block.js */ "./src/ad-banner/block.js");
+/* harmony import */ var _large_text_block_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./large-text/block.js */ "./src/large-text/block.js");
+/* harmony import */ var _video_embed_block_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./video-embed/block.js */ "./src/video-embed/block.js");
+/* harmony import */ var _icon_group_block_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./icon-group/block.js */ "./src/icon-group/block.js");
+/* harmony import */ var _podcast_block_js__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./podcast/block.js */ "./src/podcast/block.js");
+/* harmony import */ var _ad_banner_block_js__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./ad-banner/block.js */ "./src/ad-banner/block.js");
 /**
  * Gutenberg Blocks
  *
@@ -7313,6 +7314,7 @@ __webpack_require__.r(__webpack_exports__);
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
+
 
 
 
@@ -8176,7 +8178,7 @@ registerBlockType('purdue-blocks/columns-row', {
       },
       "aria-label": props.attributes.backgroundImageAlt
     }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "".concat(props.attributes.sectionPadding !== 'none' ? "container" : "")
+      className: "content".concat(props.attributes.sectionPadding !== 'none' ? " container" : "")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "bulma-blocks-editor-columns"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -8230,7 +8232,7 @@ registerBlockType('purdue-blocks/columns-row', {
       },
       "aria-label": props.attributes.backgroundImageAlt
     }, props.attributes.rowType === "regular" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "".concat(props.attributes.sectionPadding !== 'none' ? "container" : "")
+      className: "content".concat(props.attributes.sectionPadding !== 'none' ? " container" : "")
     }, props.attributes.title !== '' && props.attributes.title || props.attributes.subText !== '' && props.attributes.subText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content".concat(props.attributes.addSpace ? '' : ' content--no-margin')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -12561,9 +12563,10 @@ registerBlockType("purdue-blocks/large-featured-story", {
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
           class: "buttons-container"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
+          className: "remove-image-button",
           onClick: open
         }, props.attributes.imgUrl !== "" ? "Select a new image" : "Select an image"), props.attributes.imgUrl !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
-          class: "remove-button",
+          className: "remove-image-button",
           onClick: removeMedia
         }, "Remove image") : ""));
       }
@@ -12606,7 +12609,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
    */
   save: function save(props) {
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "pu-large-image"
+      className: "pu-cta-hero pu-large-image"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "hero is-large"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
@@ -12633,6 +12636,360 @@ registerBlockType("purdue-blocks/large-featured-story", {
     }, props.attributes.ctaText, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", {
       className: "read-more-button-icon"
     })) : "")))));
+    return returned;
+  }
+});
+
+/***/ }),
+
+/***/ "./src/large-text/block.js":
+/*!*********************************!*\
+  !*** ./src/large-text/block.js ***!
+  \*********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/* eslint-disable react/jsx-key */
+
+/* eslint-disable no-nested-ternary */
+
+/**
+ * BLOCK: Bulma Container
+ *
+ * Bulma container block: https://bulma.io/documentation/layout/container/.
+ */
+//  Import CSS.
+// import './editor.scss';
+// import './style.scss';
+var __ = wp.i18n.__; // Import __() from wp.i18n
+
+var registerBlockType = wp.blocks.registerBlockType; // Import registerBlockType() from wp.blocks
+
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    CheckboxControl = _wp$components.CheckboxControl,
+    TextareaControl = _wp$components.TextareaControl,
+    SelectControl = _wp$components.SelectControl,
+    Button = _wp$components.Button;
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    MediaUploadCheck = _wp$blockEditor.MediaUploadCheck,
+    MediaUpload = _wp$blockEditor.MediaUpload,
+    InnerBlocks = _wp$blockEditor.InnerBlocks;
+var select = wp.data.select;
+var BLOCKS_TEMPLATE = [['core/paragraph', {
+  placeholder: 'Body content copy'
+}]];
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+
+registerBlockType("purdue-blocks/large-text", {
+  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+  title: __("Large Text"),
+  // Block title.
+  icon: Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("svg", {
+    id: "Layer_1",
+    "data-name": "Layer 1",
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 100 87.5"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("defs", null), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    id: "Window-maximize",
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("g", {
+    class: "cls-1"
+  }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("path", {
+    class: "color-9c9795",
+    d: "M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z",
+    transform: "translate(0 -7.24)"
+  })))),
+  // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+  category: "purdue-blocks",
+  // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
+  keywords: [],
+
+  /**
+   * The edit function describes the structure of your block in the context of the editor.
+   * This represents what the editor will render when the block is used.
+   *
+   * The "edit" property must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Component.
+   */
+  attributes: {
+    largeText: {
+      type: 'string',
+      source: 'html',
+      selector: 'span.large-text'
+    },
+    smallText: {
+      type: 'string',
+      source: 'html',
+      selector: 'span.small-text'
+    },
+    ctaOptionalSub: {
+      type: "string",
+      default: ""
+    },
+    hasLink: {
+      type: 'boolean',
+      default: false
+    },
+    ctaUrl: {
+      type: 'string',
+      default: ''
+    },
+    ctaText: {
+      type: 'string',
+      default: ''
+    },
+    external: {
+      type: 'boolean',
+      default: false
+    },
+    headerLevel: {
+      type: 'string',
+      default: 'h2'
+    },
+    imgUrl: {
+      type: "string",
+      default: ""
+    },
+    altText: {
+      type: "string",
+      default: ""
+    }
+  },
+  supports: {
+    className: false
+  },
+  // Block description in side panel
+  description: __("Adds a large image featured story."),
+  edit: function edit(props) {
+    var removeMedia = function removeMedia() {
+      props.setAttributes({
+        imgUrl: ''
+      });
+    };
+
+    console.log(props.attributes.smallText);
+    var CustomTag = props.attributes.headerLevel;
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(SelectControl, {
+      label: "Heading Level of the Header",
+      help: "This only changes the HTML tag. The styles will stay the same.",
+      value: props.attributes.headerLevel,
+      options: [{
+        label: 'H1',
+        value: 'h1'
+      }, {
+        label: 'H2',
+        value: 'h2'
+      }, {
+        label: 'H3',
+        value: 'h3'
+      }, {
+        label: 'H4',
+        value: 'h4'
+      }, {
+        label: 'H5',
+        value: 'h5'
+      }, {
+        label: 'H6',
+        value: 'h6'
+      }],
+      onChange: function onChange(headerLevel) {
+        props.setAttributes({
+          headerLevel: headerLevel
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CheckboxControl, {
+      label: "Add a CTA link?",
+      checked: props.attributes.hasLink,
+      onChange: function onChange() {
+        return props.setAttributes({
+          hasLink: !props.attributes.hasLink
+        });
+      }
+    })), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      label: "Call to action text",
+      value: props.attributes.ctaText,
+      onChange: function onChange(ctaText) {
+        return props.setAttributes({
+          ctaText: ctaText
+        });
+      }
+    })) : '', props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextControl, {
+      label: "Link address",
+      value: props.attributes.ctaUrl,
+      onChange: function onChange(ctaUrl) {
+        return props.setAttributes({
+          ctaUrl: ctaUrl
+        });
+      }
+    })) : '', props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CheckboxControl, {
+      label: "Open link in new tab?",
+      checked: props.attributes.external,
+      onChange: function onChange() {
+        return props.setAttributes({
+          external: !props.attributes.external
+        });
+      }
+    })) : '', Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(TextareaControl, {
+      label: "Hero Image Alt Text",
+      value: props.attributes.altText,
+      onChange: function onChange(altText) {
+        return props.setAttributes({
+          altText: altText
+        });
+      }
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "pu-cta-hero pu-large-image pu-large-image-editor pu-large-text animate"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "hero is-large"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "hero-body"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(MediaUpload, {
+      onSelect: function onSelect(img) {
+        props.setAttributes({
+          imgUrl: img.url,
+          altText: props.attributes.altText !== "" ? props.attributes.altText : img.alt
+        });
+      },
+      render: function render(_ref) {
+        var open = _ref.open;
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+          className: "background-image",
+          role: "img",
+          style: {
+            backgroundImage: "url(".concat(props.attributes.imgUrl, ")")
+          },
+          "aria-label": props.attributes.altText
+        }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()({
+          class: "remove-button"
+        }, "class", "buttons-container"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
+          className: "remove-image-button",
+          onClick: open
+        }, props.attributes.imgUrl !== "" ? "Select a new image" : "Select an image"), props.attributes.imgUrl !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("button", {
+          className: "remove-image-button",
+          onClick: removeMedia
+        }, "Remove image") : ""));
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "container"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "columns is-centered"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "column is-two-thirds-desktop is-three-quarters-tablet is-full-mobile"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CustomTag, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+      tagName: 'span',
+      value: props.attributes.largeText,
+      className: 'large-text',
+      onChange: function onChange(largeText) {
+        props.setAttributes({
+          largeText: largeText
+        });
+      },
+      placeholder: "Add Large text",
+      keepPlaceholderOnFocus: true,
+      allowedFormats: []
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+      tagName: 'span',
+      value: props.attributes.smallText,
+      className: 'small-text',
+      onChange: function onChange(smallText) {
+        props.setAttributes({
+          smallText: smallText
+        });
+      },
+      placeholder: "Add regular text",
+      keepPlaceholderOnFocus: true,
+      allowedFormats: []
+    })), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "bottom-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "read-more-button"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+      className: "read-more-button-text"
+    }, props.attributes.ctaText))) : '')))))))];
+  },
+
+  /**
+   * The save function defines the way in which the different attributes should be combined
+   * into the final markup, which is then serialized by Gutenberg into post_content.
+   *
+   * The "save" property must be specified and must be a valid function.
+   *
+   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
+   *
+   * @param {Object} props Props.
+   * @returns {Mixed} JSX Frontend HTML.
+   */
+  save: function save(props) {
+    var CustomTag = props.attributes.headerLevel;
+    var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "pu-cta-hero pu-large-image pu-large-text"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "hero is-large"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "hero-body"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "background-image",
+      "aria-label": props.attributes.altText,
+      style: {
+        backgroundImage: "url(".concat(props.attributes.imgUrl, ")")
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "container"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "columns is-centered"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "column is-two-thirds-desktop is-three-quarters-tablet is-full-mobile"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(CustomTag, null, props.attributes.largeText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText.Content, {
+      tagName: 'span',
+      value: props.attributes.largeText,
+      className: 'large-text'
+    }) : '', props.attributes.smallText ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText.Content, {
+      tagName: 'span',
+      value: props.attributes.smallText,
+      className: 'small-text'
+    }) : ''), props.attributes.hasLink ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "bottom-content"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+      className: "read-more-button",
+      href: props.attributes.ctaUrl,
+      target: props.attributes.external ? '_blank' : '_self',
+      rel: "noopener noreferrer"
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+      className: "read-more-button-text"
+    }, props.attributes.ctaText))) : "")))))));
     return returned;
   }
 });
@@ -17821,8 +18178,6 @@ registerBlockType('purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: function save(props) {
-    console.log(props.attributes.headerLevel);
-    console.log(props.attributes.storyTitle);
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "purdue-blocks-storyline\n        ".concat(props.attributes.addPaddingTop ? " purdue-blocks-storyline-top-space" : '', "\n        ").concat(props.attributes.addPaddingBottom ? " purdue-blocks-storyline-bottom-space" : '', "\n        ").concat(props.attributes.backgroundColor === "gray" ? " purdue-blocks-storyline-gray" : '', "\n        ").concat(props.attributes.backgroundColor === "dark" ? " purdue-blocks-storyline-dark" : '', "\n        "),
       style: {

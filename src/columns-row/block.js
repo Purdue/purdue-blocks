@@ -390,7 +390,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
         aria-label={ props.attributes.backgroundImageAlt }
         >
             {props.attributes.rowType==="regular"?
-            <div className={`${props.attributes.sectionPadding !== 'none'?"container":""}`}>
+            <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>
               <div className={`bulma-blocks-editor-columns`}>
                 <div className="title">
                   <RichText
@@ -450,7 +450,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
             aria-label={ props.attributes.backgroundImageAlt }
             >
             {props.attributes.rowType==="regular"?  
-                <div className={`${props.attributes.sectionPadding !== 'none'?"container":""}`}>
+                <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>
                 {(props.attributes.title !== '' && props.attributes.title) || (props.attributes.subText !== '' &&  props.attributes.subText) ? (
                   <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
                     <div className="columns is-centered">
