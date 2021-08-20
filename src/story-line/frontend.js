@@ -28,7 +28,7 @@ if(storylines&&storylines.length>0){
 if(contents.length>0){
     window.addEventListener('resize', () => {
         w=window.innerWidth;
-        if(w>1024){
+        if(w>768){
             contents.forEach((s)=>{
                 s.con.style.paddingTop=0.5*s.img.offsetHeight+12+"px"
             })
