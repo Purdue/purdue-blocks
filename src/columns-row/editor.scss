@@ -6,6 +6,7 @@
  */
 
  .bulma-blocks-editor-columns {
+   z-index:10;
      .title {
         &--black {
           color: black !important;
