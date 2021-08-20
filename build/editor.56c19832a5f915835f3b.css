@@ -6107,6 +6107,9 @@ readers do not read off random characters that represent icons */
 .has-margin-bottom {
   margin-bottom: 1.5rem; }
 
+.pu-columns-row-editor.section.no-padding {
+  padding: 1rem 0 !important; }
+
 .pu-columns-row-editor.has-background-black, .pu-columns-row-editor.has-background-black-ter, .pu-columns-row-editor.has-overlay-black, .pu-columns-row-editor.has-overlay-steel {
   color: #ffffff; }
   .pu-columns-row-editor.has-background-black .block-editor-button-block-appender, .pu-columns-row-editor.has-background-black-ter .block-editor-button-block-appender, .pu-columns-row-editor.has-overlay-black .block-editor-button-block-appender, .pu-columns-row-editor.has-overlay-steel .block-editor-button-block-appender {

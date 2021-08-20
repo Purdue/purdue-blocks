@@ -14597,6 +14597,10 @@ registerBlockType("purdue-blocks/purdue-button", {
     external: {
       type: 'boolean',
       default: false
+    },
+    fancyColor: {
+      type: "string",
+      default: "black"
     }
   },
   supports: {
@@ -14606,6 +14610,24 @@ registerBlockType("purdue-blocks/purdue-button", {
   description: __("This block adds a button styled in line with Purdue brand."),
   edit: function edit(props) {
     return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
+      label: "Font style",
+      selected: props.attributes.fontStyle,
+      options: [{
+        label: 'Primary (Regular and uppercase)',
+        value: 'primary'
+      }, {
+        label: 'Narrow (Condesed and capitalized',
+        value: 'narrow'
+      }, {
+        label: 'Fancy',
+        value: 'fancy'
+      }],
+      onChange: function onChange(option) {
+        props.setAttributes({
+          fontStyle: option
+        });
+      }
+    })), props.attributes.fontStyle === "fancy" ? "" : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
       label: "Button Style",
       selected: props.attributes.buttonStyle,
       options: [{
@@ -14623,7 +14645,22 @@ registerBlockType("purdue-blocks/purdue-button", {
           backgroundColor: "black"
         });
       }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
+    })), props.attributes.fontStyle === "fancy" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
+      label: "Button Background Color",
+      selected: props.attributes.fancyColor,
+      options: [{
+        label: 'Black',
+        value: 'black'
+      }, {
+        label: 'White',
+        value: 'white'
+      }],
+      onChange: function onChange(option) {
+        props.setAttributes({
+          fancyColor: option
+        });
+      }
+    })) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
       label: "Button Background Color",
       selected: props.attributes.backgroundColor,
       options: props.attributes.buttonStyle === "fill" ? [{
@@ -14651,21 +14688,6 @@ registerBlockType("purdue-blocks/purdue-button", {
       onChange: function onChange(option) {
         props.setAttributes({
           backgroundColor: option
-        });
-      }
-    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
-      label: "Font style",
-      selected: props.attributes.fontStyle,
-      options: [{
-        label: 'Primary (Regular and uppercase)',
-        value: 'primary'
-      }, {
-        label: 'Narrow (Condesed and capitalized',
-        value: 'narrow'
-      }],
-      onChange: function onChange(option) {
-        props.setAttributes({
-          fontStyle: option
         });
       }
     })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RadioControl, {
@@ -14711,7 +14733,25 @@ registerBlockType("purdue-blocks/purdue-button", {
           external: !props.attributes.external
         });
       }
-    })) : '')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+    })) : '')), props.attributes.fontStyle === "fancy" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
+      className: "purdue-blocks-editor-button purdue-blocks__button purdue-blocks__button--fancy\n      ".concat(props.attributes.fancyColor === 'black' ? ' purdue-blocks__button--fancy-black' : '', "\n      ").concat(props.attributes.fancyColor === 'white' ? ' purdue-blocks__button--fancy-white' : '', "\n      ").concat(props.attributes.width === 'full' ? ' purdue-blocks__button--full' : '', "\n      ").concat(props.attributes.width === 'fullMobile' ? ' purdue-blocks__button--full-mobile' : '', "\n      ").concat(props.attributes.fontStyle === 'narrow' ? ' purdue-blocks__button--narrow' : '', "\n      ")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText, {
+      tagname: "span",
+      value: props.attributes.buttonText,
+      className: 'purdue-blocks__button__text',
+      onChange: function onChange(text) {
+        props.setAttributes({
+          buttonText: text
+        });
+      },
+      placeholder: "Button Text",
+      keepPlaceholderOnFocus: true,
+      allowedFormats: []
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+      className: 'purdue-blocks__button__icon'
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", {
+      class: "fas fa-angle-right"
+    }))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("div", {
       className: "purdue-blocks-editor-button purdue-blocks__button\n        ".concat(props.attributes.backgroundColor === 'goldLignt' ? ' purdue-blocks__button--gold-light' : '', "\n        ").concat(props.attributes.backgroundColor === 'goldDark' ? ' purdue-blocks__button--gold-dark' : '', "\n        ").concat(props.attributes.backgroundColor === 'opaque' ? ' purdue-blocks__button--opaque' : '', "\n        ").concat(props.attributes.buttonStyle === 'fill' ? '' : ' purdue-blocks__button--outline', "\n        ").concat(props.attributes.width === 'full' ? ' purdue-blocks__button--full' : '', "\n        ").concat(props.attributes.width === 'fullMobile' ? ' purdue-blocks__button--full-mobile' : '', "\n        ").concat(props.attributes.fontStyle === 'narrow' ? ' purdue-blocks__button--narrow' : '', "\n        ")
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
       class: "shrink-padding"
@@ -14745,7 +14785,17 @@ registerBlockType("purdue-blocks/purdue-button", {
    */
   save: function save(props) {
     console.log(props.attributes.buttonURL);
-    var returned = props.attributes.hasLink && props.attributes.buttonURL ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+    var returned = props.attributes.hasLink && props.attributes.buttonURL ? props.attributes.fontStyle === "fancy" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
+      className: "purdue-blocks__button purdue-blocks__button--fancy\n      ".concat(props.attributes.fancyColor === 'black' ? ' purdue-blocks__button--fancy-black' : '', "\n      ").concat(props.attributes.fancyColor === 'white' ? ' purdue-blocks__button--fancy-white' : '', "\n      ").concat(props.attributes.width === 'full' ? ' purdue-blocks__button--full' : '', "\n      ").concat(props.attributes.width === 'fullMobile' ? ' purdue-blocks__button--full-mobile' : '', "\n      ").concat(props.attributes.fontStyle === 'narrow' ? ' purdue-blocks__button--narrow' : '', "\n      ")
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])(RichText.Content, {
+      className: 'purdue-blocks__button__text',
+      tagName: "span",
+      value: props.attributes.buttonText
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("span", {
+      className: 'purdue-blocks__button__icon'
+    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("i", {
+      class: "fas fa-angle-right"
+    }))) : Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__["createElement"])("a", {
       role: "link",
       className: "purdue-blocks__button".concat(props.attributes.backgroundColor === 'goldLignt' ? ' purdue-blocks__button--gold-light' : '').concat(props.attributes.backgroundColor === 'goldDark' ? ' purdue-blocks__button--gold-dark' : '').concat(props.attributes.backgroundColor === 'opaque' ? ' purdue-blocks__button--opaque' : '').concat(props.attributes.buttonStyle === 'fill' ? '' : ' purdue-blocks__button--outline').concat(props.attributes.width === 'full' ? ' purdue-blocks__button--full' : '').concat(props.attributes.width === 'fullMobile' ? ' purdue-blocks__button--full-mobile' : '').concat(props.attributes.fontStyle === 'narrow' ? ' purdue-blocks__button--narrow' : ''),
       href: props.attributes.buttonURL,
@@ -17707,7 +17757,7 @@ registerBlockType('purdue-blocks/story-line', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : ' columns-reversed')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile"
+      className: "column is-half-desktop is-half-tablet is-full-mobile"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       onSelect: function onSelect(img) {
         props.setAttributes({
@@ -17734,7 +17784,7 @@ registerBlockType('purdue-blocks/story-line', {
         }, "Remove image") : ""));
       }
     }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
+      className: "column is-half-desktop is-half-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content-container"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText, {
@@ -17784,7 +17834,7 @@ registerBlockType('purdue-blocks/story-line', {
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "columns is-multiline".concat(props.attributes.imageAlign === 'left' ? '' : ' columns-reversed')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile"
+      className: "column is-half-desktop is-half-tablet is-full-mobile"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "image-container"
     }, props.attributes.imgUrl ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("img", {
@@ -17792,7 +17842,7 @@ registerBlockType('purdue-blocks/story-line', {
       src: props.attributes.imgUrl,
       alt: props.attributes.altText
     }) : "")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
-      className: "column is-half-desktop is-full-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
+      className: "column is-half-desktop is-half-tablet is-full-mobile".concat(props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : '').concat(props.attributes.contentAlign === 'center' ? ' column-align-center' : '')
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "content-container"
     }, props.attributes.storyTitle ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {

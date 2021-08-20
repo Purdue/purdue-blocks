@@ -70,6 +70,7 @@ registerBlockType("purdue-blocks/purdue-button", {
     hasLink: { type: 'boolean', default: false },
     buttonURL: { type: 'string', default: "" },
     external: { type: 'boolean', default: false },
+    fancyColor: { type: "string", default: "black"  },
   },
 
   supports: {
@@ -86,6 +87,21 @@ registerBlockType("purdue-blocks/purdue-button", {
     return [
       <InspectorControls>
         <PanelBody>
+        <PanelRow>
+            <RadioControl
+                label="Font style"
+                selected={ props.attributes.fontStyle }
+                options={ [
+                  { label: 'Primary (Regular and uppercase)', value: 'primary' },
+                  { label: 'Narrow (Condesed and capitalized', value: 'narrow' },
+                  { label: 'Fancy', value: 'fancy' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { fontStyle: option } )
+                } }
+              />
+            </PanelRow>
+            {props.attributes.fontStyle==="fancy"?"":
           <PanelRow>
             <RadioControl
                 label="Button Style"
@@ -99,7 +115,21 @@ registerBlockType("purdue-blocks/purdue-button", {
                   props.setAttributes( { backgroundColor: "black" } )
                 } }
               />
-            </PanelRow>
+            </PanelRow>}
+            {props.attributes.fontStyle==="fancy"?
+              <PanelRow>
+              <RadioControl
+                  label="Button Background Color"
+                  selected={ props.attributes.fancyColor }
+                  options={ [
+                    { label: 'Black', value: 'black' },
+                    { label: 'White', value: 'white' },
+                  ] }
+                  onChange={ ( option ) => {
+                    props.setAttributes( { fancyColor: option } )
+                  } }
+                />
+              </PanelRow>:
           <PanelRow>
             <RadioControl
                 label="Button Background Color"
@@ -119,19 +149,7 @@ registerBlockType("purdue-blocks/purdue-button", {
                 } }
               />
             </PanelRow>
-          <PanelRow>
-            <RadioControl
-                label="Font style"
-                selected={ props.attributes.fontStyle }
-                options={ [
-                  { label: 'Primary (Regular and uppercase)', value: 'primary' },
-                  { label: 'Narrow (Condesed and capitalized', value: 'narrow' },
-                ] }
-                onChange={ ( option ) => {
-                  props.setAttributes( { fontStyle: option } )
-                } }
-              />
-            </PanelRow>
+            }
           <PanelRow>
             <RadioControl
                 label="Button Width"
@@ -183,6 +201,28 @@ registerBlockType("purdue-blocks/purdue-button", {
             </PanelRow> : '' }
           </PanelBody>          
       </InspectorControls>,
+      props.attributes.fontStyle==="fancy"?
+      <div className={`purdue-blocks-editor-button purdue-blocks__button purdue-blocks__button--fancy
+      ${props.attributes.fancyColor==='black'?' purdue-blocks__button--fancy-black':''}
+      ${props.attributes.fancyColor==='white'?' purdue-blocks__button--fancy-white':''}
+      ${props.attributes.width==='full'?' purdue-blocks__button--full':''}
+      ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
+      ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
+      `}>          
+      <RichText
+        tagname="span"
+        value={ props.attributes.buttonText }
+        className={ 'purdue-blocks__button__text' }
+        onChange={ ( text ) => {
+          props.setAttributes( { buttonText: text } )
+        } }
+        placeholder="Button Text"
+        keepPlaceholderOnFocus={ true }
+        allowedFormats={ [] }
+      >
+      </RichText>  
+      <span className={ 'purdue-blocks__button__icon' }><i class="fas fa-angle-right"></i></span>    
+    </div>:
       <div className={`purdue-blocks-editor-button purdue-blocks__button
         ${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}
         ${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}
@@ -225,6 +265,21 @@ registerBlockType("purdue-blocks/purdue-button", {
     console.log(props.attributes.buttonURL)
     const returned = (
       props.attributes.hasLink&&props.attributes.buttonURL?
+      props.attributes.fontStyle==="fancy"?
+      <a className={`purdue-blocks__button purdue-blocks__button--fancy
+      ${props.attributes.fancyColor==='black'?' purdue-blocks__button--fancy-black':''}
+      ${props.attributes.fancyColor==='white'?' purdue-blocks__button--fancy-white':''}
+      ${props.attributes.width==='full'?' purdue-blocks__button--full':''}
+      ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
+      ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
+      `}>          
+      <RichText.Content
+          className={ 'purdue-blocks__button__text' }
+          tagName="span"
+          value={ props.attributes.buttonText }
+      />
+      <span className={ 'purdue-blocks__button__icon' }><i class="fas fa-angle-right"></i></span>  
+    </a>:
         <a role="link" className={`purdue-blocks__button${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
         href={props.attributes.buttonURL}
         target={ props.attributes.external ? '_blank' : '_self' }

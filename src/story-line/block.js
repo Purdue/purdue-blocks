@@ -239,7 +239,7 @@ registerBlockType( 'purdue-blocks/story-line', {
          >
         <div className={`container`}>
           <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
-            <div className={`column is-half-desktop is-full-tablet is-full-mobile`}>              
+            <div className={`column is-half-desktop is-half-tablet is-full-mobile`}>              
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={ ( img ) => {
@@ -272,7 +272,7 @@ registerBlockType( 'purdue-blocks/story-line', {
               </MediaUploadCheck>
               
               </div>
-              <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
+              <div className={`column is-half-desktop is-half-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
                 <div className="content-container">
                     <RichText
                       tagName={ props.attributes.headerLevel }
@@ -325,14 +325,14 @@ registerBlockType( 'purdue-blocks/story-line', {
       >
       <div className={`container`}>
           <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
-            <div className={`column is-half-desktop is-full-tablet is-full-mobile`}>
+            <div className={`column is-half-desktop is-half-tablet is-full-mobile`}>
               <div className={`image-container`}>
               { props.attributes.imgUrl ?
                 <img className={ 'image' } src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
                 :""}
               </div>
             </div>
-            <div className={`column is-half-desktop is-full-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
+            <div className={`column is-half-desktop is-half-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
               <div className={`content-container`}>
                 { props.attributes.storyTitle ? ( <RichText.Content
                   tagName={ props.attributes.headerLevel }

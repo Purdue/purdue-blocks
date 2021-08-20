@@ -33,7 +33,7 @@
       transform:scaleY(1);
     }
   }
- @include touch{
+ @include mobile{
   padding: 0;
   &:after{
     content: none !important;
@@ -45,7 +45,7 @@
       top: 4rem;
       height: calc(100% - 4rem);
     }
-    @include touch{
+    @include mobile{
       padding: 0;
     }
     &.purdue-blocks-storyline-bottom-space{
@@ -59,23 +59,23 @@
     &:after{
       height: calc(100% - 4rem);
     }
-    @include touch{
+    @include mobile{
       padding: 0;
     }
   }
   .columns-reversed{
     flex-direction: row-reverse;
-    @include touch{
+    @include mobile{
       flex-direction: column;
     }
   }
   .column{
-    @include touch{
+    @include mobile{
       padding-top:0;
     }
     &.column-align-bottom{
       padding-top:215px;
-      @include touch{
+      @include mobile{
         padding-top:0 !important;
       }
     }
@@ -83,7 +83,7 @@
       display:flex;
       flex-direction: row;
       align-items: center;
-      @include touch{
+      @include mobile{
         padding-top:0;
       }
     }
@@ -94,14 +94,14 @@
       width:100%;
       display:block;
     }
-    @include touch{
+    @include mobile{
       padding-right:0;
     }
   }
   .content-container{
     padding:0 0 0 0.75rem;
     width:100%;
-    @include touch{
+    @include mobile{
       padding:2.5rem $side-padding-tablet;
     }
     @include mobile{
@@ -114,7 +114,7 @@
       line-height:1.1875 !important;
       font-weight:700 !important;
       color:$black !important;
-      @include touch{
+      @include mobile{
         font-size:1.875rem !important;
       }
     }
