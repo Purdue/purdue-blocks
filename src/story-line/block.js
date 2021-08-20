@@ -113,6 +113,8 @@ registerBlockType( 'purdue-blocks/story-line', {
                   { label: 'White', value: 'white' },
                   { label: 'Light Gray', value: 'gray' },
                   { label: 'Dark', value: 'dark' },
+                  { label: 'Transparent on Dark Background', value: 'tDark' },
+                  { label: 'Transparent on Lignt Background', value: 'tLight' },
                 ] }
                 onChange={ ( option ) => {
                   props.setAttributes( { backgroundColor: option } )
@@ -233,6 +235,8 @@ registerBlockType( 'purdue-blocks/story-line', {
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
         ${props.attributes.backgroundColor==="gray" ? ` purdue-blocks-storyline-gray`:''}
         ${props.attributes.backgroundColor==="dark" ? ` purdue-blocks-storyline-dark`:''}
+        ${props.attributes.backgroundColor==="white" ? ` purdue-blocks-storyline-white`:''}
+        ${props.attributes.backgroundColor==="tDark" ? ` purdue-blocks-storyline-tDark`:''}
         `}
          style={{backgroundImage: `url(${props.attributes.backgroundColor==="dark"?props.attributes.backgroundImageUrl:""})`}}
          aria-label=''
@@ -317,6 +321,8 @@ registerBlockType( 'purdue-blocks/story-line', {
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
         ${props.attributes.backgroundColor==="gray" ? ` purdue-blocks-storyline-gray`:''}
         ${props.attributes.backgroundColor==="dark" ? ` purdue-blocks-storyline-dark`:''}
+        ${props.attributes.backgroundColor==="white" ? ` purdue-blocks-storyline-white`:''}
+        ${props.attributes.backgroundColor==="tDark" ? ` purdue-blocks-storyline-tDark`:''}
         `}
         style={{backgroundImage: `url(${props.attributes.backgroundColor==="dark"?props.attributes.backgroundImageUrl:""})`}}
         aria-label=''

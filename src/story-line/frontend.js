@@ -18,7 +18,7 @@ if(storylines&&storylines.length>0){
     })
     window.addEventListener('scroll', () => {
         storylines.forEach((t)=>{
-            const thisTop = t.offsetTop - window.scrollY;
+            const thisTop = t.getBoundingClientRect().top;
             if(thisTop<=wH*0.5){
                 t.classList.add('animate')
             }

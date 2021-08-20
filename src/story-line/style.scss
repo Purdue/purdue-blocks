@@ -1,10 +1,8 @@
 .purdue-blocks-storyline{
-  background-color: $white;
-  background-position: center;
-  background-size: cover;
-  position: relative;
+  background:none;
   color:$black;
   padding: 4rem $side-padding-desktop;
+  position:relative;
   &:after{
     content: '' !important;
     display: block;
@@ -167,7 +165,39 @@
   &-gray{
     background-color:$primary-background-gray;
   }
+  &-white{
+    background:$white;
+  }
   &-dark{
+    background-color: $black;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color:$white;
+    .content-container{
+      .story-title{
+        color:$white !important;
+      }
+      p{
+        color:$primary-background-gray;
+      }
+      .read-more-button{
+        color:$white;
+        &:hover{
+          .read-more-button-icon{
+            color:$black;
+          }
+        }
+        &-icon{
+          border:solid 1px $boiler-gold;
+          color:$white;
+        }
+      }
+    }
+  }
+  &-tDark{
+    background:none;
+    position: relative;
     color:$white;
     .content-container{
       .story-title{

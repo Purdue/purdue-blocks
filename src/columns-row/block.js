@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
     titleLevel: { type: "string", default: "p" },
     headerColor: { type: "string", default: "black" },
     subText: { type: 'string', default: '' },
+    subTextColor: { type: "string", default: "black" },
     titleAlign: { type: 'string', default: 'left' },
     subTextAlign: { type: 'string', default: 'left' },
     numColumns: { type: "number", default: 1 },
@@ -337,6 +338,22 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 } }
               />
             </PanelRow>
+            <PanelRow>
+              <SelectControl
+                label="Subtext Color"
+                value={ props.attributes.subTextColor }
+                options={ [
+                  { label: 'Black', value: 'black' },
+                  { label: 'Steel', value: 'steel' },
+                  { label: 'Digital Gold', value: 'gold' },
+                  { label: 'Aged Gold', value: 'aged' },
+                  { label: 'White', value: 'white' },
+                ] }
+                onChange={ ( subTextColor ) => {
+                  props.setAttributes( { subTextColor } )
+                } }
+              />
+            </PanelRow>
           </PanelBody>:""
           }
           {props.attributes.rowType==="regular"?
@@ -409,7 +426,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   <RichText
                     tagname="p"
                     value={props.attributes.subText}
-                    className={`align--${props.attributes.subTextAlign} content`}
+                    className={`align--${props.attributes.subTextAlign} content subtext--${props.attributes.subTextColor}`}
                     onChange={(text) => {
                       props.setAttributes({ subText: text });
                     }}
@@ -463,7 +480,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                         /> : ''}
                         {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
                         <RichText.Content
-                          className={`align--${props.attributes.subTextAlign}`}
+                          className={`align--${props.attributes.subTextAlign} subtext--${props.attributes.subTextColor}`}
                           tagName="p"
                           value={props.attributes.subText}
                         /> : ''}
