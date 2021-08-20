@@ -10711,14 +10711,23 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
     text-transform: none;
     border: none;
     overflow: hidden;
-    transition: ease-out 0.4s; }
+    position: relative; }
+    .purdue-blocks__button--fancy:after {
+      content: "";
+      width: 0;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #CFB991;
+      transition: ease-out 0.4s; }
+    .purdue-blocks__button--fancy:hover:after {
+      width: 100%; }
     .purdue-blocks__button--fancy-white {
       color: #000000;
       background-color: #ffffff; }
       .purdue-blocks__button--fancy-white:hover {
-        color: #000000;
-        background-color: #ffffff;
-        box-shadow: inset 100rem 0 0 0 #CFB991; }
+        color: #000000; }
         .purdue-blocks__button--fancy-white:hover .purdue-blocks__button__icon {
           color: #000000; }
       .purdue-blocks__button--fancy-white .purdue-blocks__button__icon {
@@ -10726,12 +10735,10 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
         color: #000000; }
     .purdue-blocks__button--fancy-black {
       color: #ffffff;
-      background-color: #000000;
-      box-shadow: inset 0 0 0 0 #CFB991; }
+      background-color: #000000; }
       .purdue-blocks__button--fancy-black:hover {
         color: #000000;
-        background-color: #000000;
-        box-shadow: inset 100rem 0 0 0 #CFB991; }
+        background-color: #000000; }
         .purdue-blocks__button--fancy-black:hover .purdue-blocks__button__icon {
           color: white; }
       .purdue-blocks__button--fancy-black .purdue-blocks__button__icon {
@@ -10740,14 +10747,16 @@ a.cta-card-horizonal:hover, a.cta-card-horizonal:focus {
     .purdue-blocks__button--fancy .purdue-blocks__button__text {
       padding: 2rem 0 2rem 1.3rem;
       width: 100%;
-      text-align: left; }
+      text-align: left;
+      z-index: 1; }
     .purdue-blocks__button--fancy .purdue-blocks__button__icon {
       width: 10rem;
       height: 100%;
       display: inline-block;
       -webkit-clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
               clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
-      padding: 2rem 0 2rem 1.5rem; }
+      padding: 2rem 0 2rem 1.5rem;
+      z-index: 1; }
 
 .shrink-padding {
   width: 2.5rem;

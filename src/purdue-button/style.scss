@@ -124,14 +124,28 @@
       text-transform: none;
       border:none;
       overflow: hidden;
-      transition: ease-out 0.4s;
+      position:relative;
+      &:after{
+        content:"";
+        width:0;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        background-color: $boiler-gold;
+        transition: ease-out 0.4s;
+      }
+      &:hover{
+        &:after{
+          width:100%;
+        }
+      }
       &-white{
         color:$black;
         background-color: $white;
+
         &:hover{
           color:$black;
-          background-color: $white; 
-          box-shadow: inset 100rem 0 0 0 $boiler-gold;
           .purdue-blocks__button__icon{
             color: $black;
           }
@@ -144,11 +158,9 @@
       &-black{
         color:$white;
         background-color: $black;
-        box-shadow: inset 0 0 0 0 $boiler-gold;
         &:hover{
             color:$black;
             background-color:$black;
-            box-shadow: inset 100rem 0 0 0 $boiler-gold;
             .purdue-blocks__button__icon{
               color: white;
             }
@@ -162,6 +174,7 @@
         padding:2rem 0 2rem 1.3rem;
         width: 100%;
         text-align: left;
+        z-index:1;
       }
       .purdue-blocks__button__icon{
         width: 10rem;
@@ -169,6 +182,7 @@
         display: inline-block;
         clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
         padding: 2rem 0 2rem 1.5rem;
+        z-index:1;
       }
     }
  }
