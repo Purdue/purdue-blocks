@@ -81,6 +81,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
     backgroundOverlay: { type: 'string', default: 'has-overlay-black' },
     rowType: { type: "string", default: 'regular' },
     addSpace: { type: "boolean", default: true },
+    addSpaceMobile: { type: "boolean", default: false },
   },
   supports: {
     className: false,
@@ -393,6 +394,15 @@ registerBlockType( 'purdue-blocks/columns-row', {
             </PanelRow>
           </PanelBody>:""
           }
+          <PanelBody>
+            <PanelRow>
+              <CheckboxControl
+                label="Add space at the bottom on mobile?"
+                checked={props.attributes.addSpaceMobile}
+                onChange={(checked) => props.setAttributes({ addSpaceMobile: checked })}
+              />
+            </PanelRow>
+          </PanelBody>
         </InspectorControls>,
         <div className={`pu-columns-row pu-columns-row-editor section
         ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
@@ -402,6 +412,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
         ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
         ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
         ${props.attributes.rowType==="emptyLine" ? ` pu-columns-row--empty-line`:''}
+        ${props.attributes.addSpaceMobile ? ` pu-columns-row--space-mobile`:''}
         `}
         style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
         aria-label={ props.attributes.backgroundImageAlt }
@@ -463,6 +474,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
                       ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
                       ${props.attributes.rowType==="emptyLine" ? ` pu-columns-row--empty-line`:''}
+                      ${props.attributes.addSpaceMobile ? ` pu-columns-row--space-mobile`:''}
                       `}
             style={{backgroundImage: `${props.attributes.addBackground?url:"none"}`}}
             aria-label={ props.attributes.backgroundImageAlt }

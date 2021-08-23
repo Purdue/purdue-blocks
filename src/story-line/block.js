@@ -78,6 +78,7 @@ registerBlockType( 'purdue-blocks/story-line', {
     addPaddingTop:{ type: 'boolean', default: false },
     addPaddingBottom:{ type: 'boolean', default: false },
     backgroundImageUrl: { type: 'string', default: '' },
+    addExtraLineTop:{ type: 'boolean', default: false },
   },
 
   supports: {
@@ -213,16 +214,24 @@ registerBlockType( 'purdue-blocks/story-line', {
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
+
           <PanelRow>
               <CheckboxControl
-                label="Add padding above top guide line?"
+                label="Add padding above guide line?"
                 checked={props.attributes.addPaddingTop}
                 onChange={(checked) => props.setAttributes({ addPaddingTop: checked })}
               />
           </PanelRow>
           <PanelRow>
               <CheckboxControl
-                label="Add padding below top guide line?"
+                label="Add padding below top guide line on mobile?"
+                checked={props.attributes.addExtraLineTop}
+                onChange={(checked) => props.setAttributes({ addExtraLineTop: checked })}
+              />
+          </PanelRow>
+          <PanelRow>
+              <CheckboxControl
+                label="Add padding below guide line?"
                 checked={props.attributes.addPaddingBottom}
                 onChange={(checked) => props.setAttributes({ addPaddingBottom: checked })}
               />
@@ -231,6 +240,7 @@ registerBlockType( 'purdue-blocks/story-line', {
       </InspectorControls>,
 
       <div className={ `purdue-blocks-storyline purdue-blocks-editor-storyline
+        ${props.attributes.addExtraLineTop&&!props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-line`:''}
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
         ${props.attributes.backgroundColor==="gray" ? ` purdue-blocks-storyline-gray`:''}
@@ -318,6 +328,7 @@ registerBlockType( 'purdue-blocks/story-line', {
   save: ( props ) => {
     const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = <div className={ `purdue-blocks-storyline
+        ${props.attributes.addExtraLineTop ? ` purdue-blocks-storyline-top-line`:''}
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
         ${props.attributes.backgroundColor==="gray" ? ` purdue-blocks-storyline-gray`:''}

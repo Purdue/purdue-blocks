@@ -18,6 +18,11 @@
   &.section.no-padding{
     padding:0 !important;
   }
+  &--space-mobile{
+    @include mobile{
+      margin-bottom:2.5rem;
+    }
+  }
   &--empty{
     &.section{
       padding:0 !important;

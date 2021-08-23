@@ -60,6 +60,14 @@
             margin-bottom: 1.5rem;
           }
         }
+        a{
+          color:$boiler-gold;
+          text-decoration: underline;
+          &:hover{
+            color:$boiler-gold;
+            text-decoration: none;
+          }
+        }
         .read-more-button{
           margin-top:1.875rem;
           color:$white;

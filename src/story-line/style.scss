@@ -44,6 +44,7 @@
         height: calc(100% - 8rem);
       }
     }
+    
   }
   &.purdue-blocks-storyline-bottom-space{
     padding-bottom:8rem;
@@ -52,6 +53,41 @@
     }
     @include mobile{
       padding: 0;
+    }
+  }
+  &.purdue-blocks-storyline-top-line{
+    @include mobile{
+      padding-top:7.25rem;
+      padding-bottom:0;
+      &:after{
+        content: "" !important;
+        height: 4rem;
+      }
+    }
+    &.purdue-blocks-storyline-top-space{
+      @include mobile{
+        padding-top:11.25rem;
+        &:after{
+          height: 4rem;
+        }
+      }
+    }
+    &.purdue-blocks-storyline-bottom-space{
+      @include mobile{
+        &:after{
+          content: "" !important;
+          height: 4rem;
+        }
+      }
+      &.purdue-blocks-storyline-top-space{
+        @include mobile{
+          padding-top:11.25rem;
+
+          &:after{
+            height: 4rem;
+          }
+        }
+      }
     }
   }
   .columns-reversed{
