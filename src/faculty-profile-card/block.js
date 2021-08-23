@@ -20,6 +20,7 @@ const {
   CheckboxControl,
   TextareaControl,
   TextControl,
+  RadioControl,
   Button,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
@@ -95,6 +96,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     bio: { type: 'string', default: '' },
     includeSocial: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
+    position: { type: 'string', default: 'bottom' },
   },
 
   supports: {
@@ -128,6 +130,20 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     return [
       <InspectorControls>
         <PanelBody>
+        <PanelRow>
+            <RadioControl
+                label="Blackbar position"
+                help="Choose to place the blackbar at top or bottom."
+                selected={ props.attributes.position }
+                options={ [
+                  { label: 'Top', value: 'top' },
+                  { label: 'Bottom', value: 'bottom' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { position: option } )
+                } }
+              />
+            </PanelRow>
           <PanelRow>
             <TextareaControl
               label="Profile Picture Alt Text"
@@ -387,7 +403,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
    */
   save: ( props ) => {
     const returned = props.attributes.name == '' ? (
-      <div className="faculty-profile-card box">
+      <div className={`faculty-profile-card box${props.attributes.position==='top'?" faculty-profile-card-reversed":""}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -501,7 +517,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
       </div>
     ) : (
-      <div className="faculty-profile-card box">
+      <div className={`faculty-profile-card box${props.attributes.position==='top'?" faculty-profile-card-reversed":""}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
