@@ -114,7 +114,7 @@
       font-size:1.25rem;
       font-weight:500;
       line-height:1.5;
-      padding:0;
+      padding:2rem 0;
       display:inline-flex;
       flex-direction:row;
       justify-content: space-between;
@@ -171,18 +171,22 @@
         }
       }
       .purdue-blocks__button__text{
-        padding:2rem 0 2rem 1.3rem;
+        padding:0 6rem 0 1.3rem;
         width: 100%;
         text-align: left;
         z-index:1;
       }
       .purdue-blocks__button__icon{
-        width: 10rem;
+        width: 6rem;
         height: 100%;
-        display: inline-block;
+        display: inline-flex;
         clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
-        padding: 2rem 0 2rem 1.5rem;
+        padding: 0 0.5rem 0 1.5rem;
         z-index:1;
+        position: absolute;
+        right: 0;
+        align-items: center;
+        justify-content: center;
       }
     }
  }

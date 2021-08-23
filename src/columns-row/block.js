@@ -453,6 +453,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = (
       <div className={`pu-columns-row section
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
@@ -463,7 +464,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
                       ${props.attributes.rowType==="emptyLine" ? ` pu-columns-row--empty-line`:''}
                       `}
-            style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
+            style={{backgroundImage: `${props.attributes.addBackground?url:"none"}`}}
             aria-label={ props.attributes.backgroundImageAlt }
             >
             {props.attributes.rowType==="regular"?  

@@ -316,6 +316,7 @@ registerBlockType( 'purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = <div className={ `purdue-blocks-storyline
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
@@ -324,7 +325,7 @@ registerBlockType( 'purdue-blocks/story-line', {
         ${props.attributes.backgroundColor==="white" ? ` purdue-blocks-storyline-white`:''}
         ${props.attributes.backgroundColor==="tDark" ? ` purdue-blocks-storyline-tDark`:''}
         `}
-        style={{backgroundImage: `url(${props.attributes.backgroundColor==="dark"?props.attributes.backgroundImageUrl:""})`}}
+        style={{backgroundImage: `${props.attributes.backgroundColor==="dark"?url:"none"}`}}
         aria-label=''
       >
       <div className={`container`}>
