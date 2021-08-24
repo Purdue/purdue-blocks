@@ -4,7 +4,6 @@ window.addEventListener('scroll', () => {
     if(columnRowLine&&columnRowLine.length>0){
         columnRowLine.forEach((t)=>{
             const thisTop = t.getBoundingClientRect().top;
-            console.log(t.getBoundingClientRect().top)
             if(thisTop<=wH*0.5){
                 t.classList.add('animate')
             }

@@ -80,7 +80,6 @@ registerBlockType("purdue-blocks/tabs", {
       props.setAttributes({ numTabs:1 });
       updateTabs(props, 1, 1);
     }
-    console.log(props.attributes.numTabs)
     return [
       <InspectorControls>
         <PanelBody>
@@ -92,7 +91,6 @@ registerBlockType("purdue-blocks/tabs", {
               min={1}
               max={6}
               onChange={(numTabs) => {
-                console.log(numTabs)
                 updateTabs(props, props.attributes.numTabs, numTabs);
                 props.setAttributes({ numTabs });
               }}

@@ -128,7 +128,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         profilePhoto: ''
       });
     }
-    console.log(props.attributes.titlePosition)
+
     return [
       <InspectorControls>
         <PanelBody>
@@ -191,7 +191,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                           checkedSocials[ name ] = {};
                           checkedSocials[ name ].slug = faSlug;
                           checkedSocials[ name ].checked = true;
-                          console.log( checkedSocials );
+
                         } else {
                           delete checkedSocials[ name ];
                         }

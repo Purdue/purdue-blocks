@@ -106,7 +106,6 @@ registerBlockType("purdue-blocks/large-text", {
         imgUrl: ''
       });
     }
-    console.log(props.attributes.smallText)
     var CustomTag = props.attributes.headerLevel;
     return [
       <InspectorControls>

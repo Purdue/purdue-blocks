@@ -101,7 +101,6 @@ registerBlockType( 'purdue-blocks/story-line', {
     }else{
       props.setAttributes( { backgroundImageUrl: '' } )
     }
-    console.log(props.attributes.storyTitle)
     return [
       <InspectorControls>
         <PanelBody>

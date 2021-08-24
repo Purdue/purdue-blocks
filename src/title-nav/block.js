@@ -105,7 +105,6 @@ registerBlockType( 'purdue-blocks/title-nav', {
               min={ 1 }
               max={ 15 }
               onChange={ ( numLinks ) => {
-                console.log(numLinks)
                 updateInner( props, props.attributes.numLinks, numLinks );
                 props.setAttributes( { numLinks } );
               } }
@@ -206,8 +205,6 @@ registerBlockType( 'purdue-blocks/title-nav', {
 const updateInner = ( props, oldNum, newNum ) => {
   const select = wp.data.select( 'core/block-editor' );
   let innerBlocks = select.getBlock( props.clientId ).innerBlocks;
-
-  console.log(`newnum: ${newNum}, oldnum: ${oldNum}`)
 
   const adding = newNum > oldNum;
   const triedZero = newNum === 0

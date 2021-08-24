@@ -279,7 +279,6 @@ registerBlockType("purdue-blocks/purdue-button", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
-    console.log(props.attributes.buttonURL)
     const returned = (
       props.attributes.hasLink&&props.attributes.buttonURL?
       props.attributes.fontStyle==="fancy"?
