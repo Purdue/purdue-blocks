@@ -71,6 +71,7 @@ registerBlockType("purdue-blocks/purdue-button", {
     buttonURL: { type: 'string', default: "" },
     external: { type: 'boolean', default: false },
     fancyColor: { type: "string", default: "black"  },
+    height: { type: "string", default: "auto" },
   },
 
   supports: {
@@ -169,6 +170,20 @@ registerBlockType("purdue-blocks/purdue-button", {
                 } }
               />
             </PanelRow>
+            <PanelRow>
+            <RadioControl
+                label="Height"
+                help="Choose to the height of the button."
+                selected={ props.attributes.height }
+                options={ [
+                  { label: 'Auto', value: 'auto' },
+                  { label: '100%', value: 'full' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { height: option } )
+                } }
+              />
+            </PanelRow>
           </PanelBody> 
         <PanelBody>  
         <PanelRow>
@@ -208,6 +223,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       ${props.attributes.width==='full'?' purdue-blocks__button--full':''}
       ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
       ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
+      ${props.attributes.height==='full'?' purdue-blocks__button--height':''}
       `}>          
       <RichText
         tagname="span"
@@ -231,6 +247,7 @@ registerBlockType("purdue-blocks/purdue-button", {
         ${props.attributes.width==='full'?' purdue-blocks__button--full':''}
         ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
         ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
+        ${props.attributes.height==='full'?' purdue-blocks__button--height':''}
         `}>
         <span class="shrink-padding"></span>             
         <RichText
@@ -272,6 +289,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       ${props.attributes.width==='full'?' purdue-blocks__button--full':''}
       ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
       ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
+      ${props.attributes.height==='full'?' purdue-blocks__button--height':''}
       `}>          
       <RichText.Content
           className={ 'purdue-blocks__button__text' }
@@ -280,7 +298,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       />
       <span className={ 'purdue-blocks__button__icon' }><i class="fas fa-angle-right"></i></span>  
     </a>:
-        <a role="link" className={`purdue-blocks__button${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
+        <a role="link" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
         href={props.attributes.buttonURL}
         target={ props.attributes.external ? '_blank' : '_self' }
         rel="noopener noreferrer">
@@ -292,7 +310,7 @@ registerBlockType("purdue-blocks/purdue-button", {
           />
           <span class="shrink-padding"></span>
         </a>:
-        <div role="button" className={`purdue-blocks__button${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}>      
+        <div role="button" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}>      
           <span class="shrink-padding"></span>
           <RichText.Content
             className={ 'purdue-blocks__button__text' }

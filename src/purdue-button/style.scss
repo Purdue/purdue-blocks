@@ -32,6 +32,9 @@
     &__text{
       flex-shrink:1;
     }
+    &--height{
+      height:100%;
+    }
     &.purdue-blocks__button--outline{
       background: $white;
       border: 2px solid $black;
@@ -175,7 +178,7 @@
         width: 100%;
         text-align: left;
         z-index:1;
-        font-weight:500;
+        font-weight:600;
       }
       .purdue-blocks__button__icon{
         width: 6rem;
