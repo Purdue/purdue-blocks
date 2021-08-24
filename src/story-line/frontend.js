@@ -1,5 +1,5 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const storylines=[...document.querySelectorAll(".purdue-blocks-storyline")]
     const wH=window.innerHeight;
     let w=window.innerWidth;

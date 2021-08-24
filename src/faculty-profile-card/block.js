@@ -1,16 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
 
-/**
- * BLOCK: Bulma Container
- *
- * Bulma container block: https://bulma.io/documentation/layout/container/.
- */
-
-//  Import CSS.
-// import './editor.scss';
-// import './style.scss';
-
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
@@ -18,9 +8,9 @@ const {
   PanelBody,
   PanelRow,
   CheckboxControl,
+  RadioControl,
   TextareaControl,
   TextControl,
-  RadioControl,
   Button,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
@@ -94,10 +84,15 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     name: { type: 'string', default: '' },
     title: { type: 'string', default: '' },
     bio: { type: 'string', default: '' },
+    styleToggle: { type: 'string', default: "wide" },
     includeSocial: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
-    position: { type: 'string', default: 'bottom' },
     titlePosition: { type: 'boolean', default: false },
+    street: { type: 'string', default: ''},
+    city: { type: 'string', default: ''},
+    state: { type: 'string', default: ''},
+    zip: { type: 'string', default: ''},
+    officePhone: { type: 'string', default: ''},
   },
 
   supports: {
@@ -132,25 +127,21 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     return [
       <InspectorControls>
         <PanelBody>
-        <PanelRow>
-            <RadioControl
-                label="Blackbar position"
-                help="Choose to place the blackbar at top or bottom."
-                selected={ props.attributes.position }
-                options={ [
-                  { label: 'Top', value: 'top' },
-                  { label: 'Bottom', value: 'bottom' },
-                ] }
-                onChange={ ( option ) => {
-                  props.setAttributes( { position: option } )
-                } }
-              />
-            </PanelRow>
           <PanelRow>
-            <TextareaControl
-              label="Profile Picture Alt Text"
-              value={ props.attributes.altText }
-              onChange={ ( altText ) => props.setAttributes( { altText } ) }
+            <RadioControl
+              label="Card Style"
+              help="The wide card accepts a 2x1 image and presents the name, title, and social links at the bottom of the card.
+              The narrow card accepts a square image and presents the name, title, and social links at the top of the card.
+              The Mini card has no image, social links, or description."
+              selected={ props.attributes.styleToggle }
+              options={ [
+                { label: 'Wide', value: 'wide' },
+                { label: 'Narrow', value: 'narrow' },
+                { label: 'Mini', value: 'mini' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { styleToggle: option } )
+              } }
             />
           </PanelRow>
         </PanelBody>
@@ -173,6 +164,16 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               onChange={ setChecked }
             />
           </PanelRow>
+          { props.attributes.styleToggle !== 'mini' ? (
+            <PanelRow>
+              <CheckboxControl
+                label="Include Social Media Links"
+                help="Would you like to include this faculty member's social media account links?"
+                checked={ props.attributes.includeSocial }
+                onChange={ setChecked }
+              />
+            </PanelRow>
+          ) : ''}
           { props.attributes.includeSocial ? (
             <PanelRow className="social-check-list">
               { socials.map( ( { faSlug, name } ) => {
@@ -225,131 +226,224 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
             ''
           ) }
         </PanelBody>
+        <PanelBody>
+          <PanelRow>
+            <TextareaControl
+              label="Profile Picture Alt Text"
+              value={ props.attributes.altText }
+              onChange={ ( altText ) => props.setAttributes( { altText } ) }
+            />
+          </PanelRow>
+        </PanelBody>
       </InspectorControls>,
 
       <div className={ 'pu-blocks-editor-faculty-profile' }>
         <div className="columns">
-          <div className="content column">
-            <span>Choose a Profile Picture</span>
-            <MediaUploadCheck>
-              <MediaUpload
-                onSelect={ ( img ) => {
-                  props.setAttributes( {
-                    profilePhoto: img.url,
-                    altText:
-                      props.attributes.altText !== '' ?
-                        props.attributes.altText :
-                        img.alt,
-                  } );
-                } }
-                render={ ( { open } ) => {
-                  return props.attributes.profilePhoto !== '' ? (
-                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
-                      <figure className={ 'image' }>
-                        <img
-                          alt={ props.attributes.altText }
-                          src={ props.attributes.profilePhoto }
-                        />
-                      </figure>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Select a New Image
+          {/* don't show image upload if mini option selected */}
+          { props.attributes.styleToggle !== 'mini' ? (
+            <div className="content column">
+              <span>Choose a Profile Picture</span>
+              <MediaUploadCheck>
+                <MediaUpload
+                  onSelect={ ( img ) => {
+                    props.setAttributes( {
+                      profilePhoto: img.url,
+                      altText:
+                        props.attributes.altText !== '' ?
+                          props.attributes.altText :
+                          img.alt,
+                    } );
+                  } }
+                  render={ ( { open } ) => {
+                    return props.attributes.profilePhoto !== '' ? (
+                      <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                        <figure className={ 'image' }>
+                          <img
+                            alt={ props.attributes.altText }
+                            src={ props.attributes.profilePhoto }
+                          />
+                        </figure>
+                        <Button
+                          className={ 'bulma-blocks-editor-site-hero__button' }
+                          onClick={ open }
+                        >
+                          Select a New Image
+                        </Button>
+                        <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                          Remove image
                       </Button>
-                      <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
-                        Remove image
-                    </Button>
-                    </div>
-                  ) : (
-                    <div className={ 'bulma-blocks-editor-site-hero__container' }>
-                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                        Pick a hero image from the media library.
-                      </p>
-                      <Button
-                        className={ 'bulma-blocks-editor-site-hero__button' }
-                        onClick={ open }
-                      >
-                        Open Media Library
-                      </Button>
-                    </div>
-                  );
-                } }
-              />
-            </MediaUploadCheck>
-          </div>
+                      </div>
+                    ) : (
+                      <div className={ 'bulma-blocks-editor-site-hero__container' }>
+                        <p className={ 'bulma-blocks-editor-site-hero__description' }>
+                          Pick an image from the media library.
+                        </p>
+                        <Button
+                          className={ 'bulma-blocks-editor-site-hero__button' }
+                          onClick={ open }
+                        >
+                          Open Media Library
+                        </Button>
+                      </div>
+                    );
+                  } }
+                />
+              </MediaUploadCheck>
+            </div>
+          ) : ''}
+
           <div className="content column">
-          <span>Add Phone Number</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.phone !== '' ? props.attributes.phone : ''
-                }
-                className="input"
-                type="text"
-                placeholder="Phone Number..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { phone: e.target.value } );
-                } }
-              ></input>
+            <span>Add Phone Number</span>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.phone !== '' ? props.attributes.phone : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Phone Number..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { phone: e.target.value } );
+                  } }
+                ></input>
+              </div>
             </div>
-          </div>
-          <span>Add Email Address</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.email !== '' ? props.attributes.email : ''
-                }
-                className="input"
-                type="text"
-                placeholder="Email..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { email: e.target.value } );
-                } }
-              ></input>
+            <span>Add Email Address</span>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.email !== '' ? props.attributes.email : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Email..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { email: e.target.value } );
+                  } }
+                ></input>
+              </div>
             </div>
-          </div>
-          <span>Add Optional Personal Website</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.personalLink !== '' ?
-                    props.attributes.personalLink :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="Personal Site..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { personalLink: e.target.value } );
-                } }
-              ></input>
+            <span>Add Optional Personal Website</span>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.personalLink !== '' ?
+                      props.attributes.personalLink :
+                      ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Personal Site..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { personalLink: e.target.value } );
+                  } }
+                ></input>
+              </div>
             </div>
-          </div>
-          <span>Add Optional Google Scholar Link</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.extraLink !== '' ?
-                    props.attributes.extraLink :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="Google Scholar Link..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { extraLink: e.target.value } );
-                } }
-              ></input>
+            <span>Add Optional Google Scholar Link</span>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.extraLink !== '' ?
+                      props.attributes.extraLink :
+                      ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Google Scholar Link..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { extraLink: e.target.value } );
+                  } }
+                ></input>
+              </div>
             </div>
           </div>
         </div>
-        </div>
+
         <div className="content main-info">
+
+          <span>Optional Address</span>
+          <div className="address-form">
+            <div className="field street">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.street !== '' ? props.attributes.street : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Street..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { street: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+            <div className="field city">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.city !== '' ? props.attributes.city : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="City..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { city: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+            <div className="field state">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.state !== '' ? props.attributes.state : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="State..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { state: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+            <div className="field zip">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.zip !== '' ? props.attributes.zip : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Zipcode..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { zip: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+            <div className="field office-phone">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.officePhone !== '' ? props.attributes.officePhone : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Office Phone Number..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { officePhone: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+          </div>
           <span>Faculty Name</span>
           <div className="field">
             <div className="control">
@@ -382,21 +476,28 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               ></input>
             </div>
           </div>
-          <span>Optional Faculty Bio</span>
-          <div className="field">
-            <div className="control">
-              <textarea
-                value={
-                  props.attributes.bio !== '' ? props.attributes.bio : ''
-                }
-                className="input"
-                placeholder="Faculty Bio..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { bio: e.target.value } );
-                } }
-              ></textarea>
+
+          {/* only show bio field when mini option not selected */}
+          { props.attributes.styleToggle !== 'mini' ? (
+            <span>Optional Faculty Bio</span>
+          ) : ''}
+          { props.attributes.styleToggle !== 'mini' ? (
+            <div className="field">
+              <div className="control">
+                <textarea
+                  value={
+                    props.attributes.bio !== '' ? props.attributes.bio : ''
+                  }
+                  className="input"
+                  placeholder="Faculty Bio..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { bio: e.target.value } );
+                  } }
+                ></textarea>
+              </div>
             </div>
-          </div>
+          ) : ''}
+
         </div>
       </div>,
     ];
@@ -415,7 +516,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
    */
   save: ( props ) => {
     const returned = props.attributes.name == '' ? (
-      <div className={`faculty-profile-card box${props.attributes.position==='top'?" faculty-profile-card-reversed":""}`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -453,6 +554,21 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ) : (
                   ''
                 ) }
+                { props.attributes.street !== '' ? (
+                  <li>
+                    <i className="fas fa-address-book" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <p>
+                        {props.attributes.street}
+                        <br />
+                        {`${props.attributes.city}, ${props.attributes.state} ${props.attributes.zip}`}
+                        <br />
+                        {props.attributes.officePhone.replace(/\s+/g, '') !== '' ? `Office: ${props.attributes.officePhone}` : ''}
+                      </p>
+                      <span>Address</span>
+                    </div>
+                  </li>
+                ) : ''}
                 { props.attributes.personalLink !== '' ? (
                   <li>
                     <i className="fas fa-desktop" aria-hidden="true" />
@@ -498,7 +614,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
             </div>
           </div>
         </div>
-        {props.attributes.bio !== '' ? (
+        {props.attributes.bio !== ''&&props.attributes.styleToggle !== 'mini' ? (
           <div className="content">
             <p>{props.attributes.bio}</p>
           </div>
@@ -529,7 +645,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
       </div>
     ) : (
-      <div className={`faculty-profile-card box${props.attributes.position==='top'?" faculty-profile-card-reversed":""}`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -570,6 +686,21 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ) : (
                   ''
                 ) }
+                { props.attributes.street !== '' ? (
+                  <li>
+                    <i className="fas fa-address-book" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <p>
+                        {props.attributes.street}
+                        <br />
+                        {`${props.attributes.city}, ${props.attributes.state} ${props.attributes.zip}`}
+                        <br />
+                        {props.attributes.officePhone.replace(/\s+/g, '') !== '' ? `Office: ${props.attributes.officePhone}` : ''}
+                      </p>
+                      <span>Address</span>
+                    </div>
+                  </li>
+                ) : ''}
                 { props.attributes.personalLink !== '' ? (
                   <li>
                     <i className="fas fa-desktop" aria-hidden="true" />

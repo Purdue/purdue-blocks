@@ -27,6 +27,35 @@
     textarea {
       height: 5.5rem;
     }
+
+    .address-form {
+      display: grid;
+      grid-template-columns: 3fr 1fr 2fr;
+      grid-template-rows: auto auto auto;
+      column-gap: 0.75rem;
+      margin-bottom: 1rem;
+
+      .street {
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+      }
+      .city {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+      .state {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+      .zip {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+      }
+      .office-phone {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+      }
+    }
   }
 
   .content {
