@@ -90,6 +90,9 @@
       }
     }
   }
+  .columns{
+    margin-top:0 !important;
+  }
   .columns-reversed{
     flex-direction: row-reverse;
     @include mobile{
@@ -178,7 +181,7 @@
       }
       &-icon{
         display:inline-block;
-        margin-left:2rem;
+        margin-left:10px;
         border:solid 1px $aged-gold;
         border-radius: 50%;
         width:3rem;

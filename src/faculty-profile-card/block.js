@@ -97,6 +97,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     includeSocial: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
     position: { type: 'string', default: 'bottom' },
+    titlePosition: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -127,6 +128,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         profilePhoto: ''
       });
     }
+    console.log(props.attributes.titlePosition)
     return [
       <InspectorControls>
         <PanelBody>
@@ -153,6 +155,16 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           </PanelRow>
         </PanelBody>
         <PanelBody>
+        <PanelRow>
+            <CheckboxControl
+              label="Place title on the right?"
+              checked={ props.attributes.titlePosition }
+              onChange={ () =>
+                props.setAttributes( { titlePosition: ! props.attributes.titlePosition } ) 
+             
+              }
+            />
+          </PanelRow>
           <PanelRow>
             <CheckboxControl
               label="Include Social Media Links"
@@ -526,6 +538,9 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           </div>
           <div className="media-content">
             <div className="content">
+            {
+                props.attributes.titlePosition?<p className="faculty-title">{props.attributes.title}</p>:""
+              }  
               <ul>
                 { props.attributes.phone !== '' ? (
                   <li>
@@ -611,7 +626,9 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           <div className="level-left">
             <div className="level-item">
               <p className="faculty-name">{props.attributes.name}</p>
-              <p className="faculty-title">{props.attributes.title}</p>
+              {
+                props.attributes.titlePosition?"":<p className="faculty-title">{props.attributes.title}</p>
+              }              
             </div>
           </div>
           { props.attributes.includeSocial ? (
