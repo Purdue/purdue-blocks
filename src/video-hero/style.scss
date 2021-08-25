@@ -149,6 +149,15 @@
       }
     }
   }
+  &.onload-animation.scroll-animation.no-animation{
+    .video-hero--content{
+      .cta-button {
+        &:after{
+          transition:none;
+        }
+      }
+    }
+  }
 }
 
 // determine correct height of the video hero

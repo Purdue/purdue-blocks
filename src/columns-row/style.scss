@@ -55,6 +55,11 @@
           transform:scaleY(1);
         }
       }
+      &.no-animate{
+        &:before{
+          transform:none;
+        }
+      }
     }
 
   }

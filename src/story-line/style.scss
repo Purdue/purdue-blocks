@@ -21,6 +21,11 @@
       transform:scaleY(1);
     }
   }
+  &.no-animate{
+    &:after{
+      transform:none;
+    }
+  }
   @include touch{
     padding: 4rem $side-padding-tablet;
   }
