@@ -126,7 +126,6 @@
         height: 0;
         top: calc(100% + 1rem);
         left: calc(50% - 0.5px);
-        transition:height 0.4s ease;
       }
 
     }
@@ -136,6 +135,7 @@
       .cta-button {
         &:after{
           height:7rem;
+          transition:height 0.4s ease;
         }
       }
     }
@@ -145,6 +145,7 @@
       .cta-button {
         &:after{
           height:100rem;
+          transition:height 0.4s ease;
         }
       }
     }
@@ -153,6 +154,7 @@
     .video-hero--content{
       .cta-button {
         &:after{
+          height:100rem;
           transition:none;
         }
       }

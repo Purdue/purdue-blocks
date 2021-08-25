@@ -48,16 +48,17 @@
         left: calc(50% - 0.5px);
         transform:scaleY(0);
         transform-origin: top;
-        transition: 0.4s ease-out;
       }
       &.animate{
         &:before{
           transform:scaleY(1);
+          transition: 0.4s ease-out;
         }
       }
       &.no-animate{
         &:before{
-          transform:none;
+          transform:scaleY(1);
+          transition: none;
         }
       }
     }
