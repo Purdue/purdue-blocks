@@ -289,7 +289,10 @@ registerBlockType("purdue-blocks/purdue-button", {
       ${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}
       ${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}
       ${props.attributes.height==='full'?' purdue-blocks__button--height':''}
-      `}>          
+      `}        
+      href={props.attributes.buttonURL}
+      target={ props.attributes.external ? '_blank' : '_self' }
+      rel="noopener noreferrer">          
       <RichText.Content
           className={ 'purdue-blocks__button__text' }
           tagName="span"
