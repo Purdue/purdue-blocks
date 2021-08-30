@@ -196,13 +196,13 @@ registerBlockType("purdue-blocks/tabs", {
             className={`pu-blocks-tabs__header
                         ${props.attributes.headerSize==="medium"?" pu-blocks-tabs__header-medium":""}
                         ${props.attributes.headerSize==="small"?" pu-blocks-tabs__header-small":""}
-                        ${index===0?" active":""}
+                        ${header.active?" active":""}
                       `}
             tagName={ Button }
             role="tab"
             value={ header.text }
             aria-controls={  `panel-${header.id}` }
-            aria-selected={ `${index===0?"true":"false"}` }
+            aria-selected={ `${header.active?"true":"false"}` }
           />
           })}
         </div> 
