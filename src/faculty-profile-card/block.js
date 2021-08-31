@@ -159,6 +159,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               }
             />
           </PanelRow>
+          { props.attributes.styleToggle !== 'mini' ?
           <PanelRow>
             <CheckboxControl
               label="Place Faculty Bio on the right?"
@@ -168,7 +169,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
              
               }
             />
-          </PanelRow>
+          </PanelRow>:""}
           <PanelRow>
             <CheckboxControl
               label="Include Social Media Links"
