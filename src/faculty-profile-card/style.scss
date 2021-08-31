@@ -51,6 +51,18 @@
     }
 
     .media-content {
+      p.faculty-title-side{
+        font-size:1rem;
+        line-height:1.45;
+        font-weight:700;
+        color:$black;
+      }
+      p{
+        font-size:1rem;
+        line-height:1.45;
+        font-weight:400;
+        color:$black;
+      }
       ul {
         list-style: none;
         margin: 0;

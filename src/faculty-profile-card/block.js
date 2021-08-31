@@ -13,7 +13,7 @@ const {
   TextControl,
   Button,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
 const { select } = wp.data;
 
 // Array of social media share options.
@@ -39,7 +39,9 @@ const socials = [
     share: 'https://www.instagram.com/',
   },
 ];
-
+const BLOCKS_TEMPLATE = [
+  [ 'core/paragraph', { placeholder: 'Add bio' } ],
+];
 /**
  * Register: aa Gutenberg Block.
  *
@@ -83,11 +85,12 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     extraLink: { type: 'string', default: '' },
     name: { type: 'string', default: '' },
     title: { type: 'string', default: '' },
-    bio: { type: 'string', default: '' },
+    bio: { type: 'string',  default: '' },
     styleToggle: { type: 'string', default: "wide" },
     includeSocial: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
     titlePosition: { type: 'boolean', default: false },
+    bioPosition: { type: 'boolean', default: false },
     street: { type: 'string', default: ''},
     city: { type: 'string', default: ''},
     state: { type: 'string', default: ''},
@@ -152,6 +155,16 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               checked={ props.attributes.titlePosition }
               onChange={ () =>
                 props.setAttributes( { titlePosition: ! props.attributes.titlePosition } ) 
+             
+              }
+            />
+          </PanelRow>
+          <PanelRow>
+            <CheckboxControl
+              label="Place Faculty Bio on the right?"
+              checked={ props.attributes.bioPosition }
+              onChange={ () =>
+                props.setAttributes( { bioPosition: ! props.attributes.bioPosition } ) 
              
               }
             />
@@ -482,20 +495,25 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
             <span>Optional Faculty Bio</span>
           ) : ''}
           { props.attributes.styleToggle !== 'mini' ? (
-            <div className="field">
-              <div className="control">
-                <textarea
-                  value={
-                    props.attributes.bio !== '' ? props.attributes.bio : ''
-                  }
-                  className="input"
-                  placeholder="Faculty Bio..."
-                  onChange={ ( e ) => {
-                    props.setAttributes( { bio: e.target.value } );
-                  } }
-                ></textarea>
-              </div>
-            </div>
+                  props.attributes.bioPosition?
+                  <InnerBlocks
+                  template={ BLOCKS_TEMPLATE }
+                  templateLock={ false }
+                />:
+                <div className="field">
+                  <div className="control">
+                    <textarea
+                      value={
+                        props.attributes.bio !== '' ? props.attributes.bio : ''
+                      }
+                      className="input"
+                      placeholder="Faculty Bio..."
+                      onChange={ ( e ) => {
+                        props.setAttributes( { bio: e.target.value } );
+                      } }
+                    ></textarea>
+                  </div> 
+                </div>                       
           ) : ''}
 
         </div>
@@ -616,7 +634,10 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
         {props.attributes.bio !== ''&&props.attributes.styleToggle !== 'mini' ? (
           <div className="content">
-            <p>{props.attributes.bio}</p>
+            {
+              props.attributes.bioPosition?
+              <InnerBlocks.Content />:<p>{props.attributes.bio}</p>
+            }
           </div>
         ) : ''}
         <div className="level is-mobile">
@@ -655,8 +676,11 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           <div className="media-content">
             <div className="content">
             {
-                props.attributes.titlePosition?<p className="faculty-title">{props.attributes.title}</p>:""
+                props.attributes.titlePosition?<p className="faculty-title faculty-title-side">{props.attributes.title}</p>:""
               }  
+            {props.attributes.bioPosition&&props.attributes.styleToggle !== 'mini'  ? (
+                  <InnerBlocks.Content />
+              ) : ''}
               <ul>
                 { props.attributes.phone !== '' ? (
                   <li>
@@ -747,7 +771,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
           </div>
         </div>
 
-        {props.attributes.bio !== '' ? (
+        {props.attributes.bio !== ''&&!props.attributes.bioPosition&&props.attributes.styleToggle !== 'mini'  ? (
           <div className="content">
             <p>{props.attributes.bio}</p>
           </div>
