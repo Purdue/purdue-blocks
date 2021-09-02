@@ -90,7 +90,7 @@ registerBlockType( 'purdue-blocks/tab', {
    */
   save: ( props ) => {
     return (
-      <div className={ `pu-blocks-tabs__panel${props.attributes.selected?" active":""}` }
+      <div className={ `pu-blocks-tabs__panel${props.attributes.editorSelected?" active":""}` }
       aria-labelledby={`header-${props.attributes.aria}`}
       id={`panel-${props.attributes.aria}`}
       >

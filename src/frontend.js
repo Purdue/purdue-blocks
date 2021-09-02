@@ -13,4 +13,9 @@ import "./purdue-quote/frontend.js"
 import "./profile-gallery/frontend.js"
 import "./purdue-tabs/frontend.js"
 import "./video-hero/frontend"
+import "./columns-row/frontend"
+import "./story-line/frontend"
+import "./large-featured-story/frontend";
+import "./large-text/frontend";
+
 

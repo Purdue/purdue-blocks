@@ -124,7 +124,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
       const iconGroup = [ ...props.attributes.iconGroup ];
       iconGroup[ index ].iconUrl = iconUrl;
       props.setAttributes( { iconGroup } );
-      console.log(iconUrl)
+
     }; // End handleChangeiconGroupUrl
 
     let iconFields,

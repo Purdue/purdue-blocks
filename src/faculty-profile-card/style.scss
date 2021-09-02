@@ -5,8 +5,13 @@
  */
 
 .faculty-profile-card {
+
   &.box {
+    display: flex;
+    flex-direction: column;
     padding: 0;
+    display:flex;
+    flex-direction: column;
     &:not(:last-child){
       margin-bottom:2.1875rem;
     }
@@ -24,6 +29,7 @@
 
     .media-left {
       margin-right: 2.1875rem;
+      width:40%;
 
       @include mobile {
         margin: 0 0 2.325rem 0;
@@ -45,6 +51,21 @@
     }
 
     .media-content {
+      p.faculty-title-side{
+        font-size:1rem;
+        line-height:1.45;
+        font-weight:700;
+        color:$black;
+        font-family:$acumin-pro;
+      }
+      p{
+        font-size:1rem;
+        line-height:1.45;
+        font-weight:400;
+        color:$black;
+        margin-bottom:1.5rem;
+        font-family:$acumin-pro;
+      }
       ul {
         list-style: none;
         margin: 0;
@@ -55,19 +76,22 @@
           display: flex;
           font-size: 1.25rem;
 
+
           &:not(:last-child) {
             margin-bottom: 1.25rem;
-          }
-
-          &:nth-child(3) {
-            svg {
-              margin-right: calc(1.25rem - 2.5px);
-            }
           }
 
           svg {
             margin-right: 1.25rem;
             color: $steel-gray;
+          }
+          
+          svg.fa-desktop {
+            margin-right: calc(1.25rem - 2.5px);
+          }
+
+          svg.fa-address-book {
+            margin-right: calc(1.25rem + 2.5px);
           }
 
           .profile-info-item {
@@ -155,7 +179,6 @@
         @include touch {
           text-align: center;
           align-items: center;
-          margin-bottom: 1.5rem;
         }
       }
 
@@ -172,6 +195,7 @@
         flex-direction: row;
         width: 100%;
         margin: 0;
+        margin-top: 1.5rem;
         max-width: 20rem;
         justify-content: space-between;
       }
@@ -196,6 +220,83 @@
 
       a.level-item {
         font-size: 1.5625rem;
+      }
+    }
+  }
+
+  &--wide {
+    &>.media {
+      order: 1;
+    }
+    &>.content {
+      order: 2;
+    }
+    &>.level {
+      order: 3;
+    }
+  }
+
+  &--narrow {
+    &>.media {
+      order: 2;
+    }
+    &>.content {
+      order: 3;
+    }
+    &>.level {
+      order: 1;
+    }
+
+    .media { 
+      // flex-wrap: wrap;
+      padding-bottom: 0 !important;
+      .media-left {
+        .image {
+          max-width: 15.625rem;
+          margin-bottom: 1.75rem;
+
+          @include mobile {
+            max-width: 100%;
+          }
+        }
+
+        @include mobile {
+          margin-bottom: 0.4375rem;
+        }
+      }
+      .media-content {
+        margin-bottom: 1.75rem;
+      }
+    }
+
+    &>.content {
+      padding-top: 0.4375rem !important;
+    }
+
+    .level { 
+      flex-direction: column;
+      align-items: flex-start;
+
+      .level-right { 
+        flex-direction: row;
+      }
+    }
+  }
+
+  &--mini {
+    &>.media {
+      order: 2;
+    }
+    &>.content {
+      order: 3;
+    }
+    &>.level {
+      order: 1;
+    }
+
+    .media {
+      .media-left {
+        display: none;
       }
     }
   }

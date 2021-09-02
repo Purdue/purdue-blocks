@@ -25,7 +25,8 @@ const {
 const { 
   InspectorControls,
   MediaUploadCheck,
-  MediaUpload
+  MediaUpload,
+  RichText
 } = wp.blockEditor;
 
 
@@ -221,18 +222,19 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                     </div>
                     {profile.bioEditorOpen ? (
                       <div className={`editor-profile-bio ${numColumns > 3 ? 'editor-profile-bio--wide' : ''}`}>
-                        <textarea
-                          className="editor-profile-textarea-input"
+                        <RichText
+                          tagName="p"
+                          className={`pu-profile-gallery--bio`}
                           value={profile.bio}
-                          type="textarea"
                           placeholder="Biography..."
-                          onChange={ ( e ) => {
+                          onChange={ (text) => {
                             const newProfiles = [...profiles]
-                            profile.bio = e.target.value
+                            profile.bio = text
                             newProfiles[i] = profile
                             props.setAttributes( { profiles: newProfiles } );
-                          } }
-                        ></textarea>
+                          }}
+                        >
+                        </RichText>
                       </div>
                     ) : ''}
                   </div>
@@ -306,9 +308,13 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                         <p className={`pu-profile-gallery--title`}>
                           {profile.title}
                         </p>
-                        <p className={`pu-profile-gallery--bio`}>
-                          {profile.bio}
-                        </p>
+
+                        <RichText.Content 
+                          className={`pu-profile-gallery--bio`}
+                          tagName="p"
+                          value={profile.bio}
+                        />
+
                         <button className={`modal--secondary-close-button`}>
                           {'< BACK TO ARTICLE'}
                         </button>

@@ -73,6 +73,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     ctaUrl: { type: "string", default: "" },
     ctaText: { type: "string", default: "" },
     external: { type: 'boolean', default: false },
+    height: { type: "string", default: "auto" },
   },
 
   supports: {
@@ -110,6 +111,20 @@ registerBlockType("purdue-blocks/proofpoint", {
                 ] }
                 onChange={ ( option ) => {
                   props.setAttributes( { color: option } )
+                } }
+              />
+            </PanelRow>
+            <PanelRow>
+            <RadioControl
+                label="Height"
+                help="Choose to the height of the proofpoint."
+                selected={ props.attributes.height }
+                options={ [
+                  { label: 'Auto', value: 'auto' },
+                  { label: '100%', value: 'full' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { height: option } )
                 } }
               />
             </PanelRow>
@@ -301,6 +316,9 @@ registerBlockType("purdue-blocks/proofpoint", {
         props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
       }${
         props.attributes.border ? ' pu-proofpoint__border' : ''
+      }
+      ${
+        props.attributes.height==="full"?" pu-proofpoint__height":""
       }`}>       
           <div className="container">
            {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(

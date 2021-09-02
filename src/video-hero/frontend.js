@@ -21,4 +21,25 @@ if(videoHeroes && videoHeroes.length > 0){
         }
     })   
 }
-
+window.addEventListener('load', function() {
+    if(videoHeroes && videoHeroes.length > 0){
+        videoHeroes.forEach((videoHero) => {
+            videoHero.classList.add('onload-animation')
+        })   
+    }
+})
+const wH=window.innerHeight;
+window.addEventListener('scroll', function() {
+    if(videoHeroes && videoHeroes.length > 0){
+        videoHeroes.forEach((videoHero) => {
+            const thisMiddle = videoHero.offsetTop - window.scrollY+0.5*videoHero.offsetHeight;
+            const thisBottom = videoHero.getBoundingClientRect().bottom;
+            if(thisMiddle<=wH*0.5){
+                videoHero.classList.add('scroll-animation')
+            }
+            if(thisBottom<=wH*0.5){
+                videoHero.classList.add('no-animation')
+            }
+        })   
+    }
+})

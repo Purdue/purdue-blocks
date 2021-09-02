@@ -211,11 +211,7 @@ registerBlockType("purdue-blocks/video-hero", {
   save: (props) => {
     const returned = (
       <div className={`video-hero video-hero--background-image`} style={{backgroundImage: `url(${props.attributes.posterUrl})`}}>
-        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''}>
-          <source src={props.attributes.videoUrl} type="video/mp4" />
-        </video>
-
-
+        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''} src={props.attributes.videoUrl}/>
         <div className="video-hero--overlay"></div>
 
         <div class="video-hero--control">

@@ -1,0 +1,130 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-cta-hero.pu-large-image {
+  .hero {
+    .hero-body {
+      background:none;
+      .background-image{
+        transform:scale(0.85);
+        transform-origin: center;
+        transition: ease-out 0.4s;
+      }
+      .container{
+        transform:translateY(500px);
+        opacity:0;
+        transition: ease-out 0.4s;
+        @include touch{
+          transform:none;
+          padding: 0;
+        }
+        @include mobile{
+          padding: 2.5rem $side-padding-mobile;
+        }
+      }
+      .content {
+        max-width: 50%;
+
+        @include mobile {
+          max-width: 100%;
+        }
+
+        @include tablet-only {
+          padding-left: 4rem
+        }
+
+        .story-title {
+          font-family: $united-sans;
+          font-weight: 700;
+          font-size: 2.5rem;
+          color: white !important;
+          margin-bottom: 2rem;
+          line-height:1.2;
+
+          @include touch {
+            font-size: 2.1875rem;
+          }
+        }
+
+        p {
+          font-size: 1.25rem;
+          font-family: $acumin-pro;
+          width: auto;
+          color:$primary-background-gray;
+          margin-bottom: 1em;
+
+          @include mobile {
+            margin-bottom: 1.5rem;
+          }
+        }
+        a{
+          color:$boiler-gold;
+          text-decoration: underline;
+          &:hover{
+            color:$boiler-gold;
+            text-decoration: none;
+          }
+        }
+        .read-more-button{
+          margin-top:1.875rem;
+          color:$white;
+          font-family:$united-sans;
+          font-size:1.125rem;
+          font-weight: 700; 
+          display:flex;
+          align-items: center;
+          text-decoration:none;
+          &:hover{
+            color:$white;
+            .read-more-button-icon{
+              box-shadow: inset 200px 0 0 0 $boiler-gold;
+              color:$black;
+            }
+          }
+          @include touch{
+            margin-top:0;
+          }
+          &-icon{
+            display:inline-block;
+            margin-left:10px;
+            border:solid 1px $boiler-gold;
+            border-radius: 50%;
+            width:3rem;
+            height:3rem;
+            position:relative;
+            box-shadow: inset 0 0 0 0 $boiler-gold;
+            transition: ease-out 0.4s;
+            &:after{
+              font-family: "Font Awesome 5 Free"; 
+              content: "\f105";
+              top:50%;
+              left: 50%;
+              transform: translateY(-50%) translateX(-50%);
+              font-size: 1.8rem;
+              position: absolute;
+            }
+          }
+        }
+      }
+    }
+  }
+&.animate{
+  .hero {
+    .hero-body {
+      .background-image{
+        transform:scale(1);
+      }
+      .container{
+        transform:translateY(0);
+        opacity:1;
+        @include touch{
+          transform:none;
+        }
+      }
+    }
+  }
+}
+}

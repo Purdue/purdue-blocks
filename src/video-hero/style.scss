@@ -111,18 +111,53 @@
       font-size: 1.125rem;
       text-transform: uppercase;
       color: black;
-
+      box-shadow: inset 0 0 0 0 $black;
+      transition: ease-out 0.4s;
+      &:hover{
+        box-shadow: inset 400px 0 0 0 $black;
+        color:$white;
+      }
       &:after {
         content: '';
         display: block;
         position: absolute;
         width: 1px;
         background: $boiler-gold;
-        height: 7rem;
+        height: 0;
         top: calc(100% + 1rem);
         left: calc(50% - 0.5px);
       }
 
+    }
+  }
+  &.onload-animation{
+    .video-hero--content{
+      .cta-button {
+        &:after{
+          height:7rem;
+          transition:height 0.4s ease;
+        }
+      }
+    }
+  }
+  &.onload-animation.scroll-animation{
+    .video-hero--content{
+      .cta-button {
+        &:after{
+          height:100rem;
+          transition:height 0.4s ease;
+        }
+      }
+    }
+  }
+  &.onload-animation.scroll-animation.no-animation{
+    .video-hero--content{
+      .cta-button {
+        &:after{
+          height:100rem;
+          transition:none;
+        }
+      }
     }
   }
 }

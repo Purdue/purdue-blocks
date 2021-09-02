@@ -1,7 +1,6 @@
 const toggleImages = document.querySelectorAll('.pu-image-toggle__images img')
 const toggleButtons = document.querySelectorAll('.toggle-button')
 
-console.log(toggleButtons)
 
 const activateToggle = (el) => {
   el.preventDefault()

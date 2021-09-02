@@ -1,0 +1,22 @@
+.purdue-blocks-editor-storyline{
+  border:solid 1px $primary-background-gray;
+  .image-buttons{
+    position:absolute;
+    top:1rem;
+  }
+  .remove-image-button{
+    background:$white;
+    margin-right:1rem;
+    &:hover{
+      background:$aged-gold;
+    }
+  }
+  .read-more-button{
+    cursor:pointer;
+  }
+}
+.purdue-blocks-storyline-tDark{
+  .accordion-editor{
+    background:$white;
+  }
+}
