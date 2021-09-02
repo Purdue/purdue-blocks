@@ -78,7 +78,8 @@ function purdue_blocks_cgb_block_assets() { // phpcs:ignore
 			'file_data',
 			array(
 				'fabric_url' => plugins_url( 'img/fabric.png', __FILE__ ),
-				'concrete_url' => plugins_url( 'img/concrete.png', __FILE__ )
+				'concrete_url' => plugins_url( 'img/concrete.png', __FILE__ ),
+				'concreteDark_url' => plugins_url( 'img/concreteDark.png', __FILE__ )
 			)
 		);
 

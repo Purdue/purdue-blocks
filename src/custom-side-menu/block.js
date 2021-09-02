@@ -103,7 +103,7 @@ registerBlockType( 'purdue-blocks/custom-side-menu', {
             options={ options }
             onChange={ ( selectedMenu ) => {
               props.setAttributes( { selectedMenu } );
-              console.log(selectedMenu);
+
             } }
           />
         </PanelRow>

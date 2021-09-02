@@ -77,24 +77,28 @@ registerBlockType("purdue-blocks/tabs", {
 
   edit: (props) => {
     if (props.attributes.numTabs === 0) {
-      props.setAttributes({ numTabs:1 });
       updateTabs(props, 1, 1);
     }
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
-            <RangeControl
-              className={"bulma-columns-range-control"}
-              label="Number of Tabs"
-              value={props.attributes.numTabs || 1}
-              min={1}
-              max={6}
-              onChange={(numTabs) => {
-                updateTabs(props, props.attributes.numTabs, numTabs);
-                props.setAttributes({ numTabs });
-              }}
-            />
+            <SelectControl
+                label="Number of Tabs"
+                value={props.attributes.numTabs}
+                options={ [
+                  { label: '1', value: 1 },
+                  { label: '2', value: 2 },
+                  { label: '3', value: 3 },
+                  { label: '4', value: 4 },
+                  { label: '5', value: 5 },
+                  { label: '6', value: 6 },
+                ] }
+                onChange={ ( numTabs ) => {
+                  updateTabs(props, props.attributes.numTabs, parseInt(numTabs))
+                }
+               }
+              />
           </PanelRow>
           <PanelRow>
             <SelectControl
@@ -192,13 +196,13 @@ registerBlockType("purdue-blocks/tabs", {
             className={`pu-blocks-tabs__header
                         ${props.attributes.headerSize==="medium"?" pu-blocks-tabs__header-medium":""}
                         ${props.attributes.headerSize==="small"?" pu-blocks-tabs__header-small":""}
-                        ${index===0?" active":""}
+                        ${header.active?" active":""}
                       `}
             tagName={ Button }
             role="tab"
             value={ header.text }
-            aria-control={  `panel-${header.id}` }
-            aria-selected={ `${index===0?"true":"false"}` }
+            aria-controls={  `panel-${header.id}` }
+            aria-selected={ `${header.active?"true":"false"}` }
           />
           })}
         </div> 
@@ -211,6 +215,7 @@ registerBlockType("purdue-blocks/tabs", {
 const updateTabs = (props, oldNum, newNum) => {
   const select = wp.data.select("core/block-editor");
   let innerBlocks = select.getBlock(props.clientId).innerBlocks;
+  props.setAttributes( { numTabs:newNum } )
 
   const adding = newNum > oldNum;
   const triedZero = newNum === 0

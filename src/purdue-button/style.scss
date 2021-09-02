@@ -32,6 +32,9 @@
     &__text{
       flex-shrink:1;
     }
+    &--height{
+      height:100%;
+    }
     &.purdue-blocks__button--outline{
       background: $white;
       border: 2px solid $black;
@@ -108,6 +111,88 @@
       font-size: 1.25rem;
       text-transform: capitalize;
       letter-spacing:0.001em;
+    }
+    &--fancy{
+      font-family:$acumin-pro-semicondensed;
+      font-size:1.25rem;
+      font-weight:500;
+      line-height:1.5;
+      padding:2rem 0;
+      display:inline-flex;
+      flex-direction:row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0;
+      min-width: 200px;
+      text-transform: none;
+      border:none;
+      overflow: hidden;
+      position:relative;
+      &:after{
+        content:"";
+        width:0;
+        height:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        background-color: $boiler-gold;
+        transition: ease-out 0.4s;
+      }
+      &:hover{
+        &:after{
+          width:100%;
+        }
+      }
+      &-white{
+        color:$black;
+        background-color: $white;
+
+        &:hover{
+          color:$black;
+          .purdue-blocks__button__icon{
+            color: $black;
+          }
+        }
+        .purdue-blocks__button__icon{
+          background: white;
+          color:$black;
+        }
+      }
+      &-black{
+        color:$white;
+        background-color: $black;
+        &:hover{
+            color:$black;
+            background-color:$black;
+            .purdue-blocks__button__icon{
+              color: white;
+            }
+        }
+        .purdue-blocks__button__icon{
+          background: black;
+          color: white;
+        }
+      }
+      .purdue-blocks__button__text{
+        padding:0 6rem 0 1.3rem;
+        width: 100%;
+        text-align: left;
+        z-index:1;
+        font-weight:600;
+        letter-spacing: 0;
+      }
+      .purdue-blocks__button__icon{
+        width: 6rem;
+        height: 100%;
+        display: inline-flex;
+        clip-path: polygon(45% 0, 100% 0, 100% 100%, 0% 100%);
+        padding: 0 0.5rem 0 1.5rem;
+        z-index:1;
+        position: absolute;
+        right: 0;
+        align-items: center;
+        justify-content: center;
+      }
     }
  }
  .shrink-padding{

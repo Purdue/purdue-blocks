@@ -188,7 +188,6 @@ function slide(itemContainer,items, slides, prev, next, dots) {
         } else {
             timeout = false;
             slideSize = itemContainer.offsetWidth
-            console.log(slideSize)
             newSlides.forEach((slide)=>{
                 slide.style.width=slideSize+"px";
             })

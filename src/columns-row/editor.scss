@@ -6,6 +6,7 @@
  */
 
  .bulma-blocks-editor-columns {
+   z-index:10;
      .title {
         &--black {
           color: black !important;
@@ -22,6 +23,9 @@
         &--white {
           color: white !important;
         }
+        &.align--center{
+          text-align:center;
+        }
       }
  }
  .has-margin-left{
@@ -31,15 +35,23 @@
   margin-bottom:1.5rem;
 }
 .pu-columns-row-editor{
+  color: #ededed;
+  &.section.no-padding{
+    padding:1rem 0 !important;
+  }
   &.has-background-black, &.has-background-black-ter, &.has-overlay-black, &.has-overlay-steel  {
     color: $white;
-    .block-editor-button-block-appender {
-      box-shadow: inset 0 0 0 1px $white;
-      color:$white;
-    }
+
+  }
+  .block-editor-button-block-appender {
+    box-shadow: inset 0 0 0 1px $white;
+    color:$black;
+    background: #ededed;
   }
   .bulma-blocks-editor-columns{
     color:inherit;
   }
-
+  .content.content--no-margin{
+    margin-bottom:1rem;
+  }
 }

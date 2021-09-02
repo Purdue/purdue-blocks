@@ -68,22 +68,27 @@ registerBlockType( 'purdue-blocks/columns-row', {
     titleLevel: { type: "string", default: "p" },
     headerColor: { type: "string", default: "black" },
     subText: { type: 'string', default: '' },
+    subTextColor: { type: "string", default: "black" },
     titleAlign: { type: 'string', default: 'left' },
     subTextAlign: { type: 'string', default: 'left' },
     numColumns: { type: "number", default: 1 },
     dividers: { type: "boolean", default: false },
+    centerColumns: { type: "boolean", default: false },
     addBackground: { type: "boolean", default: false },
     backgroundImageType: { type: 'string', default: 'fabric' },
     backgroundImageUrl: { type: 'string', default: file_data.fabric_url },
     backgroundImageAlt: { type: 'string', default: '' },
     backgroundOverlay: { type: 'string', default: 'has-overlay-black' },
+    rowType: { type: "string", default: 'regular' },
+    addSpace: { type: "boolean", default: true },
+    addSpaceMobile: { type: "boolean", default: false },
   },
   supports: {
     className: false,
   },
   // Block description in side panel
   description: __(
-    'A content page layout with a main content area with/without a sidebar area.'
+    'Add a row of columns to the page.'
   ),
 
   edit: ( props ) => {
@@ -113,12 +118,30 @@ registerBlockType( 'purdue-blocks/columns-row', {
     return [
       <InspectorControls>
           <PanelBody>
+          <PanelRow>
+            <RadioControl
+                label="Add a row"
+                selected={ props.attributes.rowType }
+                options={
+                  [
+                    { value: 'regular', label: 'Regular Row with content' },
+                    { value: 'empty', label: 'Empty Row' },
+                    { value: 'emptyLine', label: 'Empty Row With A Guide Line' },
+                  ]
+                }
+                onChange={ ( rowType ) => {
+                  props.setAttributes( { rowType } )
+                } }
+              />
+            </PanelRow>
+            {props.attributes.rowType==="regular"?
             <PanelRow>
               <RadioControl
                 label="Padding Size"
                 help="Select the amount of spacing at the top and bottom of the section."
                 selected={ props.attributes.sectionPadding }
                 options={ [
+                  { label: 'None', value: 'none' },
                   { label: 'Small', value: 'small' },
                   { label: 'Medium', value: 'is-medium' },
                   { label: 'Large', value: 'is-large' },
@@ -127,7 +150,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   props.setAttributes( { sectionPadding: option } )
                 } }
               />
-            </PanelRow>
+            </PanelRow>:""}
             <PanelRow>
               <CheckboxControl
                 label="Add Background Image"
@@ -207,6 +230,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 value={ props.attributes.backgroundOverlay }
                 options={
                   [
+                    { value: '', label: 'None' },
                     { value: 'has-overlay-black', label: 'Black' },
                     { value: 'has-overlay-white', label: 'White' },
                     { value: 'has-overlay-steel', label: 'Steel Gray' },
@@ -228,9 +252,9 @@ registerBlockType( 'purdue-blocks/columns-row', {
                   [
                     { value: '', label: 'None' },
                     { value: 'has-background-black', label: 'Black' },
-                    { value: 'has-background-light-gray', label: 'Light Digital Gray' },
+                    { value: 'has-background-light-gray', label: 'Lightest Digital Gray' },
                     { value: 'has-background-grey-lighter', label: 'Medium Digital Gray' },
-                    { value: 'has-background-black-ter', label: 'Steel Gray' },
+                    { value: 'has-background-black-ter', label: 'Steel(Dark) Gray' },
                     { value: 'has-background-boiler-gold', label: 'Boilermaker Gold' },
                   ]
                 }
@@ -242,11 +266,12 @@ registerBlockType( 'purdue-blocks/columns-row', {
             }
  
           </PanelBody>
-          <PanelBody>
+          {props.attributes.rowType==="regular"?
+         <PanelBody>
             <PanelRow>
             <SelectControl
                 label="Number of Columns"
-                value={ props.attributes.columnsNumber }
+                value={ props.attributes.numColumns }
                 options={
                   [
                     { value: 1, label: 'One Column' },
@@ -255,7 +280,8 @@ registerBlockType( 'purdue-blocks/columns-row', {
                     { value: 4, label: 'Four Columns' },
                   ]
                 }
-                onChange={ ( numColumns ) => {
+                onChange={ ( val ) => {
+                  let numColumns = parseInt(val)
                   updateColumns(props, props.attributes.numColumns, numColumns);
                   props.setAttributes({ numColumns });
                 } }
@@ -268,13 +294,23 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 onChange={(checked) => props.setAttributes({ dividers: checked })}
               />
             </PanelRow>
-          </PanelBody>
+            <PanelRow>
+              <CheckboxControl
+                label="Center the columns?"
+                checked={props.attributes.centerColumns}
+                onChange={(checked) => props.setAttributes({ centerColumns: checked })}
+              />
+            </PanelRow>
+          </PanelBody>:""
+          }
+          {props.attributes.rowType==="regular"?
           <PanelBody>
             <PanelRow>
               <SelectControl
                 label="Heading level of the title"
                 value={props.attributes.titleLevel}
                 options={[
+                  { label: "H1", value: "h1" },
                   { label: "H2", value: "h2" },
                   { label: "H3", value: "h3" },
                   { label: "H4", value: "h4" },
@@ -303,7 +339,25 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 } }
               />
             </PanelRow>
-          </PanelBody>
+            <PanelRow>
+              <SelectControl
+                label="Subtext Color"
+                value={ props.attributes.subTextColor }
+                options={ [
+                  { label: 'Black', value: 'black' },
+                  { label: 'Steel', value: 'steel' },
+                  { label: 'Digital Gold', value: 'gold' },
+                  { label: 'Aged Gold', value: 'aged' },
+                  { label: 'White', value: 'white' },
+                ] }
+                onChange={ ( subTextColor ) => {
+                  props.setAttributes( { subTextColor } )
+                } }
+              />
+            </PanelRow>
+          </PanelBody>:""
+          }
+          {props.attributes.rowType==="regular"?
           <PanelBody>
             <PanelRow>
               <SelectControl
@@ -331,47 +385,69 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 }}
               />
             </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Add space below subtext?"
+                checked={props.attributes.addSpace}
+                onChange={(checked) => props.setAttributes({ addSpace: checked })}
+              />
+            </PanelRow>
+          </PanelBody>:""
+          }
+          <PanelBody>
+            <PanelRow>
+              <CheckboxControl
+                label="Add space at the bottom on mobile?"
+                checked={props.attributes.addSpaceMobile}
+                onChange={(checked) => props.setAttributes({ addSpaceMobile: checked })}
+              />
+            </PanelRow>
           </PanelBody>
         </InspectorControls>,
         <div className={`pu-columns-row pu-columns-row-editor section
         ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
-        ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
+        ${props.attributes.sectionPadding === 'none'?"no-padding":""}
+        ${props.attributes.sectionPadding !== 'small'&&props.attributes.sectionPadding !== 'none'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
         ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
+        ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
+        ${props.attributes.rowType==="emptyLine" ? ` pu-columns-row--empty-line`:''}
+        ${props.attributes.addSpaceMobile ? ` pu-columns-row--space-mobile`:''}
         `}
         style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
         aria-label={ props.attributes.backgroundImageAlt }
         >
-          <div className={'container'}>
-           <div className={`bulma-blocks-editor-columns`}>
-            <div className="title">
-              <RichText
-                tagname={props.setAttributes.titleLevel}
-                value={props.attributes.title}
-                className={`title title--${props.attributes.headerColor}`}
-                onChange={(text) => {
-                  props.setAttributes({ title: text });
-                }}
-                placeholder="Add Heading"
-                keepPlaceholderOnFocus={true}
-                allowedFormats={[]}
-              ></RichText>
-            </div>
-            <div className="content">
-              <RichText
-                tagname="p"
-                value={props.attributes.subText}
-                className={"content"}
-                onChange={(text) => {
-                  props.setAttributes({ subText: text });
-                }}
-                placeholder="Add Sub-Text"
-                allowedFormats={[]}
-              ></RichText>
-            </div>
-            <InnerBlocks templateLock="all" />
-          </div>
-        </div>
+            {props.attributes.rowType==="regular"?
+            <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>
+              <div className={`bulma-blocks-editor-columns`}>
+                <div className="title">
+                  <RichText
+                    tagname={props.setAttributes.titleLevel}
+                    value={props.attributes.title}
+                    className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
+                    onChange={(text) => {
+                      props.setAttributes({ title: text });
+                    }}
+                    placeholder="Add Heading"
+                    keepPlaceholderOnFocus={true}
+                    allowedFormats={[]}
+                  ></RichText>
+                </div>
+                <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
+                  <RichText
+                    tagname="p"
+                    value={props.attributes.subText}
+                    className={`align--${props.attributes.subTextAlign} content subtext--${props.attributes.subTextColor}`}
+                    onChange={(text) => {
+                      props.setAttributes({ subText: text });
+                    }}
+                    placeholder="Add Sub-Text"
+                    allowedFormats={[]}
+                  ></RichText>
+                </div>
+                <InnerBlocks templateLock="all" />
+              </div>
+            </div>:""}
         </div>,
     ]
   },
@@ -388,43 +464,49 @@ registerBlockType( 'purdue-blocks/columns-row', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = (
       <div className={`pu-columns-row section
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
-                      ${props.attributes.sectionPadding !== 'small' ? ` ${props.attributes.sectionPadding}` : ''}
+                      ${props.attributes.sectionPadding === 'none'?"no-padding":""}
+                      ${props.attributes.sectionPadding !== 'small'&&props.attributes.sectionPadding !== 'none'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType !== 'concrete' ? ` ${props.attributes.backgroundOverlay}` : ''}
                       ${props.attributes.addBackground && props.attributes.backgroundImageType === 'concrete' ? ` has-overlay-concrete` : ''}
+                      ${props.attributes.rowType==="empty" ? ` pu-columns-row--empty`:''}
+                      ${props.attributes.rowType==="emptyLine" ? ` pu-columns-row--empty-line`:''}
+                      ${props.attributes.addSpaceMobile ? ` pu-columns-row--space-mobile`:''}
                       `}
-            style={{backgroundImage: `url(${props.attributes.addBackground?props.attributes.backgroundImageUrl:""})`}}
+            style={{backgroundImage: `${props.attributes.addBackground?url:"none"}`}}
             aria-label={ props.attributes.backgroundImageAlt }
             >
-        <div className={'container'}>
-
-          {(props.attributes.title !== '' && props.attributes.title) && (props.attributes.subText !== '' &&  props.attributes.subText) ? (
-            <div className={'content'}>
-              <div className="columns is-centered">
-                <div className="column is-8">
-                  {props.attributes.title !== '' && props.attributes.title !== undefined ?
-                  <RichText.Content
-                    className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
-                    tagName={props.attributes.titleLevel}
-                    value={props.attributes.title}
-                  /> : ''}
-                  {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
-                  <RichText.Content
-                    className={`align--${props.attributes.subTextAlign}`}
-                    tagName="p"
-                    value={props.attributes.subText}
-                  /> : ''}
+            {props.attributes.rowType==="regular"?  
+                <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>
+                {(props.attributes.title !== '' && props.attributes.title) || (props.attributes.subText !== '' &&  props.attributes.subText) ? (
+                  <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
+                    <div className="columns is-centered">
+                      <div className="column is-8">
+                        {props.attributes.title !== '' && props.attributes.title !== undefined ?
+                        <RichText.Content
+                          className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
+                          tagName={props.attributes.titleLevel}
+                          value={props.attributes.title}
+                        /> : ''}
+                        {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
+                        <RichText.Content
+                          className={`align--${props.attributes.subTextAlign} subtext--${props.attributes.subTextColor}`}
+                          tagName="p"
+                          value={props.attributes.subText}
+                        /> : ''}
+                      </div>
+                    </div>
+                  </div>
+                ) : ''}
+      
+                <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}${props.attributes.centerColumns ? " is-centered" : ""}`}>
+                  <InnerBlocks.Content />
                 </div>
-              </div>
-            </div>
-          ) : ''}
-
-          <div className={`columns is-multiline ${props.attributes.dividers ? "has-dividers" : ""}`}>
-            <InnerBlocks.Content />
-          </div>
-        </div>
+              </div>:""
+        }
       </div>
     );
     return returned;

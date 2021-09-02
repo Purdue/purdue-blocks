@@ -47,7 +47,7 @@
           flex-direction: row;
           justify-content: space-between;
           background:$black;
-          color:$boiler-gold;
+          color:$boiler-gold !important;
           font-family:$united-sans-condensed;
           font-size:2.2rem;
           padding:1.25rem;
@@ -65,7 +65,7 @@
             border-bottom:1px solid $white;
           }
           &:hover{
-            color:$white;
+            color:$white !important;
           }
           &.mobile-active{
             border-bottom:none;

@@ -1,0 +1,15 @@
+.pu-large-image-editor{
+  .buttons-container{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:2rem;
+  }
+  .remove-image-button{
+    background:$white;
+    margin-right:1rem;
+    &:hover{
+      background:$aged-gold;
+    }
+  }
+}

@@ -5,10 +5,66 @@
  */
 
 .pu-columns-row {
-  background-color: white;
+  background-color: rgba(255,255,255,0);
   background-position: center;
   background-size: cover;
   position: relative;
+  &.section.is-medium{
+    @include touch{
+      padding-top:2.5rem !important;
+      padding-bottom:2.5rem !important;
+    }
+  }
+  &.section.no-padding{
+    padding:0 !important;
+  }
+  &--space-mobile{
+    @include mobile{
+      margin-bottom:2.5rem;
+    }
+  }
+  &--empty{
+    &.section{
+      padding:0 !important;
+      height:4rem;
+      @include touch{
+        height:2.5rem;
+      }
+    }
+    &-line{
+      &.section{
+        padding:0 !important;
+        height:4rem;
+      }
+
+      &:before{
+        content: '' !important;
+        display: block;
+        position: absolute;
+        width: 1px;
+        background: $boiler-gold;
+        height: 4rem;
+        top: 0;
+        left: calc(50% - 0.5px);
+        transform:scaleY(0);
+        transform-origin: top;
+      }
+      &.animate{
+        &:before{
+          transform:scaleY(1);
+          transition: 0.4s ease-out;
+        }
+      }
+      &.no-animate{
+        &:before{
+          transform:scaleY(1);
+          transition: none;
+        }
+      }
+    }
+
+  }
+
   &.has-background-light-gray {
     background: #f7f7f7 !important;
   }
@@ -77,10 +133,6 @@
       left: 0;
     }
   }
-  &+.pu-columns-row {
-    padding-top: 0 !important;
-    margin-top: -2rem;
-  }
   .container{
     z-index:1;
   }
@@ -88,7 +140,9 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
+    &.content--no-margin{
+      margin-bottom:0;
+    }
     .title {
       &--black {
         color: black !important;
@@ -114,6 +168,23 @@
 
       &--center {
         text-align: center;
+      }
+    }
+    .subtext {
+      &--black {
+        color: black !important;
+      }
+      &--gold {
+        color: $boiler-gold !important;
+      }
+      &--aged {
+        color: $aged-gold !important;
+      }
+      &--steel {
+        color: $steel-gray !important;
+      }
+      &--white {
+        color: white !important;
       }
     }
   }
