@@ -88,7 +88,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
   },
   // Block description in side panel
   description: __(
-    'Add a row to the page.'
+    'Add a row of columns to the page.'
   ),
 
   edit: ( props ) => {
