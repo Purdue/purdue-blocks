@@ -539,7 +539,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         <div className="media">
           <div className="media-left">
             <div className="image">
-              <img src={ props.attributes.profilePhoto }></img>
+              <img alt={props.attributes.altText} src={ props.attributes.profilePhoto }></img>
             </div>
           </div>
           <div className="media-content">
@@ -671,7 +671,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         <div className="media">
           <div className="media-left">
             <div className="image">
-              <img src={ props.attributes.profilePhoto }></img>
+              <img alt={props.attributes.altText} src={ props.attributes.profilePhoto }></img>
             </div>
           </div>
           <div className="media-content">

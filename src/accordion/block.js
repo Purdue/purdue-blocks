@@ -148,6 +148,7 @@ registerBlockType( 'purdue-blocks/accordion', {
           value={ props.attributes.title }
           aria-controls={ `content-${ props.attributes.id }` }
           aria-expanded={ 'false' }
+          role={'button'}
         />
         <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
           <InnerBlocks.Content />

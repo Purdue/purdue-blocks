@@ -227,7 +227,6 @@ registerBlockType( 'purdue-blocks/cta-button', {
   save: ( props ) => {
     const returned = (
       <div
-        target={ props.attributes.external ? '_blank' : '_self' }
         className={ 'card cta-card' }
         rel="noopener noreferrer"
       >
@@ -238,7 +237,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
         </div>
         <div className={ 'card-content' }>
           <p>{ props.attributes.subText }</p>
-          <a href={ props.attributes.link } className={ 'cta-card__button' }>
+          <a href={ props.attributes.link } className={ 'cta-card__button' } target={ props.attributes.external ? '_blank' : '_self' }>
             { props.attributes.ctaText }
           </a>
         </div>
