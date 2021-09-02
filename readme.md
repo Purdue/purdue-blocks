@@ -6,6 +6,20 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.22.0] 2021-9-2
+#### Added:
+  - Story line block
+  - Large featured story block
+  - Large text block
+
+### Modified:
+  - Faculty card block
+  - Row of columns
+  - Video hero
+  - Reason to believe
+  - Purdue Button
+  - Accordion
+
 ### [1.21.1] 2021-8-16
 #### Fixed
   - Tabs block issue on Purdue WordPress server
