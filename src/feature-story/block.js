@@ -347,7 +347,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
             <div className="control">
               <InnerBlocks
                 template={ BLOCKS_TEMPLATE }
-                allowedBlocks={ [ 'core/paragraph', 'core/list' ] }
+                templateLock={ false }
               />
             </div>
           </div>
