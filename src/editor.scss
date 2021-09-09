@@ -43,6 +43,7 @@
 @import './ad-banner/editor.scss';
 
 .block-editor-writing-flow{
+    width: calc(100% - 2rem);
     max-width: 1080px;
     margin: 0 auto;
 }
