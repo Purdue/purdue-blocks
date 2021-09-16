@@ -79,6 +79,9 @@ registerBlockType("purdue-blocks/large-featured-story", {
     headerLevel: { type: 'string', default: 'h2' },
     imgUrl: { type: "string", default: "" },
     altText: { type: "string", default: "" },
+    addLightBox: { type: 'boolean', default: false },
+    buttonText: { type: 'string', default: '' },
+    videoUrl: { type: 'string', default: '' },
   },
 
   supports: {
@@ -116,7 +119,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
               } }
             />
           </PanelRow>
-        <PanelRow>
+          <PanelRow>
             <CheckboxControl
               label="Add a CTA link?"
               checked={ props.attributes.hasLink }
@@ -159,6 +162,32 @@ registerBlockType("purdue-blocks/large-featured-story", {
               onChange={(altText) => props.setAttributes({ altText })}
             />
           </PanelRow>
+          <PanelRow>
+            <CheckboxControl
+              label="Add a video lightbox?"
+              checked={ props.attributes.addLightBox }
+              onChange={ () =>
+                props.setAttributes( { addLightBox: ! props.attributes.addLightBox } )
+              }
+            />
+          </PanelRow>
+          { props.attributes.addLightBox ? (
+            <PanelRow>
+              <TextControl
+                label="Button Text"
+                help="The text on the button that opens the lightbox."
+                value={ props.attributes.buttonText }
+                onChange={ ( buttonText ) => props.setAttributes( { buttonText } ) }
+              />
+            </PanelRow> ) : '' }
+          { props.attributes.addLightBox ? (
+            <PanelRow>
+              <TextControl
+                label="Youtube Video URL"
+                value={ props.attributes.videoUrl }
+                onChange={ ( videoUrl ) => props.setAttributes( { videoUrl } ) }
+              />
+            </PanelRow> ) : '' }
         </PanelBody>
       </InspectorControls>,
       <div className="pu-cta-hero pu-large-image pu-large-image-editor animate">
@@ -199,29 +228,40 @@ registerBlockType("purdue-blocks/large-featured-story", {
                   }}
                 />
               </MediaUploadCheck>
-                    <div className="container">
-                      <div className="content">
-                        <RichText
-                          tagName={ props.attributes.headerLevel }
-                          value={ props.attributes.storyTitle }
-                          className={ 'story-title' }
-                          onChange={ ( storyTitle ) => {
-                            props.setAttributes( { storyTitle } )
-                          } }
-                          placeholder="Add header"
-                          keepPlaceholderOnFocus={ true }
-                          allowedFormats={ [] }
-                        >
-                        </RichText>
-                        <InnerBlocks
-                          template={ BLOCKS_TEMPLATE }
-                          templateLock={ false }
-                        />
-                      { props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.ctaText }</span>
-                      <span className="read-more-button-icon"></span></div> : '' }
-                      </div>
-                    </div>
-
+              <div className="container">
+                <div className="content">
+                  <RichText
+                    tagName={ props.attributes.headerLevel }
+                    value={ props.attributes.storyTitle }
+                    className={ 'story-title' }
+                    onChange={ ( storyTitle ) => {
+                      props.setAttributes( { storyTitle } )
+                    } }
+                    placeholder="Add header"
+                    keepPlaceholderOnFocus={ true }
+                    allowedFormats={ [] }
+                  >
+                  </RichText>
+                  <InnerBlocks
+                    template={ BLOCKS_TEMPLATE }
+                    templateLock={ false }
+                  />
+                { props.attributes.hasLink&&!props.attributes.addLightBox ? <div className="read-more-button"><span>{ props.attributes.ctaText }</span>
+                <span className="read-more-button-icon"></span></div> : '' }
+                {props.attributes.addLightBox?
+                <div className="button-container">
+                  {props.attributes.hasLink?
+                  <div className="read-more-button">
+                    { props.attributes.ctaText }
+                    <span className="read-more-button-icon">
+                    </span>
+                    </div>:""}
+                  <button className="pu-lightbox-button">
+                  { props.attributes.buttonText }
+                  </button>
+                  </div>:""}
+                </div>
+              </div>
           </div>
         </div>
       </div>,
@@ -240,6 +280,8 @@ registerBlockType("purdue-blocks/large-featured-story", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const videoId = getVideoId(props.attributes.videoUrl);
+    const iframeMarkup = <iframe src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
       <div className="pu-cta-hero pu-large-image">
         <div className="hero is-large">
@@ -258,7 +300,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
                   className={ 'story-title' }
                 /> ) : '' }
                 <InnerBlocks.Content />
-                {props.attributes.hasLink?
+                {props.attributes.hasLink&&!props.attributes.addLightBox?
                 <a className="read-more-button" href={props.attributes.ctaUrl}
                   target={ props.attributes.external ? '_blank' : '_self' }
                   rel="noopener noreferrer"
@@ -267,12 +309,50 @@ registerBlockType("purdue-blocks/large-featured-story", {
                   <span className="read-more-button-icon">
                   </span>
                   </a>:""}
+                {props.attributes.addLightBox?
+                <div className="button-container">
+                  {props.attributes.hasLink?
+                  <a className="read-more-button" href={props.attributes.ctaUrl}
+                    target={ props.attributes.external ? '_blank' : '_self' }
+                    rel="noopener noreferrer"
+                  >
+                    { props.attributes.ctaText }
+                    <span className="read-more-button-icon">
+                    </span>
+                    </a>:""}
+                  <button className="pu-lightbox-button">
+                  { props.attributes.buttonText }
+                  </button>
+                  </div>:""}
               </div>
             </div>
           </div>
         </div>
+        {props.attributes.addLightBox?
+                <div className="pu-lightbox">
+                  <div className={`modal--close-button`}>
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                  </div>
+                  <div className="container">
+                    <div className="video-container">
+                      <div className="video">
+                        {iframeMarkup}
+                      </div>
+                    </div>
+                  </div>
+                </div>:""}
       </div>
     );
     return returned;
   },
 });
+
+function getVideoId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url?.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}
+  

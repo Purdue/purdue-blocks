@@ -1,5 +1,4 @@
 const toggleButtons = document.querySelectorAll('.profile-gallery-open')
-
 const openModal = (e) => {
     const modalTarget = e.currentTarget.dataset.toggle
     const window = document.querySelector('html')
@@ -7,7 +6,6 @@ const openModal = (e) => {
 
     window.classList.add('no-scroll')
     modalToOpen.classList.add('modal-open')
-
 }
 
 const closeModal = (e) => {
