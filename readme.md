@@ -6,6 +6,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 
 Relevant changes are documented below.
 
+### [1.22.3] 2021-9-17
+#### Added:
+  - Lightbox to Large featured story block
+
 ### [1.22.0] 2021-9-2
 #### Added:
   - Story line block
