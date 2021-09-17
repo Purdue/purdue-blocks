@@ -13,7 +13,7 @@
         transform-origin: center;
         transition: ease-out 0.4s;
       }
-      .container{
+      &>.container{
         transform:translateY(500px);
         opacity:0;
         transition: ease-out 0.4s;
@@ -74,9 +74,10 @@
           font-family:$united-sans;
           font-size:1.125rem;
           font-weight: 700; 
-          display:flex;
+          display:inline-flex;
           align-items: center;
           text-decoration:none;
+          margin-right:1.5rem;
           &:hover{
             color:$white;
             .read-more-button-icon{
@@ -127,4 +128,89 @@
     }
   }
 }
+}
+.pu-lightbox-button{
+  border:none;
+  color:$boiler-gold;
+  font-family:$united-sans;
+  font-size:1.125rem;
+  font-weight: 700; 
+  text-decoration: underline;
+  display: inline-block;
+  background:none;
+  cursor: pointer;
+  padding: 0;
+  &:hover{
+    text-decoration: none;
+  }
+}
+.pu-lightbox{
+  display:none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(0,0,0,0.9);
+  z-index:100000;
+  overflow-y: scroll;
+  &.modal-open{
+    display:block;
+  }
+  padding:2.5rem $side-padding-desktop;
+  @include touch{
+    padding:2.5rem $side-padding-tablet;
+  }
+  @include mobile{
+    padding:1.5rem 1.25rem;
+  }
+  .container{
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    .video-container{
+      width:100%;
+      @include fullhd{
+        max-width:1116px;
+      }
+      @include until-fullhd{
+        max-width:1106px;
+      }
+      @include touch{
+        max-width:100%;
+      }
+      .video{
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 25px;
+        height: 0;
+        iframe{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .modal--close-button{
+    color:$white;
+    position: absolute;
+    top:1.5rem;
+    right:3.25rem;
+    font-size:2.5rem;
+    cursor: pointer;
+    z-index:100001;
+    @include touch{
+      right:1.5rem;
+    }
+    @include mobile{
+      font-size:1.8rem;
+      top:1.25rem;
+      right:1.25rem;
+    }
+  }
 }

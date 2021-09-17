@@ -10,3 +10,18 @@ window.addEventListener('scroll', () => {
         })
     }
 })
+//Lightbox 
+if(largeStory&&largeStory.length>0){
+    largeStory.forEach((t)=>{
+        const button = t.querySelector(".pu-lightbox-button");
+        if(button){
+            const lightbox = t.querySelector(".pu-lightbox");
+            button.addEventListener("click", ()=>{
+                lightbox.classList.add("modal-open")
+                const window = document.querySelector('html')         
+                window.classList.add('no-scroll-page')
+            })
+        }
+        //close modal code in profile-gallery block
+    })
+}

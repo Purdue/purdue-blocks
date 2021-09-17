@@ -144,7 +144,7 @@
         }
       }
       &-white{
-        color:$black;
+        color:$black !important;
         background-color: $white;
 
         &:hover{
