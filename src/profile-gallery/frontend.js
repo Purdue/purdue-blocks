@@ -4,14 +4,14 @@ const openModal = (e) => {
     const window = document.querySelector('html')
     const modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`)
 
-    window.classList.add('no-scroll')
+    window.classList.add('no-scroll-page')
     modalToOpen.classList.add('modal-open')
 }
 
 const closeModal = (e) => {
     const window = document.querySelector('html')
     const modalToClose = document.querySelector('.modal-open')
-    window.classList.remove('no-scroll')
+    window.classList.remove('no-scroll-page')
     modalToClose.classList.remove('modal-open')
 }
 

@@ -19,7 +19,7 @@ if(largeStory&&largeStory.length>0){
             button.addEventListener("click", ()=>{
                 lightbox.classList.add("modal-open")
                 const window = document.querySelector('html')         
-                window.classList.add('no-scroll')
+                window.classList.add('no-scroll-page')
             })
         }
         //close modal code in profile-gallery block
