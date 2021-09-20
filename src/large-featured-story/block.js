@@ -12,7 +12,9 @@ const {
   TextareaControl,
   SelectControl,
   TextControl,
+  RadioControl,
   Button,
+  Disabled,
 } = wp.components;
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 const { select } = wp.data;
@@ -32,6 +34,7 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
+ const ALLOWED_MEDIA_TYPES_2 = [ 'video' ];
 registerBlockType("purdue-blocks/large-featured-story", {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __("Large Image Featured Story"), // Block title.
@@ -81,7 +84,10 @@ registerBlockType("purdue-blocks/large-featured-story", {
     altText: { type: "string", default: "" },
     addLightBox: { type: 'boolean', default: false },
     buttonText: { type: 'string', default: '' },
-    videoUrl: { type: 'string', default: '' },
+    videoPlatform: { type: 'string', default: 'youtube' },
+    videoUrlYoutube: { type: 'string', default: '' },
+    videoUrlUpload: { type: 'string', default: '' },
+    videoTitle: { type: 'string', default: '' },
   },
 
   supports: {
@@ -97,6 +103,11 @@ registerBlockType("purdue-blocks/large-featured-story", {
     const removeMedia = () => {
       props.setAttributes({
         imgUrl: ''
+      });
+    }
+    const removeVideo = () => {
+      props.setAttributes({
+        videoUrlUpload: ''
       });
     }
     return [
@@ -182,12 +193,69 @@ registerBlockType("purdue-blocks/large-featured-story", {
             </PanelRow> ) : '' }
           { props.attributes.addLightBox ? (
             <PanelRow>
+            <RadioControl
+              label="Video Platform"
+              help="Select the platform of the video"
+              selected={ props.attributes.videoPlatform }
+              options={ [
+                { label: 'Youtube', value: 'youtube' },
+                { label: 'Upload a video', value: 'upload' },
+              ] }
+              onChange={ ( videoPlatform ) => {
+                props.setAttributes( {videoPlatform} )
+              } }
+            />
+          </PanelRow> ) : '' }
+          { props.attributes.addLightBox && props.attributes.videoPlatform==="youtube"? (
+            <PanelRow>
               <TextControl
                 label="Youtube Video URL"
-                value={ props.attributes.videoUrl }
-                onChange={ ( videoUrl ) => props.setAttributes( { videoUrl } ) }
+                value={ props.attributes.videoUrlYoutube }
+                onChange={ ( videoUrlYoutube ) => props.setAttributes( { videoUrlYoutube } ) }
               />
             </PanelRow> ) : '' }
+          { props.attributes.addLightBox && props.attributes.videoPlatform==="upload"? (
+            <MediaUploadCheck>
+              <MediaUpload
+                accept="video"
+                allowedTypes={ALLOWED_MEDIA_TYPES_2}
+                onSelect={ ( video ) => {
+                  props.setAttributes( {
+                    videoUrlUpload: video.url,
+                    videoTitle: video.title,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return props.attributes.videoUrlUpload !== '' ? (
+                    <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                        <video controls playsinline="" src={props.attributes.videoUrlUpload} title={props.attributes.videoTitle}>
+                        </video>
+                      <Button
+                        className={ 'remove-image-button multiple' }
+                        onClick={ open }
+                      >
+                        Select a New Video
+                      </Button>
+                      <Button className={ 'remove-image-button multiple' } onClick={removeVideo}>
+                        Remove video
+                      </Button>
+                    </div>
+                  ) : (
+                    <div>
+                      <p className={ 'bulma-blocks-editor-site-hero__description' }>
+                        Pick a video from the media library.
+                      </p>
+                      <Button
+                        className={ 'remove-image-button' }
+                        onClick={ open }
+                      >
+                        Open Media Library
+                      </Button>
+                    </div>
+                  );
+                } }
+              />
+            </MediaUploadCheck> ) : '' }
         </PanelBody>
       </InspectorControls>,
       <div className="pu-cta-hero pu-large-image pu-large-image-editor animate">
@@ -280,7 +348,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
-    const videoId = getVideoId(props.attributes.videoUrl);
+    const videoId = getVideoId(props.attributes.videoUrlYoutube);
     const iframeMarkup = <iframe src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
       <div className="pu-cta-hero pu-large-image">
@@ -329,18 +397,21 @@ registerBlockType("purdue-blocks/large-featured-story", {
           </div>
         </div>
         {props.attributes.addLightBox?
-                <div className="pu-lightbox">
-                  <div className={`modal--close-button`}>
-                    <i class="fas fa-times" aria-hidden="true"></i>
-                  </div>
-                  <div className="container">
-                    <div className="video-container">
-                      <div className="video">
-                        {iframeMarkup}
-                      </div>
-                    </div>
-                  </div>
-                </div>:""}
+        <div className="pu-lightbox">
+          <div className={`modal--close-button`}>
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </div>
+          <div className="container">
+            <div className="video-container">
+              <div className="video">
+              {props.attributes.videoPlatform==="youtube"?
+                iframeMarkup:""}
+              {props.attributes.videoPlatform==="upload"?
+              <video controls playsinline="" src={props.attributes.videoUrlUpload} title={props.attributes.videoTitle}/>:""}
+              </div>
+            </div>
+          </div>
+        </div>:""}
       </div>
     );
     return returned;
