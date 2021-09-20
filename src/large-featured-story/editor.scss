@@ -13,3 +13,9 @@
     }
   }
 }
+.remove-image-button{
+  &.multiple{
+    margin-top:0;
+    display:block;
+  }
+}
