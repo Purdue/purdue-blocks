@@ -32,6 +32,9 @@
      p.pu-proofpoint__source{
        color:$steel-gray
      }
+     p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
+      color:$black;
+    }
    }
    &__black{
      background-color:$black;

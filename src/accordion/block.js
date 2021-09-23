@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/accordion', {
     title: { type: 'string', source: 'html', selector: '.accordion-title' },
     titleLevel: { type: 'string', default: 'p' },
     id: { type: 'string', default: '' },
+    inputId: { type: 'string', default: '' },
   },
 
   supports: {
@@ -101,6 +102,14 @@ registerBlockType( 'purdue-blocks/accordion', {
                 props.setAttributes( { titleLevel } )
               } }
             />
+          </PanelRow>
+          <PanelRow>
+              <TextControl
+                label="HTML Anchor"
+                help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” Then, you’ll be able to link directly to this section of your page."
+                value={ props.attributes.inputId }
+                onChange={ ( inputId ) => props.setAttributes( { inputId } ) }
+              />
           </PanelRow>
         </PanelBody>
       </InspectorControls>,
@@ -139,7 +148,21 @@ registerBlockType( 'purdue-blocks/accordion', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = (
+    const returned = (props.attributes.inputId?
+      <div className="accordion" id={ props.attributes.inputId }>
+        <RichText.Content
+          id={ `title-${ props.attributes.id }` }
+          className={ 'accordion-title' }
+          tagName={ props.attributes.titleLevel }
+          value={ props.attributes.title }
+          aria-controls={ `content-${ props.attributes.id }` }
+          aria-expanded={ 'false' }
+          role={'button'}
+        />
+        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
+          <InnerBlocks.Content />
+        </div>
+      </div>:      
       <div className="accordion">
         <RichText.Content
           id={ `title-${ props.attributes.id }` }
