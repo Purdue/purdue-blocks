@@ -573,14 +573,14 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ) : (
                   ''
                 ) }
-                { props.attributes.street !== '' ? (
+                { props.attributes.street !== ''||props.attributes.city !== ''||props.attributes.state !== ''||props.attributes.zip !== ''||props.attributes.officePhone !== '' ? (
                   <li>
                     <i className="fas fa-address-book" aria-hidden="true" />
                     <div className="profile-info-item">
                       <p>
                         {props.attributes.street}
-                        <br />
-                        {`${props.attributes.city}, ${props.attributes.state} ${props.attributes.zip}`}
+                        {props.attributes.street?<br />:""}
+                        {`${props.attributes.city?`${props.attributes.city}, `:""}${props.attributes.state?`${props.attributes.state} `:""}${props.attributes.zip}`}
                         <br />
                         {props.attributes.officePhone.replace(/\s+/g, '') !== '' ? `Office: ${props.attributes.officePhone}` : ''}
                       </p>
@@ -711,14 +711,14 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ) : (
                   ''
                 ) }
-                { props.attributes.street !== '' ? (
+                { props.attributes.street !== ''||props.attributes.city !== ''||props.attributes.state !== ''||props.attributes.zip !== ''||props.attributes.officePhone !== '' ? (
                   <li>
                     <i className="fas fa-address-book" aria-hidden="true" />
                     <div className="profile-info-item">
                       <p>
                         {props.attributes.street}
-                        <br />
-                        {`${props.attributes.city}, ${props.attributes.state} ${props.attributes.zip}`}
+                        {props.attributes.street?<br />:""}
+                        {`${props.attributes.city?`${props.attributes.city}, `:""}${props.attributes.state?`${props.attributes.state} `:""}${props.attributes.zip}`}
                         <br />
                         {props.attributes.officePhone.replace(/\s+/g, '') !== '' ? `Office: ${props.attributes.officePhone}` : ''}
                       </p>
