@@ -106,7 +106,7 @@ registerBlockType( 'purdue-blocks/accordion', {
           <PanelRow>
               <TextControl
                 label="HTML Anchor"
-                help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” Then, you’ll be able to link directly to this section of your page."
+                help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
                 value={ props.attributes.inputId }
                 onChange={ ( inputId ) => props.setAttributes( { inputId } ) }
               />
