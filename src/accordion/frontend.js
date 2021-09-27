@@ -17,11 +17,8 @@ accordions.forEach((el) => {
 const id=window.location.hash;
 if(id){
     const el=document.querySelector(id);
-    console.log(el)
-
     if(el){
         if(el.classList.contains('accordion')){
-            console.log("test")
             window.scrollTop=el.offsetTop;
             el.setAttribute('aria-expanded', 'true');
             el.classList.add('is-open')
