@@ -14,3 +14,24 @@ accordions.forEach((el) => {
     })
 
 }) 
+const id=window.location.hash;
+if(id){
+    const el=document.querySelector(id);
+    if(el){
+        if(el.classList.contains('accordion')){
+            window.scrollTop=el.offsetTop;
+            el.setAttribute('aria-expanded', 'true');
+            el.classList.add('is-open')
+        }
+        if(el.parentElement&&el.parentElement.classList.contains('accordion')){
+            window.scrollTop=el.offsetTop;
+            el.parentElement.setAttribute('aria-expanded', 'true');
+            el.parentElement.classList.add('is-open');
+        }
+        if(el.parentElement&&el.parentElement.classList.contains('accordion-content')){
+            window.scrollTop=el.offsetTop;
+            el.parentElement.parentElement.setAttribute('aria-expanded', 'true');
+            el.parentElement.parentElement.classList.add('is-open')
+        }
+    }
+}
