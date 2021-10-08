@@ -6,9 +6,9 @@ on:
   push:
     branches: 
     - master
-    paths:
-      - '!.github/workflows/**'
-      - '!build'
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'build/**'
 
 jobs:
   build:
