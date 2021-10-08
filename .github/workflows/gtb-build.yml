@@ -28,3 +28,4 @@ jobs:
           git config --global user.email 'young295@purdue.edu'
           git commit -am "Automated build"
           git push
+      continue-on-error: true
