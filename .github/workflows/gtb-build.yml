@@ -7,7 +7,6 @@ on:
     branches: 
     - master
     paths-ignore:
-      # - '.github/workflows/**'
       - 'build/**'
 
 jobs:
@@ -17,10 +16,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node 10.
+    - name: Use Node 12.
       uses: actions/setup-node@v2
       with:
-        node-version: '10'
+        node-version: '12'
     - name: Clean install dependencies
       run: npm ci
     - name: Run production build
@@ -29,6 +28,7 @@ jobs:
       run: |
           git config --global user.name 'young295'
           git config --global user.email 'young295@purdue.edu'
+          git add build
           git commit -am "Automated build"
           git push
       continue-on-error: true
