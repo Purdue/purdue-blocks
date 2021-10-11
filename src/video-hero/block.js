@@ -192,7 +192,7 @@ registerBlockType("purdue-blocks/video-hero", {
                     role="img"
                     style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                     aria-label={props.attributes.altText}>
-              {props.attributes.videoUrl !== "" ? (
+              {props.attributes.type==="video"&&props.attributes.videoUrl !== "" ? (
                     <video className="video-hero-editor--video" muted="">
                       <source src={props.attributes.videoUrl} type="video/mp4" />
                     </video>
