@@ -44,7 +44,6 @@ if(largeStory&&largeStory.length>0){
             }
             let checkYT = setInterval(function () {
                 if(typeof YT !== 'undefined'&&YT.loaded){
-                    console.log(YT)
                      let lightboxPlayer=new YT.Player( youtube.id, {
                         events: { 
                             'onReady': function(e){
@@ -58,7 +57,6 @@ if(largeStory&&largeStory.length>0){
                         "id" :youtube.id,
                         "player" : lightboxPlayer
                     });          
-                    console.log(lightboxPlayers)
                    clearInterval(checkYT);
                 }
             }, 100);
