@@ -66,6 +66,10 @@ registerBlockType("purdue-blocks/video-hero", {
     external: { type: 'boolean', default: false },
     videoUrl: { type: "string", default: "" },
     posterUrl: { type: "string", default: "" },
+    type: { type: "string", default: "video" },
+    imgUrl: { type: "string", default: "" },
+    altTexti: { type: "string", default: "" },
+    altTextv: { type: "string", default: "" },
   },
 
   supports: {
@@ -86,16 +90,37 @@ registerBlockType("purdue-blocks/video-hero", {
     return [
       <InspectorControls>
         <PanelBody>
-
+          <PanelRow>
+          <RadioControl
+              label="Type of the background"
+              help="If you want to use an image as the background of this block, select image instead of video."
+              selected={ props.attributes.type }
+              options={ [
+                { label: 'Video', value: 'video' },
+                { label: 'Image', value: 'image' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { type: option } )
+              } }
+            />
+          </PanelRow>
+        </PanelBody>
+        <PanelBody>
+          { props.attributes.type ==="video"?
           <PanelRow>
             <p><strong>Select an image to replace the video as the hero on mobile devices.</strong></p>
-          </PanelRow>
+          </PanelRow>:""}
+          { props.attributes.type ==="video"?
           <PanelRow>
             <MediaUploadCheck>
               <MediaUpload 
                 allowedTypes={['image']}
                 onSelect={(media) => {
-                  props.setAttributes({ posterUrl: media.url });
+                  props.setAttributes({ posterUrl: media.url,
+                    altTextv:
+                    props.attributes.altTextv !== '' ?
+                      props.attributes.altTextv :
+                      img.alt, });
                 }}
                 render={({ open }) => {
                   return (
@@ -115,8 +140,15 @@ registerBlockType("purdue-blocks/video-hero", {
                 }}
               />
             </MediaUploadCheck>
+          </PanelRow>:""}
+          <PanelRow>
+            <TextareaControl
+              label="Hero Image Alt Text"
+              help="When video is selected as hero media type, this is the Alt text of the image displaying on mobile devices."
+              value={ props.attributes.type ==="image"?props.attributes.altTexti:props.attributes.altTextv }
+              onChange={ ( altText ) => props.attributes.type ==="image"?props.setAttributes( { altTexti:altText }):props.setAttributes( { altTextv:altText } ) }
+            />
           </PanelRow>
-
           <PanelRow>
             <TextControl
               label="CTA Link URL"
@@ -139,60 +171,74 @@ registerBlockType("purdue-blocks/video-hero", {
       </InspectorControls>,
 
       <div className={`video-hero-editor`}>
-        <MediaUploadCheck>
-          <MediaUpload
-            allowedTypes={ ['video'] }
-            onSelect={(media) => {
+      <MediaUploadCheck>
+        <MediaUpload
+          onSelect={(media) => {
+            if(props.attributes.type ==="video"){
               props.setAttributes({ videoUrl: "" });
               props.setAttributes({ videoUrl: media.url });
-            }}
-            render={({ open }) => {
-              return (
-                <div>
-                  {props.attributes.videoUrl !== "" ? (
+            }else{
+              props.setAttributes( {
+                imgUrl: media.url,
+                altTexti:
+                  props.attributes.altTexti !== '' ?
+                    props.attributes.altTexti :
+                    media.alt,
+              } );
+            }
+          }}
+          render={ ( { open } ) => {
+            return <div class="video-hero--background-image"                   
+                    role="img"
+                    style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
+                    aria-label={props.attributes.altText}>
+              {props.attributes.videoUrl !== "" ? (
                     <video className="video-hero-editor--video" muted="">
                       <source src={props.attributes.videoUrl} type="video/mp4" />
                     </video>
                   ) : ""}
-                  <div class="buttons-container">
+              <div class="buttons-container">
                     <button onClick={open}>
-                      {props.attributes.videoUrl !== ""
+                      {props.attributes.type==="video"?
+                      (props.attributes.videoUrl !== ""
                         ? "Select a new video"
-                        : "Select a video"}
+                        : "Select a video"):(
+                          props.attributes.imgUrl !== ""
+                        ? "Select a new image"
+                        : "Select an image"
+                        )}
                     </button>
                   </div>
-
-                  <div className="video-hero-editor--overlay"></div>
-                  
-                  <div className={`video-hero-editor--content`}>
-                    <RichText
-                      tagname="h1"
-                      value={props.attributes.title}
-                      className={"title"}
-                      onChange={(text) => {
-                        props.setAttributes({ title: text });
-                      }}
-                      placeholder="Add Title"
-                      keepPlaceholderOnFocus={true}
-                    ></RichText>
-                    <RichText
-                      tagname="span"
-                      value={ props.attributes.buttonText }
-                      className={ 'cta-button' }
-                      onChange={ ( text ) => {
-                        props.setAttributes( { buttonText: text } )
-                      } }
-                      placeholder="Button Text"
-                      keepPlaceholderOnFocus={ true }
-                      allowedFormats={ [] }
-                    >
-                    </RichText> 
-                  </div>
+               <div className="video-hero-editor--overlay"></div>                  
+                <div className={`video-hero-editor--content`}>
+                  <RichText
+                    tagname="h1"
+                    value={props.attributes.title}
+                    className={"title"}
+                    onChange={(text) => {
+                      props.setAttributes({ title: text });
+                    }}
+                    placeholder="Add Title"
+                    keepPlaceholderOnFocus={true}
+                  ></RichText>
+                  <RichText
+                    tagname="span"
+                    value={ props.attributes.buttonText }
+                    className={ 'cta-button' }
+                    onChange={ ( text ) => {
+                      props.setAttributes( { buttonText: text } )
+                    } }
+                    placeholder="Button Text"
+                    keepPlaceholderOnFocus={ true }
+                    allowedFormats={ [] }
+                  >
+                  </RichText> 
                 </div>
-              );
-            }}
-          />
+            </div>
+          } }
+        />
         </MediaUploadCheck>
+        
       </div>,
     ];
   },
@@ -210,10 +256,13 @@ registerBlockType("purdue-blocks/video-hero", {
    */
   save: (props) => {
     const returned = (
-      <div className={`video-hero video-hero--background-image`} style={{backgroundImage: `url(${props.attributes.posterUrl})`}}>
-        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''} src={props.attributes.videoUrl}/>
+      <div className={`video-hero video-hero--background-image`} 
+      style={{backgroundImage: `url(${props.attributes.type==="video"?props.attributes.posterUrl:props.attributes.imgUrl})`}}
+      aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti}>
+        {props.attributes.type==="video"?
+        <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''} src={props.attributes.videoUrl}/>:""}
         <div className="video-hero--overlay"></div>
-
+        {props.attributes.type==="video"?
         <div class="video-hero--control">
           <button class="video-hero--pause-button">
             <span class="sr-only">Pause
@@ -229,8 +278,7 @@ registerBlockType("purdue-blocks/video-hero", {
               <i class="fas fa-play-circle" aria-hidden="true"></i>
             </span>
           </button>
-        </div>
-
+        </div>:""}
         <div className="video-hero--content">
           <RichText.Content
             className={"title"}

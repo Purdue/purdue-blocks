@@ -20136,6 +20136,22 @@ registerBlockType("purdue-blocks/video-hero", {
     posterUrl: {
       type: "string",
       default: ""
+    },
+    type: {
+      type: "string",
+      default: "video"
+    },
+    imgUrl: {
+      type: "string",
+      default: ""
+    },
+    altTexti: {
+      type: "string",
+      default: ""
+    },
+    altTextv: {
+      type: "string",
+      default: ""
     }
   },
   supports: {
@@ -20150,11 +20166,28 @@ registerBlockType("purdue-blocks/video-hero", {
       });
     };
 
-    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Select an image to replace the video as the hero on mobile devices."))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
+    return [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(InspectorControls, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RadioControl, {
+      label: "Type of the background",
+      help: "If you want to use an image as the background of this block, select image instead of video.",
+      selected: props.attributes.type,
+      options: [{
+        label: 'Video',
+        value: 'video'
+      }, {
+        label: 'Image',
+        value: 'image'
+      }],
+      onChange: function onChange(option) {
+        props.setAttributes({
+          type: option
+        });
+      }
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelBody, null, props.attributes.type === "video" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("p", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("strong", null, "Select an image to replace the video as the hero on mobile devices."))) : "", props.attributes.type === "video" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
       allowedTypes: ['image'],
       onSelect: function onSelect(media) {
         props.setAttributes({
-          posterUrl: media.url
+          posterUrl: media.url,
+          altTextv: props.attributes.altTextv !== '' ? props.attributes.altTextv : img.alt
         });
       },
       render: function render(_ref) {
@@ -20167,7 +20200,18 @@ registerBlockType("purdue-blocks/video-hero", {
           src: props.attributes.posterUrl
         }) : '');
       }
-    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
+    }))) : "", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextareaControl, {
+      label: "Hero Image Alt Text",
+      help: "When video is selected as hero media type, this is the Alt text of the image displaying on mobile devices.",
+      value: props.attributes.type === "image" ? props.attributes.altTexti : props.attributes.altTextv,
+      onChange: function onChange(altText) {
+        return props.attributes.type === "image" ? props.setAttributes({
+          altTexti: altText
+        }) : props.setAttributes({
+          altTextv: altText
+        });
+      }
+    })), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(PanelRow, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(TextControl, {
       label: "CTA Link URL",
       value: props.attributes.buttonURL,
       onChange: function onChange(buttonURL) {
@@ -20186,18 +20230,31 @@ registerBlockType("purdue-blocks/video-hero", {
     })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "video-hero-editor"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUploadCheck, null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(MediaUpload, {
-      allowedTypes: ['video'],
       onSelect: function onSelect(media) {
-        props.setAttributes({
-          videoUrl: ""
-        });
-        props.setAttributes({
-          videoUrl: media.url
-        });
+        if (props.attributes.type === "video") {
+          props.setAttributes({
+            videoUrl: ""
+          });
+          props.setAttributes({
+            videoUrl: media.url
+          });
+        } else {
+          props.setAttributes({
+            imgUrl: media.url,
+            altTexti: props.attributes.altTexti !== '' ? props.attributes.altTexti : media.alt
+          });
+        }
       },
       render: function render(_ref2) {
         var open = _ref2.open;
-        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", null, props.attributes.videoUrl !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("video", {
+        return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+          class: "video-hero--background-image",
+          role: "img",
+          style: {
+            backgroundImage: "url(".concat(props.attributes.imgUrl, ")")
+          },
+          "aria-label": props.attributes.altText
+        }, props.attributes.videoUrl !== "" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("video", {
           className: "video-hero-editor--video",
           muted: ""
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("source", {
@@ -20207,7 +20264,7 @@ registerBlockType("purdue-blocks/video-hero", {
           class: "buttons-container"
         }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
           onClick: open
-        }, props.attributes.videoUrl !== "" ? "Select a new video" : "Select a video")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+        }, props.attributes.type === "video" ? props.attributes.videoUrl !== "" ? "Select a new video" : "Select a video" : props.attributes.imgUrl !== "" ? "Select a new image" : "Select an image")), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
           className: "video-hero-editor--overlay"
         }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
           className: "video-hero-editor--content"
@@ -20254,9 +20311,10 @@ registerBlockType("purdue-blocks/video-hero", {
     var returned = Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "video-hero video-hero--background-image",
       style: {
-        backgroundImage: "url(".concat(props.attributes.posterUrl, ")")
-      }
-    }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("video", {
+        backgroundImage: "url(".concat(props.attributes.type === "video" ? props.attributes.posterUrl : props.attributes.imgUrl, ")")
+      },
+      "aria-label": props.attributes.type === "video" ? props.attributes.altTextv : props.attributes.altTexti
+    }, props.attributes.type === "video" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("video", {
       autobuffer: "",
       autoplay: "",
       className: "video-hero--video",
@@ -20265,9 +20323,9 @@ registerBlockType("purdue-blocks/video-hero", {
       playsinline: "",
       poster: props.attributes.posterUrl || '',
       src: props.attributes.videoUrl
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }) : "", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "video-hero--overlay"
-    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    }), props.attributes.type === "video" ? Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       class: "video-hero--control"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("button", {
       class: "video-hero--pause-button"
@@ -20283,7 +20341,7 @@ registerBlockType("purdue-blocks/video-hero", {
     }, "Play"), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("span", null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("i", {
       class: "fas fa-play-circle",
       "aria-hidden": "true"
-    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
+    })))) : "", Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])("div", {
       className: "video-hero--content"
     }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(RichText.Content, {
       className: "title",
