@@ -23,6 +23,9 @@
     &.box {
       height:100%;
       margin-bottom: 0 !important;
+      &.faculty-profile-card--wide>.media {
+        height: 100%;
+    }
     }
   }
   .media {
