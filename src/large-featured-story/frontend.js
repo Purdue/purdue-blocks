@@ -11,6 +11,7 @@ window.addEventListener('scroll', () => {
     }
 })
 //Lightbox 
+let lightboxPlayers=[]
 if(largeStory&&largeStory.length>0){
     largeStory.forEach((t)=>{
         const button = t.querySelector(".pu-lightbox-button");
@@ -22,6 +23,48 @@ if(largeStory&&largeStory.length>0){
                 window.classList.add('no-scroll-page')
             })
         }
-        //close modal code in profile-gallery block
+        const closeButton = t.querySelector('.modal--close-button');
+        const video = t.querySelector('video')
+        if(video){
+            closeButton.addEventListener("click", ()=>{
+                video.pause();
+            })
+        }
+        const youtube=t.querySelector('.pu-lightbox-youtube')
+        if(youtube){
+            let url="https://www.youtube.com/player_api"
+            if(document.querySelectorAll(`script[src="${url}"]`).length === 0){
+                let tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                let firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+            if(youtube.src.indexOf("enablejsapi=1")===-1){
+                youtube.src=youtube.src+"?enablejsapi=1"
+            }
+            let checkYT = setInterval(function () {
+                if(typeof YT !== 'undefined'&&YT.loaded){
+                    console.log(YT)
+                     let lightboxPlayer=new YT.Player( youtube.id, {
+                        events: { 
+                            'onReady': function(e){
+                                closeButton.addEventListener("click", ()=>{
+                                    lightboxPlayer.pauseVideo()
+                                })                              
+                            }
+                        }
+                    });   
+                    lightboxPlayers.push({
+                        "id" :youtube.id,
+                        "player" : lightboxPlayer
+                    });          
+                    console.log(lightboxPlayers)
+                   clearInterval(checkYT);
+                }
+            }, 100);
+            checkYT;
+        }
+        //close modal code in profile-gallery block        
     })
 }
+
