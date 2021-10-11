@@ -19,6 +19,12 @@
       margin-bottom:2.8125rem;
     }
   }
+  &--full-height{
+    &.box {
+      height:100%;
+      margin-bottom: 0 !important;
+    }
+  }
   .media {
     padding: 2.1875rem;
 
