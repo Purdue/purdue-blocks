@@ -5,6 +5,12 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.6] 2021-10-13
+#### Modified
+  - Added full height and fax options to faculty card block
+  - Added image option to video hero block
+  - Added function to pause video when lightbox is closed on large image featured story block.
+
 ### [1.22.5] 2021-9-27
 #### Modified
   - Added ID attribute to Accordion block and opens it when the id is in the URL
