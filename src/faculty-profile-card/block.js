@@ -96,6 +96,8 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     state: { type: 'string', default: ''},
     zip: { type: 'string', default: ''},
     officePhone: { type: 'string', default: ''},
+    fax: { type: 'string', default: '' },
+    height:{ type: 'string', default: "auto" },
   },
 
   supports: {
@@ -144,6 +146,20 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               ] }
               onChange={ ( option ) => {
                 props.setAttributes( { styleToggle: option } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Height"
+              help="Select 100% if you want the card to take the full height of its container."
+              selected={ props.attributes.height }
+              options={ [
+                { label: 'Auto', value: 'auto' },
+                { label: '100%', value: 'full' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { height: option } )
               } }
             />
           </PanelRow>
@@ -319,6 +335,22 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                   placeholder="Phone Number..."
                   onChange={ ( e ) => {
                     props.setAttributes( { phone: e.target.value } );
+                  } }
+                ></input>
+              </div>
+            </div>
+            <span>Add Fax Number</span>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.fax !== '' ? props.attributes.fax : ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Fax Number..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { fax: e.target.value } );
                   } }
                 ></input>
               </div>
@@ -535,7 +567,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
    */
   save: ( props ) => {
     const returned = props.attributes.name == '' ? (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -551,6 +583,17 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                     <div className="profile-info-item">
                       <p>{ props.attributes.phone }</p>
                       <span>Phone</span>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+                { props.attributes.fax !== '' ? (
+                  <li>
+                    <i className="fas fa-fax" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <p>{ props.attributes.fax }</p>
+                      <span>Fax</span>
                     </div>
                   </li>
                 ) : (
@@ -667,7 +710,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
       </div>
     ) : (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -689,6 +732,17 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                     <div className="profile-info-item">
                       <p>{ props.attributes.phone }</p>
                       <span>Phone</span>
+                    </div>
+                  </li>
+                ) : (
+                  ''
+                ) }
+                { props.attributes.fax !== '' ? (
+                  <li>
+                    <i className="fas fa-fax" aria-hidden="true" />
+                    <div className="profile-info-item">
+                      <p>{ props.attributes.fax }</p>
+                      <span>Fax</span>
                     </div>
                   </li>
                 ) : (

@@ -19,6 +19,15 @@
       margin-bottom:2.8125rem;
     }
   }
+  &--full-height{
+    &.box {
+      height:100%;
+      margin-bottom: 0 !important;
+      &.faculty-profile-card--wide>.media {
+        height: 100%;
+    }
+    }
+  }
   .media {
     padding: 2.1875rem;
 

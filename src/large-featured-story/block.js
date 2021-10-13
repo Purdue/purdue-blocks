@@ -214,6 +214,17 @@ registerBlockType("purdue-blocks/large-featured-story", {
                 onChange={ ( videoUrlYoutube ) => props.setAttributes( { videoUrlYoutube } ) }
               />
             </PanelRow> ) : '' }
+            { props.attributes.addLightBox && props.attributes.videoPlatform==="youtube"? (
+            <PanelRow>
+              <TextControl
+                label="Youtube Video Title"
+                value={ props.attributes.videoTitle }
+                onChange={ ( title ) => {
+                  props.setAttributes( { videoTitle:"" } )
+                  props.setAttributes( { videoTitle: title } )
+                 } }
+              />
+            </PanelRow> ) : '' }
           { props.attributes.addLightBox && props.attributes.videoPlatform==="upload"? (
             <MediaUploadCheck>
               <MediaUpload
@@ -349,7 +360,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
    */
   save: (props) => {
     const videoId = getVideoId(props.attributes.videoUrlYoutube);
-    const iframeMarkup = <iframe src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
+    const iframeMarkup = <iframe id={videoId} class="pu-lightbox-youtube" title={props.attributes.videoTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
       <div className="pu-cta-hero pu-large-image">
         <div className="hero is-large">

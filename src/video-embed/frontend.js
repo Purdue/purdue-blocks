@@ -81,7 +81,7 @@ if(jQuery("#player").length>0) {
 	var firstScriptTag=document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
     let checkYT = setInterval(function () {
-        if(YT&&YT.loaded){
+        if(typeof YT !== 'undefined'&&YT.loaded){
              player=new YT.Player( "player", {
                 events: { 
                     'onReady': onPlayerReady,
