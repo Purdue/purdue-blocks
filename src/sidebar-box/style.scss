@@ -25,6 +25,11 @@
         &__content{
           padding:1.25rem;
           border:1px solid $black;
+          hr{
+            border:none;
+            background-color: $steel-gray;
+            margin: 1rem;
+          }
         }
         &__link{
           border:1px solid $black;
