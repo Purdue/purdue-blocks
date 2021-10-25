@@ -6,7 +6,7 @@
  * Description: Adds Gutenberg blocks to Wordpress based on Purdue's brand elements.
  * Author: Purdue Marketing and Media
  * Author URI: https://brand.purdue.edu/digital/
- * Version: 1.22.6
+ * Version: 1.22.7
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  *
