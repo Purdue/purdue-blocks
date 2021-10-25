@@ -1,0 +1,52 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ .purdue-block{
+    &-sidebar-box{
+      position: relative;
+      margin-bottom:0;
+      &--margin{
+        margin-bottom:2rem;
+      }
+      .sidebar-box{
+        &__title{
+          background:$black;
+          font-family:$united-sans !important;
+          color:$white !important;
+          font-size:1.25rem !important;
+          line-height:1.5 !important;
+          border:1px solid $black;
+          margin-bottom: 0 !important;
+          padding:0.75rem 1.25rem;
+        }
+        &__content{
+          padding:1.25rem;
+          border:1px solid $black;
+          hr{
+            border:none;
+            background-color: $steel-gray;
+            margin: 1rem;
+          }
+        }
+        &__link{
+          border:1px solid $black;
+          border-top:none;
+          width:100%;
+          display:block;
+          text-align:center;
+          text-decoration: none;
+          background-color: $boiler-gold;
+          font-weight:700;
+          padding:0.75rem 1.25rem;
+          color:$black;
+          &:hover{
+            background-color:$white;
+          }
+        }
+      }
+    }
+ }
+
