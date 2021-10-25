@@ -79,6 +79,7 @@ registerBlockType( 'purdue-blocks/story-line', {
     addPaddingBottom:{ type: 'boolean', default: false },
     backgroundImageUrl: { type: 'string', default: '' },
     addExtraLineTop:{ type: 'boolean', default: false },
+    id: { type: 'string', default: '' },
   },
 
   supports: {
@@ -104,6 +105,14 @@ registerBlockType( 'purdue-blocks/story-line', {
     return [
       <InspectorControls>
         <PanelBody>
+            <PanelRow>
+              <TextControl
+                label="HTML Anchor"
+                help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
+                value={ props.attributes.id }
+                onChange={ ( id ) => props.setAttributes( { id } ) }
+              />
+            </PanelRow>
             <PanelRow>
               <RadioControl
                 label="Background Color"
@@ -326,7 +335,9 @@ registerBlockType( 'purdue-blocks/story-line', {
    */
   save: ( props ) => {
     const url=`url(${props.attributes.backgroundImageUrl})`
-    const returned = <div className={ `purdue-blocks-storyline
+    const returned = <div 
+        id={ props.attributes.id?props.attributes.id:null }
+        className={ `purdue-blocks-storyline
         ${props.attributes.addExtraLineTop ? ` purdue-blocks-storyline-top-line`:''}
         ${props.attributes.addPaddingTop ? ` purdue-blocks-storyline-top-space`:''}
         ${props.attributes.addPaddingBottom ? ` purdue-blocks-storyline-bottom-space`:''}
