@@ -5,6 +5,14 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.8] 2021-10-26
+#### Modified
+  - Unlocked template in accrodion centent area 
+
+### [1.22.7] 2021-10-25
+#### Added
+  - Sidebar box block
+
 ### [1.22.6] 2021-10-13
 #### Modified
   - Added full height and fax options to faculty card block
