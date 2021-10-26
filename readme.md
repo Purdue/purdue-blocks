@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.9] 2021-10-26
+#### Modified
+  - Anchor Link Block to add "Include accordion option" and specify background
+
 ### [1.22.8] 2021-10-26
 #### Modified
   - Unlocked template in accrodion centent area 
