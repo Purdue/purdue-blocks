@@ -8,6 +8,9 @@
    position:sticky;
    box-shadow:$box-shadow;
    top:2rem;
+   &-links{
+    background:$white;
+   }
    &-link{
     display:block;
     font-family:$acumin-pro;

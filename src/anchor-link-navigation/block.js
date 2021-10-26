@@ -60,7 +60,9 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
    * @returns {Mixed} JSX Component.
    */
 
-  attributes: {},
+  attributes: {
+    accordion: { type: 'boolean', default: false },
+  },
 
   supports: {
     className: false,
@@ -73,6 +75,19 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
 
   edit: ( props ) => {
     return [
+      <InspectorControls>
+        <PanelBody>
+          <PanelRow>
+          <CheckboxControl
+            label="Include Headings on accordion block?"
+            checked={ props.attributes.accordion }
+            onChange={ () =>
+              props.setAttributes( { accordion: ! props.attributes.accordion } )
+            }
+          />
+        </PanelRow>
+        </PanelBody>
+    </InspectorControls>,    
       <div className="anchor-link-block-editor">
             Preview/Publish the page to see the anchor link navigation menu.
       </div>,
@@ -93,7 +108,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   save: ( props ) => {
     const returned = (
       <div className="anchor-link-block">
-        <div class="anchor-link-block-links"></div>
+        <div class={`anchor-link-block-links${props.attributes.accordion?" has-accordion":""}`}></div>
         <button id="to-top-sidebar" class="to-top-sidebar"><span>Back To Top</span></button>
       </div>
     );

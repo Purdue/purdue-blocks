@@ -12,7 +12,9 @@ function is_IE() {
 }
 if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.length>0){
     anchorLinkBlocks.forEach((block)=>{
-            anchorHeaders.forEach((header)=>{
+        let hasAccordion=block.classList.contains("has-accordion")?true:false;        
+        anchorHeaders.forEach((header)=>{
+            if((!hasAccordion&&!header.classList.contains("accordion-title"))||hasAccordion){
                 let anchor=document.createElement('a')
                 let text = document.createTextNode(header.innerHTML)
                 anchor.appendChild(text)
@@ -20,7 +22,8 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0&&anchorHeaders&&anchorHeaders.len
                 anchor.href="#"+header.id
                 anchor.classList.add("anchor-link-block-link")
                 block.appendChild(anchor)
-            })
+            }
+        })
     })
     const links=document.querySelectorAll('a.anchor-link-block-link')
     links.forEach((link)=>{
