@@ -129,7 +129,7 @@ registerBlockType( 'purdue-blocks/accordion', {
         <div className="accordion-content">
           <InnerBlocks
             template={ BLOCKS_TEMPLATE }
-            allowedBlocks={ [ 'core/paragraph', 'core/list', 'core/table' ] }
+            templateLock={ false }
           />
         </div>
       </div>,
