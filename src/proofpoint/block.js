@@ -226,37 +226,35 @@ registerBlockType("purdue-blocks/proofpoint", {
           <span>Add Content Body</span>
           <div className="field">
             <div className="control">
-              <input
-                  value={
-                    props.attributes.content !== ""
-                      ? props.attributes.content
-                      : ""
-                  }
-                  className="input"
-                  type="text"
-                  placeholder="Content Text..."
-                  onChange={(e) => {
-                    props.setAttributes({ content: e.target.value });
-                  }}
-                ></input>
+              <textarea
+                value={
+                  props.attributes.content !== ""
+                  ? props.attributes.content
+                  : ""
+                }
+                className="textarea"
+                placeholder="Content Text..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { content: e.target.value } );
+                } }
+              ></textarea>
             </div>
           </div>
           <span>Add Source of the Proofpoint</span>
           <div className="field">
             <div className="control">
-              <input
-                  value={
-                    props.attributes.source !== ""
-                      ? props.attributes.source
-                      : ""
-                  }
-                  className="input"
-                  type="text"
-                  placeholder="Source of Text..."
-                  onChange={(e) => {
-                    props.setAttributes({ source: e.target.value });
-                  }}
-                ></input>
+              <textarea
+                value={
+                  props.attributes.source !== ""
+                  ? props.attributes.source
+                  : ""
+                }
+                className="textarea"
+                placeholder="Source of Text..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { source: e.target.value } );
+                } }
+              ></textarea>
             </div>
           </div>
           <span>Add CTA Button Text and URL</span>
