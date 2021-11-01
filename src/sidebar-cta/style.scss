@@ -57,6 +57,12 @@
       }
       .content{
         color:$white;
+        a{
+          color:$boiler-gold;
+          &:hover{
+            color:$boiler-gold;
+          }
+        }
       }
       .cta-button{
         background: $boiler-gold;

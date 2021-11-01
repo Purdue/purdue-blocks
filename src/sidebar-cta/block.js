@@ -183,6 +183,7 @@ registerBlockType("purdue-blocks/sidebar-cta", {
           tagName="p"
           value={ props.attributes.content }
         /> ) : '' }
+        {props.attributes.ctaUrl||props.attributes.ctaText?
         <a
           href={props.attributes.ctaUrl}
           className="cta-button"
@@ -190,7 +191,8 @@ registerBlockType("purdue-blocks/sidebar-cta", {
           rel="noopener noreferrer"
         >
           {props.attributes.ctaText}
-        </a>
+        </a>:""
+        }
       </div>
     );
     return returned;

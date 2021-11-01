@@ -343,7 +343,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
         </div>
       </a> :
       <div
-        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        rel="noopener noreferrer"
+        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
