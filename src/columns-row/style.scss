@@ -80,6 +80,17 @@
       top: 0;
       left: 0;
     }
+    .icon-group{
+      .icon-item{
+        background-color:$white;
+        &:hover{
+          background-color:$boiler-gold;
+        }
+      }
+      .icon-item-icon-placeholder{
+        color:$black;
+      }
+    }
   } 
   &.has-overlay-white {
     color:$black;
@@ -118,6 +129,17 @@
       position: absolute;
       top: 0;
       left: 0;
+    }
+    .icon-group{
+      .icon-item{
+        background-color:$white;
+        &:hover{
+          background-color:$boiler-gold;
+        }
+      }
+      .icon-item-icon-placeholder{
+        color:$black;
+      }
     }
   } 
   &.has-overlay-gold {

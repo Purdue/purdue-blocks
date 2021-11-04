@@ -41,7 +41,20 @@
   }
   &.has-background-black, &.has-background-black-ter, &.has-overlay-black, &.has-overlay-steel  {
     color: $white;
-
+    p{
+      color: $white;
+    }
+    .icon-group{
+      .icon-item{
+        background-color:$white;
+        &:hover{
+          background-color:$boiler-gold;
+        }
+      }
+      .icon-item-icon-placeholder{
+        color:$black;
+      }
+    }
   }
   .block-editor-button-block-appender {
     box-shadow: inset 0 0 0 1px $white;
