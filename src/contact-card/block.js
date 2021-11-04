@@ -206,9 +206,12 @@ registerBlockType( 'purdue-blocks/contact-card', {
       } );
       editorFields = props.attributes.contactGroup.map( ( contact, index ) => {
         return  <div key={ index }  className={ 'columns'}>
-                  <div className="column">
+                  {
+                    contact.icon?
+                    <div className="column non-flex">
                     <div dangerouslySetInnerHTML={{ __html: contact.icon }} />         
-                  </div>
+                  </div>:""
+                  }
                   <div className="column">
                   <RichText
                     tagname={ "p" }
@@ -294,9 +297,12 @@ registerBlockType( 'purdue-blocks/contact-card', {
           {props.attributes.contactGroup.length>0?
           props.attributes.contactGroup.map( ( contact, index ) => {
             return <div key={ index } className="columns">
-              <div className="column">
-                <div dangerouslySetInnerHTML={{ __html: contact.icon }} />  
-              </div>
+              {
+                contact.icon?
+                  <div className="column non-flex">
+                  <div dangerouslySetInnerHTML={{ __html: contact.icon }} />         
+                </div>:""
+              }
               <div className="column">
                 <RichText.Content
                   className={ 'contact-card__text' }

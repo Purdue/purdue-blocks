@@ -9,6 +9,8 @@
       position: relative;
       margin-bottom:0;
       background-color:$white;
+      border:solid 1px $black;
+      box-shadow:$box-shadow;
       &--margin{
         margin-bottom:2rem;
       }
@@ -36,7 +38,7 @@
               margin-bottom: 0;
             }
             .column{
-              &:first-child{
+              &.non-flex{
                 flex:none;
               }
               svg{
