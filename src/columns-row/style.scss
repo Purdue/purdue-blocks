@@ -80,6 +80,9 @@
       top: 0;
       left: 0;
     }
+    a, a:hover{
+      color:$boiler-gold;
+    }
     .icon-group{
       .icon-item{
         background-color:$white;
@@ -120,6 +123,9 @@
   } 
   &.has-overlay-steel {
     color:$white;
+    a, a:hover{
+      color:$boiler-gold;
+    }
     &:after{
       content: "";
       background: $steel-gray;
