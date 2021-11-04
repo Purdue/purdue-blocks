@@ -80,6 +80,20 @@
       top: 0;
       left: 0;
     }
+    a, a:hover{
+      color:$boiler-gold;
+    }
+    .icon-group{
+      .icon-item{
+        background-color:$white;
+        &:hover{
+          background-color:$boiler-gold;
+        }
+      }
+      .icon-item-icon-placeholder{
+        color:$black;
+      }
+    }
   } 
   &.has-overlay-white {
     color:$black;
@@ -109,6 +123,9 @@
   } 
   &.has-overlay-steel {
     color:$white;
+    a, a:hover{
+      color:$boiler-gold;
+    }
     &:after{
       content: "";
       background: $steel-gray;
@@ -118,6 +135,17 @@
       position: absolute;
       top: 0;
       left: 0;
+    }
+    .icon-group{
+      .icon-item{
+        background-color:$white;
+        &:hover{
+          background-color:$boiler-gold;
+        }
+      }
+      .icon-item-icon-placeholder{
+        color:$black;
+      }
     }
   } 
   &.has-overlay-gold {
