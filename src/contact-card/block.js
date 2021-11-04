@@ -181,13 +181,13 @@ registerBlockType( 'purdue-blocks/contact-card', {
                     <Button
                       className={ 'remove-image-button move-quote' }
                       onClick={ () => handleMoveUp( index ) }
-                      icon={ arrowUp }
+                      icon={ arrowDown }
                     ></Button>:"" }                                    
                       { index>0?
                     <Button
                       className={ 'remove-image-button move-quote' }
                       onClick={ () => handleMoveDown( index ) }
-                      icon={ arrowDown }
+                      icon={ arrowUp }
                     >                                     
                     </Button>:""}
                   </div>):""}
