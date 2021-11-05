@@ -53,6 +53,12 @@
     line-height:1.75;
     width:100%;
     color:$black;
+    p{
+      color:$black;
+    }
+    a, a:hover{
+      color:$aged-gold;
+    }
   }
   .read-more-button{
     font-family:$united-sans;

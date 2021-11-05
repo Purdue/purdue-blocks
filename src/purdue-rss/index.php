@@ -43,7 +43,7 @@ function feed_url_endpoint($data){
            $title = $item->title;
            $link = $item->link;
            $description = $item->description;
-           $imgURLMatch = preg_match("/img src=\"([^\"]+)\"/", $description, $matchimgURL);
+           $imgURLMatch = preg_match("/img.+?src=\"([^\"]+)\"/", $description, $matchimgURL);
            if($imgURLMatch){
                $imgURL=$matchimgURL[1];
            }else{

@@ -286,7 +286,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
               </RichText>):(
                   <InnerBlocks
                   template={ BLOCKS_TEMPLATE }
-                  allowedBlocks={ [ 'core/paragraph', 'core/list'] }
+                  templateLock={ false }
                   />
               )}
               { props.attributes.cardType ==="small"&&props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
