@@ -13,21 +13,23 @@
      display: inline-flex;
      justify-content: center;
      padding: 0.75rem 0.5rem;
-     background: $black;
+     background: $black !important;
      border: 2px solid $black;
-     color: $boiler-gold;
+     color: $boiler-gold !important;
      text-decoration: none;
      transition: all ease 0.2s;
      letter-spacing:0.05em;
      width:auto;
      margin-bottom:0.5rem;
+     position:relative;
+     z-index:1;
      &:not(:last-child){
       margin-right:0.5rem;
     }
     &:hover {
       cursor: pointer;
-      background: $white;
-      color:$aged-gold;
+      background: $white !important;
+      color:$aged-gold !important;
     }
     &__text{
       flex-shrink:1;
@@ -36,63 +38,63 @@
       height:100%;
     }
     &.purdue-blocks__button--outline{
-      background: $white;
+      background: $white !important;
       border: 2px solid $black;
-      color: $aged-gold;
+      color: $aged-gold !important;
       &:hover {
         cursor: pointer;
-        background: $black;
-        color:$boiler-gold;
+        background: $black !important;
+        color:$boiler-gold !important;
      }
     }
     &.purdue-blocks__button--gold-light{
-      background: $boiler-gold;
+      background: $boiler-gold !important;
       border: 2px solid $aged-gold;
-      color: $black;
+      color: $black !important;
       &:hover {
         cursor: pointer;
-        background: $white;
-        color:$black;
+        background: $white !important;
+        color:$black !important;
       }
       &.purdue-blocks__button--outline{
-        background: $white;
+        background: $white !important;
         border: 2px solid $aged-gold;
-        color: $black;
+        color: $black !important;
         &:hover {
           cursor: pointer;
-          background: $boiler-gold;
-          color:$black;
+          background: $boiler-gold !important;
+          color:$black !important;
         }
       }
     }
     &.purdue-blocks__button--gold-dark{
-      background: $boiler-gold;
+      background: $boiler-gold !important;
       border: 2px solid $boiler-gold;
-      color: $black;
+      color: $black !important;
       &:hover {
         cursor: pointer;
-        background: $black;
-        color:$white;
+        background: $black !important;
+        color:$white !important;
       } 
       &.purdue-blocks__button--outline{
-        background: none;
+        background: none !important;
         border: 2px solid $boiler-gold;
-        color: $white;
+        color: $white !important;
         &:hover {
           cursor: pointer;
-          background: $boiler-gold;
-          color:$black;
+          background: $boiler-gold !important;
+          color:$black !important;
         }
       }
     }
     &.purdue-blocks__button--opaque{
-      background: $opaque;
+      background: $opaque !important;
       border: 2px solid $white;
-      color: $white;
+      color: $white !important;
       &:hover {
         cursor: pointer;
-        background: $black;
-        color:$white;
+        background: $black !important;
+        color:$white !important;
      }
     }
     &.purdue-blocks__button--full{
@@ -135,7 +137,7 @@
         position:absolute;
         top:0;
         left:0;
-        background-color: $boiler-gold;
+        background-color: $boiler-gold !important;
         transition: ease-out 0.4s;
       }
       &:hover{
@@ -145,32 +147,32 @@
       }
       &-white{
         color:$black !important;
-        background-color: $white;
+        background-color: $white !important;
 
         &:hover{
-          color:$black;
+          color:$black !important;
           .purdue-blocks__button__icon{
-            color: $black;
+            color: $black !important;
           }
         }
         .purdue-blocks__button__icon{
-          background: white;
-          color:$black;
+          background: white !important;
+          color:$black !important;
         }
       }
       &-black{
-        color:$white;
-        background-color: $black;
+        color:$white !important;
+        background-color: $black !important;
         &:hover{
-            color:$black;
-            background-color:$black;
+            color:$black !important;
+            background-color:$black !important;
             .purdue-blocks__button__icon{
-              color: white;
+              color: white !important;
             }
         }
         .purdue-blocks__button__icon{
-          background: black;
-          color: white;
+          background: black !important;
+          color: white !important;
         }
       }
       .purdue-blocks__button__text{
