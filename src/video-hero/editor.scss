@@ -129,4 +129,11 @@
 
     }
   }
+  .video-hero__carousel__arrow-wrapper{
+    z-index: 10000;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    cursor: pointer;
+  }
 }

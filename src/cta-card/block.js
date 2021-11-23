@@ -187,6 +187,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
           <PanelRow>
             <CheckboxControl
               label="Add a link to this card?"
+              help="Note you can only add this link when there are no links in the content of the card. Otherwise it'll cause error. "
               checked={ props.attributes.hasLink }
               onChange={ () =>
                 props.setAttributes( { hasLink: ! props.attributes.hasLink } )

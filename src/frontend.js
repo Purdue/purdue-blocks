@@ -2,6 +2,7 @@ import 'core-js/stable'
 if (window.NodeList && !NodeList.prototype.forEach) {
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
+import "./global.js";
 import "./accordion/frontend.js";
 import "./anchor-link-navigation/frontend.js";
 import "./image-toggle-card/frontend.js"
@@ -17,5 +18,7 @@ import "./columns-row/frontend"
 import "./story-line/frontend"
 import "./large-featured-story/frontend";
 import "./large-text/frontend";
+
+
 
 
