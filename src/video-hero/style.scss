@@ -176,7 +176,9 @@
       }
     }
     &.onload-animation.scroll-animation .video-hero--content .cta-button:after,&.onload-animation.scroll-animation.no-animation .video-hero--content .cta-button:after{
-      height:8rem;
+      @include mobile{
+        height:8rem;
+      }
     }
   }
   &--carousel__wrapper{

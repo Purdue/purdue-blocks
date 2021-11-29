@@ -206,7 +206,7 @@ registerBlockType("purdue-blocks/video-hero", {
                 </div>
                 {props.attributes.images.length>1?
                 <div className="video-hero__carousel__arrow-wrapper">
-                    <span className="video-hero__carousel__arrow video-hero__carousel__arrow-left"
+                    <span className="video-hero--carousel__arrow video-hero--carousel__arrow-left"
                     onClick={()=>{
                       if(props.attributes.currentImage>1){
                         props.setAttributes({ currentImage: props.attributes.currentImage-1 });
@@ -217,9 +217,9 @@ registerBlockType("purdue-blocks/video-hero", {
                     >
                       <i class="fas fa-chevron-left"></i>
                     </span>
-                    <span  className="video-hero__carousel__current">{props.attributes.currentImage}</span>
-                    <span  className="video-hero__carousel__total">/{props.attributes.images.length}</span>
-                    <span className="video-hero__carousel__arrow video-hero__carousel__arrow-right"
+                    <span  className="video-hero--carousel__current">{props.attributes.currentImage}</span>
+                    <span  className="video-hero--carousel__total">/{props.attributes.images.length}</span>
+                    <span className="video-hero--carousel__arrow video-hero--carousel__arrow-right"
                       onClick={()=>{
                         if(props.attributes.currentImage<props.attributes.images.length){
                           props.setAttributes({ currentImage: props.attributes.currentImage+1 });

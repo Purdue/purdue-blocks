@@ -170,7 +170,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
     }
     let autoplay = null;
     function autoplayStart() {
-      autoplay = setInterval(()=>shiftSlide(1), 3000);
+      autoplay = setInterval(()=>shiftSlide(1), 5000);
       isPlaying=true;
       if(pause&&play){
           play.classList.add('hide');
