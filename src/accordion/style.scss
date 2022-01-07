@@ -19,6 +19,7 @@
     font-weight:700;
     line-height:1.875rem;
     position:relative;
+    color:$black;
     span{
       pointer-events: none;
     }
@@ -40,8 +41,18 @@
     opacity: 0;
     p{
       line-height:1.875rem;
+      color:$black;
       &:not(:last-child){
         margin-bottom:0.625rem;
+      }
+    }
+    li{
+      color:$black;
+    }
+    a{
+      color:$aged-gold;
+      &:hover{
+        color:$aged-gold;
       }
     }
   }
