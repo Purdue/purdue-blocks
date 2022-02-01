@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.17] 2022-2-1
+#### Modified
+  - Content page layout block to overwrite column properties added from wp 5.9
+
 ### [1.22.16] 2022-1-7
 #### Modified
   - Specified font color on Accordion block
