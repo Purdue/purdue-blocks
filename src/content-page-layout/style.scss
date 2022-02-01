@@ -19,6 +19,18 @@
             width:100% !important;
           }
         }
+        &.page-layout-main{
+          @include desktop{
+            flex-basis: 66.6666% !important;
+            flex-grow: 0 !important;
+          }
+        }
+        &.page-layout-sidebar{
+          @include desktop{
+            flex-basis: 25% !important;
+            flex-grow: 0 !important;
+          }
+        }
       }
       .page-layout-sidebar{
         display:none;
