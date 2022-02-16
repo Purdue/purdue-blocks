@@ -62,6 +62,11 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
 
   attributes: {
     accordion: { type: 'boolean', default: false },
+    includeH2: { type: 'boolean', default: true },
+    includeH3: { type: 'boolean', default: false },
+    includeH4: { type: 'boolean', default: false },
+    includeH5: { type: 'boolean', default: false },
+    includeH6: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -85,8 +90,53 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
               props.setAttributes( { accordion: ! props.attributes.accordion } )
             }
           />
+          </PanelRow>
+          <PanelRow>
+          <CheckboxControl
+            label="Include H2?"
+            checked={ props.attributes.includeH2 }
+            onChange={ () =>
+              props.setAttributes( { includeH2: ! props.attributes.includeH2 } )
+            }
+          />
+          </PanelRow>
+          <PanelRow>
+          <CheckboxControl
+            label="Include H3?"
+            checked={ props.attributes.includeH3 }
+            onChange={ () =>
+              props.setAttributes( { includeH3: ! props.attributes.includeH3 } )
+            }
+          />
+          </PanelRow>
+          <PanelRow>
+          <CheckboxControl
+            label="Include H4?"
+            checked={ props.attributes.includeH4 }
+            onChange={ () =>
+              props.setAttributes( { includeH4: ! props.attributes.includeH4 } )
+            }
+          />
+          </PanelRow>
+          <PanelRow>
+          <CheckboxControl
+            label="Include H5?"
+            checked={ props.attributes.includeH5 }
+            onChange={ () =>
+              props.setAttributes( { includeH5: ! props.attributes.includeH5 } )
+            }
+          />
+          </PanelRow>
+          <PanelRow>
+          <CheckboxControl
+            label="Include H6?"
+            checked={ props.attributes.includeH6 }
+            onChange={ () =>
+              props.setAttributes( { includeH6: ! props.attributes.includeH6 } )
+            }
+          />
         </PanelRow>
-        </PanelBody>
+      </PanelBody>
     </InspectorControls>,    
       <div className="anchor-link-block-editor">
             Preview/Publish the page to see the anchor link navigation menu.
@@ -108,7 +158,14 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   save: ( props ) => {
     const returned = (
       <div className="anchor-link-block">
-        <div class={`anchor-link-block-links${props.attributes.accordion?" has-accordion":""}`}></div>
+        <div class={`anchor-link-block-links
+        ${props.attributes.accordion?" has-accordion":""}
+        ${props.attributes.includeH2?" has-H2":""}
+        ${props.attributes.includeH3?" has-H3":""}
+        ${props.attributes.includeH4?" has-H4":""}
+        ${props.attributes.includeH5?" has-H5":""}
+        ${props.attributes.includeH6?" has-H6":""}
+        `}></div>
         <button id="to-top-sidebar" class="to-top-sidebar"><span>Back To Top</span></button>
       </div>
     );
