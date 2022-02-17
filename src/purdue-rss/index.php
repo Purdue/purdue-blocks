@@ -30,19 +30,27 @@ function feed_url_endpoint($data){
 
     $dataUrl = $data->get_param( 'url' );
     $results=[];
-    $invalidurl = false;
-    if(@simplexml_load_file($dataUrl)){
-        $rss = simplexml_load_file($dataUrl);
-    }else{
-        $invalidurl = true;
-        $results[error]="Invalid RSS feed URL.";
-    }
-    if(!empty($rss)){
+    $rss = fetch_feed( $dataUrl );
+
+	if ( is_wp_error( $rss ) ) {
+		return '<div class="components-placeholder"><div class="notice notice-error"><strong>' . __( 'RSS Error:' ) . '</strong> ' . $rss->get_error_message() . '</div></div>';
+	}
+
+	if ( ! $rss->get_item_quantity() ) {
+		return '<div class="components-placeholder"><div class="notice notice-error">' . __( 'An error has occurred, which probably means the feed is down. Try again later.' ) . '</div></div>';
+	}
+    $rss_items  = $rss->get_items( 0, 10);
+
+    if(!empty($rss_items)){
         $id=0; 
-       foreach ($rss->channel->item as $item) {  
-           $title = $item->title;
-           $link = $item->link;
-           $description = $item->description;
+       foreach ($rss_items as $item) {  
+            $title = esc_html( trim( strip_tags( $item->get_title() ) ) );
+            if ( empty( $title ) ) {
+                $title = __( '(no title)' );
+            }
+            $link = $item->get_link();
+            $link = esc_url( $link );
+            $description = $item->get_description();
            $imgURLMatch = preg_match("/img.+?src=\"([^\"]+)\"/", $description, $matchimgURL);
            if($imgURLMatch){
                $imgURL=$matchimgURL[1];
@@ -59,7 +67,7 @@ function feed_url_endpoint($data){
            if(strlen(strip_tags($description))>0){
             $text=substr(strip_tags($description), 0, 300)."...";
            }
-           $postDate = $item->pubDate;
+           $postDate = $item->get_date( 'U' );
            $date = date('M d, Y',strtotime($postDate));
            $month = date('M',strtotime($postDate));
            $day = date('d',strtotime($postDate));
