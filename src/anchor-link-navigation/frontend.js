@@ -1,5 +1,6 @@
 const anchorLinkBlocks=document.querySelectorAll(".anchor-link-block-links")
 const href=window.location.href
+let anchorHeaders=[]
 function is_IE() {
     return (window.navigator.userAgent.match(/MSIE|Trident/) !== null);
 }
@@ -13,7 +14,7 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         block.classList.contains("has-H4")?headers.push("h4"):""; 
         block.classList.contains("has-H5")?headers.push("h5"):"";   
         block.classList.contains("has-H6")?headers.push("h6"):"";
-        let anchorHeaders=[]
+
         let string=headers.join(", ")
         let headings
         if(headers.length>0){
@@ -54,14 +55,16 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
     })
     window.addEventListener('scroll', () => {
         setTimeout(function(){
-            anchorHeaders.forEach((header)=>{ 
-                if ( header.getBoundingClientRect().top <= 30 ) {
-                    const id = "#"+header.id
-                    links.forEach((el)=>{
-                        el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
-                    })
-                }
-            })
+            if(anchorHeaders && anchorHeaders.length>0){
+                anchorHeaders.forEach((header)=>{ 
+                    if ( header.getBoundingClientRect().top <= 30 ) {
+                        const id = "#"+header.id
+                        links.forEach((el)=>{
+                            el.hash===id?el.classList.add("is-active"):el.classList.remove("is-active")
+                        })
+                    }
+                })
+            }
         }, 100)
     })
     const toTop = document.querySelector('#to-top-sidebar')
