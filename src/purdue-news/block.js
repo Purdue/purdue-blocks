@@ -101,7 +101,7 @@ registerBlockType( 'purdue-blocks/purdue-news', {
               options={ [
                 { label: 'Recent news with image', value: 'withImage' },
                 { label: 'Recent news without image', value: 'withoutImage' },
-                { label: 'All News/Events', value: 'all' },
+                { label: 'All News/Events from the feed (max 10) ', value: 'all' },
               ] }
               onChange={ ( type ) => {
                 props.setAttributes( { type } )
