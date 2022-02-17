@@ -5,6 +5,11 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.18] 2022-2-17
+#### Updated
+  - Anchor links block to accormodate changets from wp 5.9
+  - News and RSS block to use fetch_feed to pull feed.
+
 ### [1.22.17] 2022-2-1
 #### Modified
   - Content page layout block to overwrite column properties added from wp 5.9
