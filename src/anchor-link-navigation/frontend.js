@@ -1,10 +1,3 @@
-// const headers=document.querySelectorAll("h2, h3, h4, h5, h6")
-// let anchorHeaders=[]
-// headers.forEach((header)=>{
-//     if(header.id){
-//         anchorHeaders.push(header)
-//     }
-// })
 const anchorLinkBlocks=document.querySelectorAll(".anchor-link-block-links")
 const href=window.location.href
 function is_IE() {
@@ -15,19 +8,22 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
     anchorLinkBlocks.forEach((block)=>{
         let hasAccordion=block.classList.contains("has-accordion")?true:false; 
         let headers=[]
-        block.classList.contains("has-H2")?headers.push("h2"):"";        
+        !block.classList.contains("no-H2")?headers.push("h2"):"";        
         block.classList.contains("has-H3")?headers.push("h3"):"";  
         block.classList.contains("has-H4")?headers.push("h4"):""; 
         block.classList.contains("has-H5")?headers.push("h5"):"";   
         block.classList.contains("has-H6")?headers.push("h6"):"";
         let anchorHeaders=[]
         let string=headers.join(", ")
-        const headings=document.querySelectorAll(string)
-        headings.forEach((header)=>{
-            if(header.id){
-                anchorHeaders.push(header)
-            }
-        })
+        let headings
+        if(headers.length>0){
+            headings=block.classList.contains("pull-from-section")?block.parentElement.parentElement.parentElement.querySelectorAll(string):document.querySelectorAll(string)
+            headings.forEach((header)=>{
+                if(header.id){
+                    anchorHeaders.push(header)
+                }
+            })
+        }
         if(anchorHeaders.length>0){
         anchorHeaders.forEach((header)=>{
             if((!hasAccordion&&!header.classList.contains("accordion-title"))||hasAccordion){

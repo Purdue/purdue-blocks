@@ -67,6 +67,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
     includeH4: { type: 'boolean', default: false },
     includeH5: { type: 'boolean', default: false },
     includeH6: { type: 'boolean', default: false },
+    range: { type: 'string', default: "page" },
   },
 
   supports: {
@@ -136,6 +137,20 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
             }
           />
         </PanelRow>
+        <PanelRow>
+          <RadioControl
+            label="Where to pull the headings?"
+            help="The block needs to be placed in a columns block or content page layout block in order to use 'This Section' option."
+            selected={ props.attributes.range }
+            options={ [
+              { label: 'This Section', value: 'section' },
+              { label: 'Whole Page', value: 'page' },
+            ] }
+            onChange={ ( option ) => {
+              props.setAttributes( { range: option } )
+            } }
+          />
+        </PanelRow>
       </PanelBody>
     </InspectorControls>,    
       <div className="anchor-link-block-editor">
@@ -160,11 +175,12 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
       <div className="anchor-link-block">
         <div class={`anchor-link-block-links
         ${props.attributes.accordion?" has-accordion":""}
-        ${props.attributes.includeH2?" has-H2":""}
+        ${props.attributes.includeH2?"":" no-H2"}
         ${props.attributes.includeH3?" has-H3":""}
         ${props.attributes.includeH4?" has-H4":""}
         ${props.attributes.includeH5?" has-H5":""}
         ${props.attributes.includeH6?" has-H6":""}
+        ${props.attributes.range==="page"?"":" pull-from-section"}
         `}></div>
         <button id="to-top-sidebar" class="to-top-sidebar"><span>Back To Top</span></button>
       </div>
