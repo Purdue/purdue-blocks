@@ -75,7 +75,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
 
   // Block description in side panel
   description: __(
-    'Create a menu from the headers that have an HTML anchor.'
+    'Create a single level menu from the headers that have an HTML anchor.'
   ),
 
   edit: ( props ) => {
