@@ -94,7 +94,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
           </PanelRow>
           <PanelRow>
           <CheckboxControl
-            label="Include H2?"
+            label="Pull H2 heading level only?"
             checked={ props.attributes.includeH2 }
             onChange={ () =>
               props.setAttributes( { includeH2: ! props.attributes.includeH2 } )
@@ -103,7 +103,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
           </PanelRow>
           <PanelRow>
           <CheckboxControl
-            label="Include H3?"
+            label="Pull H3 heading level only?"
             checked={ props.attributes.includeH3 }
             onChange={ () =>
               props.setAttributes( { includeH3: ! props.attributes.includeH3 } )
@@ -112,7 +112,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
           </PanelRow>
           <PanelRow>
           <CheckboxControl
-            label="Include H4?"
+            label="Pull H4 heading level only?"
             checked={ props.attributes.includeH4 }
             onChange={ () =>
               props.setAttributes( { includeH4: ! props.attributes.includeH4 } )
@@ -121,7 +121,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
           </PanelRow>
           <PanelRow>
           <CheckboxControl
-            label="Include H5?"
+            label="Pull H5 heading level only?"
             checked={ props.attributes.includeH5 }
             onChange={ () =>
               props.setAttributes( { includeH5: ! props.attributes.includeH5 } )
@@ -130,7 +130,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
           </PanelRow>
           <PanelRow>
           <CheckboxControl
-            label="Include H6?"
+            label="Pull H6 heading level only?"
             checked={ props.attributes.includeH6 }
             onChange={ () =>
               props.setAttributes( { includeH6: ! props.attributes.includeH6 } )
