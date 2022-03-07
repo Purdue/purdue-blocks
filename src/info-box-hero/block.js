@@ -78,7 +78,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
     title: { type: "string", source: "html", selector: ".title" },
     subText: { type: "string", source: "html", selector: "p.content" },
     imgUrl: { type: "string", default: "" },
-    titleLevel: { type: "string", default: "p" },
+    titleLevel: { type: "string", default: "h1" },
   },
 
   supports: {
@@ -104,6 +104,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
               label="Heading level of the title"
               value={props.attributes.titleLevel}
               options={[
+                { label: "H1", value: "h2" },
                 { label: "H2", value: "h2" },
                 { label: "H3", value: "h3" },
                 { label: "H4", value: "h4" },
