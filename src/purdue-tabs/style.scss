@@ -21,6 +21,7 @@
       color:$boiler-gold;
       padding:1.25rem;
       margin-bottom:0 !important;
+      border:none;
       &:hover{
         color:$white;
       }
@@ -54,6 +55,7 @@
           width:100%;
           text-align:left;
           height:auto;
+          align-items: center;
           &:after{
             font-family: "Font Awesome 5 Free"; 
             font-weight: 900; 

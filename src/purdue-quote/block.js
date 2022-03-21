@@ -362,7 +362,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
       });
 
     return (
-      <div className={ props.className } className={`purdue-block-quote-group ${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`}>
+      <div className={`purdue-block-quote-group ${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`}>
         <div className="purdue-block-quote-wrapper">
             {quotes}
         </div>

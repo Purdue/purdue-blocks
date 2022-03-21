@@ -62,7 +62,6 @@ registerBlockType("purdue-blocks/tabs", {
     numTabs: { type: "number", default: 0 },
     headers: { type: "array", default: [] },
     headerSize: { type: 'string', default: 'large' },
-    headerSize: { type: 'string', default: 'large' },
     addPadding: { type: 'boolean', default: true}
   },
 
@@ -186,11 +185,9 @@ registerBlockType("purdue-blocks/tabs", {
    */
   save: (props) => {
     return (
-      <div
-        className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`}
-      >
-        <div className={`pu-blocks-tabs__headers`}>
-          {props.attributes.headers.map((header, index)=>{
+      <div className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`}>
+         <div className={`pu-blocks-tabs__headers`}>
+           {props.attributes.headers.length>0?props.attributes.headers.map((header)=>{
             return  <RichText.Content
             id={  `header-${header.id}` }
             className={`pu-blocks-tabs__header
@@ -198,13 +195,13 @@ registerBlockType("purdue-blocks/tabs", {
                         ${props.attributes.headerSize==="small"?" pu-blocks-tabs__header-small":""}
                         ${header.active?" active":""}
                       `}
-            tagName={ Button }
+            tagName={ "button" }
             role="tab"
             value={ header.text }
             aria-controls={  `panel-${header.id}` }
             aria-selected={ `${header.active?"true":"false"}` }
           />
-          })}
+          }):""}
         </div> 
         <InnerBlocks.Content />
       </div>
