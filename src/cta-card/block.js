@@ -311,12 +311,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
    */
   save: ( props ) => {
     const returned = ( props.attributes.cardType ==="small"&&props.attributes.hasLink === true ?
-      <a
-        href={ props.attributes.link }
-        target={ props.attributes.external ? '_blank' : '_self' }
-        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        
-        rel="noopener noreferrer"
-      >
+    
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
             <figure className="image is-3by2">
@@ -339,10 +334,18 @@ registerBlockType( 'purdue-blocks/cta-card', {
               value={ props.attributes.subText }
             /> ) : '' }
             { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
-            { props.attributes.linkText ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
+            { props.attributes.linkText ?  
+              <a
+                href={ props.attributes.link }
+                target={ props.attributes.external ? '_blank' : '_self' }
+                className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        
+                rel="noopener noreferrer"
+              >
+                <div className="read-more-button"><span>{ props.attributes.linkText }</span></div>
+              </a> : '' }
           </div>
         </div>
-      </a> :
+       :
       <div
         className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
       >
