@@ -149,6 +149,10 @@
       color:$aged-gold;
       margin-top:1.625rem;
       letter-spacing:50;
+      text-decoration:none;
+      &:hover{
+        color:$black;
+      }
       @include mobile{
         padding:0 0.5rem; 
       }
@@ -166,10 +170,4 @@
     }
     
 }
-a.cta-card-horizonal:hover,a.cta-card-horizonal:focus{
-  color:$black;
-  box-shadow: $box-shadow-hover;
-  .read-more-button{
-    color:$black;
-  }
-}
+

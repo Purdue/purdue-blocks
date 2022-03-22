@@ -310,44 +310,9 @@ registerBlockType( 'purdue-blocks/cta-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = ( props.attributes.cardType ==="small"&&props.attributes.hasLink === true ?
-    
-        <div className={'columns is-multiline'}>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
-            <figure className="image is-3by2">
-              <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
-            </figure>
-          </div>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
-            { props.attributes.title ? ( <RichText.Content
-              className={ `title${
-                props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
-              }${
-                props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
-              }` }
-              tagName={ props.attributes.titleLevel }
-              value={ props.attributes.title }
-            /> ) : '' }
-            { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
-              className={ 'content' }
-              tagName="p"
-              value={ props.attributes.subText }
-            /> ) : '' }
-            { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
-            { props.attributes.linkText ?  
-              <a
-                href={ props.attributes.link }
-                target={ props.attributes.external ? '_blank' : '_self' }
-                className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        
-                rel="noopener noreferrer"
-              >
-                <div className="read-more-button"><span>{ props.attributes.linkText }</span></div>
-              </a> : '' }
-          </div>
-        </div>
-       :
+    const returned = (
       <div
-        className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
+        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
@@ -370,6 +335,15 @@ registerBlockType( 'purdue-blocks/cta-card', {
               tagName="p"
               value={ props.attributes.subText }
             /> ) : '' }
+            {props.attributes.cardType ==="small"&&props.attributes.hasLink === true&&props.attributes.linkText ?  
+              <a
+                href={ props.attributes.link }
+                target={ props.attributes.external ? '_blank' : '_self' }
+                className={ `read-more-button` }        
+                rel="noopener noreferrer"
+              >
+                <span>{ props.attributes.linkText }</span>
+              </a> : ''}
             { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
           </div>
         </div>
@@ -377,4 +351,88 @@ registerBlockType( 'purdue-blocks/cta-card', {
     );
     return returned;
   },
+  deprecated: [
+    {
+      attributes: {
+        cardType: { type: 'string', default: "small" },
+        title: { type: 'string', source: 'html', selector: '.title' },
+        titleLevel: { type: 'string', default: 'p' },
+        subText: { type: 'string', source: 'html', selector: 'p.content' },
+        hasLink: { type: 'boolean', default: false },
+        link: { type: 'string', default: '' },
+        linkText: { type: 'string', default: '' },
+        imgLocation:{ type: 'string', default: 'left' },
+        imgUrl: { type: 'string', default: '' },
+        altText: { type: 'string', default: '' },
+        external: { type: 'boolean', default: false },
+        height: { type: "string", default: "100" },
+        headerColor: { type: 'string', default: 'black' },
+      },
+      save: ( props ) => {
+        const returned = ( props.attributes.cardType ==="small"&&props.attributes.hasLink === true ?
+          <a
+            href={ props.attributes.link }
+            target={ props.attributes.external ? '_blank' : '_self' }
+            className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }        
+            rel="noopener noreferrer"
+          >
+            <div className={'columns is-multiline'}>
+              <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+                <figure className="image is-3by2">
+                  <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
+                </figure>
+              </div>
+              <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
+                { props.attributes.title ? ( <RichText.Content
+                  className={ `title${
+                    props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+                  }${
+                    props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+                  }` }
+                  tagName={ props.attributes.titleLevel }
+                  value={ props.attributes.title }
+                /> ) : '' }
+                { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
+                  className={ 'content' }
+                  tagName="p"
+                  value={ props.attributes.subText }
+                /> ) : '' }
+                { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
+                { props.attributes.linkText ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
+              </div>
+            </div>
+          </a> :
+          <div
+            className={ ` cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
+          >
+            <div className={'columns is-multiline'}>
+              <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+                <figure className="image is-3by2">
+                  <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
+                </figure>
+              </div>
+              <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
+                { props.attributes.title ? ( <RichText.Content
+                  className={ `title${
+                    props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+                  }${
+                    props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+                  }` }
+                  tagName={ props.attributes.titleLevel }
+                  value={ props.attributes.title }
+                /> ) : '' }
+                { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
+                  className={ 'content' }
+                  tagName="p"
+                  value={ props.attributes.subText }
+                /> ) : '' }
+                { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
+              </div>
+            </div>
+          </div>
+        );
+        return returned;
+      },
+    }
+  ],
 } );
