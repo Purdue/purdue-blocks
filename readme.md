@@ -5,7 +5,28 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
-### [1.22.18] 2022-2-17
+### [1.22.24] 2022-3-22
+#### Updated
+  - Allow CTA card small to have more links in the content body in addition to read more.
+
+### [1.22.23] 2022-3-21
+#### Updated
+  - Tabs block issue in new WordPress version.
+
+### [1.22.22] 2022-3-17
+#### Updated
+  - Remove Bulma dependency that's already added in theme.
+
+### [1.22.21] 2022-3-16
+#### Updated
+  - Align text on button vertically
+
+### [1.22.20] 2022-3-2
+#### Updated
+  - Anchor links block to accormodate changets from wp 5.9
+  - News and RSS block to use fetch_feed to pull feed.
+
+### [1.22.19] 2022-2-17
 #### Updated
   - Anchor links block to accormodate changets from wp 5.9
   - News and RSS block to use fetch_feed to pull feed.
