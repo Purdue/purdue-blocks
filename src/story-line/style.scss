@@ -96,6 +96,11 @@
       }
     }
   }
+  .container{
+    @include mobile{
+      overflow: hidden;
+    }
+  }
   .columns{
     margin-top:0 !important;
   }
