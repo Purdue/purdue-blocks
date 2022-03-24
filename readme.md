@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.26] 2022-3-24
+#### Updated
+  - To Fontawesome 6.
+
 ### [1.22.24] 2022-3-22
 #### Updated
   - Allow CTA card small to have more links in the content body in addition to read more.
