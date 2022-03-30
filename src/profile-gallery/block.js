@@ -279,7 +279,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                   style={ { backgroundImage: `url(${ profile.photoUrl })` } }
                   aria-label={ profile.photoAlt }
                 ></div>
-                  <button className={`modal-open-button`}><i class="fas fa-plus" aria-hidden='true'></i></button>
+                  <button className={`modal-open-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
                 </div>
                 <p className={`pu-profile-gallery--name`}>
                   {profile.name}
@@ -291,7 +291,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
                   <div className={`container`}>
                     <div className={`box`}>
-                      <div className={`modal--close-button`}>
+                      <div className={`modal--close-button`}  aria-label="close">
                         <i class="fas fa-times" aria-hidden="true"></i>
                       </div>
                       <div className={`modal--img-container`}>
