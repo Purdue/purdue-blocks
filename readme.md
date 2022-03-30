@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.22.28] 2022-3-30
+#### Added
+  - Aria label to buttons on profile gallery block.
+
 ### [1.22.26] 2022-3-24
 #### Updated
   - To Fontawesome 6.
