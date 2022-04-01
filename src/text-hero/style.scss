@@ -8,6 +8,17 @@
   .hero {
     .hero-body {
       background:none;
+      padding:0 1.5rem;
+      align-items: center;
+      @include tablet{
+        min-height:450px;
+      }
+      @include touch{
+        align-items: center;
+      }
+      @include mobile{
+        padding:0;
+      }
       .background-image{
         &:before{
           content:none;
