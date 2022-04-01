@@ -19,6 +19,7 @@ import "./story-line/frontend"
 import "./large-featured-story/frontend";
 import "./large-text/frontend";
 import "./cta-card/frontend";
+import "./text-hero/frontend";
 
 
 

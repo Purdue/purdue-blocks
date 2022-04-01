@@ -34,12 +34,14 @@
         min-height: 250px;
         padding:4rem 6rem;
         background-color:rgba(0,0,0,0.8);
+        justify-content: center;
         @include touch{
-          padding:2.8125rem 1.25rem;
+          padding:2.8125rem 4rem;
         }
         @include mobile {
           width:100%;
           max-width:100%;
+          padding:2.8125rem 2rem;
         }
         .story-title {
           font-family: $united-sans;

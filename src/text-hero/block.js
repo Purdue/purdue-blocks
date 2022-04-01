@@ -19,7 +19,7 @@ const {
 const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 const { select } = wp.data;
 const BLOCKS_TEMPLATE = [
-  [ 'core/paragraph', { placeholder: 'Body content copy' } ],
+  [ 'core/paragraph', { placeholder: 'Optional subtext' } ],
 ];
 /**
  * Register: aa Gutenberg Block.
