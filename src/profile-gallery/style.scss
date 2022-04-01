@@ -160,7 +160,8 @@
           border: 10px solid $boiler-gold;
           margin: 0;
           padding-top: calc(100% - 20px);
-          background-size: contain;
+          background-size: cover;
+          background-position: center;
           &:before {
             content: '';
             width: 2px;

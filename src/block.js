@@ -48,6 +48,7 @@ import "./large-featured-story/block.js";
 import "./large-text/block.js";
 import "./sidebar-box/block.js";
 import "./contact-card/block.js";
+import "./text-hero/block.js";
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";

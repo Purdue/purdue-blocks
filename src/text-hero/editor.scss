@@ -1,0 +1,22 @@
+.pu-text-hero-editor{
+  background:$primary-background-gray;
+  .buttons-container{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:2rem;
+  }
+  .remove-image-button{
+    background:$white;
+    margin-right:1rem;
+    &:hover{
+      background:$aged-gold;
+    }
+  }
+}
+.remove-image-button{
+  &.multiple{
+    margin-top:0;
+    display:block;
+  }
+}
