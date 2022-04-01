@@ -82,6 +82,11 @@
  
            a {
              color: black !important;
+             text-decoration: none;
+             &:hover{
+              text-decoration: none;
+              color:$aged-gold !important;
+             }
            }
          }
  
