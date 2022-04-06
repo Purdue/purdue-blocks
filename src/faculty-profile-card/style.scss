@@ -84,29 +84,20 @@
         li {
           display: flex;
           font-size: 1.25rem;
-
-
           &:not(:last-child) {
             margin-bottom: 1.25rem;
           }
 
-          svg {
-            margin-right: 1.25rem;
+          svg, i {
+            margin-right: 1rem;
             color: $steel-gray;
           }
-          
-          svg.fa-desktop {
-            margin-right: calc(1.25rem - 2.5px);
-          }
-
-          svg.fa-address-book {
-            margin-right: calc(1.25rem + 2.5px);
-          }
+      
 
           .profile-info-item {
             display: flex;
             flex-direction: column;
-            margin-top: -0.5rem;
+            margin-top: -0.25rem;
 
             p {
               margin-bottom: 0;
@@ -187,12 +178,12 @@
 
         @include touch {
           text-align: center;
-          align-items: center;
         }
       }
 
       @include touch{
         margin-right: 0;
+        width:100%;
       }
 
     }
@@ -203,20 +194,18 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        margin: 0;
-        margin-top: 1.5rem;
-        max-width: 20rem;
-        justify-content: space-between;
+        justify-content: flex-start;
+        margin-top:0.5rem;
+        flex-wrap:wrap;
       }
 
       .level-item {
         color: white;
-
+        margin-top:0.5rem;
         &:not(:last-child) {
           margin-right: 1.5625rem;
 
           @include touch {
-            margin-right: 0;
             margin-bottom: 0;
           }
         }
@@ -228,7 +217,13 @@
       }
 
       a.level-item {
+        margin-bottom: 0;
         font-size: 1.5625rem;
+        word-break: break-word;
+        text-decoration: none;
+        &:hover{
+          color:$boiler-gold;
+        }
       }
     }
   }
