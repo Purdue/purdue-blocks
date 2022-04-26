@@ -82,6 +82,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     phone: { type: 'string', default: '' },
     email: { type: 'string', default: '' },
     personalLink: { type: 'string', default: '' },
+    personalLinkText: { type: 'string', default: '' },
     extraLink: { type: 'string', default: '' },
     name: { type: 'string', default: '' },
     title: { type: 'string', default: '' },
@@ -371,7 +372,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                 ></input>
               </div>
             </div>
-            <span>Add Optional Personal Website</span>
+            <span>Add Optional Personal Website or page</span>
             <div className="field">
               <div className="control">
                 <input
@@ -382,11 +383,29 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                   }
                   className="input"
                   type="text"
-                  placeholder="Personal Site..."
+                  placeholder="Link URL..."
                   onChange={ ( e ) => {
-                    props.setAttributes( { personalLink: e.target.value } );
+                    props.setAttributes( { personalLink: e.target.value.trim() } );
                   } }
                 ></input>
+              </div>
+            </div>
+            <div className="field">
+              <div className="control">
+                <input
+                  value={
+                    props.attributes.personalLinkText !== '' ?
+                      props.attributes.personalLinkText :
+                      ''
+                  }
+                  className="input"
+                  type="text"
+                  placeholder="Link Text..."
+                  onChange={ ( e ) => {
+                    props.setAttributes( { personalLinkText: e.target.value } );
+                  } }
+                ></input>
+                <span style={{fontStyle:"italic"}}>Link text is optional. When left empty it'll use the link URL.</span>
               </div>
             </div>
             <span>Add Optional Google Scholar Link</span>
@@ -402,7 +421,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                   type="text"
                   placeholder="Google Scholar Link..."
                   onChange={ ( e ) => {
-                    props.setAttributes( { extraLink: e.target.value } );
+                    props.setAttributes( { extraLink: e.target.value.trim() } );
                   } }
                 ></input>
               </div>
@@ -644,7 +663,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                             `https://${ props.attributes.personalLink }`
                         }
                       >
-                        { props.attributes.personalLink }
+                        { props.attributes.personalLinkText ? props.attributes.personalLinkText :props.attributes.personalLink  }
                       </a>
                       <span>Personal Website</span>
                     </div>
@@ -793,7 +812,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                             `https://${ props.attributes.personalLink }`
                         }
                       >
-                        { props.attributes.personalLink }
+                        { props.attributes.personalLinkText ? props.attributes.personalLinkText:props.attributes.personalLink }
                       </a>
                       <span>Personal Website</span>
                     </div>
