@@ -5,6 +5,10 @@ Adds Purdue University branded Gutenberg blocks to the editor
 ## Changelog
 
 Relevant changes are documented below.
+### [1.23.4] 2022-4-26
+#### Added
+  - Add Link Text field to personal website link on Faculty card block.
+
 ### [1.23.0] 2022-4-1
 #### Added
   - Text block hero.
