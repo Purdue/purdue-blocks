@@ -255,6 +255,12 @@ registerBlockType("purdue-blocks/mini-hero", {
                     tagName="p"
                     value={props.attributes.subText}
                   /> : ''}
+
+                  {props.attributes.includeLink && props.attributes.linkText !== '' && props.attributes.linkUrl !== '' ? (
+                    <a href={props.attributes.linkUrl} className={`link${props.attributes.background === "light" ? " has-bg-light" : " has-bg-dark"}`} target={props.attributes.linkExternal ? '_blank' : ''}>
+                      {props.attributes.linkText}
+                    </a>
+                  ) : ''}
                   
                 </div>
               </div>
