@@ -65,7 +65,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
     function dragStart (e) {
       autoplayStop();
       e = e || window.event;
-      e.stopPropagation();
+      e.preventDefault();
       posInitial = items.offsetLeft;
       if(allowShift){
         if (e.type == 'touchstart') {
