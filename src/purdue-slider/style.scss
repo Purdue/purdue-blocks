@@ -1,0 +1,267 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+ // Required Core Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+// Optional Theme Stylesheet
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+
+.purdue-slider{
+  .glide{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-areas:
+    "slides"
+    "nav";
+    justify-content: space-between;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr;
+    grid-column-gap: 41px;
+    grid-row-gap: 0;
+    &__track{
+      overflow: visible;
+      grid-area: slides;
+    }
+    &__bullets{
+      grid-area: nav;
+      height: 80px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: auto;
+      width: calc(100% - 120px);
+      position:relative;
+      left:0;
+      transform:none;
+      transition:none;
+      &.hidden{
+        display:none;
+      }
+    }
+    &__bullet{
+      border: 0;
+        padding: 0;
+        margin: 0;
+        background: 0 0;
+        border-radius: 0;
+        width: auto;
+        flex-grow: 1;
+        border-top: 2px solid $cool-gray;
+        height: 28px;
+        display: block;
+        box-shadow:none;
+        transition:none;
+        &.is-active{
+          border-top: 5px solid $black;
+          margin-top:-3px;
+        }
+    }
+    &__arrows{
+      grid-area: nav;
+      place-self: center end;
+      width: 72px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      &.hidden{
+        display:none;
+      }
+    }
+    &__arrow{
+      position:relative;
+      overflow: hidden;
+      text-indent: -9999px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      border:none;
+      box-shadow:none;
+      transform:none;
+      width: 18px;
+      height: 35px;
+      opacity: 0.8;
+      filter: invert(0.4);
+      background-color: transparent;
+      &:hover{
+        filter: invert(0);
+      }
+      &--left{
+        left:auto;
+        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='angle-left' class='svg-inline--fa fa-angle-left fa-w-8' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512'%3E%3Cpath fill='currentColor' d='M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z'%3E%3C/path%3E%3C/svg%3E");      }
+      &--right{
+        right:auto;
+        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='angle-right' class='svg-inline--fa fa-angle-right fa-w-8' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512'%3E%3Cpath fill='currentColor' d='M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z'%3E%3C/path%3E%3C/svg%3E");      }
+    }
+    &__slides{
+      overflow: visible;
+    }
+    &__slide{
+      width:320px;
+      text-decoration: none;
+      padding:0;
+      border-radius: 0;
+      height:auto;
+      overflow: hidden;
+      &:hover{
+        color: $black;
+        .background-image{
+          transform: scale(1.1);
+        }
+        .read-more{
+          background-color:$boiler-gold !important;
+        }
+      }
+      &.is-active{
+        display:flex;
+        flex-direction: column;
+        &.columns{
+          flex-direction: row;
+        }
+      }
+      .content{
+        text-align:center;
+        padding:1rem;
+        .story-type, .story-tag{
+          font-size:0.9rem;
+          text-transform: uppercase;
+          font-weight:400;
+        }
+        .story-title{
+          font-size:1.125rem;
+          font-weight:700;
+          line-height:1.4;
+        }
+        .read-more{
+          min-width:200px;
+        }
+      }
+    }
+
+  }
+  &__button{
+    padding:0.75rem 1rem;
+  }
+  &--default{
+    padding-top:1rem;
+  }
+  &.has-white-background{
+    background:$white;
+    color:$black;
+    .purdue-slider__header{
+      color:$black;
+    }
+  }
+  &.has-black-background{
+    background:$black;
+    color:$white;
+    .purdue-slider__header{
+      color:$white;
+    }
+    .purdue-slider__button{
+      background-color:$boiler-gold !important;
+      color:$black !important;
+      &:hover{
+        background-color:$white !important;
+        color:$black !important;
+      }
+    }
+   .glide__bullet{
+      &.is-active{
+        border-top: 5px solid $primary-background-gray;
+      }
+    }
+    .glide__arrow{
+      filter:invert(1);
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+  &.has-gray-background{
+    background:$primary-background-gray;
+    color:$black;
+  }
+  &--rtb{
+    .pu-proofpoint__button{
+      min-width:250px;
+      width:auto;
+    }
+    .pu-proofpoint{
+      @include mobile{
+        box-shadow:$box-shadow;
+      }
+    }
+  }
+  &--tabs{
+    max-width:1100px !important;
+    .glide__track{
+      overflow:hidden;
+
+      .content{
+        text-align:left;
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left:2rem;
+        @include mobile{
+          padding-left:1rem;
+
+        }
+      }
+      .background-image{
+        height:100%;
+        min-height:350px;
+        background-repeat: no-repeat;
+        @include mobile{
+          height:60vw;
+          min-height:0;
+        }
+      }
+      .glide__slide{
+        &:hover{
+          .background-image{
+            transform:scale(1);
+          }
+        }
+        @include mobile{
+          flex-direction: column !important;
+        }
+      }
+
+      .purdue-blocks__button{
+        align-self:flex-start;
+        padding:0.75rem 1rem;
+      }
+    }
+    .glide__bullets{
+      @include tablet{
+          width:calc(80% - 120px);
+          margin-left:6rem;
+      }
+    }
+    .glide__arrows{
+      @include tablet{
+        margin-right:6rem;
+    }
+    }
+  }
+  .purdue-slider__header{
+    &.align-left{
+      text-align:left;
+    }
+    &.align-center{
+      text-align:center;
+    }
+  }
+
+}

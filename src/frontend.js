@@ -20,6 +20,7 @@ import "./large-featured-story/frontend";
 import "./large-text/frontend";
 import "./cta-card/frontend";
 import "./text-hero/frontend";
+import "./purdue-slider/frontend";
 
 
 
