@@ -252,6 +252,11 @@
  
            a {
              color: white !important;
+             text-decoration: none;
+             &:hover{
+              text-decoration: none;
+              color:$boiler-gold !important;
+             }
            }
          }
        }
