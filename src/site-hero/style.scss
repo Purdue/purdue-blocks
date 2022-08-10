@@ -204,8 +204,8 @@
       }
        .content {
          color: white !important;
-         width: calc(50% - 24px);
-         max-width: 30rem;
+         width: calc(50% - 48px);
+         max-width: 100%;
  
          @include touch {
            max-width: 100%;

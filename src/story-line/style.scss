@@ -111,13 +111,19 @@
     }
     .column{
       .image-container{
-        padding:0 0 0 0.75rem;
+        padding:0 0 0 3rem;
+        @include touch{
+          padding:0 0 0 1rem;
+        }
         @include mobile{
           padding-left:0;
         }
       }
       .content-container{
-        padding:0 0.75rem 0 0;
+        padding:0 3rem 0 0;
+        @include touch{
+          padding:0 1rem 0 0;
+        }
         @include mobile{
           padding:2.5rem $side-padding-mobile;
         }
@@ -144,18 +150,24 @@
     }
   }
   .image-container{
-    padding:0 0.75rem 0 0;
+    padding:0 3rem 0 0;
     img{
       width:100%;
       display:block;
+    }
+    @include touch{
+      padding-right:1rem;
     }
     @include mobile{
       padding-right:0;
     }
   }
   .content-container{
-    padding:0 0 0 0.75rem;
+    padding:0 0 0 3rem;
     width:100%;
+    @include touch{
+      padding-left:1rem;
+    }
     @include mobile{
       padding:2.5rem $side-padding-mobile;
     }

@@ -64,7 +64,6 @@
       font-size:2rem;
       font-weight:400;
       line-height:1.5;
-      text-transform:uppercase;
       margin-bottom:0 !important;
       margin-right:3rem;
       letter-spacing: 0.9px;
@@ -76,19 +75,17 @@
       }
     }
     &__button {
-      font-family: $united-sans;
-      font-weight: 700;
+      font-family: $acumin-pro;
+      font-weight: 400;
       font-size: 1.125rem;
-      text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 1.5rem;
       background: $black;
       border: 2px solid $black;
       color: $boiler-gold;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:15.625rem;
       letter-spacing: 0.9px;
       text-align:center;
       &:hover {
@@ -124,19 +121,17 @@
       }
     }
     &__button {
-      font-family: $united-sans;
-      font-weight: 700;
+      font-family: $acumin-pro;
+      font-weight: 400;
       font-size: 1.125rem;
-      text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 1.5rem;
       background: $black;
       border: 2px solid $boiler-gold;
       color: $white;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:15.625rem;
       letter-spacing: 0.9px;
       text-align:center;
       &:hover {
@@ -161,19 +156,17 @@
       justify-content: center;
     }
     &__button {
-      font-family: $united-sans;
-      font-weight: 700;
+      font-family: $acumin-pro;
+      font-weight: 400;
       font-size: 1.125rem;
-      text-transform: uppercase;
       display: inline-flex;
       justify-content: center;
       background: rgba(0, 0, 0, 0.65);
       color: $white;
-      padding:1rem;
+      padding:1rem 1.5rem;
       border: 2px solid $white;
       text-decoration: none;
       transition: all ease 0.2s;
-      min-width:15.625rem;
       letter-spacing: 0.9px;
       text-align:center;
       &:hover {
@@ -193,14 +186,13 @@
     text-transform: uppercase;
     display: inline-flex;
     justify-content: center;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.5rem;
     background: $black;
     border: 2px solid $black;
     color: $boiler-gold;
     text-decoration: none;
     transition: all ease 0.2s;
     margin-top:2rem;
-    min-width:15.625rem;
     letter-spacing: 0.9px;
     &:hover {
       cursor: pointer;
