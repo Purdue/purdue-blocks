@@ -7,11 +7,11 @@
 	
 function render_block_purdue_slider($attributes){
     if($attributes['background'] != "" && $attributes['background'] == "white"){
-        $output.='<div class="purdue-slider has-white-background section">'; 
+        $output.='<div class="purdue-slider has-white-background section is-medium">'; 
     }elseif($attributes['background'] != "" && $attributes['background'] == "black"){
-        $output.='<div class="purdue-slider has-black-background section">';
+        $output.='<div class="purdue-slider has-black-background section is-medium">';
     }elseif($attributes['background'] != "" && $attributes['background'] == "gray"){
-        $output.='<div class="purdue-slider has-gray-background section">';
+        $output.='<div class="purdue-slider has-gray-background section is-medium">';
     }
     $output.='<div class="container">';
     if($attributes['header'] != "" && $attributes['headerLevel'] != ""){
@@ -122,7 +122,7 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
-            foreach ( $attributes['tabs'] as $key => $tab ) {  
+            foreach ( $attributes['rtb'] as $key => $rtb ) {  
                 $output.='<button class="glide__bullet" data-glide-dir="='.$key.'"></button>';
             }
             $output.='</div>';

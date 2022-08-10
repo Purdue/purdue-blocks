@@ -37,16 +37,7 @@
         }
 
         .story-title {
-          font-family: $united-sans;
-          font-weight: 700;
-          font-size: 2.5rem;
           color: white !important;
-          margin-bottom: 2rem;
-          line-height:1.2;
-
-          @include touch {
-            font-size: 2.1875rem;
-          }
         }
 
         p {
@@ -58,6 +49,9 @@
 
           @include mobile {
             margin-bottom: 1.5rem;
+          }
+          &+.purdue-blocks__button{
+            margin-top:1rem;
           }
         }
         a{

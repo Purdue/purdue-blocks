@@ -10,7 +10,9 @@
 // Optional Theme Stylesheet
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
+
 .purdue-slider{
+  overflow-x: hidden;
   .glide{
     width: 100%;
     margin-left: auto;
@@ -112,6 +114,10 @@
       border-radius: 0;
       height:auto;
       overflow: hidden;
+      .background-image{
+        background-size:cover;
+        background-position:center;
+      }
       &:hover{
         color: $black;
         .background-image{
@@ -149,7 +155,7 @@
 
   }
   &__button{
-    padding:0.75rem 1rem;
+    padding:0.75rem 1.5rem;
   }
   &--default{
     padding-top:1rem;
@@ -198,7 +204,28 @@
     }
     .pu-proofpoint{
       @include mobile{
-        box-shadow:$box-shadow;
+        box-shadow:0px 3px 6px #00000029;
+        width:auto;
+        margin: 0 1rem 0.2rem;
+        height:100%;
+      }
+      &__highlighted{
+        font-size:6.8rem;
+        line-height:0.9;
+        margin-bottom:1.5rem !important;
+        @include until-widescreen {
+          font-size:7vw;
+        }
+        @include mobile {
+          font-size:4rem;
+        }
+      }
+      &__content{
+        font-size:1.5rem;
+        font-weight: 400;
+        @include mobile {
+          font-size:1.25rem;
+        }
       }
     }
   }
@@ -222,6 +249,8 @@
         height:100%;
         min-height:350px;
         background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         @include mobile{
           height:60vw;
           min-height:0;
