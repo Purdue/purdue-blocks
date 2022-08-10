@@ -21,7 +21,7 @@ const {
   TextareaControl,
   Button,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, RichText } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -231,7 +231,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
         rel="noopener noreferrer"
       >
         <div className={ 'card-image' }>
-          <figure className="image">
+          <figure className="image is-3by2">
             <img src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
           </figure>
         </div>

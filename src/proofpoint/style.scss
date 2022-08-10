@@ -73,7 +73,7 @@
    }
    &__highlighted{
      font-size: 4.6875rem;
-     line-height:4.6875rem;
+     line-height:1;
      margin-bottom:0.5rem !important;
      text-align:center;
      text-transform: uppercase;
@@ -89,7 +89,7 @@
      font-weight:700;
      font-size:1.25rem;
      text-align:center;
-     line-height:1.875rem;
+     line-height:1.4;
      margin-bottom:1rem !important;
      white-space:pre-wrap;
      &-narrow{
@@ -107,7 +107,7 @@
      font-size:1.25rem;
      text-transform:capitalize;
      text-align:center;
-     line-height:1.5625rem;
+     line-height:1.4;
      font-style:italic;
      white-space:pre-wrap;
    }

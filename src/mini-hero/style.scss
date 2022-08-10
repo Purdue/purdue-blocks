@@ -74,19 +74,11 @@
     }
 
     .title {
-      font-family: $united-sans;
-      font-size: 2.5rem;
-      font-weight: 700;
-      line-height: 1.125;
       max-width: 100%;
       margin-bottom:1.5rem;
       color:$white;
       &:last-child{
         margin-bottom:0;
-      }
-      @include mobile{
-        font-size: 2.1875rem;
-        margin-bottom:1.875rem;
       }
     }
 

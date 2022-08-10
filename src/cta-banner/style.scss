@@ -57,23 +57,19 @@
     background-color: $boiler-gold;
     .container{
       align-items:center;
-      justify-content: space-between;
-      @include touch{
-        justify-content: center;
-      }
+      justify-content: center;
     }
     &__desc{
-      font-family: $united-sans-extended;
-      font-size:1.375rem;
-      font-weight:700;
-      line-height:2.5rem;
+      font-family: $united-sans;
+      font-size:2rem;
+      font-weight:400;
+      line-height:1.5;
       text-transform:uppercase;
       margin-bottom:0 !important;
-      margin-right:2rem;
+      margin-right:3rem;
       letter-spacing: 0.9px;
       @include touch{
-        font-size:1.125rem;
-        line-height:2.1875rem;
+        font-size:1.5rem;
         letter-spacing: 0.9px;
         text-align: center;
         margin-right:0;

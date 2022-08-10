@@ -160,20 +160,15 @@
       padding:2.5rem $side-padding-mobile;
     }
     .story-title{
-      font-family:$united-sans !important;
-      margin:0 0 1.875rem 0 !important;
-      font-size:2rem !important;
-      line-height:1.1875 !important;
-      font-weight:700 !important;
       color:$black !important;
-      @include mobile{
-        font-size:1.875rem !important;
-      }
     }
     p{
       color:$steel-gray;
       &:last-child{
         margin-bottom:0;
+      }
+      &+.purdue-blocks__button{
+        margin-top:1rem;
       }
     }
     .read-more-button{

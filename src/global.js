@@ -12,7 +12,8 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
         allowShift = true,
         dirDetected = false,
         newSlides = [...items.querySelectorAll(className)],
-        isPlaying =false
+        isPlaying =false,
+        press=false
 
      //feature detection
     let passiveIfSupported = false;
@@ -29,6 +30,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
     items.addEventListener('touchstart', dragStart, passiveIfSupported);
     
     // Click events
+
     prev.addEventListener('click', function () { autoplayStop(); shiftSlide(-1) });
     next.addEventListener('click', function () { autoplayStop(); shiftSlide(1) });
     if(pause&&play){
@@ -67,13 +69,14 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       e = e || window.event;
       e.preventDefault();
       posInitial = items.offsetLeft;
+      press=true;
       if(allowShift){
         if (e.type == 'touchstart') {
             posX1 = e.touches[0].clientX;
             posY1 = e.touches[0].clientY;           
             items.addEventListener('touchmove', dragAction, passiveIfSupported);
             items.addEventListener('touchend', dragEnd, false);
-          } else {
+          } else if(e.type == 'mousedown'){
             posX1 = e.clientX;
             posY1 = e.clientY;
             document.onmousemove = dragAction;
@@ -114,6 +117,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       } else {
         items.style.left = (posInitial) + "px";
       }
+      press = false;
       dirDetected = false;
       document.onmouseup = null;
       document.onmousemove = null;

@@ -2,6 +2,8 @@ const path = require( 'path' );
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const IgnoreEmitPlugin = require( 'ignore-emit-webpack-plugin' );
+// include the clean webpack plugins
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const production = 'development' !== process.env.NODE_ENV;
 
 module.exports = {
@@ -54,6 +56,10 @@ module.exports = {
     new MiniCssExtractPlugin( {
       filename: '[name].[hash].css',
     } ),
+    // clean out build directories on each build
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['./build/js/*','./build/css/*']
+    })
   ],
   performance: {
     maxEntrypointSize: 512000,

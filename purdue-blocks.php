@@ -26,6 +26,7 @@ require_once plugin_dir_path(__FILE__) . 'src/init.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-rss/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-news/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/custom-side-menu/index.php';
+require_once plugin_dir_path(__FILE__) . 'src/purdue-slider/index.php';
 
 // Register post list custom Blocks
 if (function_exists('acf_register_block_type')) {

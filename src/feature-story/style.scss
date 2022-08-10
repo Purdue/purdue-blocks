@@ -7,18 +7,7 @@
 .pu-feature-story {
   background-color:$white;
   h2,.featured-story-header {
-    font-weight:600;
-    font-size: 2rem !important;
-    font-family:$acumin-pro-semicondensed;
-    margin-bottom: 3.125rem !important;
-    line-height:2.375rem !important;
     color:$aged-gold !important;
-    padding:0;
-    text-transform: none;
-    @include touch{
-      font-size:1.875rem !important;
-      margin-bottom:2.1875rem !important;
-    }
   }
   &__narrow{
     padding:6rem $side-padding-desktop;
