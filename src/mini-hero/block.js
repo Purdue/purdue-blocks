@@ -257,7 +257,7 @@ registerBlockType("purdue-blocks/mini-hero", {
                   /> : ''}
 
                   {props.attributes.includeLink && props.attributes.linkText !== '' && props.attributes.linkUrl !== '' ? (
-                    <a href={props.attributes.linkUrl} className={`link${props.attributes.background === "light" ? " has-bg-light" : " has-bg-dark"}`} target={props.attributes.linkExternal ? '_blank' : ''}>
+                    <a href={props.attributes.linkUrl} className={`link${props.attributes.background === "light" ? " has-bg-light" : " has-bg-dark"}`} target={props.attributes.linkExternal ? '_blank' : '_self'} rel="noopener">
                       {props.attributes.linkText}
                     </a>
                   ) : ''}
