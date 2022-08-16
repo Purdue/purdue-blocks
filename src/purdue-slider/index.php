@@ -85,7 +85,7 @@ function render_block_purdue_slider($attributes){
                 }
                 if($tab[ctaLink] != ""){
                     $target=$tab[external]?'targe="_blank"':'targe="_self"';
-                    $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$tab[ctaLink].'" '.$target.'>'.$tab[ctaText].'</a>';
+                    $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$tab[ctaLink].'" '.$target.'>'.$tab[ctaText].'</a>';
                 }
                 $output.='</div></div>';
             }
