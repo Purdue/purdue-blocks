@@ -66,6 +66,10 @@ registerBlockType("purdue-blocks/mini-hero", {
     subText: { type: "string", source: "html", selector: "p.content" },
     imgUrl: { type: "string", default: "" },
     altText: { type: "string", default: "" },
+    includeLink: { type: 'boolean', default: false },
+    linkExternal: { type: 'boolean', default: false },
+    linkUrl: { type: "string", default: "" },
+    linkText: { type: "string", default: "" },
     background: { type: "string", default: "dark" },
   },
 
@@ -108,6 +112,44 @@ registerBlockType("purdue-blocks/mini-hero", {
               onChange={(altText) => props.setAttributes({ altText })}
             />
           </PanelRow>
+        </PanelBody>
+        <PanelBody>
+          <PanelRow>
+            <CheckboxControl
+                label="Include a Link?"
+                checked={ props.attributes.includeLink }
+                onChange={ () =>
+                  props.setAttributes( { includeLink: ! props.attributes.includeLink } ) }
+              />
+          </PanelRow>
+          { props.attributes.includeLink ?
+            ( <PanelRow>
+              <TextControl
+                label="Call to action text"
+                value={ props.attributes.linkText }
+                onChange={ ( linkText ) => props.setAttributes( { linkText } ) }
+              />
+            </PanelRow> ) : '' }
+          { props.attributes.includeLink ? (
+            <PanelRow>
+              <TextControl
+                label="Link address"
+                value={ props.attributes.linkUrl }
+                onChange={ ( linkUrl ) => props.setAttributes( { linkUrl } ) }
+              />
+            </PanelRow> ) : '' }
+
+          { props.attributes.includeLink ?
+            <PanelRow>
+              <CheckboxControl
+                label="Open link in new tab?"
+                checked={ props.attributes.external }
+                onChange={ () =>
+                  props.setAttributes( { linkExternal: ! props.attributes.linkExternal } )
+                }
+              />
+            </PanelRow> : '' }
+            
         </PanelBody>
       </InspectorControls>,
 
@@ -213,6 +255,12 @@ registerBlockType("purdue-blocks/mini-hero", {
                     tagName="p"
                     value={props.attributes.subText}
                   /> : ''}
+
+                  {props.attributes.includeLink && props.attributes.linkText !== '' && props.attributes.linkUrl !== '' ? (
+                    <a href={props.attributes.linkUrl} className={`link${props.attributes.background === "light" ? " has-bg-light" : " has-bg-dark"}`} target={props.attributes.linkExternal ? '_blank' : ''}>
+                      {props.attributes.linkText}
+                    </a>
+                  ) : ''}
                   
                 </div>
               </div>
