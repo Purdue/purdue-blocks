@@ -73,7 +73,7 @@ function render_block_purdue_slider($attributes){
             foreach ( $attributes['tabs'] as $tab ) {  
                 $output.='<div class="glide__slide columns">';
                 if($tab[imageURL] != ""){
-                    $output.='<div class="column is-three-fifths">';
+                    $output.='<div class="column image-column">';
                     $output.='<div class="image background-image" role="img" style="background-image:url('.$tab[imageURL].')" aria-label="'.$tab[imageAlt].'"></div>';
                     $output.='</div>';
                 }

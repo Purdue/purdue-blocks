@@ -117,6 +117,7 @@
       .background-image{
         background-size:cover;
         background-position:center;
+        transition: all .3s;
       }
       &:hover{
         color: $black;
@@ -136,19 +137,23 @@
       }
       .content{
         text-align:center;
-        padding:1rem;
+        padding:1.25rem;
         .story-type, .story-tag{
           font-size:0.9rem;
           text-transform: uppercase;
           font-weight:400;
+          line-height:1.5;
         }
         .story-title{
           font-size:1.125rem;
           font-weight:700;
           line-height:1.4;
+          margin-bottom:1.25rem;
         }
         .read-more{
-          min-width:200px;
+          padding:0.75rem 1.5rem;
+          margin-right:0;
+          margin-bottom:1.25rem;
         }
       }
     }
@@ -210,18 +215,13 @@
         height:100%;
       }
       &__highlighted{
-        font-size:6.8rem;
-        line-height:0.9;
-        margin-bottom:1.5rem !important;
-        @include until-widescreen {
-          font-size:7vw;
-        }
-        @include mobile {
-          font-size:4rem;
-        }
+        font-size:5rem;
+        line-height:1;
+        margin-bottom:2.5rem !important;
       }
       &__content{
         font-size:1.5rem;
+        line-height:1.42;
         font-weight: 400;
         @include mobile {
           font-size:1.25rem;
@@ -239,9 +239,27 @@
         display:flex;
         flex-direction: column;
         justify-content: center;
-        padding-left:2rem;
+        padding-left:2.5rem;
         @include mobile{
-          padding-left:1rem;
+          padding:0;
+        }
+
+      }
+      .title{
+        font-family: $united-sans;
+        font-size:2.5rem;
+        color:$black;
+        margin-bottom:2rem;
+        @include mobile{
+          font-size:1.75rem;
+          margin-bottom:1.25rem;
+          margin-top:1.5rem;
+      }
+      }
+      .image-column{
+        padding-right:2.5rem;
+        @include mobile{
+          padding:0;
 
         }
       }
@@ -264,12 +282,20 @@
         }
         @include mobile{
           flex-direction: column !important;
+          &.columns{
+            margin:0;
+          }
         }
       }
 
       .purdue-blocks__button{
         align-self:flex-start;
-        padding:0.75rem 1rem;
+        padding:0.75rem 1.5rem;
+        margin-top:1rem;
+        display:inline-block;
+        @include mobile{
+          margin-top:0.125rem;
+        }
       }
     }
     .glide__bullets{

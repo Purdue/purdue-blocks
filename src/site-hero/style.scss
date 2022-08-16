@@ -190,14 +190,14 @@
        display: flex;
        align-items: center;
        z-index: 2;
-       padding: 7rem $side-padding-desktop !important;
+       padding: 6rem $side-padding-desktop !important;
        @include touch {
          order: 2;
          padding: 1rem $side-padding-tablet 2.8125rem !important;
        }
        @include mobile {
         order: 2;
-        padding: 1rem $side-padding-mobile 2.8125rem !important;
+        padding: 1rem $side-padding-mobile 1.875rem !important;
       }
       .container{
         width:100%;
