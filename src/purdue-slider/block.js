@@ -106,6 +106,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
     }
     if(props.attributes.rtb.length===0){
       props.setAttributes( {rtb: [{
+        leadText: '',
         largeText: '',
         smallText: '',
         source: "",
@@ -144,6 +145,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
       }else if(props.attributes.type === "rtb"){
         let rtb = [ ...props.attributes.rtb ];
         rtb.push( {
+          leadText: '',
           largeText: '',
           smallText: '',
           source: "",
@@ -272,6 +274,13 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
         let cards = [ ...props.attributes.cards ];
         cards[ index ].tag = tag;
         props.setAttributes( { cards } );
+      }
+    }; 
+    const handleChangeLeadText= ( leadText, index ) => {
+      if(props.attributes.type === "rtb"){
+        let rtb = [ ...props.attributes.rtb ];
+        rtb[ index ].leadText = leadText;
+        props.setAttributes( { rtb } );
       }
     }; 
     const handleChangeLargeText= ( largeText, index ) => {
@@ -589,7 +598,15 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   className="quote-block-details"
                   title={`Slides ${index+1} Details`}
                   initialOpen={true}
-                >
+                >{props.attributes.hasLead?
+                  <PanelRow>
+                      <TextareaControl
+                        label="Lead Text"
+                        value={ card.leadText }
+                        onChange={ ( leadText ) => handleChangeLeadText( leadText, index ) }
+                      />
+                  </PanelRow> :""
+                }
                   <PanelRow>
                       <TextareaControl
                         label="Large Text"
@@ -687,9 +704,9 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
             />
           </PanelRow>
           <PanelRow>
-            <RadioControl
+            <SelectControl
               label="Choose a background"
-              selected={ props.attributes.background }
+              value={ props.attributes.background }
               options={ [
                 { label: 'White', value: 'white' },
                 { label: 'Black', value: 'black' },
@@ -738,6 +755,21 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               } }
             />
           </PanelRow>
+          {props.attributes.type === "rtb"?
+          <PanelRow>
+            <SelectControl
+              label="Choose the number of cards to display on desktop."
+              value={ props.attributes.displayNumber }
+              options={ [
+                { label: '2', value: '2' },
+                { label: '3', value: '3' },
+                { label: '4', value: '4' },
+              ] }
+              onChange={ ( displayNumber ) => {
+                props.setAttributes( { displayNumber } )
+              } }
+            />
+          </PanelRow>:""}
           <PanelRow>
             <CheckboxControl
               label="Add a link to the story page?"
@@ -747,6 +779,24 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               }
             />
           </PanelRow>
+          {props.attributes.type === "rtb"?
+          <PanelRow>
+            <CheckboxControl
+              label="Include dividers between cards?"
+              checked={ props.attributes.divider }
+              onChange={ () =>
+                props.setAttributes( { divider: ! props.attributes.divider } )}
+            />
+          </PanelRow>:""}
+          {props.attributes.type === "rtb"?
+          <PanelRow>
+            <CheckboxControl
+              label="Include lead text at the top?"
+              checked={ props.attributes.hasLead }
+              onChange={ () =>
+                props.setAttributes( { hasLead: ! props.attributes.hasLead } )}
+            />
+          </PanelRow>:""}
           { props.attributes.hasLink ?
             ( <PanelRow>
               <TextControl

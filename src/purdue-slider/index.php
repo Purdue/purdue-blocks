@@ -100,11 +100,20 @@ function render_block_purdue_slider($attributes){
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="rtb" && sizeof($attributes['rtb'])>0){
-            $output.='<div class="glide purdue-slider--rtb">';            
+            if($attributes[divider]){
+                $output.='<div class="glide purdue-slider--rtb has-divider" data-number="'.$attributes['displayNumber'].'">';    
+            }else{
+                $output.='<div class="glide purdue-slider--rtb" data-number="'.$attributes['displayNumber'].'">';  
+            }          
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             foreach ( $attributes['rtb'] as $rtb ) {  
                 $output.='<div class="glide__slide"><div class="pu-proofpoint"><div class="container">';
+                if($attributes['hasLead']&&$rtb[leadText] != ""){
+                    $output.='<p class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</p>';
+                }else if($attributes['hasLead']&&$rtb[leadText] == ""){
+                    $output.='<div aria-hidden="true" class="lead-text pu-proofpoint__lead placeholder">PlaceHolder</div>';
+                }
                 if($rtb[largeText] != ""){
                     $output.='<p class="large-text pu-proofpoint__highlighted">'.$rtb[largeText].'</p>';
                 }
@@ -116,7 +125,7 @@ function render_block_purdue_slider($attributes){
                 }
                 if($rtb[ctaLink] != ""){
                     $target=$tab[external]?'targe="_blank"':'targe="_self"';
-                    $output.='<a class="pu-proofpoint__button" href="'.$rtb[ctaLink].'" '.$target.'>'.$rtb[ctaText].'</a>';
+                    $output.='<a class="pu-proofpoint__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$rtb[ctaLink].'" '.$target.'>'.$rtb[ctaText].'</a>';
                 }
                 $output.='</div></div></div>';
             }
@@ -187,6 +196,18 @@ function register_block_purdue_slider() {
             "rtb" => array(
                 "type"=> "array",
                 "default"=> [],
+            ),
+            "divider" => array(
+                "type"=> "boolean",
+                "default"=> false,
+            ),
+            "hasLead" => array(
+                "type"=> "boolean",
+                "default"=> false,
+            ),
+            "displayNumber" => array(
+                "type"=> "string",
+                "default"=> "3",
             ),
         ),
         'render_callback' => 'render_block_purdue_slider',

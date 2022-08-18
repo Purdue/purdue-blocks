@@ -120,7 +120,6 @@
         transition: all .3s;
       }
       &:hover{
-        color: $black;
         .background-image{
           transform: scale(1.1);
         }
@@ -164,6 +163,9 @@
   }
   &--default{
     padding-top:1rem;
+    .glide__slide:hover{
+      color: $black;
+    }
   }
   &.has-white-background{
     background:$white;
@@ -175,6 +177,15 @@
   &.has-black-background{
     background:$black;
     color:$white;
+    .purdue-slider--rtb{
+      &.has-divider{
+        @include tablet{
+        .glide__slide:not(last-child){
+          border-right:solid 1px $white;
+        }
+      }
+      }
+    }
     .purdue-slider__header{
       color:$white;
     }
@@ -203,9 +214,23 @@
     color:$black;
   }
   &--rtb{
-    .pu-proofpoint__button{
-      min-width:250px;
-      width:auto;
+    &.has-divider{
+      @include tablet{
+        .glide__slide + .glide__slide{
+          border-left:solid 1px $black;
+        }
+        .glide__slides{
+          padding-top:2rem;
+          padding-bottom:2rem;
+        }
+        .pu-proofpoint{
+          .container{
+            padding-top:0;
+            padding-bottom:0;
+          }
+        }
+      }
+
     }
     .pu-proofpoint{
       @include mobile{
@@ -214,18 +239,41 @@
         margin: 0 1rem 0.2rem;
         height:100%;
       }
-      &__highlighted{
-        font-size:5rem;
+      &__lead{
+        font-size:min(40px, 2.5vw);
         line-height:1;
-        margin-bottom:2.5rem !important;
+        margin-bottom:0.5rem !important;
+        font-family:$united-sans;
+        text-align:center;
+        @include mobile{
+          font-size:2.5rem;
+        }
+        &.placeholder{
+          opacity:0;
+        }
+      }
+      &__highlighted{
+        font-size:min(80px, 5vw);
+        line-height:1;
+        margin-bottom:1.5rem !important;
+        font-family:$united-sans;
+        @include mobile{
+          font-size:5rem;
+        }
       }
       &__content{
         font-size:1.5rem;
         line-height:1.42;
         font-weight: 400;
+        white-space: pre-wrap;
+        margin-bottom:0.5rem !important;
         @include mobile {
           font-size:1.25rem;
         }
+      }
+      &__button{
+        min-width:0;
+        padding:0.75rem 1.25rem;
       }
     }
   }

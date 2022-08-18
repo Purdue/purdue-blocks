@@ -21,9 +21,7 @@ const CustomActiveClass = (Glide, Components, Events) => {
   
       changeActiveSlide() {
         const slide = Components.Html.slides[Glide.index];
-        console.log(slide)
         const bullets = Components.Controls.items[0];
-        console.log(bullets)
         const bullet = [...bullets.children].find(
           (bullet) => bullet.getAttribute("data-glide-dir") === `=${Glide.index}`
         );
@@ -103,19 +101,24 @@ for (let i = 0; i < tabs.length; i++) {
 const rtb = document.querySelectorAll('.purdue-slider--rtb');
 if(rtb && rtb.length>0){
 for (let i = 0; i < rtb.length; i++) {
+  const count = parseInt(rtb[i].dataset.number);
+  let newCount = count===4?3:count;
+  console.log(newCount)
   let glide = new Glide(rtb[i], {
-    perView: 3,
+    perView: count,
     breakpoints: {
-        767: {
-          perView: 1,
-        },
+      1024:{
+        perView: newCount,
       },
+      767: {
+        perView: 1,
+      },
+    },
   });
+
   glide.slides_count = rtb[i].querySelectorAll('.glide__slide').length;
-  console.log(glide.slides_count);
   glide.bullets = rtb[i].querySelector('.glide__bullets');
   glide.control = rtb[i].querySelector('.glide__arrows');
-  console.log(glide.control )
   glide.on('resize', () => {
       check_resize(glide);
   });
