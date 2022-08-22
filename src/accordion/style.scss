@@ -13,7 +13,7 @@
    cursor: pointer;
    background-color: $white;
   .accordion-title{
-    padding: 2.1875rem 3rem 2.1875rem 1.875rem;
+    padding: 1rem 3rem 1rem 1.875rem;
     margin:0 !important;
     font-size:1.125rem;
     font-weight:700;
@@ -36,7 +36,6 @@
   .accordion-content{
     display:none;
     padding: 0 1.875rem 2.1875rem;
-    margin-top:-1rem;
     height:0;
     opacity: 0;
     p{
