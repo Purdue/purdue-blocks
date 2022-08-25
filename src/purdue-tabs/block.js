@@ -21,7 +21,7 @@ const {
   SelectControl,
   Button,
 } = wp.components;
-const { RichText,InnerBlocks, InspectorControls } = wp.blockEditor;
+const { RichText,InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 import { createBlock } from "@wordpress/blocks";
 
 /**
@@ -67,6 +67,7 @@ registerBlockType("purdue-blocks/tabs", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -184,8 +185,9 @@ registerBlockType("purdue-blocks/tabs", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     return (
-      <div className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`}>
+      <div className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`} {...blockProps}>
          <div className={`pu-blocks-tabs__headers`}>
            {props.attributes.headers.length>0?props.attributes.headers.map((header)=>{
             return  <RichText.Content

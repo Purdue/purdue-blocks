@@ -24,7 +24,7 @@ const {
   SelectControl,
   Button
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Add content' } ],
@@ -81,6 +81,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -310,9 +311,11 @@ registerBlockType( 'purdue-blocks/cta-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       <div
         className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
+        {...blockProps}
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>

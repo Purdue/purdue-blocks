@@ -21,7 +21,7 @@ const {
   CheckboxControl,
   TextControl,
 } = wp.components;
-const { InnerBlocks, InspectorControls, RichText } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -82,6 +82,7 @@ registerBlockType( 'purdue-blocks/title-nav', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -177,15 +178,16 @@ registerBlockType( 'purdue-blocks/title-nav', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     return ! props.attributes.addButton ? (
-      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } >
+      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } {...blockProps}>
         <RichText.Content className="pu-title-nav__title" tagName="h2" value={ props.attributes.titleText } />
         <ul className="pu-title-nav__menu">
           <InnerBlocks.Content />
         </ul>
       </section>
     ) : (
-      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } >
+      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } {...blockProps}>
         <div className="columns">
           <div className="column is-8 pu-title-nav__left">
             <RichText.Content className="pu-title-nav__title" tagName="h2" value={ props.attributes.titleText } />

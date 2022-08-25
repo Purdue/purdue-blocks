@@ -22,7 +22,7 @@ const {
   CheckboxControl,
   RadioControl
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -78,6 +78,7 @@ registerBlockType("purdue-blocks/proofpoint", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -309,6 +310,7 @@ registerBlockType("purdue-blocks/proofpoint", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       <div  className={ `pu-proofpoint${
         props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
@@ -317,7 +319,7 @@ registerBlockType("purdue-blocks/proofpoint", {
       }
       ${
         props.attributes.height==="full"?" pu-proofpoint__height":""
-      }`}>       
+      }`} {...blockProps}>       
           <div className="container">
            {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
             <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">

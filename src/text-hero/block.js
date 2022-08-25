@@ -16,7 +16,7 @@ const {
   Button,
   Disabled,
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Optional subtext' } ],
@@ -87,6 +87,7 @@ registerBlockType("purdue-blocks/text-hero", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -256,8 +257,9 @@ registerBlockType("purdue-blocks/text-hero", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`pu-cta-hero pu-text-hero${props.attributes.position==="right"?" pu-text-hero--right":""}`}>
+      <div className={`pu-cta-hero pu-text-hero${props.attributes.position==="right"?" pu-text-hero--right":""}`} {...blockProps}>
         <div className="hero is-medium">
           <div className="hero-body">
             <div

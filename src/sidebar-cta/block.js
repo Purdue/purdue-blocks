@@ -23,7 +23,7 @@ const {
   RadioControl,
   ToolbarGroup
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks,BlockControls } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks,BlockControls, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -70,6 +70,7 @@ registerBlockType("purdue-blocks/sidebar-cta", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -170,9 +171,10 @@ registerBlockType("purdue-blocks/sidebar-cta", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       <div className={`purdue-blocks-sidebar-cta${props.attributes.backgroundColor==="black" ? ' purdue-blocks-sidebar-cta-black' : ''}
-      ${props.attributes.backgroundColor==="gray" ? ' purdue-blocks-sidebar-cta-gray' : ''}`}>    
+      ${props.attributes.backgroundColor==="gray" ? ' purdue-blocks-sidebar-cta-gray' : ''}`} {...blockProps}>    
         { props.attributes.header ? ( <RichText.Content
           className={ 'header' }
           tagName="p"

@@ -24,7 +24,7 @@ const {
   SelectControl,
   Button,
 } = wp.components;
-const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 
 /**
@@ -69,6 +69,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
   },
   supports: {
     className: false,
+    anchor: true,
   },
   // Block description in side panel
   description: __(
@@ -179,8 +180,9 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
+      <div {...blockProps} className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
         <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
             <InnerBlocks.Content />
         </div>

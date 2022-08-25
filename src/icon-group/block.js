@@ -26,7 +26,7 @@ const {
   BaseControl,
   TextControl,
 } = wp.components;
-const { InnerBlocks, InspectorControls, RichText } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 const {
   Component,
   Fragment,
@@ -86,6 +86,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -184,6 +185,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
   },
 
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const iconFields = props.attributes.iconGroup.map( ( card, index ) => {
       return  <div key={ index } className='icon-item'>
                 <a href={ card.iconUrl } target="_blank" rel="noopener noreferrer">
@@ -194,7 +196,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
               </div>;
     } );
     return (
-      <div className={ props.className } className='icon-group'>
+      <div className={ props.className } className='icon-group' {...blockProps}>
         { iconFields }
       </div>
     );

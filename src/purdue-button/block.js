@@ -26,7 +26,7 @@ const {
   ToolbarButton,
   KeyboardShortcuts,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText,BlockControls } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText,BlockControls, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -76,6 +76,7 @@ registerBlockType("purdue-blocks/purdue-button", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -279,6 +280,7 @@ registerBlockType("purdue-blocks/purdue-button", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       props.attributes.hasLink&&props.attributes.buttonURL?
       props.attributes.fontStyle==="fancy"?
@@ -292,7 +294,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       `}        
       href={props.attributes.buttonURL}
       target={ props.attributes.external ? '_blank' : '_self' }
-      rel="noopener noreferrer">          
+      rel="noopener noreferrer" {...blockProps}>          
       <RichText.Content
           className={ 'purdue-blocks__button__text' }
           tagName="span"
@@ -303,7 +305,7 @@ registerBlockType("purdue-blocks/purdue-button", {
         <a role="link" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
         href={props.attributes.buttonURL}
         target={ props.attributes.external ? '_blank' : '_self' }
-        rel="noopener noreferrer">
+        rel="noopener noreferrer" {...blockProps}>
           <span class="shrink-padding"></span>
           <RichText.Content
           className={ 'purdue-blocks__button__text' }
@@ -312,7 +314,7 @@ registerBlockType("purdue-blocks/purdue-button", {
           />
           <span class="shrink-padding"></span>
         </a>:
-        <div role="button" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}>      
+        <div role="button" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`} {...blockProps}>      
           <span class="shrink-padding"></span>
           <RichText.Content
             className={ 'purdue-blocks__button__text' }

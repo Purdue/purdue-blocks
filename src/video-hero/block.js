@@ -23,6 +23,7 @@ const {
   MediaUploadCheck,
   MediaUpload,
   InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 
 /**
@@ -76,6 +77,7 @@ registerBlockType("purdue-blocks/video-hero", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -348,9 +350,10 @@ registerBlockType("purdue-blocks/video-hero", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       props.attributes.type==="carousel"?
-      <div className={`video-hero video-hero--carousel`}>
+      <div className={`video-hero video-hero--carousel`} {...blockProps}>
         <div className={`video-hero--carousel__wrapper`}> 
         {
           props.attributes.images.length>0?props.attributes.images.map((img)=>{
@@ -407,7 +410,7 @@ registerBlockType("purdue-blocks/video-hero", {
       </div>:
       <div className={`video-hero video-hero--background-image`} 
       style={{backgroundImage: `url(${props.attributes.type==="video"?props.attributes.posterUrl:props.attributes.imgUrl})`}}
-      aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti}>
+      aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti} {...blockProps}>
         {props.attributes.type==="video"?
         <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''} src={props.attributes.videoUrl}/>:""}
         <div className="video-hero--overlay"></div>

@@ -13,7 +13,7 @@ const {
   TextControl,
   Button,
 } = wp.components;
-const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 
 // Array of social media share options.
@@ -103,6 +103,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -585,8 +586,9 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = props.attributes.name == '' ? (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`} {...blockProps}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -729,7 +731,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
       </div>
     ) : (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
+      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`} {...blockProps}>
         <div className="media">
           <div className="media-left">
             <div className="image">

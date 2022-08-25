@@ -26,7 +26,8 @@ const {
   InspectorControls,
   MediaUploadCheck,
   MediaUpload,
-  RichText
+  RichText,
+  useBlockProps
 } = wp.blockEditor;
 
 
@@ -70,6 +71,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
   },
   supports: {
     className: false,
+    anchor: true,
   },
   // Block description in side panel
   description: __(
@@ -258,13 +260,14 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const profiles = props.attributes.profiles
     const numColumns = parseInt(props.attributes.numColumns)
 
     const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
 
     const returned = (
-      <div className={`pu-profile-gallery columns is-multiline`}>
+      <div className={`pu-profile-gallery columns is-multiline`} {...blockProps}>
         {profiles.map((profile, i, profiles) => {
           if (profile.name !== 'add') {
 

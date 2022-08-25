@@ -16,7 +16,7 @@ const {
   Button,
   Disabled,
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -92,6 +92,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -359,10 +360,11 @@ registerBlockType("purdue-blocks/large-featured-story", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const videoId = getVideoId(props.attributes.videoUrlYoutube);
     const iframeMarkup = <iframe id={videoId} class="pu-lightbox-youtube" title={props.attributes.videoTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
-      <div className="pu-cta-hero pu-large-image">
+      <div className="pu-cta-hero pu-large-image" {...blockProps}>
         <div className="hero is-large">
           <div className="hero-body">
             <div

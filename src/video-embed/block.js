@@ -21,7 +21,7 @@ const {
   CheckboxControl,
   TextControl,
 } = wp.components;
-const { InnerBlocks, InspectorControls, RichText } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -77,6 +77,7 @@ registerBlockType( 'purdue-blocks/video-embed', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -120,11 +121,12 @@ registerBlockType( 'purdue-blocks/video-embed', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     const match = props.attributes.urlText.match( regExp );
     const video_id = (match&&match[7].length==11)? match[7] : false;
 
-    return  <div className='purdue_video'>
+    return  <div className='purdue_video' {...blockProps}>
       <iframe id="player" type="text/html" src={`https://www.youtube.com/embed/${ video_id }?modestbranding=1&rel=0&theme=light&controls=0&enablejsapi=1`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" rel="0" allowfullscreen/>
         <div className="purdue_video_controls">
           <div className="purdue_video_controls_pause">

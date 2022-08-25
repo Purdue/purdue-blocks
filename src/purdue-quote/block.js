@@ -30,7 +30,7 @@ const {
   CheckboxControl,
 } = wp.components;
 
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const {
   Component,
   Fragment,
@@ -80,6 +80,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -336,6 +337,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
   },
 
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const quotes = props.attributes.quoteGroup.map( ( quote, index ) => {
       return  <div key={ index } className={`purdue-block-quote`}>
                 <div className="container">
@@ -362,7 +364,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
       });
 
     return (
-      <div className={`purdue-block-quote-group ${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`}>
+      <div className={`purdue-block-quote-group ${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`} {...blockProps}>
         <div className="purdue-block-quote-wrapper">
             {quotes}
         </div>

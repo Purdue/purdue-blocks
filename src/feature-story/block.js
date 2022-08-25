@@ -24,7 +24,7 @@ const {
   CheckboxControl,
   SelectControl
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -88,6 +88,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -452,7 +453,8 @@ registerBlockType( 'purdue-blocks/feature-story', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = props.attributes.style ? ( <div className={`pu-feature-story${props.attributes.backgroundColor==="black"?" pu-feature-story__black":""}`}>
+    const blockProps = useBlockProps.save();
+    const returned = props.attributes.style ? ( <div className={`pu-feature-story${props.attributes.backgroundColor==="black"?" pu-feature-story__black":""}`} {...blockProps}>
       <div className="hero is-medium">
         {props.attributes.linkImg&&props.attributes.ctaUrl?
         <a className={ `${
@@ -561,7 +563,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
         </div>
       </div>
     </div> ) : (
-      <div className="pu-feature-story pu-feature-story__narrow">
+      <div className="pu-feature-story pu-feature-story__narrow" {...blockProps}>
         <div className={ `container pu-feature-story__container${
           props.attributes.contentAlign === 'left' ? '' : ' pu-feature-story__container-reversed'
         }` }>

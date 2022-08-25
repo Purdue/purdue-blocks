@@ -6,12 +6,13 @@
  */
 	
 function render_block_purdue_slider($attributes){
+    $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     if($attributes['background'] != "" && $attributes['background'] == "white"){
-        $output.='<div class="purdue-slider has-white-background section is-medium">'; 
+        $output='<div'.$id.' class="purdue-slider has-white-background section is-medium">'; 
     }elseif($attributes['background'] != "" && $attributes['background'] == "black"){
-        $output.='<div class="purdue-slider has-black-background section is-medium">';
+        $output='<div'.$id.' class="purdue-slider has-black-background section is-medium">';
     }elseif($attributes['background'] != "" && $attributes['background'] == "gray"){
-        $output.='<div class="purdue-slider has-gray-background section is-medium">';
+        $output='<div'.$id.' class="purdue-slider has-gray-background section is-medium">';
     }
     $output.='<div class="container">';
     if($attributes['header'] != "" && $attributes['headerLevel'] != ""){
@@ -208,6 +209,10 @@ function register_block_purdue_slider() {
             "displayNumber" => array(
                 "type"=> "string",
                 "default"=> "3",
+            ),
+            "id" => array(
+                "type"=> "boostringlean",
+                "default"=> "",
             ),
         ),
         'render_callback' => 'render_block_purdue_slider',

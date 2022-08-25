@@ -18,7 +18,7 @@ const {
   TextControl,
   Button,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -77,6 +77,7 @@ registerBlockType( 'purdue-blocks/ad-banner', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -192,9 +193,12 @@ registerBlockType( 'purdue-blocks/ad-banner', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
+
     const returned = (
       <div
         className={ 'banner ad-banner' }
+        {...blockProps}
       >
         <h2><span>{ props.attributes.heading }</span></h2>
         <a href={ props.attributes.link } className={ 'banner__ad' } target={ props.attributes.external ? '_blank' : '_self' } rel="noopener noreferrer">

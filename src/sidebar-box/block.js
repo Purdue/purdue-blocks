@@ -30,7 +30,7 @@ const {
   CheckboxControl,
 } = wp.components;
 
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText, useBlockProps } = wp.blockEditor;
 const {
   Component,
   Fragment,
@@ -101,6 +101,7 @@ registerBlockType( 'purdue-blocks/sidebar-box', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -297,8 +298,9 @@ registerBlockType( 'purdue-blocks/sidebar-box', {
   },
 
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     return (
-      <div className={`purdue-block-sidebar-box${props.attributes.addMargin?" purdue-block-sidebar-box--margin":""}`}>
+      <div className={`purdue-block-sidebar-box${props.attributes.addMargin?" purdue-block-sidebar-box--margin":""}`} {...blockProps}>
         {props.attributes.title?
         <RichText.Content
           className={ 'sidebar-box__title' }

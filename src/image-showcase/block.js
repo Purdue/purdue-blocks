@@ -20,7 +20,7 @@ const {
   Button,
 } = wp.components;
 
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -67,6 +67,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -174,8 +175,9 @@ registerBlockType( 'purdue-blocks/image-showcase', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     return (
-      <section className={ 'section pu-image-showcase' } >
+      <section className={ 'section pu-image-showcase' } {...blockProps}>
         <div className={ 'columns is-centered has-decoration is-mobile' }>
           { props.attributes.images?props.attributes.images.map( img => {
             return (

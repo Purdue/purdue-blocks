@@ -21,7 +21,7 @@ const {
   TextareaControl,
   Button,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 
 /**
@@ -86,6 +86,7 @@ registerBlockType("purdue-blocks/cta-hero", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -262,8 +263,9 @@ registerBlockType("purdue-blocks/cta-hero", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-cta-hero">
+      <div className="pu-cta-hero" {...blockProps}>
         <div className="hero is-large">
           <div className="hero-body">
             <div

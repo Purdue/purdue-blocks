@@ -63,8 +63,8 @@ function render_block_purdue_news($attributes){
             ++$id;
         }	 
     }
-
-    $output='<div class="news-feed">';
+    $id=$attributes['id']!=""?" id={$attributes['id']}":"";
+    $output='<div class="news-feed"'.$id.'>';
     $output.='<div class="container">';
     if($attributes['header']){
         $output.='<'.$attributes['headerLevel'].' class="feed-header">'.$attributes['header'].'</'.$attributes['headerLevel'].'>';
@@ -196,6 +196,10 @@ function register_block_purdue_news() {
             "external" => array(
                 "type"=> "boolean",
                 "default"=> false,
+            ),
+            "id" => array(
+                "type"=> "boostringlean",
+                "default"=> "",
             ),
         ),
         'render_callback' => 'render_block_purdue_news',

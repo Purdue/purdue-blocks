@@ -24,7 +24,7 @@ const {
   SelectControl,
   Button,
 } = wp.components;
-const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -72,6 +72,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -171,8 +172,9 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="anchor-link-block">
+      <div className="anchor-link-block" {...blockProps}>
         <div class={`anchor-link-block-links
         ${props.attributes.accordion?" has-accordion":""}
         ${props.attributes.includeH2?"":" no-H2"}

@@ -115,6 +115,14 @@ registerBlockType( 'purdue-blocks/purdue-news', {
                 onChange={ ( header ) => props.setAttributes( { header } ) }
               />
           </PanelRow>
+          <PanelRow>
+            <TextControl
+              label="HTML Anchor"
+              help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
+              value={ props.attributes.id }
+              onChange={ ( id ) => props.setAttributes( { id } ) }
+            />
+          </PanelRow>
           {props.attributes.header?
           <PanelRow>
             <SelectControl

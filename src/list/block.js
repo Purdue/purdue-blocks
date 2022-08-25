@@ -14,7 +14,7 @@
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
-const { InnerBlocks } = wp.blockEditor;
+const { InnerBlocks, useBlockProps } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/list', { } ],
@@ -59,6 +59,7 @@ registerBlockType("purdue-blocks/list", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -115,8 +116,9 @@ registerBlockType("purdue-blocks/list", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div  className="pu-list">
+      <div  className="pu-list" {...blockProps}>
             {!props.attributes.header ?'':(
           <h2>
             {props.attributes.header}

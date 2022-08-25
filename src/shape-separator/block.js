@@ -20,6 +20,7 @@ const {
   MediaUploadCheck,
   MediaUpload,
   InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 
 /**
@@ -63,6 +64,7 @@ registerBlockType("purdue-blocks/shape-separator", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -133,8 +135,9 @@ registerBlockType("purdue-blocks/shape-separator", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`pu-shape-separator bg-${props.attributes.bottomColor}`}>
+      <div className={`pu-shape-separator bg-${props.attributes.bottomColor}`} {...blockProps}>
         <div className={`pu-shape-separator--top bg-${props.attributes.topColor}`}></div>
       </div>
     );

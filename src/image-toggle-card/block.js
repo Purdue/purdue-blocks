@@ -20,6 +20,7 @@ const {
   InnerBlocks,
   MediaUploadCheck,
   MediaUpload,
+  useBlockProps
 } = wp.blockEditor;
 
 import * as svgIcons from "./icon-assets/_exports";
@@ -89,6 +90,7 @@ registerBlockType("purdue-blocks/image-toggle-card", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -343,8 +345,9 @@ registerBlockType("purdue-blocks/image-toggle-card", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-image-toggle box">
+      <div className="pu-image-toggle box" {...blockProps}>
         <div
           className={`pu-image-toggle__heading${
             props.attributes.cardStyle !== ""

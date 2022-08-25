@@ -15,7 +15,7 @@ const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
 const { PanelBody, PanelRow, TextControl, TextareaControl, Button, CheckboxControl,RadioControl,Disabled } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 
 /**
@@ -73,6 +73,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -346,8 +347,9 @@ registerBlockType( 'purdue-blocks/title-hero', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-title-hero">
+      <div className="pu-title-hero" {...blockProps}>
         <div className="hero is-large">
           <div className={`hero-body${props.attributes.addSubtitle?" with-lead-in":""}`}>
             <div

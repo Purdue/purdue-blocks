@@ -23,10 +23,9 @@ const {
   RadioControl,
   SelectControl,
   Button,
-  ToolbarGroup,
   Disabled
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks,BlockControls,useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const { apiFetch } = wp;
 const { useState } = wp.element;
 
@@ -81,6 +80,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
    * @returns {Mixed} JSX Component.
    */
 	edit:( props )=>{
+
     if(props.attributes.cards.length===0){
         props.setAttributes( {cards: [{
           header: '',
@@ -723,6 +723,14 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 value={ props.attributes.header }
                 onChange={ ( header ) => props.setAttributes( { header } ) }
               />
+          </PanelRow>
+          <PanelRow>
+            <TextControl
+              label="HTML Anchor"
+              help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
+              value={ props.attributes.id }
+              onChange={ ( id ) => props.setAttributes( { id } ) }
+            />
           </PanelRow>
           {props.attributes.header?
           <PanelRow>

@@ -20,7 +20,7 @@ const {
   TextControl,
   Button,
 } = wp.components;
-const { InspectorControls, RichText } = wp.blockEditor;
+const { InspectorControls, RichText, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/alert-banner', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -182,8 +183,11 @@ registerBlockType( 'purdue-blocks/alert-banner', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={ `alert-banner alert-banner--${props.attributes.type} ${props.attributes.type}--${props.attributes.type === 'notice' ? props.attributes.noticeColor : props.attributes.alertColor}` } >
+      <div className={ `alert-banner alert-banner--${props.attributes.type} ${props.attributes.type}--${props.attributes.type === 'notice' ? props.attributes.noticeColor : props.attributes.alertColor}` } 
+      {...blockProps}
+      >
         <div className={'container'}>
           <RichText.Content
             className={"alert-banner--content"}

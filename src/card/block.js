@@ -23,7 +23,7 @@ const {
   RadioControl,
   Button,
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -74,6 +74,7 @@ registerBlockType( 'purdue-blocks/card', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -242,12 +243,15 @@ registerBlockType( 'purdue-blocks/card', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
+
     const returned = ( props.attributes.hasLink === true ?
       <a
         href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
         className={ `square-card${ props.attributes.backgroundColor === 'gold' ? ' background-gold' : '' }${ props.attributes.borderColor === 'black' ? ' border-black' : '' }` }
         rel="noopener noreferrer"
+        {...blockProps}
       >
         { props.attributes.imgUrl ?
           <figure className="image">
@@ -267,6 +271,7 @@ registerBlockType( 'purdue-blocks/card', {
       </a> :
       <div
         className={ `square-card${ props.attributes.backgroundColor === 'gold' ? ' background-gold' : '' }${ props.attributes.borderColor === 'black' ? ' border-black' : '' }` }
+        {...blockProps}
       >
         { props.attributes.imgUrl ?
           <figure className="image">

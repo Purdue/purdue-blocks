@@ -30,7 +30,7 @@ const {
   CheckboxControl,
 } = wp.components;
 
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, RichText, useBlockProps } = wp.blockEditor;
 const {
   Component,
   Fragment,
@@ -101,6 +101,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -285,8 +286,9 @@ registerBlockType( 'purdue-blocks/contact-card', {
   },
 
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     return (
-      <div className={`pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`}>
+      <div className={`pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`} {...blockProps}>
         {props.attributes.title?
         <RichText.Content
           className={ 'contact-card__title' }

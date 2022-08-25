@@ -23,6 +23,7 @@ const {
   MediaUploadCheck,
   MediaUpload,
   InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [["core/paragraph", { placeholder: "Add content" }]];
@@ -83,6 +84,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -206,8 +208,9 @@ registerBlockType("purdue-blocks/info-box-hero", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="info-box-hero">
+      <div className="info-box-hero" {...blockProps}>
         <div
           className={`image`}
           role="img"

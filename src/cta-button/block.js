@@ -21,7 +21,7 @@ const {
   TextareaControl,
   Button,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, RichText } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, RichText, useBlockProps } = wp.blockEditor;
 
 /**
  * Register: aa Gutenberg Block.
@@ -68,6 +68,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -225,10 +226,11 @@ registerBlockType( 'purdue-blocks/cta-button', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
       <div
         className={ 'card cta-card' }
-        rel="noopener noreferrer"
+        {...blockProps}
       >
         <div className={ 'card-image' }>
           <figure className="image is-3by2">
@@ -237,7 +239,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
         </div>
         <div className={ 'card-content' }>
           <p>{ props.attributes.subText }</p>
-          <a href={ props.attributes.link } className={ 'cta-card__button' } target={ props.attributes.external ? '_blank' : '_self' }>
+          <a href={ props.attributes.link } className={ 'cta-card__button' } target={ props.attributes.external ? '_blank' : '_self' } rel="noopener">
             { props.attributes.ctaText }
           </a>
         </div>

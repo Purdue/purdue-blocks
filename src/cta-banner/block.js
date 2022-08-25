@@ -22,7 +22,7 @@ const {
   RadioControl,
   CheckboxControl,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload,useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 
 /**
@@ -71,6 +71,7 @@ registerBlockType( 'purdue-blocks/cta-banner', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -251,8 +252,9 @@ registerBlockType( 'purdue-blocks/cta-banner', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={ `pu-cta-banner${ props.attributes.type === 'gold' ? ' pu-cta-banner-gold' : '' }${ props.attributes.type === 'black' ? ' pu-cta-banner-black' : '' }
+      <div {...blockProps} className={ `pu-cta-banner${ props.attributes.type === 'gold' ? ' pu-cta-banner-gold' : '' }${ props.attributes.type === 'black' ? ' pu-cta-banner-black' : '' }
       ${ props.attributes.type === 'gray' ? ' pu-cta-banner-gray' : '' }${ props.attributes.type === 'image' ? ' pu-cta-banner-image' : '' }` }
         style={ props.attributes.type === 'image' && props.attributes.imgUrl ? { backgroundImage: `url(${ props.attributes.imgUrl })` } : {} }
         aria-label={ props.attributes.type === 'image' && props.attributes.altText ? props.attributes.altText : '' }>

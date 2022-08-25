@@ -35,6 +35,7 @@ const {
   RichText,
   MediaUploadCheck,
   MediaUpload,
+  useBlockProps
 } = wp.blockEditor;
 
 const applyWithSelect = withSelect( ( select ) => {
@@ -118,6 +119,7 @@ registerBlockType( 'purdue-blocks/podcast', {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -441,13 +443,14 @@ registerBlockType( 'purdue-blocks/podcast', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const blockProps = useBlockProps.save();
     const videoFields = props.attributes.listenOnUrls.map( ( card, index ) => {
       return  <a key={ index } className='item' href={ card.chennelUrl } target="_blank" rel="noopener noreferrer">
                   { card.chennelname }
               </a>;
     } );
     return (
-    <div className='purdue_podcast'>
+    <div className='purdue_podcast' {...blockProps}>
       <div className="columns">
         <div className="column">
           <div className="purdue_podcast_podcast_name">

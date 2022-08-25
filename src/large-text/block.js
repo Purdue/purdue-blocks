@@ -23,7 +23,7 @@ const {
   TextControl,
   Button,
 } = wp.components;
-const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RichText, InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
 const { select } = wp.data;
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -93,6 +93,7 @@ registerBlockType("purdue-blocks/large-text", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -268,8 +269,9 @@ registerBlockType("purdue-blocks/large-text", {
    */
   save: (props) => {
     var CustomTag = props.attributes.headerLevel;
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-cta-hero pu-large-image pu-large-text">
+      <div className="pu-cta-hero pu-large-image pu-large-text" {...blockProps}>
         <div className="hero is-large">
           <div className="hero-body">
             <div

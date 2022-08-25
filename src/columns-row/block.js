@@ -22,7 +22,7 @@ const {
   Button,
   CheckboxControl
 } = wp.components;
-const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload, RichText } = wp.blockEditor;
+const { InnerBlocks, InspectorControls, MediaUploadCheck, MediaUpload, RichText, useBlockProps } = wp.blockEditor;
 import { createBlock } from "@wordpress/blocks";
 const { select } = wp.data
 
@@ -85,6 +85,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
   },
   supports: {
     className: false,
+    anchor: true,
   },
   // Block description in side panel
   description: __(
@@ -465,6 +466,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
    */
   save: ( props ) => {
     const url=`url(${props.attributes.backgroundImageUrl})`
+    const blockProps = useBlockProps.save();
     const returned = (
       <div className={`pu-columns-row section
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
@@ -478,6 +480,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       `}
             style={{backgroundImage: `${props.attributes.addBackground?url:"none"}`}}
             aria-label={ props.attributes.backgroundImageAlt }
+            {...blockProps}
             >
             {props.attributes.rowType==="regular"?  
                 <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>

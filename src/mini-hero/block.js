@@ -23,6 +23,7 @@ const {
   MediaUploadCheck,
   MediaUpload,
   InnerBlocks,
+  useBlockProps
 } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [["core/paragraph", { placeholder: "Add content" }]];
@@ -75,6 +76,7 @@ registerBlockType("purdue-blocks/mini-hero", {
 
   supports: {
     className: false,
+    anchor: true,
   },
 
   // Block description in side panel
@@ -232,8 +234,9 @@ registerBlockType("purdue-blocks/mini-hero", {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: (props) => {
+    const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`}>
+      <div className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`} {...blockProps}>
         <div
           className={`image`}
           role="img"
