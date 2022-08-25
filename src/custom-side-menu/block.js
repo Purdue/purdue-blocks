@@ -12,7 +12,8 @@ const {
   PanelBody,
   PanelRow,
   SelectControl,
-  CheckboxControl
+  CheckboxControl,
+  TextControl
 } = wp.components;
 const { InspectorControls } = wp.blockEditor;
 const { withSelect } = wp.data;
