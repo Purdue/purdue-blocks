@@ -10,7 +10,7 @@ function render_block_custom_side_menu($attributes){
         $id=$attributes['id']!=""?" id={$attributes['id']}":"";
         $menus_items = wp_get_nav_menu_items($attributes['selectedMenu']);
         if($menus_items&&!empty($menus_items)){
-            $menu_list='<div{$id} class="custom-side-menu">';
+            $menu_list='<div'.$id.' class="custom-side-menu">';
             $menu_list.='<ul class="custom-side-menu-top">';
             $count = 0;
             $submenu = false;
