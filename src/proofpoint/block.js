@@ -17,12 +17,13 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
 const {
   PanelBody,
   PanelRow,
+  TextControl,
   TextareaControl,
   Button,
   CheckboxControl,
   RadioControl
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks, useBlockProps, RichText } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -65,6 +66,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     color: { type: "string", default: "black"  },
     border:{ type: "boolean", default: false },
     buttonColor: { type: "string", default: "black"  },
+    lead: { type: "string", default: "" },
     highlighted: { type: "string", default: "" },
     headerfontStyle: { type: "string", default: "narrow" },
     contentfontStyle: { type: "string", default: "narrow" },
@@ -193,6 +195,20 @@ registerBlockType("purdue-blocks/proofpoint", {
           <PanelBody>
           <h2>Button Link setting</h2>
             <PanelRow>
+              <TextControl
+                label="Call to action text"
+                value={ props.attributes.ctaText }
+                onChange={ ( ctaText ) => props.setAttributes( { ctaText } ) }
+              />
+            </PanelRow>
+            <PanelRow>
+              <TextControl
+                label="Link address"
+                value={ props.attributes.ctaUrl }
+                onChange={ ( ctaUrl ) => props.setAttributes( { ctaUrl } ) }
+              />
+            </PanelRow>
+            <PanelRow>
               <CheckboxControl
                 label="Open link in new tab?"
                 checked={ props.attributes.external }
@@ -204,95 +220,71 @@ registerBlockType("purdue-blocks/proofpoint", {
         </PanelBody>
       </InspectorControls>,
 
-      <div className={"purdue-blocks-editor-proofpoint"}>
-        <div className="content">
-          <span>Add Highlighted Text</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.highlighted !== ""
-                    ? props.attributes.highlighted
-                    : ""
-                }
-                className="input"
-                type="text"
-                placeholder="Highlighted Text..."
-                onChange={(e) => {
-                  props.setAttributes({ highlighted: e.target.value });
-                }}
-              ></input>
-            </div>
-          </div>
-          <span>Add Content Body</span>
-          <div className="field">
-            <div className="control">
-              <textarea
-                value={
-                  props.attributes.content !== ""
-                  ? props.attributes.content
-                  : ""
-                }
-                className="textarea"
-                placeholder="Content Text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { content: e.target.value } );
-                } }
-              ></textarea>
-            </div>
-          </div>
-          <span>Add Source of the Proofpoint</span>
-          <div className="field">
-            <div className="control">
-              <textarea
-                value={
-                  props.attributes.source !== ""
-                  ? props.attributes.source
-                  : ""
-                }
-                className="textarea"
-                placeholder="Source of Text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { source: e.target.value } );
-                } }
-              ></textarea>
-            </div>
-          </div>
-          <span>Add CTA Button Text and URL</span>
-          <div className="field">
-            <label class="label">CTA Text</label>
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaText !== ""
-                    ? props.attributes.ctaText
-                    : ""
-                }
-                className="input"
-                type="text"
-                placeholder="CTA Text..."
-                onChange={(e) => {
-                  props.setAttributes({ ctaText: e.target.value });
-                }}
-              ></input>
-            </div>
-          </div>
-          <div className="field">
-            <label class="label">CTA URL</label>
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaUrl !== "" ? props.attributes.ctaUrl : ""
-                }
-                className="input"
-                type="text"
-                placeholder="CTA URL..."
-                onChange={(e) => {
-                  props.setAttributes({ ctaUrl: e.target.value });
-                }}
-              ></input>
-            </div>
-          </div>
+      <div className={ `pu-proofpoint pu-proofpoint--editor${
+        props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
+      }${
+        props.attributes.border ? ' pu-proofpoint__border' : ''
+      }
+      ${
+        props.attributes.height==="full"?" pu-proofpoint__height":""
+      }`} >
+         <div className="container">
+         <RichText
+            tagname={"p"}
+            value={props.attributes.lead}
+            className={`pu-proofpoint__lead`} 
+            onChange={(lead) => {
+              props.setAttributes( { lead } );
+            }}
+            placeholder="Add Lead text"
+          ></RichText>
+          <RichText
+            tagname={"p"}
+            value={props.attributes.highlighted}
+            className={`pu-proofpoint__highlighted
+                        ${props.attributes.headerfontStyle==="wide" ?"  pu-proofpoint__highlighted-wide":"  pu-proofpoint__highlighted-narrow"}
+                        `} 
+            onChange={(highlighted) => {
+              props.setAttributes( { highlighted } );
+            }}
+            placeholder="Add Highlighted text"
+          ></RichText>
+          <RichText
+            tagname={"p"}
+            value={props.attributes.content}
+            className={`pu-proofpoint__content
+                        ${props.attributes.contentfontStyle==="wide" ?"  pu-proofpoint__content-wide":"  pu-proofpoint__content-narrow"}
+                        `} 
+            onChange={(content) => {
+              props.setAttributes( { content } );
+            }}
+            placeholder="Add content text"
+          ></RichText>
+           <RichText
+            tagname={"p"}
+            value={props.attributes.source}
+            className={`pu-proofpoint__source`} 
+            onChange={(source) => {
+              props.setAttributes( { source } );
+            }}
+            placeholder="Add Source of the Proofpoint"
+          ></RichText>
+          {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(props.attributes.color === 'white'&&props.attributes.buttonColor==="white")?
+              (<a
+              href={props.attributes.ctaUrl}
+              className="pu-proofpoint__button pu-proofpoint__button-white"
+              target={ props.attributes.external ? '_blank' : '_self' }
+              rel="noopener noreferrer"
+            >
+              {props.attributes.ctaText}
+            </a>):(<a
+              href={props.attributes.ctaUrl}
+              className="pu-proofpoint__button"
+              target={ props.attributes.external ? '_blank' : '_self' }
+              rel="noopener noreferrer"
+            >
+              {props.attributes.ctaText}
+            </a>)}
         </div>
       </div>,
     ];
@@ -321,23 +313,34 @@ registerBlockType("purdue-blocks/proofpoint", {
         props.attributes.height==="full"?" pu-proofpoint__height":""
       }`} {...blockProps}>       
           <div className="container">
-           {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
-            <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">
-              {props.attributes.highlighted}
-            </p>):(
-            <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow">
-              {props.attributes.highlighted}
-            </p>)}
-            {!props.attributes.content ?'':props.attributes.contentfontStyle==="wide" ?(
-            <p className="pu-proofpoint__content pu-proofpoint__content-wide">
-              {props.attributes.content}
-            </p>):(<p className="pu-proofpoint__content pu-proofpoint__content-narrow">
-              {props.attributes.content}
-            </p>)}
-            {!props.attributes.source ?'':(
-            <p className="pu-proofpoint__source">
-              {props.attributes.source}
-            </p>)}
+          {!props.attributes.lead ?'':
+            <RichText.Content
+            className={`pu-proofpoint__lead`} 
+            tagName={ "p" }
+            value={props.attributes.lead}
+            />}
+            {!props.attributes.highlighted ?'':
+            <RichText.Content
+            tagName={"p"}
+            value={props.attributes.highlighted}
+            className={`pu-proofpoint__highlighted
+                        ${props.attributes.headerfontStyle==="wide" ?"  pu-proofpoint__highlighted-wide":"  pu-proofpoint__highlighted-narrow"}
+                        `} 
+          />}
+          {!props.attributes.content ?'':
+            <RichText.Content
+            className={`pu-proofpoint__content
+            ${props.attributes.contentfontStyle==="wide" ?"  pu-proofpoint__content-wide":"  pu-proofpoint__content-narrow"}
+            `} 
+            tagName={ "p" }
+            value={props.attributes.content}
+          />}
+           {!props.attributes.source ?'':
+            <RichText.Content
+            className={`pu-proofpoint__source`} 
+            tagName={ "p" }
+            value={props.attributes.source}
+          />}
             {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(props.attributes.color === 'white'&&props.attributes.buttonColor==="white")?
                   (<a
                   href={props.attributes.ctaUrl}
@@ -359,4 +362,71 @@ registerBlockType("purdue-blocks/proofpoint", {
     );
     return returned;
   },
+  deprecated: [
+    {
+      attributes: {
+        color: { type: "string", default: "black"  },
+        border:{ type: "boolean", default: false },
+        buttonColor: { type: "string", default: "black"  },
+        highlighted: { type: "string", default: "" },
+        headerfontStyle: { type: "string", default: "narrow" },
+        contentfontStyle: { type: "string", default: "narrow" },
+        content: { type: "string", default: "" },
+        source: { type: "string", default: "" },
+        ctaUrl: { type: "string", default: "" },
+        ctaText: { type: "string", default: "" },
+        external: { type: 'boolean', default: false },
+        height: { type: "string", default: "auto" },
+      },
+      save: (props) => {
+        const blockProps = useBlockProps.save();
+        const returned = (
+          <div  className={ `pu-proofpoint${
+            props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
+          }${
+            props.attributes.border ? ' pu-proofpoint__border' : ''
+          }
+          ${
+            props.attributes.height==="full"?" pu-proofpoint__height":""
+          }`} {...blockProps}>       
+              <div className="container">
+               {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
+                <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">
+                  {props.attributes.highlighted}
+                </p>):(
+                <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow">
+                  {props.attributes.highlighted}
+                </p>)}
+                {!props.attributes.content ?'':props.attributes.contentfontStyle==="wide" ?(
+                <p className="pu-proofpoint__content pu-proofpoint__content-wide">
+                  {props.attributes.content}
+                </p>):(<p className="pu-proofpoint__content pu-proofpoint__content-narrow">
+                  {props.attributes.content}
+                </p>)}
+                {!props.attributes.source ?'':(
+                <p className="pu-proofpoint__source">
+                  {props.attributes.source}
+                </p>)}
+                {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(props.attributes.color === 'white'&&props.attributes.buttonColor==="white")?
+                      (<a
+                      href={props.attributes.ctaUrl}
+                      className="pu-proofpoint__button pu-proofpoint__button-white"
+                      target={ props.attributes.external ? '_blank' : '_self' }
+                      rel="noopener noreferrer"
+                    >
+                      {props.attributes.ctaText}
+                    </a>):(<a
+                      href={props.attributes.ctaUrl}
+                      className="pu-proofpoint__button"
+                      target={ props.attributes.external ? '_blank' : '_self' }
+                      rel="noopener noreferrer"
+                    >
+                      {props.attributes.ctaText}
+                    </a>)}
+              </div>
+          </div>
+        );
+        return returned;
+      },
+    }],
 });

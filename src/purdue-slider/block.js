@@ -115,7 +115,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
         external: false,
       }]} )
   }
-  console.log(props.attributes.rtb.length)
     const handleAddslide = () => {
       if(props.attributes.type === "slider"){
         let cards = [ ...props.attributes.cards ];
@@ -609,7 +608,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 }
                   <PanelRow>
                       <TextareaControl
-                        label="Large Text"
+                        label="Highlighted Text"
                         value={ card.largeText }
                         onChange={ ( largeText ) => handleChangeLargeText( largeText, index ) }
                       />

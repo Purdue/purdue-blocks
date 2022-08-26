@@ -111,18 +111,18 @@ function render_block_purdue_slider($attributes){
             foreach ( $attributes['rtb'] as $rtb ) {  
                 $output.='<div class="glide__slide"><div class="pu-proofpoint"><div class="container">';
                 if($attributes['hasLead']&&$rtb[leadText] != ""){
-                    $output.='<p class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</p>';
+                    $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</span>';
                 }else if($attributes['hasLead']&&$rtb[leadText] == ""){
                     $output.='<div aria-hidden="true" class="lead-text pu-proofpoint__lead placeholder">PlaceHolder</div>';
                 }
                 if($rtb[largeText] != ""){
-                    $output.='<p class="large-text pu-proofpoint__highlighted">'.$rtb[largeText].'</p>';
+                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb[largeText].'</span>';
                 }
                 if($rtb[smallText] != ""){
-                    $output.='<p class="small-text pu-proofpoint__content">'.$rtb[smallText].'</p>';
+                    $output.='<span class="small-text pu-proofpoint__content">'.$rtb[smallText].'</span>';
                 }
                 if($rtb[source] != ""){
-                    $output.='<p class="source pu-proofpoint__source">'.$rtb[source].'</p>';
+                    $output.='<span class="source pu-proofpoint__source">'.$rtb[source].'</span>';
                 }
                 if($rtb[ctaLink] != ""){
                     $target=$tab[external]?'targe="_blank"':'targe="_self"';
@@ -143,7 +143,7 @@ function render_block_purdue_slider($attributes){
         }
         if($attributes['hasLink'] != "" && $attributes['linkUrl'] != ""){
             $buttonTarget=$attributes[external]?'targe="_blank"':'targe="_self"';
-            $output.='<a class="purdue-slider__button purdue-blocks__button" href="'.$attributes['linkUrl'].'" '.$buttonTarget.'>'.$attributes['linkText'].'</a>'; 
+            $output.='<a class="purdue-slider__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$attributes['linkUrl'].'" '.$buttonTarget.'>'.$attributes['linkText'].'</a>'; 
         }
         $output.='</div></div>';
     return $output;

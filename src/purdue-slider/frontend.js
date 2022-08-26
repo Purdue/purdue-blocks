@@ -103,8 +103,9 @@ if(rtb && rtb.length>0){
 for (let i = 0; i < rtb.length; i++) {
   const count = parseInt(rtb[i].dataset.number);
   let newCount = count===4?3:count;
-  console.log(newCount)
   let glide = new Glide(rtb[i], {
+    type: 'carousel',
+    startAt: 0,
     perView: count,
     breakpoints: {
       1024:{

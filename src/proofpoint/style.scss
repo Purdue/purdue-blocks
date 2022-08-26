@@ -85,6 +85,19 @@
        font-weight:300;
      }
    }
+   &__lead{
+    font-size:min(40px, 2.5vw);
+    line-height:1;
+    margin-bottom:0.5rem !important;
+    font-family:$united-sans;
+    text-align:center;
+    @include mobile{
+      font-size:2.5rem;
+    }
+    &.placeholder{
+      opacity:0;
+    }
+  }
    &__content{
      font-weight:700;
      font-size:1.25rem;

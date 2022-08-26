@@ -180,9 +180,12 @@
     .purdue-slider--rtb{
       &.has-divider{
         @include tablet{
-        .glide__slide:not(last-child){
-          border-right:solid 1px $white;
-        }
+          .glide__slide + .glide__slide{
+            border-left:solid 1px $black;
+          }
+          .glide__slide.is-active{
+            border-left:none;
+          }
       }
       }
     }
@@ -214,10 +217,16 @@
     color:$black;
   }
   &--rtb{
+    .glide__track{
+      overflow:hidden;
+    }
     &.has-divider{
       @include tablet{
         .glide__slide + .glide__slide{
           border-left:solid 1px $black;
+        }
+        .glide__slide.is-active{
+          border-left:none;
         }
         .glide__slides{
           padding-top:2rem;
@@ -238,19 +247,6 @@
         width:auto;
         margin: 0 1rem 0.2rem;
         height:100%;
-      }
-      &__lead{
-        font-size:min(40px, 2.5vw);
-        line-height:1;
-        margin-bottom:0.5rem !important;
-        font-family:$united-sans;
-        text-align:center;
-        @include mobile{
-          font-size:2.5rem;
-        }
-        &.placeholder{
-          opacity:0;
-        }
       }
       &__highlighted{
         font-size:min(80px, 5vw);
