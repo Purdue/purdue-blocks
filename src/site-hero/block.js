@@ -94,7 +94,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
 
   supports: {
     className: false,
-    anchor: true,
   },
 
   // Block description in side panel
@@ -319,10 +318,9 @@ registerBlockType( 'purdue-blocks/site-hero', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const blockProps = useBlockProps.save();
     const returned = ! props.attributes.styleToggle ? (
       // 50/50 Hero
-      <div className="bulma-blocks-50-50-hero" {...blockProps}>
+      <div className="bulma-blocks-50-50-hero">
         <div className="hero is-medium">
           <div className="hero-body">
             <div className="container">
@@ -380,7 +378,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
         </div>
       </div>
     ) : (
-      <div className="bulma-blocks-40-60-hero" {...blockProps}>
+      <div className="bulma-blocks-40-60-hero">
         <div className="hero is-medium">
           <div className="hero-body">
             <div className="container">
