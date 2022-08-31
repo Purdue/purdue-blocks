@@ -597,15 +597,14 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   className="quote-block-details"
                   title={`Slides ${index+1} Details`}
                   initialOpen={true}
-                >{props.attributes.hasLead?
+                >
                   <PanelRow>
                       <TextareaControl
                         label="Lead Text"
                         value={ card.leadText }
                         onChange={ ( leadText ) => handleChangeLeadText( leadText, index ) }
                       />
-                  </PanelRow> :""
-                }
+                  </PanelRow> 
                   <PanelRow>
                       <TextareaControl
                         label="Highlighted Text"
@@ -793,15 +792,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               checked={ props.attributes.divider }
               onChange={ () =>
                 props.setAttributes( { divider: ! props.attributes.divider } )}
-            />
-          </PanelRow>:""}
-          {props.attributes.type === "rtb"?
-          <PanelRow>
-            <CheckboxControl
-              label="Include lead text at the top?"
-              checked={ props.attributes.hasLead }
-              onChange={ () =>
-                props.setAttributes( { hasLead: ! props.attributes.hasLead } )}
             />
           </PanelRow>:""}
           { props.attributes.hasLink ?

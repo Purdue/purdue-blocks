@@ -107,6 +107,7 @@ for (let i = 0; i < rtb.length; i++) {
     type: 'carousel',
     startAt: 0,
     perView: count,
+    gap:0,
     breakpoints: {
       1024:{
         perView: newCount,

@@ -13,7 +13,7 @@
      width:100%;
    }
    .container{
-     padding:2rem 1rem;
+     padding:3.4rem 1rem 1.25rem;
      display:flex;
      flex-direction:column;
      flex: 0 1 auto;
@@ -22,6 +22,9 @@
      width:100%;
      margin-left:0;
      margin-right:0;
+     @include mobile{
+      padding:1.25rem 1rem;
+     }
    }
    &__height{
      height:100%;
@@ -30,7 +33,7 @@
      background-color:$white;
      color:$black;
      p.pu-proofpoint__source{
-       color:$steel-gray
+       color:$black;
      }
      p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
       color:$black;
@@ -39,12 +42,6 @@
    &__black{
      background-color:$black;
      color:$white;
-     p.pu-proofpoint__source{
-       color:$steam-gray;
-     }
-     p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
-       color:$boiler-gold;
-     }
      .pu-proofpoint__button {
        font-family: $united-sans;
        font-weight: 700;
@@ -72,57 +69,56 @@
      box-shadow: $box-shadow;
    }
    &__highlighted{
-     font-size: 4.6875rem;
-     line-height:1;
+     font-size: 5rem;
+     line-height:0.9;
      margin-bottom:0.5rem !important;
      text-align:center;
      text-transform: uppercase;
+     font-family: $united-sans;
+     font-weight:400;
      &-narrow{
        font-family: $united-sans-condensed;
      }
-     &-wide{
-       font-family: $united-sans-extended;
-       font-weight:300;
-     }
    }
    &__lead{
-    font-size:min(40px, 2.5vw);
-    line-height:1;
-    margin-bottom:0.5rem !important;
-    font-family:$united-sans;
+    font-size:1.5rem;
+    line-height:1.3;
+    font-weight:700;
+    margin-bottom:0.675rem !important;
+    font-family:$acumin-pro;
     text-align:center;
+    position:absolute;
+    top:14px;
+    left:0;
+    width:100%;
     @include mobile{
-      font-size:2.5rem;
-    }
-    &.placeholder{
-      opacity:0;
+      position:relative;
+      top:0;
+      left:0;
     }
   }
    &__content{
      font-weight:700;
      font-size:1.25rem;
      text-align:center;
-     line-height:1.4;
+     line-height:1.5;
      margin-bottom:1rem !important;
      white-space:pre-wrap;
+     font-family: $acumin-pro;
      &-narrow{
        font-family: $united-sans-condensed;
        letter-spacing: 0.1em;
-       text-transform:uppercase !important;
-     }
-     &-wide{
-       font-family: $united-sans;
      }
    }
    &__source{
-     font-family: acumin-pro;
+     font-family: $acumin-pro;
      font-weight:400;
-     font-size:1.25rem;
-     text-transform:capitalize;
+     font-size:0.875rem;
      text-align:center;
      line-height:1.4;
      font-style:italic;
      white-space:pre-wrap;
+     margin-bottom:0 !important;
    }
    &__button {
      font-family: $united-sans;
@@ -139,12 +135,13 @@
      transition: all ease 0.2s;
      letter-spacing:0.9px;
      width:80%;
+     margin-top:1rem;
      &:hover {
        cursor: pointer;
        background: $white;
      }
      &-white{
-       border: 2px solid $aged-gold;
+       border: 2px solid $black;
        color: $black;
        background: $white;
        &:hover {
