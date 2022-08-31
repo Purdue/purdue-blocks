@@ -248,6 +248,7 @@
         flex-direction: column;
         justify-content: center;
         padding-left:2.5rem;
+        white-space:pre-wrap;
         @include mobile{
           padding:0;
         }

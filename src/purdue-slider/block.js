@@ -30,7 +30,7 @@ const { apiFetch } = wp;
 const { useState } = wp.element;
 
 import { arrowUp,arrowDown } from '@wordpress/icons';
-import ServerSideRender from '@wordpress/server-side-render';
+import './frontend';
 
 
 /**
@@ -683,7 +683,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
       } );
 
     }
-
+    let CustomTag = props.attributes.headerLevel;
     return [
       <InspectorControls key="1">
         <PanelBody>
@@ -837,10 +837,121 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
       </InspectorControls>,
       <div key="2" className={`purdue-block-slider-editor`}>
           <Disabled>
-            <ServerSideRender
-              block="purdue-blocks/purdue-slider"
-              attributes={ props.attributes }
-            />
+            <div class={`purdue-slider
+            has-${props.attributes.background}-background section is-medium`}>
+              <div class="container">
+                <CustomTag class={`purdue-slider__header align-${props.attributes.headerLocation}`}> {props.attributes.header}</CustomTag>
+              {
+                props.attributes.type === "slider" && props.attributes.cards.length >0 ? 
+                  <div class="glide purdue-slider--default">           
+                    <div class="glide__track" data-glide-el="track">
+                      <div class="glide__slides">
+                        {props.attributes.cards.map((card)=>{
+                          return <div class="glide__slide card">
+                            {card.imageURL?
+                              <div class="image is-2by1 background-image" role="img" style={{backgroundImage:`url(${card.imageURL})`}} aria-label={`card.imageAlt`}></div>:""
+                            }                            
+                            <div class="content">
+                            {card.storyType?
+                              <p class="story-type">{card.storyType}</p>:""}
+                              <p class="story-title">{card.header}</p>
+                              {card.ctaLink?
+                                <div class="read-more purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline"><span>{card.ctaText}</span></div>
+                                :""}
+                            {card.tag?
+                            <p class="story-tag">{card.tag}</p>:""}
+                              </div>
+                            </div>
+                        })}
+                      </div></div>
+                      <div class="glide__bullets" data-glide-el="controls[nav]">
+                      {props.attributes.cards.map((card, index)=>{
+                        return <button class="glide__bullet" data-glide-dir={index}></button>
+                        })
+                      }
+                      </div>
+                      <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
+                      </div>
+                </div>:""                
+              }
+              {
+                props.attributes.type === "tabs" && props.attributes.tabs.length >0 ? 
+                  <div class="glide purdue-slider--tabs">           
+                    <div class="glide__track" data-glide-el="track">
+                      <div class="glide__slides">
+                        {props.attributes.tabs.map((card)=>{
+                          return <div class="glide__slide columns">
+                            {card.imageURL?
+                              <div class="column image-column">
+                                <div class="image background-image" role="img" style={{backgroundImage:`url(${card.imageURL})`}}></div>
+                                </div>:""}
+                            <div class="content column">
+                              <p class="story-title">{card.header}</p>
+                              {card.subtext?
+                            <p class="story-subtext">{card.subtext}</p>:""}
+                              {card.ctaLink?
+                                <div class="purdue-blocks__button purdue-blocks__button--gold-light"><span>{card.ctaText}</span></div>
+                                :""}
+                            </div>
+                            </div>
+                        })}
+                      </div></div>
+                      <div class="glide__bullets" data-glide-el="controls[nav]">
+                      {props.attributes.tabs.map((card, index)=>{
+                        return <button class="glide__bullet" data-glide-dir={index}></button>
+                        })
+                      }
+                      </div>
+                      <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
+                      </div>
+                      </div>:""                
+              }
+              {
+                props.attributes.type === "rtb" && props.attributes.rtb.length >0 ? 
+                  <div class={`glide purdue-slider--rtb${props.attributes.divider?' has-divider':''}`} data-number={props.attributes.displayNumber}>           
+                    <div class="glide__track" data-glide-el="track">
+                      <div class="glide__slides">
+                        {props.attributes.rtb.map((card)=>{
+                          return <div class="glide__slide">
+                            <div class="pu-proofpoint">
+                              <div class="container">
+                            {card.leadText?
+                              <span class="lead-text pu-proofpoint__lead">{card.leadText}</span>:""}
+                             {card.largeText?
+                              <span class="large-text pu-proofpoint__highlighted">{card.largeText}</span>:""}
+                             {card.smallText?
+                              <span class="small-text pu-proofpoint__content">{card.smallText}</span>:""}
+                               {card.source?
+                              <span class="source pu-proofpoint__source">{card.source}</span>:""}
+                              {card.ctaLink?
+                                <div class="pu-proofpoint__button purdue-blocks__button purdue-blocks__button--gold-light"><span>{card.ctaText}</span></div>
+                                :""}
+                            </div>
+                            </div>
+                            </div>
+                        })}
+                      </div></div>
+                      <div class="glide__bullets" data-glide-el="controls[nav]">
+                      {props.attributes.rtb.map((card, index)=>{
+                        return <button class="glide__bullet" data-glide-dir={index}></button>
+                        })
+                      }
+                      </div>
+                      <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
+                      </div>
+                      </div>:""                
+              }
+              {props.attributes.hasLink&&props.attributes.linkUrl?
+                <div class={`purdue-slider__button purdue-blocks__button ${props.attributes.background==="black"?'purdue-blocks__button--gold-dark':'purdue-blocks__button--gold-light'}`}><span>{props.attributes.linkText}</span></div>
+              :""}
+              </div>
+            </div>
           </Disabled>
       </div>,
     ];

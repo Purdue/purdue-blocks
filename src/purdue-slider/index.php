@@ -101,7 +101,7 @@ function render_block_purdue_slider($attributes){
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="rtb" && sizeof($attributes['rtb'])>0){
-            if($attributes[divider]){
+            if($attributes['divider']){
                 $output.='<div class="glide purdue-slider--rtb has-divider" data-number="'.$attributes['displayNumber'].'">';    
             }else{
                 $output.='<div class="glide purdue-slider--rtb" data-number="'.$attributes['displayNumber'].'">';  
