@@ -598,13 +598,14 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   title={`Slides ${index+1} Details`}
                   initialOpen={true}
                 >
+                  {props.attributes.haslead?
                   <PanelRow>
                       <TextareaControl
                         label="Lead Text"
                         value={ card.leadText }
                         onChange={ ( leadText ) => handleChangeLeadText( leadText, index ) }
                       />
-                  </PanelRow> 
+                  </PanelRow>:""}
                   <PanelRow>
                       <TextareaControl
                         label="Highlighted Text"
@@ -763,6 +764,15 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
           </PanelRow>
           {props.attributes.type === "rtb"?
           <PanelRow>
+            <CheckboxControl
+              label="Add Lead Text above Highlighted Text?"
+              checked={ props.attributes.hasLead }
+              onChange={ () =>
+                props.setAttributes( { hasLead: ! props.attributes.hasLead } )}
+            />
+          </PanelRow>:""}
+          {props.attributes.type === "rtb"?
+          <PanelRow>
             <SelectControl
               label="Choose the number of cards to display on desktop."
               value={ props.attributes.displayNumber }
@@ -917,9 +927,9 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                       <div class="glide__slides">
                         {props.attributes.rtb.map((card)=>{
                           return <div class="glide__slide">
-                            <div class="pu-proofpoint">
+                            <div class={`pu-proofpoint ${props.attributes.hasLead?" pu-proofpoint__has-lead":""}`}>
                               <div class="container">
-                            {card.leadText?
+                            {card.leadText && props.attributes.hasLead?
                               <span class="lead-text pu-proofpoint__lead">{card.leadText}</span>:""}
                              {card.largeText?
                               <span class="large-text pu-proofpoint__highlighted">{card.largeText}</span>:""}

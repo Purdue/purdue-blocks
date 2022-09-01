@@ -109,8 +109,9 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             foreach ( $attributes['rtb'] as $rtb ) {  
-                $output.='<div class="glide__slide"><div class="pu-proofpoint"><div class="container">';
-                if($rtb[leadText] != ""){
+                $hasLead=$attributes['hasLead']?" pu-proofpoint__has-lead":"";
+                $output.='<div class="glide__slide"><div class="pu-proofpoint'.$hasLead.'"><div class="container">';
+                if($rtb[leadText] != "" && $attributes['hasLead']){
                     $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</span>';
                 }
                 if($rtb[largeText] != ""){
@@ -197,6 +198,10 @@ function register_block_purdue_slider() {
                 "default"=> [],
             ),
             "divider" => array(
+                "type"=> "boolean",
+                "default"=> false,
+            ),
+            "hasLead" => array(
                 "type"=> "boolean",
                 "default"=> false,
             ),

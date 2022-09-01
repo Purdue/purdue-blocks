@@ -66,6 +66,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     color: { type: "string", default: "black"  },
     border:{ type: "boolean", default: false },
     buttonColor: { type: "string", default: "black"  },
+    hasLead: { type: 'boolean', default: false },
     lead: { type: "string", default: "" },
     highlighted: { type: "string", default: "" },
     headerfontStyle: { type: "string", default: "narrow" },
@@ -129,6 +130,15 @@ registerBlockType("purdue-blocks/proofpoint", {
                 onChange={ ( option ) => {
                   props.setAttributes( { height: option } )
                 } }
+              />
+            </PanelRow>
+            <PanelRow>
+              <CheckboxControl
+                label="Add Lead Text above Highlighted Text?"
+                checked={ props.attributes.hasLead }
+                onChange={ () =>
+                  props.setAttributes( { hasLead: ! props.attributes.hasLead } )
+                }
               />
             </PanelRow>
           </PanelBody>
@@ -227,8 +237,12 @@ registerBlockType("purdue-blocks/proofpoint", {
       }
       ${
         props.attributes.height==="full"?" pu-proofpoint__height":""
+      }
+      ${
+        props.attributes.hasLead?" pu-proofpoint__has-lead":""
       }`} >
          <div className="container">
+         { props.attributes.hasLead?
          <RichText
             tagname={"p"}
             value={props.attributes.lead}
@@ -237,7 +251,7 @@ registerBlockType("purdue-blocks/proofpoint", {
               props.setAttributes( { lead } );
             }}
             placeholder="Add Lead text"
-          ></RichText>
+          ></RichText>:""}
           <RichText
             tagname={"p"}
             value={props.attributes.highlighted}
@@ -311,14 +325,18 @@ registerBlockType("purdue-blocks/proofpoint", {
       }
       ${
         props.attributes.height==="full"?" pu-proofpoint__height":""
-      }`} {...blockProps}>       
+      }
+      ${
+        props.attributes.hasLead?" pu-proofpoint__has-lead":""
+      }
+      `} {...blockProps}>       
           <div className="container">
-          {!props.attributes.lead ?'':
+          {props.attributes.lead && props.attributes.hasLead ?
             <RichText.Content
             className={`pu-proofpoint__lead`} 
             tagName={ "p" }
             value={props.attributes.lead}
-            />}
+            />:""}
             {!props.attributes.highlighted ?'':
             <RichText.Content
             tagName={"p"}

@@ -9,11 +9,19 @@
    display:flex;
    flex-direction: row;
    justify-content: center;
+   &.pu-proofpoint__has-lead{
+    .container{
+      padding:3.4rem 1rem 1.25rem;
+      @include mobile{
+       padding:1.25rem 1rem;
+      }
+    }
+   }
    p{
      width:100%;
    }
    .container{
-     padding:3.4rem 1rem 1.25rem;
+     padding:1.25rem 1rem;
      display:flex;
      flex-direction:column;
      flex: 0 1 auto;
@@ -22,9 +30,6 @@
      width:100%;
      margin-left:0;
      margin-right:0;
-     @include mobile{
-      padding:1.25rem 1rem;
-     }
    }
    &__height{
      height:100%;
