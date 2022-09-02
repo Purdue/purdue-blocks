@@ -5,28 +5,175 @@
  */
 
  .section{
+  &.has-border-bottom{
+    position:relative;
+    .container{
+    &:after{
+      content:"";
+      border-bottom:1px solid $boiler-gold;
+      display:block;
+      width:100%;
+      bottom: -2.25rem;
+      position: absolute;
+
+    }
+    }
+    &.has-background-boiler-gold{
+      .container{
+        &:after{
+          content:"";
+          border-bottom:1px solid $black;    
+        }
+        }
+    }
+
+  }
+
+    &.has-padding-top-none{
+      padding-top:0 !important;
+    }
+    &.has-padding-top-small{
+      padding-top:2rem !important;
+    }
+    &.has-padding-top-large{
+      padding-top:5rem !important;
+      @include mobile{
+        padding-top:3rem !important;
+      }
+    }
+    &.has-padding-bottom-none{
+      padding-bottom:0 !important;
+      &.has-border-bottom{
+        .container{
+        &:after{
+          content:"";
+          bottom: 0.75rem;
+        }
+        }
+      }
+    }
+    &.has-padding-bottom-small{
+      padding-bottom:2rem !important;
+      &.has-border-bottom{
+        .container{
+        &:after{
+          content:"";
+          bottom: -1.25rem;
+        }
+        }
+      }
+    }
+    &.has-padding-bottom-large{
+      padding-bottom:5rem !important;
+      @include mobile{
+        padding-bottom:3rem !important;
+        &.has-border-bottom{
+          .container{
+          &:after{
+            content:"";
+            bottom: -2.25rem;
+          }
+          }
+        }
+      }
+      &.has-border-bottom{
+        .container{
+        &:after{
+          content:"";
+          bottom: -4.25rem;
+        }
+        }
+      }
+    }
+    &.align-left{
+      .container{
+        .wp-block-columns.page-layout-columns.columns{
+          justify-content:flex-start;
+        }
+      }
+    }
+    &.page-layout-wide{
+      .container{
+        .wp-block-columns.page-layout-columns.columns{
+          justify-content:center;
+          @include mobile{
+            display:block;
+          }
+          .column{
+            &.page-layout-main{
+              @include tablet{
+                flex-basis: 0 !important;
+                flex-grow: 1 !important;
+              
+              }
+            }
+          
+          }
+        }
+    }
+    &.page-layout-two-column{
+      .container{
+        .wp-block-columns.page-layout-columns.columns{
+          .page-layout-sidebar{
+            display:block;
+            flex-basis:0 !important;
+            flex-grow: 1 !important;
+            @include tablet{
+              padding-left:4vw;
+            }
+          } 
+          .page-layout-main{
+            @include tablet{
+              padding-right:4vw;
+            }
+          }             
+        }
+        &.mobile-reverse{
+          .page-layout-columns.columns{
+            @include mobile{
+              display:flex;
+              flex-direction:column-reverse;
+            }
+          }
+        }
+      }
+      &.page-layout-two-column-divider{
+        .container{
+          .wp-block-columns.page-layout-columns.columns{
+            .page-layout-main{
+              border-right:1px solid $boiler-gold;
+              @include mobile{
+                border-right:none;
+                border-bottom:1px solid $boiler-gold;
+              }
+            }             
+          }
+        }
+      }
+    }
+  }
   .container{
-    .page-layout-columns.columns{
+    .wp-block-columns.page-layout-columns.columns{
       justify-content:center;
-      @include touch{
+      @include mobile{
         display:block;
       }
       .column{
         margin:0;
         &.is-full-tablet.wp-block-column{
-          @include touch{
+          @include mobile{
             flex-basis:auto !important;
             width:100% !important;
           }
         }
         &.page-layout-main{
-          @include desktop{
+          @include tablet{
             flex-basis: 66.6666% !important;
             flex-grow: 0 !important;
           }
         }
         &.page-layout-sidebar{
-          @include desktop{
+          @include tablet{
             flex-basis: 25% !important;
             flex-grow: 0 !important;
           }
@@ -52,7 +199,7 @@
       }
       &.mobile-reverse{
         .page-layout-columns.columns{
-          @include touch{
+          @include mobile{
             display:flex;
             flex-direction:column-reverse;
           }

@@ -25,7 +25,18 @@ const {
   Button,
 } = wp.components;
 const { RichText, InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
-
+// let templates = {narrow:[
+//   [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
+//     [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+//     [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+// ]
+// ]],
+// wide:[
+//   [ 'core/columns', {'className': 'page-layout-columns page-layout-columns-two columns is-multiline'}, [
+//     [ 'core/column', {'className': 'column'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+//     [ 'core/column', {'className': 'column'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+// ]
+// ]]};
 
 /**
  * Register: aa Gutenberg Block.
@@ -62,10 +73,18 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
    */
 
   attributes: {
+    width: { type: 'string', default: 'narrow' },
     withSidebar:{ type: "boolean", default: false },
     sidebarLocationDesktop: { type: 'string', default: 'right' },
     sidebarLocationMobile: { type: 'string', default: 'below' },
+    contentLocation:  { type: 'string', default: 'center' },
     bgColor: { type: 'string', default: '' },
+    border:{ type: "boolean", default: false },
+    twoColumn:{ type: "boolean", default: false },
+    paddingTop: { type: 'string', default: '' },
+    paddingBottom: { type: 'string', default: '' },
+    stackReverseMobile: { type: "boolean", default: false },
+    divider: { type: "boolean", default: false },
   },
   supports: {
     className: false,
@@ -93,46 +112,6 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
       <InspectorControls>
       <PanelBody>
         <PanelRow>
-            <CheckboxControl
-              label="Add A Sidebar?"
-              help="Would you like to add sidebar to this page?"
-              checked={props.attributes.withSidebar}
-              onChange={setChecked}
-            />
-        </PanelRow>
-        {props.attributes.withSidebar?(
-        <PanelRow>
-          <RadioControl
-            label="Sidebar Location On Desktop"
-            help="Choose to place sidebar on the left/right side of the main content."
-            selected={ props.attributes.sidebarLocationDesktop }
-            options={ [
-              { label: 'Left', value: 'left' },
-              { label: 'Right', value: 'right' },
-            ] }
-            onChange={ ( option ) => {
-              props.setAttributes( { sidebarLocationDesktop: option } )
-            } }
-          />
-        </PanelRow>
-        ):''}
-        {props.attributes.withSidebar?(
-        <PanelRow>
-          <RadioControl
-              label="Sidebar Location On Mobile"
-              help="Choose to place sidebar above/below the main content."
-              selected={ props.attributes.sidebarLocationMobile }
-              options={ [
-                { label: 'Above main content', value: 'above' },
-                { label: 'Below main content', value: 'below' },
-              ] }
-              onChange={ ( option ) => {
-                props.setAttributes( { sidebarLocationMobile: option } )
-              } }
-            />
-        </PanelRow>
-        ):''}
-        <PanelRow>
           <SelectControl
             label="Background Color"
             value={ props.attributes.bgColor }
@@ -150,17 +129,178 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
             } }
           />
         </PanelRow>
+        <PanelRow>
+          <SelectControl
+            label="Padding at the top"
+            value={ props.attributes.paddingTop }
+            options={
+              [
+                { value: 'has-padding-top-none', label: 'None' },
+                { value: 'has-padding-top-small', label: 'Small' },
+                { value: '', label: 'Medium' },
+                { value: 'has-padding-top-large', label: 'Large' },
+              ]
+            }
+            onChange={ ( paddingTop ) => {
+              props.setAttributes( { paddingTop } )
+            } }
+          />
+        </PanelRow>
+        <PanelRow>
+          <SelectControl
+            label="Padding at the bottom"
+            value={ props.attributes.paddingBottom }
+            options={
+              [
+                { value: 'has-padding-bottom-none', label: 'None' },
+                { value: 'has-padding-bottom-small', label: 'Small' },
+                { value: '', label: 'Medium' },
+                { value: 'has-padding-bottom-large', label: 'Large' },
+              ]
+            }
+            onChange={ ( paddingBottom ) => {
+              props.setAttributes( { paddingBottom } )
+            } }
+          />
+        </PanelRow>
+        <PanelRow>
+            <CheckboxControl
+              label="Add a border at the bottom?"
+              checked={props.attributes.border}
+              onChange={ () => {
+                  props.setAttributes( { border: !props.attributes.border } )
+                }
+              }
+            />
+        </PanelRow>
+        <PanelRow>
+          <RadioControl
+            label="Main content aria width"
+            selected={ props.attributes.width }
+            options={ [
+              { label: 'Narrow', value: 'narrow' },
+              { label: 'Wide', value: 'wide' },
+            ] }
+            onChange={ ( width ) => {
+              props.setAttributes( { width })
+
+            } }
+          />
+        </PanelRow>
+        { props.attributes.width === "narrow" && !props.attributes.withSidebar?
+        <PanelRow>
+          <RadioControl
+            label="Main content aria location"
+            selected={ props.attributes.contentLocation }
+            options={ [
+              { label: 'Center', value: 'center' },
+              { label: 'Left', value: 'left' },
+            ] }
+            onChange={ ( contentLocation ) => {
+              props.setAttributes( { contentLocation } )
+            } }
+          />
+        </PanelRow>:""}
+        { props.attributes.width === "narrow"?
+        <PanelRow>
+            <CheckboxControl
+              label="Add A Sidebar?"
+              help="Would you like to add sidebar to this page?"
+              checked={props.attributes.withSidebar}
+              onChange={setChecked}
+            />
+        </PanelRow>:""}
+        {props.attributes.width === "narrow" && props.attributes.withSidebar?(
+        <PanelRow>
+          <RadioControl
+            label="Sidebar Location On Desktop"
+            help="Choose to place sidebar on the left/right side of the main content."
+            selected={ props.attributes.sidebarLocationDesktop }
+            options={ [
+              { label: 'Left', value: 'left' },
+              { label: 'Right', value: 'right' },
+            ] }
+            onChange={ ( option ) => {
+              props.setAttributes( { sidebarLocationDesktop: option } )
+            } }
+          />
+        </PanelRow>
+        ):''}
+        {props.attributes.width === "narrow" && props.attributes.withSidebar?(
+        <PanelRow>
+          <RadioControl
+              label="Sidebar Location On Mobile"
+              help="Choose to place sidebar above/below the main content."
+              selected={ props.attributes.sidebarLocationMobile }
+              options={ [
+                { label: 'Above main content', value: 'above' },
+                { label: 'Below main content', value: 'below' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { sidebarLocationMobile: option } )
+              } }
+            />
+        </PanelRow>
+        ):''}
+        {props.attributes.width ==="wide"?
+          <PanelRow>
+            <CheckboxControl
+              label="Put content in two columns?"
+              checked={props.attributes.twoColumn}
+              onChange={ () => {
+                  props.setAttributes( { twoColumn: !props.attributes.twoColumn } )
+                }
+              }
+            />
+        </PanelRow>:""
+        }
+        {props.attributes.width ==="wide" && props.attributes.twoColumn?
+          <PanelRow>
+            <CheckboxControl
+              label="Reverse the stack order the columns on mobile?"
+              checked={props.attributes.stackReverseMobile}
+              onChange={ () => {
+                  props.setAttributes( { stackReverseMobile: !props.attributes.stackReverseMobile } )
+                }
+              }
+            />
+        </PanelRow>:""
+        }
+        {props.attributes.width ==="wide" && props.attributes.twoColumn?
+          <PanelRow>
+            <CheckboxControl
+              label="Add a divider between columns?"
+              checked={props.attributes.divider}
+              onChange={ () => {
+                  props.setAttributes( { divider: !props.attributes.divider } )
+                }
+              }
+            />
+        </PanelRow>:""
+        }
       </PanelBody>
     </InspectorControls>,
-    <div className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
-      <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
-        <InnerBlocks
-          template={[
+    <div className={`section
+                    ${props.attributes.withSidebar?' page-layout-with-sidebar':''}
+                    ${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}
+                    ${props.attributes.paddingTop?` ${props.attributes.paddingTop}`:''}
+                    ${props.attributes.paddingBottom?` ${props.attributes.paddingBottom}`:''}
+                    ${props.attributes.border?` has-border-bottom`:''}
+                    ${props.attributes.width === "narrow" && !props.attributes.withSidebar && props.attributes.contentLocation==="left"? " align-left":""}
+                    ${props.attributes.width ==="wide"?` page-layout-wide`:''}
+                    ${props.attributes.width ==="wide" && props.attributes.twoColumn?' page-layout-two-column':''}
+                    ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.stackReverseMobile?' page-layout-two-column-reverser':''}
+                    ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.divider?' page-layout-two-column-divider':''}
+                    `}>
+      <div className={`container${props.attributes.sidebarLocationDesktop==='left' && props.attributes.width ==="narrow"?' desktop-reverse':''}${( props.attributes.width ==="narrow"&&props.attributes.sidebarLocationMobile==='above') ||( props.attributes.width ==="wide"&&props.attributes.stackReverseMobile)?' mobile-reverse':''}`}>
+
+          <InnerBlocks
+          template = { [
             [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
-              [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-              [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+              [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
+              [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
           ]
-          ]]}
+          ]] }
           templateInsertUpdatesSelection={ false }
         />
       </div>
@@ -182,9 +322,20 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div {...blockProps} className={`section${props.attributes.withSidebar?' page-layout-with-sidebar':''}${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}`}>
-        <div className={`container${props.attributes.sidebarLocationDesktop==='left'?' desktop-reverse':''}${props.attributes.sidebarLocationMobile==='above'?' mobile-reverse':''}`}>
-            <InnerBlocks.Content />
+      <div {...blockProps} className={`section
+                ${props.attributes.withSidebar?' page-layout-with-sidebar':''}
+                ${props.attributes.bgColor?` ${props.attributes.bgColor}`:''}
+                ${props.attributes.paddingTop?` ${props.attributes.paddingTop}`:''}
+                ${props.attributes.paddingBottom?` ${props.attributes.paddingBottom}`:''}
+                ${props.attributes.border?` has-border-bottom`:''}
+                ${props.attributes.width === "narrow" && !props.attributes.withSidebar && props.attributes.contentLocation==="left"? " align-left":""}
+                ${props.attributes.width ==="wide"?` page-layout-wide`:''}
+                ${props.attributes.width ==="wide" && props.attributes.twoColumn?' page-layout-two-column':''}
+                ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.stackReverseMobile?' page-layout-two-column-reverser':''}
+                ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.divider?' page-layout-two-column-divider':''}
+                `}>
+      <div className={`container${props.attributes.sidebarLocationDesktop==='left' && props.attributes.width ==="narrow"?' desktop-reverse':''}${( props.attributes.width ==="narrow"&&props.attributes.sidebarLocationMobile==='above') ||( props.attributes.width ==="wide"&&props.attributes.stackReverseMobile)?' mobile-reverse':''}`}>
+          <InnerBlocks.Content />
         </div>
       </div>
     );
