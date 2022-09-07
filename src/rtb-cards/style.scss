@@ -1,0 +1,115 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+
+.purdue-rtb-card-container{
+  overflow-x: hidden;
+
+  &__button{
+    padding:0.75rem 1.5rem;
+  }
+  &.has-white-background{
+    background:$white;
+    color:$black;
+    .purdue-slider__header{
+      color:$black;
+    }
+  }
+  &.has-black-background{
+    background:$black;
+    color:$white;
+  }
+  &.has-gray-background{
+    background:$primary-background-gray;
+    color:$black;
+  }
+  .columns{
+    flex-wrap: wrap;
+    justify-content: center;
+    &.has-divider{
+      .column{
+        position:relative;
+        &:not(:first-child){
+          &:before{
+            content:"";
+            position:absolute;
+            left:0;
+            top:8px;
+            border-left:solid 1px #cfb991;
+            width:100%;
+            height:calc(100% - 16px);
+            @media (max-width:767px){
+              border-top:solid 1px #cfb991;
+              border-left:none;
+              left:12px;
+              top:0;
+              width:calc(100% - 24px);
+              height:100%;
+            }
+          }
+
+        }
+        &.is-half-tablet{
+          @media screen and (min-width: 768px) and (max-width:1023px){
+            &:before{
+              border-left:none;
+            }
+            &:nth-child(2n+2){
+              &:before{
+                border-left:solid 1px #cfb991;
+              }
+            }
+          }
+        }
+        &.is-half-desktop{
+          @media screen and (min-width: 1024px){
+            &:nth-child(2n+1){
+              &:before{
+                border-left:none;
+              }
+            }
+          }
+        }
+        &.is-one-third-desktop{
+          @media screen and (min-width: 1024px){
+          &:nth-child(3n+1){
+            &:before{
+              border-left:none;
+            }
+          }}
+        }
+        &.is-one-quarter-desktop{
+          @media screen and (min-width: 1024px){
+            &:nth-child(4n+1){
+              &:before{
+                border-left:none;
+              }
+            }
+          }
+        }
+        &.is-one-fifth-desktop{
+          @media screen and (min-width: 1024px){
+            &:nth-child(5n+1){
+              &:before{
+                border-left:none;
+              }
+            }
+          }
+        }
+        &.is-one-sixth-desktop{
+          @media screen and (min-width: 1024px){
+            &:nth-child(6n+1){
+              &:before{
+                border-left:none;
+              }
+            }
+          }
+        }
+
+      }
+  }
+  }
+}

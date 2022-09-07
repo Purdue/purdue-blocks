@@ -210,7 +210,7 @@ function register_block_purdue_slider() {
                 "default"=> "3",
             ),
             "id" => array(
-                "type"=> "boostringlean",
+                "type"=> "string",
                 "default"=> "",
             ),
         ),

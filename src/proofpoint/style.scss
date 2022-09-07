@@ -37,6 +37,7 @@
    &__white{
      background-color:$white;
      color:$black;
+     box-shadow: $box-shadow;
      p.pu-proofpoint__source{
        color:$black;
      }
@@ -69,6 +70,9 @@
        }
      }
    }
+   &__no-shadow{
+    box-shadow: none;
+  }
    &__border{
      border-top:solid 5px $black;
      box-shadow: $box-shadow;
@@ -107,12 +111,14 @@
      font-size:1.25rem;
      text-align:center;
      line-height:1.5;
-     margin-bottom:1rem !important;
      white-space:pre-wrap;
      font-family: $acumin-pro;
      &-narrow{
        font-family: $united-sans-condensed;
        letter-spacing: 0.1em;
+     }
+     &:not(:last-child){
+      margin-bottom:1rem !important;
      }
    }
    &__source{

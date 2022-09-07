@@ -177,18 +177,6 @@
   &.has-black-background{
     background:$black;
     color:$white;
-    .purdue-slider--rtb{
-      &.has-divider{
-        @include tablet{
-          .glide__slide + .glide__slide{
-            border-left:solid 1px $black;
-          }
-          .glide__slide.is-active{
-            border-left:none;
-          }
-      }
-      }
-    }
     .purdue-slider__header{
       color:$white;
     }

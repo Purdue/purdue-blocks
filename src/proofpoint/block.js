@@ -77,6 +77,7 @@ registerBlockType("purdue-blocks/proofpoint", {
     ctaText: { type: "string", default: "" },
     external: { type: 'boolean', default: false },
     height: { type: "string", default: "auto" },
+    boxshadow:  { type: 'boolean', default: true },
   },
 
   supports: {
@@ -146,8 +147,22 @@ registerBlockType("purdue-blocks/proofpoint", {
         <PanelBody>
           <PanelRow>
             <CheckboxControl
+              label="Add box shadow?"
+              help="Would you like to add box shadow around the proofpoint?"
+              checked={props.attributes.boxshadow}
+              onChange={()=>{
+                props.setAttributes( { boxshadow: ! props.attributes.boxshadow } )
+              }}
+            />
+          </PanelRow>
+        </PanelBody>
+        ):''}
+          {props.attributes.color === 'white'?(
+        <PanelBody>
+          <PanelRow>
+            <CheckboxControl
               label="Add border?"
-              help="Would you like to add border to the proofpoint?"
+              help="Would you like to add border at the top to the proofpoint?"
               checked={props.attributes.border}
               onChange={setChecked}
             />
@@ -234,6 +249,8 @@ registerBlockType("purdue-blocks/proofpoint", {
         props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
       }${
         props.attributes.border ? ' pu-proofpoint__border' : ''
+      }${
+        props.attributes.boxshadow ? '' : ' pu-proofpoint__no-shadow'
       }
       ${
         props.attributes.height==="full"?" pu-proofpoint__height":""
@@ -322,6 +339,9 @@ registerBlockType("purdue-blocks/proofpoint", {
         props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
       }${
         props.attributes.border ? ' pu-proofpoint__border' : ''
+      }
+      ${
+        props.attributes.boxshadow ? '' : ' pu-proofpoint__no-shadow'
       }
       ${
         props.attributes.height==="full"?" pu-proofpoint__height":""

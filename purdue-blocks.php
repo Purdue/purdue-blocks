@@ -6,7 +6,7 @@
  * Description: Adds Gutenberg blocks to Wordpress based on Purdue's brand elements.
  * Author: Purdue Marketing and Media
  * Author URI: https://brand.purdue.edu/digital/
- * Version: 1.24.10
+ * Version: 1.24.11
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  *
@@ -27,7 +27,7 @@ require_once plugin_dir_path(__FILE__) . 'src/purdue-rss/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-news/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/custom-side-menu/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-slider/index.php';
-
+require_once plugin_dir_path(__FILE__) . 'src/rtb-cards/index.php';
 // Register post list custom Blocks
 if (function_exists('acf_register_block_type')) {
   add_action('acf/init', 'my_register_blocks');
