@@ -44,10 +44,10 @@ function render_block_purdue_news($attributes){
             if(strlen(strip_tags(preg_replace('/<figure[^>]*>.*?<\/figure>/i', ' ', $description)))>0){
             $text=substr(strip_tags(preg_replace('/<figure[^>]*>.*?<\/figure>/i', ' ', $description)), 0, 300)."...";
             }
-            $postDate = $item->get_date( 'U' );
-            $date = date('M d, Y',strtotime($postDate));
-            $month = date('M',strtotime($postDate));
-            $day = date('d',strtotime($postDate));
+            $postDate = strtotime($item->get_date('j F Y, g:i a'));
+            $date = date('M d, Y',$postDate);
+            $month = date('M',$postDate);
+            $day = date('d',$postDate);
             $node=array(
                 'id'=>$id,
                 'title'=>strval($title),
