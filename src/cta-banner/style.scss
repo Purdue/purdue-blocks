@@ -5,12 +5,12 @@
  */
 
  .pu-cta-banner {
-   padding:1.71875rem $side-padding-desktop;
+   padding:2rem $side-padding-desktop;
     @include touch{
-      padding:2.8125rem $side-padding-tablet;
+      padding:1.25rem $side-padding-tablet;
     }
     @include mobile{
-      padding:2.8125rem $side-padding-mobile;
+      padding:1.25rem $side-padding-mobile;
     }
   .container{
     display:flex;
@@ -65,7 +65,7 @@
       font-weight:400;
       line-height:1.5;
       margin-bottom:0 !important;
-      margin-right:3rem;
+      margin-right:2.5rem;
       letter-spacing: 0.9px;
       text-transform: uppercase;
       @include touch{
@@ -91,10 +91,10 @@
       text-align:center;
       &:hover {
         cursor: pointer;
-        background: $white;
+        color: $white;
       }
       @include touch{
-        margin-top:2.1875rem;
+        margin-top:1.25rem;
       }
     }
   }
@@ -141,7 +141,7 @@
         color:$black;
       }
       @include touch{
-        margin-top:2.1875rem;
+        margin-top:1.25rem;
       }
     }
   }
@@ -193,7 +193,7 @@
     color: $boiler-gold;
     text-decoration: none;
     transition: all ease 0.2s;
-    margin-top:2rem;
+    margin-top:1.25rem;
     letter-spacing: 0.9px;
     &:hover {
       cursor: pointer;

@@ -245,7 +245,7 @@
     font-weight: 400; 
     line-height:1.5;
     background: $boiler-gold;
-    border: 2px solid $aged-gold;
+    border: 2px solid $black;
     margin-top:1rem;
     margin-right:2rem;
     display:inline-block;
@@ -253,8 +253,8 @@
     text-align: center;
     &:hover {
       cursor: pointer;
-      background: $white;
-      color: $black;
+      background: $black;
+      color: $boiler-gold;
     }
     @include touch{
       margin-top:1.375rem;
@@ -270,11 +270,11 @@
     }
     &.pu-feature-story__button--second{
       color: $black;
-      border:2px solid $aged-gold;
+      border:2px solid $black;
       background:$white;
       &:hover {
-        background: $boiler-gold;
-        color: $black;
+        background: $black;
+        color: $boiler-gold;
       }
     }
   }
@@ -342,19 +342,20 @@
           }
           .pu-feature-story__button{
             color: $black;
-            border:2px solid $aged-gold;
+            border:2px solid $boiler-gold;
             background:$boiler-gold;
             &:hover {
               background: $white;
-              color: $black;
+              border:2px solid $white;
+              color: $aged-gold;
             }
             &.pu-feature-story__button--second{
               color: $white;
-              border:2px solid $boiler-gold;
-              background:$black;
+              border:2px solid $white;
+              background:none;
               &:hover {
-                background: $white;
-                color: $black;
+                background:$white;
+                color: $aged-gold;
               }
             }
           }

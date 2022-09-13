@@ -17,7 +17,8 @@
         transform: scale(1.1);
       }
       .cta-card__button{
-          background:$white;
+          background:$black;
+          color:$boiler-gold;
       }
     }
   }
@@ -73,8 +74,8 @@
     background: $boiler-gold;
     text-align:center;
     &:hover {
-      background: $white;
-      color: $black;
+      background: $black;
+      color: $boiler-gold;
     }
   }
 }

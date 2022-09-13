@@ -57,7 +57,7 @@
        justify-content: center;
        padding: 0.75rem 1rem;
        background: rgba(0, 0, 0, 0);
-       border: 2px solid $boiler-gold;
+       border: 2px solid $white;
        color: $white;
        text-decoration: none;
        transition: all ease 0.2s;
@@ -65,8 +65,7 @@
        letter-spacing: 0.9px;
        &:hover {
          cursor: pointer;
-         background: $boiler-gold;
-         color: $black;
+         color: $aged-gold;
        }
      }
    }
@@ -132,10 +131,8 @@
      margin-bottom:0 !important;
    }
    &__button {
-     font-family: $united-sans;
-     font-weight: 700;
+     font-family: $acumin-pro;
      font-size: 1.125rem;
-     text-transform: uppercase;
      display: inline-flex;
      justify-content: center;
      padding: 0.75rem 1rem;
@@ -144,7 +141,6 @@
      color: $boiler-gold;
      text-decoration: none;
      transition: all ease 0.2s;
-     letter-spacing:0.9px;
      width:80%;
      margin-top:1rem;
      &:hover {
@@ -157,8 +153,8 @@
        background: $white;
        &:hover {
          cursor: pointer;
-         background: $boiler-gold;
-         color: $black;
+         background: $black;
+         color: $boiler-gold;
        }
      }
    }

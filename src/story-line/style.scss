@@ -111,7 +111,7 @@
     }
     .column{
       .image-container{
-        padding:0 0 0 3rem;
+        padding:0 0 0 3.5vw;
         @include touch{
           padding:0 0 0 1rem;
         }
@@ -120,7 +120,7 @@
         }
       }
       .content-container{
-        padding:0 3rem 0 0;
+        padding:0 3.5vw 0 0;
         @include touch{
           padding:0 1rem 0 0;
         }
@@ -150,7 +150,7 @@
     }
   }
   .image-container{
-    padding:0 3rem 0 0;
+    padding:0 3.5vw 0 0;
     img{
       width:100%;
       display:block;
@@ -163,16 +163,17 @@
     }
   }
   .content-container{
-    padding:0 0 0 3rem;
+    padding:0 0 0 3.5vw;
     width:100%;
     @include touch{
       padding-left:1rem;
     }
     @include mobile{
-      padding:2.5rem $side-padding-mobile;
+      padding:1rem $side-padding-mobile 1.25rem;
     }
     .story-title{
       color:$black !important;
+      margin-bottom: 1.25rem;
     }
     p{
       color:$black;
@@ -191,13 +192,13 @@
       font-weight: 400; 
       line-height:1.5;
       background: $boiler-gold !important;
-      border: 2px solid $aged-gold;
+      border: 2px solid $black;
       margin-top:1rem;
       display:inline-block;
       text-decoration:none;
       &:hover{
-        background: $white !important;
-        color:$black;
+        background: $black !important;
+        color:$boiler-gold;
       }
       &-icon{
         display:none;
@@ -223,6 +224,19 @@
       p{
         color:$primary-background-gray;
       }
+      .read-more-button{
+        background: $boiler-gold !important;
+        border: 2px solid $boiler-gold;
+        color:$black;
+        margin-top:1rem;
+        display:inline-block;
+        text-decoration:none;
+        &:hover{
+          background: $white !important;
+          border: 2px solid $white;
+          color:$aged-gold;
+        }
+      }
     }
   }
   &-tDark{
@@ -237,8 +251,13 @@
         color:$primary-background-gray;
       }
       .read-more-button{
-        color:$white;
+        color:$black;
+        background-color:$boiler-gold;
+        border:2px solid $boiler-gold; 
         &:hover{
+          background: $white !important;
+          border: 2px solid $white;
+          color:$aged-gold;
           .read-more-button-icon{
             color:$black;
           }

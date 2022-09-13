@@ -124,7 +124,8 @@
           transform: scale(1.1);
         }
         .read-more{
-          background-color:$boiler-gold !important;
+          background-color:$black !important;
+          color:$boiler-gold !important;
         }
       }
       &.is-active{
@@ -185,7 +186,7 @@
       color:$black !important;
       &:hover{
         background-color:$white !important;
-        color:$black !important;
+        color:$aged-gold !important;
       }
     }
    .glide__bullet{

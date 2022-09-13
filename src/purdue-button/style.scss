@@ -27,8 +27,7 @@
     }
     &:hover {
       cursor: pointer;
-      background: $white !important;
-      color:$aged-gold !important;
+      color:$white !important;
     }
     &__text{
       flex-shrink:1;
@@ -42,27 +41,26 @@
       color: $aged-gold !important;
       &:hover {
         cursor: pointer;
-        background: $black !important;
-        color:$boiler-gold !important;
+        color:$black !important;
      }
     }
     &.purdue-blocks__button--gold-light{
       background: $boiler-gold !important;
-      border: 2px solid $aged-gold;
+      border: 2px solid $black;
       color: $black !important;
       &:hover {
         cursor: pointer;
-        background: $white !important;
-        color:$black !important;
+        background: $black !important;
+        color:$boiler-gold !important;
       }
       &.purdue-blocks__button--outline{
         background: $white !important;
-        border: 2px solid $aged-gold;
+        border: 2px solid $black;
         color: $black !important;
         &:hover {
           cursor: pointer;
-          background: $boiler-gold !important;
-          color:$black !important;
+          background: $black!important;
+          color:$boiler-gold !important;
         }
       }
     }
@@ -72,17 +70,18 @@
       color: $black !important;
       &:hover {
         cursor: pointer;
-        background: $black !important;
-        color:$white !important;
+        background: $white!important;
+        color:$aged-gold !important;
+        border: 2px solid $white;
       } 
       &.purdue-blocks__button--outline{
         background: none !important;
-        border: 2px solid $boiler-gold;
+        border: 2px solid $white;
         color: $white !important;
         &:hover {
           cursor: pointer;
-          background: $boiler-gold !important;
-          color:$black !important;
+          background: $white !important;
+          color:$aged-gold !important;
         }
       }
     }

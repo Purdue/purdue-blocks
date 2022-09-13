@@ -94,7 +94,7 @@ function render_block_purdue_news($attributes){
             $output.='</div>';
             if($attributes['hasLink']){
                 $attributes['external']?$external="blank":$external="self";
-                $output.='<div class="read-more-button"><a href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a></div>';
+                $output.='<div class="read-more-button"><a class="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a></div>';
             }
         }elseif($attributes['type']=="withoutImage"){
             $output.='<div class="feed-grid">';
@@ -120,7 +120,7 @@ function render_block_purdue_news($attributes){
             $output.='</div>';
             if($attributes['hasLink']){
                 $attributes['external']?$external="blank":$external="self";
-                $output.='<a class="button" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a>';
+                $output.='<a class="button purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a>';
             }
             $output.='</div></div>';
         }else{

@@ -140,13 +140,11 @@
         }
       }
       .read-more-button{
-        font-family:$united-sans;
         font-weight: 700;
         letter-spacing:50;
         text-align: right;
         font-size:1.25rem;
         margin-top: 3.125rem;
-        text-transform: uppercase;
         @include mobile{
           text-align: center;
           margin-top: 2.1875rem;
@@ -156,12 +154,14 @@
           color:$black;
           position:relative;
           text-decoration: none;
+          padding: 0.75rem 1.5rem;
           &:after{
             content: "\f105";
             display: inline-block;
             font-family: "Font Awesome 5 Free";
             margin-left: 0.7rem;
             position:relative;
+            font-weight: 900;
           }
           &:hover{
             color:$aged-gold;
@@ -267,16 +267,12 @@
           grid-row: 3/4!important;
           grid-column: 3/4!important;
           background:none;
-          font-family: "United Sans";
-          font-weight: 700;
+          font-family: $acumin-pro;
           font-size: 1.125rem;
-          text-transform: uppercase;
           display: inline-flex;
           justify-content: center;
-          padding: 0.75rem 1rem;
-          border: 2px solid $aged-gold;
+          padding: 0.75rem 1.5rem;
           border-radius: 0;
-          color: $black !important;
           text-decoration: none;
           transition: all ease 0.2s;
           letter-spacing:0.9px;
