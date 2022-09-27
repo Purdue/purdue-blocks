@@ -193,11 +193,11 @@
        padding: 6rem $side-padding-desktop !important;
        @include touch {
          order: 2;
-         padding: 1rem $side-padding-tablet 2.8125rem !important;
+         padding: 2.8125rem $side-padding-tablet !important;
        }
        @include mobile {
         order: 2;
-        padding: 1rem $side-padding-mobile 1.875rem !important;
+        padding: 1.875rem $side-padding-mobile !important;
       }
       .container{
         width:100%;
@@ -262,6 +262,7 @@
          clip-path: polygon(0 0, 0% 100%, 100% 0);
  
          @include touch {
+          content: none;
            clip-path: polygon(0 0, 0% 100%, 100% 100%);
            width: 100%;
            height: 5rem;

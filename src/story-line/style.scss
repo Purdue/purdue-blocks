@@ -101,9 +101,6 @@
       overflow: hidden;
     }
   }
-  .columns{
-    margin-top:0 !important;
-  }
   .columns-reversed{
     flex-direction: row-reverse;
     @include mobile{
@@ -131,9 +128,6 @@
     }
   }
   .column{
-    @include mobile{
-      padding-top:0;
-    }
     &.column-align-bottom{
       padding-top:215px;
       @include mobile{
