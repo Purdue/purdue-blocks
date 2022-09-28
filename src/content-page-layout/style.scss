@@ -150,6 +150,16 @@
           }
         }
       }
+      &.page-layout-two-column-verticalCenter{
+        .container{
+          .columns .column{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+          }
+        }
+      }
     }
   }
   .container{

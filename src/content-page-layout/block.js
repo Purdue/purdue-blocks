@@ -25,18 +25,6 @@ const {
   Button,
 } = wp.components;
 const { RichText, InspectorControls, InnerBlocks, useBlockProps } = wp.blockEditor;
-// let templates = {narrow:[
-//   [ 'core/columns', {'className': 'page-layout-columns columns is-multiline'}, [
-//     [ 'core/column', {'className': 'column is-two-thirds-desktop is-full-tablet is-full-mobile page-layout-main'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-//     [ 'core/column', {'className': 'column is-one-quarter-desktop is-full-tablet is-full-mobile page-layout-sidebar'},[['core/paragraph', {'placeholder': 'Sidebar content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-// ]
-// ]],
-// wide:[
-//   [ 'core/columns', {'className': 'page-layout-columns page-layout-columns-two columns is-multiline'}, [
-//     [ 'core/column', {'className': 'column'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-//     [ 'core/column', {'className': 'column'},[['core/paragraph', {'placeholder': 'Main content area. Start typing to add content, or remove this default paragraph block and then add new blocks.'}]]],
-// ]
-// ]]};
 
 /**
  * Register: aa Gutenberg Block.
@@ -85,6 +73,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
     paddingBottom: { type: 'string', default: '' },
     stackReverseMobile: { type: "boolean", default: false },
     divider: { type: "boolean", default: false },
+    verticalCenter: { type: "boolean", default: false },
   },
   supports: {
     className: false,
@@ -257,6 +246,18 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
         {props.attributes.width ==="wide" && props.attributes.twoColumn?
           <PanelRow>
             <CheckboxControl
+              label="Center content vertically?"
+              checked={props.attributes.verticalCenter}
+              onChange={ () => {
+                  props.setAttributes( { verticalCenter: !props.attributes.verticalCenter } )
+                }
+              }
+            />
+        </PanelRow>:""
+        }
+        {props.attributes.width ==="wide" && props.attributes.twoColumn?
+          <PanelRow>
+            <CheckboxControl
               label="Reverse the stack order the columns on mobile?"
               checked={props.attributes.stackReverseMobile}
               onChange={ () => {
@@ -291,6 +292,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn?' page-layout-two-column':''}
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.stackReverseMobile?' page-layout-two-column-reverser':''}
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.divider?' page-layout-two-column-divider':''}
+                    ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.verticalCenter?' page-layout-two-column-verticalCenter':''}
                     `}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left' && props.attributes.width ==="narrow"?' desktop-reverse':''}${( props.attributes.width ==="narrow"&&props.attributes.sidebarLocationMobile==='above') ||( props.attributes.width ==="wide"&&props.attributes.stackReverseMobile)?' mobile-reverse':''}`}>
 
@@ -333,6 +335,7 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
                 ${props.attributes.width ==="wide" && props.attributes.twoColumn?' page-layout-two-column':''}
                 ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.stackReverseMobile?' page-layout-two-column-reverser':''}
                 ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.divider?' page-layout-two-column-divider':''}
+                ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.verticalCenter?' page-layout-two-column-verticalCenter':''}
                 `}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left' && props.attributes.width ==="narrow"?' desktop-reverse':''}${( props.attributes.width ==="narrow"&&props.attributes.sidebarLocationMobile==='above') ||( props.attributes.width ==="wide"&&props.attributes.stackReverseMobile)?' mobile-reverse':''}`}>
           <InnerBlocks.Content />
