@@ -114,17 +114,18 @@
     &.page-layout-two-column{
       .container{
         .wp-block-columns.page-layout-columns.columns{
+          gap:0;
           .page-layout-sidebar{
             display:block;
             flex-basis:0 !important;
             flex-grow: 1 !important;
             @include tablet{
-              padding-left:3vw;
+              padding-left:4vw;
             }
           } 
           .page-layout-main{
             @include tablet{
-              padding-right:3vw;
+              padding-right:4vw;
             }
           }             
         }
