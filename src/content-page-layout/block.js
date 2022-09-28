@@ -292,7 +292,6 @@ registerBlockType( 'purdue-blocks/content-page-layout', {
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn?' page-layout-two-column':''}
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.stackReverseMobile?' page-layout-two-column-reverser':''}
                     ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.divider?' page-layout-two-column-divider':''}
-                    ${props.attributes.width ==="wide" && props.attributes.twoColumn && props.attributes.verticalCenter?' page-layout-two-column-verticalCenter':''}
                     `}>
       <div className={`container${props.attributes.sidebarLocationDesktop==='left' && props.attributes.width ==="narrow"?' desktop-reverse':''}${( props.attributes.width ==="narrow"&&props.attributes.sidebarLocationMobile==='above') ||( props.attributes.width ==="wide"&&props.attributes.stackReverseMobile)?' mobile-reverse':''}`}>
 
