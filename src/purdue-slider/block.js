@@ -363,7 +363,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                       />
                   </PanelRow>
                   <PanelRow>
-                      <TextControl
+                      <TextareaControl
                         label="Title"
                         value={ card.header }
                         onChange={ ( header ) => handleChangeHeader( header, index ) }

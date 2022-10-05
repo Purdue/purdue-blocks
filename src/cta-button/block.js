@@ -93,6 +93,21 @@ registerBlockType( 'purdue-blocks/cta-button', {
             />
           </PanelRow>
           <PanelRow>
+              <TextControl
+                label="Call to action text"
+                value={ props.attributes.ctaText }
+                onChange={ ( ctaText ) => props.setAttributes( { ctaText } ) }
+              />
+            </PanelRow>
+         
+            <PanelRow>
+              <TextControl
+                label="Link address"
+                value={ props.attributes.link }
+                onChange={ ( link ) => props.setAttributes( { link } ) }
+              />
+            </PanelRow>
+          <PanelRow>
             <CheckboxControl
               label="Open link in new tab?"
               checked={ props.attributes.external }
@@ -104,9 +119,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
         </PanelBody>
       </InspectorControls>,
 
-      <div className={ 'bulma-blocks-editor-link-card' }>
-        <div className="content">
-          <span>Choose an image.</span>
+      <div className={ 'card cta-card cta-button-admin' }>
           <MediaUploadCheck>
             <MediaUpload
               onSelect={ ( img ) => {
@@ -119,96 +132,31 @@ registerBlockType( 'purdue-blocks/cta-button', {
                 } );
               } }
               render={ ( { open } ) => {
-                return props.attributes.imgUrl !== '' ? (
-                  <div className={ 'bulma-blocks-editor-link-card__preview' }>
-                    <figure className={ 'image' }>
-                      <img
-                        alt={ props.attributes.altText }
-                        src={ props.attributes.imgUrl }
-                      />
-                    </figure>
-                    <Button
-                      className={ 'bulma-blocks-editor-link-card__button' }
-                      onClick={ open }
-                    >
-                      Select a New Image
-                    </Button>
-                    <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
-                      Remove image
-                    </Button>
-                  </div>
-                ) : (
-                  <div className={ 'bulma-blocks-editor-link-card__container' }>
-                    <p className={ 'bulma-blocks-editor-link-card__description' }>
-                      Pick an image from the media library.
-                    </p>
-                    <Button
-                      className={ 'bulma-blocks-editor-link-card__button' }
-                      onClick={ open }
-                    >
-                      Open Media Library
-                    </Button>
+                return (
+                  <div className={ 'image' }
+                    role="img"
+                    style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
+                    aria-label={ props.attributes.altText }
+                  >
+                    <Button onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new image' : 'Select an image (optional)' }</Button>
                   </div>
                 );
               } }
             />
           </MediaUploadCheck>
-        </div>
-        <div className="content">
-          <span>Add Link Card text.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.subText !== '' ?
-                    props.attributes.subText :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="Card text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { subText: e.target.value } );
-                } }
-              ></input>
-            </div>
-          </div>
-        </div>
-        <div className="content">
-          <span>Add the text for the cta button.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.ctaText !== '' ?
-                    props.attributes.ctaText :
-                    ''
-                }
-                className="input"
-                type="text"
-                placeholder="CTA Text..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { ctaText: e.target.value } );
-                } }
-              ></input>
-            </div>
-          </div>
-          <span>Add the link.</span>
-          <div className="field">
-            <div className="control">
-              <input
-                value={
-                  props.attributes.link !== '' ? props.attributes.link : ''
-                }
-                className="input"
-                type="text"
-                placeholder="Paste permalink or url..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { link: e.target.value } );
-                } }
-              ></input>
-            </div>
-          </div>
+        <div className="card-content">
+        <RichText
+            tagname="p"
+            value={ props.attributes.subText }
+            className={ 'content' }
+            onChange={ ( text ) => {
+              props.setAttributes( { subText: text } )
+            } }
+            placeholder="Add Card Text"
+          >
+          </RichText>
+          { props.attributes.ctaText ? <div className="cta-card__button"><span>{ props.attributes.ctaText }</span></div> : '' }
+
         </div>
       </div>,
     ];
@@ -231,14 +179,20 @@ registerBlockType( 'purdue-blocks/cta-button', {
       <div
         className={ 'card cta-card' }
         {...blockProps}
-      >
+      >{
+        props.attributes.imgUrl?
         <div className={ 'card-image' }>
-          <figure className="image is-3by2">
-            <img src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
-          </figure>
-        </div>
+        <figure className="image is-3by2">
+          <img src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
+        </figure>
+      </div>:""
+      }
         <div className={ 'card-content' }>
-          <p>{ props.attributes.subText }</p>
+        <RichText.Content
+          className={ '' }
+          tagName="p"
+          value={ props.attributes.subText }
+        /> 
           <a href={ props.attributes.link } className={ 'cta-card__button' } target={ props.attributes.external ? '_blank' : '_self' } rel="noopener">
             { props.attributes.ctaText }
           </a>

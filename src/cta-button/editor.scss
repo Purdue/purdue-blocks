@@ -5,93 +5,16 @@
  * which makes it higher in priority.
  */
 
-.bulma-blocks-editor-link-card {
-
-  padding: 0.875rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: $black;
-  background: $secondary-background-gray;
-  margin-bottom: 1.75rem;
-
-  .content {
-    width: 100%;
-    max-width: 30rem;
-
-    span {
-      display: flex;
-      margin-bottom: 1rem;
-    }
-
-    &:first-child {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .field{
-      .control{
-        input{
-          background-color:$white;
-        }
-      }
-    }
+.cta-button-admin{
+  padding:0;
+  .image{
+    padding-top: 66.7%;
   }
-
-  &__container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: $secondary-background-gray;
-    color: black;
-    font-family: sans-serif;
-
-    p {
-      text-align: center;
-    }
-  }
-
-  &__heading {
-    font-size: 0.9rem;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-
-    .dashicons {
-      margin-right: 0.75rem;
-    }
-  }
-
-  &__description {
-    width: 80%;
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-    margin-bottom: 0.75rem !important;
-
-    &--error {
-      color: red !important;
-    }
-  }
-
-  &__button {
-    border: $teal 1px solid;
-    border-radius: 0.15rem;
-    padding: 0.35rem 0.45rem;
-    font-size: 0.85rem;
-    background-color: transparent;
-
-    &:hover {
-      background-color: $teal;
-      border-color: transparent;
-      color: white;
-    }
-  }
-
-  &__preview {
-    .bulma-blocks-editor-site-hero__button {
-      margin-top: 0.5rem;
-    }
+  button{
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: white;
   }
 }
