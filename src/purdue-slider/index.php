@@ -34,7 +34,7 @@ function render_block_purdue_slider($attributes){
                         $output.='<p class="story-type">'.$card[storyType].'</p>';
                     }
                     $output.='<p class="story-title">'.$card[header].'</p>';
-                    $output.='<div class="read-more purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline"><span>'.$card[ctaText].'</span></div>';
+                    $output.='<div class="read-more purdue-blocks__button purdue-blocks__button--gold-light"><span>'.$card[ctaText].'</span></div>';
                     if($card[tag] != ""){
                         $output.='<p class="story-tag">'.$card[tag].'</p>';
                     }

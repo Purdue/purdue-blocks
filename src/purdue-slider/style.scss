@@ -139,13 +139,13 @@
         text-align:center;
         padding:1.25rem;
         .story-type, .story-tag{
-          font-size:0.9rem;
+          font-size:1rem;
           text-transform: uppercase;
           font-weight:400;
           line-height:1.5;
         }
         .story-title{
-          font-size:1.125rem;
+          font-size:1.25rem;
           font-weight:700;
           line-height:1.4;
           margin-bottom:1.25rem;
@@ -249,7 +249,7 @@
         color:$black;
         margin-bottom:2rem;
         @include mobile{
-          font-size:1.75rem;
+          font-size:1.875rem;
           margin-bottom:1.25rem;
           margin-top:1.5rem;
       }
@@ -309,6 +309,10 @@
     }
   }
   .purdue-slider__header{
+    margin-bottom:2.3rem !important;
+    @include mobile{
+      margin-bottom:1.5rem !important;
+    }
     &.align-left{
       text-align:left;
     }

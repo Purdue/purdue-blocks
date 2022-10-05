@@ -190,10 +190,12 @@
        display: flex;
        align-items: center;
        z-index: 2;
-       padding: 6rem $side-padding-desktop !important;
+       padding: 3.5rem $side-padding-desktop !important;
+       min-height:350px;
        @include touch {
          order: 2;
          padding: 2.8125rem $side-padding-tablet !important;
+         min-height:0;
        }
        @include mobile {
         order: 2;
