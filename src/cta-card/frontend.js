@@ -1,5 +1,5 @@
 const ctaCards = [...document.querySelectorAll(".cta-card-small")]
-if(ctaCards && ctaCards.length>0)
+if(ctaCards && ctaCards.length>0){
 ctaCards.forEach((card) => {
     const readMore = card.querySelector(".read-more-button")
     console.log(readMore)
@@ -12,3 +12,4 @@ ctaCards.forEach((card) => {
         })
     }
 })
+}

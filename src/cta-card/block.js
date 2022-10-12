@@ -64,6 +64,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
    */
 
   attributes: {
+    layout: { type: 'string', default: "horizontal" },
     cardType: { type: 'string', default: "small" },
     title: { type: 'string', source: 'html', selector: '.title' },
     titleLevel: { type: 'string', default: 'p' },
@@ -77,6 +78,9 @@ registerBlockType( 'purdue-blocks/cta-card', {
     external: { type: 'boolean', default: false },
     height: { type: "string", default: "100" },
     headerColor: { type: 'string', default: 'black' },
+    titleAlign:{ type: 'string', default: 'left' },
+    contentAlign:{ type: 'string', default: 'left' },
+    imageRatio:{ type: 'string', default: '3by2' },
   },
 
   supports: {
@@ -100,18 +104,35 @@ registerBlockType( 'purdue-blocks/cta-card', {
         <PanelBody>
           <PanelRow>
             <RadioControl
-              label="Card type"
-              help="Choose Large if there will be a lot of text or lists on the card. Otherwise choose Small."
-              selected={ props.attributes.cardType }
+              label="Card layout"
+              help="Choose to align the elements vertically or horizontally"
+              selected={ props.attributes.layout }
               options={ [
-                { label: 'Large', value: 'large' },
-                { label: 'Small', value: 'small' },
+                { label: 'Horizontal', value: 'horizontal' },
+                { label: 'Vertical', value: 'vertical' },
               ] }
-              onChange={ ( option ) => {
-                props.setAttributes( { cardType: option } )
+              onChange={ ( layout ) => {
+                props.setAttributes( { layout} )
               } }
             />
           </PanelRow>
+          {
+            props.attributes.layout === "horizontal"?
+            <PanelRow>
+              <RadioControl
+                label="Card type"
+                help="Choose Large if there will be a lot of text or lists on the card. Otherwise choose Small."
+                selected={ props.attributes.cardType }
+                options={ [
+                  { label: 'Large', value: 'large' },
+                  { label: 'Small', value: 'small' },
+                ] }
+                onChange={ ( option ) => {
+                  props.setAttributes( { cardType: option } )
+                } }
+              />
+            </PanelRow>:""
+          } 
           <PanelRow>
             <RadioControl
               label="Height of the card"
@@ -145,7 +166,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
           </PanelRow>
           <PanelRow>
             <SelectControl
-              label="Color the header"
+              label="Color the title"
               value={ props.attributes.headerColor }
               options={ [
                 { label: 'Black', value: 'black' },
@@ -157,20 +178,66 @@ registerBlockType( 'purdue-blocks/cta-card', {
               } }
             />
           </PanelRow>
+          { props.attributes.layout === 'vertical'?
           <PanelRow>
             <RadioControl
-              label="Align image"
-              help="Choose to place the image to the left or right."
-              selected={ props.attributes.imgLocation }
-              options={ [
-                { label: 'Left', value: 'left' },
-                { label: 'Right', value: 'right' },
-              ] }
-              onChange={ ( option ) => {
-                props.setAttributes( { imgLocation: option } )
-              } }
+              label="Align the title"
+              selected={props.attributes.titleAlign}
+              options={[
+                { label: "Left", value: "left" },
+                { label: "Center", value: "center" },
+              ]}
+              onChange={(titleAlign) => {
+                props.setAttributes({ titleAlign });
+              }}
             />
-          </PanelRow>
+          </PanelRow>:""}
+          { props.attributes.layout === 'vertical'?
+          <PanelRow>
+            <RadioControl
+              label="Align the content"
+              help="This is for the optional content under the title."
+              selected={props.attributes.contentAlign}
+              options={[
+                { label: "Left", value: "left" },
+                { label: "Center", value: "center" },
+              ]}
+              onChange={(contentAlign) => {
+                props.setAttributes({ contentAlign });
+              }}
+            />
+          </PanelRow>:""}
+          { props.attributes.layout === 'vertical'?
+          <PanelRow>
+            <RadioControl
+              label="Image Aspect Ratio"
+              help="Image aspect ratio of width by height."
+              selected={props.attributes.imageRatio}
+              options={[
+                { label: "3 by 2", value: "3by2" },
+                { label: "1 by 1", value: "1by1" },
+              ]}
+              onChange={(imageRatio) => {
+                props.setAttributes({ imageRatio });
+              }}
+            />
+          </PanelRow>:""}
+          { props.attributes.layout === 'horizontal'?
+                    <PanelRow>
+                    <RadioControl
+                      label="Align image"
+                      help="Choose to place the image to the left or right."
+                      selected={ props.attributes.imgLocation }
+                      options={ [
+                        { label: 'Left', value: 'left' },
+                        { label: 'Right', value: 'right' },
+                      ] }
+                      onChange={ ( option ) => {
+                        props.setAttributes( { imgLocation: option } )
+                      } }
+                    />
+                  </PanelRow>:""
+        }
           <PanelRow>
             <TextareaControl
               label="Image Alt Text"
@@ -184,10 +251,10 @@ registerBlockType( 'purdue-blocks/cta-card', {
                 Remove image
             </Button>
           </PanelRow>:""}
-          { props.attributes.cardType ==="small" ?
+          { (props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical' ?
           <PanelRow>
             <CheckboxControl
-              label="Add a link to this card?"
+              label="Add a CTA link to this card?"
               help="Note you can only add this link when there are no links in the content of the card. Otherwise it'll cause error. "
               checked={ props.attributes.hasLink }
               onChange={ () =>
@@ -196,7 +263,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
             />
           </PanelRow>:''
             }
-          { props.attributes.cardType ==="small"&&props.attributes.hasLink ?
+          { ((props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical')&&props.attributes.hasLink ?
             ( <PanelRow>
               <TextControl
                 label="Call to action text"
@@ -204,8 +271,8 @@ registerBlockType( 'purdue-blocks/cta-card', {
                 onChange={ ( linkText ) => props.setAttributes( { linkText } ) }
               />
             </PanelRow> ) : '' }
-          { props.attributes.cardType ==="small"&&props.attributes.hasLink ? (
-            <PanelRow>
+            { ((props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical')&&props.attributes.hasLink ?
+            (<PanelRow>
               <TextControl
                 label="Link address"
                 value={ props.attributes.link }
@@ -213,7 +280,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
               />
             </PanelRow> ) : '' }
 
-          { props.attributes.cardType ==="small"&&props.attributes.hasLink ?
+            { ((props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical')&&props.attributes.hasLink ?
             <PanelRow>
               <CheckboxControl
                 label="Open link in new tab?"
@@ -226,10 +293,21 @@ registerBlockType( 'purdue-blocks/cta-card', {
         </PanelBody>
       </InspectorControls>,
 
-      <div className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }` }
+  <div className={ `cta-card-editor${ props.attributes.layout === 'horizontal' ? ' cta-card-horizonal' : ' cta-card-vertical' }
+  ${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' cta-card-small' : '' }
+  ${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' cta-card-large' : '' }
+  ${ props.attributes.imgLocation === 'left' && props.attributes.layout === 'horizontal' ? ' cta-card-left' : '' }
+  ${ props.attributes.imgLocation === 'right' && props.attributes.layout === 'horizontal' ? ' cta-card-right' : '' }
+  ${ props.attributes.imageRatio === '1by1' && props.attributes.layout === 'vertical' ? ' cta-card-1by1' : '' }
+  ${props.attributes.height==="auto"?" cta-card--height-auto":""}
+  ` }
       >
         <div className={'columns is-multiline'}>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+          <div className={ `column
+          ${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : '' }
+          ${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' is-one-third-desktop is-one-third-tablet is-full-mobile' : '' }
+          ${ props.attributes.layout === 'vertical' ? ' cta-card-vertical__image' : '' }
+          `}>
             <MediaUploadCheck>
               <MediaUpload
                 onSelect={ ( img ) => {
@@ -255,47 +333,58 @@ registerBlockType( 'purdue-blocks/cta-card', {
               />
             </MediaUploadCheck>
           </div>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-third-desktop is-two-third-tablet is-full-mobile' }`}>
-            <div className="title">
-              <RichText
-                tagname={ props.setAttributes.titleLevel }
-                value={ props.attributes.title }
-                className={ `title${
+          <div className={ `column
+          ${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : '' }
+          ${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' is-two-third-desktop is-two-third-tablet is-full-mobile' : '' }
+          `}>
+            <div className={`title${
                   props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
                 }${
                   props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
-                }` }
+                }`}>
+              <RichText
+                tagname={ props.setAttributes.titleLevel }
+                value={ props.attributes.title }
+                className={ `title
+                ${
+                  props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
+                }${
+                  props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
+                }
+                ${ props.attributes.titleAlign === 'center' && props.attributes.layout === 'vertical' ? ' header-centered' : '' }
+                ` }
                 onChange={ ( text ) => {
                   props.setAttributes( { title: text } )
                 } }
                 placeholder="Add Title (Optional)"
                 keepPlaceholderOnFocus={ true }
-                allowedFormats={ [] }
               >
               </RichText>
             </div>
             <div className="content">
-            { props.attributes.cardType === 'small' ? (
+            { (props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical'? (
               <RichText
                 tagname="p"
                 value={ props.attributes.subText }
-                className={ 'content' }
+                className={ `content${props.attributes.contentAlign === 'center' ? ' content-centered' : '' }` }
                 onChange={ ( text ) => {
                   props.setAttributes( { subText: text } )
                 } }
                 placeholder="Add Text (Optional)"
               >
-              </RichText>):(
-                  <InnerBlocks
-                  template={ BLOCKS_TEMPLATE }
-                  templateLock={ false }
-                  />
-              )}
-              { props.attributes.cardType ==="small"&&props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
-            </div>
+              </RichText>):""}
+              </div>
+            { (props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal')|| props.attributes.layout === 'vertical'? (
+                <InnerBlocks
+                template={ BLOCKS_TEMPLATE }
+                templateLock={ false }
+                />):""}
+              { (props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal')&&props.attributes.hasLink ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
+              { props.attributes.layout === 'vertical'&&props.attributes.hasLink ? <div className="purdue-blocks__button purdue-blocks__button--gold-light"><span>{ props.attributes.linkText }</span></div> : '' }
+            
           </div>
           </div>
-      </div>,
+      </div>
     ];
   },
 
@@ -314,31 +403,32 @@ registerBlockType( 'purdue-blocks/cta-card', {
     const blockProps = useBlockProps.save();
     const returned = (
       <div
-        className={ `cta-card-horizonal${ props.attributes.cardType === 'small' ? ' cta-card-small' : ' cta-card-large' }${ props.attributes.imgLocation === 'left' ? ' cta-card-left' : ' cta-card-right' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
+        className={ `${ props.attributes.layout === 'horizontal' ? 'cta-card-horizonal' : 'cta-card-vertical' }${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' cta-card-small' : '' }${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' cta-card-large' : '' }${ props.attributes.imgLocation === 'left' && props.attributes.layout === 'horizontal' ? ' cta-card-left' : '' }${ props.attributes.imgLocation === 'right' && props.attributes.layout === 'horizontal' ? ' cta-card-right' : '' }  ${ props.attributes.imageRatio === '1by1' && props.attributes.layout === 'vertical' ? ' cta-card-1by1' : '' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
         {...blockProps}
       >
         <div className={'columns is-multiline'}>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : ' is-one-third-desktop is-one-third-tablet is-full-mobile' }`}>
+          <div className={ `column${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : '' }${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' is-one-third-desktop is-one-third-tablet is-full-mobile' : '' }${ props.attributes.layout === 'vertical' ? ' cta-card-vertical__image' : '' }`}>
             <figure className="image is-3by2">
               <img src={ props.attributes.imgUrl } alt={ props.attributes.altText }></img>
             </figure>
           </div>
-          <div className={ `column${ props.attributes.cardType === 'small' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : ' is-two-thirds-desktop is-two-thirds-tablet is-full-mobile' }`}>
+          <div className={ `column${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' is-three-fifths-desktop is-three-fifths-tablet is-full-mobile' : '' }${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' is-two-third-desktop is-two-third-tablet is-full-mobile' : '' }`}>
             { props.attributes.title ? ( <RichText.Content
               className={ `title${
                 props.attributes.headerColor === 'gold' ? ' header-color-gold' : ''
               }${
                 props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
-              }` }
+              }${ props.attributes.titleAlign === 'center' && props.attributes.layout === 'vertical' ? ' header-centered' : '' }
+              ` }
               tagName={ props.attributes.titleLevel }
               value={ props.attributes.title }
             /> ) : '' }
-            { props.attributes.cardType === 'small' && props.attributes.subText ? ( <RichText.Content
-              className={ 'content' }
-              tagName="p"
+            { ((props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical') && props.attributes.subText ? ( <RichText.Content
+                className={ `content${props.attributes.contentAlign === 'center' ? ' content-centered' : '' }` }
+                tagName="p"
               value={ props.attributes.subText }
             /> ) : '' }
-            {props.attributes.cardType ==="small"&&props.attributes.hasLink === true&&props.attributes.linkText ?  
+            {props.attributes.cardType ==="small" && props.attributes.layout === 'horizontal'&&props.attributes.hasLink === true&&props.attributes.linkText ?  
               <a
                 href={ props.attributes.link }
                 target={ props.attributes.external ? '_blank' : '_self' }
@@ -347,7 +437,10 @@ registerBlockType( 'purdue-blocks/cta-card', {
               >
                 <span>{ props.attributes.linkText }</span>
               </a> : ''}
-            { props.attributes.cardType === 'large' ? ( <InnerBlocks.Content />) : '' }
+            { (props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal')|| props.attributes.layout === 'vertical' ? ( <InnerBlocks.Content />) : '' }
+            { props.attributes.layout === 'vertical'&&props.attributes.hasLink ? <a className="purdue-blocks__button purdue-blocks__button--gold-light" href={ props.attributes.link }
+                target={ props.attributes.external ? '_blank' : '_self' }      
+                rel="noopener noreferrer">{ props.attributes.linkText }</a> : '' }
           </div>
         </div>
       </div>
