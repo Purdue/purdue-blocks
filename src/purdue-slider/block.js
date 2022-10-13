@@ -29,7 +29,7 @@ const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.b
 const { apiFetch } = wp;
 const { useState } = wp.element;
 
-import { arrowUp,arrowDown } from '@wordpress/icons';
+import { arrowUp,arrowDown, alignCenter } from '@wordpress/icons';
 import './frontend';
 
 
@@ -80,7 +80,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
    * @returns {Mixed} JSX Component.
    */
 	edit:( props )=>{
-
     if(props.attributes.cards.length===0){
         props.setAttributes( {cards: [{
           header: '',
@@ -846,6 +845,11 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
         </PanelBody>
       </InspectorControls>,
       <div key="2" className={`purdue-block-slider-editor`}>
+        {
+          (props.attributes.cards.length ===1 && props.attributes.cards[0].header ==="") &&
+          (props.attributes.rtb.length ===1 && props.attributes.rtb[0].largeText ==="") &&
+          (props.attributes.tabs.length ===1 && props.attributes.tabs[0].header ==="")?<p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""
+        }
           <Disabled>
             <div class={`purdue-slider
             has-${props.attributes.background}-background section is-medium`}>

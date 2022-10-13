@@ -345,6 +345,7 @@ if ( props.attributes.rtb.length>0 ) {
         </PanelBody>
       </InspectorControls>,
       <div key="2" className={`purdue-block-rtb-cards-editor`}>
+        {props.attributes.rtb.length === 1 && props.attributes.rtb[0].largeText===""? <p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""}
           <Disabled>
             <div class={`purdue-rtb-card-container
             has-${props.attributes.background}-background section is-medium`}>
