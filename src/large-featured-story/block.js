@@ -364,7 +364,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
     const videoId = getVideoId(props.attributes.videoUrlYoutube);
     const iframeMarkup = <iframe id={videoId} class="pu-lightbox-youtube" title={props.attributes.videoTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
-      <div className="pu-cta-hero pu-large-image" {...blockProps}>
+      <div {...blockProps} className="pu-cta-hero pu-large-image">
         <div className="hero is-large">
           <div className="hero-body">
             <div

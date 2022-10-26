@@ -468,7 +468,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
     const url=`url(${props.attributes.backgroundImageUrl})`
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`pu-columns-row section
+      <div {...blockProps} className={`pu-columns-row section
                       ${props.attributes.bgColor ? ` ${props.attributes.bgColor}`:''}
                       ${props.attributes.sectionPadding === 'none'?"no-padding":""}
                       ${props.attributes.sectionPadding !== 'small'&&props.attributes.sectionPadding !== 'none'&&props.attributes.rowType==="regular" ? ` ${props.attributes.sectionPadding}` : ''}
@@ -480,7 +480,6 @@ registerBlockType( 'purdue-blocks/columns-row', {
                       `}
             style={{backgroundImage: `${props.attributes.addBackground?url:"none"}`}}
             aria-label={ props.attributes.backgroundImageAlt }
-            {...blockProps}
             >
             {props.attributes.rowType==="regular"?  
                 <div className={`content${props.attributes.sectionPadding !== 'none'?" container":""}`}>

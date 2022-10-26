@@ -259,7 +259,7 @@ registerBlockType("purdue-blocks/text-hero", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`pu-cta-hero pu-text-hero${props.attributes.position==="right"?" pu-text-hero--right":""}`} {...blockProps}>
+      <div {...blockProps} className={`pu-cta-hero pu-text-hero${props.attributes.position==="right"?" pu-text-hero--right":""}`}>
         <div className="hero is-medium">
           <div className="hero-body">
             <div

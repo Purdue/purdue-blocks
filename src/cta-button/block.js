@@ -177,8 +177,8 @@ registerBlockType( 'purdue-blocks/cta-button', {
     const blockProps = useBlockProps.save();
     const returned = (
       <div
+      {...blockProps}
         className={ 'card cta-card' }
-        {...blockProps}
       >{
         props.attributes.imgUrl?
         <div className={ 'card-image' }>

@@ -588,7 +588,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = props.attributes.name == '' ? (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`} {...blockProps}>
+      <div {...blockProps} className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">
@@ -731,7 +731,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         </div>
       </div>
     ) : (
-      <div className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`} {...blockProps}>
+      <div {...blockProps} className={`faculty-profile-card faculty-profile-card--${props.attributes.styleToggle} box${props.attributes.height==="auto"?"":" faculty-profile-card--full-height"}`}>
         <div className="media">
           <div className="media-left">
             <div className="image">

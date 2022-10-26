@@ -210,7 +210,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="info-box-hero" {...blockProps}>
+      <div {...blockProps} className="info-box-hero">
         <div
           className={`image`}
           role="img"

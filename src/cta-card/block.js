@@ -403,8 +403,8 @@ registerBlockType( 'purdue-blocks/cta-card', {
     const blockProps = useBlockProps.save();
     const returned = (
       <div
+      {...blockProps}
         className={ `${ props.attributes.layout === 'horizontal' ? 'cta-card-horizonal' : 'cta-card-vertical' }${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' cta-card-small' : '' }${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' cta-card-large' : '' }${ props.attributes.imgLocation === 'left' && props.attributes.layout === 'horizontal' ? ' cta-card-left' : '' }${ props.attributes.imgLocation === 'right' && props.attributes.layout === 'horizontal' ? ' cta-card-right' : '' }  ${ props.attributes.imageRatio === '1by1' && props.attributes.layout === 'vertical' ? ' cta-card-1by1' : '' }${props.attributes.height==="auto"?" cta-card--height-auto":""}` }
-        {...blockProps}
       >
         <div className={'columns is-multiline'}>
           <div className={ `column${ props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal' ? ' is-two-fifths-desktop is-two-fifths-tablet is-full-mobile' : '' }${ props.attributes.cardType === 'large' && props.attributes.layout === 'horizontal' ? ' is-one-third-desktop is-one-third-tablet is-full-mobile' : '' }${ props.attributes.layout === 'vertical' ? ' cta-card-vertical__image' : '' }`}>

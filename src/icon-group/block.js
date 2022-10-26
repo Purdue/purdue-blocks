@@ -178,7 +178,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
           <hr />
         </PanelBody>
       </InspectorControls>,
-      <div key="2" className={ props.className } className='icon-group'>
+      <div key="2" className='icon-group'>
         { iconDisplay }
       </div>,
     ];
@@ -196,7 +196,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
               </div>;
     } );
     return (
-      <div className={ props.className } className='icon-group' {...blockProps}>
+      <div {...blockProps} className='icon-group'>
         { iconFields }
       </div>
     );

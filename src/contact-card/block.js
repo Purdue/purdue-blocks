@@ -288,7 +288,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     return (
-      <div className={`pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`} {...blockProps}>
+      <div {...blockProps} className={`pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`}>
         {props.attributes.title?
         <RichText.Content
           className={ 'contact-card__title' }

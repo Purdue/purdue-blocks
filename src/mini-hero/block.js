@@ -236,7 +236,7 @@ registerBlockType("purdue-blocks/mini-hero", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`} {...blockProps}>
+      <div {...blockProps} className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`}>
         <div
           className={`image`}
           role="img"

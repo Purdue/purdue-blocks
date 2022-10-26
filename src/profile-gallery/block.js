@@ -267,7 +267,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
     const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
 
     const returned = (
-      <div className={`pu-profile-gallery columns is-multiline`} {...blockProps}>
+      <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
         {profiles.map((profile, i, profiles) => {
           if (profile.name !== 'add') {
 

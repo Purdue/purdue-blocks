@@ -177,7 +177,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     return (
-      <section className={ 'section pu-image-showcase' } {...blockProps}>
+      <section {...blockProps} className={ 'section pu-image-showcase' }>
         <div className={ 'columns is-centered has-decoration is-mobile' }>
           { props.attributes.images?props.attributes.images.map( img => {
             return (

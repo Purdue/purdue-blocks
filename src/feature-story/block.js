@@ -454,7 +454,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
    */
   save: ( props ) => {
     const blockProps = useBlockProps.save();
-    const returned = props.attributes.style ? ( <div className={`pu-feature-story${props.attributes.backgroundColor==="black"?" pu-feature-story__black":""}`} {...blockProps}>
+    const returned = props.attributes.style ? ( <div {...blockProps} className={`pu-feature-story${props.attributes.backgroundColor==="black"?" pu-feature-story__black":""}`}>
       <div className="hero is-medium">
         {props.attributes.linkImg&&props.attributes.ctaUrl?
         <a className={ `${
@@ -563,7 +563,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
         </div>
       </div>
     </div> ) : (
-      <div className="pu-feature-story pu-feature-story__narrow" {...blockProps}>
+      <div {...blockProps} className="pu-feature-story pu-feature-story__narrow">
         <div className={ `container pu-feature-story__container${
           props.attributes.contentAlign === 'left' ? '' : ' pu-feature-story__container-reversed'
         }` }>

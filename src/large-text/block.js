@@ -271,7 +271,7 @@ registerBlockType("purdue-blocks/large-text", {
     var CustomTag = props.attributes.headerLevel;
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-cta-hero pu-large-image pu-large-text" {...blockProps}>
+      <div {...blockProps} className="pu-cta-hero pu-large-image pu-large-text">
         <div className="hero is-large">
           <div className="hero-body">
             <div

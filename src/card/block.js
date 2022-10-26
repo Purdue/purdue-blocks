@@ -247,11 +247,11 @@ registerBlockType( 'purdue-blocks/card', {
 
     const returned = ( props.attributes.hasLink === true ?
       <a
+      {...blockProps}
         href={ props.attributes.link }
         target={ props.attributes.external ? '_blank' : '_self' }
         className={ `square-card${ props.attributes.backgroundColor === 'gold' ? ' background-gold' : '' }${ props.attributes.borderColor === 'black' ? ' border-black' : '' }` }
         rel="noopener noreferrer"
-        {...blockProps}
       >
         { props.attributes.imgUrl ?
           <figure className="image">
@@ -270,8 +270,8 @@ registerBlockType( 'purdue-blocks/card', {
         { props.attributes.linkText ? <div className="read-more-button"><span>{ props.attributes.linkText }</span></div> : '' }
       </a> :
       <div
+      {...blockProps}
         className={ `square-card${ props.attributes.backgroundColor === 'gold' ? ' background-gold' : '' }${ props.attributes.borderColor === 'black' ? ' border-black' : '' }` }
-        {...blockProps}
       >
         { props.attributes.imgUrl ?
           <figure className="image">

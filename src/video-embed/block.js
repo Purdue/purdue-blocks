@@ -126,7 +126,7 @@ registerBlockType( 'purdue-blocks/video-embed', {
     const match = props.attributes.urlText.match( regExp );
     const video_id = (match&&match[7].length==11)? match[7] : false;
 
-    return  <div className='purdue_video' {...blockProps}>
+    return  <div {...blockProps} className='purdue_video'>
       <iframe id="player" type="text/html" src={`https://www.youtube.com/embed/${ video_id }?modestbranding=1&rel=0&theme=light&controls=0&enablejsapi=1`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" rel="0" allowfullscreen/>
         <div className="purdue_video_controls">
           <div className="purdue_video_controls_pause">

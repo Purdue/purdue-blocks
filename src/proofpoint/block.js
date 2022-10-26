@@ -81,7 +81,7 @@ registerBlockType("purdue-blocks/proofpoint", {
   },
 
   supports: {
-    className: false,
+    className: true,
     anchor: true,
   },
 
@@ -335,7 +335,7 @@ registerBlockType("purdue-blocks/proofpoint", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div  className={ `pu-proofpoint${
+      <div {...blockProps} className={ `pu-proofpoint${
         props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
       }${
         props.attributes.border ? ' pu-proofpoint__border' : ''
@@ -349,7 +349,7 @@ registerBlockType("purdue-blocks/proofpoint", {
       ${
         props.attributes.hasLead?" pu-proofpoint__has-lead":""
       }
-      `} {...blockProps}>       
+      `}>       
           <div className="container">
           {props.attributes.lead && props.attributes.hasLead ?
             <RichText.Content
@@ -419,14 +419,14 @@ registerBlockType("purdue-blocks/proofpoint", {
       save: (props) => {
         const blockProps = useBlockProps.save();
         const returned = (
-          <div  className={ `pu-proofpoint${
+          <div {...blockProps} className={ `pu-proofpoint${
             props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
           }${
             props.attributes.border ? ' pu-proofpoint__border' : ''
           }
           ${
             props.attributes.height==="full"?" pu-proofpoint__height":""
-          }`} {...blockProps}>       
+          }`}>       
               <div className="container">
                {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
                 <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">

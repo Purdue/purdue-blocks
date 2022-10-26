@@ -197,8 +197,8 @@ registerBlockType( 'purdue-blocks/ad-banner', {
 
     const returned = (
       <div
+      {...blockProps}
         className={ 'banner ad-banner' }
-        {...blockProps}
       >
         <h2><span>{ props.attributes.heading }</span></h2>
         <a href={ props.attributes.link } className={ 'banner__ad' } target={ props.attributes.external ? '_blank' : '_self' } rel="noopener noreferrer">

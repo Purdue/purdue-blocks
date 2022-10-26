@@ -174,7 +174,7 @@ registerBlockType( 'purdue-blocks/anchor-link-navigation', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="anchor-link-block" {...blockProps}>
+      <div {...blockProps} className="anchor-link-block">
         <div class={`anchor-link-block-links
         ${props.attributes.accordion?" has-accordion":""}
         ${props.attributes.includeH2?"":" no-H2"}

@@ -137,7 +137,7 @@ registerBlockType("purdue-blocks/shape-separator", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`pu-shape-separator bg-${props.attributes.bottomColor}`} {...blockProps}>
+      <div {...blockProps} className={`pu-shape-separator bg-${props.attributes.bottomColor}`}>
         <div className={`pu-shape-separator--top bg-${props.attributes.topColor}`}></div>
       </div>
     );

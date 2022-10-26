@@ -265,7 +265,7 @@ registerBlockType("purdue-blocks/cta-hero", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-cta-hero" {...blockProps}>
+      <div {...blockProps} className="pu-cta-hero">
         <div className="hero is-large">
           <div className="hero-body">
             <div

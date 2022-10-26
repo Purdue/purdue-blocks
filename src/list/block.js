@@ -118,7 +118,7 @@ registerBlockType("purdue-blocks/list", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div  className="pu-list" {...blockProps}>
+      <div {...blockProps} className="pu-list">
             {!props.attributes.header ?'':(
           <h2>
             {props.attributes.header}

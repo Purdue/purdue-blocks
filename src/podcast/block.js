@@ -450,7 +450,7 @@ registerBlockType( 'purdue-blocks/podcast', {
               </a>;
     } );
     return (
-    <div className='purdue_podcast' {...blockProps}>
+    <div {...blockProps} className='purdue_podcast'>
       <div className="columns">
         <div className="column">
           <div className="purdue_podcast_podcast_name">

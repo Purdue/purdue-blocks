@@ -300,7 +300,7 @@ registerBlockType( 'purdue-blocks/sidebar-box', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     return (
-      <div className={`purdue-block-sidebar-box${props.attributes.addMargin?" purdue-block-sidebar-box--margin":""}`} {...blockProps}>
+      <div {...blockProps} className={`purdue-block-sidebar-box${props.attributes.addMargin?" purdue-block-sidebar-box--margin":""}`}>
         {props.attributes.title?
         <RichText.Content
           className={ 'sidebar-box__title' }

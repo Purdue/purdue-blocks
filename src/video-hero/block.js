@@ -353,7 +353,7 @@ registerBlockType("purdue-blocks/video-hero", {
     const blockProps = useBlockProps.save();
     const returned = (
       props.attributes.type==="carousel"?
-      <div className={`video-hero video-hero--carousel`} {...blockProps}>
+      <div {...blockProps} className={`video-hero video-hero--carousel`}>
         <div className={`video-hero--carousel__wrapper`}> 
         {
           props.attributes.images.length>0?props.attributes.images.map((img)=>{
@@ -408,9 +408,9 @@ registerBlockType("purdue-blocks/video-hero", {
           </a>:""}
         </div>
       </div>:
-      <div className={`video-hero video-hero--background-image`} 
+      <div {...blockProps} className={`video-hero video-hero--background-image`} 
       style={{backgroundImage: `url(${props.attributes.type==="video"?props.attributes.posterUrl:props.attributes.imgUrl})`}}
-      aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti} {...blockProps}>
+      aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti}>
         {props.attributes.type==="video"?
         <video autobuffer="" autoplay="" className="video-hero--video" loop="" muted="" playsinline="" poster={props.attributes.posterUrl || ''} src={props.attributes.videoUrl}/>:""}
         <div className="video-hero--overlay"></div>

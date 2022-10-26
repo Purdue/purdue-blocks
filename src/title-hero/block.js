@@ -349,7 +349,7 @@ registerBlockType( 'purdue-blocks/title-hero', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-title-hero" {...blockProps}>
+      <div {...blockProps} className="pu-title-hero">
         <div className="hero is-large">
           <div className={`hero-body${props.attributes.addSubtitle?" with-lead-in":""}`}>
             <div

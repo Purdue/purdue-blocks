@@ -185,8 +185,7 @@ registerBlockType( 'purdue-blocks/alert-banner', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={ `alert-banner alert-banner--${props.attributes.type} ${props.attributes.type}--${props.attributes.type === 'notice' ? props.attributes.noticeColor : props.attributes.alertColor}` } 
-      {...blockProps}
+      <div {...blockProps} className={ `alert-banner alert-banner--${props.attributes.type} ${props.attributes.type}--${props.attributes.type === 'notice' ? props.attributes.noticeColor : props.attributes.alertColor}` } 
       >
         <div className={'container'}>
           <RichText.Content

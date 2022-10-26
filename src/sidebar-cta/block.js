@@ -173,8 +173,8 @@ registerBlockType("purdue-blocks/sidebar-cta", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className={`purdue-blocks-sidebar-cta${props.attributes.backgroundColor==="black" ? ' purdue-blocks-sidebar-cta-black' : ''}
-      ${props.attributes.backgroundColor==="gray" ? ' purdue-blocks-sidebar-cta-gray' : ''}`} {...blockProps}>    
+      <div {...blockProps} className={`purdue-blocks-sidebar-cta${props.attributes.backgroundColor==="black" ? ' purdue-blocks-sidebar-cta-black' : ''}
+      ${props.attributes.backgroundColor==="gray" ? ' purdue-blocks-sidebar-cta-gray' : ''}`}>    
         { props.attributes.header ? ( <RichText.Content
           className={ 'header' }
           tagName="p"

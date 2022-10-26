@@ -347,7 +347,7 @@ registerBlockType("purdue-blocks/image-toggle-card", {
   save: (props) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div className="pu-image-toggle box" {...blockProps}>
+      <div {...blockProps} className="pu-image-toggle box">
         <div
           className={`pu-image-toggle__heading${
             props.attributes.cardStyle !== ""

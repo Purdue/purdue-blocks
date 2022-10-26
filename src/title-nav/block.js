@@ -180,14 +180,14 @@ registerBlockType( 'purdue-blocks/title-nav', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     return ! props.attributes.addButton ? (
-      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } {...blockProps}>
+      <section {...blockProps} className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` }>
         <RichText.Content className="pu-title-nav__title" tagName="h2" value={ props.attributes.titleText } />
         <ul className="pu-title-nav__menu">
           <InnerBlocks.Content />
         </ul>
       </section>
     ) : (
-      <section className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` } {...blockProps}>
+      <section {...blockProps} className={ `section pu-title-nav ${ props.attributes.hasOutline ? 'has-outline' : '' }` }>
         <div className="columns">
           <div className="column is-8 pu-title-nav__left">
             <RichText.Content className="pu-title-nav__title" tagName="h2" value={ props.attributes.titleText } />
