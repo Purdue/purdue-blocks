@@ -51,6 +51,7 @@ import "./contact-card/block.js";
 import "./text-hero/block.js";
 import "./purdue-slider/block.js";
 import "./rtb-cards/block.js";
+import "./purdue-vertical-slider/block.js";
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";

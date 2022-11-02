@@ -18,7 +18,6 @@ const id=window.location.hash;
 if(id){
     const el=document.querySelector(id);
     if(el){
-        console.log(el)
         if(el.classList.contains('accordion')){
             window.scrollTop=el.offsetTop;
             el.setAttribute('aria-expanded', 'true');

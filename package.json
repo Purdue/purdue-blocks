@@ -15,11 +15,16 @@
     "@wordpress/icons": "^2.4.0",
     "bulma": "^0.9.4",
     "file-loader": "^6.2.0",
-    "sass": "^1.51.0"
+    "gsap": "^3.11.3",
+    "react-sortablejs": "^6.1.4",
+    "sass": "^1.51.0",
+    "scrollmagic": "^2.0.8",
+    "sortablejs": "^1.15.0",
+    "swiper": "^8.4.4"
   },
   "devDependencies": {
     "@wordpress/e2e-test-utils": "^4.11.2",
-    "@wordpress/env": "^1.6.0",
+    "@wordpress/env": "^5.5.0",
     "@wordpress/scripts": "^23.0.0",
     "ignore-emit-webpack-plugin": "^2.0.2"
   }
