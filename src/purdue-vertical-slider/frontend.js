@@ -34,7 +34,7 @@ var slidesTL = gsap.timeline({
         scrub: 1,
         pin: ".site-content",
         snap: 1 / (sections.length - 1),
-        markers: true,
+        markers: false,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
             bullets.forEach((bullet, index) => {
@@ -57,13 +57,11 @@ for (let i = 0; i < count-1; i++) {
     slidesTL.to(wrap(i), {
       duration: 0.5,
       autoAlpha: 0,
-      scale:0,
     }, "=+2");
 
     slidesTL.to(wrap(i+1), {
       duration: 0.5,
       autoAlpha: 1,
-      scale:1,
     }, "<");
   }
   bullets.forEach((bullet, i) => {
@@ -74,12 +72,10 @@ for (let i = 0; i < count-1; i++) {
         bullet.classList.add("active")
         sections.forEach((section, i) => {
             section.style.visibility = "hidden"
-            section.style.transform = "scale(0,0)"
             section.style.opacity = 0
 
         })
         sections[i].style.visibility = "inherit"
-        sections[i].style.transform = "scale(1,1)"
         sections[i].style.opacity = "1"
     })
   });

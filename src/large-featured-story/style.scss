@@ -90,22 +90,78 @@
       }
     }
   }
-&.animate{
-  .hero {
-    .hero-body {
-      .background-image{
-        transform:scale(1);
-      }
-      .container{
-        transform:translateY(0);
-        opacity:1;
-        @include touch{
-          transform:none;
+  &.animate{
+    .hero {
+      .hero-body {
+        .background-image{
+          transform:scale(1);
+        }
+        .container{
+          transform:translateY(0);
+          opacity:1;
+          @include touch{
+            transform:none;
+          }
         }
       }
     }
   }
-}
+  &.pu-large-image--box{
+    .hero{
+      .hero-body{
+        padding-top:6rem;
+        padding-bottom: 6rem; 
+        min-height:850px;
+        display:flex;
+        align-items:center;
+        @include mobile{
+          padding-top:0;
+          padding-bottom: 0; 
+          min-height:0;
+        }
+        .background-image:before{
+          background: transparent linear-gradient(90deg, #0000009D 0%, #54545445 100%) 0% 0% no-repeat padding-box;
+          @include mobile{
+            background:none;
+          }
+        }
+        .container{
+          @include mobile{
+            padding:0;
+          }
+        }
+        .content{
+          padding:2.25rem;
+          background:$white;
+          opacity:0.9;
+          color:$black;
+          max-width:60%;
+          display: inline-flex;
+          @include mobile{
+            width:100%;
+            max-width:100%;
+          }
+          .story-title{
+            color:$black !important;
+          }
+          p{
+            color:$black;
+            &:last-child{
+              margin-bottom:0;
+            }
+          }
+          .read-more-button{
+            border:2px solid $black;
+            margin-top: 0.5rem;
+            &:hover{
+              background:$black !important;
+              color:$boiler-gold;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 .pu-lightbox-button{
   border: 2px solid $white;

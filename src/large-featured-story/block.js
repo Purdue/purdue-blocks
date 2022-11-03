@@ -73,6 +73,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
    */
 
   attributes: {
+    layout: { type: "string", default: "gradient" },
     storyTitle: { type: 'string', source: 'html', selector: '.story-title' },
     ctaOptionalSub: { type: "string", default: "" },
     hasLink: { type: 'boolean', default: false },
@@ -114,6 +115,19 @@ registerBlockType("purdue-blocks/large-featured-story", {
     return [
       <InspectorControls>
         <PanelBody>
+        <PanelRow>
+            <RadioControl
+              label="Layout"
+              selected={ props.attributes.layout }
+              options={ [
+                { label: 'Gradient', value: 'gradient' },
+                { label: 'Text Box', value: 'box' },
+              ] }
+              onChange={ ( layout ) => {
+                props.setAttributes( {layout} )
+              } }
+            />
+          </PanelRow> 
         <PanelRow>
             <SelectControl
               label="Heading Level of the Header"
@@ -270,7 +284,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
             </MediaUploadCheck> ) : '' }
         </PanelBody>
       </InspectorControls>,
-      <div className="pu-cta-hero pu-large-image pu-large-image-editor animate">
+      <div className={`pu-cta-hero pu-large-image pu-large-image-editor animate${props.attributes.layout === "box" ? " pu-large-image--box" : ""}`}>
         <div className="hero is-large">
           <div className="hero-body">
           <MediaUploadCheck>
@@ -364,7 +378,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
     const videoId = getVideoId(props.attributes.videoUrlYoutube);
     const iframeMarkup = <iframe id={videoId} class="pu-lightbox-youtube" title={props.attributes.videoTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
     const returned = (
-      <div {...blockProps} className="pu-cta-hero pu-large-image">
+      <div {...blockProps} className={`pu-cta-hero pu-large-image${props.attributes.layout === "box" ? " pu-large-image--box animate" : ""}`}>
         <div className="hero is-large">
           <div className="hero-body">
             <div

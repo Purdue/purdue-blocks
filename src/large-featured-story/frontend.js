@@ -1,4 +1,5 @@
-const largeStory=[...document.querySelectorAll(".pu-large-image")]
+const largeStory=[...document.querySelectorAll(".pu-large-image:not(.pu-large-image--box)")]
+console.log(largeStory)
 const wH=window.innerHeight;
 window.addEventListener('scroll', () => {
     if(largeStory&&largeStory.length>0){
