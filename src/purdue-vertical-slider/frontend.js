@@ -3,10 +3,12 @@ import ScrollTrigger from 'gsap/ScrollTrigger.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const sectionContainer = document.querySelector('.vertical-slides-container');
 const sections = gsap.utils.toArray(".vertical-slide");
 const bullets = gsap.utils.toArray(".slider-bullet");
 let maxH = 0;
-const getMaxH = () => {
+if(sections.length>0){
+  const getMaxH = () => {
     maxH = 0;
   sections.forEach((section) => {
     if(maxH < section.offsetHeight){
@@ -16,7 +18,7 @@ const getMaxH = () => {
     sections.forEach((section) => {
         section.style.height=maxH+"px"
       });
-      document.querySelector('.vertical-slides-container').style.height=maxH+"px"
+      sectionContainer.style.height=maxH+"px"
   return maxH;
 };
 
@@ -37,7 +39,7 @@ var slidesTL = gsap.timeline({
         onUpdate: (self) => {
             bullets.forEach((bullet, index) => {
                 const threshold = index / (bullets.length - 1);
-                if(Math.abs(self.progress - threshold)<0.001){
+                if(Math.abs(self.progress - threshold)<0.01){
                     bullets.forEach((bullet, index) => {
                         bullet.classList.remove("active")
                     })
@@ -81,3 +83,4 @@ for (let i = 0; i < count-1; i++) {
         sections[i].style.opacity = "1"
     })
   });
+}

@@ -19,3 +19,11 @@
 .components-panel__row{
 	min-height:0 !important;
 }
+.purdue-block-slider-editor{
+	.vertical-slides-container,.vertical-slide{
+		height:400px;
+	}
+	.purdue-slider-vertical .slider-bullets{
+		left:-3rem;
+	}
+}

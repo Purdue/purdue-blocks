@@ -31,7 +31,7 @@ const { useState,Fragment } = wp.element;
 const { isEmpty } = _;
 
 import { ReactSortable } from 'react-sortablejs';
-import './frontend';
+
 import ManualForm from './form';
 
 /**
@@ -50,7 +50,7 @@ import ManualForm from './form';
 
 registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
 	title: __( 'Purdue Vertical Slider' ),
-	description: __( 'Create a vertical slider.' ),
+	description: __( 'Create a vertical slider. Can only have one on each page.' ),
   icon: (
     <svg
       aria-hidden="true"
