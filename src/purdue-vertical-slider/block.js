@@ -33,7 +33,7 @@ const { isEmpty } = _;
 import { ReactSortable } from 'react-sortablejs';
 
 import ManualForm from './form';
-
+import ServerSideRender from '@wordpress/server-side-render';
 /**
  * Register: aa Gutenberg Block.
  *

@@ -32,7 +32,7 @@ var slidesTL = gsap.timeline({
         start: 'top top+='+81,
         end: `+=${(sections.length-1) *maxH}`,
         scrub: 1,
-        pin: "#page",
+        pin: ".site-content",
         snap: 1 / (sections.length - 1),
         markers: true,
         invalidateOnRefresh: true,
