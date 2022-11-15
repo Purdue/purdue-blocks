@@ -163,7 +163,7 @@
       padding-left:1rem;
     }
     @include mobile{
-      padding:1rem $side-padding-mobile 1.25rem;
+      padding:2.5rem $side-padding-mobile;
     }
     .story-title{
       color:$black !important;
