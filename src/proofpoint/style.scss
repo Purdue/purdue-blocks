@@ -77,21 +77,21 @@
      box-shadow: $box-shadow;
    }
    &__highlighted{
-     font-size: 5rem;
-     line-height:0.9;
+     font-size: 5rem !important;
+     line-height:0.9 !important;
      margin-bottom:0.5rem !important;
      text-align:center;
      text-transform: uppercase;
      font-family: $united-sans;
-     font-weight:400;
+     font-weight:400 !important;
      &-narrow{
        font-family: $united-sans-condensed;
      }
    }
    &__lead{
-    font-size:1.5rem;
-    line-height:1.3;
-    font-weight:700;
+    font-size:1.5rem !important;
+    line-height:1.3 !important;
+    font-weight:700 !important;
     margin-bottom:0.675rem !important;
     font-family:$acumin-pro;
     text-align:center;
@@ -106,10 +106,10 @@
     }
   }
    &__content{
-     font-weight:700;
-     font-size:1.25rem;
+     font-weight:700 !important;
+     font-size:1.25rem !important;
      text-align:center;
-     line-height:1.5;
+     line-height:1.5 !important;
      white-space:pre-wrap;
      font-family: $acumin-pro;
      &-narrow{

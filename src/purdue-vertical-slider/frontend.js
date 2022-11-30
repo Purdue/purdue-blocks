@@ -36,6 +36,7 @@ var slidesTL = gsap.timeline({
         snap: 1 / (sections.length - 1),
         markers: false,
         invalidateOnRefresh: true,
+        anticipatePin: true,
         onUpdate: (self) => {
             bullets.forEach((bullet, index) => {
                 const threshold = index / (bullets.length - 1);
