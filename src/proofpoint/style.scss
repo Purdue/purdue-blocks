@@ -48,10 +48,16 @@
    &__black{
      background-color:$black;
      color:$white;
+     p.pu-proofpoint__source{
+      color:$white;
+    }
+    p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
+     color:$white;
+   }
      .pu-proofpoint__button {
        font-family: $united-sans;
        font-weight: 700;
-       font-size: 1.125rem;
+       font-size: 1rem;
        text-transform: uppercase;
        display: inline-flex;
        justify-content: center;
@@ -132,7 +138,7 @@
    }
    &__button {
      font-family: $acumin-pro;
-     font-size: 1.125rem;
+     font-size: 1rem;
      display: inline-flex;
      justify-content: center;
      padding: 0.75rem 1rem;

@@ -19,6 +19,7 @@ const {
   PanelRow,
   CheckboxControl,
   TextareaControl,
+  TextControl,
   Button,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload, RichText, useBlockProps } = wp.blockEditor;
@@ -176,9 +177,12 @@ registerBlockType( 'purdue-blocks/cta-button', {
   save: ( props ) => {
     const blockProps = useBlockProps.save();
     const returned = (
-      <div
+      
+      <a
       {...blockProps}
         className={ 'card cta-card' }
+        href={ props.attributes.link }
+        target={ props.attributes.external ? '_blank' : '_self' } rel="noopener"
       >{
         props.attributes.imgUrl?
         <div className={ 'card-image' }>
@@ -193,11 +197,11 @@ registerBlockType( 'purdue-blocks/cta-button', {
           tagName="p"
           value={ props.attributes.subText }
         /> 
-          <a href={ props.attributes.link } className={ 'cta-card__button' } target={ props.attributes.external ? '_blank' : '_self' } rel="noopener">
+          <div className={ 'cta-card__button' }>
             { props.attributes.ctaText }
-          </a>
+          </div>
         </div>
-      </div>
+      </a>
     );
     return returned;
   },
