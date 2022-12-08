@@ -16,6 +16,7 @@
     "bulma": "^0.9.4",
     "file-loader": "^6.2.0",
     "gsap": "^3.11.3",
+    "jquery": "^3.6.1",
     "react-sortablejs": "^6.1.4",
     "sass": "^1.51.0",
     "scrollmagic": "^2.0.8",

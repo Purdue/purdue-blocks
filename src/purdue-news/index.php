@@ -77,7 +77,7 @@ function render_block_purdue_news($attributes){
                 $output.='<div class="column is-one-third-desktop is-one-third-tablet is-full-mobile"><div class="card feed-item">';
                 $output.='<a href="'.$results[$i]["link"].'" target="_blank" rel="noopener noreferrer">';
                 if($results[$i]["imgURL"]){
-                    $output.='<div class="card-bg-image image is-2by1" role="img" style="background-image: url('.$results[$i]["imgURL"].')" aria-label="'.$results[$i]["imgALT"].'"></div>';
+                    $output.='<div class="card-bg-image image is-16by9" role="img" style="background-image: url('.$results[$i]["imgURL"].')" aria-label="'.$results[$i]["imgALT"].'"></div>';
                 }
                 $output.='<div class="card-content">
                             <div class="media">

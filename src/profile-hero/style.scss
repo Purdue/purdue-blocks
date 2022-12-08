@@ -1,0 +1,71 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.pu-profile-hero {
+  position:relative;
+  &:before{
+    content:"";
+    width:100%;
+    height:80%;
+    background:$black;
+    position:absolute;
+    top:0;
+    left:0;
+  }
+  @include mobile{
+    &:before{
+      content:"";
+      height:min(80vw, 450px);
+    }
+  }
+  .section{
+    &.is-large{
+      padding-bottom:0 !important;
+    }
+    .container{
+      max-width:888px !important;
+      .columns .column.is-full-mobile{
+        @include mobile{
+          max-width: 500px;
+           margin: 0 auto;
+        }
+      }
+    }
+  }
+  &__content{
+    color:$white;
+    margin-left:2rem;
+
+    h1, p{
+      color:$white !important;
+    }
+    @include mobile{
+      color:$black;
+      margin-left:0;
+      margin-top:1rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid $boiler-gold;
+      h1, p{
+        color:$black !important;
+      }
+    }
+  }
+  .background-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  &--right{
+    .hero {
+      .hero-body {
+        &>.container{
+          justify-content:flex-end;
+        }
+      }
+    }
+  }
+}
+

@@ -333,7 +333,6 @@ registerBlockType("purdue-blocks/large-featured-story", {
                     } }
                     placeholder="Add header"
                     keepPlaceholderOnFocus={ true }
-                    allowedFormats={ [] }
                   >
                   </RichText>
                   <InnerBlocks

@@ -90,6 +90,14 @@ registerBlockType( 'purdue-blocks/site-hero', {
     styleToggle: { type: 'boolean', default: false },
     checkedSocials: { type: 'object', default: {} },
     currUrl: { type: 'string', default: '' },
+    align :{type: 'string', default: 'left' },
+    hasLink: { type: 'boolean', default: false },
+    ctaText1: { type: 'string', default: '' },
+    ctaUrl1: { type: 'string', default: '' },
+    external1: { type: 'boolean', default: false },
+    ctaText2: { type: 'string', default: '' },
+    ctaUrl2: { type: 'string', default: '' },
+    external2: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -159,6 +167,19 @@ registerBlockType( 'purdue-blocks/site-hero', {
               } }
             />
           </PanelRow>
+          < PanelRow>
+            <RadioControl
+              label="Text Position"
+              selected={ props.attributes.align }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Right', value: 'right' },
+              ] }
+              onChange={ ( align ) => {
+                props.setAttributes( { align } )
+              } }
+            />
+          </PanelRow>
         </PanelBody>
         <PanelBody>
           <PanelRow>
@@ -168,6 +189,69 @@ registerBlockType( 'purdue-blocks/site-hero', {
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
             />
           </PanelRow>
+          <PanelRow>
+            <CheckboxControl
+              label="Add CTA links?"
+              checked={ props.attributes.hasLink }
+              onChange={ () =>
+                props.setAttributes( { hasLink: ! props.attributes.hasLink } )
+              }
+            />
+          </PanelRow>
+          { props.attributes.hasLink ?
+            ( <PanelRow>
+              <TextControl
+                label="Call to action text for first button"
+                value={ props.attributes.ctaText1 }
+                onChange={ ( ctaText1 ) => props.setAttributes( { ctaText1 } ) }
+              />
+            </PanelRow> ) : '' }
+          { props.attributes.hasLink ? (
+            <PanelRow>
+              <TextControl
+                label="First button link address"
+                value={ props.attributes.ctaUrl1 }
+                onChange={ ( ctaUrl1 ) => props.setAttributes( { ctaUrl1 } ) }
+              />
+            </PanelRow> ) : '' }
+
+          { props.attributes.hasLink ?
+            <PanelRow>
+              <CheckboxControl
+                label="Open link of the first button in new tab?"
+                checked={ props.attributes.external1 }
+                onChange={ () =>
+                  props.setAttributes( { external1: ! props.attributes.external1 } )
+                }
+              />
+            </PanelRow> : '' }
+            { props.attributes.hasLink ?
+            ( <PanelRow>
+              <TextControl
+                label="Call to action text for second button"
+                value={ props.attributes.ctaText2 }
+                onChange={ ( ctaText2 ) => props.setAttributes( { ctaText2 } ) }
+              />
+            </PanelRow> ) : '' }
+          { props.attributes.hasLink ? (
+            <PanelRow>
+              <TextControl
+                label="Second button link address"
+                value={ props.attributes.ctaUrl2 }
+                onChange={ ( ctaUrl2 ) => props.setAttributes( { ctaUrl2 } ) }
+              />
+            </PanelRow> ) : '' }
+
+          { props.attributes.hasLink ?
+            <PanelRow>
+              <CheckboxControl
+                label="Open link of the second button in new tab?"
+                checked={ props.attributes.external2 }
+                onChange={ () =>
+                  props.setAttributes( { external2: ! props.attributes.external2 } )
+                }
+              />
+            </PanelRow> : '' }
           <PanelRow>
             <CheckboxControl
               label="Include Social Share Links"
@@ -320,7 +404,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
   save: ( props ) => {
     const returned = ! props.attributes.styleToggle ? (
       // 50/50 Hero
-      <div className="bulma-blocks-50-50-hero">
+      <div className={`bulma-blocks-50-50-hero${props.attributes.align === "right" ? " reversed-alignment":""}`}>
         <div className="hero is-medium">
           <div className="hero-body">
             <div className="container">
@@ -330,6 +414,24 @@ registerBlockType( 'purdue-blocks/site-hero', {
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
                 <p>{ props.attributes.subText }</p>
+                { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
+                  <div className="cta-button-container">
+                      { props.attributes.ctaText1 ? 
+                      <a className="purdue-blocks__button purdue-blocks__button--gold-dark" href={props.attributes.ctaUrl1}
+                        target={ props.attributes.external1 ? '_blank' : '_self' }
+                        rel="noopener noreferrer"
+                      >
+                        {props.attributes.ctaText1}
+                        </a>:""}
+                        { props.attributes.ctaText2 ? 
+                      <a className="purdue-blocks__button purdue-blocks__button--gold-dark purdue-blocks__button--outline" href={props.attributes.ctaUrl2}
+                        target={ props.attributes.external2 ? '_blank' : '_self' }
+                        rel="noopener noreferrer"
+                      >
+                        {props.attributes.ctaText2}
+                        </a>:""}
+                  </div>
+                ):""}
                 { props.attributes.includeSocial ? (
                   <div className="level is-mobile">
                     <div className="level-left">
@@ -378,7 +480,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
         </div>
       </div>
     ) : (
-      <div className="bulma-blocks-40-60-hero">
+      <div className={`bulma-blocks-40-60-hero${props.attributes.align === "right" ? " reversed-alignment":""}`}>
         <div className="hero is-medium">
           <div className="hero-body">
             <div className="container">
@@ -388,6 +490,24 @@ registerBlockType( 'purdue-blocks/site-hero', {
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
                 <p>{ props.attributes.subText }</p>
+                { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
+                  <div className="cta-button-container">
+                      { props.attributes.ctaText1 ? 
+                      <a className="purdue-blocks__button purdue-blocks__button--gold-light" href={props.attributes.ctaUrl1}
+                        target={ props.attributes.external1 ? '_blank' : '_self' }
+                        rel="noopener noreferrer"
+                      >
+                        {props.attributes.ctaText1}
+                        </a>:""}
+                        { props.attributes.ctaText2 ? 
+                      <a className="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href={props.attributes.ctaUrl2}
+                        target={ props.attributes.external2 ? '_blank' : '_self' }
+                        rel="noopener noreferrer"
+                      >
+                        {props.attributes.ctaText2}
+                        </a>:""}
+                  </div>
+                ):""}
                 { props.attributes.includeSocial ? (
                   <div className="level is-mobile">
                     <div className="level-left">

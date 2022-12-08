@@ -27,7 +27,7 @@ function render_block_purdue_slider($attributes){
                     $target=$card[external]?'targe="_blank"':'targe="_self"';
                     $output.='<a class="glide__slide card" href="'.$card[ctaLink].'" '.$target.'>';
                     if($card[imageURL] != ""){
-                        $output.='<div class="image is-2by1 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                        $output.='<div class="image is-16by9 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
                     }
                     $output.='<div class="content">';
                     if($card[storyType] != ""){
@@ -42,7 +42,7 @@ function render_block_purdue_slider($attributes){
                 }else{
                     $output.='<div class="glide__slide card">';
                     if($card[imageURL] != ""){
-                        $output.='<div class="image is-2by1 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                        $output.='<div class="image is-16by9 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
                     }
                     $output.='<div class="content>';
                     if($card[storyType] != ""){

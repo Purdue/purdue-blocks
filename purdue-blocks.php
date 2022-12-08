@@ -29,6 +29,7 @@ require_once plugin_dir_path(__FILE__) . 'src/custom-side-menu/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-slider/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/rtb-cards/index.php';
 require_once plugin_dir_path(__FILE__) . 'src/purdue-vertical-slider/index.php';
+require_once plugin_dir_path(__FILE__) . 'src/link-cards/index.php';
 // Register post list custom Blocks
 if (function_exists('acf_register_block_type')) {
   add_action('acf/init', 'my_register_blocks');

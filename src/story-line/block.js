@@ -305,7 +305,6 @@ registerBlockType( 'purdue-blocks/story-line', {
                       } }
                       placeholder="Add header"
                       keepPlaceholderOnFocus={ true }
-                      allowedFormats={ [] }
                     >
                     </RichText>
                     <InnerBlocks

@@ -1,0 +1,27 @@
+.purdue-link-cards{
+  &.has-white-background{
+    background:$white;
+    color:$black;
+  }
+  &.has-black-background{
+    background:$black;
+    color:$white;
+  }
+  &.has-gray-background{
+    background:$primary-background-gray;
+    color:$black;
+  }
+  .link-card.card{
+    .media-content{
+      p{
+        white-space: pre-wrap;
+       }
+    }
+    &:hover{
+      .media-content{
+        border-left:none;
+        padding-left: 1.25rem;
+      }
+    }
+  }
+}
