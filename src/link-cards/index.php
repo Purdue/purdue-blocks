@@ -23,6 +23,11 @@ function render_block_link_cards($attributes){
         $output='<div'.$id.' class="purdue-link-cards has-gray-background section is-medium">';
     }
     $output.='<div class="container">';
+    if($attributes['header']){
+        $output.='<h2 class="section-header align-'.$attributes['headerLocation'].'">';
+        $output.=$attributes['header'];
+        $output.='</h2>';
+    }
     if(sizeof($attributes['tabs'])>0){
         $output.='<div class="columns is-multiline">';
             foreach ( $attributes['tabs'] as $key => $tab ) {  
@@ -61,6 +66,14 @@ function register_block_link_cards() {
     'purdue-blocks/link-cards',
     array(
         'attributes' => array(
+            "header" => array(
+                "type"=> "string",
+                "default"=> "",
+            ),
+            "headerLocation" => array(
+                "type"=> "string",
+                "default"=> "left",
+            ),
             'background' => array(
                 "type" => "string",
                 "default" => "white",

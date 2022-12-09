@@ -82,7 +82,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
    */
 	edit:( props )=>{
     const { className, setAttributes } = props;
-    const { background, tabs, id, columns} = props.attributes;
+    const { header, headerLocation, background, tabs, id, columns} = props.attributes;
     const [addNew, setAddNew] = useState(false);
 
     const addManualTab = (newTab) => {
@@ -112,14 +112,35 @@ registerBlockType( 'purdue-blocks/link-cards', {
           <PanelRow>
             <SelectControl
               label="Choose a background"
-              value={ props.attributes.background }
+              value={ background }
               options={ [
                 { label: 'White', value: 'white' },
                 { label: 'Black', value: 'black' },
                 { label: 'Gray', value: 'gray' },
               ] }
               onChange={ ( background ) => {
-                props.setAttributes( { background } )
+                setAttributes( { background } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextControl
+              label="Add a header"
+              help="Add a header to this region."
+              value={ header }
+              onChange={ ( header ) => setAttributes( { header } ) }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Choose how to align the header."
+              selected={ headerLocation }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+              ] }
+              onChange={ ( headerLocation ) => {
+                setAttributes( { headerLocation } )
               } }
             />
           </PanelRow>
@@ -127,8 +148,8 @@ registerBlockType( 'purdue-blocks/link-cards', {
             <TextControl
               label="HTML Anchor"
               help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
-              value={ props.attributes.id }
-              onChange={ ( id ) => props.setAttributes( { id } ) }
+              value={id }
+              onChange={ ( id ) => setAttributes( { id } ) }
             />
           </PanelRow>
           <PanelRow>
@@ -152,8 +173,8 @@ registerBlockType( 'purdue-blocks/link-cards', {
 							setList={(val) => {
 								const cardTitles = [],
 									valueTitles = [];
-								tabs.map((item) => cardTitles.push(item.header));
-								val.map((item) => valueTitles.push(item.header));
+								tabs.map((item) => cardTitles.push(item.title));
+								val.map((item) => valueTitles.push(item.title));
 								if (_.isEqual(cardTitles, valueTitles)) {
 									return;
 								}
@@ -167,7 +188,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 							{tabs.map((item, i) => {
                 
 								return (
-									<PanelBody initialOpen={false} key={item.header} title={item.header}>
+									<PanelBody initialOpen={false} key={item.title} title={item.title}>
 										<ManualForm
 											initialState={item}
 											onSave={(val) => {
@@ -201,7 +222,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 								setAddNew(true);
 							}}
 						>
-							Add New Slide
+							Add New Card
 						</Button>
 					</PanelRow>
         </PanelBody>
@@ -214,6 +235,8 @@ registerBlockType( 'purdue-blocks/link-cards', {
 						<ServerSideRender
 							block="purdue-blocks/link-cards"
 							attributes={{
+                header,
+                headerLocation,
 								background,
 								tabs,
                 id,

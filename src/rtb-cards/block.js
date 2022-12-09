@@ -297,6 +297,27 @@ if ( props.attributes.rtb.length>0 ) {
           </PanelRow>
           <PanelRow>
             <TextControl
+              label="Add a header"
+              help="Add a header to this region."
+              value={ props.attributes.header }
+              onChange={ ( header ) => props.setAttributes( { header } ) }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Choose how to align the header."
+              selected={ props.attributes.headerLocation }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+              ] }
+              onChange={ ( headerLocation ) => {
+                props.setAttributes( { headerLocation } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <TextControl
               label="HTML Anchor"
               help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
               value={ props.attributes.id }
@@ -350,7 +371,8 @@ if ( props.attributes.rtb.length>0 ) {
             <div class={`purdue-rtb-card-container
             has-${props.attributes.background}-background section is-medium`}>
               <div class="container">
-
+              {props.attributes.header ?
+              <h2>{props.attributes.header}</h2>:"" }
                 {props.attributes.rtb.length >0 ? 
                   <div class={`columns${props.attributes.divider?' has-divider':''}`}>           
                         {props.attributes.rtb.map((card)=>{

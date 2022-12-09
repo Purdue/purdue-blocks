@@ -15,7 +15,11 @@ function render_block_rtb_cards($attributes){
         $output='<div'.$id.' class="purdue-rtb-card-container has-gray-background section is-medium">';
     }
     $output.='<div class="container">';
-
+    if($attributes['header']){
+        $output.='<h2 class="section-header align-'.$attributes['headerLocation'].'">';
+        $output.=$attributes['header'];
+        $output.='</h2>';
+    }
 if(sizeof($attributes['rtb'])>0){
             if($attributes['divider']){
                 $output.='<div class="columns has-divider">';    
@@ -71,6 +75,14 @@ function register_block_rtb_cards() {
     'purdue-blocks/rtb-cards',
     array(
         'attributes' => array(
+            "header" => array(
+                "type"=> "string",
+                "default"=> "",
+            ),
+            "headerLocation" => array(
+                "type"=> "string",
+                "default"=> "left",
+            ),
             'background' => array(
                 "type" => "string",
                 "default" => "white",

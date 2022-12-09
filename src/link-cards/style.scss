@@ -11,6 +11,15 @@
     background:$primary-background-gray;
     color:$black;
   }
+  h2.section-header{
+    margin-bottom:2rem !important;
+    @include mobile{
+      margin-bottom:1.5rem !important;
+    }
+    &.align-center{
+      text-align: center;
+    }
+  }
   .link-card.card{
     .media-content{
       p{
