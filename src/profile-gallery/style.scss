@@ -23,6 +23,7 @@
       background-size: cover;
       transition: all 0.3s ease-in-out;
       transform-origin: center;
+      background-repeat: no-repeat;
       &:hover {
         cursor: pointer;
       }
@@ -160,6 +161,7 @@ line-height:1.2;
           padding-top: calc(100% - 20px);
           background-size: cover;
           background-position: center;
+          background-repeat: no-repeat;
           &:before {
             content: '';
             width: 2px;

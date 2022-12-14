@@ -122,7 +122,7 @@
           padding:0 1rem 0 0;
         }
         @include mobile{
-          padding:0.5rem $side-padding-mobile 1.25rem;
+          padding:1.125rem $side-padding-mobile 2.5rem;
         }
       }
     }
@@ -163,7 +163,7 @@
       padding-left:1rem;
     }
     @include mobile{
-      padding:0.5rem $side-padding-mobile 1.25rem;
+      padding:1.125rem $side-padding-mobile 2.5rem;
     }
     .story-title{
       color:$black !important;

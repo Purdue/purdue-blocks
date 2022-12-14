@@ -208,10 +208,10 @@
           display:block;
         }
       }
-      &__content{
+      .purdue-block-quote__content{
         padding:3rem 2.5rem;
         font-family:$source-serif-pro;
-        font-size:1.5rem;
+        font-size:1.5rem !important;
         line-height:1.45;
         color:$black;
         position:relative;
@@ -270,7 +270,7 @@
           padding:3rem 1rem 0;
         }
       }
-      &__name{
+      .purdue-block-quote__name{
         font-family: $acumin-pro;
         font-size: 1.5rem;
         font-weight:700;
@@ -286,7 +286,7 @@
           width:100%;
         }
       }
-      &__title{
+      .purdue-block-quote__title{
         font-family: $acumin-pro;
         font-size: 1.5rem;
         font-weight:400;
