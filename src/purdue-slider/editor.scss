@@ -4,4 +4,9 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
- 
+ .purdue-slider .glide__slide .background-image {
+    padding-top: 50%;
+ }
+ .purdue-slider .glide__slide .content{
+    color:$black;
+ }
