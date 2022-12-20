@@ -30,13 +30,19 @@ var slidesTL = gsap.timeline({
     scrollTrigger: {
         trigger: ".purdue-slider-vertical",
         start: 'top top+='+81,
-        end: `+=${(sections.length-1) *maxH}`,
+        // end: `+=${(sections.length-1) *maxH}`,
+        end: "bottom -250%",
         scrub: 1,
-        pin: ".site-content",
+        // pin: ".site-content",
+        pin: ".site",
         snap: 1 / (sections.length - 1),
         markers: false,
         invalidateOnRefresh: true,
-        anticipatePin: true,
+        // anticipatePin: true,
+        defaults: {
+          ease: "none",
+          duration: 500
+        },
         onUpdate: (self) => {
             bullets.forEach((bullet, index) => {
                 const threshold = index / (bullets.length - 1);
@@ -58,12 +64,12 @@ for (let i = 0; i < count-1; i++) {
     slidesTL.to(wrap(i), {
       duration: 0.5,
       autoAlpha: 0,
-    }, "=+2");
+    }, ">");
 
     slidesTL.to(wrap(i+1), {
       duration: 0.5,
       autoAlpha: 1,
-    }, "<");
+    }, ">");
   }
   bullets.forEach((bullet, i) => {
     bullet.addEventListener("click", ()=>{

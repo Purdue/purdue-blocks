@@ -19,14 +19,14 @@
         padding-bottom:2.8rem;
       }
       &.has-background-black{
-        .purdue-block-quote-group{
-          &__control, &__arrow-left, &__arrow-right{
+       &.purdue-block-quote-group{
+        .purdue-block-quote-group__control, .purdue-block-quote-group__arrow-left,.purdue-block-quote-group__arrow-right{
             color:$boiler-gold;
           }
-          &__arrow-left:hover, &__arrow-right:hover{
+          .purdue-block-quote-group__arrow-left:hover,.purdue-block-quote-group__arrow-right:hover,.purdue-block-quote__content,.purdue-block-quote__title{
             color:$white;
           }
-          &__dot{
+          .purdue-block-quote-group__dot{
             border: 1px solid $primary-background-gray;
             &.active{
               background: $primary-background-gray;
