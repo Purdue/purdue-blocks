@@ -102,7 +102,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
   
     const removeItem = (identifier) => {
       const newTabs = tabs.filter((item) => {
-        return item.header!== identifier;
+        return item.title!== identifier;
       });
       setAttributes({ tabs: newTabs });
     };
@@ -199,7 +199,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 											style={{ marginTop: '5px' }}
 											isSecondary
 											onClick={() => {
-												removeItem(item.header);
+												removeItem(item.title);
 											}}
 										>
 											Remove Item
