@@ -26,7 +26,7 @@
         white-space: pre-wrap;
        }
     }
-    &:hover{
+    &:hover, &:focus{
       .media-content{
         border-left:none;
         padding-left: 1.25rem;

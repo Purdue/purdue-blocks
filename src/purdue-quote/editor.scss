@@ -42,18 +42,10 @@
                border-radius:none;
            } 
         }
-        .purdue-block-quote__title{
-           input{
-               background:none;
-               color:inherit;
-               font-size:inherit;
-               font-weight:inherit;
-               font-family:inherit;
-               border-top:none;
-               border-left: none;
-               border-right: none;
-               border-radius:none;
-           } 
+        .purdue-block-quote__title{     
+            padding: 0 8px;
+            line-height: 2;
+            min-height: 30px; 
         }
     }
     

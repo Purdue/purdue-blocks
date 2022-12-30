@@ -30,7 +30,7 @@ const {
   CheckboxControl,
 } = wp.components;
 
-const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
 const {
   Component,
   Fragment,
@@ -167,7 +167,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
     }; 
     const handleChangeTitle = ( title, index ) => {
       let quoteGroup = [ ...props.attributes.quoteGroup ];
-      quoteGroup[ index ].nameTitle = title.target.value;
+      quoteGroup[ index ].nameTitle = title;
       props.setAttributes( { quoteGroup } );
     }; 
     const handleMoveUp = ( index ) => {
@@ -285,14 +285,23 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                         onChange={ ( name ) => handleChangeName ( name, index )}
                       ></input>
                   </div>
-                  <div className="purdue-block-quote__title">
-                      <input
+                  <div>
+                  <RichText
+                    tagname="p"
+                    value={ quote.nameTitle }
+                    className={ 'purdue-block-quote__title' }
+                    onChange={ ( title ) => handleChangeTitle ( title, index ) }
+                    placeholder="Quote Name Title..."
+                    keepPlaceholderOnFocus={ true }
+                  >
+                  </RichText>    
+                      {/* <input
                         value={ quote.nameTitle }
                         className="input"
                         type="text"
                         placeholder="Quote Name Title..."
                         onChange={ ( title ) => handleChangeTitle ( title, index )}
-                      ></input>
+                      ></input> */}
                   </div>
                 </div>;
       } );
@@ -330,7 +339,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
 
         </PanelBody>
       </InspectorControls>,
-      <div key="2" className={ props.className } className={`purdue-block-quote-group-editor purdue-block-quote-group section${props.attributes.background==="black"?" background-black":""}${props.attributes.background==="gray"?" background-black-ter":""}`}>
+      <div key="2" className={`purdue-block-quote-group-editor purdue-block-quote-group section${props.attributes.background==="black"?" background-black":""}${props.attributes.background==="gray"?" background-black-ter":""}`}>
         { editorFields }
       </div>,
     ];
@@ -349,7 +358,12 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                           {quote.name!==""?
                           <p className="purdue-block-quote__name">{quote.name}</p>:""}
                           {quote.nameTitle!==""?
-                          <p className="purdue-block-quote__title">{quote.nameTitle}</p>:""}
+                          // <p className="purdue-block-quote__title">{quote.nameTitle}</p>:""}
+                          <RichText.Content
+                          className={ 'purdue-block-quote__title' }
+                          tagName="p"
+                          value={ quote.nameTitle }
+                          />:""}
                         </div>
                         {quote.ctaLink!==""?
                         <a className="purdue-block-quote__cta" href={quote.ctaLink} target={`${quote.external?"_blank":"_self"}`} rel="noopener noreferrer">{quote.ctaText}</a>:""}
