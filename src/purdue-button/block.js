@@ -72,6 +72,7 @@ registerBlockType("purdue-blocks/purdue-button", {
     external: { type: 'boolean', default: false },
     fancyColor: { type: "string", default: "black"  },
     height: { type: "string", default: "auto" },
+    isDownload: { type: 'boolean', default: false },
   },
 
   supports: {
@@ -212,6 +213,16 @@ registerBlockType("purdue-blocks/purdue-button", {
                 checked={ props.attributes.external }
                 onChange={ () =>
                   props.setAttributes( { external: ! props.attributes.external } )
+                }
+              />
+            </PanelRow> : '' }
+            { props.attributes.hasLink && props.attributes.fontStyle!=="fancy"?
+            <PanelRow>
+              <CheckboxControl
+                label="Is this a download button?"
+                checked={ props.attributes.isDownload }
+                onChange={ () =>
+                  props.setAttributes( { isDownload: ! props.attributes.isDownload } )
                 }
               />
             </PanelRow> : '' }

@@ -31,7 +31,7 @@ function render_block_link_cards($attributes){
     if(sizeof($attributes['tabs'])>0){
         $output.='<div class="columns is-multiline">';
             foreach ( $attributes['tabs'] as $key => $tab ) {  
-                $target=$tab[newtab]?'targe="_blank"':'targe="_self"';
+                $target=$tab[newtab]?'target="_blank"':'target="_self"';
                 $output.='<div class="'.implode(' ',$column_class).'">';
                 if($tab[link] != ""){
                     $output.='<a class="card media link-card" href="'.$tab[link].'" '.$target.'>';
