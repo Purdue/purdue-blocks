@@ -47,7 +47,8 @@ function render_block_purdue_vertical_slider($attributes){
             $output.='<div class="slider-bullets">';
             foreach ( $attributes['tabs'] as $key => $tab ) {  
                 $active = $key==0 ? " active":"";
-                $output.='<button class="slider-bullet'.$active.'"></button>';
+                $num = $key + 1;
+                $output.='<button class="slider-bullet'.$active.'" aria-label="slide '.$num.'"></button>';
             }  
             $output.='</div>';
         }

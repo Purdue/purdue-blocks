@@ -58,7 +58,8 @@ function render_block_purdue_slider($attributes){
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
             foreach ( $attributes['cards'] as $key => $card ) {  
-                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'"></button>';
+                $num = $key + 1;
+                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
@@ -93,7 +94,8 @@ function render_block_purdue_slider($attributes){
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
             foreach ( $attributes['tabs'] as $key => $tab ) {  
-                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'"></button>';
+                $num = $key + 1;
+                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }            
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
@@ -132,7 +134,8 @@ function render_block_purdue_slider($attributes){
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
             foreach ( $attributes['rtb'] as $key => $rtb ) {  
-                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'"></button>';
+                $num = $key + 1;
+                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">

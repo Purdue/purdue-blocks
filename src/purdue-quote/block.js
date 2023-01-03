@@ -374,7 +374,8 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
               </div>;
     } );
     const dots = props.attributes.quoteGroup.map((quote,index)=>{
-        return <span key={ index } className={`purdue-block-quote-group__dot${index===0?" active":""}`} data-target={index}></span>;
+      let num = index +1;
+        return <span key={ index } className={`purdue-block-quote-group__dot${index===0?" active":""}`} data-target={index} aria-label={`quote ${num}`}></span>;
       });
 
     return (
@@ -385,10 +386,10 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
         {props.attributes.quoteGroup.length>1?
         <div className="purdue-block-quote-group__arrow-wrapper">
           <div className="container">
-              <div className="purdue-block-quote-group__arrow purdue-block-quote-group__arrow-left">
+              <div className="purdue-block-quote-group__arrow purdue-block-quote-group__arrow-left" aria-label="previous">
                 <i class="fas fa-chevron-left"></i>
               </div>
-              <div className="purdue-block-quote-group__arrow purdue-block-quote-group__arrow-right">
+              <div className="purdue-block-quote-group__arrow purdue-block-quote-group__arrow-right" aria-label="next">
                 <i class="fas fa-chevron-right"></i>
               </div>
           </div> 
