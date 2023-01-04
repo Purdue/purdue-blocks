@@ -472,7 +472,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <div className="hero-image">
             <span
               className="background-image"
-              role="img"
+              role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
               aria-label={ props.attributes.altText }
             />
@@ -549,7 +549,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <div className="hero-image">
             <span
               className="background-image"
-              role="img"
+              role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
               aria-label={ props.attributes.altText }
             />

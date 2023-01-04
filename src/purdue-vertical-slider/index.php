@@ -23,8 +23,9 @@ function render_block_purdue_vertical_slider($attributes){
                 $output.='<div class="vertical-slide'.$activeSlide.'">';
                     $output.='<div class="columns">';
                         if($tab[media][url] != ""){
+                            $backgroundRole=$tab[media][alt]?' role="img" ':'';
                             $output.='<div class="column is-7-desktop image-column">';
-                            $output.='<div class="image background-image" role="img" style="background-image:url('.$tab[media][url].')" aria-label="'.$tab[media][alt].'"></div>';
+                            $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab[media][url].')" aria-label="'.$tab[media][alt].'"></div>';
                             $output.='</div>';
                         }
                         $output.='<div class="column content">';

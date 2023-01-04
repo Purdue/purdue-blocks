@@ -302,7 +302,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
               return (
                 <div
                   className={"background-image"}
-                  role="img"
+                  role={`${props.attributes.altText?"img":""}`}
                   style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                   aria-label={props.attributes.altText}
                 >
