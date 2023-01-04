@@ -39,7 +39,8 @@ function render_block_link_cards($attributes){
                     $output.='<div class="card media link-card">';
                 }
                         if($tab[media][url] != ""){
-                            $output.='<div class="image is-16by9 background-image" role="img" style="background-image:url('.$tab[media][url].')" aria-label="'.$tab[media][alt].'"></div>';
+                            $backgroundRole=$tab[media][alt]?' role="img" ':'';
+                            $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$tab[media][url].')" aria-label="'.$tab[media][alt].'"></div>';
                         }
                         $output.='<div class="media-content">';
                         $output.='<p class="title is-4">'.$tab[title].'</p>';                        

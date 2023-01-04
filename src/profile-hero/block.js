@@ -206,6 +206,7 @@ registerBlockType("purdue-blocks/profile-hero", {
                 <div className="columns">
                   <div className="column is-two-fifths-desktop is-full-mobile">
                     <div
+                    role={`${props.attributes.altText?"img":""}`}
                       className="background-image image is-1by1"
                       aria-label={props.attributes.altText}
                       style={{backgroundImage: `url(${props.attributes.imgUrl})`}}

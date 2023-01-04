@@ -239,7 +239,6 @@ registerBlockType("purdue-blocks/mini-hero", {
       <div {...blockProps} className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`}>
         <div
           className={`image`}
-          role="img"
           style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
           aria-label={props.attributes.altText}
         >

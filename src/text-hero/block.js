@@ -263,6 +263,7 @@ registerBlockType("purdue-blocks/text-hero", {
         <div className="hero is-medium">
           <div className="hero-body">
             <div
+            role={`${props.attributes.altText?"img":""}`}
               className="background-image"
               aria-label={props.attributes.altText}
               style={{backgroundImage: `url(${props.attributes.imgUrl})`}}

@@ -213,7 +213,6 @@ registerBlockType("purdue-blocks/info-box-hero", {
       <div {...blockProps} className="info-box-hero">
         <div
           className={`image`}
-          role="img"
           style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
           aria-label={props.attributes.altText}
         >

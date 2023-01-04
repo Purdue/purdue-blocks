@@ -464,7 +464,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
         rel="noopener noreferrer">
           <span
             className="background-image"
-            role="img"
+            role={`${props.attributes.altText?"img":""}`}
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           />
@@ -478,7 +478,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
         }` }>
           <span
             className="background-image"
-            role="img"
+            role={`${props.attributes.altText?"img":""}`}
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           />
@@ -574,7 +574,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
            rel="noopener noreferrer">
                 <div
                 className="background-image"
-                role="img"
+                role={`${props.attributes.altText?"img":""}`}
                 style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
                 aria-label={ props.attributes.altText }
               ></div>
@@ -585,7 +585,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
               </a>:
           <div
             className="background-image"
-            role="img"
+            role={`${props.attributes.altText?"img":""}`}
             style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
             aria-label={ props.attributes.altText }
           >
