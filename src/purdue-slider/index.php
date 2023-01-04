@@ -23,11 +23,12 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             foreach ( $attributes['cards'] as $card ) {  
+                $backgroundRole=$card[imageAlt]?' role="img" ':'';
                 if($card[ctaLink] != ""){
                     $target=$card[external]?'targe="_blank"':'targe="_self"';
                     $output.='<a class="glide__slide card" href="'.$card[ctaLink].'" '.$target.'>';
                     if($card[imageURL] != ""){
-                        $output.='<div class="image is-16by9 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
                     }
                     $output.='<div class="content">';
                     if($card[storyType] != ""){
@@ -42,7 +43,7 @@ function render_block_purdue_slider($attributes){
                 }else{
                     $output.='<div class="glide__slide card">';
                     if($card[imageURL] != ""){
-                        $output.='<div class="image is-16by9 background-image" role="img" style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
                     }
                     $output.='<div class="content>';
                     if($card[storyType] != ""){
@@ -72,11 +73,12 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             // var_dump($attributes['tabs']);
+            $backgroundRole=$tab[imageAlt]?' role="img" ':'';
             foreach ( $attributes['tabs'] as $tab ) {  
                 $output.='<div class="glide__slide columns">';
                 if($tab[imageURL] != ""){
                     $output.='<div class="column image-column">';
-                    $output.='<div class="image background-image" role="img" style="background-image:url('.$tab[imageURL].')" aria-label="'.$tab[imageAlt].'"></div>';
+                    $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab[imageURL].')" aria-label="'.$tab[imageAlt].'"></div>';
                     $output.='</div>';
                 }
                 $output.='<div class="content column">';
