@@ -1,6 +1,6 @@
 {
   "name": "purdue-blocks-cgb-guten-block",
-  "version": "1.24.25",
+  "version": "1.24.26",
   "private": true,
   "scripts": {
     "build": "wp-scripts build",
