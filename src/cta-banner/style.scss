@@ -5,7 +5,7 @@
  */
 
  .pu-cta-banner {
-   padding:2rem $side-padding-desktop;
+   padding:2.125rem $side-padding-desktop;
     @include touch{
       padding:1.25rem $side-padding-tablet;
     }
@@ -61,15 +61,15 @@
     }
     &__desc{
       font-family: $united-sans;
-      font-size:2rem !important;
+      font-size:2.25rem !important;
       font-weight:400;
-      line-height:1.5;
+      line-height:1.3 !important;
       margin-bottom:0 !important;
       margin-right:2.5rem;
       letter-spacing: 0.9px;
       text-transform: uppercase;
       @include touch{
-        font-size:1.5rem;
+        font-size:1.75rem !important;
         letter-spacing: 0.9px;
         text-align: center;
         margin-right:0;
@@ -105,14 +105,14 @@
     }
     &__desc{
       font-family: $acumin-pro;
-      font-size:1.5rem !important;
+      font-size:1.75rem !important;
       font-weight:600;
-      line-height:1.875rem;
+      line-height:1.3 !important;
       margin-bottom:0 !important;
-      margin-right:2rem;
+      margin-right:2.5rem;
       color:$white;
       @include touch{
-        line-height:2.125rem;
+        font-size:1.375rem !important;
         text-align: center;
         margin-right:0;
       }
