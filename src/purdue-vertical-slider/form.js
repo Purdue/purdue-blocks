@@ -103,7 +103,7 @@ const LinkForm = ({
 					)}
 				/>
 			</PanelRow>
-			<PanelRow>
+			{/* <PanelRow>
 				<TextareaControl
 					label={'Subtext'}
 					onChange={(val) => {
@@ -111,7 +111,7 @@ const LinkForm = ({
 					}}
 					value={newSubtext}
 				/>
-			</PanelRow>
+			</PanelRow> */}
 			<PanelRow>
 				<TextControl
 					label={'Button Label'}

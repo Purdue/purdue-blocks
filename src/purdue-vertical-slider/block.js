@@ -26,7 +26,7 @@ const {
   Disabled,
   Placeholder
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
 const { useState,Fragment } = wp.element;
 const { isEmpty } = _;
 
@@ -50,7 +50,7 @@ import ServerSideRender from '@wordpress/server-side-render';
 
 registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
 	title: __( 'Purdue Vertical Slider' ),
-	description: __( 'Create a vertical slider. Can only have one on each page.' ),
+	description: __( 'Create a vertical slider. Can only have one on each page. Please edit the subtext through the the page editor after the slide is added.' ),
   icon: (
     <svg
       aria-hidden="true"
@@ -106,6 +106,12 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
       });
       setAttributes({ tabs: newTabs });
     };
+    const handleChangeSubtext = ( subtext, index ) => {
+      const newTabs = [...tabs];
+      newTabs[index].subtext = subtext;  
+      setAttributes({ tabs: newTabs });
+    }; 
+ 
     return [
       <InspectorControls key="1">
         <PanelBody>
@@ -195,20 +201,67 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
       </InspectorControls>,
       <div key="2" className={`purdue-block-slider-editor`}>
 				{isEmpty(tabs) ? (
-					<Placeholder>{__('Add slides using the sidebar.')}</Placeholder>
+					<Placeholder>{__('Add slides using the sidebar. Please edit the subtext through the the editor after the slide is added.')}</Placeholder>
 				) : (
-					<Disabled>
-						<ServerSideRender
-							block="purdue-blocks/purdue-vertical-slider"
-							attributes={{
-								background,
-								tabs,
-                id,
-								context: 'editor',
-								className: className,
-							}}
-						/>
-					</Disabled>
+          <div className="purdue-slider-vertical has-white-background section is-medium">
+            <div className="container">
+            <div className="vertical-slides-container">
+          { tabs.map( ( tab, index ) => {
+                return <div key={ index }  className={ `vertical-slide${index===0?" active":""}`}>
+                    <div className="columns">
+                    <div className="column image-column">
+                      <div className="image background-image" 
+                          style={ { backgroundImage: `url(${ tab.media.url })` } }
+                          aria-label={ tab.media.alt }
+                          >
+                      </div>
+
+                    </div>  
+                    <div className="column content">
+                        <div className="content-wrap">
+                          <h2 className="title">{tab.header}</h2>
+                          <RichText
+                            tagname="p"
+                            value={ tab.subtext }
+                            className={ 'subtext' }
+                            onChange={ ( subtext ) => handleChangeSubtext ( subtext, index ) }
+                            placeholder="Subtext..."
+                            keepPlaceholderOnFocus={ true }
+                          >
+                          </RichText>
+                          {tab.buttonLink!==""?
+                        <div className="purdue-blocks__button purdue-blocks__button--gold-light">{tab.buttonLabel}</div>:""}
+                        </div> 
+                      </div> 
+                  </div>
+                </div>
+                } )
+              }
+              </div>
+            <div className="slider-bullets">
+            { tabs.map( ( tab, index ) => {
+                return <button className={`slider-bullet${index===0?" active":""}`} data-controls={`${index}`} aria-label={`slide ${index+1}`} onClick={
+                  (event,index)=>{
+                    let buttons = event.target.parentElement.querySelectorAll(".slider-bullet")
+                    buttons.forEach((bullet, i) => {
+                      bullet.classList.remove("active")
+                    })
+                    event.target.classList.add("active")
+                  let sections= event.target.parentElement.previousSibling.querySelectorAll(".vertical-slide")
+                  sections.forEach((section, i) => {
+                      section.style.visibility = "hidden"
+                      section.style.opacity = 0
+          
+                  })
+                  sections[event.target.dataset.controls].style.visibility = "inherit"
+                  sections[event.target.dataset.controls].style.opacity = "1"
+                  }
+                }></button>
+            })
+            }  
+            </div>
+            </div>
+          </div>
 				)}
       </div>,
     ];

@@ -22,6 +22,10 @@
 .purdue-block-slider-editor{
 	.vertical-slides-container,.vertical-slide{
 		height:400px;
+		.image-column{
+			flex: none;
+			width: 58.33333337%;
+		}
 	}
 	.purdue-slider-vertical .slider-bullets{
 		left:-3rem;
