@@ -31,7 +31,7 @@ var slidesTL = gsap.timeline({
         trigger: ".purdue-slider-vertical",
         start: 'top top+='+81,
         // end: `+=${(sections.length-1) *maxH}`,
-        end: "bottom -250%",
+        end: "bottom -300%",
         scrub: 1,
         pin: ".site-content",
         // pin: ".site",
@@ -62,13 +62,15 @@ sections.reverse();
 
 for (let i = 0; i < count-1; i++) {
     slidesTL.to(wrap(i), {
-      duration: 0.5,
+      duration: 0.3,
       autoAlpha: 0,
+      delay: 2
     }, ">");
 
     slidesTL.to(wrap(i+1), {
-      duration: 0.5,
+      duration: 0.3,
       autoAlpha: 1,
+      delay: 2
     }, ">");
   }
   bullets.forEach((bullet, i) => {

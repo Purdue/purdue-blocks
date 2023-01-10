@@ -597,7 +597,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   title={`Slides ${index+1} Details`}
                   initialOpen={true}
                 >
-                  {props.attributes.haslead?
+                  {props.attributes.hasLead?
                   <PanelRow>
                       <TextareaControl
                         label="Lead Text"
