@@ -49,6 +49,7 @@
 
           @include mobile {
             margin-bottom: 1.5rem;
+            font-size: 1rem;
           }
           &+.purdue-blocks__button{
             margin-top:1rem;
@@ -140,6 +141,7 @@
           @include mobile{
             width:100%;
             max-width:100%;
+            padding:1.25rem;
           }
           .story-title{
             color:$black !important;

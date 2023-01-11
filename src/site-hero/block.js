@@ -16,6 +16,7 @@ const {
   RadioControl,
   Button,
   ToggleControl,
+  Disabled,
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
 const { dispatch, select } = wp.data;
@@ -98,6 +99,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
     ctaText2: { type: 'string', default: '' },
     ctaUrl2: { type: 'string', default: '' },
     external2: { type: 'boolean', default: false },
+    mediaType: { type: 'string', default: 'image' },
   },
 
   supports: {
@@ -338,7 +340,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
           </div>
         </div>
         <div className="content">
-          <span>Choose a Hero Image</span>
+          <span>Choose a Hero Image or Video</span>
           <MediaUploadCheck>
             <MediaUpload
               onSelect={ ( img ) => {
@@ -348,10 +350,13 @@ registerBlockType( 'purdue-blocks/site-hero', {
                     props.attributes.altText !== '' ?
                       props.attributes.altText :
                       img.alt,
+                   mediaType: img.type,
                 } );
+                
               } }
               render={ ( { open } ) => {
                 return props.attributes.imgUrl !== '' ? (
+                  props.attributes.mediaType=== "image" ?
                     <div className={ 'bulma-blocks-editor-site-hero__preview' }>
                       <figure className={ 'image' }>
                         <img
@@ -368,11 +373,29 @@ registerBlockType( 'purdue-blocks/site-hero', {
                       <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
                         Remove image
                       </Button>
-                    </div>
+                    </div>:(
+                            props.attributes.mediaType=== "video" ?
+                            <div className={ 'bulma-blocks-editor-site-hero__preview' }>
+                              <figure className={ 'image' }>
+                                <Disabled>
+                                  <video muted playsinline="" src={props.attributes.imgUrl}>
+                                  </video>
+                                </Disabled>
+                              </figure>
+                              <Button
+                                className={ 'bulma-blocks-editor-site-hero__button' }
+                                onClick={ open }
+                              >
+                                Select a New Image
+                              </Button>
+                              <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
+                                Remove image
+                              </Button>
+                            </div>:"")
                   ) : (
                     <div className={ 'bulma-blocks-editor-site-hero__container' }>
                       <p className={ 'bulma-blocks-editor-site-hero__description' }>
-                        Pick an image from the media library.
+                        Pick an image or video from the media library.
                       </p>
                       <Button
                         className={ 'bulma-blocks-editor-site-hero__button' }
@@ -470,12 +493,15 @@ registerBlockType( 'purdue-blocks/site-hero', {
             </div>
           </div>
           <div className="hero-image">
+            {props.attributes.mediaType === "image"?
             <span
               className="background-image"
               role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
               aria-label={ props.attributes.altText }
-            />
+            />:""}
+            {props.attributes.mediaType === "video"?
+            <video muted="" loop="" autoplay="" playsinline="" src={props.attributes.imgUrl}/>:""}
           </div>
         </div>
       </div>

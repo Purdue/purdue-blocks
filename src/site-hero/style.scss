@@ -118,16 +118,13 @@
        top: 0;
        width: 60%;
        height: 100%;
+       overflow:hidden;
        @include touch {
          position: relative;
-         height: 20rem;
+         height: 56.25vw;
          width: 100%;
          flex-basis: auto;
          order: 1;
-       }
- 
-       @include mobile {
-         height: 17rem;
        }
  
        .background-image {
@@ -137,6 +134,15 @@
          background-position: center;
          background-repeat: no-repeat;
          background-size: cover;
+       }
+       video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
        }
      }
      .shadow {
@@ -273,7 +279,8 @@
        width: 50%;
        height: 100%;
        z-index: 4;
- 
+       overflow:hidden;
+
        &:before {
          content: "";
          background: black;
@@ -282,7 +289,7 @@
          position: absolute;
          left: 0;
          clip-path: polygon(0 0, 0% 100%, 100% 0);
- 
+        z-index:1;
          @include touch {
           content: none;
            clip-path: polygon(0 0, 0% 100%, 100% 100%);
@@ -295,16 +302,12 @@
  
        @include touch {
          position: relative;
-         height: 20rem;
+         height: 56.25vw;
          width: 100%;
          flex-basis: auto;
          order: 1;
        }
- 
-       @include mobile {
-         height: 17rem;
-       }
- 
+  
        .background-image {
          display: block;
          width: 100%;
@@ -312,6 +315,15 @@
          background-position: center;
          background-repeat: no-repeat;
          background-size: cover;
+       }
+       video{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
        }
      }
    }
