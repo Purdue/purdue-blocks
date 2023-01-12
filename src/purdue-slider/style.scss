@@ -139,7 +139,7 @@
         text-align:center;
         padding:1.25rem;
         position: relative;
-        background: white;
+        background: none;;
         .story-type, .story-tag{
           font-size:1rem;
           text-transform: uppercase;
@@ -203,6 +203,9 @@
         opacity: 1;
       }
     }
+    .purdue-slider--tabs .glide__track .title{
+      color:$white;
+    }
   }
   &.has-gray-background{
     background:$primary-background-gray;
@@ -248,12 +251,12 @@
       }
       .title{
         font-family: $united-sans;
-        font-size:2.5rem;
+        font-size:2.25rem;
         color:$black;
-        margin-bottom:1.875rem;
+        margin-bottom:1rem;
         @include mobile{
-          font-size:1.875rem;
-          margin-bottom:1.25rem;
+          font-size:1.75rem;
+          margin-bottom:1rem;
           margin-top:1.5rem;
       }
       }

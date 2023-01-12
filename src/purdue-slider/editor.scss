@@ -10,3 +10,18 @@
  .purdue-slider .glide__slide .content{
     color:$black;
  }
+ .glide.purdue-slider--default{
+   .glide__slides{
+      .glide__slide{
+         margin-right:1.5rem;
+      }
+   }
+ }
+ .glide.purdue-slider--tabs{
+   .glide__slides{
+      display:block;
+      .glide__slide{
+         width:100%;
+      }
+   }
+ }

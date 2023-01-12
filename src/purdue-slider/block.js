@@ -25,13 +25,11 @@ const {
   Button,
   Disabled
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
 const { apiFetch } = wp;
 const { useState } = wp.element;
 
 import { arrowUp,arrowDown, alignCenter } from '@wordpress/icons';
-import './frontend';
-
 
 /**
  * Register: aa Gutenberg Block.
@@ -486,13 +484,13 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                         onChange={ ( header ) => handleChangeHeader( header, index ) }
                       />
                   </PanelRow>  
-                  <PanelRow>
+                  {/* <PanelRow>
                       <TextareaControl
                         label="Content"
                         value={ card.subtext }
                         onChange={ ( subtext ) => handleChangeSubtext ( subtext, index ) }
                       />
-                  </PanelRow>               
+                  </PanelRow>                */}
                   <PanelRow>
                       <TextControl
                         label="Button Text"
@@ -690,6 +688,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
         <PanelRow>
             <RadioControl
               label="Slider Type"
+              help="Use the rich text on the page editor to add subtext for the full width cards option"
               selected={ props.attributes.type }
               options={ [
                 { label: 'Slider with cards link to stories', value: 'slider' },
@@ -850,13 +849,13 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
           (props.attributes.rtb.length ===1 && props.attributes.rtb[0].largeText ==="") &&
           (props.attributes.tabs.length ===1 && props.attributes.tabs[0].header ==="")?<p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""
         }
-          <Disabled>
             <div class={`purdue-slider
             has-${props.attributes.background}-background section is-medium`}>
               <div class="container">
                 <CustomTag class={`purdue-slider__header align-${props.attributes.headerLocation}`}> {props.attributes.header}</CustomTag>
               {
                 props.attributes.type === "slider" && props.attributes.cards.length >0 ? 
+                <Disabled>
                   <div class="glide purdue-slider--default">           
                     <div class="glide__track" data-glide-el="track">
                       <div class="glide__slides">
@@ -888,14 +887,15 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
                       </div>
-                </div>:""                
+                </div>
+                </Disabled>:""                
               }
               {
                 props.attributes.type === "tabs" && props.attributes.tabs.length >0 ? 
                   <div class="glide purdue-slider--tabs">           
                     <div class="glide__track" data-glide-el="track">
                       <div class="glide__slides">
-                        {props.attributes.tabs.map((card)=>{
+                        {props.attributes.tabs.map((card, index)=>{
                           return <div class="glide__slide columns">
                             {card.imageURL?
                               <div class="column image-column">
@@ -903,8 +903,17 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                                 </div>:""}
                             <div class="content column">
                               <p class="story-title">{card.header}</p>
-                              {card.subtext?
-                            <p class="story-subtext">{card.subtext}</p>:""}
+                              {/* {card.subtext?
+                            <p class="story-subtext">{card.subtext}</p>:""} */}
+                            <RichText
+                              tagname="p"
+                              value={ card.subtext }
+                              className={ 'story-subtext' }
+                              onChange={ ( subtext ) => handleChangeSubtext ( subtext, index ) }
+                              placeholder="Subtext..."
+                              keepPlaceholderOnFocus={ true }
+                            >
+                            </RichText>
                               {card.ctaLink?
                                 <div class="purdue-blocks__button purdue-blocks__button--gold-light"><span>{card.ctaText}</span></div>
                                 :""}
@@ -912,20 +921,11 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                             </div>
                         })}
                       </div></div>
-                      <div class="glide__bullets" data-glide-el="controls[nav]">
-                      {props.attributes.tabs.map((card, index)=>{
-                        return <button class="glide__bullet" data-glide-dir={index}></button>
-                        })
-                      }
-                      </div>
-                      <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
-                      </div>
                       </div>:""                
               }
               {
                 props.attributes.type === "rtb" && props.attributes.rtb.length >0 ? 
+                <Disabled>
                   <div class={`glide purdue-slider--rtb${props.attributes.divider?' has-divider':''}`} data-number={props.attributes.displayNumber}>           
                     <div class="glide__track" data-glide-el="track">
                       <div class="glide__slides">
@@ -959,14 +959,14 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
                       </div>
-                      </div>:""                
+                  </div>
+                </Disabled>:""                
               }
               {props.attributes.hasLink&&props.attributes.linkUrl?
                 <div class={`purdue-slider__button purdue-blocks__button ${props.attributes.background==="black"?'purdue-blocks__button--gold-dark':'purdue-blocks__button--gold-light'}`}><span>{props.attributes.linkText}</span></div>
               :""}
               </div>
             </div>
-          </Disabled>
       </div>,
     ];
   },
