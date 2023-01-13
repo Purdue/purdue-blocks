@@ -479,20 +479,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 >
                   <PanelRow>
                       <TextControl
-                        label="Header"
-                        value={ card.header }
-                        onChange={ ( header ) => handleChangeHeader( header, index ) }
-                      />
-                  </PanelRow>  
-                  {/* <PanelRow>
-                      <TextareaControl
-                        label="Content"
-                        value={ card.subtext }
-                        onChange={ ( subtext ) => handleChangeSubtext ( subtext, index ) }
-                      />
-                  </PanelRow>                */}
-                  <PanelRow>
-                      <TextControl
                         label="Button Text"
                         value={ card.ctaText }
                         onChange={ ( ctaText ) => handleChangeCtaText ( ctaText, index ) }
@@ -512,46 +498,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                         checked={ card.external }
                         onChange={ () =>handleChangeExternal ( index )}
                       />
-                    </PanelRow>
-                    <PanelRow>
-                    <MediaUploadCheck>
-                        <MediaUpload
-                          onSelect={ ( img ) => handleChangeImage (img, index)}
-                          render={ ( { open } ) => {
-                            return card.imageURL !== '' ? (
-                              <div className={ 'purdue-blocks-editor-news__preview' }>
-                                <figure className={ 'image' }>
-                                  <img
-                                    alt={ card.imageAlt }
-                                    src={ card.imageURL }
-                                  />
-                                </figure>
-                                <Button
-                                  className={ 'purdue-blocks-editor-feature-story__button' }
-                                  onClick={ open }
-                                >
-                                  Select a New Image
-                                </Button>
-                                <Button className={ 'bulma-blocks-editor-site-hero__button purdue-news__remove-image-button' } onClick={() => handleRemoveImage(index)}>
-                                  Remove image
-                                </Button>
-                              </div>
-                            ) : (
-                              <div className={ 'purdue-blocks-editor-news__container' }>
-                                <p className={ 'purdue-blocks-editor-news__description' }>
-                                  Pick an image from the media library.
-                                </p>
-                                <Button
-                                  className={ 'purdue-blocks-editor-feature-story__button' }
-                                  onClick={ open }
-                                >
-                                  Open Media Library
-                                </Button>
-                              </div>
-                            );
-                          } }
-                        />
-                      </MediaUploadCheck>
                     </PanelRow>
                     {props.attributes.tabs.length>1?
                       <hr></hr>:""
@@ -688,7 +634,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
         <PanelRow>
             <RadioControl
               label="Slider Type"
-              help="Use the rich text on the page editor to add subtext for the full width cards option"
+              help="Use the rich text on the page editor to edit the full width cards option"
               selected={ props.attributes.type }
               options={ [
                 { label: 'Slider with cards link to stories', value: 'slider' },
@@ -897,14 +843,46 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                       <div class="glide__slides">
                         {props.attributes.tabs.map((card, index)=>{
                           return <div class="glide__slide columns">
-                            {card.imageURL?
                               <div class="column image-column">
-                                <div class="image background-image" role="img" style={{backgroundImage:`url(${card.imageURL})`}}></div>
-                                </div>:""}
+                                <MediaUploadCheck>
+                                    <MediaUpload
+                                      onSelect={ ( img ) => handleChangeImage (img, index)}
+                                      render={ ( { open } ) => {
+                                        return card.imageURL !== '' ? (
+                                          <div class="image background-image" role="img" style={{backgroundImage:`url(${card.imageURL})`}}>
+                                          
+                                            <Button
+                                              className={ 'remove-image-button' }
+                                              onClick={ open }
+                                            >
+                                              Select a New Image
+                                            </Button>
+                                            <Button className={ 'remove-image-button' } onClick={() => handleRemoveImage(index)}>
+                                              Remove image
+                                            </Button>
+                                          </div>
+                                        ) : (
+                                            <Button
+                                              className={ 'remove-image-button' }
+                                              onClick={ open }
+                                            >
+                                              Open Media Library
+                                            </Button>
+                                        );
+                                      } }
+                                    />
+                                  </MediaUploadCheck>
+                                </div>
                             <div class="content column">
-                              <p class="story-title">{card.header}</p>
-                              {/* {card.subtext?
-                            <p class="story-subtext">{card.subtext}</p>:""} */}
+                              <RichText
+                              tagname="p"
+                              value={ card.header }
+                              className={ 'story-title' }
+                              onChange={ ( header ) => handleChangeHeader ( header, index ) }
+                              placeholder="Header..."
+                              keepPlaceholderOnFocus={ true }
+                            >
+                            </RichText>
                             <RichText
                               tagname="p"
                               value={ card.subtext }
