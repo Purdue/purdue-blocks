@@ -100,7 +100,10 @@ registerBlockType( 'purdue-blocks/story-line', {
   edit: ( props ) => {
     const removeMedia = () => {
       props.setAttributes({
-        imgUrl: ''
+        imgUrl: '',
+        altText: '',
+        uploadURL: '',
+        uploadTitle: ''
       });
     }
     if(props.attributes.backgroundColor === 'dark') {
@@ -355,8 +358,8 @@ registerBlockType( 'purdue-blocks/story-line', {
                         </video>
                       </Disabled>
                       <div className="image-buttons">
-                      <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new Video' : 'Select an Video' }</Button>
-                      { props.attributes.imgUrl ?
+                      <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.uploadURL !== '' ? 'Select a new Video' : 'Select an Video' }</Button>
+                      { props.attributes.uploadURL ?
                       <Button className={ 'remove-image-button' } onClick={removeMedia}>
                           Remove Video
                       </Button>:""}  
