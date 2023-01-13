@@ -22,7 +22,8 @@ const {
   Button,
   RadioControl,
   CheckboxControl,
-  SelectControl
+  SelectControl,
+  Disabled
 } = wp.components;
 const {  RichText,InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
 
@@ -80,6 +81,11 @@ registerBlockType( 'purdue-blocks/story-line', {
     backgroundImageUrl: { type: 'string', default: '' },
     addExtraLineTop:{ type: 'boolean', default: false },
     id: { type: 'string', default: '' },
+    type: { type: 'string', default: 'image' },
+    youtubeTitle: { type: 'string', default: '' },
+    youtubeURL: { type: 'string', default: '' },
+    uploadURL: { type: 'string', default: '' },
+    uploadTitle: { type: 'string', default: '' },
   },
 
   supports: {
@@ -102,6 +108,9 @@ registerBlockType( 'purdue-blocks/story-line', {
     }else{
       props.setAttributes( { backgroundImageUrl: '' } )
     }
+    const videoId = getVideoId(props.attributes.youtubeURL);
+    const iframeMarkup = <iframe id={videoId} class="storyline-youtube" title={props.attributes.youtubeTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
+
     return [
       <InspectorControls>
         <PanelBody>
@@ -130,11 +139,45 @@ registerBlockType( 'purdue-blocks/story-line', {
                 } }
               />
             </PanelRow>
-
+            <PanelRow>
+              <RadioControl
+                label="Media Type"
+                help="Choose between image, upload video, or Youtube video."
+                selected={ props.attributes.type }
+                options={ [
+                  { label: 'Image', value: 'image' },
+                  { label: 'Upload Video', value: 'upload' },
+                  { label: 'Youtube Video', value: 'youtube' },
+                ] }
+                onChange={ ( type ) => {
+                  props.setAttributes( { type } )
+                } }
+              />
+            </PanelRow>
+            {
+              props.attributes.type === "youtube"?
+              <PanelRow>
+              <TextControl
+                label="Youtube video URL"
+                value={ props.attributes.youtubeURL }
+                onChange={ ( youtubeURL ) => props.setAttributes( { youtubeURL } ) }
+              />
+            </PanelRow>:""
+            }
+          { props.attributes.type === "youtube"? (
+            <PanelRow>
+              <TextControl
+                label="Youtube Video Title"
+                value={ props.attributes.youtubeTitle }
+                onChange={ ( youtubeTitle ) => {
+                  props.setAttributes( { youtubeTitle } )
+                 } }
+              />
+            </PanelRow> ) : '' }
           <PanelRow>
             <RadioControl
-              label="Image Alignment"
-              help="Choose to place the image to the left or right."
+              label="Media Alignment"
+              help="Choose to place the media to the left or right."
               selected={ props.attributes.imageAlign }
               options={ [
                 { label: 'Left', value: 'left' },
@@ -145,7 +188,6 @@ registerBlockType( 'purdue-blocks/story-line', {
               } }
             />
           </PanelRow>
-
           <PanelRow>
             <RadioControl
               label="Content Alignment"
@@ -261,7 +303,11 @@ registerBlockType( 'purdue-blocks/story-line', {
          >
         <div className={`container`}>
           <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
-            <div className={`column is-half-desktop is-half-tablet is-full-mobile`}>              
+            <div className={`column is-half-desktop is-half-tablet is-full-mobile`}>   
+            {
+              props.attributes.type === "youtube"?
+              <Disabled>{iframeMarkup}</Disabled>:
+              props.attributes.type === "image"?
               <MediaUploadCheck>
                 <MediaUpload
                   onSelect={ ( img ) => {
@@ -291,7 +337,36 @@ registerBlockType( 'purdue-blocks/story-line', {
                     );
                   } }
                 />
-              </MediaUploadCheck>
+              </MediaUploadCheck>:
+              props.attributes.type=== "upload" ?
+              <MediaUploadCheck>
+              <MediaUpload
+                onSelect={ ( video ) => {
+                  props.setAttributes( {
+                    uploadURL: video.url,
+                    uploadTitle: video.title,
+                  } );
+                } }
+                render={ ( { open } ) => {
+                  return (
+                    <div className={`image-container`}>
+                      <Disabled>
+                        <video muted playsinline=""  title={props.attributes.uploadTitle} src={props.attributes.uploadURL}>
+                        </video>
+                      </Disabled>
+                      <div className="image-buttons">
+                      <Button className={ 'remove-image-button' } onClick={ open }>{ props.attributes.imgUrl !== '' ? 'Select a new Video' : 'Select an Video' }</Button>
+                      { props.attributes.imgUrl ?
+                      <Button className={ 'remove-image-button' } onClick={removeMedia}>
+                          Remove Video
+                      </Button>:""}  
+                      </div>                    
+                    </div>
+                  );
+                } }
+              />
+            </MediaUploadCheck>:""
+            }           
               
               </div>
               <div className={`column is-half-desktop is-half-tablet is-full-mobile${props.attributes.contentAlign === 'bottom' ? ' column-align-bottom' : ''}${props.attributes.contentAlign === 'center' ? ' column-align-center' : ''}`}>
@@ -333,6 +408,9 @@ registerBlockType( 'purdue-blocks/story-line', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
+    const videoId = getVideoId(props.attributes.youtubeURL);
+    const iframeMarkup = <iframe id={videoId} class="storyline-youtube" title={props.attributes.youtubeTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
+
     const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = <div 
         id={ props.attributes.id?props.attributes.id:null }
@@ -352,8 +430,14 @@ registerBlockType( 'purdue-blocks/story-line', {
           <div className={`columns is-multiline${props.attributes.imageAlign === 'left' ? '' : ' columns-reversed'}`}>
             <div className={`column is-half-desktop is-half-tablet is-full-mobile`}>
               <div className={`image-container`}>
-              { props.attributes.imgUrl ?
+              { props.attributes.imgUrl && props.attributes.type==="image" ?
                 <img className={ 'image' } src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
+                :""}
+               { props.attributes.youtubeURL && props.attributes.type==="youtube" ?
+               <div class="iframe-container">{iframeMarkup}</div>                
+                :""}
+               { props.attributes.uploadURL && props.attributes.type==="upload" ?
+                 <video controls playsinline="" src={props.attributes.uploadURL} title={props.attributes.uploadTitle}/>
                 :""}
               </div>
             </div>
@@ -382,3 +466,11 @@ registerBlockType( 'purdue-blocks/story-line', {
     return returned;
   },
 } );
+function getVideoId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url?.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}

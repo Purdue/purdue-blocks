@@ -145,6 +145,11 @@
   }
   .image-container{
     padding:0 3.5vw 0 0;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
     img{
       width:100%;
       display:block;
@@ -154,6 +159,19 @@
     }
     @include mobile{
       padding-right:0;
+    }
+    .iframe-container{
+      padding-top: 56.25%;
+      position: relative;
+      flex: 1;
+    }
+    iframe{
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
   .content-container{

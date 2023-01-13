@@ -100,6 +100,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
     ctaUrl2: { type: 'string', default: '' },
     external2: { type: 'boolean', default: false },
     mediaType: { type: 'string', default: 'image' },
+    mediaTitle: { type: 'string', default: '' },
   },
 
   supports: {
@@ -344,6 +345,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <MediaUploadCheck>
             <MediaUpload
               onSelect={ ( img ) => {
+                console.log(img)
                 props.setAttributes( {
                   imgUrl: img.url,
                   altText:
@@ -351,6 +353,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
                       props.attributes.altText :
                       img.alt,
                    mediaType: img.type,
+                   mediaTitle: img.title
                 } );
                 
               } }
@@ -368,7 +371,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
                         className={ 'bulma-blocks-editor-site-hero__button' }
                         onClick={ open }
                       >
-                        Select a New Image
+                        Select a New image
                       </Button>
                       <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
                         Remove image
@@ -386,10 +389,10 @@ registerBlockType( 'purdue-blocks/site-hero', {
                                 className={ 'bulma-blocks-editor-site-hero__button' }
                                 onClick={ open }
                               >
-                                Select a New Image
+                                Select a New Video
                               </Button>
                               <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
-                                Remove image
+                                Remove Video
                               </Button>
                             </div>:"")
                   ) : (
@@ -501,7 +504,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
               aria-label={ props.attributes.altText }
             />:""}
             {props.attributes.mediaType === "video"?
-            <video muted="" loop="" autoplay="" playsinline="" src={props.attributes.imgUrl}/>:""}
+            <video muted="" title={props.attributes.mediaTitle} loop="" autoplay="" playsinline="" src={props.attributes.imgUrl}/>:""}
           </div>
         </div>
       </div>
