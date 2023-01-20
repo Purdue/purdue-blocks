@@ -26,6 +26,7 @@ const {
   Disabled
 } = wp.components;
 const {  RichText,InspectorControls, MediaUploadCheck, MediaUpload, InnerBlocks } = wp.blockEditor;
+const { RawHTML } = wp.element;
 
 const BLOCKS_TEMPLATE = [
   [ 'core/paragraph', { placeholder: 'Body content copy' } ],
@@ -113,7 +114,8 @@ registerBlockType( 'purdue-blocks/story-line', {
     }
     const videoId = getVideoId(props.attributes.youtubeURL);
     const iframeMarkup = <iframe id={videoId} class="storyline-youtube" title={props.attributes.youtubeTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
-
+    // const youtubeurl=`https://www.youtube.com/embed/${videoId}`;
+    // const iframeMarkup = `[iframe id=${videoId} title={props.attributes.youtubeTitle } src=${youtubeurl} frameborder="0" allow="fullscreen"]`;
     return [
       <InspectorControls>
         <PanelBody>
@@ -412,7 +414,9 @@ registerBlockType( 'purdue-blocks/story-line', {
    */
   save: ( props ) => {
     const videoId = getVideoId(props.attributes.youtubeURL);
-    const iframeMarkup = <iframe id={videoId} class="storyline-youtube" title={props.attributes.youtubeTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
+    // const iframeMarkup = <iframe id={videoId} class="storyline-youtube" title={props.attributes.youtubeTitle } src={`https://www.youtube.com/embed/${videoId}`} frameborder="0" allowfullscreen></iframe>;
+    const youtubeurl=`https://www.youtube.com/embed/${videoId}`;
+    const iframeMarkup = `[iframe id=${videoId} title=${props.attributes.youtubeTitle } src=${youtubeurl} frameborder="0" allow="fullscreen"]`;
 
     const url=`url(${props.attributes.backgroundImageUrl})`
     const returned = <div 
@@ -437,7 +441,7 @@ registerBlockType( 'purdue-blocks/story-line', {
                 <img className={ 'image' } src={ props.attributes.imgUrl } alt={ props.attributes.altText } />
                 :""}
                { props.attributes.youtubeURL && props.attributes.type==="youtube" ?
-               <div class="iframe-container">{iframeMarkup}</div>                
+               <div class="iframe-container"><RawHTML>{iframeMarkup}</RawHTML></div>                
                 :""}
                { props.attributes.uploadURL && props.attributes.type==="upload" ?
                  <video controls playsinline="" src={props.attributes.uploadURL} title={props.attributes.uploadTitle}/>
