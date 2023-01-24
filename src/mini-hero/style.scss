@@ -73,12 +73,12 @@
       text-align:center;
     }
 
-    .title {
+    h1.title {
       max-width: 100%;
-      margin-bottom:1.5rem;
+      margin-bottom:1.25rem !important;
       color:$white;
       &:last-child{
-        margin-bottom:0;
+        margin-bottom:0 !important;
       }
     }
 
