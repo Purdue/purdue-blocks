@@ -317,9 +317,9 @@
     }
   }
   .purdue-slider__header{
-    margin-bottom:2rem !important;
+    margin-bottom:1rem !important;
     @include mobile{
-      margin-bottom:1.5rem !important;
+      margin-bottom:0.5rem !important;
     }
     &.align-left{
       text-align:left;
