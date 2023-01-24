@@ -28,14 +28,17 @@
     grid-template-rows: 1fr;
     grid-column-gap: 41px;
     grid-row-gap: 0;
+    &:last-child{
+      margin-bottom: -2rem;
+    }
     &__track{
       overflow: visible;
       grid-area: slides;
     }
     &__bullets{
       grid-area: nav;
-      height: 80px;
-      margin-top: 16px;
+      height: 72px;
+      margin-top: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,7 +78,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 14px;
+      margin-bottom: 2px;
       &.hidden{
         display:none;
       }
@@ -302,24 +305,24 @@
         }
       }
     }
-    .glide__bullets{
-      height: 40px;
-      margin-top:20px;
-      @include tablet{
-          width:calc(80% - 120px);
-          margin-left:6rem;
-      }
-    }
-    .glide__arrows{
-      @include tablet{
-        margin-right:6rem;
-    }
-    }
+    // .glide__bullets{
+    //   height: 40px;
+    //   margin-top:20px;
+    //   @include tablet{
+    //       width:calc(80% - 120px);
+    //       margin-left:6rem;
+    //   }
+    // }
+    // .glide__arrows{
+    //   @include tablet{
+    //     margin-right:6rem;
+    // }
+    // }
   }
   .purdue-slider__header{
-    margin-bottom:1rem !important;
+    margin-bottom:1.5rem !important;
     @include mobile{
-      margin-bottom:0.5rem !important;
+      margin-bottom:1rem !important;
     }
     &.align-left{
       text-align:left;
