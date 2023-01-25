@@ -36,7 +36,7 @@
       height:100%;
     }
     &.purdue-blocks__button--outline{
-      background: $white !important;
+      background: none !important;
       border: 2px solid $black;
       color: $aged-gold !important;
       &:hover {
@@ -54,7 +54,7 @@
         color:$boiler-gold !important;
       }
       &.purdue-blocks__button--outline{
-        background: $white !important;
+        background: none !important;
         border: 2px solid $black;
         color: $black !important;
         &:hover {
