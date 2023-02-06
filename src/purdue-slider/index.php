@@ -144,6 +144,43 @@ function render_block_purdue_slider($attributes){
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
             $output.='</div></div>';
+        }elseif($attributes['type']=="img" && sizeof($attributes['imgs'])>0){
+            $classname="glide purdue-slider--img";
+            if($attributes['loop']){
+                $classname.=" purdue-slider--img-loop";
+            }
+            if($attributes['imgType'] == "vertical"){
+                $classname.=" purdue-slider--img-vertical";
+            }
+            $output.='<div class="'.$classname.'">';
+            $output.='<div class="glide__track" data-glide-el="track">';
+            $output.='<div class="glide__slides">';
+            foreach ( $attributes['imgs'] as $img ) {  
+                if($attributes['linkImg']){
+                    $output.='<a class="glide__slide" target="_blank">
+                    <figure>';
+                }else{
+                    $output.='<div class="glide__slide"><figure>';
+                }
+                $output.='<img src="'.$img["url"].'" alt="'.$img["alt"].'" />';
+                $output.='<figcaption>'.$img["caption"].'</figcaption>';
+                if($attributes['linkImg']){
+                    $output.='</figure></a>';
+                }else{
+                    $output.='</figure></div>';
+                }
+            }
+            $output.='</div></div>';
+            $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
+            foreach ( $attributes['imgs'] as $key => $img ) {  
+                $num = $key + 1;
+                $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
+            }
+            $output.='</div>';
+            $output.='<div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+            $output.='</div></div>';
         }
         if($attributes['hasLink'] != "" && $attributes['linkUrl'] != ""){
             $buttonTarget=$attributes[external]?'targe="_blank"':'targe="_self"';
@@ -198,6 +235,10 @@ function register_block_purdue_slider() {
                 "type"=> "array",
                 "default"=> [],
             ),
+            "imgs" => array(
+                "type"=> "array",
+                "default"=> [],
+            ),
             "rtb" => array(
                 "type"=> "array",
                 "default"=> [],
@@ -213,6 +254,18 @@ function register_block_purdue_slider() {
             "displayNumber" => array(
                 "type"=> "string",
                 "default"=> "3",
+            ),
+            "imgType" => array(
+                "type"=> "string",
+                "default"=> "horizontal",
+            ),
+            "loop" => array(
+                "type"=> "boolean",
+                "default"=> true,
+            ),
+            "linkImg" => array(
+                "type"=> "boolean",
+                "default"=> false,
             ),
             "id" => array(
                 "type"=> "string",

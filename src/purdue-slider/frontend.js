@@ -93,6 +93,7 @@ const tabs = document.querySelectorAll('.purdue-slider--tabs');
 if(tabs && tabs.length>0){
 for (let i = 0; i < tabs.length; i++) {
   let glide = new Glide(tabs[i], {
+    type: 'carousel',
     perView: 1,
   });
   
@@ -128,3 +129,27 @@ for (let i = 0; i < rtb.length; i++) {
   check_resize(glide);
 }
 }
+const images = document.querySelectorAll('.purdue-slider--img');
+
+if(images && images.length>0){
+for (let i = 0; i < images.length; i++) {
+  const type = images[i].classList.contains('purdue-slider--img-loop')?"carousel":"slide";
+  const count = images[i].classList.contains('purdue-slider--img-vertical')?3.5:2;
+  let newCount = count-0.5;
+  let glide = new Glide(images[i], {
+    type: type,
+    startAt: 0,
+    perView: count,
+    gap:24,
+    breakpoints: {
+      1024:{
+        perView: newCount,
+      },
+      767: {
+        perView: 1.1,
+      },
+    },
+  });
+  glide.mount({CustomActiveClass,});
+
+}}

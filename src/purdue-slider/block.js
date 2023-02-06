@@ -637,9 +637,10 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               help="Use the rich text on the page editor to edit the full width cards option"
               selected={ props.attributes.type }
               options={ [
-                { label: 'Slider with cards link to stories', value: 'slider' },
-                { label: 'Slider with full width cards', value: 'tabs' },
-                { label: 'Slider with RTB cards', value: 'rtb' },
+                { label: 'Cards link to stories', value: 'slider' },
+                { label: 'Full width image and text', value: 'tabs' },
+                { label: 'RTB cards', value: 'rtb' },
+                { label: 'Images', value: 'img' },
               ] }
               onChange={ ( type ) => {
                 props.setAttributes( { type } )
@@ -730,6 +731,38 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               } }
             />
           </PanelRow>:""}
+          {props.attributes.type === "img"?
+          <PanelRow>
+            <SelectControl
+              label="Choose the type of the image."
+              value={ props.attributes.imgType }
+              options={ [
+                { label: 'Horizontal', value: 'horizontal' },
+                { label: 'Vertical', value: 'vertical' },
+              ] }
+              onChange={ ( imgType ) => {
+                props.setAttributes( { imgType } )
+              } }
+            />
+          </PanelRow>:""}
+          {props.attributes.type === "img"?
+          <PanelRow>
+            <CheckboxControl
+              label="Loop the slides?"
+              checked={ props.attributes.loop }
+              onChange={ () =>
+                props.setAttributes( { loop: ! props.attributes.loop } )}
+            />
+          </PanelRow>:""}
+          {props.attributes.type === "img"?
+          <PanelRow>
+            <CheckboxControl
+              label="Link the image to the image file?"
+              checked={ props.attributes.linkImg }
+              onChange={ () =>
+                props.setAttributes( { linkImg: ! props.attributes.linkImg } )}
+            />
+          </PanelRow>:""}
           <PanelRow>
             <CheckboxControl
               label="Add a link to the story page?"
@@ -777,23 +810,23 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
             </PanelRow> : '' }
           </PanelBody>
           { sidebarFields }
+          {props.attributes.type !== "img"?
           <PanelBody>
-
           <Button
             className="remove-image-button add-quote"
             onClick={ handleAddslide.bind( this ) }
           >
             { __( 'Add Another Slide' ) }
           </Button>
-
-
         </PanelBody>
+          :""}
       </InspectorControls>,
       <div key="2" className={`purdue-block-slider-editor`}>
         {
           (props.attributes.cards.length ===1 && props.attributes.cards[0].header ==="") &&
           (props.attributes.rtb.length ===1 && props.attributes.rtb[0].largeText ==="") &&
-          (props.attributes.tabs.length ===1 && props.attributes.tabs[0].header ==="")?<p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""
+          (props.attributes.tabs.length ===1 && props.attributes.tabs[0].header ==="")&&
+          props.attributes.imgs.length ===0?<p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""
         }
             <div class={`purdue-slider
             has-${props.attributes.background}-background section is-medium`}>
@@ -940,6 +973,64 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   </div>
                 </Disabled>:""                
               }
+              {props.attributes.type === "img"?
+                <MediaUploadCheck>
+                  <MediaUpload
+                    addToGallery={true}
+                    multiple={true}
+                    gallery={true}
+                    onSelect={(imgs) => {
+                      props.setAttributes( { imgs } )
+                      console.log(props.attributes.imgs)
+                    }}
+                    render={ ( { open } ) => {
+                      return <div class="image-slider-editor">
+                        <div class="buttons-container">
+                              <button onClick={open}>
+                                {
+                                  props.attributes.imgs.length === 0
+                                  ? "Select images"
+                                  : "Select new images"
+                                }
+                              </button>
+                        </div>
+                        {props.attributes.imgs.length>0?
+                        <Disabled>
+                          <div className={`glide purdue-slider--img${props.attributes.loop?" purdue-slider--img-loop":""}${props.attributes.imgType==="vertical" ?"purdue-slider--img-vertical":""}`}>
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                {props.attributes.imgs.map((img, index)=>{
+                                  return props.attributes.linkImg?
+                                    <a className='glide__slide' href={img.url} target="_blank">
+                                      <figure>
+                                        <img src={img.url} alt={img.alt} />
+                                        <figcaption>{img.caption}</figcaption>
+                                      </figure>
+                                    </a>:
+                                    <figure className='glide__slide'>
+                                      <img src={img.url} alt={img.alt} />
+                                      <figcaption>{img.caption}</figcaption>
+                                    </figure>
+                                  
+                                })}
+                              </div>                            
+                            </div>
+                            <div class="glide__bullets" data-glide-el="controls[nav]">
+                              {props.attributes.imgs.map((card, index)=>{
+                                return <button class="glide__bullet" data-glide-dir={index}></button>
+                                })
+                              }
+                              </div>
+                              <div class="glide__arrows" data-glide-el="controls">
+                                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                                <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
+                              </div>
+                            </div>
+                        </Disabled>:""}                       
+                      </div>
+                    } }
+                  />
+                </MediaUploadCheck>:""}
               {props.attributes.hasLink&&props.attributes.linkUrl?
                 <div class={`purdue-slider__button purdue-blocks__button ${props.attributes.background==="black"?'purdue-blocks__button--gold-dark':'purdue-blocks__button--gold-light'}`}><span>{props.attributes.linkText}</span></div>
               :""}
