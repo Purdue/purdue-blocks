@@ -307,6 +307,11 @@
     }
   }
   &--img{
+    figure{
+      figcaption{
+        text-align:left;
+      }
+    }
   }
   .purdue-slider__header{
     margin-bottom:1.5rem !important;
