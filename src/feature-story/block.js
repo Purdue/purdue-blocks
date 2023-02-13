@@ -254,7 +254,7 @@ registerBlockType( 'purdue-blocks/feature-story', {
               <SelectControl
                 label="Button Color"
                 help="Choose the color of this button."
-                selected={ props.attributes.buttonOption }
+                value={ props.attributes.buttonOption }
                 options={ [
                   { label: 'Black', value: 'black' },
                   { label: 'Gold', value: 'gold' },

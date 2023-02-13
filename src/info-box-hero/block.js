@@ -163,7 +163,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
                   <div className={`info-box-content`}>
                     <div className="title">
                       <RichText
-                        tagname={props.setAttributes.titleLevel}
+                        tagName={props.setAttributes.titleLevel}
                         value={props.attributes.title}
                         className={"title"}
                         onChange={(text) => {
@@ -176,7 +176,7 @@ registerBlockType("purdue-blocks/info-box-hero", {
                     </div>
                     <div className="content">
                       <RichText
-                        tagname="p"
+                        tagName="p"
                         value={props.attributes.subText}
                         className={"content"}
                         onChange={(text) => {

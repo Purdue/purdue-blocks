@@ -116,7 +116,7 @@ registerBlockType( 'purdue-blocks/accordion', {
 
       <div className="accordion-editor">
         <RichText
-          tagname={ props.setAttributes.titleLevel }
+          tagName={ props.setAttributes.titleLevel }
           value={ props.attributes.title }
           className={ 'accordion-title' }
           onChange={ ( text ) => {

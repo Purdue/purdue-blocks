@@ -1,0 +1,91 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.purdue-image-gallery{
+  &.no-bottom-padding.section{
+    padding-bottom:0 !important;
+  }
+  .columns{
+    margin-top:1.75rem;
+    .column{
+      position:relative;
+    }
+  }
+  .image-gallery-open{
+    position: relative;
+    overflow: hidden;
+    &.image-no-caption{
+      cursor:default;
+    }
+    &:hover{
+      .image-modal-button {
+        box-shadow: inset 0 0 0 5px $boiler-gold;
+      }
+    }
+    .image {
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      transition: all 0.3s ease-in-out;
+      transform-origin: center;
+      background-repeat: no-repeat;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+  .image-modal-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: none;
+    background: black;
+    color: white;
+    padding: 0.5rem 0.859375rem;
+    font-size: 1.25rem;
+    transition: all 0.1s ease;
+    &:hover {
+      cursor: pointer;
+    }
+    svg {
+      pointer-events: none;
+    }
+  }
+  .image-modal-close{
+    position:absolute;
+    top:0;
+    left:0;
+    margin:0.75rem;
+    background:$black;
+    color:$white;
+    padding:1rem;
+    font-size:0.875rem;
+    width: calc(100% - 24px);
+    height:calc(100% - 24px);
+    display:none;
+    &:hover{
+      .image-modal-button {
+        box-shadow: inset 0 0 0 5px $boiler-gold;
+      }
+    }
+    .image-modal-button {
+      pointer-events: none;
+    }
+    &.modal-open{
+      display:block;      
+    }
+  }
+  h2{
+    &.align-center{
+      text-align:center;
+    }
+  }
+  p.purdue-image-gallery__content{
+    &.align-center{
+      text-align:center;
+    }
+  }
+}

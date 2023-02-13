@@ -201,7 +201,7 @@ registerBlockType( 'purdue-blocks/card', {
         </MediaUploadCheck>
         <div className="title">
           <RichText
-            tagname="p"
+            tagName="p"
             value={ props.attributes.title }
             className={ 'title' }
             onChange={ ( text ) => {
@@ -215,7 +215,7 @@ registerBlockType( 'purdue-blocks/card', {
         </div>
         <div className="content">
           <RichText
-            tagname="p"
+            tagName="p"
             value={ props.attributes.subText }
             className={ 'content' }
             onChange={ ( text ) => {

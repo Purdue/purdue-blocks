@@ -343,7 +343,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
                   props.attributes.headerColor === 'steel' ? ' header-color-steel' : ''
                 }`}>
               <RichText
-                tagname={ props.setAttributes.titleLevel }
+                tagName={ props.setAttributes.titleLevel }
                 value={ props.attributes.title }
                 className={ `title
                 ${
@@ -364,7 +364,7 @@ registerBlockType( 'purdue-blocks/cta-card', {
             <div className="content">
             { (props.attributes.cardType === 'small' && props.attributes.layout === 'horizontal') || props.attributes.layout === 'vertical'? (
               <RichText
-                tagname="p"
+                tagName="p"
                 value={ props.attributes.subText }
                 className={ `content${props.attributes.contentAlign === 'center' ? ' content-centered' : '' }` }
                 onChange={ ( text ) => {

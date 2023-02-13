@@ -22,6 +22,7 @@ import "./cta-card/frontend";
 import "./text-hero/frontend";
 import "./purdue-slider/frontend";
 import "./purdue-vertical-slider/frontend";
+import "./image-gallery/frontend";
 
 
 

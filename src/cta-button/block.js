@@ -147,7 +147,7 @@ registerBlockType( 'purdue-blocks/cta-button', {
           </MediaUploadCheck>
         <div className="card-content">
         <RichText
-            tagname="p"
+            tagName="p"
             value={ props.attributes.subText }
             className={ 'content' }
             onChange={ ( text ) => {

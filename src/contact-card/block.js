@@ -215,7 +215,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
                   }
                   <div className="column">
                   <RichText
-                    tagname={ "p" }
+                    tagName={ "p" }
                     value={ contact.text }
                     className={ 'contact-card__text' }
                     onChange={ ( text ) => handleChangeText(text,index) }
@@ -268,7 +268,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
       </InspectorControls>,
       <div key="2" className={`pu-contact-card-editor pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`}>
         <RichText
-          tagname={ props.setAttributes.titleLevel }
+          tagName={ props.setAttributes.titleLevel }
           value={ props.attributes.title }
           className={ 'contact-card__title' }
           onChange={ ( text ) => {

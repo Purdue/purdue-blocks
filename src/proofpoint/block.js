@@ -261,7 +261,7 @@ registerBlockType("purdue-blocks/proofpoint", {
          <div className="container">
          { props.attributes.hasLead?
          <RichText
-            tagname={"p"}
+            tagName={"p"}
             value={props.attributes.lead}
             className={`pu-proofpoint__lead`} 
             onChange={(lead) => {
@@ -270,7 +270,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             placeholder="Add Lead text"
           ></RichText>:""}
           <RichText
-            tagname={"p"}
+            tagName={"p"}
             value={props.attributes.highlighted}
             className={`pu-proofpoint__highlighted
                         ${props.attributes.headerfontStyle==="wide" ?"  pu-proofpoint__highlighted-wide":"  pu-proofpoint__highlighted-narrow"}
@@ -281,7 +281,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             placeholder="Add Highlighted text"
           ></RichText>
           <RichText
-            tagname={"p"}
+            tagName={"p"}
             value={props.attributes.content}
             className={`pu-proofpoint__content
                         ${props.attributes.contentfontStyle==="wide" ?"  pu-proofpoint__content-wide":"  pu-proofpoint__content-narrow"}
@@ -292,7 +292,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             placeholder="Add content text"
           ></RichText>
            <RichText
-            tagname={"p"}
+            tagName={"p"}
             value={props.attributes.source}
             className={`pu-proofpoint__source`} 
             onChange={(source) => {

@@ -54,6 +54,7 @@ import "./rtb-cards/block.js";
 import "./purdue-vertical-slider/block.js";
 import "./profile-hero/block.js";
 import "./link-cards/block.js";
+import "./image-gallery/block.js";
 //Developertown blocks
 import "./video-embed/block.js";
 import "./icon-group/block.js";

@@ -238,7 +238,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       ${props.attributes.height==='full'?' purdue-blocks__button--height':''}
       `}>          
       <RichText
-        tagname="span"
+        tagName="span"
         value={ props.attributes.buttonText }
         className={ 'purdue-blocks__button__text' }
         onChange={ ( text ) => {
@@ -263,7 +263,7 @@ registerBlockType("purdue-blocks/purdue-button", {
         `}>
         <span class="shrink-padding"></span>             
         <RichText
-          tagname="span"
+          tagName="span"
           value={ props.attributes.buttonText }
           className={ 'purdue-blocks__button__text' }
           onChange={ ( text ) => {

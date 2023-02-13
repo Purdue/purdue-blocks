@@ -146,7 +146,7 @@ registerBlockType( 'purdue-blocks/alert-banner', {
       <div className={ `blocks-editor-alert blocks-editor-alert--${props.attributes.type} ${props.attributes.type}--${props.attributes.type === 'notice' ? props.attributes.noticeColor : props.attributes.alertColor}` }>
         <div className="content">
           <RichText
-            tagname="p"
+            tagName="p"
             value={props.attributes.content}
             className={"editor-alert-content"}
             onChange={(text) => {
@@ -158,7 +158,7 @@ registerBlockType( 'purdue-blocks/alert-banner', {
         </div>
         <div className="alert-link">
           <RichText
-            tagname="div"
+            tagName="div"
             value={props.attributes.linkText}
             className={"editor-link-content"}
             onChange={(linkText) => {

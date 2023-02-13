@@ -13,7 +13,6 @@ function render_block_link_cards($attributes){
     }else{
         $column_class[] = 'is-one-third-desktop';
     }
-    $column_class[] = 'is-half-tablet is-full-mobile';
 
     if($attributes['background'] != "" && $attributes['background'] == "white"){
         $output='<div'.$id.' class="purdue-link-cards has-white-background section is-medium">'; 

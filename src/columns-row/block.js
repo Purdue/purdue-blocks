@@ -423,7 +423,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
               <div className={`bulma-blocks-editor-columns`}>
                 <div className="title">
                   <RichText
-                    tagname={props.setAttributes.titleLevel}
+                    tagName={props.setAttributes.titleLevel}
                     value={props.attributes.title}
                     className={`title align--${props.attributes.titleAlign} title--${props.attributes.headerColor}`}
                     onChange={(text) => {
@@ -436,7 +436,7 @@ registerBlockType( 'purdue-blocks/columns-row', {
                 </div>
                 <div className={`content${props.attributes.addSpace ? '':' content--no-margin'}`}>
                   <RichText
-                    tagname="p"
+                    tagName="p"
                     value={props.attributes.subText}
                     className={`align--${props.attributes.subTextAlign} content subtext--${props.attributes.subTextColor}`}
                     onChange={(text) => {

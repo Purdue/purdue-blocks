@@ -102,7 +102,7 @@ registerBlockType( 'purdue-blocks/title-nav-link', {
 
       <div className={ 'editor-title-nav-link' }>
         <RichText
-          tagname="li"
+          tagName="li"
           value={ props.attributes.linkText }
           className={ `editor-title-nav-link__input ${ props.attributes.isCurrent ? 'isCurrent' : '' }` }
           onChange={ ( text ) => {
