@@ -1,4 +1,4 @@
-const toggleButtons = document.querySelectorAll('.profile-gallery-open')
+const toggleButtons = document.querySelectorAll('.profile-gallery-open:not(.profile-no-bio)')
 const openModal = (e) => {
     const modalTarget = e.currentTarget.dataset.toggle
     const window = document.querySelector('html')

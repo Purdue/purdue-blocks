@@ -663,18 +663,10 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
           </PanelRow>
           <PanelRow>
               <TextControl
-                label="Add a header to this region?"
+                label="Add a header to this region"
                 value={ props.attributes.header }
                 onChange={ ( header ) => props.setAttributes( { header } ) }
               />
-          </PanelRow>
-          <PanelRow>
-            <TextControl
-              label="HTML Anchor"
-              help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
-              value={ props.attributes.id }
-              onChange={ ( id ) => props.setAttributes( { id } ) }
-            />
           </PanelRow>
           {props.attributes.header?
           <PanelRow>
@@ -694,6 +686,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               } }
             />
           </PanelRow>:''}
+          {props.attributes.header?
           <PanelRow>
             <RadioControl
               label="Choose how to align the header."
@@ -705,6 +698,14 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
               onChange={ ( headerLocation ) => {
                 props.setAttributes( { headerLocation } )
               } }
+            />
+          </PanelRow>:''}
+          <PanelRow>
+            <TextControl
+              label="HTML Anchor"
+              help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
+              value={ props.attributes.id }
+              onChange={ ( id ) => props.setAttributes( { id } ) }
             />
           </PanelRow>
           {props.attributes.type === "rtb"?
@@ -763,15 +764,6 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 props.setAttributes( { linkImg: ! props.attributes.linkImg } )}
             />
           </PanelRow>:""}
-          <PanelRow>
-            <CheckboxControl
-              label="Add a link to the story page?"
-              checked={ props.attributes.hasLink }
-              onChange={ () =>
-                props.setAttributes( { hasLink: ! props.attributes.hasLink } )
-              }
-            />
-          </PanelRow>
           {props.attributes.type === "rtb"?
           <PanelRow>
             <CheckboxControl
@@ -781,6 +773,16 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 props.setAttributes( { divider: ! props.attributes.divider } )}
             />
           </PanelRow>:""}
+          <PanelRow>
+            <CheckboxControl
+              label="Add CTA button?"
+              checked={ props.attributes.hasLink }
+              onChange={ () =>
+                props.setAttributes( { hasLink: ! props.attributes.hasLink } )
+              }
+            />
+          </PanelRow>
+
           { props.attributes.hasLink ?
             ( <PanelRow>
               <TextControl
@@ -808,6 +810,19 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                 }
               />
             </PanelRow> : '' }
+            <PanelRow>
+            <RadioControl
+              label="Choose how to align the CTA."
+              selected={ props.attributes.ctaLocation }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+              ] }
+              onChange={ ( ctaLocation ) => {
+                props.setAttributes( { ctaLocation } )
+              } }
+            />
+          </PanelRow>
           </PanelBody>
           { sidebarFields }
           {props.attributes.type !== "img"?
@@ -826,7 +841,7 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
           (props.attributes.cards.length ===1 && props.attributes.cards[0].header ==="") &&
           (props.attributes.rtb.length ===1 && props.attributes.rtb[0].largeText ==="") &&
           (props.attributes.tabs.length ===1 && props.attributes.tabs[0].header ==="")&&
-          props.attributes.imgs.length ===0?<p style={{textAlign: 'center'}}>Add items using sidebar.</p>:""
+          props.attributes.type !== "img"?<p style={{textAlign: 'center'}}>Add new items using sidebar.</p>:""
         }
             <div class={`purdue-slider
             has-${props.attributes.background}-background section is-medium`}>
@@ -1032,7 +1047,11 @@ registerBlockType( 'purdue-blocks/purdue-slider', {
                   />
                 </MediaUploadCheck>:""}
               {props.attributes.hasLink&&props.attributes.linkUrl?
+              <Disabled>
+              <div className={`purdue-slider__button-container align-${props.attributes.ctaLocation}`}>
                 <div class={`purdue-slider__button purdue-blocks__button ${props.attributes.background==="black"?'purdue-blocks__button--gold-dark':'purdue-blocks__button--gold-light'}`}><span>{props.attributes.linkText}</span></div>
+              </div>
+              </Disabled>
               :""}
               </div>
             </div>

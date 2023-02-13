@@ -19,7 +19,8 @@ const {
   PanelRow,
   RadioControl,
   SelectControl,
-  CheckboxControl
+  CheckboxControl,
+  TextControl
 } = wp.components;
 
 const { 
@@ -68,6 +69,8 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
   attributes: {
     profiles: {type: "array", default: [{name: 'add', title: '', photoUrl: '', photoAlt: '', bio: '', bioEditorOpen: false}]},
     numColumns: { type: "number", default: 4 },
+    header: { type: "string", default: "" },
+    headerLocation: { type: "string", default: "center" },
   },
   supports: {
     className: false,
@@ -103,10 +106,35 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 } }
               />
             </PanelRow>
+            <PanelRow>
+              <TextControl
+                label="Add a header to this region"
+                value={ props.attributes.header }
+                onChange={ ( header ) => props.setAttributes( { header } ) }
+              />
+          </PanelRow>
+          {props.attributes.header?
+          <PanelRow>
+            <RadioControl
+              label="Choose how to align the header."
+              selected={ props.attributes.headerLocation }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+              ] }
+              onChange={ ( headerLocation ) => {
+                props.setAttributes( { headerLocation } )
+              } }
+            />
+          </PanelRow>:''}
           </PanelBody>
         </InspectorControls>,
 
-        <div className={`editor-profile-gallery columns ${numColumns === 2 ? 'editor-profile-gallery--md' : numColumns === 1 ? 'editor-profile-gallery--sm' : ''} is-multiline ${props.attributes.bioEditorOpen ? 'bio-editor-open' : ''}`}>
+        <div className={`editor-profile-gallery`}>
+          {props.attributes.header?
+        <h2 className={`align-${props.attributes.headerLocation}`}>{props.attributes.header}</h2>:""
+        }
+        <div className={`columns ${numColumns === 2 ? 'editor-profile-gallery--md' : numColumns === 1 ? 'editor-profile-gallery--sm' : ''} is-multiline ${props.attributes.bioEditorOpen ? 'bio-editor-open' : ''}`}>
           {
             profiles.map((profile, i, profiles) => {
               const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
@@ -125,7 +153,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                       }} 
                       className={`editor-add-profile-button`}
                       >
-                      <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                      Add a card
                     </button>
                   </div>
                 )
@@ -218,7 +246,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           newProfiles.splice(i, 1)
                           props.setAttributes({profiles: newProfiles})
                         }}>
-                          <i class="fas fa-times" aria-hidden="true"></i>
+                          Remove card
                         </button>
                       </div>
                     </div>
@@ -244,6 +272,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
               }
             })
           }
+        </div>
         </div>,
     ]
   },
@@ -267,7 +296,10 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
     const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
 
     const returned = (
-      <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
+      props.attributes.header?
+        <div className="pu-profile-gallery">
+        <h2 className={`align-${props.attributes.headerLocation}`}>{props.attributes.header}</h2>
+        <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
         {profiles.map((profile, i, profiles) => {
           if (profile.name !== 'add') {
 
@@ -275,22 +307,24 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
 
             return (
               <div className={`column ${columnSize} is-half-mobile`}>
-                <div className={ `profile-gallery-open` } data-toggle={toggle}
+                <div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
                 >
                 <div className={ `image is-square` }
                   role="img"
                   style={ { backgroundImage: `url(${ profile.photoUrl })` } }
                   aria-label={ profile.photoAlt }
                 ></div>
+                {profile.bio?
                   <button className={`modal-open-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
-                </div>
+                  :""}
+                  </div>
                 <p className={`pu-profile-gallery--name`}>
                   {profile.name}
                 </p>
                 <p className={`pu-profile-gallery--title`}>
                   {profile.title}
                 </p>
-
+                {profile.bio?
                 <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
                   <div className={`container`}>
                     <div className={`box`}>
@@ -324,7 +358,73 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>:""}
+              </div>
+            )
+          }
+        })}
+      </div>
+        </div>:
+      <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
+        {profiles.map((profile, i, profiles) => {
+          if (profile.name !== 'add') {
+
+            const toggle = `${i}-${profile.name}`
+
+            return (
+              <div className={`column ${columnSize} is-half-mobile`}>
+                <div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
+                >
+                <div className={ `image is-square` }
+                  role="img"
+                  style={ { backgroundImage: `url(${ profile.photoUrl })` } }
+                  aria-label={ profile.photoAlt }
+                ></div>
+                {profile.bio?
+                  <button className={`modal-open-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
+                  :""}
+                  </div>
+                <p className={`pu-profile-gallery--name`}>
+                  {profile.name}
+                </p>
+                <p className={`pu-profile-gallery--title`}>
+                  {profile.title}
+                </p>
+                {profile.bio?
+                <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
+                  <div className={`container`}>
+                    <div className={`box`}>
+                      <div className={`modal--close-button`}  aria-label="close">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                      </div>
+                      <div className={`modal--img-container`}>
+                        <div className={ `image is-square` }
+                          role="img"
+                          style={ { backgroundImage: `url(${ profile.photoUrl })` } }
+                          aria-label={ profile.photoAlt }
+                        ></div>
+                      </div>
+                      <div className={`modal--content-container`}>
+                        <p className={`pu-profile-gallery--name`}>
+                          {profile.name}
+                        </p>
+                        <p className={`pu-profile-gallery--title`}>
+                          {profile.title}
+                        </p>
+
+                        <RichText.Content 
+                          className={`pu-profile-gallery--bio`}
+                          tagName="p"
+                          value={profile.bio}
+                        />
+
+                        <button className={`modal--secondary-close-button`}>
+                          {'< BACK TO ARTICLE'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>:""}
               </div>
             )
           }

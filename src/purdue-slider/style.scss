@@ -307,6 +307,7 @@
     }
   }
   &--img{
+    padding-top:1rem;
     figure{
       figcaption{
         text-align:left;
@@ -323,6 +324,15 @@
     }
     &.align-center{
       text-align:center;
+    }
+  }
+  .purdue-slider__button-container{
+    display:flex;
+    &.align-left{
+      justify-content: left;
+    }
+    &.align-center{
+      justify-content: center;
     }
   }
 

@@ -183,8 +183,10 @@ function render_block_purdue_slider($attributes){
             $output.='</div></div>';
         }
         if($attributes['hasLink'] != "" && $attributes['linkUrl'] != ""){
-            $buttonTarget=$attributes[external]?'targe="_blank"':'targe="_self"';
+            $buttonTarget=$attributes["external"]?'targe="_blank"':'targe="_self"';
+            $output.='<div class="purdue-slider__button-container align-'.$attributes['ctaLocation'].'">';
             $output.='<a class="purdue-slider__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$attributes['linkUrl'].'" '.$buttonTarget.'>'.$attributes['linkText'].'</a>'; 
+            $output.='</div>';
         }
         $output.='</div></div>';
     return $output;
@@ -270,6 +272,14 @@ function register_block_purdue_slider() {
             "id" => array(
                 "type"=> "string",
                 "default"=> "",
+            ),
+            'ctaLocation' => array(
+                "type" => "string",
+                "default" => "left",
+            ),
+            "external" => array(
+                "type"=> "boolean",
+                "default"=> false,
             ),
         ),
         'render_callback' => 'render_block_purdue_slider',

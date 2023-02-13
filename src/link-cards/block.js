@@ -229,7 +229,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
       </InspectorControls>,
       <div key="2" className={`purdue-block-slider-editor`}>
 				{isEmpty(tabs) ? (
-					<Placeholder>{__('Add slides using the sidebar.')}</Placeholder>
+					<Placeholder>{__('Add cards using the sidebar.')}</Placeholder>
 				) : (
 					<Disabled>
 						<ServerSideRender

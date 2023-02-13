@@ -43,12 +43,22 @@
     button{
       padding:0.75rem 1.25rem;
       background:$boiler-gold;
-      border-radius: 0;
-      border:2px solid $black;
+      border:none;
+      border-radius: 0.15rem;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+      transition: all 0.2s ease;
+      font-size: 1rem !important;
       &:hover{
-         background:$black;
-         color:$boiler-gold;
+         box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
       }
     }
+   }
+   figcaption{
+      color: $steel-gray;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 900px;
+    font-style: italic;
    }
  }
