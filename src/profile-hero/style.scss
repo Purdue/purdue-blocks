@@ -6,6 +6,13 @@
 
 .pu-profile-hero {
   position:relative;
+  &.pu-profile-hero--right{
+    .section .container .columns{
+      @include tablet{
+        flex-direction: row-reverse;
+      }
+    }
+  }
   &:before{
     content:"";
     width:100%;

@@ -100,7 +100,7 @@ registerBlockType("purdue-blocks/profile-hero", {
         <PanelBody>
         < PanelRow>
             <RadioControl
-              label="Text Box Position"
+              label="Image Position"
               selected={ props.attributes.position }
               options={ [
                 { label: 'Left', value: 'left' },
