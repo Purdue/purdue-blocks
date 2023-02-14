@@ -155,7 +155,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
           <PanelRow>
 						<SelectControl
 							label="Number of Columns"
-							selected={columns}
+							value={columns}
 							options={[
 								{ value: '3', label: 'Three Columns' },
 								{ value: '4', label: 'Four Columns' },
