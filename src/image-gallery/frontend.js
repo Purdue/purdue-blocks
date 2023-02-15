@@ -6,7 +6,7 @@ const openModal = (e) => {
 }
 
 const closeModal = (e) => {
-    e.target.classList.remove('modal-open')
+    e.target.parentElement.classList.remove('modal-open')
 }
 
 [...toggleButtons].forEach(button => {

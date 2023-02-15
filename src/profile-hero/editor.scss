@@ -1,19 +1,52 @@
 .columns{
     display:flex;
     margin:-0.75rem;
+    &.is-multiline{
+        flex-wrap:wrap;
+    }
 }
 .column{
     display:block;
     padding:0.75rem;
+    box-sizing: border-box;
+    &.is-half-tablet {
+        @include tablet{
+            flex: none;
+            width: 50%;
+        }
+
+    }
+    &.is-full-mobile {
+        @include mobile{
+            flex: none;
+            width: 100%;
+        }
+
+    }
+    &.is-one-third-desktop {
+        @include desktop{
+            flex: none;
+            width: 33.3333%;
+        }
+
+    }
+    &.is-one-quarter-desktop {
+        @include desktop{
+            flex: none;
+            width: 25%;
+        }
+
+    }
 }
+
 .image{
-    .is-1by1{
+    &.is-1by1,&.is-square{
         padding-top:100%;
     }
-    .is-16by9{
+    &.is-16by9{
         padding-top:56.25%;
     }
-    .is-2by1{
+    &.is-2by1{
         padding-top:50%;
     }
 }

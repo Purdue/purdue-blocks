@@ -18,7 +18,7 @@ const {
   ToggleControl,
   Disabled,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
 const { dispatch, select } = wp.data;
 const category = {
   slug: 'purdue-blocks',
@@ -82,7 +82,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
 
   attributes: {
     pageTitle: { type: 'string', default: '' },
-    subText: { type: 'string' },
+    subText: { type: 'string', source: "html", selector: "p.content"  },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     includeSocial: { type: 'boolean' },
@@ -325,18 +325,15 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <span>Add Intro Copy</span>
           <div className="field">
             <div className="control">
-              <textarea
-                value={
-                  props.attributes.subText !== '' ?
-                    props.attributes.subText :
-                    ''
-                }
-                className="textarea"
-                placeholder="Add intro copy here..."
-                onChange={ ( e ) => {
-                  props.setAttributes( { subText: e.target.value } );
-                } }
-              ></textarea>
+              <RichText
+                tagName="p"
+                value={props.attributes.subText}
+                className={"content"}
+                onChange={(text) => {
+                  props.setAttributes({ subText: text });
+                }}
+                placeholder="Add intro copy here"
+              ></RichText>
             </div>
           </div>
         </div>
@@ -439,7 +436,11 @@ registerBlockType( 'purdue-blocks/site-hero', {
                   { props.attributes.pageTitle ||
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <p>{ props.attributes.subText }</p>
+                <RichText.Content
+                    className={"content"}
+                    tagName="p"
+                    value={props.attributes.subText}
+                  />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
                       { props.attributes.ctaText1 ? 
@@ -518,7 +519,11 @@ registerBlockType( 'purdue-blocks/site-hero', {
                   { props.attributes.pageTitle ||
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <p>{ props.attributes.subText }</p>
+                <RichText.Content
+                    className={"content"}
+                    tagName="p"
+                    value={props.attributes.subText}
+                  />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
                       { props.attributes.ctaText1 ? 

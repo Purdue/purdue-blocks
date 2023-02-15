@@ -37,7 +37,7 @@ function render_block_purdue_gallery($attributes){
                 }
                 $output.='</div>';
                 if($img["caption"] !="" ){
-                    $output.='<div class="image-modal-close" data-modal="'.$img["id"].'">'.$img["caption"].'
+                    $output.='<div class="image-modal-content" data-modal="'.$img["id"].'"><div class="image-modal-close"><p>'.$img["caption"].'</p></div>
                     <button class="image-modal-button" aria-label="close"><i class="fas fa-minus" aria-hidden="true"></i></button>
                     </div>';
                 }

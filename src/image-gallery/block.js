@@ -194,8 +194,13 @@ registerBlockType( 'purdue-blocks/image-gallery', {
                                 :""}
                               </div>
                               {img.caption?
-                                <div class="image-modal-close" data-modal={img.id}>{img.caption}
-                                <button class="image-modal-button" aria-label="close"><i class="fas fa-minus" aria-hidden="true"></i></button>
+                                <div className="image-modal-content" data-modal={img.id}>
+                                  <div className="image-modal-close">
+                                    <p>
+                                  {img.caption}
+                                  </p>
+                                  </div>
+                                <button className="image-modal-button" aria-label="close"><i class="fas fa-minus" aria-hidden="true"></i></button>
                                 </div>:""
                               }
                               </div>

@@ -49,6 +49,9 @@
 
     h1, p{
       color:$white !important;
+      a{
+        color:$boiler-gold;
+       }
     }
     @include mobile{
       color:$black;
@@ -76,7 +79,5 @@
     }
   }
 }
-.image.is-1by1{
-  padding-top:100%;
-}
+
 

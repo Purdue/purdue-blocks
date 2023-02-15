@@ -20,7 +20,8 @@ const {
   RadioControl,
   SelectControl,
   CheckboxControl,
-  TextControl
+  TextControl,
+  TextareaControl
 } = wp.components;
 
 const { 
@@ -215,7 +216,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           props.setAttributes( { profiles: newProfiles } );
                         } }
                       ></input>
-                      <input
+                      <TextareaControl
                         className="editor-profile-text-input"
                         value={profile.title}
                         type="text"
@@ -226,7 +227,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           newProfiles[i] = profile
                           props.setAttributes( { profiles: newProfiles } );
                         } }
-                      ></input>
+                      ></TextareaControl>
                       <div className={`editor-profile-buttons`}>
                         <button className={`editor-profile-buttons--edit`} onClick={e => {
                           const newProfiles = [...profiles]

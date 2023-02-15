@@ -201,7 +201,7 @@ registerBlockType("purdue-blocks/mini-hero", {
                                 keepPlaceholderOnFocus={true}
                               ></RichText>
                               <RichText
-                                tagname="p"
+                                tagName="p"
                                 value={props.attributes.subText}
                                 className={"content"}
                                 onChange={(text) => {
