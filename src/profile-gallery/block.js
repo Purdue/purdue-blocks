@@ -216,7 +216,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           props.setAttributes( { profiles: newProfiles } );
                         } }
                       ></input>
-                      <TextareaControl
+                      <textarea
                         className="editor-profile-text-input"
                         value={profile.title}
                         type="text"
@@ -227,7 +227,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           newProfiles[i] = profile
                           props.setAttributes( { profiles: newProfiles } );
                         } }
-                      ></TextareaControl>
+                      ></textarea>
                       <div className={`editor-profile-buttons`}>
                         <button className={`editor-profile-buttons--edit`} onClick={e => {
                           const newProfiles = [...profiles]
