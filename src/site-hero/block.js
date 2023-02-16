@@ -45,9 +45,7 @@ const socials = [
     share: 'https://www.linkedin.com/shareArticle?mini=true&url=',
   },
 ];
-const BLOCKS_TEMPLATE = [
-  [ 'core/paragraph', { placeholder: 'More content' } ],
-];
+
 /**
  * Register: aa Gutenberg Block.
  *
@@ -339,10 +337,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
                   props.setAttributes( { subText: e.target.value } );
                 } }
               ></textarea>
-              <InnerBlocks
-                template={ BLOCKS_TEMPLATE }
-                templateLock={ false }
-              />
+              <InnerBlocks/>
             </div>
           </div>
         </div>
