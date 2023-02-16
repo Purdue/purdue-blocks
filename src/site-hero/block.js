@@ -18,7 +18,7 @@ const {
   ToggleControl,
   Disabled,
 } = wp.components;
-const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
+const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps,InnerBlocks } = wp.blockEditor;
 const { dispatch, select } = wp.data;
 const category = {
   slug: 'purdue-blocks',
@@ -45,7 +45,9 @@ const socials = [
     share: 'https://www.linkedin.com/shareArticle?mini=true&url=',
   },
 ];
-
+const BLOCKS_TEMPLATE = [
+  [ 'core/paragraph', { placeholder: 'More content' } ],
+];
 /**
  * Register: aa Gutenberg Block.
  *
@@ -82,7 +84,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
 
   attributes: {
     pageTitle: { type: 'string', default: '' },
-    subText: { type: 'string', source: "html", selector: "p.content"  },
+    subText: { type: 'string' },
     imgUrl: { type: 'string', default: '' },
     altText: { type: 'string', default: '' },
     includeSocial: { type: 'boolean' },
@@ -325,15 +327,22 @@ registerBlockType( 'purdue-blocks/site-hero', {
           <span>Add Intro Copy</span>
           <div className="field">
             <div className="control">
-              <RichText
-                tagName="p"
-                value={props.attributes.subText}
-                className={"content"}
-                onChange={(text) => {
-                  props.setAttributes({ subText: text });
-                }}
-                placeholder="Add intro copy here"
-              ></RichText>
+              <textarea
+                value={
+                  props.attributes.subText !== '' ?
+                    props.attributes.subText :
+                    ''
+                }
+                className="textarea"
+                placeholder="Add intro copy here..."
+                onChange={ ( e ) => {
+                  props.setAttributes( { subText: e.target.value } );
+                } }
+              ></textarea>
+              <InnerBlocks
+                template={ BLOCKS_TEMPLATE }
+                templateLock={ false }
+              />
             </div>
           </div>
         </div>
@@ -436,11 +445,9 @@ registerBlockType( 'purdue-blocks/site-hero', {
                   { props.attributes.pageTitle ||
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <RichText.Content
-                    className={"content"}
-                    tagName="p"
-                    value={props.attributes.subText}
-                  />
+                { props.attributes.subText?
+                <p>{ props.attributes.subText }</p>:""}
+                <InnerBlocks.Content />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
                       { props.attributes.ctaText1 ? 
@@ -519,11 +526,9 @@ registerBlockType( 'purdue-blocks/site-hero', {
                   { props.attributes.pageTitle ||
                     select( 'core/editor' ).getCurrentPost().title }
                 </h1>
-                <RichText.Content
-                    className={"content"}
-                    tagName="p"
-                    value={props.attributes.subText}
-                  />
+                { props.attributes.subText?
+                <p>{ props.attributes.subText }</p>:""}
+                <InnerBlocks.Content />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
                       { props.attributes.ctaText1 ? 
