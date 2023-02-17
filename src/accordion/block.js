@@ -65,7 +65,7 @@ registerBlockType( 'purdue-blocks/accordion', {
    */
 
   attributes: {
-    title: { type: 'string', source: 'html', selector: '.accordion-title' },
+    title: { type: 'string', source: 'html', selector: '.accordion-title>button' },
     titleLevel: { type: 'string', default: 'p' },
     id: { type: 'string', default: '' },
     inputId: { type: 'string', default: '' },
@@ -79,9 +79,9 @@ registerBlockType( 'purdue-blocks/accordion', {
   description: __(
     'Create a single accordion.'
   ),
-
   edit: ( props ) => {
     const id = props.clientId;
+    const Tag = props.attributes.titleLevel;
     props.setAttributes( { id: id } );
     return [
       <InspectorControls>
@@ -115,17 +115,18 @@ registerBlockType( 'purdue-blocks/accordion', {
       </InspectorControls>,
 
       <div className="accordion-editor">
-        <RichText
-          tagName={ props.setAttributes.titleLevel }
-          value={ props.attributes.title }
-          className={ 'accordion-title' }
-          onChange={ ( text ) => {
-            props.setAttributes( { title: text } )
-          } }
-          placeholder="Add Title"
-          keepPlaceholderOnFocus={ true }
-        >
-        </RichText>
+        <Tag className={ 'accordion-title' }>
+          <RichText
+            tagname={ 'button' }
+            value={ props.attributes.title }            
+            onChange={ ( text ) => {
+              props.setAttributes( { title: text } )
+            } }
+            placeholder="Add Title"
+            keepPlaceholderOnFocus={ true }
+          >
+          </RichText>
+        </Tag>
         <div className="accordion-content">
           <InnerBlocks
             template={ BLOCKS_TEMPLATE }
@@ -148,36 +149,21 @@ registerBlockType( 'purdue-blocks/accordion', {
    * @returns {Mixed} JSX Frontend HTML.
    */
   save: ( props ) => {
-    const returned = (props.attributes.inputId?
-      <div className="accordion" id={ props.attributes.inputId }>
-        <RichText.Content
-          id={ `title-${ props.attributes.id }` }
-          className={ 'accordion-title' }
-          tagName={ props.attributes.titleLevel }
-          value={ props.attributes.title }
-          aria-controls={ `content-${ props.attributes.id }` }
-          aria-expanded={ 'false' }
-          role={'button'}
-        />
-        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
-          <InnerBlocks.Content />
-        </div>
-      </div>:      
-      <div className="accordion">
-        <RichText.Content
-          id={ `title-${ props.attributes.id }` }
-          className={ 'accordion-title' }
-          tagName={ props.attributes.titleLevel }
-          value={ props.attributes.title }
-          aria-controls={ `content-${ props.attributes.id }` }
-          aria-expanded={ 'false' }
-          role={'button'}
-        />
-        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
+    const Tag = props.attributes.titleLevel;
+    const returned = <div className="accordion" id={ props.attributes.inputId ? props.attributes.inputId : undefined }>
+        <Tag className={ 'accordion-title' }>
+          <RichText.Content
+            id={ `title-${ props.attributes.id }` }
+            tagName={ 'button' }
+            value={ props.attributes.title }
+            aria-controls={ `content-${ props.attributes.id }` }
+            aria-expanded={ 'false' }
+          />
+        </Tag>
+        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' } hidden aria-hidden="true">
           <InnerBlocks.Content />
         </div>
       </div>
-    );
     return returned;
   },
 } );
