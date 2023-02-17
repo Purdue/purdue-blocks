@@ -1,7 +1,6 @@
 const toggleButtons = document.querySelectorAll('.image-gallery-open:not(.image-no-caption)')
 const openModal = (e) => {
-    const modalTarget = e.currentTarget.dataset.toggle
-    const modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`)
+    const modalToOpen = e.currentTarget.nextElementSibling;
     modalToOpen.classList.add('modal-open')
 }
 
