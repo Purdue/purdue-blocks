@@ -84,6 +84,10 @@
     display:flex;
     align-items:center;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
     p{
       font-size:0.875rem;
       margin-bottom:0;

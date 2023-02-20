@@ -31,7 +31,7 @@ function render_block_purdue_gallery($attributes){
                     $image_class.= ' image-no-caption';
                 }
                 $output.='<div class="'.$image_class.'" data-toggle="'.$img["id"].'">';
-                $output.='<div class="image is-square" role="image" style="background-image: url('.$img["url"].');" aria-label="'.$img["alt"].'"></div>';
+                $output.='<div class="image is-square" role="image" data-src="'.$img["url"].'" aria-label="'.$img["alt"].'"></div>';
                 if($img["caption"] !="" ){
                     $output.='<button class="image-modal-button" aria-label="More information"><i class="fas fa-plus" aria-hidden="true"></i></button>';
                 }

@@ -1,4 +1,25 @@
 const toggleButtons = document.querySelectorAll('.image-gallery-open:not(.image-no-caption)')
+document.addEventListener("DOMContentLoaded", function() {
+    const imageGalley = document.querySelectorAll('.image-gallery-open')
+
+    if ("IntersectionObserver" in window) {
+      let lazyBackgroundObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            if(entry.target.dataset.src && entry.target.dataset.src !== ""){
+                entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
+            }
+            lazyBackgroundObserver.unobserve(entry.target);
+          }
+        });
+      });
+  
+      imageGalley.forEach((button)=>{
+        const image = button.querySelector(".image");
+        lazyBackgroundObserver.observe(image);
+      });
+    }
+  });
 const openModal = (e) => {
     const modalToOpen = e.currentTarget.nextElementSibling;
     if(modalToOpen){
