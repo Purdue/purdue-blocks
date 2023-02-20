@@ -182,7 +182,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
                         {props.attributes.imgs.length>0?
                         <div className='columns is-multiline'>
                           {props.attributes.imgs.map((img, index)=>{
-                            return <div className={`column${props.attributes.columns === "4"?" is-one-quarter-desktop":" is-one-third-desktop"} is-half-tablet is-full-mobile`}>
+                            return <div className={`column${props.attributes.columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
                               <div className={ `image-gallery-open${img.caption?"":" image-no-caption"}` } data-toggle={img.id}>
                                <div className={ `image is-square` }
                                 role="img"

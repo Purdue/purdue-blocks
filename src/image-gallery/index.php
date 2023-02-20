@@ -18,11 +18,11 @@ function render_block_purdue_gallery($attributes){
     }
     if(sizeof($attributes['imgs'])>0){
             $output.='<div class="columns is-multiline">';
-            $column_class[] = 'column is-half-tablet is-full-mobile';
+            $column_class[] = 'column is-half-tablet is-full-mobile is-one-third-desktop';
             if(isset( $attributes['columns'] ) && $attributes['columns'] =="4" ){
-                $column_class[] = 'is-one-quarter-desktop';
+                $column_class[] = 'is-one-quarter-widescreen';
             }else{
-                $column_class[] = 'is-one-third-desktop';
+                $column_class[] = 'is-one-third-widescreen';
             }
             foreach ( $attributes['imgs'] as $img ) {  
                 $output.='<div class="'.implode(' ',$column_class).'">';
