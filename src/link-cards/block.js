@@ -34,6 +34,7 @@ import { ReactSortable } from 'react-sortablejs';
 
 import ManualForm from './form';
 import ServerSideRender from '@wordpress/server-side-render';
+import { title } from '@wordpress/icons/build-types';
 /**
  * Register: aa Gutenberg Block.
  *
@@ -232,19 +233,27 @@ registerBlockType( 'purdue-blocks/link-cards', {
 					<Placeholder>{__('Add cards using the sidebar.')}</Placeholder>
 				) : (
 					<Disabled>
-						<ServerSideRender
-							block="purdue-blocks/link-cards"
-							attributes={{
-                header,
-                headerLocation,
-								background,
-								tabs,
-                id,
-                columns,
-								context: 'editor',
-								className: className,
-							}}
-						/>
+            <div className={`purdue-link-cards has-${background}-background section is-medium`}>
+              <div className="container">
+                {header?
+                <h2 className={`section-header align-${headerLocation}`}>{header}</h2>:""}
+                <div className="columns is-multiline">
+               {tabs.map((tab)=>{
+                  return <div  className={`column is-half-tablet is-full-mobile${columns=="4"?" is-one-quarter-desktop":" is-one-third-desktop"}`}>
+                  <div  className="card media link-card">
+                  <div className="image is-16by9 background-image" style={{backgroundImage:`url(${tab.media.url})`}}></div>
+                  <div classNmae="media-content">
+                    <p className="title is-4">{tab.title}</p>
+                    {tab.subtext?
+                    <p className="vertical-subtext">{tab.subtext}</p>:""
+                    }
+                  </div>
+                  </div>
+                </div>
+                })}
+                </div>
+              </div>
+            </div>
 					</Disabled>
 				)}
       </div>,
