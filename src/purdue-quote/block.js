@@ -72,6 +72,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
 
   attributes: {
     background:{type: 'string', default: 'white'},
+    fontSize:{type: 'string', default: 'regular'},
     quoteGroup: {
       type: 'array',
       default: []
@@ -325,6 +326,20 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
               } }
             />
           </PanelRow>
+          <PanelRow>
+            <RadioControl
+              label="Quote content font size"
+              help="Choose the font size for the quote content."
+              selected={ props.attributes.fontSize }
+              options={ [
+								{ value: 'small', label: 'Small' },
+								{ value: 'regular', label: 'Regular' },
+              ] }
+              onChange={ ( option ) => {
+                props.setAttributes( { fontSize: option } )
+              } }
+            />
+          </PanelRow>
           </PanelBody>
           { sidebarFields }
           <PanelBody>
@@ -379,7 +394,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
       });
 
     return (
-      <div {...blockProps} className={`purdue-block-quote-group ${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`}>
+      <div {...blockProps} className={`purdue-block-quote-group${props.attributes.fontSize==="small"?" has-font-small":""}${props.attributes.background==="black"?" has-background-black":""}${props.attributes.background==="gray"?" has-background-black-ter":""}`}>
         <div className="purdue-block-quote-wrapper">
             {quotes}
         </div>

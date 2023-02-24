@@ -1,0 +1,1 @@
+<?php return array('dependencies' => array('react', 'wp-blocks', 'wp-element', 'wp-icons/build-types', 'wp-primitives', 'wp-server-side-render'), 'version' => '2b1320928d85531030cc9a87e39f87cc');

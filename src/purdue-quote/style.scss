@@ -77,6 +77,11 @@
             }
           }
       }
+      &.has-font-small{
+        .purdue-block-quote__content{
+          font-size:1.25rem !important;
+        }
+      }
       &__dots{
         display:block;
         width:100%;
@@ -210,7 +215,7 @@
       }
       .purdue-block-quote__content{
         padding:3rem 2.5rem;
-        font-family:$source-serif-pro;
+        font-family:$acumin-pro;
         font-size:1.5rem !important;
         line-height:1.45;
         color:$black;
@@ -246,7 +251,7 @@
         }
         @include mobile{
           padding:1.875rem 1rem;
-          font-size:1.25rem;
+          font-size:1.25rem !important;
           &:before{
             top:-0.2rem;
             width: 80px;
