@@ -23,35 +23,35 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             foreach ( $attributes['cards'] as $card ) {  
-                $backgroundRole=$card[imageAlt]?' role="img" ':'';
-                if($card[ctaLink] != ""){
-                    $target=$card[external]?'targe="_blank"':'targe="_self"';
-                    $output.='<a class="glide__slide card" href="'.$card[ctaLink].'" '.$target.'>';
-                    if($card[imageURL] != ""){
-                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                $backgroundRole=$card['imageAlt']?' role="img" ':'';
+                if($card['ctaLink'] != ""){
+                    $target=$card['external']?'targe="_blank"':'targe="_self"';
+                    $output.='<a class="glide__slide card" href="'.$card['ctaLink'].'" '.$target.'>';
+                    if($card['imageURL'] != ""){
+                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card['imageURL'].')" aria-label="'.$card['imageAlt'].'"></div>';
                     }
                     $output.='<div class="content">';
-                    if($card[storyType] != ""){
-                        $output.='<p class="story-type">'.$card[storyType].'</p>';
+                    if($card['storyType'] != ""){
+                        $output.='<p class="story-type">'.$card['storyType'].'</p>';
                     }
-                    $output.='<p class="story-title">'.$card[header].'</p>';
-                    $output.='<div class="read-more purdue-blocks__button purdue-blocks__button--gold-light"><span>'.$card[ctaText].'</span></div>';
-                    if($card[tag] != ""){
-                        $output.='<p class="story-tag">'.$card[tag].'</p>';
+                    $output.='<p class="story-title">'.$card['header'].'</p>';
+                    $output.='<div class="read-more purdue-blocks__button purdue-blocks__button--gold-light"><span>'.$card['ctaText'].'</span></div>';
+                    if($card['tag'] != ""){
+                        $output.='<p class="story-tag">'.$card['tag'].'</p>';
                     }
                     $output.='</div></a>';
                 }else{
                     $output.='<div class="glide__slide card">';
-                    if($card[imageURL] != ""){
-                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card[imageURL].')" aria-label="'.$card[imageAlt].'"></div>';
+                    if($card['imageURL'] != ""){
+                        $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$card['imageURL'].')" aria-label="'.$card['imageAlt'].'"></div>';
                     }
                     $output.='<div class="content>';
-                    if($card[storyType] != ""){
-                        $output.='<p class="story-type">'.$card[storyType].'</p>';
+                    if($card['storyType'] != ""){
+                        $output.='<p class="story-type">'.$card['storyType'].'</p>';
                     }
-                    $output.='<p class="story-title">'.$card[header].'</p>';
-                    if($card[tag] != ""){
-                        $output.='<p class="story-tag">'.$card[tag].'</p>';
+                    $output.='<p class="story-title">'.$card['header'].'</p>';
+                    if($card['tag'] != ""){
+                        $output.='<p class="story-tag">'.$card['tag'].'</p>';
                     }
                     $output.='</div></div>';
                 }
@@ -73,23 +73,23 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             // var_dump($attributes['tabs']);
-            $backgroundRole=$tab[imageAlt]?' role="img" ':'';
+            $backgroundRole=$tab['imageAlt']?' role="img" ':'';
             foreach ( $attributes['tabs'] as $tab ) {  
                 $output.='<div class="glide__slide columns">';
-                if($tab[imageURL] != ""){
+                if($tab['imageURL'] != ""){
                     $output.='<div class="column image-column">';
-                    $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab[imageURL].')" aria-label="'.$tab[imageAlt].'"></div>';
+                    $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab['imageURL'].')" aria-label="'.$tab['imageAlt'].'"></div>';
                     $output.='</div>';
                 }
                 $output.='<div class="content column">';
-                $output.='<p class="title">'.$tab[header].'</p>';
+                $output.='<p class="title">'.$tab['header'].'</p>';
                 
-                if($tab[subtext] != ""){
-                    $output.='<p class="subtext">'.$tab[subtext].'</p>';
+                if($tab['subtext'] != ""){
+                    $output.='<p class="subtext">'.$tab['subtext'].'</p>';
                 }
-                if($tab[ctaLink] != ""){
-                    $target=$tab[external]?'targe="_blank"':'targe="_self"';
-                    $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$tab[ctaLink].'" '.$target.'>'.$tab[ctaText].'</a>';
+                if($tab['ctaLink'] != ""){
+                    $target=$tab['external']?'targe="_blank"':'targe="_self"';
+                    $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$tab['ctaLink'].'" '.$target.'>'.$tab['ctaText'].'</a>';
                 }
                 $output.='</div></div>';
             }
@@ -115,21 +115,21 @@ function render_block_purdue_slider($attributes){
             foreach ( $attributes['rtb'] as $rtb ) {  
                 $hasLead=$attributes['hasLead']?" pu-proofpoint__has-lead":"";
                 $output.='<div class="glide__slide"><div class="pu-proofpoint'.$hasLead.'"><div class="container">';
-                if($rtb[leadText] != "" && $attributes['hasLead']){
-                    $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</span>';
+                if($rtb['leadText'] != "" && $attributes['hasLead']){
+                    $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb['leadText'].'</span>';
                 }
-                if($rtb[largeText] != ""){
-                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb[largeText].'</span>';
+                if($rtb['largeText'] != ""){
+                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb['largeText'].'</span>';
                 }
-                if($rtb[smallText] != ""){
-                    $output.='<span class="small-text pu-proofpoint__content">'.$rtb[smallText].'</span>';
+                if($rtb['smallText'] != ""){
+                    $output.='<span class="small-text pu-proofpoint__content">'.$rtb['smallText'].'</span>';
                 }
-                if($rtb[source] != ""){
-                    $output.='<span class="source pu-proofpoint__source">'.$rtb[source].'</span>';
+                if($rtb['source'] != ""){
+                    $output.='<span class="source pu-proofpoint__source">'.$rtb['source'].'</span>';
                 }
-                if($rtb[ctaLink] != ""){
-                    $target=$tab[external]?'targe="_blank"':'targe="_self"';
-                    $output.='<a class="pu-proofpoint__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$rtb[ctaLink].'" '.$target.'>'.$rtb[ctaText].'</a>';
+                if($rtb['ctaLink'] != ""){
+                    $target=$tab['external']?'targe="_blank"':'targe="_self"';
+                    $output.='<a class="pu-proofpoint__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$rtb['ctaLink'].'" '.$target.'>'.$rtb['ctaText'].'</a>';
                 }
                 $output.='</div></div></div>';
             }
