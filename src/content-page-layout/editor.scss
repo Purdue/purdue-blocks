@@ -5,4 +5,14 @@
  * which makes it higher in priority.
  */
 
-
+ .has-background-grey-lighter {
+    background-color: #ededed!important;
+}
+.has-background-black{
+    background-color: #000!important;
+    color:#ffffff;
+}
+.has-background-black-ter{
+    background-color: $steel-gray !important;
+    color:#ffffff;
+}
