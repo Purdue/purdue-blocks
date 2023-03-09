@@ -186,7 +186,34 @@
           .column{
             z-index:100;
           }
-
+      }
+      .columns.is-spacebetween{
+        justify-content: space-between;
+        .column.is-one-third-desktop{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .background-image-container{
+            display:block;
+            width:70%;
+            @include touch{
+              width:90%;
+            }
+            .background-image{
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
+              width: 100%;
+            }
+          }
+        }
+        .column.has-margin-right{
+          .purdue-block-quote__content{
+            @include desktop{
+              margin-right:2rem;
+            }
+          }
+        }
       }
       position:relative;
       cursor:pointer;

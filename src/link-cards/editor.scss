@@ -7,3 +7,25 @@
  .link-card.card .background-image{
     padding-top:56.25%;
  }
+ .purdue-link-cards{
+   .card.link-card{
+      padding:0;
+   }
+ }
+ .purdue-link-cards{
+   .media-content{
+      .media-type{
+         color:$black;
+         text-transform:uppercase;
+         margin-top:0;
+         svg{
+            width:14px;
+            margin-right:0.8rem;
+         }
+       }
+       .story-date, .title, .vertical-subtext{
+         margin-top:0;
+       }
+   }
+ }
+

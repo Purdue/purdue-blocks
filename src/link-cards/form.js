@@ -4,7 +4,7 @@
 
 const { Fragment } = wp.element;
 const { MediaUpload } = wp.blockEditor;
-const { PanelRow, Button, TextControl, TextareaControl, CheckboxControl } = wp.components;
+const { PanelRow, Button, TextControl, TextareaControl, CheckboxControl, SelectControl } = wp.components;
 const { useState } = wp.element;
 
 import isEmpty from 'lodash/isEmpty';
@@ -20,7 +20,11 @@ const LinkForm = ({
 		subtext: '',
 		link: '',
 		newtab: false,
+		buttontext: '',
+		date:'',
+		mediaType:'',
 	},
+	type,
 }) => {
 	// Form related controls.
 	const [newTitle, updateNewTitle] = useState(initialState.title);
@@ -28,6 +32,9 @@ const LinkForm = ({
 	const [newSubtext, updateNewSubtext] = useState(initialState.subtext);
 	const [newLink, updateNewLink] = useState(initialState.link);
 	const [newNewtab, updateNewtab] = useState(initialState.newtab);
+	const [newDate, updateNewDate] = useState(initialState.date);
+	const [newButtontext, updateNewButtontext] = useState(initialState.buttontext);
+	const [newMediaType, updateNewMediaType] = useState(initialState.mediaType);
 	const [showNoTitle, updateShowNoTitle] = useState(false);
 	let mediaButtonLabel = 'Add Image';
 
@@ -47,6 +54,9 @@ const LinkForm = ({
 			subtext: newSubtext,
 			link: newLink,
 			newtab: newNewtab,
+			buttontext: newButtontext,
+			date:newDate,
+			mediaType:newMediaType,
 		};
 
 		onSave(newPost);
@@ -109,7 +119,18 @@ const LinkForm = ({
 					value={newSubtext}
 				/>
 			</PanelRow>
-
+			{type === 'regular'? (
+				<PanelRow>
+					<TextControl
+						label={'Button Text'}
+						onChange={(val) => {
+							updateNewButtontext(val);
+						}}
+						value={newButtontext}
+					/>
+				</PanelRow>
+			):''
+			}
 			<PanelRow>
 				<TextControl
 					label={'Button URL'}
@@ -129,6 +150,36 @@ const LinkForm = ({
 					}}
 				/>
 			</PanelRow>
+			{type === 'regular' || type === 'simple'? (
+				<PanelRow>
+					<TextControl
+						label={'Optional Date'}
+						onChange={(val) => {
+							updateNewDate(val);
+						}}
+						value={newDate}
+					/>
+				</PanelRow>
+			):''
+			}
+			{type === 'regular' || type === 'simple'? (
+				<PanelRow>
+					<SelectControl
+						label="Optional story type"
+						value={newMediaType}
+						options={[
+							{ value: '', label: 'Select a story type' },
+							{ value: 'article', label: 'Article' },
+							{ value: 'podcast', label: 'Podcast' },
+							{ value: 'video', label: 'Video' },
+						]}
+						onChange={(val) => {
+							updateNewMediaType(val);
+						}}
+					/>
+				</PanelRow>
+			):''
+			}
 			<PanelRow>
 				<Button isPrimary onClick={saveItem}>
 					Save

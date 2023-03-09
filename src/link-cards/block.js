@@ -33,8 +33,7 @@ const { isEmpty } = _;
 import { ReactSortable } from 'react-sortablejs';
 
 import ManualForm from './form';
-import ServerSideRender from '@wordpress/server-side-render';
-import { title } from '@wordpress/icons/build-types';
+import { newspaper,video,headphone } from '../img/svg';
 /**
  * Register: aa Gutenberg Block.
  *
@@ -83,7 +82,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
    */
 	edit:( props )=>{
     const { className, setAttributes } = props;
-    const { header, headerLocation, background, tabs, id, columns} = props.attributes;
+    const { type, header, headerLocation, background, tabs, id, columns} = props.attributes;
     const [addNew, setAddNew] = useState(false);
 
     const addManualTab = (newTab) => {
@@ -94,7 +93,6 @@ registerBlockType( 'purdue-blocks/link-cards', {
     };
   
     const updateSavedTab= (index, tabData) => {
-      // Clone the array first so we can mutate it.
       const newTabs = [...tabs];
       newTabs[index] = tabData;
   
@@ -110,6 +108,20 @@ registerBlockType( 'purdue-blocks/link-cards', {
     return [
       <InspectorControls key="1">
         <PanelBody>
+          <PanelRow>
+            <SelectControl
+              label="Card Type"
+              value={ type }
+              options={ [
+                { label: 'Compact', value: 'compact' },
+                { label: 'Regular', value: 'regular' },
+                { label: 'Simple', value: 'simple' },
+              ] }
+              onChange={ ( type ) => {
+                setAttributes( { type } )
+              } }
+            />
+          </PanelRow>
           <PanelRow>
             <SelectControl
               label="Choose a background"
@@ -158,6 +170,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 							label="Number of Columns"
 							value={columns}
 							options={[
+                { value: '2', label: 'Two Columns' },
 								{ value: '3', label: 'Three Columns' },
 								{ value: '4', label: 'Four Columns' },
 							]}
@@ -192,6 +205,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 									<PanelBody initialOpen={false} key={item.title} title={item.title}>
 										<ManualForm
 											initialState={item}
+                      type={type}
 											onSave={(val) => {
 												updateSavedTab(i, val);
 											}}
@@ -212,7 +226,7 @@ registerBlockType( 'purdue-blocks/link-cards', {
 					</PanelRow>
           {(addNew || tabs.length === 0) && (
 						<Fragment>
-							<ManualForm onSave={addManualTab} />
+							<ManualForm onSave={addManualTab} type={type}/>
 						</Fragment>
 					)}
 					<hr></hr>
@@ -233,19 +247,30 @@ registerBlockType( 'purdue-blocks/link-cards', {
 					<Placeholder>{__('Add cards using the sidebar.')}</Placeholder>
 				) : (
 					<Disabled>
-            <div className={`purdue-link-cards has-${background}-background section is-medium`}>
+            <div className={`purdue-link-cards has-${background}-background section is-medium${type==="regular"?" purdue-link-cards--regular":""}${type==="simple"?" purdue-link-cards--simple":""}`}>
               <div className="container">
                 {header?
                 <h2 className={`section-header align-${headerLocation}`}>{header}</h2>:""}
                 <div className="columns is-multiline">
                {tabs.map((tab)=>{
-                  return <div  className={`column is-half-tablet is-full-mobile${columns=="4"?" is-one-quarter-desktop":" is-one-third-desktop"}`}>
+                  return <div  className={`column is-half-tablet is-full-mobile${columns=="4"?" is-one-quarter-desktop":""}${columns=="3"?" is-one-third-desktop":""}`}>
                   <div  className="card media link-card">
                   <div className="image is-16by9 background-image" style={{backgroundImage:`url(${tab.media.url})`}}></div>
-                  <div classNmae="media-content">
+                  <div className="media-content">
+                  {tab.mediaType?
+                    <p className="media-type">
+                      {tab.mediaType ==="article"? <span dangerouslySetInnerHTML={{ __html:newspaper }}></span>:""}
+                      {tab.mediaType}</p>:""
+                    }
+                   {tab.date?
+                    <p className="story-date">{tab.date}</p>:""
+                    }
                     <p className="title is-4">{tab.title}</p>
                     {tab.subtext?
                     <p className="vertical-subtext">{tab.subtext}</p>:""
+                    }
+                    {tab.buttontext?
+                    <div className="purdue-blocks__button purdue-blocks__button--gold-light">{tab.buttontext}</div>:""
                     }
                   </div>
                   </div>

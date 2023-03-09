@@ -16,10 +16,6 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
 const {
   Placeholder,
   Button,
-  FormFileUpload,
-  SelectControl,
-  IconButton,
-  Panel,
   PanelBody,
   PanelRow,
   Toolbar,
@@ -99,6 +95,8 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
         ctaText:'',
         ctaLink: '',
         external: false,
+        imgUrl:'',
+        altText:'',
       }]} )
     }
 
@@ -112,6 +110,8 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
         ctaText:'',
         ctaLink: '',
         external: false,
+        imgUrl:'',
+        altText:'',
       } );
       props.setAttributes( { quoteGroup } );
     }; 
@@ -120,11 +120,11 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
       quoteGroup.splice( index, 1 );
       props.setAttributes( { quoteGroup } );
     }; 
-    // const handleRemoveImage = ( index ) => {
-    //   let quoteGroup = [ ...props.attributes.quoteGroup ];
-    //   quoteGroup[ index ].imgUrl = "";
-    //   props.setAttributes( { quoteGroup } );
-    // }; 
+    const handleRemoveImage = ( index ) => {
+      let quoteGroup = [ ...props.attributes.quoteGroup ];
+      quoteGroup[ index ].imgUrl = "";
+      props.setAttributes( { quoteGroup } );
+    }; 
     // const handleChangeAlt = ( altText, index ) => {
     //   let quoteGroup = [ ...props.attributes.quoteGroup ];
     //   quoteGroup[ index ].altText = altText;
@@ -150,12 +150,12 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
       quoteGroup[ index ].external = !quoteGroup[ index ].external;
       props.setAttributes( { quoteGroup } );
     }; 
-    // const handleChangeImage = ( img, index ) => {
-    //   let quoteGroup = [ ...props.attributes.quoteGroup ];
-    //   quoteGroup[ index ].imgUrl = img.url;
-    //   quoteGroup[ index ].altText = quoteGroup[ index ].altText!==''?quoteGroup[ index ].altText:img.alt;
-    //   props.setAttributes( { quoteGroup } );
-    // }; 
+    const handleChangeImage = ( img, index ) => {
+      let newquoteGroup = [ ...props.attributes.quoteGroup ];
+      newquoteGroup[ index ].imgUrl = img.url;
+      newquoteGroup[ index ].altText = img.alt;
+      props.setAttributes( { newquoteGroup } );
+    }; 
     const handleChangeContent = ( content, index ) => {
       let quoteGroup = [ ...props.attributes.quoteGroup ];
       quoteGroup[ index ].quoteContent = content.target.value;
@@ -265,6 +265,34 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
 
       editorFields = props.attributes.quoteGroup.map( ( quote, index ) => {
         return  <div key={ index }  className={ 'purdue-block-editor-quote'}>
+                  <MediaUploadCheck>
+                    <MediaUpload
+                      onSelect={(img) => handleChangeImage(img, index)}
+                      render={({ open }) => {
+                        return (
+                          <div className="purdue-block-quote__image">
+                          <div
+                            className={"image"}
+                            role="img"
+                            style={{ backgroundImage: `url(${quote.imgUrl})` }}
+                            aria-label={quote.altText}
+                          >
+                          </div>
+                          <div class="buttons-container">
+                              <button onClick={open}>
+                                {quote.imgUrl !== ""
+                                  ? "Select a new image"
+                                  : "Select an image"}
+                              </button>
+ 
+                              </div>
+                            </div>
+                        );
+                      }}
+                    />
+                  </MediaUploadCheck>
+                
+                  <div className="purdue-block-quote__content-container">
                   <div className="purdue-block-quote__content">
                       <textarea
                         value={
@@ -285,8 +313,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                         placeholder="Quote Name..."
                         onChange={ ( name ) => handleChangeName ( name, index )}
                       ></input>
-                  </div>
-                  <div>
+                  </div>                 
                   <RichText
                     tagname="p"
                     value={ quote.nameTitle }
@@ -296,14 +323,7 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
                     keepPlaceholderOnFocus={ true }
                   >
                   </RichText>    
-                      {/* <input
-                        value={ quote.nameTitle }
-                        className="input"
-                        type="text"
-                        placeholder="Quote Name Title..."
-                        onChange={ ( title ) => handleChangeTitle ( title, index )}
-                      ></input> */}
-                  </div>
+                  </div>                 
                 </div>;
       } );
     }
@@ -365,15 +385,28 @@ registerBlockType( 'purdue-blocks/purdue-quote', {
     const quotes = props.attributes.quoteGroup.map( ( quote, index ) => {
       return  <div key={ index } className={`purdue-block-quote`}>
                 <div className="container">
-                  <div className={`columns is-centered`}>
-                    <div className="column is-two-thirds-desktop is-full-tablet is-full-mobile">
+                  <div className={`columns${quote.imgUrl?" is-spacebetween":" is-centered"}`}>
+                    {
+                      quote.imgUrl?
+                      <div className="column is-one-third-desktop is-one-third-tablet is-full-mobile">
+                        <div className="background-image-container">
+                        <div
+                          role={`${quote.altText?"img":""}`}
+                            className="background-image image is-1by1"
+                            aria-label={quote.altText}
+                            style={{backgroundImage: `url(${quote.imgUrl})`}}
+                          >
+                          </div>
+                          </div>
+                      </div>:""
+                  }
+                    <div className={`column is-two-thirds-desktop is-two-thirds-tablet is-full-mobile${quote.imgUrl&&props.attributes.quoteGroup.length>1?" has-margin-right":""}`}>
                       <p className="purdue-block-quote__content">{quote.quoteContent}</p>
                       <div className="purdue-block-quote__bottom">
                         <div className="purdue-block-quote__info">
                           {quote.name!==""?
                           <p className="purdue-block-quote__name">{quote.name}</p>:""}
                           {quote.nameTitle!==""?
-                          // <p className="purdue-block-quote__title">{quote.nameTitle}</p>:""}
                           <RichText.Content
                           className={ 'purdue-block-quote__title' }
                           tagName="p"

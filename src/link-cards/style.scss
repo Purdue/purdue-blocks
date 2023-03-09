@@ -29,13 +29,93 @@
       justify-content: flex-start;
       p{
         white-space: pre-wrap;
+        &.title:not(:last-child){
+          margin-bottom:1rem;
+        }
+        &.vertical-subtext:not(:last-child){
+          margin-bottom:1.5rem;
+        }
+        &.story-date:not(:last-child),&.media-type:not(:last-child){
+          margin-bottom:0.8rem;
+        }
+        &.vertical-subtext{
+          font-size:1rem !important;
+          color:$black;
+        }
+        &.media-type{
+          font-size:0.85rem !important;
+          text-transform: uppercase;
+          display:flex;
+          align-items:center;
+          svg{
+            width: 14px;
+            height: auto;
+            display:inline-block;
+            margin-right:0.8rem;
+          }
+          span{
+            font-weight: 700;
+          }
+        }
+        &.story-date{
+          font-size:1rem;
+          font-weight:400;
+        }
+       }
+       .purdue-blocks__button{
+        padding-left:1.25rem;
+        padding-right:1.25rem;
        }
     }
     &:hover, &:focus{
       .media-content{
         border-left:none;
         padding-left: 1.25rem;
+        color:$black;
       }
+    }
+  }
+  &--regular{
+    .link-card.card .media-content p.title{
+    font-size:1.5rem !important;
+    }
+    a.link-card.card:hover{
+      .purdue-blocks__button{
+        background:$black !important;
+        color:$boiler-gold !important;
+       }
+    }
+  }
+  &.purdue-link-cards--simple{
+    .link-card.card{
+      box-shadow: none;
+      .media-content{
+        p.title{
+          font-size:1.5rem !important;
+          text-decoration:underline;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          }
+          p.vertical-subtext{
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+      } 
+    }
+    a.link-card.card:hover{
+      .purdue-blocks__button{
+        background:$black !important;
+        color:$boiler-gold !important;
+       }
+       .media-content p.title{
+        text-decoration:none;
+        }
     }
   }
 }

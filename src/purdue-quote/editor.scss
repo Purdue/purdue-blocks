@@ -15,8 +15,27 @@
     .purdue-block-editor-quote{
         background:$white;
         padding:2rem;
+        display:flex;
         &:not(:last-child){
             margin-bottom:4rem;
+        }
+        .purdue-block-quote__image{
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            flex-direction: column;
+            .image{
+                padding-top:100%;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 100%;
+            }
+
+        }
+        .purdue-block-quote__content-container{
+            flex-grow: 1;
+            margin-left:2rem;
         }
         .purdue-block-quote__content{
            textarea{
@@ -28,6 +47,18 @@
                 pointer-events: all;   
             width:100%;
                 } 
+                &:before{
+                    width: 100px;
+                    height: 100px;
+                    display: block;
+                    content: url("data:image/svg+xml,%3Csvg id='ab2aebd5-a62f-4dfa-b5d5-b83b9eef4c67' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.b4bb6a7a-d63d-49f7-a4fd-5d396228bc83%7Bisolation:isolate;%7D.be03d447-f793-4b30-aee2-c3cae2c0df0d%7Bfill:%23ededed;%7D%3C/style%3E%3C/defs%3E%3Cg id='a12a60aa-1270-43ef-9280-761b97beb14a' data-name=' ' class='b4bb6a7a-d63d-49f7-a4fd-5d396228bc83'%3E%3Cg class='b4bb6a7a-d63d-49f7-a4fd-5d396228bc83'%3E%3Cpath class='be03d447-f793-4b30-aee2-c3cae2c0df0d' d='M0,20.458,20.458,0H55.584V23.16016H34.74023L32.03809,25.8623V45.16211H55.584v57.51367H0Zm76.042,0L96.50049,0h34.73974V23.16016h-20.458l-2.70215,2.70214V45.16211h23.16015v57.51367H76.042Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                }
+                &:after{
+                    width: 100px;
+                    height: 100px;
+                    display: block;
+                    content:url("data:image/svg+xml,%3Csvg id='b4930990-a4b4-4d6a-b1e0-9ad895abdee9' data-name='ef9c2100-31be-4639-82c5-0ef6f30faf8a' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 131.24023 102.67578'%3E%3Cdefs%3E%3Cstyle%3E.b6d5e543-911c-4c94-8fdb-e0e01acf6baf%7Bisolation:isolate;%7D.e8b0e685-3c07-44e7-9e48-07eaba779669%7Bfill:%23ededed;%7D%3C/style%3E%3C/defs%3E%3Cg id='b64e74fd-3808-4be3-b29c-9969ba03156c' data-name=' ' class='b6d5e543-911c-4c94-8fdb-e0e01acf6baf'%3E%3Cg class='b6d5e543-911c-4c94-8fdb-e0e01acf6baf'%3E%3Cpath class='e8b0e685-3c07-44e7-9e48-07eaba779669' d='M131.24023,82.21777l-20.458,20.458h-35.126V79.51562H96.5l2.70215-2.70214V57.51367H75.65625V0h55.584Zm-76.042,0-20.45849,20.458H0V79.51562H20.458l2.70215-2.70214V57.51367H0V0H55.19824Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");;
+                }                    
         }
         .purdue-block-quote__name{
            input{
@@ -109,6 +140,12 @@
                 }
           }
         }
+    .buttons-container{
+        button{
+            display:block;
+            margin-top:0.5rem;
+        }
+    }
  }
 
  .remove-image-button{
