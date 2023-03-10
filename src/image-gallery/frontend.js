@@ -1,6 +1,6 @@
 const toggleButtons = document.querySelectorAll('.image-gallery-open:not(.image-no-caption)')
 document.addEventListener("DOMContentLoaded", function() {
-    const imageGalley = document.querySelectorAll('.image-gallery-open')
+    const imageGalley = document.querySelectorAll('.image-gallery-open, .profile-gallery-open')
 
     if ("IntersectionObserver" in window) {
       let lazyBackgroundObserver = new IntersectionObserver(function(entries, observer) {

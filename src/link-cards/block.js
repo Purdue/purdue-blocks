@@ -260,6 +260,8 @@ registerBlockType( 'purdue-blocks/link-cards', {
                   {tab.mediaType?
                     <p className="media-type">
                       {tab.mediaType ==="article"? <span dangerouslySetInnerHTML={{ __html:newspaper }}></span>:""}
+                      {tab.mediaType ==="podcast"? <span dangerouslySetInnerHTML={{ __html:headphone }}></span>:""}
+                      {tab.mediaType ==="video"? <span dangerouslySetInnerHTML={{ __html:video }}></span>:""}
                       {tab.mediaType}</p>:""
                     }
                    {tab.date?

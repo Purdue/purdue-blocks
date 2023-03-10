@@ -4,6 +4,21 @@
  * CSS for both Frontend+Backend.
  */
 .purdue-image-gallery{
+  &.has-white-background{
+    background:$white;
+    color:$black;
+  }
+  &.has-black-background{
+    background:$black;
+    color:$white;
+    a{
+      color:$boiler-gold
+    }
+  }
+  &.has-gray-background{
+    background:$primary-background-gray;
+    color:$black;
+  }
   &.no-bottom-padding.section{
     padding-bottom:0 !important;
   }
@@ -103,6 +118,33 @@
   p.purdue-image-gallery__content{
     &.align-center{
       text-align:center;
+    }
+  }
+  &.purdue-image-gallery--mixed{
+    .pu-profile-gallery--modal{
+      @include mobile{
+        padding:5rem 1.5rem;
+      }
+      .modal--close-button{
+        border: 2px solid $white;
+        color: $white;
+        top: 2rem;
+        right: 2rem;
+        @include mobile{
+          right:1rem;
+          top: 1.5rem;
+        }
+      }
+    }
+    figure.full-image{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      figcaption{
+        color:$white;
+        padding-top:1rem;
+      }
     }
   }
 }

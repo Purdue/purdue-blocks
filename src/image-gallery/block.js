@@ -26,8 +26,7 @@ const {
   Disabled
 } = wp.components;
 const { InspectorControls, MediaUploadCheck, MediaUpload, useBlockProps, RichText } = wp.blockEditor;
-
-import { arrowUp,arrowDown, alignCenter } from '@wordpress/icons';
+import { ReactSortable } from 'react-sortablejs';
 
 /**
  * Register: aa Gutenberg Block.
@@ -76,55 +75,160 @@ registerBlockType( 'purdue-blocks/image-gallery', {
    * @returns {Mixed} JSX Component.
    */
 	edit:( props )=>{
+    const { className, setAttributes } = props;
+    const { type, header, headerLocation, background,content, contentAlign, imgs, cards, id, columns, hasBottomPadding} = props.attributes;
+ 
+    const removeItem = (identifier) => {
+      const newCards = cards.filter((item) => {
+        return item.media_id!== identifier;
+      });
+      setAttributes({ cards: newCards });
+    };
+    const initialCard ={
+      media_id:'',
+      media_url:'',
+      media_alt:'',
+      media_caption:'',
+      subtext: '',
+    }
+    if(type==="imageText" && cards.length ===0){
+      setAttributes({cards:[initialCard]})
+    }
+    const handleAddNew = ()=>{
+      let cards=[...props.attributes.cards];
+      cards.push(initialCard);
+      setAttributes({cards});
+    }
+    const handleImageChange = (img, index)=>{
+
+      let cards=[...props.attributes.cards];
+      cards[index].media_id=img.id;
+      cards[index].media_url=img.url;
+      cards[index].media_alt=img.alt;
+      cards[index].media_caption=img.caption;
+      setAttributes({cards});
+      console.log(props.attributes.cards);
+    }
+
+    let editorFields;
+    if(cards.length >0){
+      editorFields = cards.map((card, index)=>{
+        return <div className={`column${columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
+        <div className="card">
+        <MediaUploadCheck>
+        <MediaUpload
+          onSelect={ ( img ) => handleImageChange(img, index) }
+          render={ ( { open } ) => {
+            return (
+                    <div className={ `image-gallery-open` } data-toggle={card.media_id}>
+                      <div className={ `image is-square` }
+                        role="img"
+                        style={ { backgroundImage: `url(${ card.media_url })` } }
+                        aria-label={ card.media_alt }
+                      >
+                          <button onClick={ open }>{ card.media_url !== '' ? 'Select a new image' : 'Select an image' }</button>
+                      </div>
+                      {card.media_url?
+                        <button className={`image-modal-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
+                          :""
+                      }
+                      </div>
+            );
+          } }
+        />
+        </MediaUploadCheck>
+        <RichText
+          tagName="p"
+          value={card.subtext}
+          className={`card-subtext`}
+          onChange={(subtext) => {
+            let cards=[...props.attributes.cards];
+            cards[index].subtext=subtext;
+            setAttributes({cards});
+          }}
+          placeholder="Add description..."
+          keepPlaceholderOnFocus={true}
+        ></RichText>
+      </div>
+      </div>
+      })
+    }
 
     return [
       <InspectorControls key="1">
         <PanelBody>
           <PanelRow>
             <RadioControl
+              label="Choose the type of image gallery"
+              selected={ type }
+              options={ [
+                { label: 'Image Only', value: 'image' },
+                { label: 'Image and Text', value: 'imageText' },
+              ] }
+              onChange={ ( type ) => {
+                setAttributes( { type } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <SelectControl
+              label="Choose a background"
+              value={ background }
+              options={ [
+                { label: 'White', value: 'white' },
+                { label: 'Black', value: 'black' },
+                { label: 'Gray', value: 'gray' },
+              ] }
+              onChange={ ( background ) => {
+                setAttributes( { background } )
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
+            <RadioControl
               label="Choose how to align the header."
-              selected={ props.attributes.headerLocation }
+              selected={ headerLocation }
               options={ [
                 { label: 'Left', value: 'left' },
                 { label: 'Center', value: 'center' },
               ] }
               onChange={ ( headerLocation ) => {
-                props.setAttributes( { headerLocation } )
+                setAttributes( { headerLocation } )
               } }
             />
           </PanelRow>
             <PanelRow>
             <RadioControl
               label="Choose how to align the content."
-              selected={ props.attributes.contentAlign }
+              selected={ contentAlign }
               options={ [
                 { label: 'Left', value: 'left' },
                 { label: 'Center', value: 'center' },
               ] }
               onChange={ ( contentAlign ) => {
-                props.setAttributes( { contentAlign } )
+                setAttributes( { contentAlign } )
               } }
             />
           </PanelRow>
           <PanelRow>
 						<SelectControl
 							label="Number of Columns"
-							value={props.attributes.columns}
+							value={columns}
 							options={[
 								{ value: '3', label: 'Three Columns' },
 								{ value: '4', label: 'Four Columns' },
 							]}
 							onChange={(columns) => {
-								props.setAttributes({ columns });
+								setAttributes({ columns });
 							}}
 						/>
 					</PanelRow>
           <PanelRow>
             <CheckboxControl
               label="Remove space at the bottom?"
-              checked={ !props.attributes.hasBottomPadding }
+              checked={ !hasBottomPadding }
               onChange={ () => {
-                props.setAttributes( { hasBottomPadding: !props.attributes.hasBottomPadding } )
+                setAttributes( { hasBottomPadding: !hasBottomPadding } )
               } }
             />
           </PanelRow>
@@ -132,57 +236,108 @@ registerBlockType( 'purdue-blocks/image-gallery', {
             <TextControl
               label="HTML Anchor"
               help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
-              value={ props.attributes.id }
-              onChange={ ( id ) => props.setAttributes( { id } ) }
+              value={ id }
+              onChange={ ( id ) => setAttributes( { id } ) }
             />
           </PanelRow>
           </PanelBody>
+          {props.attributes.type === "imageText"?
+          <PanelBody title={__('Images')}>
+					<PanelRow>
+          <ReactSortable
+							list={cards}
+							setList={(val) => {
+								let media_ids = [],
+									values = [];
+                  cards.map((item) => media_ids.push(item.media_id));
+								val.map((item) => values.push(item.media_id));
+								if (_.isEqual(media_ids, values)) {
+									return;
+								}
+
+								setAttributes({
+									cards: val,
+								});
+							}}
+							className="sortable-posts"
+						>
+							{cards.map((item, i) => {                
+								return (
+									<PanelBody initialOpen={false} key={item.media_id} title={`Card ${i+1}`}>
+										<PanelRow>
+                      <img src={item.media_url} />
+                    </PanelRow>
+										<Button
+											style={{ marginTop: '5px' }}
+											isSecondary
+											onClick={() => {
+												removeItem(item.media_id);
+											}}
+										>
+											Remove Item
+										</Button>
+									</PanelBody>
+								);
+							})}
+						</ReactSortable>
+					</PanelRow>
+					<hr></hr>
+					<PanelRow>
+						<Button
+							isPrimary
+							onClick={() => handleAddNew()}
+						>
+							Add New Card
+						</Button>
+					</PanelRow>
+        </PanelBody>:""}
       </InspectorControls>,
-      <div key="2" className={`purdue-image-gallery purdue-image-gallery-editor section is-medium${props.attributes.hasBottomPadding?"":" no-bottom-padding"}`}>
+      <div key="2" className={`purdue-image-gallery purdue-image-gallery-editor section is-medium${hasBottomPadding?"":" no-bottom-padding"} has-${background}-background${type==="imageText"?"purdue-image-gallery--mixed":""}`}>
             <div class="container">
               <RichText
                 tagName="h2"
-                value={props.attributes.header}
-                className={`purdue-image-gallery__header align-${props.attributes.headerLocation}`}
+                value={header}
+                className={`purdue-image-gallery__header align-${headerLocation}`}
                 onChange={(header) => {
-                  props.setAttributes({ header});
+                  setAttributes({ header});
                 }}
                 placeholder="Add header (optional)"
                 keepPlaceholderOnFocus={true}
               ></RichText>
               <RichText
                 tagName="p"
-                value={props.attributes.content}
-                className={`purdue-image-gallery__content align-${props.attributes.contentAlign}`}
+                value={content}
+                className={`purdue-image-gallery__content align-${contentAlign}`}
                 onChange={(content) => {
-                  props.setAttributes({ content });
+                  setAttributes({ content });
                 }}
                 placeholder="Add Text (optional)"
                 keepPlaceholderOnFocus={true}
               ></RichText>
+              {type==="image"?
                 <MediaUploadCheck>
                   <MediaUpload
                     addToGallery={true}
                     multiple={true}
                     gallery={true}
                     onSelect={(imgs) => {
-                      props.setAttributes( { imgs } )
+                      setAttributes( { imgs } )
                     }}
                     render={ ( { open } ) => {
                       return <div class="image-slider-editor">
                         <div class="buttons-container">
                               <button onClick={open}>
                                 {
-                                  props.attributes.imgs.length === 0
+                                  imgs.length === 0
                                   ? "Select images"
                                   : "Select new images"
                                 }
                               </button>
                         </div>
-                        {props.attributes.imgs.length>0?
+                        {imgs.length>0?
                         <div className='columns is-multiline'>
-                          {props.attributes.imgs.map((img, index)=>{
-                            return <div className={`column${props.attributes.columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
+                          {imgs.map((img, index)=>{
+                            return <div className={`column${columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
                               <div className={ `image-gallery-open${img.caption?"":" image-no-caption"}` } data-toggle={img.id}>
                                <div className={ `image is-square` }
                                 role="img"
@@ -210,7 +365,14 @@ registerBlockType( 'purdue-blocks/image-gallery', {
                       </div>
                     } }
                   />
-                </MediaUploadCheck>
+                </MediaUploadCheck>:""}
+                {type==="imageText"?
+                <div class="image-slider-editor">
+                    <div className='columns is-multiline'>
+                          {editorFields}
+                      </div>
+                </div>:""
+                }
             </div>
       </div>,
     ];
