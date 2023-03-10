@@ -160,6 +160,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
           <PanelRow>
             <RadioControl
               label="Choose the type of image gallery"
+              help={ `${type==="imageText"?"Add new or delete cards on the side panel.":""}` }
               selected={ type }
               options={ [
                 { label: 'Image Only', value: 'image' },
