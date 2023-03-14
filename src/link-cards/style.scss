@@ -76,8 +76,17 @@
     }
   }
   &--regular{
-    .link-card.card .media-content p.title{
-    font-size:1.5rem !important;
+    .link-card.card .media-content{
+      p.title{
+        font-size:1.5rem !important;
+        }
+      p.vertical-subtext{
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
     a.link-card.card:hover{
       .purdue-blocks__button{
