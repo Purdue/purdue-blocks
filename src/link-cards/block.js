@@ -255,7 +255,11 @@ registerBlockType( 'purdue-blocks/link-cards', {
                {tabs.map((tab)=>{
                   return <div  className={`column is-half-tablet is-full-mobile${columns=="4"?" is-one-quarter-desktop":""}${columns=="3"?" is-one-third-desktop":""}`}>
                   <div  className="card media link-card">
-                  <div className="image is-16by9 background-image" style={{backgroundImage:`url(${tab.media.url})`}}></div>
+                    {
+                      tab.media.url?
+                      <div className="image is-16by9 background-image" style={{backgroundImage:`url(${tab.media.url})`}}></div>
+                      :""
+                    }
                   <div className="media-content">
                   {tab.mediaType?
                     <p className="media-type">

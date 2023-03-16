@@ -13,19 +13,23 @@
    }
  }
  .purdue-link-cards{
-   .media-content{
-      .media-type{
-         color:$black;
-         text-transform:uppercase;
-         margin-top:0;
-         svg{
-            width:14px;
-            margin-right:0.8rem;
-         }
-       }
-       .story-date, .title, .vertical-subtext{
-         margin-top:0;
-       }
+   .link-card.card{
+      .media-content{
+         width:auto;
+         .media-type{
+            color:$black;
+            text-transform:uppercase;
+            margin-top:0;
+            svg{
+               width:14px;
+               margin-right:0.8rem;
+            }
+          }
+          .story-date, .title, .vertical-subtext{
+            margin-top:0;
+          }
+      }
    }
+ 
  }
 
