@@ -221,7 +221,6 @@ registerBlockType( 'purdue-blocks/image-gallery', {
               ] }
               onChange={ ( imageAlign ) => {
                 setAttributes( { imageAlign } )
-                console.log(imageAlign)
               } }
             />
           </PanelRow>
