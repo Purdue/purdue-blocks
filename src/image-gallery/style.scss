@@ -27,6 +27,9 @@
     .column{
       position:relative;
     }
+    &.align-center{
+      justify-content: center;
+    }
   }
   .image-gallery-open{
     position: relative;

@@ -25,7 +25,11 @@ function render_block_purdue_gallery($attributes){
         $column_class[] = 'is-one-third-widescreen';
     }
     if($attributes['type'] == "image" && sizeof($attributes['imgs'])>0){
-            $output.='<div class="columns is-multiline">';
+            $output.='<div class="columns is-multiline';
+            if($attributes['imageAlign'] == "center"){
+                $output.=' align-center';  
+            }
+            $output.='">';
             foreach ( $attributes['imgs'] as $img ) {  
                 $output.='<div class="'.implode(' ',$column_class).'">';
                 $image_class = 'image-gallery-open';
@@ -48,7 +52,11 @@ function render_block_purdue_gallery($attributes){
             }
             $output.='</div>';
     }elseif($attributes['type'] == "imageText" && sizeof($attributes['cards'])>0){
-        $output.='<div class="columns is-multiline">';
+        $output.='<div class="columns is-multiline';
+        if($attributes['imageAlign'] == "center"){
+            $output.=' align-center';  
+        }
+        $output.='">';
         foreach ( $attributes['cards'] as $card ) {  
             $output.='<div class="'.implode(' ',$column_class).'">';
             $output.='<div class="image-container">';

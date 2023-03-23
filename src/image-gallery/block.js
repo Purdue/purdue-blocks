@@ -76,7 +76,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
    */
 	edit:( props )=>{
     const { className, setAttributes } = props;
-    const { type, header, headerLocation, background,content, contentAlign, imgs, cards, id, columns, hasBottomPadding} = props.attributes;
+    const { type, header, headerLocation, background,content, contentAlign,imageAlign, imgs, cards, id, columns, hasBottomPadding} = props.attributes;
  
     const removeItem = (identifier) => {
       const newCards = cards.filter((item) => {
@@ -212,6 +212,20 @@ registerBlockType( 'purdue-blocks/image-gallery', {
             />
           </PanelRow>
           <PanelRow>
+            <RadioControl
+              label="Choose how to align the images horizontally."
+              selected={ imageAlign }
+              options={ [
+                { label: 'Left', value: 'left' },
+                { label: 'Center', value: 'center' },
+              ] }
+              onChange={ ( imageAlign ) => {
+                setAttributes( { imageAlign } )
+                console.log(imageAlign)
+              } }
+            />
+          </PanelRow>
+          <PanelRow>
 						<SelectControl
 							label="Number of Columns"
 							value={columns}
@@ -336,7 +350,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
                               </button>
                         </div>
                         {imgs.length>0?
-                        <div className='columns is-multiline'>
+                        <div className={`columns is-multiline${imageAlign==="center"?" align-center":""}`}>
                           {imgs.map((img, index)=>{
                             return <div className={`column${columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
                               <div className={ `image-gallery-open${img.caption?"":" image-no-caption"}` } data-toggle={img.id}>
