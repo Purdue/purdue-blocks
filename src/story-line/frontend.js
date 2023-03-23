@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
             storylines.forEach((t)=>{
                 const thisTop = t.getBoundingClientRect().top;
                 const thisBottom = t.getBoundingClientRect().bottom;
-                if(thisTop<=wH*0.3){
+                if(thisTop<=wH*0.6){
                     t.classList.add('animate')
                 }
                 if(thisBottom<=wH*0.5){

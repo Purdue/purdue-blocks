@@ -9,6 +9,7 @@ function render_block_purdue_gallery($attributes){
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     $class=$attributes['hasBottomPadding']?"":" no-bottom-padding";
     $class.=$attributes['type']=="imageText"?" purdue-image-gallery--mixed pu-profile-gallery":"";
+    $class.=$attributes['className']!=""?" ".$attributes['className']:"";
     $output.='<div'.$id.' class="purdue-image-gallery has-'.$attributes["background"].'-background section is-medium'.$class.'">';
     $output.='<div class="container">';
     if($attributes['header'] != ""){
@@ -108,6 +109,10 @@ function register_block_purdue_gallery() {
                 "type" => "string",
                 "default" => "left",
             ),
+            'imageAlign' => array(
+                "type" => "string",
+                "default" => "left",
+            ),
             "imgs" => array(
                 "type"=> "array",
                 "default"=> [],
@@ -128,7 +133,10 @@ function register_block_purdue_gallery() {
                 "type"=> "boolean",
                 "default"=> true,
             ),
-            
+            "className" => array(
+                "type"=> "string",
+                "default"=> "",
+            ),
         ),
         'render_callback' => 'render_block_purdue_gallery',
     )
