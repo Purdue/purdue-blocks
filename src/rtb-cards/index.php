@@ -45,22 +45,22 @@ if(sizeof($attributes['rtb'])>0){
                 $output.='<div class="'.implode( ' ', $column_class ).'">';
                 $hasLead=$rtb['hasLead']?" pu-proofpoint__has-lead":"";
                 $output.='<div class="pu-proofpoint'.$hasLead.'"><div class="container">';
-                if($rtb[leadText] != "" && $rtb['hasLead']){
-                    $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb[leadText].'</span>';
+                if($rtb["leadText"] != "" && $rtb['hasLead']){
+                    $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb["leadText"].'</span>';
                 }
-                if($rtb[largeText] != ""){
-                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb[largeText].'</span>';
+                if($rtb["largeText"] != ""){
+                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb["largeText"].'</span>';
                 }
-                if($rtb[smallText] != ""){
-                    $output.='<span class="small-text pu-proofpoint__content">'.$rtb[smallText].'</span>';
+                if($rtb["smallText"] != ""){
+                    $output.='<span class="small-text pu-proofpoint__content">'.$rtb["smallText"].'</span>';
                 }
-                if($rtb[source] != ""){
-                    $output.='<span class="source pu-proofpoint__source">'.$rtb[source].'</span>';
+                if($rtb["source"] != ""){
+                    $output.='<span class="source pu-proofpoint__source">'.$rtb["source"].'</span>';
                 }
-                if($rtb[ctaLink] != ""){
-                    $target=$tab[external]?'targe="_blank"':'targe="_self"';
+                if($rtb["ctaLink"] != ""){
+                    $target=$rtb["external"]?'targe="_blank"':'targe="_self"';
                     $buttonClass= $attributes['background'] == "black"?" purdue-blocks__button--gold-dark":" purdue-blocks__button--gold-light";
-                    $output.='<a class="pu-proofpoint__button purdue-blocks__button'.$buttonClass.'" href="'.$rtb[ctaLink].'" '.$target.'>'.$rtb[ctaText].'</a>';
+                    $output.='<a class="pu-proofpoint__button purdue-blocks__button'.$buttonClass.'" href="'.$rtb["ctaLink"].'" '.$target.'>'.$rtb["ctaText"].'</a>';
                 }
                 $output.='</div></div></div>';
             }

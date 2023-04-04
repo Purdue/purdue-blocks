@@ -22,22 +22,22 @@ function render_block_purdue_vertical_slider($attributes){
                 $activeSlide = $key==0 ? " active":"";
                 $output.='<div class="vertical-slide'.$activeSlide.'">';
                     $output.='<div class="columns">';
-                        if($tab[media][url] != ""){
-                            $backgroundRole=$tab[media][alt]?' role="img" ':'';
+                        if($tab["media"]["url"] != ""){
+                            $backgroundRole=$tab["media"]["url"]?' role="img" ':'';
                             $output.='<div class="column is-7-desktop image-column">';
-                            $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab[media][url].')" aria-label="'.$tab[media][alt].'"></div>';
+                            $output.='<div class="image background-image"'.$backgroundRole.'style="background-image:url('.$tab["media"]["url"].')" aria-label="'.$tab["media"]["alt"].'"></div>';
                             $output.='</div>';
                         }
                         $output.='<div class="column content">';
                         $output.='<div class="content-wrap">';
-                        $output.='<h2 class="title">'.$tab[header].'</h2>';
+                        $output.='<h2 class="title">'.$tab["header"].'</h2>';
                         
-                        if($tab[subtext] != ""){
-                            $output.='<p class="subtext">'.$tab[subtext].'</p>';
+                        if($tab["subtext"] != ""){
+                            $output.='<p class="subtext">'.$tab["subtext"].'</p>';
                         }
-                        if($tab[buttonLink] != ""){
-                            $target=$tab[newtab]?'targe="_blank"':'targe="_self"';
-                            $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$tab[buttonLink].'" '.$target.'>'.$tab[buttonLabel].'</a>';
+                        if($tab["buttonLink"] != ""){
+                            $target=$tab["newtab"]?'targe="_blank"':'targe="_self"';
+                            $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$tab["buttonLink"].'" '.$target.'>'.$tab["buttonLabel"].'</a>';
                         }
                         $output.='</div></div>';
                     $output.='</div>';
