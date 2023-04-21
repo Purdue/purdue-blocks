@@ -313,7 +313,7 @@ registerBlockType("purdue-blocks/purdue-button", {
       />
       <span className={ 'purdue-blocks__button__icon' }><i class="fas fa-angle-right"></i></span>  
     </a>:
-        <a {...blockProps}role="link" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
+        <a {...blockProps} role="link" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}
         href={props.attributes.buttonURL}
         target={ props.attributes.external ? '_blank' : '_self' }
         rel="noopener noreferrer">
@@ -325,7 +325,7 @@ registerBlockType("purdue-blocks/purdue-button", {
           />
           <span class="shrink-padding"></span>
         </a>:
-        <div role="button" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`} {...blockProps}>      
+        <div {...blockProps} role="button" className={`purdue-blocks__button${props.attributes.height==='full'?' purdue-blocks__button--height':''}${props.attributes.backgroundColor==='goldLignt'?' purdue-blocks__button--gold-light':''}${props.attributes.backgroundColor==='goldDark'?' purdue-blocks__button--gold-dark':''}${props.attributes.backgroundColor==='opaque'?' purdue-blocks__button--opaque':''}${props.attributes.buttonStyle==='fill'?'':' purdue-blocks__button--outline'}${props.attributes.width==='full'?' purdue-blocks__button--full':''}${props.attributes.width==='fullMobile'?' purdue-blocks__button--full-mobile':''}${props.attributes.fontStyle==='narrow'?' purdue-blocks__button--narrow':''}`}>      
           <span class="shrink-padding"></span>
           <RichText.Content
             className={ 'purdue-blocks__button__text' }
