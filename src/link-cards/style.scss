@@ -95,6 +95,16 @@
        }
     }
   }
+  .icon-image{
+    display:block;
+    height:35px;
+    width:auto;
+    margin: 1rem 0;
+  }
+  .story-tag{
+    font-weight:700;
+    margin:0.5rem 0 0.8rem !important;
+  }
   &.purdue-link-cards--simple{
     .link-card.card{
       box-shadow: none;

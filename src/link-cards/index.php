@@ -55,6 +55,12 @@ function render_block_link_cards($attributes){
                         if($tab["date"] != ""){
                             $output.='<p class="story-date">'.$tab["date"].'</p>';
                         }
+                        if($tab["iconImg"] && $tab["iconImg"]["url"] != ""){
+                            $output.='<img class="icon-image" src="'.$tab["iconImg"]["url"].'" alt="'.$tab["iconImg"]["alt"].'"/>';
+                        }
+                        if($tab["tag"] != ""){
+                            $output.='<p class="story-tag">'.$tab["tag"].'</p>';
+                        }
                         $output.='<p class="title is-4">'.$tab["title"].'</p>';                        
                         if($tab["subtext"] != ""){
                             $output.='<p class="vertical-subtext">'.$tab["subtext"].'</p>';

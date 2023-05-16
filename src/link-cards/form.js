@@ -23,6 +23,11 @@ const LinkForm = ({
 		buttontext: '',
 		date:'',
 		mediaType:'',
+		iconImg:{
+			url: '',
+			alt: '',
+		},
+		tag:'',
 	},
 	type,
 }) => {
@@ -33,6 +38,8 @@ const LinkForm = ({
 	const [newLink, updateNewLink] = useState(initialState.link);
 	const [newNewtab, updateNewtab] = useState(initialState.newtab);
 	const [newDate, updateNewDate] = useState(initialState.date);
+	const [newTag, updateNewTag] = useState(initialState.tag);
+	const [newIconImg, updateIconImg] = useState(initialState.iconImg);
 	const [newButtontext, updateNewButtontext] = useState(initialState.buttontext);
 	const [newMediaType, updateNewMediaType] = useState(initialState.mediaType);
 	const [showNoTitle, updateShowNoTitle] = useState(false);
@@ -57,6 +64,8 @@ const LinkForm = ({
 			buttontext: newButtontext,
 			date:newDate,
 			mediaType:newMediaType,
+			tag:newTag,
+			iconImg:newIconImg,
 		};
 
 		onSave(newPost);
@@ -104,9 +113,18 @@ const LinkForm = ({
 					}}
 					allowedTypes={['image']}
 					render={({ open }) => (
-						<Button isSecondary onClick={open}>
-							{mediaButtonLabel}
-						</Button>
+						<div class="buttons-container">
+							<Button isSecondary onClick={open}>
+								{mediaButtonLabel}
+							</Button>
+							{newMedia.url !== ""?
+							<Button isSecondary onClick={()=>{
+								newMedia.url = "";
+								newMedia.alt = "";
+							}}>
+								Remove image
+							</Button>:""}
+						</div>
 					)}
 				/>
 			</PanelRow>
@@ -158,6 +176,53 @@ const LinkForm = ({
 							updateNewDate(val);
 						}}
 						value={newDate}
+					/>
+				</PanelRow>
+			):''
+			}
+			{type === 'regular' || type === 'simple'? (
+				<PanelRow>
+				<MediaUpload
+					onSelect={(media) => {
+						updateIconImg({
+							url: media.url,
+							alt: media.alt,
+						});
+			
+					}}
+					allowedTypes={['image']}
+					render={({ open }) => (
+						<div className="icon-container">
+							{newIconImg && newIconImg.url !== ""?
+							<img src={newIconImg.url} />:""}
+						<div class="buttons-container">
+							<Button isSecondary onClick={open}>
+							{newIconImg && newIconImg.url !== ""
+								? "Select a new Icon"
+								: "Select an Icon"}
+							</Button>
+							{newIconImg && newIconImg.url !== ""?
+							<Button isSecondary onClick={()=>{
+								newIconImg.url = "";
+								newIconImg.alt = "";
+							}}>
+								Remove image
+							</Button>:""}
+						</div>
+						</div>
+					)}
+				/>
+				</PanelRow>
+			):''
+			}
+			{type === 'regular' || type === 'simple'? (
+				<PanelRow>
+					<TextareaControl
+						label={'Optional Tag'}
+						onChange={(val) => {
+							updateNewTag(val);
+						}}
+						value={newTag}
 					/>
 				</PanelRow>
 			):''
