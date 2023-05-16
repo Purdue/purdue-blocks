@@ -271,6 +271,12 @@ registerBlockType( 'purdue-blocks/link-cards', {
                    {tab.date?
                     <p className="story-date">{tab.date}</p>:""
                     }
+                    {tab.iconImg && tab.iconImg.url?
+                    <img className="icon-image" src={tab.iconImg.url} alt={tab.iconImg.alt}/>:""
+                    }
+                    {tab.tag?
+                    <p className="story-tag">{tab.tag}</p>:""
+                    }
                     <p className="title is-4">{tab.title}</p>
                     {tab.subtext?
                     <p className="vertical-subtext">{tab.subtext}</p>:""
