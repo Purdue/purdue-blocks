@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
                 if(thisTop<=wH*0.6){
                     t.classList.add('animate')
                 }
-                if(thisBottom>=wH*0.5){
+                if(thisBottom<=wH*0.5){
                     t.classList.add('no-animate')
                 }
             })
