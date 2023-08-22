@@ -59,13 +59,13 @@
     }
   }
   &.is-open{
-      .accordion-title{
+      &>.accordion-title{
           &:after{
             font-family: "Font Awesome 5 Free"; 
             content: "\f077";
           }
       }  
-      .accordion-content{
+      &>.accordion-content{
         display:block;
         height:auto;
         opacity: 1;
