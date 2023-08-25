@@ -133,7 +133,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
           <PanelRow>
             <RadioControl
               label="Choose how to align the header."
-              defaultValue={ props.attributes.headerLocation }
+              selected={ props.attributes.headerLocation }
               options={ [
                 { label: 'Left', value: 'left' },
                 { label: 'Center', value: 'center' },
@@ -175,7 +175,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 )
               } else {
                 return(
-                  <div key={Math.random()} className={`column ${columnSize}`}>
+                  <div key={i} className={`column ${columnSize}`}>
                     <div className={`editor-profile-form`}>
                       <div className={`editor-profile-order`}>
                         <label>Swap Position: </label>
