@@ -20,8 +20,7 @@ const {
   RadioControl,
   SelectControl,
   CheckboxControl,
-  TextControl,
-  TextareaControl
+  TextControl
 } = wp.components;
 
 const { 
@@ -31,6 +30,8 @@ const {
   RichText,
   useBlockProps
 } = wp.blockEditor;
+
+import dep from './dep';
 
 
 /**
@@ -50,7 +51,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Profile Gallery' ), // Block title.
   icon: (
-    <svg id="ef9c2100-31be-4639-82c5-0ef6f30faf8a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 71.42857"><g id="e07d924f-208c-4ad5-884f-434897ed4326" data-name="Grip-horizontal" class="cls-1"><g class="cls-1"><path class="cls-2" d="M28.57143,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14286,7.14285H7.14286A7.14374,7.14374,0,0,1,0,29.46429V15.17857A7.14375,7.14375,0,0,1,7.14286,8.03571H21.42857A7.14375,7.14375,0,0,1,28.57143,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14286,7.14286H7.14286A7.14375,7.14375,0,0,1,0,72.32143V58.03571a7.14374,7.14374,0,0,1,7.14286-7.14285H21.42857A7.14374,7.14374,0,0,1,28.57143,58.03571ZM64.28571,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14285,7.14285H42.85714a7.14374,7.14374,0,0,1-7.14285-7.14285V15.17857a7.14375,7.14375,0,0,1,7.14285-7.14286H57.14286A7.14375,7.14375,0,0,1,64.28571,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14285,7.14286H42.85714a7.14375,7.14375,0,0,1-7.14285-7.14286V58.03571a7.14374,7.14374,0,0,1,7.14285-7.14285H57.14286A7.14374,7.14374,0,0,1,64.28571,58.03571ZM100,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14286,7.14285H78.57143a7.14374,7.14374,0,0,1-7.14286-7.14285V15.17857a7.14375,7.14375,0,0,1,7.14286-7.14286H92.85714A7.14375,7.14375,0,0,1,100,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14286,7.14286H78.57143a7.14375,7.14375,0,0,1-7.14286-7.14286V58.03571a7.14374,7.14374,0,0,1,7.14286-7.14285H92.85714A7.14374,7.14374,0,0,1,100,58.03571Z" transform="translate(0 -8.03571)"/></g></g></svg>
+    <svg id="ef9c2100-31be-4639-82c5-0ef6f30faf8a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 71.42857"><g id="e07d924f-208c-4ad5-884f-434897ed4326" data-name="Grip-horizontal" className="cls-1"><g className="cls-1"><path className="cls-2" d="M28.57143,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14286,7.14285H7.14286A7.14374,7.14374,0,0,1,0,29.46429V15.17857A7.14375,7.14375,0,0,1,7.14286,8.03571H21.42857A7.14375,7.14375,0,0,1,28.57143,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14286,7.14286H7.14286A7.14375,7.14375,0,0,1,0,72.32143V58.03571a7.14374,7.14374,0,0,1,7.14286-7.14285H21.42857A7.14374,7.14374,0,0,1,28.57143,58.03571ZM64.28571,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14285,7.14285H42.85714a7.14374,7.14374,0,0,1-7.14285-7.14285V15.17857a7.14375,7.14375,0,0,1,7.14285-7.14286H57.14286A7.14375,7.14375,0,0,1,64.28571,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14285,7.14286H42.85714a7.14375,7.14375,0,0,1-7.14285-7.14286V58.03571a7.14374,7.14374,0,0,1,7.14285-7.14285H57.14286A7.14374,7.14374,0,0,1,64.28571,58.03571ZM100,15.17857V29.46429a7.14374,7.14374,0,0,1-7.14286,7.14285H78.57143a7.14374,7.14374,0,0,1-7.14286-7.14285V15.17857a7.14375,7.14375,0,0,1,7.14286-7.14286H92.85714A7.14375,7.14375,0,0,1,100,15.17857Zm0,42.85714V72.32143a7.14375,7.14375,0,0,1-7.14286,7.14286H78.57143a7.14375,7.14375,0,0,1-7.14286-7.14286V58.03571a7.14374,7.14374,0,0,1,7.14286-7.14285H92.85714A7.14374,7.14374,0,0,1,100,58.03571Z" transform="translate(0 -8.03571)"/></g></g></svg>
     ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
@@ -68,7 +69,20 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
    */
 
   attributes: {
-    profiles: {type: "array", default: [{name: 'add', title: '', photoUrl: '', photoAlt: '', bio: '', bioEditorOpen: false}]},
+    profiles: {
+      type: "array", 
+      default: [
+        {
+            name: 'add', 
+            title: '', 
+            email: '',
+            photoUrl: '', 
+            photoAlt: '', 
+            bio: '', 
+            bioEditorOpen: false
+        }
+      ]
+    },
     numColumns: { type: "number", default: 4 },
     header: { type: "string", default: "" },
     headerLocation: { type: "string", default: "center" },
@@ -88,7 +102,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
     const numColumns = parseInt(props.attributes.numColumns)
 
     return [
-      <InspectorControls>
+      <InspectorControls key="1">
           <PanelBody>
             <PanelRow>
               <SelectControl
@@ -118,7 +132,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
           <PanelRow>
             <RadioControl
               label="Choose how to align the header."
-              selected={ props.attributes.headerLocation }
+              defaultValue={ props.attributes.headerLocation }
               options={ [
                 { label: 'Left', value: 'left' },
                 { label: 'Center', value: 'center' },
@@ -131,7 +145,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
           </PanelBody>
         </InspectorControls>,
 
-        <div className={`editor-profile-gallery`}>
+        <div key="2" className={`editor-profile-gallery`}>
           {props.attributes.header?
         <h2 className={`align-${props.attributes.headerLocation}`}>{props.attributes.header}</h2>:""
         }
@@ -141,11 +155,11 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
               const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
               if (profile.name === 'add') {
                 return(
-                  <div className={`editor-profile-add column ${columnSize}`}>
+                  <div key={i} className={`editor-profile-add column ${columnSize}`}>
                     <button 
                       onClick={(e) => {
                         const newProfiles = [...profiles]
-                        newProfiles.push({name: '', title: '', photoUrl: '', photoAlt: '', bio: ''})
+                        newProfiles.push({name: '', title: '', email: '', photoUrl: '', photoAlt: '', bio: ''})
                         const length = newProfiles.length
                         let addButton = newProfiles[length-2]
                         newProfiles[length-2] = newProfiles[length-1]
@@ -160,7 +174,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 )
               } else {
                 return(
-                  <div className={`column ${columnSize}`}>
+                  <div key={Math.random()} className={`column ${columnSize}`}>
                     <div className={`editor-profile-form`}>
                       <div className={`editor-profile-order`}>
                         <label>Swap Position: </label>
@@ -176,7 +190,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           {profiles.map((profile, j, profiles) => {
                             if(profile.name !== 'add') {
                               return(
-                                <option selected={i === j ? 'selected': ''} value={(j)}>{`${j + 1}`}</option>
+                                <option key={j} defaultValue={i === j ? 'selected': ''} value={(j)}>{`${j + 1}`}</option>
                               )
                             }
                           })}
@@ -193,7 +207,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           } }
                           render={ ( { open } ) => {
                             return (
-                              <div className={ `image is-square ${profile.photoUrl === '' ? 'is-empty' : ''}` }
+                              <div key="b1" className={ `image is-square ${profile.photoUrl === '' ? 'is-empty' : ''}` }
                                 role="img"
                                 style={ { backgroundImage: `url(${ profile.photoUrl })` } }
                                 aria-label={ profile.photoAlt }
@@ -216,7 +230,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           props.setAttributes( { profiles: newProfiles } );
                         } }
                       ></input>
-                      <textarea
+                      <input
                         className="editor-profile-text-input"
                         value={profile.title}
                         type="text"
@@ -227,7 +241,19 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           newProfiles[i] = profile
                           props.setAttributes( { profiles: newProfiles } );
                         } }
-                      ></textarea>
+                      ></input>
+                      <input
+                        className="editor-profile-text-input"
+                        value={profile.email}
+                        type="text"
+                        placeholder="Email"
+                        onChange={ ( e ) => {
+                          const newProfiles = [...profiles]
+                          profile.email = e.target.value
+                          newProfiles[i] = profile
+                          props.setAttributes( { profiles: newProfiles } );
+                        } }
+                      ></input>
                       <div className={`editor-profile-buttons`}>
                         <button className={`editor-profile-buttons--edit`} onClick={e => {
                           const newProfiles = [...profiles]
@@ -301,71 +327,81 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
         <div className="pu-profile-gallery">
         <h2 className={`align-${props.attributes.headerLocation}`}>{props.attributes.header}</h2>
         <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
-        {profiles.map((profile, i, profiles) => {
-          if (profile.name !== 'add') {
+          {profiles.map((profile, i, profiles) => {
+            if (profile.name !== 'add') {
 
-            const toggle = `${i}-${profile.name}`
+              const toggle = `${i}-${profile.name}`
 
-            return (
-              <div className={`column ${columnSize} is-half-mobile`}>
-                <div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
-                >
-                <div className={ `image is-square` }
-                  role="img"
-                  style={ { backgroundImage: `url(${ profile.photoUrl })` } }
-                  aria-label={ profile.photoAlt }
-                ></div>
-                {profile.bio?
-                  <button className={`modal-open-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
-                  :""}
-                  </div>
-                <p className={`pu-profile-gallery--name`}>
-                  {profile.name}
-                </p>
-                <p className={`pu-profile-gallery--title`}>
-                  {profile.title}
-                </p>
-                {profile.bio?
-                <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
-                  <div className={`container`}>
-                    <div className={`box`}>
-                      <div className={`modal--close-button`}  aria-label="close">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                      </div>
-                      <div className={`modal--img-container`}>
-                        <div className={ `image is-square` }
-                          role="img"
-                          style={ { backgroundImage: `url(${ profile.photoUrl })` } }
-                          aria-label={ profile.photoAlt }
-                        ></div>
-                      </div>
-                      <div className={`modal--content-container`}>
-                        <p className={`pu-profile-gallery--name`}>
-                          {profile.name}
-                        </p>
-                        <p className={`pu-profile-gallery--title`}>
-                          {profile.title}
-                        </p>
+              return (
+                <div key={i} className={`column ${columnSize} is-half-mobile`}>
+                  <div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
+                  >
+                  <div className={ `image is-square` }
+                    role="img"
+                    style={ { backgroundImage: `url(${ profile.photoUrl })` } }
+                    aria-label={ profile.photoAlt }
+                  ></div>
+                  {profile.bio?
+                    <button className={`modal-open-button`}  aria-label="More information"><i className="fas fa-plus" aria-hidden='true'></i></button>
+                    :""}
+                    </div>
+                  <p className={`pu-profile-gallery--name`}>
+                    {profile.name}
+                  </p>
+                  <p className={`pu-profile-gallery--title`}>
+                    {profile.title}
+                  </p>
+                  {profile.email && 
+                      <p className={`pu-profile-gallery--email`}>
+                            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                      </p>
+                  }
+                  {profile.bio?
+                  <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
+                    <div className={`container`}>
+                      <div className={`box`}>
+                        <div className={`modal--close-button`}  aria-label="close">
+                          <i className="fas fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div className={`modal--img-container`}>
+                          <div className={ `image is-square` }
+                            role="img"
+                            style={ { backgroundImage: `url(${ profile.photoUrl })` } }
+                            aria-label={ profile.photoAlt }
+                          ></div>
+                        </div>
+                        <div className={`modal--content-container`}>
+                          <p className={`pu-profile-gallery--name`}>
+                            {profile.name}
+                          </p>
+                          <p className={`pu-profile-gallery--title`}>
+                            {profile.title}
+                          </p>
+                          {profile.email && 
+                              <p className={`pu-profile-gallery--email`}>
+                                    <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                              </p>
+                          }
 
-                        <RichText.Content 
-                          className={`pu-profile-gallery--bio`}
-                          tagName="p"
-                          value={profile.bio}
-                        />
+                          <RichText.Content 
+                            className={`pu-profile-gallery--bio`}
+                            tagName="p"
+                            value={profile.bio}
+                          />
 
-                        <button className={`modal--secondary-close-button`}>
-                          {'< BACK TO ARTICLE'}
-                        </button>
+                          <button className={`modal--secondary-close-button`}>
+                            {'< BACK TO ARTICLE'}
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>:""}
-              </div>
-            )
-          }
-        })}
-      </div>
-        </div>:
+                  </div>:""}
+                </div>
+              )
+            }
+          })}
+        </div>
+      </div>:
       <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
         {profiles.map((profile, i, profiles) => {
           if (profile.name !== 'add') {
@@ -373,7 +409,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
             const toggle = `${i}-${profile.name}`
 
             return (
-              <div className={`column ${columnSize} is-half-mobile`}>
+              <div key={i} className={`column ${columnSize} is-half-mobile`}>
                 <div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
                 >
                 <div className={ `image is-square` }
@@ -382,7 +418,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                   aria-label={ profile.photoAlt }
                 ></div>
                 {profile.bio?
-                  <button className={`modal-open-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
+                  <button className={`modal-open-button`}  aria-label="More information"><i className="fas fa-plus" aria-hidden='true'></i></button>
                   :""}
                   </div>
                 <p className={`pu-profile-gallery--name`}>
@@ -391,12 +427,18 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 <p className={`pu-profile-gallery--title`}>
                   {profile.title}
                 </p>
+                {profile.email && 
+                    <p className={`pu-profile-gallery--email`}>
+                          <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                    </p>
+                }
+
                 {profile.bio?
                 <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
                   <div className={`container`}>
                     <div className={`box`}>
                       <div className={`modal--close-button`}  aria-label="close">
-                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <i className="fas fa-times" aria-hidden="true"></i>
                       </div>
                       <div className={`modal--img-container`}>
                         <div className={ `image is-square` }
@@ -412,6 +454,11 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                         <p className={`pu-profile-gallery--title`}>
                           {profile.title}
                         </p>
+                        {profile.email && 
+                            <p className={`pu-profile-gallery--email`}>
+                                  <a href={`mailto:${profile.email}`}>{profile.email}</a>
+                            </p>
+                        }
 
                         <RichText.Content 
                           className={`pu-profile-gallery--bio`}
@@ -434,4 +481,5 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
     );
     return returned;
   },
+  deprecated: dep
 } );
