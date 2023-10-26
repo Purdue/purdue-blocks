@@ -479,8 +479,10 @@ registerBlockType( 'purdue-blocks/site-hero', {
                                   select( 'core/editor' ).getPermalink()
                                 }` }
                                 className="icon"
-                              >
-                                <i className={ `fab fa-lg fa-${ faSlug }` }></i>
+                              >{
+                                faSlug==="twitter"?
+                                <i class="fa-brands fa-x-twitter"></i>:<i className={ `fab fa-lg fa-${ faSlug }` }></i>
+                              }
                               </a>
                             </div>
                           );
@@ -561,7 +563,10 @@ registerBlockType( 'purdue-blocks/site-hero', {
                                 }` }
                                 className="icon"
                               >
-                                <i className={ `fab fa-lg fa-${ faSlug }` }></i>
+                                {
+                                faSlug==="twitter"?
+                                <i class="fa-brands fa-x-twitter"></i>:<i className={ `fab fa-lg fa-${ faSlug }` }></i>
+                              }
                               </a>
                             </div>
                           );
