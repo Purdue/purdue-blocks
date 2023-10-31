@@ -8,7 +8,7 @@
 function render_block_purdue_gallery($attributes){
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     $class=$attributes['hasBottomPadding']?"":" no-bottom-padding";
-    $class.=$attributes['type']=="imageText"?" purdue-image-gallery--mixed pu-profile-gallery":"";
+    $class.=$attributes['type']!="image"?" purdue-image-gallery--mixed pu-profile-gallery":"";
     $class.=$attributes['className']!=""?" ".$attributes['className']:"";
     $output.='<div'.$id.' class="purdue-image-gallery has-'.$attributes["background"].'-background section is-medium'.$class.'">';
     $output.='<div class="container">';
@@ -79,6 +79,70 @@ function render_block_purdue_gallery($attributes){
             $output.='</div>';
             $output.='<div class="content-container">';
             $output.='<p>'.$card["subtext"].'</p>';
+            $output.='</div>';
+            $output.='</div>';
+        }
+        $output.='</div>';
+    }elseif($attributes['type'] == "gallery" && sizeof($attributes['cards'])>0){
+        $output.='<div class="columns is-multiline purdue-link-cards';
+        if($attributes['imageAlign'] == "center"){
+            $output.=' align-center';  
+        }
+        $output.='">';
+        foreach ( $attributes['cards'] as $card ) {  
+            $output.='<div class="'.implode(' ',$column_class).'">';
+            $output.='<div class="card media link-card">';
+            $output.='<div class="image is-16by9 background-image" role="image" style="background-image:url('.$card["media_url"].')" aria-label="'.$card["media_alt"].'"></div>';
+
+            $output.='<div class="media-content">';
+            $output.='<p class="title">'.$card["title"].'</p>';
+            $output.='<p class="vertical-subtext">'.$card["subtext"].'</p>';
+            $buttonText=$card["buttonText"]?$card["buttonText"]:"View Full Gallery";
+            $output.='<button class="purdue-blocks__button purdue-blocks__button--gold-light image-gallery-open gallery-open-button" data-toggle="'.$card["media_id"].'">'.$buttonText.'</button>';
+            $output.='<div class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
+            <div class="modal--close-button"  aria-label="close">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </div>
+            <div class="index-indicator">
+                <span class="current-index"></span>/<span class="total-number">'.sizeof($card["imgs"]).'</span>
+            </div>
+            <div class="container">
+                <div class="purdue-gallery-slider-large">
+                    <div class="glide__track" data-glide-el="track">
+                        <div class="glide__slides">';
+                        foreach ( $card["imgs"] as $galleryImg ) { 
+                            $output.='
+                            <div class="glide__slide">
+                                <figure>
+                                    <img src="'.$galleryImg["url"].'" alt="'.$galleryImg["alt"].'" />
+                                    <figcaption>'.$galleryImg["caption"].'</figcaption>
+                                </figure>
+                            </div>';
+                        }
+                        $output.='</div>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
+                    </div>
+                </div>
+                <div class="purdue-gallery-slider-thumbnail">
+                    <div class="glide__track" data-glide-el="track">
+                        <div class="glide__slides">';
+                        foreach ( $card["imgs"] as $key => $galleryImg ) { 
+                            $output.='
+                            <div class="glide__slide">
+                                <figure>
+                                    <img src="'.$galleryImg["url"].'" alt="'.$galleryImg["alt"].'" data-index="'.$key.'"/>
+                                </figure>
+                            </div>';
+                        }
+                        $output.='</div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+            $output.='</div>';
             $output.='</div>';
             $output.='</div>';
         }

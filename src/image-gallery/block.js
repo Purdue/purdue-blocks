@@ -89,9 +89,12 @@ registerBlockType( 'purdue-blocks/image-gallery', {
       media_url:'',
       media_alt:'',
       media_caption:'',
+      imgs: [],
       subtext: '',
+      title:'',
+      buttonText:'View Full Gallery',
     }
-    if(type==="imageText" && cards.length ===0){
+    if(type!=="image" && cards.length ===0){
       setAttributes({cards:[initialCard]})
     }
     const handleAddNew = ()=>{
@@ -109,34 +112,80 @@ registerBlockType( 'purdue-blocks/image-gallery', {
       setAttributes({cards});
       console.log(props.attributes.cards);
     }
+    const handleGalleryChange = (imgs, index)=>{
 
+      let cards=[...props.attributes.cards];
+      cards[index].imgs=imgs;
+      setAttributes({cards});
+      console.log(props.attributes.cards);
+    }
     let editorFields;
     if(cards.length >0){
       editorFields = cards.map((card, index)=>{
         return <div className={`column${columns === "4"?" is-one-quarter-widescreen":" is-one-third-widescreen"} is-half-tablet is-full-mobile is-one-third-desktop`}>
-        <div className="card">
+        <div className={`card${type==="gallery"?" media link-card":""}`}>
         <MediaUploadCheck>
         <MediaUpload
           onSelect={ ( img ) => handleImageChange(img, index) }
           render={ ( { open } ) => {
             return (
-                    <div className={ `image-gallery-open` } data-toggle={card.media_id}>
-                      <div className={ `image is-square` }
+                    <div className={ `${type==="imageText"?" image-gallery-open":""}` } data-toggle={card.media_id}>
+                      <div className={ `image${type==="gallery"?" is-16by9":" is-square"}` }
                         role="img"
                         style={ { backgroundImage: `url(${ card.media_url })` } }
                         aria-label={ card.media_alt }
                       >
-                          <button onClick={ open }>{ card.media_url !== '' ? 'Select a new image' : 'Select an image' }</button>
+                          <button isPrimary onClick={ open }>{ card.media_url !== '' ? 'Select a new cover image' : 'Select an cover image' }</button>
                       </div>
-                      {card.media_url?
-                        <button className={`image-modal-button`}  aria-label="More information"><i class="fas fa-plus" aria-hidden='true'></i></button>
-                          :""
+                      {card.media_url&&type==="imageText"?
+                        <button className={`image-modal-button`}  aria-label="More information">
+                          <i class="fas fa-plus" aria-hidden='true'></i>        
+                        </button>
+                        :""
                       }
                       </div>
             );
           } }
         />
         </MediaUploadCheck>
+        {
+          type==="gallery"?
+          <MediaUploadCheck>
+          <MediaUpload
+            addToGallery={true}
+            multiple={true}
+            gallery={true}
+            onSelect={(imgs) => handleGalleryChange(imgs, index)}
+            render={ ( { open } ) => {
+              return <div class="image-slider-editor">
+                <div>
+                      <button isPrimary onClick={open}>
+                        {
+                          card.imgs && card.imgs.length > 0
+                          ? "Select new images"
+                          : "Select gallery images"
+                        }
+                      </button>
+                </div>                      
+              </div>
+            } }
+          />
+        </MediaUploadCheck>:""}
+        {
+          type==="gallery"?
+          <RichText
+          tagName="p"
+          value={card.title}
+          className={`card-title`}
+          onChange={(title) => {
+            let cards=[...props.attributes.cards];
+            cards[index].title=title;
+            setAttributes({cards});
+          }}
+          placeholder="Add Title..."
+          keepPlaceholderOnFocus={true}
+        ></RichText>:""
+        }
         <RichText
           tagName="p"
           value={card.subtext}
@@ -149,6 +198,10 @@ registerBlockType( 'purdue-blocks/image-gallery', {
           placeholder="Add description..."
           keepPlaceholderOnFocus={true}
         ></RichText>
+          {
+          type==="gallery"?
+          <div class="purdue-blocks__button purdue-blocks__button--gold-light">{card.buttonText?card.buttonText:"View Full Gallery"}</div>:""
+          }
       </div>
       </div>
       })
@@ -165,6 +218,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
               options={ [
                 { label: 'Image Only', value: 'image' },
                 { label: 'Image and Text', value: 'imageText' },
+                { label: 'Multiple Galleries', value: 'gallery' },
               ] }
               onChange={ ( type ) => {
                 setAttributes( { type } )
@@ -255,7 +309,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
             />
           </PanelRow>
           </PanelBody>
-          {props.attributes.type === "imageText"?
+          {props.attributes.type !== "image"?
           <PanelBody title={__('Images')}>
 					<PanelRow>
           <ReactSortable
@@ -380,7 +434,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
                     } }
                   />
                 </MediaUploadCheck>:""}
-                {type==="imageText"?
+                {type!=="image"?
                 <div class="image-slider-editor">
                     <div className='columns is-multiline'>
                           {editorFields}

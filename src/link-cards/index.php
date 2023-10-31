@@ -66,7 +66,7 @@ function render_block_link_cards($attributes){
                             $output.='<p class="vertical-subtext">'.$tab["subtext"].'</p>';
                         }
                         if($tab["buttontext"] != ""){
-                            $output.='<div class="purdue-blocks__button purdue-blocks__button--gold-light">'.$tab["buttontext"].'</div>';
+                            $output.='<button class="purdue-blocks__button purdue-blocks__button--gold-light">'.$tab["buttontext"].'</button>';
                         }
                         $output.='</div>';
                     if($tab["link"] != ""){
