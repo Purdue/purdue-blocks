@@ -31,13 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
 const openModal = (e) => {
   const modalTarget = e.currentTarget.dataset.toggle;
   const window = document.querySelector("html");
-  const modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`);
-
-  window.classList.add("no-scroll-page");
-  modalToOpen.classList.add("modal-open");
-  if (modalToOpen) {
-    modalToOpen.classList.add("modal-open");
+  let modalToOpen; 
+  if(e.currentTarget.classList.contains("image-gallery-open") && !e.currentTarget.classList.contains("image-no-caption") && !e.currentTarget.classList.contains("gallery-open-button")){
+     modalToOpen = e.currentTarget.nextElementSibling;
+     modalToOpen.classList.add("modal-open");
+  }else{
+     modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`);
+     window.classList.add("no-scroll-page");
+     modalToOpen.classList.add("modal-open");
   }
+
 };
 
 const closeModal = (e) => {
@@ -56,7 +59,6 @@ const closeButtons = document.querySelectorAll(".image-modal-close");
 import Glide from "@glidejs/glide";
 
 const check_resize = (glide) => {
-  // console.log(glide.slides_count)
   if (glide.slides_count <= glide.settings.perView) {
     glide.update({ startAt: 0 }).disable();
     glide.control ? glide.control.classList.add("hidden") : "";
@@ -76,7 +78,7 @@ document.addEventListener("DOMContentLoaded",function(){
   if(galleryLargeImages && galleryLargeImages.length>0){
     for (let i = 0; i < galleryLargeImages.length; i++) {
       let glideLarge = new Glide(galleryLargeImages[i], {
-        type: 'carousel',
+        type: 'slider',
         startAt: 0,
         perView: 1,
         gap: 24,
@@ -106,24 +108,25 @@ document.addEventListener("DOMContentLoaded",function(){
         dragThreshold: false,
         breakpoints: {
           1024: {
-            perView: 10,
+            perView: 12,
           },
           767: {
             perView: 6,
           },
         },
       });
+      glideThumb.slides_count = galleryThumbImages[i].querySelectorAll(".glide__slide").length;
 
       glideThumb.mount({});
-
+      glideThumb.on("resize", () => {
+        glideThumb.update()
+      });
       const indexIndicator = galleryLargeImages[i].parentElement.parentElement.querySelector(".current-index");
 
       galleryThumbImages[i].querySelectorAll('.glide__slide').forEach(el => {
         el.addEventListener('click', (e) => {
-          console.log(e.target)
           glideLarge.go('='+(e.target.dataset.index))
           glideThumb.go('='+(e.target.dataset.index))
-
         })
       })
       glideLarge.on('swipe.end', function() {
@@ -137,6 +140,27 @@ document.addEventListener("DOMContentLoaded",function(){
         }
 
       })
+      glideThumb.on("run", () => {
+        let focusAt = 0;
+        if(glideThumb.slides_count <= glideThumb.settings.perView){
+          focusAt = glideThumb.index;
+        }else if(glideThumb.index > glideThumb.slides_count - glideThumb.settings.perView ){
+          if(glideThumb.index === 0){
+            focusAt = 0;
+          }else if((glideThumb.index)%(glideThumb.settings.perView) === 0){
+            focusAt = glideThumb.settings.perView-1
+          }else{
+            focusAt =  (glideThumb.index)%(glideThumb.settings.perView)-1
+          }
+        }else{
+          focusAt = 0;
+        }
+        glideThumb.update({
+          focusAt: focusAt
+        });
+
+      });
+      
       const galleryOpenButton = galleryLargeImages[i].parentElement.parentElement.previousElementSibling;
       if (galleryOpenButton) {
         galleryOpenButton.addEventListener("click", () => {
