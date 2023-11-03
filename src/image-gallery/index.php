@@ -106,7 +106,7 @@ function render_block_purdue_gallery($attributes){
             <div class="index-indicator">
                 <span class="current-index"></span>/<span class="total-number">'.sizeof($card["imgs"]).'</span>
             </div>
-            <div class="container">
+            <div class="container slider-container">
                 <div class="purdue-gallery-slider-large">
                     <div class="glide__track" data-glide-el="track">
                         <div class="glide__slides">';

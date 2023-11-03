@@ -158,6 +158,13 @@
   .purdue-gallery-slider-large{
     width:100%;
     position: relative;
+    margin-bottom: 3rem;
+    height: 68vh;
+    display: flex;
+    align-items: center;
+    @include mobile{
+      margin-bottom: 2rem;
+    }
     .glide__track{
       width:900px;
       margin:0 auto;
@@ -176,12 +183,22 @@
     }
     figure{
       width:100%;
+      height: 100%;
+      max-height: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      justify-content: center;
       img{
-        max-height:60vh;
+        max-width:100%;
         border-radius:4px;
+        max-height: 58vh;
       }
       figcaption{
         color:$white;
+        padding-top:0.5rem;
       }
     }
     .glide__arrow {
@@ -211,10 +228,7 @@
     }
   }
   .purdue-gallery-slider-thumbnail{
-    margin-top:3rem;
-    @include mobile{
-      margin-top:2rem;
-    }
+    margin-top:auto;
     .glide__slides{
       margin:0 auto;
     }
@@ -228,7 +242,7 @@
       height:auto;
       border-radius:4px;
       &--active{
-        border:3px solid $boiler-gold;
+        border:3px solid $rush-gold;
       }
     }
     figure{
@@ -251,6 +265,12 @@
       }
     }
   }
+  // .container.slider-container{
+  //   height: 100%;
+  //   max-height: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  // }
   .index-indicator{
     color: $white;
     top: 2rem;

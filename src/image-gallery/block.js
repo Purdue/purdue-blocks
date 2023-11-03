@@ -130,7 +130,7 @@ registerBlockType( 'purdue-blocks/image-gallery', {
           render={ ( { open } ) => {
             return (
                     <div className={ `${type==="imageText"?" image-gallery-open":""}` } data-toggle={card.media_id}>
-                      <div className={ `image${type==="gallery"?" is-16by9":" is-square"}` }
+                      <div className={ `image background-image ${type==="gallery"?" is-16by9":" is-square"}` }
                         role="img"
                         style={ { backgroundImage: `url(${ card.media_url })` } }
                         aria-label={ card.media_alt }
@@ -156,13 +156,14 @@ registerBlockType( 'purdue-blocks/image-gallery', {
             multiple={true}
             gallery={true}
             onSelect={(imgs) => handleGalleryChange(imgs, index)}
+            value={ card.imgs.map(item => item.id) }
             render={ ( { open } ) => {
               return <div class="image-slider-editor">
                 <div>
                       <button isPrimary onClick={open}>
                         {
                           card.imgs && card.imgs.length > 0
-                          ? "Select new images"
+                          ? "Select new gallery images"
                           : "Select gallery images"
                         }
                       </button>

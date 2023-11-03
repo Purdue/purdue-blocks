@@ -31,16 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
 const openModal = (e) => {
   const modalTarget = e.currentTarget.dataset.toggle;
   const window = document.querySelector("html");
-  let modalToOpen; 
-  if(e.currentTarget.classList.contains("image-gallery-open") && !e.currentTarget.classList.contains("image-no-caption") && !e.currentTarget.classList.contains("gallery-open-button")){
-     modalToOpen = e.currentTarget.nextElementSibling;
-     modalToOpen.classList.add("modal-open");
-  }else{
-     modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`);
-     window.classList.add("no-scroll-page");
-     modalToOpen.classList.add("modal-open");
+  let modalToOpen;
+  if (
+    e.currentTarget.classList.contains("image-gallery-open") &&
+    !e.currentTarget.classList.contains("image-no-caption") &&
+    !e.currentTarget.classList.contains("gallery-open-button")
+  ) {
+    modalToOpen = e.currentTarget.nextElementSibling;
+    modalToOpen.classList.add("modal-open");
+  } else {
+    modalToOpen = document.querySelector(`[data-modal="${modalTarget}"]`);
+    window.classList.add("no-scroll-page");
+    modalToOpen.classList.add("modal-open");
   }
-
 };
 
 const closeModal = (e) => {
@@ -68,18 +71,21 @@ const check_resize = (glide) => {
   }
 };
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded", function () {
   const galleryLargeImages = document.querySelectorAll(
     ".purdue-gallery-slider-large"
   );
   const galleryThumbImages = document.querySelectorAll(
     ".purdue-gallery-slider-thumbnail"
   );
-  if(galleryLargeImages && galleryLargeImages.length>0){
+  if (galleryLargeImages && galleryLargeImages.length > 0) {
+
     for (let i = 0; i < galleryLargeImages.length; i++) {
+      const center = galleryLargeImages[i].querySelectorAll(".glide__slide").length / 2;
+
       let glideLarge = new Glide(galleryLargeImages[i], {
-        type: 'slider',
-        startAt: 0,
+        type: "slider",
+        startAt: center,
         perView: 1,
         gap: 24,
         breakpoints: {
@@ -91,19 +97,22 @@ document.addEventListener("DOMContentLoaded",function(){
           },
         },
       });
-      glideLarge.slides_count = galleryLargeImages[i].querySelectorAll(".glide__slide").length;
-      glideLarge.control = galleryLargeImages[i].querySelector(".glide__arrows");
+      glideLarge.slides_count =
+        galleryLargeImages[i].querySelectorAll(".glide__slide").length;
+      glideLarge.control =
+        galleryLargeImages[i].querySelector(".glide__arrows");
       glideLarge.on("resize", () => {
         check_resize(glideLarge);
       });
       glideLarge.mount({});
       check_resize(glideLarge);
-    
+
       let glideThumb = new Glide(galleryThumbImages[i], {
         type: "slider",
-        startAt: 0,
+        startAt: center,
         perView: 16,
         gap: 12,
+        focusAt: "center",
         swipeThreshold: false,
         dragThreshold: false,
         breakpoints: {
@@ -115,63 +124,67 @@ document.addEventListener("DOMContentLoaded",function(){
           },
         },
       });
-      glideThumb.slides_count = galleryThumbImages[i].querySelectorAll(".glide__slide").length;
+      glideThumb.slides_count =
+        galleryThumbImages[i].querySelectorAll(".glide__slide").length;
 
       glideThumb.mount({});
       glideThumb.on("resize", () => {
-        glideThumb.update()
+        glideThumb.update();
       });
-      const indexIndicator = galleryLargeImages[i].parentElement.parentElement.querySelector(".current-index");
+      const indexIndicator =
+        galleryLargeImages[i].parentElement.parentElement.querySelector(
+          ".current-index"
+        );
 
-      galleryThumbImages[i].querySelectorAll('.glide__slide').forEach(el => {
-        el.addEventListener('click', (e) => {
-          glideLarge.go('='+(e.target.dataset.index))
-          glideThumb.go('='+(e.target.dataset.index))
-        })
-      })
-      glideLarge.on('swipe.end', function() {
-        glideThumb.go('='+(glideLarge.index))
-      })
-      
-      glideLarge.on('move.after', function() {
-        glideThumb.go('='+(glideLarge.index))
-        if(indexIndicator){
-          indexIndicator.innerHTML=glideLarge.index+1
+      galleryThumbImages[i].querySelectorAll(".glide__slide").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          glideLarge.go("=" + e.target.dataset.index);
+          glideThumb.go("=" + e.target.dataset.index);
+        });
+      });
+      glideLarge.on("swipe.end", function () {
+        glideThumb.go("=" + glideLarge.index);
+      });
+
+      glideLarge.on("move.after", function () {
+        glideThumb.go("=" + glideLarge.index);
+        if (indexIndicator) {
+          indexIndicator.innerHTML = glideLarge.index + 1;
         }
-
-      })
+      });
       glideThumb.on("run", () => {
-        let focusAt = 0;
-        if(glideThumb.slides_count <= glideThumb.settings.perView){
+        let focusAt = "center";
+        if (glideThumb.slides_count <= glideThumb.settings.perView) {
           focusAt = glideThumb.index;
-        }else if(glideThumb.index > glideThumb.slides_count - glideThumb.settings.perView ){
-          if(glideThumb.index === 0){
-            focusAt = 0;
-          }else if((glideThumb.index)%(glideThumb.settings.perView) === 0){
-            focusAt = glideThumb.settings.perView-1
-          }else{
-            focusAt =  (glideThumb.index)%(glideThumb.settings.perView)-1
-          }
-        }else{
-          focusAt = 0;
+        } else if (
+          glideThumb.index >=
+          glideThumb.slides_count - glideThumb.settings.perView/2
+        ) {
+          focusAt =
+            glideThumb.settings.perView -
+            (glideThumb.slides_count - glideThumb.index);
+        }else if (
+          glideThumb.index <=glideThumb.settings.perView/2
+        ) {
+          focusAt =glideThumb.index;
+        } else {
+          focusAt = "center";
         }
         glideThumb.update({
-          focusAt: focusAt
+          focusAt: focusAt,
         });
-
       });
-      
-      const galleryOpenButton = galleryLargeImages[i].parentElement.parentElement.previousElementSibling;
+
+      const galleryOpenButton =
+        galleryLargeImages[i].parentElement.parentElement
+          .previousElementSibling;
       if (galleryOpenButton) {
         galleryOpenButton.addEventListener("click", () => {
           check_resize(glideLarge);
-          glideLarge.update()
-          glideThumb.update()
+          glideLarge.update();
+          glideThumb.update();
         });
-      
       }
     }
   }
-  
-})
-
+});
