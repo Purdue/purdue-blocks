@@ -98,6 +98,10 @@ function render_block_purdue_gallery($attributes){
             $output.='<p class="title">'.$card["title"].'</p>';
             $output.='<p class="vertical-subtext">'.$card["subtext"].'</p>';
             $buttonText=$card["buttonText"]?$card["buttonText"]:"View Full Gallery";
+            if(array_key_exists("cardType",$card) && $card["cardType"]=="link"){
+                $taget=$card["external"]?" target='_blank'":"";
+                $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$card["linkURL"].'"'.$taget.'>'.$buttonText.'</a>';
+            }else{
             $output.='<button class="purdue-blocks__button purdue-blocks__button--gold-light image-gallery-open gallery-open-button" data-toggle="'.$card["media_id"].'">'.$buttonText.'</button>';
             $output.='<div class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
             <div class="modal--close-button"  aria-label="close">
@@ -142,6 +146,7 @@ function render_block_purdue_gallery($attributes){
                 </div>
             </div>
         </div>';
+                    }
             $output.='</div>';
             $output.='</div>';
             $output.='</div>';
