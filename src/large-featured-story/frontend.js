@@ -1,5 +1,6 @@
+import {FocusTrap} from "@justpie/focustrap";
+
 const largeStory=[...document.querySelectorAll(".pu-large-image:not(.pu-large-image--box)")]
-console.log(largeStory)
 const wH=window.innerHeight;
 window.addEventListener('scroll', () => {
     if(largeStory&&largeStory.length>0){
@@ -11,19 +12,12 @@ window.addEventListener('scroll', () => {
         })
     }
 })
-//Lightbox 
+//Lightbox
 let lightboxPlayers=[]
 if(largeStory&&largeStory.length>0){
     largeStory.forEach((t)=>{
         const button = t.querySelector(".pu-lightbox-button");
-        if(button){
-            const lightbox = t.querySelector(".pu-lightbox");
-            button.addEventListener("click", ()=>{
-                lightbox.classList.add("modal-open")
-                const window = document.querySelector('html')         
-                window.classList.add('no-scroll-page')
-            })
-        }
+
         const closeButton = t.querySelector('.modal--close-button');
         const video = t.querySelector('video')
         if(video){
@@ -46,24 +40,47 @@ if(largeStory&&largeStory.length>0){
             let checkYT = setInterval(function () {
                 if(typeof YT !== 'undefined'&&YT.loaded){
                      let lightboxPlayer=new YT.Player( youtube.id, {
-                        events: { 
+                        events: {
                             'onReady': function(e){
                                 closeButton.addEventListener("click", ()=>{
                                     lightboxPlayer.pauseVideo()
-                                })                              
+                                })
                             }
                         }
-                    });   
+                    });
                     lightboxPlayers.push({
                         "id" :youtube.id,
                         "player" : lightboxPlayer
-                    });          
+                    });
                    clearInterval(checkYT);
                 }
             }, 100);
             checkYT;
         }
-        //close modal code in profile-gallery block        
+      if (button) {
+        const lightbox = t.querySelector(".pu-lightbox");
+        button.addEventListener("click", () => {
+          lightbox.classList.add("modal-open");
+          const youtube = lightbox.querySelectorAll('iframe');
+          [...youtube].forEach((x) => x.setAttribute('tabindex', '0'));
+          const focus = new FocusTrap(lightbox, {
+            // This is a hack to trick iframe focus.
+            onFocusOut: (e) => {
+             const tabble = focus.getTabble();
+            let index = tabble.findIndex((el) => el === e.relatedTarget);
+            if(index === -1) {
+              index = tabble.findIndex((el) => el === focus.previousElement);
+              if(index)
+                focus.moveFocus(focus.previousElement, focus.direction, index+1);
+            }
+          },
+          });
+
+          const window = document.querySelector('html')
+          window.classList.add('no-scroll-page')
+        })
+      }
+        //close modal code in profile-gallery block
     })
 }
 

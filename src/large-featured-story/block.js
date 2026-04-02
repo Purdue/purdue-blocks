@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
-
+import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -127,7 +127,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
                 props.setAttributes( {layout} )
               } }
             />
-          </PanelRow> 
+          </PanelRow>
         <PanelRow>
             <SelectControl
               label="Heading Level of the Header"
@@ -424,9 +424,9 @@ registerBlockType("purdue-blocks/large-featured-story", {
         </div>
         {props.attributes.addLightBox?
         <div className="pu-lightbox">
-          <div className={`modal--close-button`}>
+          <button className={`modal--close-button`}>
             <i class="fas fa-times" aria-hidden="true"></i>
-          </div>
+          </button>
           <div className="container">
             <div className="video-container">
               <div className="video">
@@ -442,6 +442,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
     );
     return returned;
   },
+  deprecated: dep
 });
 
 function getVideoId(url) {
@@ -452,4 +453,4 @@ function getVideoId(url) {
     ? match[2]
     : null;
 }
-  
+

@@ -1,4 +1,4 @@
-const { 
+const {
 	RichText,
 	useBlockProps
 } = wp.blockEditor;
@@ -16,17 +16,17 @@ const v1 = {
 				bioEditorOpen: false
 			}]
 		},
-		numColumns: { 
-			type: "number", 
-			default: 4 
+		numColumns: {
+			type: "number",
+			default: 4
 		},
-		header: { 
-			type: "string", 
-			default: "" 
+		header: {
+			type: "string",
+			default: ""
 		},
-		headerLocation: { 
-			type: "string", 
-			default: "center" 
+		headerLocation: {
+			type: "string",
+			default: "center"
 		}
 	},
 	supports: {
@@ -38,9 +38,9 @@ const v1 = {
 		const blockProps = useBlockProps.save();
 		const profiles = props.attributes.profiles
 		const numColumns = parseInt(props.attributes.numColumns)
-	
+
 		const columnSize = numColumns === 4 ? 'is-3' : numColumns === 3 ? 'is-4' : numColumns === 2 ? 'is-6' : 'is-12'
-	
+
 		const returned = (
 		  props.attributes.header?
 			<div className="pu-profile-gallery">
@@ -48,9 +48,9 @@ const v1 = {
 			<div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
 			{profiles.map((profile, i, profiles) => {
 			  if (profile.name !== 'add') {
-	
+
 				const toggle = `${i}-${profile.name}`
-	
+
 				return (
 				  <div className={`column ${columnSize} is-half-mobile`}>
 					<div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
@@ -91,13 +91,13 @@ const v1 = {
 							<p className={`pu-profile-gallery--title`}>
 							  {profile.title}
 							</p>
-	
-							<RichText.Content 
+
+							<RichText.Content
 							  className={`pu-profile-gallery--bio`}
 							  tagName="p"
 							  value={profile.bio}
 							/>
-	
+
 							<button className={`modal--secondary-close-button`}>
 							  {'< BACK TO ARTICLE'}
 							</button>
@@ -114,9 +114,9 @@ const v1 = {
 		  <div {...blockProps} className={`pu-profile-gallery columns is-multiline`}>
 			{profiles.map((profile, i, profiles) => {
 			  if (profile.name !== 'add') {
-	
+
 				const toggle = `${i}-${profile.name}`
-	
+
 				return (
 				  <div className={`column ${columnSize} is-half-mobile`}>
 					<div className={ `profile-gallery-open${profile.bio?"":" profile-no-bio"}` } data-toggle={toggle}
@@ -136,7 +136,7 @@ const v1 = {
 					<p className={`pu-profile-gallery--title`}>
 					  {profile.title}
 					</p>
-					
+
 					{profile.bio?
 					<div className={`pu-profile-gallery--modal`} data-modal={toggle}>
 					  <div className={`container`}>
@@ -158,13 +158,13 @@ const v1 = {
 							<p className={`pu-profile-gallery--title`}>
 							  {profile.title}
 							</p>
-	
-							<RichText.Content 
+
+							<RichText.Content
 							  className={`pu-profile-gallery--bio`}
 							  tagName="p"
 							  value={profile.bio}
 							/>
-	
+
 							<button className={`modal--secondary-close-button`}>
 							  {'< BACK TO ARTICLE'}
 							</button>

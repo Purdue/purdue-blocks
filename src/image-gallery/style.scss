@@ -92,7 +92,7 @@
       pointer-events: none;
     }
     &.modal-open{
-      display:block;      
+      display:block;
     }
 
   }
@@ -138,9 +138,15 @@
         color: $white;
         top: 2rem;
         right: 2rem;
+        background-color: inherit;
         @include mobile{
           right:1rem;
           top: 1.5rem;
+        }
+        &:focus {
+          background-color: #fff;
+          color: #000;
+          outline-color: #000;
         }
       }
     }

@@ -24,7 +24,7 @@ const {
   TextareaControl
 } = wp.components;
 
-const { 
+const {
   InspectorControls,
   MediaUploadCheck,
   MediaUpload,
@@ -71,15 +71,15 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
 
   attributes: {
     profiles: {
-      type: "array", 
+      type: "array",
       default: [
         {
-            name: 'add', 
-            title: '', 
+            name: 'add',
+            title: '',
             email: '',
-            photoUrl: '', 
-            photoAlt: '', 
-            bio: '', 
+            photoUrl: '',
+            photoAlt: '',
+            bio: '',
             bioEditorOpen: false
         }
       ]
@@ -157,7 +157,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
               if (profile.name === 'add') {
                 return(
                   <div key={i} className={`editor-profile-add column ${columnSize}`}>
-                    <button 
+                    <button
                       onClick={(e) => {
                         const newProfiles = [...profiles]
                         newProfiles.push({name: '', title: '', email: '', photoUrl: '', photoAlt: '', bio: ''})
@@ -166,7 +166,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                         newProfiles[length-2] = newProfiles[length-1]
                         newProfiles[length-1] = addButton
                         props.setAttributes({profiles: newProfiles})
-                      }} 
+                      }}
                       className={`editor-add-profile-button`}
                       >
                       Add a card
@@ -352,7 +352,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                   <p className={`pu-profile-gallery--title`}>
                     {profile.title}
                   </p>
-                  {profile.email && 
+                  {profile.email &&
                       <p className={`pu-profile-gallery--email`}>
                             <a href={`mailto:${profile.email}`}>{profile.email}</a>
                       </p>
@@ -361,9 +361,9 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                   <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
                     <div className={`container`}>
                       <div className={`box`}>
-                        <div className={`modal--close-button`}  aria-label="close">
+                        <button className={`modal--close-button`}  aria-label="close">
                           <i className="fas fa-times" aria-hidden="true"></i>
-                        </div>
+                        </button>
                         <div className={`modal--img-container`}>
                           <div className={ `image is-square` }
                             role="img"
@@ -378,13 +378,13 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                           <p className={`pu-profile-gallery--title`}>
                             {profile.title}
                           </p>
-                          {profile.email && 
+                          {profile.email &&
                               <p className={`pu-profile-gallery--email`}>
                                     <a href={`mailto:${profile.email}`}>{profile.email}</a>
                               </p>
                           }
 
-                          <RichText.Content 
+                          <RichText.Content
                             className={`pu-profile-gallery--bio`}
                             tagName="p"
                             value={profile.bio}
@@ -428,7 +428,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 <p className={`pu-profile-gallery--title`}>
                   {profile.title}
                 </p>
-                {profile.email && 
+                {profile.email &&
                     <p className={`pu-profile-gallery--email`}>
                           <a href={`mailto:${profile.email}`}>{profile.email}</a>
                     </p>
@@ -438,9 +438,9 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
                   <div className={`container`}>
                     <div className={`box`}>
-                      <div className={`modal--close-button`}  aria-label="close">
+                      <button className={`modal--close-button`}  aria-label="close">
                         <i className="fas fa-times" aria-hidden="true"></i>
-                      </div>
+                      </button>
                       <div className={`modal--img-container`}>
                         <div className={ `image is-square` }
                           role="img"
@@ -455,13 +455,13 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                         <p className={`pu-profile-gallery--title`}>
                           {profile.title}
                         </p>
-                        {profile.email && 
+                        {profile.email &&
                             <p className={`pu-profile-gallery--email`}>
                                   <a href={`mailto:${profile.email}`}>{profile.email}</a>
                             </p>
                         }
 
-                        <RichText.Content 
+                        <RichText.Content
                           className={`pu-profile-gallery--bio`}
                           tagName="p"
                           value={profile.bio}
