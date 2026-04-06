@@ -1,3 +1,5 @@
+import {FocusTrap} from "@justpie/focustrap";
+
 const toggleButtons = document.querySelectorAll(
   ".image-gallery-open:not(.image-no-caption)"
 );
@@ -44,6 +46,10 @@ const openModal = (e) => {
     window.classList.add("no-scroll-page");
     modalToOpen.classList.add("modal-open");
   }
+
+  console.log(modalToOpen);
+  const focusTrap = new FocusTrap(modalToOpen);
+
 };
 
 const closeModal = (e) => {

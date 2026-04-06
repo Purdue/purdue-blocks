@@ -6,11 +6,12 @@
  */
 
 function render_block_purdue_gallery($attributes){
+    $output = '';
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     $class=$attributes['hasBottomPadding']?"":" no-bottom-padding";
     $class.=$attributes['type']!="image"?" purdue-image-gallery--mixed pu-profile-gallery":"";
     $class.=$attributes['className']!=""?" ".$attributes['className']:"";
-    $output.='<div'.$id.' class="purdue-image-gallery has-'.$attributes["background"].'-background section is-medium'.$class.'">';
+    $output.='<div '.$id.' class="purdue-image-gallery has-'.$attributes["background"].'-background section is-medium'.$class.'">';
     $output.='<div class="container">';
     if($attributes['header'] != ""){
         $output.='<h2 class="purdue-image-gallery__header align-'.$attributes['headerLocation'].'">'.$attributes['header'].'</h2>';
@@ -58,14 +59,15 @@ function render_block_purdue_gallery($attributes){
         }
         $output.='">';
         foreach ( $attributes['cards'] as $card ) {
+            $uid = uniqid();
             $output.='<div class="'.implode(' ',$column_class).'">';
             $output.='<div class="image-container">';
             $image_class = 'profile-gallery-open';
             $output.='<div class="'.$image_class.'" data-toggle="'.$card["media_id"].'">';
             $output.='<div class="image is-square" role="image" data-src="'.$card["media_url"].'" aria-label="'.$card["media_alt"].'"></div>';
-            $output.='<button class="modal-open-button" aria-label="More information"><i class="fas fa-plus" aria-hidden="true"></i></button>';
+            $output.='<button class="modal-open-button" aria-label="More information" aria-haspopup="dialog" aria-controls="'.$uid.'"><i class="fas fa-plus" aria-hidden="true"></i></button>';
             $output.='</div>';
-            $output.='<div class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
+            $output.='<div id="'.$uid.'" class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
                 <button class="modal--close-button"  aria-label="close">
                     <i class="fas fa-times" aria-hidden="true"></i>
                  </button>
@@ -90,30 +92,31 @@ function render_block_purdue_gallery($attributes){
         }
         $output.='">';
         foreach ( $attributes['cards'] as $card ) {
+            $uid = uniqid();
             $output.='<div class="'.implode(' ',$column_class).'">';
             $output.='<div class="card media link-card">';
             $output.='<div class="image is-16by9 background-image" role="image" style="background-image:url('.$card["media_url"].')" aria-label="'.$card["media_alt"].'"></div>';
 
             $output.='<div class="media-content">';
-            $output.='<p class="title">'.$card["title"].'</p>';
+            $output .= !empty($card["title"]) ? '<p class="title">' . $card["title"] . '</p>' : '';
             $output.='<p class="vertical-subtext">'.$card["subtext"].'</p>';
-            $buttonText=$card["buttonText"]?$card["buttonText"]:"View Full Gallery";
+            $buttonText= (!empty($card["buttonText"])) ? $card["buttonText"] :"View Full Gallery";
             if(array_key_exists("cardType",$card) && $card["cardType"]=="link"){
                 $taget=$card["external"]?" target='_blank'":"";
                 $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light" href="'.$card["linkURL"].'"'.$taget.'>'.$buttonText.'</a>';
             }else{
-            $output.='<button class="purdue-blocks__button purdue-blocks__button--gold-light image-gallery-open gallery-open-button" data-toggle="'.$card["media_id"].'">'.$buttonText.'</button>';
-            $output.='<div class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
-            <div class="modal--close-button"  aria-label="close">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </div>
-            <div class="index-indicator">
-                <span class="current-index"></span>/<span class="total-number">'.sizeof($card["imgs"]).'</span>
-            </div>
-            <div class="container slider-container">
-                <div class="purdue-gallery-slider-large">
-                    <div class="glide__track" data-glide-el="track">
-                        <div class="glide__slides">';
+            $output.='<button aria-haspopup="dialog" aria-controls="'.$uid.'" class="purdue-blocks__button purdue-blocks__button--gold-light image-gallery-open gallery-open-button" data-toggle="'.$card["media_id"].'">'.$buttonText.'</button>';
+            $output .= '<div id="' . $uid . '" class="pu-profile-gallery--modal" data-modal="' . $card["media_id"] . '">
+              <button class="modal--close-button" aria-label="close">
+                  <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+              <div class="index-indicator">
+                  <span class="current-index"></span>/<span class="total-number">' . (!empty($card["imgs"]) ? count($card["imgs"]) : '') . '</span>
+              </div>
+              <div class="container slider-container">
+                  <div class="purdue-gallery-slider-large">
+                      <div class="glide__track" data-glide-el="track">
+                          <div class="glide__slides">';
                         foreach ( $card["imgs"] as $galleryImg ) {
                             $output.='
                             <div class="glide__slide">

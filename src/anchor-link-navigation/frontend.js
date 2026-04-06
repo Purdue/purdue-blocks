@@ -7,12 +7,12 @@ function is_IE() {
 if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
 
     anchorLinkBlocks.forEach((block)=>{
-        let hasAccordion=block.classList.contains("has-accordion")?true:false; 
+        let hasAccordion=block.classList.contains("has-accordion")?true:false;
         let headers=[]
-        !block.classList.contains("no-H2")?headers.push("h2"):"";        
-        block.classList.contains("has-H3")?headers.push("h3"):"";  
-        block.classList.contains("has-H4")?headers.push("h4"):""; 
-        block.classList.contains("has-H5")?headers.push("h5"):"";   
+        !block.classList.contains("no-H2")?headers.push("h2"):"";
+        block.classList.contains("has-H3")?headers.push("h3"):"";
+        block.classList.contains("has-H4")?headers.push("h4"):"";
+        block.classList.contains("has-H5")?headers.push("h5"):"";
         block.classList.contains("has-H6")?headers.push("h6"):"";
 
         let string=headers.join(", ")
@@ -56,7 +56,7 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
     window.addEventListener('scroll', () => {
         setTimeout(function(){
             if(anchorHeaders && anchorHeaders.length>0){
-                anchorHeaders.forEach((header)=>{ 
+                anchorHeaders.forEach((header)=>{
                     if ( header.getBoundingClientRect().top <= 30 ) {
                         const id = "#"+header.id
                         links.forEach((el)=>{
@@ -74,7 +74,23 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
             top: 0,
             behavior: 'smooth'
             })
+
+            const topElement = document.querySelector('h1') || document.body;
+
+            // Ensure the element can receive focus
+            topElement.setAttribute('tabindex', '-1');
+            topElement.focus({
+              preventScroll: true // Prevents jumping if the scroll is still animating
+            });
+
+            // Optional: Remove tabindex on blur so it doesn't stay in the tab order
+            topElement.addEventListener('blur', () => {
+              topElement.removeAttribute('tabindex');
+            }, { once: true });
+
         })
+
+
     }
 }
 

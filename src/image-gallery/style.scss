@@ -231,6 +231,9 @@
       &:hover{
         opacity: 1;
       }
+      &:focus {
+        outline: revert;
+      }
     }
   }
   .purdue-gallery-slider-thumbnail{
@@ -287,3 +290,6 @@
     }
   }
 }
+
+
+
