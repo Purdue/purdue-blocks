@@ -27,7 +27,7 @@ const {
 const { RichText, InspectorControls, InnerBlocks } = wp.blockEditor;
 
 const BLOCKS_TEMPLATE = [
-  [ 'core/paragraph', { placeholder: 'Add content' } ],
+  ['core/paragraph', { placeholder: 'Add content' }],
 ];
 
 /**
@@ -43,11 +43,11 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/accordion', {
+registerBlockType('purdue-blocks/accordion', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Accordion' ), // Block title.
+  title: __('Accordion'), // Block title.
   icon: (
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.01 100"><defs></defs><g id="Arrows-alt-v" class="cls-1"><g class="cls-1"><path class="cls-2" d="M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z" transform="translate(-28.49)"/></g></g></svg>
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43.01 100"><defs></defs><g id="Arrows-alt-v" class="cls-1"><g class="cls-1"><path class="cls-2" d="M70.12,81.82,53.31,98.63a4.68,4.68,0,0,1-6.62,0L29.88,81.82a4.68,4.68,0,0,1,3.31-8h9V26.18h-9a4.68,4.68,0,0,1-3.31-8L46.69,1.37a4.68,4.68,0,0,1,6.62,0L70.12,18.18a4.68,4.68,0,0,1-3.31,8h-9V73.82h9A4.68,4.68,0,0,1,70.12,81.82Z" transform="translate(-28.49)" /></g></g></svg>
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: 'purdue-blocks', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
@@ -80,56 +80,62 @@ registerBlockType( 'purdue-blocks/accordion', {
     'Create a single accordion.'
   ),
 
-  edit: ( props ) => {
+  edit: (props) => {
     const id = props.clientId;
-    props.setAttributes( { id: id } );
+    const TagName = props.attributes.titleLevel;
+    props.setAttributes({ id: id });
     return [
       <InspectorControls>
         <PanelBody>
           <PanelRow>
             <SelectControl
               label="Heading level of the title"
-              value={ props.attributes.titleLevel }
-              options={ [
+              value={props.attributes.titleLevel}
+              options={[
                 { label: 'H2', value: 'h2' },
                 { label: 'H3', value: 'h3' },
                 { label: 'H4', value: 'h4' },
                 { label: 'H5', value: 'h5' },
                 { label: 'H6', value: 'h6' },
                 { label: 'P', value: 'p' },
-              ] }
-              onChange={ ( titleLevel ) => {
-                props.setAttributes( { titleLevel } )
-              } }
+              ]}
+              onChange={(titleLevel) => {
+                props.setAttributes({ titleLevel })
+              }}
             />
           </PanelRow>
           <PanelRow>
-              <TextControl
-                label="HTML Anchor"
-                help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
-                value={ props.attributes.inputId }
-                onChange={ ( inputId ) => props.setAttributes( { inputId } ) }
-              />
+            <TextControl
+              label="HTML Anchor"
+              help="Enter a word without spaces to make a unique web address just for this block, called an “anchor.” It must be unique from any other anchors on the page. Then, you’ll be able to link directly to this section of your page."
+              value={props.attributes.inputId}
+              onChange={(inputId) => props.setAttributes({ inputId })}
+            />
           </PanelRow>
         </PanelBody>
       </InspectorControls>,
 
       <div className="accordion-editor">
-        <RichText
-          tagName={ props.setAttributes.titleLevel }
-          value={ props.attributes.title }
-          className={ 'accordion-title' }
-          onChange={ ( text ) => {
-            props.setAttributes( { title: text } )
-          } }
-          placeholder="Add Title"
-          keepPlaceholderOnFocus={ true }
-        >
-        </RichText>
+        <TagName>
+          <button>
+            <RichText
+              tagName="span"
+              value={props.attributes.title}
+              className={'accordion-title'}
+              onChange={(text) => {
+                props.setAttributes({ title: text })
+              }}
+              placeholder="Add Title"
+              keepPlaceholderOnFocus={true}
+            >
+            </RichText>
+          </button>
+        </TagName>
+
         <div className="accordion-content">
           <InnerBlocks
-            template={ BLOCKS_TEMPLATE }
-            templateLock={ false }
+            template={BLOCKS_TEMPLATE}
+            templateLock={false}
           />
         </div>
       </div>,
@@ -147,33 +153,33 @@ registerBlockType( 'purdue-blocks/accordion', {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: ( props ) => {
-    const returned = (props.attributes.inputId?
-      <div className="accordion" id={ props.attributes.inputId }>
-        <RichText.Content
-          id={ `title-${ props.attributes.id }` }
-          className={ 'accordion-title' }
-          tagName={ props.attributes.titleLevel }
-          value={ props.attributes.title }
-          aria-controls={ `content-${ props.attributes.id }` }
-          aria-expanded={ 'false' }
-          role={'button'}
-        />
-        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
+  save: (props) => {
+    const TagName = props.attributes.titleLevel;
+    const returned = (props.attributes.inputId ?
+      <div className="accordion" id={props.attributes.inputId}>
+        <TagName>
+          <button id={`title-${props.attributes.id}`} className={'accordion-title'} aria-controls={`content-${props.attributes.id}`} aria-expanded={'false'}>
+            <RichText.Content
+              tagName="span"
+              value={props.attributes.title}
+            />
+          </button>
+        </TagName>
+
+        <div id={`content-${props.attributes.id}`} className={'accordion-content'}>
           <InnerBlocks.Content />
         </div>
-      </div>:      
+      </div> :
       <div className="accordion">
-        <RichText.Content
-          id={ `title-${ props.attributes.id }` }
-          className={ 'accordion-title' }
-          tagName={ props.attributes.titleLevel }
-          value={ props.attributes.title }
-          aria-controls={ `content-${ props.attributes.id }` }
-          aria-expanded={ 'false' }
-          role={'button'}
-        />
-        <div id={ `content-${ props.attributes.id }` } className={ 'accordion-content' }>
+        <TagName>
+          <button id={`title-${props.attributes.id}`} className={'accordion-title'} aria-controls={`content-${props.attributes.id}`} aria-expanded={'false'}>
+            <RichText.Content
+              tagName="span"
+              value={props.attributes.title}              
+            />
+          </button>
+        </TagName>
+        <div id={`content-${props.attributes.id}`} className={'accordion-content'}>
           <InnerBlocks.Content />
         </div>
       </div>
@@ -183,4 +189,4 @@ registerBlockType( 'purdue-blocks/accordion', {
   // save: () => {
   //   return <InnerBlocks.Content />;
   // },
-} );
+});

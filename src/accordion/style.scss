@@ -13,19 +13,31 @@
   position: relative;
   cursor: pointer;
   background-color: $white;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0 !important;
+  }
   .accordion-title {
     padding: 1.25rem 3.5rem 1.25rem 1.25rem;
     margin: 0 !important;
     font-size: 1.25rem;
     font-weight: 700;
+    font-family: United Sans, Impact, Arial Black, "sans serif";
     line-height: 1.5;
     position: relative;
     color: $black;
+    width: 100%;
+    text-align: left;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+
     span,
     strong,
     em {
       pointer-events: none;
     }
+
     &:after {
       font-family: "Font Awesome 5 Free";
       content: "\f078";
@@ -61,12 +73,13 @@
     }
   }
   &.is-open {
-    & > .accordion-title {
+      .accordion-title {
       &:after {
         font-family: "Font Awesome 5 Free";
         content: "\f077";
       }
     }
+
     & > .accordion-content {
       display: block;
       height: auto;
