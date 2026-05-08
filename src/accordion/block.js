@@ -160,7 +160,6 @@ registerBlockType('purdue-blocks/accordion', {
         <TagName>
           <button id={`title-${props.attributes.id}`} className={'accordion-title'} aria-controls={`content-${props.attributes.id}`} aria-expanded={'false'}>
             <RichText.Content
-              tagName="span"
               value={props.attributes.title}
             />
           </button>
@@ -174,7 +173,6 @@ registerBlockType('purdue-blocks/accordion', {
         <TagName>
           <button id={`title-${props.attributes.id}`} className={'accordion-title'} aria-controls={`content-${props.attributes.id}`} aria-expanded={'false'}>
             <RichText.Content
-              tagName="span"
               value={props.attributes.title}              
             />
           </button>
