@@ -268,7 +268,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
       </InspectorControls>,
       <div key="2" className={`pu-contact-card-editor pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`}>
         <RichText
-          tagName={ props.setAttributes.titleLevel }
+          tagName={ props.attributes.titleLevel }
           value={ props.attributes.title }
           className={ 'contact-card__title' }
           onChange={ ( text ) => {
