@@ -110,17 +110,23 @@ registerBlockType( 'purdue-blocks/contact-card', {
   ),
 
   edit: ( props ) => {
+
+  const initialContact = {
+    icon: '',
+    text: '',
+  };  
+
     if(props.attributes.contactGroup.length===0){
       props.setAttributes( {contactGroup: [{
         icon: '',
-        text:{ type: 'string', source: 'html', selector: '.contact-card__text' },
+        text: '',
       }]} )
     }
     const handleAddContact = () => {
       let contactGroup = [ ...props.attributes.contactGroup ];
       contactGroup.push( {
         icon: '',
-        text:{ type: 'string', source: 'html', selector: '.contact-card__text' },
+        text: '',
       } );
       props.setAttributes( { contactGroup } );
     }; 
