@@ -10,6 +10,7 @@
 //  Import CSS.
 // import './editor.scss';
 // import './style.scss';
+import deprecated from "./deprecated";
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -278,7 +279,7 @@ registerBlockType( 'purdue-blocks/cta-banner', {
               { props.attributes.ctaText }
             </a> ) : '' }
           { props.attributes.type === 'gold' ? (
-            <p className="pu-cta-banner-gold__desc">{ props.attributes.ctaDesc }</p>
+            <h2 className="pu-cta-banner-gold__desc">{ props.attributes.ctaDesc }</h2>
           ) : '' }
           {props.attributes.type === 'gold' ? (
             <a
@@ -306,4 +307,5 @@ registerBlockType( 'purdue-blocks/cta-banner', {
     );
     return returned;
   },
+  deprecated: deprecated
 } );
