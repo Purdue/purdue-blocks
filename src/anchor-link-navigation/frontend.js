@@ -68,30 +68,25 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         }, 100)
     })
     const toTop = document.querySelector('#to-top-sidebar')
-    if(toTop){
-        toTop.addEventListener('click', () => {
-            window.scroll({
-            top: 0,
-            behavior: 'smooth'
-            })
+  if (toTop) {
+    toTop.addEventListener('click', () => {
+      window.scroll({ top: 0, behavior: 'smooth' });
 
-            const topElement = document.querySelector('h1') || document.body;
+      const topElement = document.querySelector('h1') || document.body;
+      topElement.setAttribute('tabindex', '-1');
 
-            // Ensure the element can receive focus
-            topElement.setAttribute('tabindex', '-1');
-            topElement.focus({
-              preventScroll: true // Prevents jumping if the scroll is still animating
-            });
+      // Wait for scroll to finish before moving focus
+      const onScrollEnd = () => {
+        topElement.focus({ preventScroll: true });
+        topElement.addEventListener('blur', () => {
+          topElement.removeAttribute('tabindex');
+        }, { once: true });
+      };
 
-            // Optional: Remove tabindex on blur so it doesn't stay in the tab order
-            topElement.addEventListener('blur', () => {
-              topElement.removeAttribute('tabindex');
-            }, { once: true });
-
-        })
-
-
-    }
+      // scrollend fires when smooth scroll completes
+      window.addEventListener('scrollend', onScrollEnd, { once: true });
+    });
+  }
 }
 
 
