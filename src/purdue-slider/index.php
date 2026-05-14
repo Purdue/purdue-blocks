@@ -64,8 +64,8 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
 
         }elseif($attributes['type']=="tabs" && sizeof($attributes['tabs'])>0){
@@ -101,8 +101,8 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="rtb" && sizeof($attributes['rtb'])>0){
             if($attributes['divider']){
@@ -141,8 +141,8 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="img" && sizeof($attributes['imgs'])>0){
             $classname="glide purdue-slider--img";
@@ -178,8 +178,8 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }
         if($attributes['hasLink'] != "" && $attributes['linkUrl'] != ""){
