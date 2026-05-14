@@ -3,7 +3,7 @@ import {FocusTrap} from "@justpie/focustrap";
 const toggleButtons = document.querySelectorAll(
   ".image-gallery-open:not(.image-no-caption)"
 );
-document.addEventListener("DOMContentLoaded", function () {
+/* document.addEventListener("DOMContentLoaded", function () {
   const imageGalley = document.querySelectorAll(
     ".image-gallery-open:not(.gallery-open-button), .profile-gallery-open"
   );
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
-});
+}); */
 const openModal = (e) => {
   const modalTarget = e.currentTarget.dataset.toggle;
   const window = document.querySelector("html");
