@@ -39,20 +39,38 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         })
     }
     })
-    const links=document.querySelectorAll('a.anchor-link-block-link')
-    links.forEach((link)=>{
-        link.addEventListener('click',(e)=>{
-            is_IE()?'':e.preventDefault( );
-            const topY=document.querySelector(link.hash).getBoundingClientRect().top + window.pageYOffset -20;
-            window.scroll({
-                top: topY,
-                behavior: 'smooth'
-                })
-            links.forEach((el)=>{
-                el===link?el.classList.add("is-active"):el.classList.remove("is-active")
-            })
-        })
-    })
+  const links = document.querySelectorAll('a.anchor-link-block-link')
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      is_IE() ? '' : e.preventDefault();
+      const target = document.querySelector(link.hash);
+      const topY = target.getBoundingClientRect().top + window.pageYOffset - 20;
+
+      window.scroll({
+        top: topY,
+        behavior: 'smooth'
+      });
+
+      links.forEach((el) => {
+        el === link ? el.classList.add("is-active") : el.classList.remove("is-active")
+      });
+
+      // Set focus after scroll completes
+      const onScrollEnd = () => {
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => {
+          target.removeAttribute('tabindex');
+        }, { once: true });
+      };
+
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onScrollEnd, { once: true });
+      } else {
+        setTimeout(onScrollEnd, 500);
+      }
+    });
+  });
     window.addEventListener('scroll', () => {
         setTimeout(function(){
             if(anchorHeaders && anchorHeaders.length>0){
