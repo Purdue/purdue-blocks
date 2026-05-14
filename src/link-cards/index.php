@@ -4,7 +4,7 @@
  *
  * @package WordPress
  */
-	
+
 function render_block_link_cards($attributes){
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     $column_class[] = 'column is-half-tablet is-full-mobile';
@@ -28,7 +28,7 @@ function render_block_link_cards($attributes){
     }
     if(sizeof($attributes['tabs'])>0){
         $output.='<div class="columns is-multiline">';
-            foreach ( $attributes['tabs'] as $key => $tab ) {  
+            foreach ( $attributes['tabs'] as $key => $tab ) {
                 $target=$tab["newtab"]?'target="_blank"':'target="_self"';
                 $output.='<div class="'.implode(' ',$column_class).'">';
                 if($tab["link"] != ""){
@@ -37,8 +37,7 @@ function render_block_link_cards($attributes){
                     $output.='<div class="card media link-card">';
                 }
                         if($tab["media"]["url"] != ""){
-                            $backgroundRole=$tab["media"]["url"]?' role="img" ':'';
-                            $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$tab["media"]["url"].')" aria-label="'.$tab["media"]["url"].'"></div>';
+                            $output.='<div class="image is-16by9 background-image" style="background-image:url('.$tab["media"]["url"].')"></div>';
                         }
                         $output.='<div class="media-content">';
                         if($tab["mediaType"] != ""){
@@ -61,7 +60,7 @@ function render_block_link_cards($attributes){
                         if($tab["tag"] != ""){
                             $output.='<p class="story-tag">'.$tab["tag"].'</p>';
                         }
-                        $output.='<p class="title is-4">'.$tab["title"].'</p>';                        
+                        $output.='<h2 class="title is-4">'.$tab["title"].'</h2>';
                         if($tab["subtext"] != ""){
                             $output.='<p class="vertical-subtext">'.$tab["subtext"].'</p>';
                         }
