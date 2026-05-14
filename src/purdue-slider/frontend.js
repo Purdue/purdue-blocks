@@ -25,7 +25,7 @@ const CustomActiveClass = (Glide, Components, Events) => {
       const bullet = bullets?[...bullets.children].find(
         (bullet) => bullet.getAttribute("data-glide-dir") === `=${Glide.index}`
       ):"";
-      if(bullet){
+      if (bullet) {
         bullet.classList.remove("is-next", "is-prev");
         bullet.classList.add("is-active");
         slide.classList.remove("is-next", "is-prev");
@@ -33,14 +33,17 @@ const CustomActiveClass = (Glide, Components, Events) => {
         if (bullet.nextElementSibling) {
           bullet.nextElementSibling.classList.add("is-next");
         }
-  
+
         if (bullet.previousElementSibling) {
           bullet.previousElementSibling.classList.add("is-prev");
         }
       }
+
       siblings(slide).forEach((sibling) => {
         sibling.classList.remove("is-active", "is-next", "is-prev");
+        sibling.setAttribute("inert", "");
       });
+
       siblings(bullet).forEach((sibling) => {
         sibling.classList.remove("is-active", "is-next", "is-prev");
       });
@@ -52,6 +55,8 @@ const CustomActiveClass = (Glide, Components, Events) => {
       if (slide.previousElementSibling) {
         slide.previousElementSibling.classList.add("is-prev");
       }
+
+      slide.removeAttribute("inert");
 
     },
   };
