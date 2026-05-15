@@ -133,7 +133,7 @@ function render_block_purdue_gallery($attributes){
                         $output.='</div>
                     </div>
                     <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">previous</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
                     </div>
                 </div>
@@ -142,11 +142,11 @@ function render_block_purdue_gallery($attributes){
                         <div class="glide__slides">';
                         foreach ( $card["imgs"] as $key => $galleryImg ) {
                             $output.='
-                            <div class="glide__slide">
+                            <button class="glide__slide" data-index="'.$key.'" aria-label="View image '.($key+1).'">
                                 <figure>
                                     <img src="'.$galleryImg["url"].'" alt="'.$galleryImg["alt"].'" data-index="'.$key.'"/>
                                 </figure>
-                            </div>';
+                            </button>';
                         }
                         $output.='</div>
                     </div>

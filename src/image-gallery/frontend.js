@@ -3,33 +3,7 @@ import {FocusTrap} from "@justpie/focustrap";
 const toggleButtons = document.querySelectorAll(
   ".image-gallery-open:not(.image-no-caption)"
 );
-/* document.addEventListener("DOMContentLoaded", function () {
-  const imageGalley = document.querySelectorAll(
-    ".image-gallery-open:not(.gallery-open-button), .profile-gallery-open"
-  );
 
-  if ("IntersectionObserver" in window) {
-    let lazyBackgroundObserver = new IntersectionObserver(function (
-      entries,
-      observer
-    ) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          if (entry.target.dataset.src && entry.target.dataset.src !== "") {
-            entry.target.style.backgroundImage = `url(${entry.target.dataset.src})`;
-          }
-          lazyBackgroundObserver.unobserve(entry.target);
-        }
-      });
-    });
-    if (imageGalley.length > 0) {
-      imageGalley.forEach((button) => {
-        const image = button.querySelector(".image");
-        lazyBackgroundObserver.observe(image);
-      });
-    }
-  }
-}); */
 const openModal = (e) => {
   const modalTarget = e.currentTarget.dataset.toggle;
   const window = document.querySelector("html");
@@ -76,6 +50,22 @@ const check_resize = (glide) => {
     glide.control ? glide.control.classList.remove("hidden") : "";
   }
 };
+
+function updateControls(Glide) {
+  const galleryThumbImages = document.querySelectorAll(
+    ".purdue-gallery-slider-thumbnail .glide__slide"
+  );
+
+  galleryThumbImages.forEach((img, index) => {
+    const activeImg = img.classList.contains(
+        'glide__slide--active'
+      );
+    img.setAttribute(
+      'aria-current',
+      activeImg ? 'true' : 'false'
+    );
+  });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   const galleryLargeImages = document.querySelectorAll(
@@ -132,6 +122,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       glideThumb.slides_count =
         galleryThumbImages[i].querySelectorAll(".glide__slide").length;
+
+      glideThumb.on(['mount.after', 'run.after'], updateControls);
 
       glideThumb.mount({});
       glideThumb.on("resize", () => {
