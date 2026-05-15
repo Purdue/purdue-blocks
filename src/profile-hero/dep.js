@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
 
-import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -35,44 +34,9 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
- const ALLOWED_MEDIA_TYPES_2 = [ 'video' ];
-registerBlockType("purdue-blocks/profile-hero", {
-  // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __("Profile Hero"), // Block title.
-  icon: (
-    <svg
-      id="Layer_1"
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 87.5"
-    >
-      <defs></defs>
-      <g id="Window-maximize" class="cls-1">
-        <g class="cls-1">
-          <path
-            class="color-9c9795"
-            d="M100,16.62V85.37a9.38,9.38,0,0,1-9.37,9.37H9.37A9.38,9.38,0,0,1,0,85.37V16.62A9.38,9.38,0,0,1,9.37,7.24H90.63A9.38,9.38,0,0,1,100,16.62ZM90.63,38.49H9.37v45.7a1.18,1.18,0,0,0,1.18,1.18h78.9a1.18,1.18,0,0,0,1.18-1.18Z"
-            transform="translate(0 -7.24)"
-          />
-        </g>
-      </g>
-    </svg>
-  ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-  category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-  keywords: [],
+const ALLOWED_MEDIA_TYPES_2 = [ 'video' ];
 
-  /**
-   * The edit function describes the structure of your block in the context of the editor.
-   * This represents what the editor will render when the block is used.
-   *
-   * The "edit" property must be a valid function.
-   *
-   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-   *
-   * @param {Object} props Props.
-   * @returns {Mixed} JSX Component.
-   */
-
+const v1 = {
   attributes: {
     storyTitle: { type: 'string', source: 'html', selector: '.story-title' },
     imgUrl: { type: "string", default: "" },
@@ -99,7 +63,7 @@ registerBlockType("purdue-blocks/profile-hero", {
     return [
       <InspectorControls>
         <PanelBody>
-        < PanelRow>
+          < PanelRow>
             <RadioControl
               label="Image Position"
               selected={ props.attributes.position }
@@ -124,8 +88,8 @@ registerBlockType("purdue-blocks/profile-hero", {
       <div className={`pu-profile-hero pu-profile-hero-editor${props.attributes.position==="right"?" pu-profile-hero--right":""}`}>
         <div className="section is-large">
           <div className="container">
-              <div className="columns">
-                <div className="column is-two-fifths-desktop is-full-mobile">
+            <div className="columns">
+              <div className="column is-two-fifths-desktop is-full-mobile">
                 <MediaUploadCheck>
                   <MediaUpload
                     onSelect={(img) => {
@@ -145,42 +109,42 @@ registerBlockType("purdue-blocks/profile-hero", {
                           style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                           aria-label={props.attributes.altText}
                         >
-                      <div class="buttons-container">
-                        <button className="remove-image-button" onClick={open}>
-                          {props.attributes.imgUrl !== ""
-                            ? "Select a new image"
-                            : "Select an image"}
-                        </button>
-                        {props.attributes.imgUrl !== ""?
-                          <button className="remove-image-button" onClick={removeMedia}>
-                              Remove image
-                          </button>:""}
+                          <div class="buttons-container">
+                            <button className="remove-image-button" onClick={open}>
+                              {props.attributes.imgUrl !== ""
+                                ? "Select a new image"
+                                : "Select an image"}
+                            </button>
+                            {props.attributes.imgUrl !== ""?
+                              <button className="remove-image-button" onClick={removeMedia}>
+                                Remove image
+                              </button>:""}
+                          </div>
                         </div>
-                        </div>
-                        );
-                      }}
+                      );
+                    }}
                   />
                 </MediaUploadCheck>
-                </div>
-                <div className="column">
-                  <div className="pu-profile-hero__content">
-                    <RichText
-                      tagName={ "h1"}
-                      value={ props.attributes.storyTitle }
-                      className={ 'story-title' }
-                      onChange={ ( storyTitle ) => {
-                        props.setAttributes( { storyTitle } )
-                      } }
-                      placeholder="Add header"
-                      keepPlaceholderOnFocus={ true }                  >
-                    </RichText>
-                    <InnerBlocks
-                      template={ BLOCKS_TEMPLATE }
-                      templateLock={ false }
-                    />
-                  </div>
+              </div>
+              <div className="column">
+                <div className="pu-profile-hero__content">
+                  <RichText
+                    tagName={ "h1"}
+                    value={ props.attributes.storyTitle }
+                    className={ 'story-title' }
+                    onChange={ ( storyTitle ) => {
+                      props.setAttributes( { storyTitle } )
+                    } }
+                    placeholder="Add header"
+                    keepPlaceholderOnFocus={ true }                  >
+                  </RichText>
+                  <InnerBlocks
+                    template={ BLOCKS_TEMPLATE }
+                    templateLock={ false }
+                  />
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>,
@@ -204,35 +168,33 @@ registerBlockType("purdue-blocks/profile-hero", {
       <div {...blockProps} className={`pu-profile-hero ${props.attributes.position==="right"?" pu-profile-hero--right":""}`}>
         <div className="section is-large">
           <div className="container">
-                <div className="columns">
-                  <div className="column is-two-fifths-desktop is-full-mobile">
-                    <div
-                    role={`${props.attributes.altText?"img":""}`}
-                      className="background-image image is-1by1"
-                      aria-label={props.attributes.altText}
-                      style={{backgroundImage: `url(${props.attributes.imgUrl})`}}
-                    >
-                    </div>
-                  </div>
-                  <div className="column">
-                    <div className="pu-profile-hero__content">
-                    { props.attributes.storyTitle ? ( <RichText.Content
-                      tagName={ "h1"}
-                      value={ props.attributes.storyTitle }
-                      className={ 'story-title' }
-                    /> ) : '' }
-                      <InnerBlocks.Content />
-                    </div>
-                  </div>
+            <div className="columns">
+              <div className="column is-two-fifths-desktop is-full-mobile">
+                <div
+                  role={`${props.attributes.altText?"img":""}`}
+                  className="background-image image is-1by1"
+                  aria-label={props.attributes.altText}
+                  style={{backgroundImage: `url(${props.attributes.imgUrl})`}}
+                >
                 </div>
+              </div>
+              <div className="column">
+                <div className="pu-profile-hero__content">
+                  { props.attributes.storyTitle ? ( <RichText.Content
+                    tagName={ "h1"}
+                    value={ props.attributes.storyTitle }
+                    className={ 'story-title' }
+                  /> ) : '' }
+                  <InnerBlocks.Content />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     );
     return returned;
   },
-  deprecated: dep
-});
+}
 
-
-
+export default [v1];
