@@ -13,7 +13,23 @@ var check_resize = (glide) => {
   }
 };
 
+const getLiveRegion = (() => {
+  let region = null;
+  return () => {
+    if (!region) {
+      region = document.createElement("div");
+      region.setAttribute("aria-live", "polite");
+      region.setAttribute("aria-atomic", "true");
+      region.classList.add("sr-only");
+      document.body.appendChild(region);
+    }
+    return region;
+  };
+})();
+
 const CustomActiveClass = (Glide, Components, Events) => {
+  const liveRegion = getLiveRegion();
+
   const Component = {
     mount() {
       this.changeActiveSlide();
@@ -21,15 +37,26 @@ const CustomActiveClass = (Glide, Components, Events) => {
 
     changeActiveSlide() {
       const slide = Components.Html.slides[Glide.index];
+      const totalSlides = Components.Html.slides.length;
       const bullets = Components.Controls.items[0];
-      const bullet = bullets?[...bullets.children].find(
-        (bullet) => bullet.getAttribute("data-glide-dir") === `=${Glide.index}`
-      ):"";
+      const bullet = bullets
+        ? [...bullets.children].find(
+          (bullet) =>
+            bullet.getAttribute("data-glide-dir") === `=${Glide.index}`
+        )
+        : "";
+
+      liveRegion.textContent = "";
+      requestAnimationFrame(() => {
+        liveRegion.textContent = `Slide ${Glide.index + 1} of ${totalSlides}`;
+      });
+
       if (bullet) {
         bullet.classList.remove("is-next", "is-prev");
         bullet.classList.add("is-active");
         slide.classList.remove("is-next", "is-prev");
         slide.classList.add("is-active");
+
         if (bullet.nextElementSibling) {
           bullet.nextElementSibling.classList.add("is-next");
         }
@@ -41,7 +68,8 @@ const CustomActiveClass = (Glide, Components, Events) => {
 
       siblings(slide).forEach((sibling) => {
         sibling.classList.remove("is-active", "is-next", "is-prev");
-        sibling.setAttribute("inert", "");
+        sibling.inert = true;
+        slide.removeAttribute("tabIndex");
       });
 
       siblings(bullet).forEach((sibling) => {
@@ -56,8 +84,7 @@ const CustomActiveClass = (Glide, Components, Events) => {
         slide.previousElementSibling.classList.add("is-prev");
       }
 
-      slide.removeAttribute("inert");
-
+      slide.inert = false;
     },
   };
 
@@ -67,6 +94,7 @@ const CustomActiveClass = (Glide, Components, Events) => {
 
   return Component;
 };
+
 const sliders = document.querySelectorAll(".purdue-slider--default");
 if (sliders && sliders.length > 0) {
   for (let i = 0; i < sliders.length; i++) {
@@ -95,6 +123,7 @@ if (sliders && sliders.length > 0) {
     glide.mount({ CustomActiveClass });
   }
 }
+
 const tabs = document.querySelectorAll(".purdue-slider--tabs");
 if (tabs && tabs.length > 0) {
   for (let i = 0; i < tabs.length; i++) {
@@ -106,6 +135,7 @@ if (tabs && tabs.length > 0) {
     glide.mount({ CustomActiveClass });
   }
 }
+
 const rtb = document.querySelectorAll(".purdue-slider--rtb");
 if (rtb && rtb.length > 0) {
   for (let i = 0; i < rtb.length; i++) {
@@ -136,8 +166,8 @@ if (rtb && rtb.length > 0) {
     check_resize(glide);
   }
 }
-const images = document.querySelectorAll(".purdue-slider--img");
 
+const images = document.querySelectorAll(".purdue-slider--img");
 if (images && images.length > 0) {
   for (let i = 0; i < images.length; i++) {
     const type = images[i].classList.contains("purdue-slider--img-loop")
@@ -164,6 +194,3 @@ if (images && images.length > 0) {
     glide.mount({ CustomActiveClass });
   }
 }
-
-
-
