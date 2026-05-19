@@ -1,5 +1,21 @@
 import Glide from "@glidejs/glide";
-import { siblings } from "@glidejs/glide/src/utils/dom";
+
+function siblings(node) {
+  if (node && node.parentNode) {
+    var n = node.parentNode.firstChild;
+    var matched = [];
+
+    for (; n; n = n.nextSibling) {
+      if (n.nodeType === 1 && n !== node) {
+        matched.push(n);
+      }
+    }
+
+    return matched;
+  }
+
+  return [];
+}
 
 var check_resize = (glide) => {
   if (glide.slides_count <= glide.settings.perView) {
