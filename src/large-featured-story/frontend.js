@@ -1,85 +1,97 @@
-import {FocusTrap} from "@justpie/focustrap";
+import { FocusTrap } from "@justpie/focustrap";
 
-const largeStory=[...document.querySelectorAll(".pu-large-image:not(.pu-large-image--box)")]
-const wH=window.innerHeight;
+const largeStory = [...document.querySelectorAll(".pu-large-image:not(.pu-large-image--box)")]
+const wH = window.innerHeight;
 window.addEventListener('scroll', () => {
-    if(largeStory&&largeStory.length>0){
-        largeStory.forEach((t)=>{
+    if (largeStory && largeStory.length > 0) {
+        largeStory.forEach((t) => {
             const thisTop = t.getBoundingClientRect().top;
-            if(thisTop<=wH*0.5){
+            if (thisTop <= wH * 0.5) {
                 t.classList.add('animate')
             }
         })
     }
 })
 //Lightbox
-let lightboxPlayers=[]
-if(largeStory&&largeStory.length>0){
-    largeStory.forEach((t)=>{
+let lightboxPlayers = []
+if (largeStory && largeStory.length > 0) {
+    largeStory.forEach((t) => {
         const button = t.querySelector(".pu-lightbox-button");
 
         const closeButton = t.querySelector('.modal--close-button');
+
+        if (closeButton) {
+            closeButton.addEventListener("click", () => {
+                button.focus();
+            })
+        }
+
         const video = t.querySelector('video')
-        if(video){
-            closeButton.addEventListener("click", ()=>{
+        if (video) {
+            closeButton.addEventListener("click", () => {
                 video.pause();
             })
         }
-        const youtube=t.querySelector('.pu-lightbox-youtube')
-        if(youtube){
-            let url="https://www.youtube.com/player_api"
-            if(document.querySelectorAll(`script[src="${url}"]`).length === 0){
+        const youtube = t.querySelector('.pu-lightbox-youtube')
+        if (youtube) {
+            let url = "https://www.youtube.com/player_api"
+            if (document.querySelectorAll(`script[src="${url}"]`).length === 0) {
                 let tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
                 let firstScriptTag = document.getElementsByTagName('script')[0];
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             }
-            if(youtube.src.indexOf("enablejsapi=1")===-1){
-                youtube.src=youtube.src+"?enablejsapi=1"
+            if (youtube.src.indexOf("enablejsapi=1") === -1) {
+                youtube.src = youtube.src + "?enablejsapi=1"
             }
             let checkYT = setInterval(function () {
-                if(typeof YT !== 'undefined'&&YT.loaded){
-                     let lightboxPlayer=new YT.Player( youtube.id, {
+                if (typeof YT !== 'undefined' && YT.loaded) {
+                    let lightboxPlayer = new YT.Player(youtube.id, {
                         events: {
-                            'onReady': function(e){
-                                closeButton.addEventListener("click", ()=>{
+                            'onReady': function (e) {
+                                closeButton.addEventListener("click", () => {
                                     lightboxPlayer.pauseVideo()
                                 })
                             }
                         }
                     });
                     lightboxPlayers.push({
-                        "id" :youtube.id,
-                        "player" : lightboxPlayer
+                        "id": youtube.id,
+                        "player": lightboxPlayer
                     });
-                   clearInterval(checkYT);
+                    clearInterval(checkYT);
                 }
             }, 100);
             checkYT;
         }
-      if (button) {
-        const lightbox = t.querySelector(".pu-lightbox");
-        button.addEventListener("click", () => {
-          lightbox.classList.add("modal-open");
-          const youtube = lightbox.querySelectorAll('iframe');
-          [...youtube].forEach((x) => x.setAttribute('tabindex', '0'));
-          const focus = new FocusTrap(lightbox, {
-            // This is a hack to trick iframe focus.
-            onFocusOut: (e) => {
-             const tabble = focus.getTabble();
-            let index = tabble.findIndex((el) => el === e.relatedTarget);
-            if(index === -1) {
-              index = tabble.findIndex((el) => el === focus.previousElement);
-              if(index)
-                focus.moveFocus(focus.previousElement, focus.direction, index+1);
-            }
-          },
-          });
+        if (button) {
+            const lightbox = t.querySelector(".pu-lightbox");
+            button.addEventListener("click", () => {
+                lightbox.classList.add("modal-open");
+                const youtube = lightbox.querySelectorAll('iframe');
+                [...youtube].forEach((x) => x.setAttribute('tabindex', '0'));
+                const focus = new FocusTrap(lightbox, {
+                    // This is a hack to trick iframe focus.
+                    onFocusOut: (e) => {
+                        const tabble = focus.getTabble();
+                        let index = tabble.findIndex((el) => el === e.relatedTarget);
+                        if (index === -1) {
+                            index = tabble.findIndex((el) => el === focus.previousElement);
+                            if (index)
+                                focus.moveFocus(focus.previousElement, focus.direction, index + 1);
+                        }
+                    },
+                });
 
-          const window = document.querySelector('html')
-          window.classList.add('no-scroll-page')
-        })
-      }
+                const window = document.querySelector('html')
+                window.classList.add('no-scroll-page')
+
+                lightbox.addEventListener('keydown', (e) => {
+                    if (e.key !== 'Escape') return;
+                    button.focus();
+                })
+            })
+        }
         //close modal code in profile-gallery block
     })
 }
