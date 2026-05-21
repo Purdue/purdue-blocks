@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
     podcloses.forEach((podclose)=>{
         podclose.addEventListener('click',()=>{
             podclose.parentElement.style.display="none"
-			podclose.parentElement.querySelector(".purdue_podcast_controls_pause_share_share").focus();
+			podclose.parentElement.parentElement.querySelector(".purdue_podcast_controls_pause_share_share").focus();
+			windowContainer.classList.remove('no-scroll-page');
         })
     })
 }
