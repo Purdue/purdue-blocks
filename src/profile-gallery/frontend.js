@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalToClose = document.querySelector('.modal-open')
     window.classList.remove('no-scroll-page')
     modalToClose.classList.remove('modal-open')
+    const toggleButton = document.querySelector(`[data-toggle="${modalToClose.dataset.modal}"] .modal-open-button`)
+    toggleButton.focus()
+
   }
 
   [...toggleButtons].forEach(button => {
