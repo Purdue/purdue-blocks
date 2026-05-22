@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
-import ScrollTrigger from 'gsap/ScrollTrigger.js';
+//import ScrollTrigger from 'gsap/ScrollTrigger.js';
 
-gsap.registerPlugin(ScrollTrigger);
+//gsap.registerPlugin(ScrollTrigger);
 
 const sectionContainer = document.querySelector('.vertical-slides-container');
 const sections = gsap.utils.toArray(".vertical-slide");
@@ -24,10 +24,11 @@ if(sections.length>0){
 
 getMaxH();
 window.addEventListener("resize",getMaxH);
-ScrollTrigger.addEventListener("refreshInit", getMaxH);
+//ScrollTrigger.addEventListener("refreshInit", getMaxH);
 
 var slidesTL = gsap.timeline({
-    scrollTrigger: {
+    paused: true
+    /*scrollTrigger: {
         trigger: ".purdue-slider-vertical",
         start: 'top top+='+81,
         // end: `+=${(sections.length-1) *maxH}`,
@@ -54,7 +55,7 @@ var slidesTL = gsap.timeline({
                 }
               });
         },
-    }
+    }*/
 }),
 wrap = gsap.utils.wrap(sections),
 count = sections.length;
@@ -74,18 +75,39 @@ for (let i = 0; i < count-1; i++) {
     }, ">");
   }
   bullets.forEach((bullet, i) => {
-    bullet.addEventListener("click", ()=>{
-        bullets.forEach((bullet, i) => {
-            bullet.classList.remove("active")
-        })
-        bullet.classList.add("active")
-        sections.forEach((section, i) => {
-            section.style.visibility = "hidden"
-            section.style.opacity = 0
+    bullet.addEventListener("click", () => {
+      const targetIndex = sections.length - 1 - i;
+      bullets.forEach((b) => {
+        b.classList.remove("active")
+        b.setAttribute('aria-current', false);
+      });
+      bullet.classList.add("active");
+      bullet.setAttribute('aria-current', true);
 
-        })
-        sections[i].style.visibility = "inherit"
-        sections[i].style.opacity = "1"
-    })
+      sections.forEach((section, j) => {
+        if (j === targetIndex) {
+          section.inert = false;
+          section.setAttribute("tabindex", "0");
+          gsap.to(section, {
+            autoAlpha: 1,
+            duration: 0.3,
+            display: "block",
+            onComplete: () => section.focus()
+          });
+        } else {
+          section.removeAttribute("tabindex");
+          gsap.to(section, {
+            autoAlpha: 0,
+            duration: 0.3,
+            onComplete: () => {
+              section.inert = true;
+              setTimeout(() => {
+                section.style.display = 'none';
+              }, 1000);
+            }
+          });
+        }
+      });
+    });
   });
 }
