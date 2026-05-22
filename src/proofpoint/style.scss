@@ -42,7 +42,7 @@
      p.pu-proofpoint__source{
        color:$black;
      }
-     p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
+     p.pu-proofpoint__highlighted,.pu-proofpoint__content{
       color:$black;
     }
    }
@@ -52,7 +52,7 @@
      p.pu-proofpoint__source{
       color:$white;
     }
-    p.pu-proofpoint__highlighted,p.pu-proofpoint__content{
+    p.pu-proofpoint__highlighted,.pu-proofpoint__content{
      color:$white;
    }
      .pu-proofpoint__button {
@@ -120,8 +120,11 @@
      line-height:1.5 !important;
      white-space:pre-wrap;
      font-family: $acumin-pro;
+     padding:0;
+     margin:0 0 1rem 0;
+     margin-top:0 !important;
      &-narrow{
-       font-family: $united-sans-condensed;
+       font-family: $united-sans-condensed !important;
        letter-spacing: 0.1em;
      }
      &:not(:last-child){
@@ -167,5 +170,4 @@
      }
    }
  }
- 
- 
+

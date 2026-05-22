@@ -10,6 +10,7 @@
 //  Import CSS.
 // import "./editor.scss";
 // import "./style.scss";
+import deps from './dep'
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -263,7 +264,7 @@ registerBlockType("purdue-blocks/proofpoint", {
          <RichText
             tagName={"p"}
             value={props.attributes.lead}
-            className={`pu-proofpoint__lead`} 
+            className={`pu-proofpoint__lead`}
             onChange={(lead) => {
               props.setAttributes( { lead } );
             }}
@@ -274,7 +275,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             value={props.attributes.highlighted}
             className={`pu-proofpoint__highlighted
                         ${props.attributes.headerfontStyle==="wide" ?"  pu-proofpoint__highlighted-wide":"  pu-proofpoint__highlighted-narrow"}
-                        `} 
+                        `}
             onChange={(highlighted) => {
               props.setAttributes( { highlighted } );
             }}
@@ -285,7 +286,7 @@ registerBlockType("purdue-blocks/proofpoint", {
             value={props.attributes.content}
             className={`pu-proofpoint__content
                         ${props.attributes.contentfontStyle==="wide" ?"  pu-proofpoint__content-wide":"  pu-proofpoint__content-narrow"}
-                        `} 
+                        `}
             onChange={(content) => {
               props.setAttributes( { content } );
             }}
@@ -294,7 +295,7 @@ registerBlockType("purdue-blocks/proofpoint", {
            <RichText
             tagName={"p"}
             value={props.attributes.source}
-            className={`pu-proofpoint__source`} 
+            className={`pu-proofpoint__source`}
             onChange={(source) => {
               props.setAttributes( { source } );
             }}
@@ -349,11 +350,11 @@ registerBlockType("purdue-blocks/proofpoint", {
       ${
         props.attributes.hasLead?" pu-proofpoint__has-lead":""
       }
-      `}>       
+      `}>
           <div className="container">
           {props.attributes.lead && props.attributes.hasLead ?
             <RichText.Content
-            className={`pu-proofpoint__lead`} 
+            className={`pu-proofpoint__lead`}
             tagName={ "p" }
             value={props.attributes.lead}
             />:""}
@@ -363,19 +364,19 @@ registerBlockType("purdue-blocks/proofpoint", {
             value={props.attributes.highlighted}
             className={`pu-proofpoint__highlighted
                         ${props.attributes.headerfontStyle==="wide" ?"  pu-proofpoint__highlighted-wide":"  pu-proofpoint__highlighted-narrow"}
-                        `} 
+                        `}
           />}
           {!props.attributes.content ?'':
             <RichText.Content
             className={`pu-proofpoint__content
             ${props.attributes.contentfontStyle==="wide" ?"  pu-proofpoint__content-wide":"  pu-proofpoint__content-narrow"}
-            `} 
-            tagName={ "p" }
+            `}
+            tagName={ "h2" }
             value={props.attributes.content}
           />}
            {!props.attributes.source ?'':
             <RichText.Content
-            className={`pu-proofpoint__source`} 
+            className={`pu-proofpoint__source`}
             tagName={ "p" }
             value={props.attributes.source}
           />}
@@ -400,71 +401,5 @@ registerBlockType("purdue-blocks/proofpoint", {
     );
     return returned;
   },
-  deprecated: [
-    {
-      attributes: {
-        color: { type: "string", default: "black"  },
-        border:{ type: "boolean", default: false },
-        buttonColor: { type: "string", default: "black"  },
-        highlighted: { type: "string", default: "" },
-        headerfontStyle: { type: "string", default: "narrow" },
-        contentfontStyle: { type: "string", default: "narrow" },
-        content: { type: "string", default: "" },
-        source: { type: "string", default: "" },
-        ctaUrl: { type: "string", default: "" },
-        ctaText: { type: "string", default: "" },
-        external: { type: 'boolean', default: false },
-        height: { type: "string", default: "auto" },
-      },
-      save: (props) => {
-        const blockProps = useBlockProps.save();
-        const returned = (
-          <div {...blockProps} className={ `pu-proofpoint${
-            props.attributes.color === 'black' ? ' pu-proofpoint__black' : ' pu-proofpoint__white'
-          }${
-            props.attributes.border ? ' pu-proofpoint__border' : ''
-          }
-          ${
-            props.attributes.height==="full"?" pu-proofpoint__height":""
-          }`}>       
-              <div className="container">
-               {!props.attributes.highlighted ?'':props.attributes.headerfontStyle==="wide" ?(
-                <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-wide">
-                  {props.attributes.highlighted}
-                </p>):(
-                <p className="pu-proofpoint__highlighted pu-proofpoint__highlighted-narrow">
-                  {props.attributes.highlighted}
-                </p>)}
-                {!props.attributes.content ?'':props.attributes.contentfontStyle==="wide" ?(
-                <p className="pu-proofpoint__content pu-proofpoint__content-wide">
-                  {props.attributes.content}
-                </p>):(<p className="pu-proofpoint__content pu-proofpoint__content-narrow">
-                  {props.attributes.content}
-                </p>)}
-                {!props.attributes.source ?'':(
-                <p className="pu-proofpoint__source">
-                  {props.attributes.source}
-                </p>)}
-                {(!props.attributes.ctaUrl||!props.attributes.ctaText)?'':(props.attributes.color === 'white'&&props.attributes.buttonColor==="white")?
-                      (<a
-                      href={props.attributes.ctaUrl}
-                      className="pu-proofpoint__button pu-proofpoint__button-white"
-                      target={ props.attributes.external ? '_blank' : '_self' }
-                      rel="noopener noreferrer"
-                    >
-                      {props.attributes.ctaText}
-                    </a>):(<a
-                      href={props.attributes.ctaUrl}
-                      className="pu-proofpoint__button"
-                      target={ props.attributes.external ? '_blank' : '_self' }
-                      rel="noopener noreferrer"
-                    >
-                      {props.attributes.ctaText}
-                    </a>)}
-              </div>
-          </div>
-        );
-        return returned;
-      },
-    }],
+  deprecated: deps,
 });
