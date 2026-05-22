@@ -16,21 +16,13 @@ function render_block_purdue_vertical_slider($attributes){
     }
     $output.='<div class="container">';
     if(sizeof($attributes['tabs'])>0){
-            $output.='<div class="slider-bullets">';
-            foreach ( $attributes['tabs'] as $key => $tab ) {
-              $active = $key==0 ? " active":"";
-              $inert = $key==0 ? "":"inert";
-              $current = $key==0 ? "true":"false";
-              $num = $key + 1;
-              $output.='<button class="slider-bullet'.$active.'" aria-label="slide '.$num.'" aria-current="'. $current .'"></button>';
-            }
-            $output.='</div>';
             $output.='<div class="vertical-slides-container">';
             // var_dump($attributes['tabs']);
             foreach ( $attributes['tabs'] as $key => $tab ) {
               $activeSlide = $key==0 ? " active":"";
-              $display = $key==0 ? "block":"none";
-              $output.='<div class="vertical-slide'.$activeSlide.'" '.$inert.' style="display:'.$display.';">';
+              $inert = $key==0 ? "":"inert";
+
+              $output.='<div class="vertical-slide'.$activeSlide.'" '.$inert.'>';
               $output.='<div class="columns">';
                         if($tab["media"]["url"] != ""){
                             $backgroundRole=$tab["media"]["url"]?' role="img" ':'';
@@ -55,8 +47,17 @@ function render_block_purdue_vertical_slider($attributes){
             }
 
             $output.='</div>';
+            $output.='<div class="slider-bullets">';
+            foreach ( $attributes['tabs'] as $key => $tab ) {
+              $active = $key==0 ? " active":"";
+              $current = $key==0 ? "true":"false";
+              $num = $key + 1;
+              $output.='<button class="slider-bullet'.$active.'" aria-label="slide '.$num.'" aria-current="'. $current .'"></button>';
+            }
+            $output.='</div>';
 
-        }
+
+    }
         $output.='</div></div>';
 
     return $output;
