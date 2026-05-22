@@ -10,6 +10,7 @@
 //  Import CSS.
 // import './editor.scss';
 // import './style.scss';
+import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -46,6 +47,14 @@ const BLOCKS_TEMPLATE = [
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
+const titleLevelOptions = [
+  { label: 'H2', value: 'h2' },
+  { label: 'H3', value: 'h3' },
+  { label: 'H4', value: 'h4' },
+  { label: 'H5', value: 'h5' },
+  { label: 'H6', value: 'h6' }
+];
+
 registerBlockType( 'purdue-blocks/purdue-rss', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __( 'Purdue RSS feed' ), // Block title.
@@ -71,7 +80,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     type: { type: 'string', default: "withImage" },
     feedURL: { type: 'string', default: '' },
     title: { type: 'string', source: 'html', selector: '.feed-header' },
-    titleLevel: { type: 'string', default: 'p' },
+    titleLevel: { type: 'string', default: 'h2' },
     hasLink: { type: 'boolean', default: false },
     link: { type: 'string', default: '' },
     linkText: { type: 'string', default: '' },
@@ -89,7 +98,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
   // Block description in side panel
   description: __(
-    'Display entries from RSS feed. Entries will not update automatically. Please use "Purdue News" block instead.' 
+    'Display entries from RSS feed. Entries will not update automatically. Please use "Purdue News" block instead.'
   ),
 
   edit: ( props ) => {
@@ -98,7 +107,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
       if ( props.attributes.feedURL ) {
         setIsEditing( false );
       }
-      apiFetch( { 
+      apiFetch( {
         path: '/purduerssfeed/v2/getFeed/?url=' + props.attributes.feedURL,
         method: 'GET'
       }).then(response => {
@@ -115,12 +124,12 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     };
 
     const itemListImage=props.attributes.data&&props.attributes.data.length>0?props.attributes.data.slice(0, 3).map(data => {
-      return (    
+      return (
       <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
           {itemImage(data)}
       </div>)
       }):"";
-  
+
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
         <div key={data.id} class="feed-item-noimage">
@@ -175,14 +184,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
             <SelectControl
               label="Heading level of the Header"
               value={ props.attributes.titleLevel }
-              options={ [
-                { label: 'H2', value: 'h2' },
-                { label: 'H3', value: 'h3' },
-                { label: 'H4', value: 'h4' },
-                { label: 'H5', value: 'h5' },
-                { label: 'H6', value: 'h6' },
-                { label: 'P', value: 'p' },
-              ] }
+              options={ titleLevelOptions.slice(0, -1) }
               onChange={ ( titleLevel ) => {
                 props.setAttributes( { titleLevel } )
               } }
@@ -194,11 +196,11 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
               label="Image Alt Text"
               value={ props.attributes.altText }
               onChange={ ( altText ) => props.setAttributes( { altText } ) }
-            />          
+            />
           </PanelRow>:""
           }
           {
-            props.attributes.imgUrl?<PanelRow>        
+            props.attributes.imgUrl?<PanelRow>
             <Button className={ 'remove-image-button' } onClick={removeMedia}>
                 Remove image
             </Button>
@@ -244,8 +246,8 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
       </InspectorControls>,
       <div>
       {isEditing?
-        <div className={ 'news-feed-editor'}>		
-          <p>Enter feed URL in the box and then click "Use URL" to retrive the feed</p>		
+        <div className={ 'news-feed-editor'}>
+          <p>Enter feed URL in the box and then click "Use URL" to retrive the feed</p>
             <form onSubmit={ onSubmitURL }
             className="rss-form"
             >
@@ -261,7 +263,7 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
                 { __( 'Use URL' ) }
               </Button>
             </form>
-          </div>: 
+          </div>:
           <div className={'news-feed'}>
             <RichText
               className={ 'feed-header' }
@@ -346,16 +348,16 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
    */
   save: ( props ) => {
     const itemListImage=props.attributes.data&&props.attributes.data.length>0?props.attributes.data.slice(0, 3).map(data => {
-      return (    
+      return (
       <div key={data.id} className={"column is-one-third-desktop is-one-third-tablet is-full-mobile"}>
-          {itemImage(data)}
+          {itemImage(data, props.attributes.titleLevel)}
       </div>)
       }):"";
-  
+
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
         <div key={data.id} class="feed-item-noimage">
-          {itemNoImage(data)}
+          {itemNoImage(data, props.attributes.titleLevel)}
         </div>
         )
       }):"";
@@ -363,14 +365,14 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     const itemListAll=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].map(data => {
       return (
         <div key={data.id} className={"column is-one-third-desktop is-half-tablet is-full-mobile"}>
-          {itemAll(data)}
+          {itemAll(data, props.attributes.titleLevel)}
         </div>
       )
       }):"";
     return (
       <div className={'news-feed'}>
          <div className={'container'}>
-          { props.attributes.title ? ( 
+          { props.attributes.title ? (
           <RichText.Content
             className={ 'feed-header' }
             tagName={ props.attributes.titleLevel }
@@ -411,25 +413,34 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
     </div>
     );
   },
+  deprecated: dep
 } );
 
-function itemImage(data){
+function getTitleLevelHeading(level) {
+  const id = titleLevelOptions.findIndex(x => x.value == level)
+  if(id < 0)
+    return titleLevelOptions[0].value;
+  return titleLevelOptions[id+1].value;
+}
+
+function itemImage(data, level){
+  const HeadingLevel = getTitleLevelHeading(level);
   return (
     <div className={"card feed-item"}>
       <a href={data.link}>
         {data.imgURL&&data.imgURL!==""?
-          <div className={"card-bg-image image is-2by1"} 
+          <div className={"card-bg-image image is-2by1"}
           role="img"
           style={{backgroundImage:`url(${ data.imgURL })`}}
           aria-label={ data.imgALT }
           >
-          </div>:""}                   
+          </div>:""}
         <div className="card-content">
           <div className="media">
             <div className="media-content">
-              <p className="title is-4">
-                {data.title}									
-              </p>
+              <HeadingLevel className="title is-4">
+                {data.title}
+              </HeadingLevel>
             </div>
           </div>
         <div className="read-more-button">
@@ -440,54 +451,59 @@ function itemImage(data){
     </div>
   );
 }
-function itemNoImage(data){
+
+
+function itemNoImage(data, level){
+  const HeadingLevel = getTitleLevelHeading(level);
   return (
-    <a className={"meida feed-item-noimage"} href={data.link}>                 
+    <a className={"meida feed-item-noimage"} href={data.link}>
       <div className="media-left">
             <p className="month">
-              {data.month}									
+              {data.month}
             </p>
             <p className="day">
-              {data.day}									
+              {data.day}
             </p>
         </div>
       <div className="media-content">
         <div className="content">
-          <p className="title">
-            {data.title}	
-          </p>
+          <HeadingLevel className="title">
+            {data.title}
+          </HeadingLevel>
           <p className="desc">
-            {data.text}	
+            {data.text}
           </p>
-        </div>											
+        </div>
       </div>
     </a>
   );
 }
-function itemAll(data){
+function itemAll(data, level){
+  const HeadingLevel = getTitleLevelHeading(level);
+
   return (
     <div className={"card feed-item"}>
       <a href={data.link}>
         {data.imgURL&&data.imgURL!==""?
-          <div className={"card-bg-image image is-2by1"} 
+          <div className={"card-bg-image image is-2by1"}
           role="img"
           style={{backgroundImage:`url(${ data.imgURL })`}}
           aria-label={ data.imgALT }
           >
-          </div>:""}                   
+          </div>:""}
         <div className="card-content">
           <div className="media">
             <div className="media-content">
               <p className="subtitle">
-                {data.date}									
+                {data.date}
               </p>
-              <p className="title is-4">
-                {data.title}									
-              </p>
+              <HeadingLevel className="title is-4">
+                {data.title}
+              </HeadingLevel>
             </div>
           </div>
         <div className="content-text">
-          {data.text}												
+          {data.text}
         </div>
         <div className="read-more-button">
           <span>Read More</span>
