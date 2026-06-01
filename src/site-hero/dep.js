@@ -86,6 +86,7 @@ const v1 = {
     className: false,
   },
   save: ( props ) => {
+    console.log('run')
     const returned = ! props.attributes.styleToggle ? (
       // 50/50 Hero
       <div className={`bulma-blocks-50-50-hero${props.attributes.align === "right" ? " reversed-alignment":""}`}>

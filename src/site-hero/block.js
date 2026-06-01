@@ -511,7 +511,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
               className="background-image"
               role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
-              aria-label={ props.attributes.altText }
             />:""}
             {props.attributes.mediaType === "video"?
             <video muted="" title={props.attributes.mediaTitle} loop="" autoplay="" playsinline="" src={props.attributes.imgUrl}/>:""}
@@ -596,7 +595,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
               className="background-image"
               role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
-              aria-label={ props.attributes.altText }
             />
           </div>
         </div>
