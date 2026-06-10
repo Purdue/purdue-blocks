@@ -384,12 +384,12 @@ registerBlockType("purdue-blocks/video-hero", {
         </div>:""}
         {props.attributes.images.length>1?
           <div className="video-hero--carousel__arrow-wrapper">
-              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-left">
+              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-left" aria-label="Previous Slide">
                 <i class="fas fa-chevron-left"></i>
               </button>
               <span  className="video-hero--carousel__current" role="status">1</span>
               <span  className="video-hero--carousel__total">/{props.attributes.images.length}</span>
-              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-right">
+              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-right" aria-label="Next Slide">
                 <i class="fas fa-chevron-right"></i>
               </button>
           </div>:""}
