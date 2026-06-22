@@ -168,7 +168,7 @@ const v1 = {
       </div>
     );
     return returned;
-  }
+  },
 };
 
 function getVideoId(url) {

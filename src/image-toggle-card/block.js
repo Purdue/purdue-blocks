@@ -86,6 +86,7 @@ registerBlockType("purdue-blocks/image-toggle-card", {
     openInNewTab: { type: "boolean", default: false },
     icon: { type: "string", default: "" },
     cardStyle: { type: "string", default: "" },
+    id: { type: "string", default: "" },
   },
 
   supports: {
@@ -109,6 +110,8 @@ registerBlockType("purdue-blocks/image-toggle-card", {
         images: ''
       });
     }
+    const id = props.clientId;
+    props.setAttributes({ id: id });
     return [
       <InspectorControls>
         <PanelBody>
@@ -214,10 +217,10 @@ registerBlockType("purdue-blocks/image-toggle-card", {
                   );
                 })}
               </div>
-              {props.attributes.icon?
-                <Button className={ 'image-toggle-card-block-editor__button' } onClick={removeIcon}>
-                      Remove Icon
-                </Button>:""
+              {props.attributes.icon ?
+                <Button className={'image-toggle-card-block-editor__button'} onClick={removeIcon}>
+                  Remove Icon
+                </Button> : ""
               }
               <div
                 className="image-toggle-card-block-editor__icon-selector--selected-icon"
@@ -254,8 +257,8 @@ registerBlockType("purdue-blocks/image-toggle-card", {
                   >
                     Select New Images
                   </Button>
-                  <Button className={ 'bulma-blocks-editor-site-hero__button' } onClick={removeMedia}>
-                        Remove images
+                  <Button className={'bulma-blocks-editor-site-hero__button'} onClick={removeMedia}>
+                    Remove images
                   </Button>
                 </div>
               ) : (
@@ -349,27 +352,25 @@ registerBlockType("purdue-blocks/image-toggle-card", {
     const returned = (
       <div {...blockProps} className="pu-image-toggle box">
         <div
-          className={`pu-image-toggle__heading${
-            props.attributes.cardStyle !== ""
-              ? ` ${props.attributes.cardStyle}`
-              : ""
-          }`}
+          className={`pu-image-toggle__heading${props.attributes.cardStyle !== ""
+            ? ` ${props.attributes.cardStyle}`
+            : ""
+            }`}
         >
-          <span>
-            {props.attributes.icon !== "" ? (
-              <span
-                className={`pu-image-toggle__heading--icon${
-                  props.attributes.icon.includes(`data-bg="true"`)
+          <h2 id={`heading-${props.attributes.id}`} className={`pu-image-toggle__heading--title`} >
+              {props.attributes.icon !== "" ? (
+                <span
+                  className={`pu-image-toggle__heading--icon${props.attributes.icon.includes(`data-bg="true"`)
                     ? " has-bg-white"
                     : ""
-                }`}
-                dangerouslySetInnerHTML={{ __html: props.attributes.icon }}
-              ></span>
-            ) : (
-              ""
-            )}&nbsp;
-            {props.attributes.cardTitle}
-          </span>
+                    } aria-hidden="true"`}
+                  dangerouslySetInnerHTML={{ __html: props.attributes.icon }}
+                ></span>
+              ) : (
+                ""
+              )}&nbsp;
+              {props.attributes.cardTitle}
+          </h2>
 
           {props.attributes.includeLink ? (
             <a
@@ -384,22 +385,23 @@ registerBlockType("purdue-blocks/image-toggle-card", {
           )}
         </div>
         <div className={`pu-image-toggle__images`}>
-          {props.attributes.images?props.attributes.images.map((img, index) => {
+          {props.attributes.images ? props.attributes.images.map((img, index) => {
             return (
-              <img
-                className={`${index === 0 ? "show" : ""}`}
-                alt={img.alt}
-                src={img.url}
-              />
+              <div id={`tabpanel-${props.attributes.id}-${index}`} role="tabpanel" aria-labelledby={`tab-${props.attributes.id}-${index}`} className={`pu-image-toggle__images--image${index === 0 ? " show" : " is-hidden"}`}>
+                <img
+                  alt={img.alt}
+                  src={img.url}
+                />
+              </div>
             );
-          }):""}
+          }) : ""}
         </div>
         {props.attributes.images.length > 1 ? (
-          <div className={`pu-image-toggle__buttons`}>
-            <button className={`toggle-button selected`}>
+          <div role="tablist" aria-labelledby={`heading-${props.attributes.id}`} className={`pu-image-toggle__buttons`}>
+            <button id={`tab-${props.attributes.id}-0`} className={`toggle-button selected`} role="tab" aria-selected="true" tabindex="0" aria-controls={`tabpanel-${props.attributes.id}-0`}>
               {props.attributes.firstTitle}
             </button>
-            <button className={`toggle-button`}>
+            <button id={`tab-${props.attributes.id}-1`} className={`toggle-button`} role="tab" aria-selected="false" tabindex="-1" aria-controls={`tabpanel-${props.attributes.id}-1`}>
               {props.attributes.secondTitle}
             </button>
           </div>
@@ -410,6 +412,93 @@ registerBlockType("purdue-blocks/image-toggle-card", {
     );
     return returned;
   },
+
+  deprecated: [
+    {
+      attributes: {
+        images: { type: "array", default: [] },
+        cardTitle: { type: "string", default: "" },
+        firstTitle: { type: "string", default: "" },
+        secondTitle: { type: "string", default: "" },
+        linkText: { type: "string", default: "" },
+        linkUrl: { type: "string", default: "" },
+        includeLink: { type: "boolean", default: false },
+        openInNewTab: { type: "boolean", default: false },
+        icon: { type: "string", default: "" },
+        cardStyle: { type: "string", default: "" },
+      },
+
+      supports: {
+        className: false,
+        anchor: true,
+      },
+
+
+      save: (props) => {
+        const returned = (
+          <div className="pu-image-toggle box">
+            <div
+              className={`pu-image-toggle__heading${props.attributes.cardStyle !== ""
+                ? ` ${props.attributes.cardStyle}`
+                : ""
+                }`}
+            >
+              <span>
+                {props.attributes.icon !== "" ? (
+                  <span
+                    className={`pu-image-toggle__heading--icon${props.attributes.icon.includes(`data-bg="true"`)
+                      ? " has-bg-white"
+                      : ""
+                      }`}
+                    dangerouslySetInnerHTML={{ __html: props.attributes.icon }}
+                  ></span>
+                ) : (
+                  ""
+                )}&nbsp;
+                {props.attributes.cardTitle}
+              </span>
+
+              {props.attributes.includeLink ? (
+                <a
+                  href={props.attributes.linkUrl}
+                  target={props.attributes.openInNewTab ? "_blank" : ""}
+                  rel="noopener noreferrer"
+                >
+                  {props.attributes.linkText}
+                </a>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className={`pu-image-toggle__images`}>
+              {props.attributes.images ? props.attributes.images.map((img, index) => {
+                return (
+                  <img
+                    className={`${index === 0 ? "show" : ""}`}
+                    alt={img.alt}
+                    src={img.url}
+                  />
+                );
+              }) : ""}
+            </div>
+            {props.attributes.images.length > 1 ? (
+              <div className={`pu-image-toggle__buttons`}>
+                <button className={`toggle-button selected`}>
+                  {props.attributes.firstTitle}
+                </button>
+                <button className={`toggle-button`}>
+                  {props.attributes.secondTitle}
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        );
+        return returned;
+      },
+    },
+  ],
 });
 
 const openIconSelector = (e) => {

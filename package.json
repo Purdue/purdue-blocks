@@ -21,7 +21,8 @@
     "react-sortablejs": "^6.1.4",
     "sass": "^1.51.0",
     "scrollmagic": "^2.0.8",
-    "sortablejs": "^1.15.0"
+    "sortablejs": "^1.15.0",
+    "tabbable": "^6.3.0"
   },
   "devDependencies": {
     "@wordpress/e2e-test-utils": "^4.11.2",
