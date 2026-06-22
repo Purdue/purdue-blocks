@@ -181,4 +181,3 @@ function getVideoId(url) {
 }
 
 export default [v1];
-
