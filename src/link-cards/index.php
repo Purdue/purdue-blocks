@@ -4,9 +4,11 @@
  *
  * @package WordPress
  */
-	
+
 function render_block_link_cards($attributes){
+
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
+    $uuid = uniqid();
     $column_class[] = 'column is-half-tablet is-full-mobile';
     if(isset( $attributes['columns'] ) && $attributes['columns'] =="4" ){
         $column_class[] = 'is-one-quarter-desktop';
@@ -28,17 +30,12 @@ function render_block_link_cards($attributes){
     }
     if(sizeof($attributes['tabs'])>0){
         $output.='<div class="columns is-multiline">';
-            foreach ( $attributes['tabs'] as $key => $tab ) {  
+            foreach ( $attributes['tabs'] as $key => $tab ) {
                 $target=$tab["newtab"]?'target="_blank"':'target="_self"';
                 $output.='<div class="'.implode(' ',$column_class).'">';
-                if($tab["link"] != ""){
-                    $output.='<a class="card media link-card" href="'.$tab["link"].'" '.$target.'>';
-                }else{
                     $output.='<div class="card media link-card">';
-                }
                         if($tab["media"]["url"] != ""){
-                            $backgroundRole=$tab["media"]["url"]?' role="img" ':'';
-                            $output.='<div class="image is-16by9 background-image"'.$backgroundRole.'style="background-image:url('.$tab["media"]["url"].')" aria-label="'.$tab["media"]["url"].'"></div>';
+                            $output.='<div class="image is-16by9 background-image" style="background-image:url('.$tab["media"]["url"].')"></div>';
                         }
                         $output.='<div class="media-content">';
                         if($tab["mediaType"] != ""){
@@ -61,19 +58,15 @@ function render_block_link_cards($attributes){
                         if($tab["tag"] != ""){
                             $output.='<p class="story-tag">'.$tab["tag"].'</p>';
                         }
-                        $output.='<p class="title is-4">'.$tab["title"].'</p>';                        
+                        $output.='<h2 id="' . $uuid . '" class="title is-4">'.$tab["title"].'</h2>';
                         if($tab["subtext"] != ""){
                             $output.='<p class="vertical-subtext">'.$tab["subtext"].'</p>';
                         }
                         if($tab["buttontext"] != ""){
-                            $output.='<button class="purdue-blocks__button purdue-blocks__button--gold-light">'.$tab["buttontext"].'</button>';
+                            $output.='<a class="purdue-blocks__button purdue-blocks__button--gold-light"  href="'.$tab["link"].'" '.$target.' aria-describedby="'. $uuid .'">'.$tab["buttontext"].'</a>';
                         }
                         $output.='</div>';
-                    if($tab["link"] != ""){
-                    $output.='</a>';
-                    }else{
-                        $output.='</div>';
-                    }
+                    $output.='</div>';
                 $output.='</div>';
             }
             $output.='</div>';

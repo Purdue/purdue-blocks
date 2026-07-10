@@ -39,20 +39,38 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         })
     }
     })
-    const links=document.querySelectorAll('a.anchor-link-block-link')
-    links.forEach((link)=>{
-        link.addEventListener('click',(e)=>{
-            is_IE()?'':e.preventDefault( );
-            const topY=document.querySelector(link.hash).getBoundingClientRect().top + window.pageYOffset -20;
-            window.scroll({
-                top: topY,
-                behavior: 'smooth'
-                })
-            links.forEach((el)=>{
-                el===link?el.classList.add("is-active"):el.classList.remove("is-active")
-            })
-        })
-    })
+  const links = document.querySelectorAll('a.anchor-link-block-link')
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      is_IE() ? '' : e.preventDefault();
+      const target = document.querySelector(link.hash);
+      const topY = target.getBoundingClientRect().top + window.pageYOffset - 20;
+
+      window.scroll({
+        top: topY,
+        behavior: 'smooth'
+      });
+
+      links.forEach((el) => {
+        el === link ? el.classList.add("is-active") : el.classList.remove("is-active")
+      });
+
+      // Set focus after scroll completes
+      const onScrollEnd = () => {
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => {
+          target.removeAttribute('tabindex');
+        }, { once: true });
+      };
+
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onScrollEnd, { once: true });
+      } else {
+        setTimeout(onScrollEnd, 500);
+      }
+    });
+  });
     window.addEventListener('scroll', () => {
         setTimeout(function(){
             if(anchorHeaders && anchorHeaders.length>0){
@@ -68,30 +86,25 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         }, 100)
     })
     const toTop = document.querySelector('#to-top-sidebar')
-    if(toTop){
-        toTop.addEventListener('click', () => {
-            window.scroll({
-            top: 0,
-            behavior: 'smooth'
-            })
+  if (toTop) {
+    toTop.addEventListener('click', () => {
+      window.scroll({ top: 0, behavior: 'smooth' });
 
-            const topElement = document.querySelector('h1') || document.body;
+      const topElement = document.querySelector('h1') || document.body;
+      topElement.setAttribute('tabindex', '-1');
 
-            // Ensure the element can receive focus
-            topElement.setAttribute('tabindex', '-1');
-            topElement.focus({
-              preventScroll: true // Prevents jumping if the scroll is still animating
-            });
+      // Wait for scroll to finish before moving focus
+      const onScrollEnd = () => {
+        topElement.focus({ preventScroll: true });
+        topElement.addEventListener('blur', () => {
+          topElement.removeAttribute('tabindex');
+        }, { once: true });
+      };
 
-            // Optional: Remove tabindex on blur so it doesn't stay in the tab order
-            topElement.addEventListener('blur', () => {
-              topElement.removeAttribute('tabindex');
-            }, { once: true });
-
-        })
-
-
-    }
+      // scrollend fires when smooth scroll completes
+      window.addEventListener('scrollend', onScrollEnd, { once: true });
+    });
+  }
 }
 
 

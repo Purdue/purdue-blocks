@@ -24,9 +24,9 @@
       color:$black;
     }
     &.is-active{
-       font-weight:700;  
-       color:$black;  
-       border-left:solid 5px $black; 
+       font-weight:700;
+       color:$black;
+       border-left:solid 5px $black;
        color:$black;
      }
   }
@@ -39,9 +39,7 @@
     box-shadow:$box-shadow;
     padding:1.0625rem 2.25rem;
     cursor:pointer;
-    &:focus{
-      outline:none;
-    }
+
     span{
       color:inherit;
       position:relative;

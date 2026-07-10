@@ -28,9 +28,9 @@
           color:$black;
         }
         &.is-active{
-          font-weight:700;  
-          color:$black;  
-          border-left:solid 5px $black; 
+          font-weight:700;
+          color:$black;
+          border-left:solid 5px $black;
           color:$black;
         }
       }
@@ -57,9 +57,6 @@
    padding:1.0625rem 2.25rem;
    background-color:$primary-background-gray;
    cursor:pointer;
-   &:focus{
-     outline:none;
-   }
    .text{
      color:inherit;
      position:relative;
