@@ -38,11 +38,11 @@
         font-family: $acumin-pro;
         font-size: 18px;
         font-weight: 700;
-  
+
         &:hover {
           cursor: pointer;
           text-decoration: none;
-  
+
         }
       }
     }
@@ -159,9 +159,6 @@
         cursor: pointer;
       }
 
-      &:focus {
-        outline: none;
-      }
     }
   }
 }
