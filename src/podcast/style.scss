@@ -307,6 +307,9 @@
 
     &-close {
       position: absolute;
+      &:focus {
+        outline: 1px solid $white;
+      }
     }
 
     .modal-content {
