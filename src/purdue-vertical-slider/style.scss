@@ -136,10 +136,11 @@
       cursor: pointer;
 
       &:hover, &:focus {
-        background-color: $black;
+        background-color: $cool-gray;
+        border-color: $cool-gray;
       }
       &.active{
-        background: $black;;
+        background: $black;
 
       }
     }
