@@ -5,6 +5,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - 184px - 3rem);
+
+  @include touch {
+    min-height: 100%;
+    padding: 6rem 0;
+  }
 
   &--background-image {
     top: 0;
@@ -100,12 +106,15 @@
     a {
       text-decoration: none;
       margin: 0;
+      text-align: center;
     }
 
     .cta-button {
+      display: inline-block;
       position: relative;
       background: $boiler-gold;
       padding: 0.8rem 1.8rem 0.7rem;
+      line-height: 2;
       font-family: United Sans;
       font-weight: 700;
       font-size: 1.125rem;
