@@ -66,7 +66,6 @@ registerBlockType("purdue-blocks/mini-hero", {
     title: { type: "string", source: "html", selector: ".title" },
     subText: { type: "string", source: "html", selector: "p.content" },
     imgUrl: { type: "string", default: "" },
-    altText: { type: "string", default: "" },
     includeLink: { type: 'boolean', default: false },
     linkExternal: { type: 'boolean', default: false },
     linkUrl: { type: "string", default: "" },
@@ -105,13 +104,6 @@ registerBlockType("purdue-blocks/mini-hero", {
               onChange={(background) => {
                 props.setAttributes({ background });
               }}
-            />
-          </PanelRow>
-          <PanelRow>
-            <TextareaControl
-              label="Hero Background Image Alt Text"
-              value={props.attributes.altText}
-              onChange={(altText) => props.setAttributes({ altText })}
             />
           </PanelRow>
         </PanelBody>
@@ -161,10 +153,6 @@ registerBlockType("purdue-blocks/mini-hero", {
             onSelect={(img) => {
               props.setAttributes({
                 imgUrl: img.url,
-                altText:
-                  props.attributes.altText !== ""
-                    ? props.attributes.altText
-                    : img.alt,
               });
             }}
             render={({ open }) => {
@@ -240,7 +228,6 @@ registerBlockType("purdue-blocks/mini-hero", {
         <div
           className={`image`}
           style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
-          aria-label={props.attributes.altText}
         >
           <div className="container">
             <div class="columns is-centered">
@@ -274,4 +261,64 @@ registerBlockType("purdue-blocks/mini-hero", {
 
     return returned;
   },
+
+  deprecated: [
+    {
+      attributes: {
+        title: { type: "string", source: "html", selector: ".title" },
+        subText: { type: "string", source: "html", selector: "p.content" },
+        imgUrl: { type: "string", default: "" },
+        altText: { type: "string", default: "" },
+        includeLink: { type: 'boolean', default: false },
+        linkExternal: { type: 'boolean', default: false },
+        linkUrl: { type: "string", default: "" },
+        linkText: { type: "string", default: "" },
+      },
+
+
+      supports: {
+        className: false,
+        anchor: true,
+      },
+
+      save(props) {
+        return (
+          <div className={`mini-hero${props.attributes.background==="light"?" mini-hero-light":""}`}>
+            <div
+              className={`image`}
+              style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
+              aria-label={props.attributes.altText}
+            >
+              <div className="container">
+                <div class="columns is-centered">
+                  <div class="column is-two-thirds-desktop is-full-tablet is-full-mobile">
+                    <div className="mini-hero--content">
+                      <RichText.Content
+                        className={"title"}
+                        tagName="h1"
+                        value={props.attributes.title}
+                      />
+                      {props.attributes.subText !== '' &&  props.attributes.subText !== undefined ? 
+                      <RichText.Content
+                        className={"content"}
+                        tagName="p"
+                        value={props.attributes.subText}
+                      /> : ''}
+
+                      {props.attributes.includeLink && props.attributes.linkText !== '' && props.attributes.linkUrl !== '' ? (
+                        <a href={props.attributes.linkUrl} className={`link${props.attributes.background === "light" ? " has-bg-light" : " has-bg-dark"}`} target={props.attributes.linkExternal ? '_blank' : '_self'} rel="noopener">
+                          {props.attributes.linkText}
+                        </a>
+                      ) : ''}
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      },
+    },
+  ],
 });

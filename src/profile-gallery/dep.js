@@ -34,7 +34,6 @@ const v1 = {
 		anchor: true,
 	},
 	save: ( props ) => {
-		console.log("depppp");
 		const blockProps = useBlockProps.save();
 		const profiles = props.attributes.profiles
 		const numColumns = parseInt(props.attributes.numColumns)

@@ -82,11 +82,11 @@ function render_block_purdue_news($attributes){
                 $output.='<div class="card-content">
                             <div class="media">
                                 <div class="media-content">
-                                    <p class="title is-4">'.$results[$i]["title"].'</p>
+                                    <'.get_next_heading_level($attributes['headerLevel']).' class="title is-4">'.$results[$i]["title"].'</'.get_next_heading_level($attributes['headerLevel']).'>
                                 </div>
                             </div>
                             <div class="read-more-button">
-                                <span>Read More</span>
+                                Read More <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
                             </div>
                           </div>';
                 $output.='</a></div></div>';
@@ -94,7 +94,7 @@ function render_block_purdue_news($attributes){
             $output.='</div>';
             if($attributes['hasLink']){
                 $attributes['external']?$external="blank":$external="self";
-                $output.='<div class="read-more-button"><a class="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a></div>';
+                $output.='<div class="read-more-button"><a class="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'<span aria-hidden="true"><i class="fas fa-chevron-right"></i></span></a></div>';
             }
         }elseif($attributes['type']=="withoutImage"){
             $output.='<div class="feed-grid">';
@@ -111,8 +111,7 @@ function render_block_purdue_news($attributes){
                           </div>';
                 $output.='<div class="media-content">
                             <div class="content">
-                                <p class="title">'.$results[$i]["title"].'</p>
-                                <p class="desc">'.$results[$i]["text"].'</p>
+                                <'.get_next_heading_level($attributes['headerLevel']).' class="title is-4">'.$results[$i]["title"].'</'.get_next_heading_level($attributes['headerLevel']).'>
                             </div>
                           </div>';
                 $output.='</a></div>';
@@ -120,7 +119,7 @@ function render_block_purdue_news($attributes){
             $output.='</div>';
             if($attributes['hasLink']){
                 $attributes['external']?$external="blank":$external="self";
-                $output.='<a class="button purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'</a>';
+                $output.='<a class="button purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href="'.$attributes['link'].'" target="_'.$external.'" rel="noopener noreferrer">'.$attributes['linkText'].'<span aria-hidden="true"><i class="fas fa-chevron-right"></i></span></a>';
             }
             $output.='</div></div>';
         }else{
@@ -135,12 +134,12 @@ function render_block_purdue_news($attributes){
                             <div class="media">
                                 <div class="media-content">
                                     <p class="subtitle">'.$result["date"].'</p>
-                                    <p class="title is-4">'.$result["title"].'</p>
+                                    <'.get_next_heading_level($attributes['headerLevel']).' class="title is-4">'.$result["title"].'</'.get_next_heading_level($attributes['headerLevel']).'>
                                 </div>
                             </div>
                             <div class="content-text">'.$result["text"].'</div>
                             <div class="read-more-button">
-                                <span>Read More</span>
+                                Read More <span aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
                             </div>
                           </div>';
                 $output.='</a></div></div>';

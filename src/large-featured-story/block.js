@@ -414,7 +414,7 @@ registerBlockType("purdue-blocks/large-featured-story", {
                     <span className="read-more-button-icon">
                     </span>
                     </a>:""}
-                  <button className="pu-lightbox-button">
+                  <button className="pu-lightbox-button" aria-haspopup="dialog">
                   { props.attributes.buttonText }
                   </button>
                   </div>:""}
@@ -423,8 +423,8 @@ registerBlockType("purdue-blocks/large-featured-story", {
           </div>
         </div>
         {props.attributes.addLightBox?
-        <div className="pu-lightbox">
-          <button className={`modal--close-button`}>
+        <div className="pu-lightbox" role="dialog" aria-modal="true">
+          <button className={`modal--close-button`} aria-label="Close">
             <i class="fas fa-times" aria-hidden="true"></i>
           </button>
           <div className="container">
