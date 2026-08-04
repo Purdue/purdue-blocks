@@ -4,6 +4,7 @@
 //  Import CSS.
 // import './editor.scss';
 // import './style.scss';
+import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -118,7 +119,7 @@ registerBlockType("purdue-blocks/video-hero", {
           { props.attributes.type ==="video"?
           <PanelRow>
             <MediaUploadCheck>
-              <MediaUpload 
+              <MediaUpload
                 allowedTypes={['image']}
                 onSelect={(media) => {
                   props.setAttributes({ posterUrl: media.url,
@@ -193,7 +194,7 @@ registerBlockType("purdue-blocks/video-hero", {
               let current=parseInt(props.attributes.currentImage)
               let url=images.length>0?images[current-1].url:""
               let alt=images.length>0?images[current-1].alt:""
-              return <div class="video-hero--background-image"                   
+              return <div class="video-hero--background-image"
                       role="img"
                       style={{ backgroundImage: `url(${url})` }}
                       aria-label={alt}>
@@ -208,7 +209,7 @@ registerBlockType("purdue-blocks/video-hero", {
                 </div>
                 {props.attributes.images.length>1?
                 <div className="video-hero__carousel__arrow-wrapper">
-                    <span className="video-hero--carousel__arrow video-hero--carousel__arrow-left"
+                    <button className="video-hero--carousel__arrow video-hero--carousel__arrow-left"
                     onClick={()=>{
                       if(props.attributes.currentImage>1){
                         props.setAttributes({ currentImage: props.attributes.currentImage-1 });
@@ -218,10 +219,10 @@ registerBlockType("purdue-blocks/video-hero", {
                     }}
                     >
                       <i class="fas fa-chevron-left"></i>
-                    </span>
-                    <span  className="video-hero--carousel__current">{props.attributes.currentImage}</span>
+                    </button>
+                    <span  className="video-hero--carousel__current" role="status">{props.attributes.currentImage}</span>
                     <span  className="video-hero--carousel__total">/{props.attributes.images.length}</span>
-                    <span className="video-hero--carousel__arrow video-hero--carousel__arrow-right"
+                    <button className="video-hero--carousel__arrow video-hero--carousel__arrow-right"
                       onClick={()=>{
                         if(props.attributes.currentImage<props.attributes.images.length){
                           props.setAttributes({ currentImage: props.attributes.currentImage+1 });
@@ -231,9 +232,9 @@ registerBlockType("purdue-blocks/video-hero", {
                       }}
                     >
                       <i class="fas fa-chevron-right"></i>
-                    </span>
-                </div>:""}   
-                <div className="video-hero-editor--overlay"></div>                  
+                    </button>
+                </div>:""}
+                <div className="video-hero-editor--overlay"></div>
                   <div className={`video-hero-editor--content`}>
                     <RichText
                       tagname="h1"
@@ -256,13 +257,13 @@ registerBlockType("purdue-blocks/video-hero", {
                       keepPlaceholderOnFocus={ true }
                       allowedFormats={ [] }
                     >
-                    </RichText> 
+                    </RichText>
                   </div>
               </div>
             } }
           />
         </MediaUploadCheck>:""}
-        { props.attributes.type === "image" || props.attributes.type === "video"?  
+        { props.attributes.type === "image" || props.attributes.type === "video"?
         <MediaUploadCheck>
           <MediaUpload
             multiple={false}
@@ -282,7 +283,7 @@ registerBlockType("purdue-blocks/video-hero", {
               }
             }}
             render={ ( { open } ) => {
-              return <div class="video-hero--background-image"                   
+              return <div class="video-hero--background-image"
                       role="img"
                       style={{ backgroundImage: `url(${props.attributes.imgUrl})` }}
                       aria-label={props.attributes.altText}>
@@ -303,7 +304,7 @@ registerBlockType("purdue-blocks/video-hero", {
                           )}
                       </button>
                     </div>
-                <div className="video-hero-editor--overlay"></div>                  
+                <div className="video-hero-editor--overlay"></div>
                   <div className={`video-hero-editor--content`}>
                     <RichText
                       tagname="h1"
@@ -326,14 +327,14 @@ registerBlockType("purdue-blocks/video-hero", {
                       keepPlaceholderOnFocus={ true }
                       allowedFormats={ [] }
                     >
-                    </RichText> 
+                    </RichText>
                   </div>
               </div>
             } }
           />
         </MediaUploadCheck>:""
       }
-       
+
       </div>,
     ];
   },
@@ -354,7 +355,7 @@ registerBlockType("purdue-blocks/video-hero", {
     const returned = (
       props.attributes.type==="carousel"?
       <div {...blockProps} className={`video-hero video-hero--carousel`}>
-        <div className={`video-hero--carousel__wrapper`}> 
+        <div className={`video-hero--carousel__wrapper`}>
         {
           props.attributes.images.length>0?props.attributes.images.map((img)=>{
             return <div className={`video-hero--carousel__image`}
@@ -383,15 +384,15 @@ registerBlockType("purdue-blocks/video-hero", {
         </div>:""}
         {props.attributes.images.length>1?
           <div className="video-hero--carousel__arrow-wrapper">
-              <span className="video-hero--carousel__arrow video-hero--carousel__arrow-left">
+              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-left" aria-label="Previous Slide">
                 <i class="fas fa-chevron-left"></i>
-              </span>
-              <span  className="video-hero--carousel__current">1</span>
+              </button>
+              <span  className="video-hero--carousel__current" role="status">1</span>
               <span  className="video-hero--carousel__total">/{props.attributes.images.length}</span>
-              <span className="video-hero--carousel__arrow video-hero--carousel__arrow-right">
+              <button className="video-hero--carousel__arrow video-hero--carousel__arrow-right" aria-label="Next Slide">
                 <i class="fas fa-chevron-right"></i>
-              </span>
-          </div>:""}  
+              </button>
+          </div>:""}
         <div className="video-hero--content">
           <RichText.Content
             className={"title"}
@@ -408,7 +409,7 @@ registerBlockType("purdue-blocks/video-hero", {
           </a>:""}
         </div>
       </div>:
-      <div {...blockProps} className={`video-hero video-hero--background-image`} 
+      <div {...blockProps} className={`video-hero video-hero--background-image`}
       style={{backgroundImage: `url(${props.attributes.type==="video"?props.attributes.posterUrl:props.attributes.imgUrl})`}}
       aria-label={props.attributes.type==="video"?props.attributes.altTextv:props.attributes.altTexti}>
         {props.attributes.type==="video"?
@@ -451,4 +452,5 @@ registerBlockType("purdue-blocks/video-hero", {
 
     return returned;
   },
+  deprecated: dep
 });

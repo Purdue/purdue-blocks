@@ -4,7 +4,7 @@ import {
 const videoHeroes = document.querySelectorAll('.video-hero')
 if(videoHeroes && videoHeroes.length > 0){
     videoHeroes.forEach((videoHero) => {
-    
+
         const pauseButton = videoHero.querySelector('.video-hero--pause-button')
         const playButton = videoHero.querySelector('.video-hero--play-button')
         const video = videoHero.querySelector('video')
@@ -14,7 +14,7 @@ if(videoHeroes && videoHeroes.length > 0){
                 pauseButton.classList.add('hide');
                 playButton.classList.remove('hide');
             })
-        }        
+        }
         if(playButton) {
             playButton.addEventListener('click', () => {
                 video.play();
@@ -22,13 +22,13 @@ if(videoHeroes && videoHeroes.length > 0){
                 pauseButton.classList.remove('hide');
             })
         }
-    })   
+    })
 }
 window.addEventListener('load', function() {
     if(videoHeroes && videoHeroes.length > 0){
         videoHeroes.forEach((videoHero) => {
             videoHero.classList.add('onload-animation')
-        })   
+        })
     }
 })
 const wH=window.innerHeight;
@@ -43,7 +43,7 @@ window.addEventListener('scroll', function() {
             if(thisBottom<=wH*0.5){
                 videoHero.classList.add('no-animation')
             }
-        })   
+        })
     }
 })
 const carouselHeros=[...document.querySelectorAll(".video-hero--carousel")]
@@ -69,8 +69,8 @@ if(carouselHeros&&carouselHeros.length>0){
             let cloneFirst = firstSlide.cloneNode(true)
             let cloneLast = lastSlide.cloneNode(true)
             carouselWrapper.appendChild(cloneFirst);
-            carouselWrapper.insertBefore(cloneLast, firstSlide); 
-            let autoplay=true;  
+            carouselWrapper.insertBefore(cloneLast, firstSlide);
+            let autoplay=true;
             slide(carouselHero, carouselWrapper, images, left, right, null, ".video-hero--carousel__image", number, autoplay, pause, play)
         }else if(images&&images.length===1){
             carouselWrapper.style.left=0;
