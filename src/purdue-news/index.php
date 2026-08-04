@@ -5,19 +5,6 @@
  * @package WordPress
  */
 
-function get_next_heading_level($heading) {
-    if (preg_match('/^h([1-6])$/i', $heading, $matches)) {
-        $level = min((int) $matches[1] + 1, 6);
-        if ($level === 6) {
-            return 'p';
-        }
-        return 'h' . $level;
-    }
-
-    // Fallback if invalid heading supplied
-    return 'h2';
-}
-	
 function render_block_purdue_news($attributes){
     $results=[];
 
@@ -32,8 +19,8 @@ function render_block_purdue_news($attributes){
 	}
     $rss_items  = $rss->get_items( 0, 10);
     if(!empty($rss_items)){
-        $id=0; 
-        foreach ($rss_items as $item) {  
+        $id=0;
+        foreach ($rss_items as $item) {
             $title = esc_html( trim( strip_tags( $item->get_title() ) ) );
             if ( empty( $title ) ) {
                 $title = __( '(no title)' );
@@ -74,7 +61,7 @@ function render_block_purdue_news($attributes){
             );
             array_push($results, $node);
             ++$id;
-        }	 
+        }
     }
     $id=$attributes['id']!=""?" id={$attributes['id']}":"";
     $output='<div class="news-feed"'.$id.'>';
@@ -86,7 +73,7 @@ function render_block_purdue_news($attributes){
     if(!empty($results)){
         if($attributes['type']=="withImage"){
             $output.='<div class="columns is-multiline feed-items">';
-            for($i=0;$i<3;$i++) {  
+            for($i=0;$i<3;$i++) {
                 $output.='<div class="column is-one-third-desktop is-one-third-tablet is-full-mobile"><div class="card feed-item">';
                 $output.='<a href="'.$results[$i]["link"].'" target="_blank" rel="noopener noreferrer">';
                 if($results[$i]["imgURL"]){
@@ -115,7 +102,7 @@ function render_block_purdue_news($attributes){
                 $output.='<figure class="feed-image is-3by2"><img src="'.$attributes['imgUrl'].'" alt="'.$attributes['altText'].'"></figure>';
             }
             $output.='<div class="feed-items">';
-            for($i=0;$i<4;$i++) { 
+            for($i=0;$i<4;$i++) {
                 $output.='<div class="feed-item-noimage">';
                 $output.='<a class="meida feed-item-noimage" href="'.$results[$i]["link"].'" target="_blank" rel="noopener noreferrer">';
                 $output.='<div class="media-left">
