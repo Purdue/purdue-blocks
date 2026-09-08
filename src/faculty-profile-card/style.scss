@@ -107,16 +107,14 @@
             }
 
             a {
-              text-decoration: none;
-              color: black;
               margin-bottom: 0;
               font-size: 1.125rem;
-              font-weight: 400;
+              font-weight: 700;
               font-family: $acumin-pro;
               word-break: break-word;
               &:hover {
                 color: $aged-gold;
-                text-decoration: underline;
+                text-decoration: none;
               }
             }
 

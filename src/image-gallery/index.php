@@ -38,7 +38,9 @@ function render_block_purdue_gallery($attributes){
                     $image_class.= ' image-no-caption';
                 }
                 $output.='<div class="'.$image_class.'" data-toggle="'.$img["id"].'">';
-                $output.='<div class="image is-square" role="image" data-src="'.$img["url"].'" aria-label="'.$img["alt"].'"></div>';
+                $output.='<figure class="image is-square">';
+                $output.='<img src="'.$img["url"].'" alt="'.$img["alt"].'"/>';
+                $output.='</figure>';
                 if($img["caption"] !="" ){
                     $output.='<button class="image-modal-button" aria-label="More information"><i class="fas fa-plus" aria-hidden="true"></i></button>';
                 }
@@ -64,10 +66,12 @@ function render_block_purdue_gallery($attributes){
             $output.='<div class="image-container">';
             $image_class = 'profile-gallery-open';
             $output.='<div class="'.$image_class.'" data-toggle="'.$card["media_id"].'">';
-            $output.='<div class="image is-square" role="image" data-src="'.$card["media_url"].'" aria-label="'.$card["media_alt"].'"></div>';
+            $output.='<figure class="image is-square">';
+            $output.='<img src="'.$card["media_url"].'" alt="'.$card["media_alt"].'"/>';
+            $output.='</figure>';
             $output.='<button class="modal-open-button" aria-label="More information" aria-haspopup="dialog" aria-controls="'.$uid.'"><i class="fas fa-plus" aria-hidden="true"></i></button>';
             $output.='</div>';
-            $output.='<div id="'.$uid.'" class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'">
+            $output.='<div id="'.$uid.'" class="pu-profile-gallery--modal" data-modal="'.$card["media_id"].'" aria-modal="true" role="dialog">
                 <button class="modal--close-button"  aria-label="close">
                     <i class="fas fa-times" aria-hidden="true"></i>
                  </button>
@@ -129,7 +133,7 @@ function render_block_purdue_gallery($attributes){
                         $output.='</div>
                     </div>
                     <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">previous</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>
                     </div>
                 </div>
@@ -138,11 +142,11 @@ function render_block_purdue_gallery($attributes){
                         <div class="glide__slides">';
                         foreach ( $card["imgs"] as $key => $galleryImg ) {
                             $output.='
-                            <div class="glide__slide">
+                            <button class="glide__slide" data-index="'.$key.'" aria-label="View image '.($key+1).'">
                                 <figure>
                                     <img src="'.$galleryImg["url"].'" alt="'.$galleryImg["alt"].'" data-index="'.$key.'"/>
                                 </figure>
-                            </div>';
+                            </button>';
                         }
                         $output.='</div>
                     </div>

@@ -343,7 +343,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                     aria-label={ profile.photoAlt }
                   ></div>
                   {profile.bio?
-                    <button className={`modal-open-button`}  aria-label="More information"><i className="fas fa-plus" aria-hidden='true'></i></button>
+                    <button className={`modal-open-button`}  aria-label={`More information on ${profile.name}`}><i className="fas fa-plus" aria-hidden='true'></i></button>
                     :""}
                     </div>
                   <p className={`pu-profile-gallery--name`}>
@@ -419,7 +419,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                   aria-label={ profile.photoAlt }
                 ></div>
                 {profile.bio?
-                  <button className={`modal-open-button`}  aria-label="More information"><i className="fas fa-plus" aria-hidden='true'></i></button>
+                  <button className={`modal-open-button`}  aria-label={`More information on ${profile.name}`} aria-haspopup="dialog"><i className="fas fa-plus" aria-hidden='true'></i></button>
                   :""}
                   </div>
                 <p className={`pu-profile-gallery--name`}>
@@ -435,7 +435,7 @@ registerBlockType( 'purdue-blocks/profile-gallery', {
                 }
 
                 {profile.bio?
-                <div className={`pu-profile-gallery--modal`} data-modal={toggle}>
+                <div className={`pu-profile-gallery--modal`} data-modal={toggle} role="dialog" aria-modal="true">
                   <div className={`container`}>
                     <div className={`box`}>
                       <button className={`modal--close-button`}  aria-label="close">

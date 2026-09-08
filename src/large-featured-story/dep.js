@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
-import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -169,8 +168,7 @@ const v1 = {
       </div>
     );
     return returned;
-  },
-  deprecated: dep
+  }
 };
 
 function getVideoId(url) {
@@ -183,4 +181,3 @@ function getVideoId(url) {
 }
 
 export default [v1];
-

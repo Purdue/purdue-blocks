@@ -277,7 +277,11 @@ registerBlockType( 'purdue-blocks/link-cards', {
                     {tab.tag?
                     <p className="story-tag">{tab.tag}</p>:""
                     }
-                    <p className="title is-4">{tab.title}</p>
+
+                    {header? 
+                      <h3 className="title is-4">{tab.title}</h3 >: <h2 className="title is-4">{tab.title}</h2>
+                    }
+                    
                     {tab.subtext?
                     <p className="vertical-subtext">{tab.subtext}</p>:""
                     }
