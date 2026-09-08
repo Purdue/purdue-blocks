@@ -10,8 +10,6 @@
 // import "./editor.scss";
 // import "./style.scss";
 
-import deps from './deps';
-
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
@@ -26,20 +24,7 @@ const {
 const { RichText,InnerBlocks, InspectorControls, useBlockProps } = wp.blockEditor;
 import { createBlock } from "@wordpress/blocks";
 
-/**
- * Register: aa Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior. Once registered, the block is made editor as an option to any
- * editor interface where blocks are implemented.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
-registerBlockType("purdue-blocks/tabs", {
+const v1 = {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
   title: __("Tabs"), // Block title.
   icon: (
@@ -47,19 +32,6 @@ registerBlockType("purdue-blocks/tabs", {
   ), // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
   category: "purdue-blocks", // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
   keywords: [],
-
-  /**
-   * The edit function describes the structure of your block in the context of the editor.
-   * This represents what the editor will render when the block is used.
-   *
-   * The "edit" property must be a valid function.
-   *
-   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-   *
-   * @param {Object} props Props.
-   * @returns {Mixed} JSX Component.
-   */
-
   attributes: {
     numTabs: { type: "number", default: 0 },
     headers: { type: "array", default: [] },
@@ -71,126 +43,11 @@ registerBlockType("purdue-blocks/tabs", {
     className: false,
     anchor: true,
   },
-
-  // Block description in side panel
-  description: __(
-    "Add tabs."
-  ),
-
-  edit: (props) => {
-    if (props.attributes.numTabs === 0) {
-      updateTabs(props, 1, 1);
-    }
-    return [
-      <InspectorControls>
-        <PanelBody>
-          <PanelRow>
-            <SelectControl
-                label="Number of Tabs"
-                value={props.attributes.numTabs}
-                options={ [
-                  { label: '1', value: 1 },
-                  { label: '2', value: 2 },
-                  { label: '3', value: 3 },
-                  { label: '4', value: 4 },
-                  { label: '5', value: 5 },
-                  { label: '6', value: 6 },
-                ] }
-                onChange={ ( numTabs ) => {
-                  updateTabs(props, props.attributes.numTabs, parseInt(numTabs))
-                }
-               }
-              />
-          </PanelRow>
-          <PanelRow>
-            <SelectControl
-              label="Font size of the tabs' header"
-              value={ props.attributes.headerSize }
-              options={ [
-                { label: 'Large', value: 'large' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Small', value: 'small' },
-              ] }
-              onChange={ ( headerSize ) => {
-                props.setAttributes( { headerSize } )
-              } }
-            />
-          </PanelRow>
-          <PanelRow>
-              <CheckboxControl
-                label="Add paddings to the panels on desktop?"
-                checked={ props.attributes.addPadding }
-                onChange={ () =>
-                  props.setAttributes( { addPadding: ! props.attributes.addPadding } )
-                }
-              />
-            </PanelRow>
-        </PanelBody>
-      </InspectorControls>,
-
-      <div
-        className={`pu-blocks-editor-tabs pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`}
-      >
-        <div className={`pu-blocks-tabs__headers`}>
-        {props.attributes.headers.map((header, index) => {
-           return  <Button
-           onClick={(e) => {
-            const select = wp.data.select("core/block-editor");
-            let innerBlocks = select.getBlock(props.clientId).innerBlocks;
-            innerBlocks.forEach((block)=>{
-              block.attributes.aria===header.id?wp.data
-              .dispatch('core/block-editor').updateBlockAttributes(block.clientId, {editorSelected: true}):
-              wp.data
-              .dispatch('core/block-editor').updateBlockAttributes(block.clientId, {editorSelected: false})
-            })
-            let headers = [ ...props.attributes.headers ];
-            headers.forEach((h)=>{
-              header.id===h.id?h.active=true:h.active=false
-            })
-            props.setAttributes( { headers } );
-            }}
-            role="tab"
-           ><RichText
-            tagname={"p"}
-            value={header.text}
-            className={`pu-blocks-tabs__header
-                        ${props.attributes.headerSize==="medium"?" pu-blocks-tabs__header-medium":""}
-                        ${props.attributes.headerSize==="small"?" pu-blocks-tabs__header-small":""}${header.active?" active":""}
-                        `}
-            onChange={(text) => {
-              let headers = [ ...props.attributes.headers ];
-              headers[ index ].text = text;
-              props.setAttributes( { headers } );
-            }}
-            placeholder="Add tab header text"
-          ></RichText>
-          </Button>
-          })
-        }
-        </div>
-        <InnerBlocks
-        templateLock="all"
-        />
-      </div>,
-    ];
-  },
-
-  /**
-   * The save function defines the way in which the different attributes should be combined
-   * into the final markup, which is then serialized by Gutenberg into post_content.
-   *
-   * The "save" property must be specified and must be a valid function.
-   *
-   * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-   *
-   * @param {Object} props Props.
-   * @returns {Mixed} JSX Frontend HTML.
-   */
   save: (props) => {
     const blockProps = useBlockProps.save();
     return (
       <div className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`} {...blockProps}>
-         <div className={`pu-blocks-tabs__headers`} role="tablist">
+         <div className={`pu-blocks-tabs__headers`}>
            {props.attributes.headers.length>0?props.attributes.headers.map((header)=>{
             return  <RichText.Content
             id={  `header-${header.id}` }
@@ -211,8 +68,7 @@ registerBlockType("purdue-blocks/tabs", {
       </div>
     );
   },
-  deprecated: deps
-});
+};
 
 const updateTabs = (props, oldNum, newNum) => {
   const select = wp.data.select("core/block-editor");
@@ -275,3 +131,5 @@ const updateTabs = (props, oldNum, newNum) => {
   }
 
 };
+
+export default [v1];
