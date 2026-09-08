@@ -5,3 +5,19 @@
  */
 
 //  Same as purdue-news
+.feed-item-noimage {
+  position: relative;
+}
+.feed-item-noimage a {
+  text-decoration: none;
+  font-weight: 600;
+}
+.feed-item-noimage a, .feed-item-noimage a:hover {
+  color: inherit;
+}
+.feed-item-noimage a:after {
+  position: absolute;
+  inset: 0;
+  content: '';
+
+}

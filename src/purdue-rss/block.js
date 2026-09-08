@@ -132,9 +132,9 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
-        <div key={data.id} class="feed-item-noimage">
+        <article  key={data.id} class="feed-item-noimage">
           {itemNoImage(data)}
-        </div>
+        </article>
         )
       }):"";
 
@@ -356,9 +356,9 @@ registerBlockType( 'purdue-blocks/purdue-rss', {
 
     const itemListWithoutImage=props.attributes.data&&props.attributes.data.length>0?[...props.attributes.data].slice(0, 4).map(data => {
       return (
-        <div key={data.id} class="feed-item-noimage">
+        <article key={data.id} class="feed-item-noimage">
           {itemNoImage(data, props.attributes.titleLevel)}
-        </div>
+        </article>
         )
       }):"";
 
@@ -456,7 +456,7 @@ function itemImage(data, level){
 function itemNoImage(data, level){
   const HeadingLevel = getTitleLevelHeading(level);
   return (
-    <a className={"meida feed-item-noimage"} href={data.link}>
+    <div className={"meida feed-item-noimage"} href={data.link}>
       <div className="media-left">
             <p className="month">
               {data.month}
@@ -468,14 +468,14 @@ function itemNoImage(data, level){
       <div className="media-content">
         <div className="content">
           <HeadingLevel className="title">
-            {data.title}
+            <a href={data.link}>{data.title}</a>
           </HeadingLevel>
           <p className="desc">
             {data.text}
           </p>
         </div>
       </div>
-    </a>
+    </div>
   );
 }
 function itemAll(data, level){
