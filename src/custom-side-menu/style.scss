@@ -74,6 +74,19 @@
     padding:0;
     background-color:$primary-background-gray;
  }
+
+ #to-top-sidebar{
+
+    &:hover{
+      background-color: $boiler-gold;
+    }
+
+    &:focus, &:focus-visible{
+      outline: 2px solid #005fcc;
+    }
+  }
+
+
 }
 .custom-side-menu-empty-message{
   display:none;
