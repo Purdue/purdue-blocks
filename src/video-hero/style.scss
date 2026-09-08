@@ -271,21 +271,21 @@
 // based on which header is active
 
 .header--global + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 184px - 3rem);
+  min-height: calc(100vh - 184px - 3rem);
 }
 
 .header--global__microsite + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 97px - 3rem);
+  min-height: calc(100vh - 97px - 3rem);
 }
 
 .header--simple + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 143px - 3rem);
+  min-height: calc(100vh - 143px - 3rem);
 }
 
 .header--mega + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 97px - 3rem);
+  min-height: calc(100vh - 97px - 3rem);
 }
 
 .header--mega.is-transparent + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 3rem);
+  min-height: calc(100vh - 3rem);
 }
