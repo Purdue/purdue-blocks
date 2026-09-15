@@ -206,3 +206,16 @@ function register_block_purdue_news() {
   );
 }
 add_action( 'init', 'register_block_purdue_news' );
+
+function get_next_heading_level($heading) {
+  if (preg_match('/^h([1-6])$/i', $heading, $matches)) {
+    $level = min((int) $matches[1] + 1, 6);
+    if ($level === 6) {
+      return 'p';
+    }
+    return 'h' . $level;
+  }
+
+  // Fallback if invalid heading supplied
+  return 'h2';
+}
