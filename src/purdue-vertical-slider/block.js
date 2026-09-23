@@ -91,15 +91,15 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
         tabs: [...tabs, ...[newTab]],
       });
     };
-  
+
     const updateSavedTab= (index, tabData) => {
       // Clone the array first so we can mutate it.
       const newTabs = [...tabs];
       newTabs[index] = tabData;
-  
+
       setAttributes({ tabs: newTabs });
     };
-  
+
     const removeItem = (identifier) => {
       const newTabs = tabs.filter((item) => {
         return item.header!== identifier;
@@ -108,10 +108,10 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
     };
     const handleChangeSubtext = ( subtext, index ) => {
       const newTabs = [...tabs];
-      newTabs[index].subtext = subtext;  
+      newTabs[index].subtext = subtext;
       setAttributes({ tabs: newTabs });
-    }; 
- 
+    };
+
     return [
       <InspectorControls key="1">
         <PanelBody>
@@ -158,7 +158,7 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
 							className="sortable-posts"
 						>
 							{tabs.map((item, i) => {
-                
+
 								return (
 									<PanelBody initialOpen={false} key={item.header} title={item.header}>
 										<ManualForm
@@ -210,13 +210,13 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
                 return <div key={ index }  className={ `vertical-slide${index===0?" active":""}`}>
                     <div className="columns">
                     <div className="column image-column">
-                      <div className="image background-image" 
+                      <div className="image background-image"
                           style={ { backgroundImage: `url(${ tab.media.url })` } }
                           aria-label={ tab.media.alt }
                           >
                       </div>
 
-                    </div>  
+                    </div>
                     <div className="column content">
                         <div className="content-wrap">
                           <h2 className="title">{tab.header}</h2>
@@ -231,8 +231,8 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
                           </RichText>
                           {tab.buttonLink!==""?
                         <div className="purdue-blocks__button purdue-blocks__button--gold-light">{tab.buttonLabel}</div>:""}
-                        </div> 
-                      </div> 
+                        </div>
+                      </div>
                   </div>
                 </div>
                 } )
@@ -249,16 +249,15 @@ registerBlockType( 'purdue-blocks/purdue-vertical-slider', {
                     event.target.classList.add("active")
                   let sections= event.target.parentElement.previousSibling.querySelectorAll(".vertical-slide")
                   sections.forEach((section, i) => {
-                      section.style.visibility = "hidden"
-                      section.style.opacity = 0
-          
+                      section.inert = true;
+                      section.style.display = 'none';
                   })
-                  sections[event.target.dataset.controls].style.visibility = "inherit"
-                  sections[event.target.dataset.controls].style.opacity = "1"
+                    sections[event.target.dataset.controls].style.display = "block"
+                    sections[event.target.dataset.controls].inert = false;
                   }
                 }></button>
             })
-            }  
+            }
             </div>
             </div>
           </div>

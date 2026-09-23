@@ -2,7 +2,7 @@ const accordions=document.querySelectorAll('.accordion-title');
 
 accordions.forEach((el) => {
     el.addEventListener('click', (event) => {
-        const element = el.parentElement;
+        const element = el.parentElement.parentElement;
         const sameLevelAccordions = element.parentElement.querySelectorAll(':scope > .accordion');
         console.log(element)
         console.log(sameLevelAccordions)
@@ -37,16 +37,16 @@ if(id){
             el.setAttribute('aria-expanded', 'true');
             el.classList.add('is-open')
         }
-        if(el.parentElement&&el.parentElement.classList.contains('accordion')){
-            window.scrollTop=el.parentElement.offsetTop;
-            console.log(el.parentElement.offsetTop)
-            el.parentElement.setAttribute('aria-expanded', 'true');
-            el.parentElement.classList.add('is-open');
-        }
-        if(el.parentElement&&el.parentElement.classList.contains('accordion-content')){
-            window.scrollTop=el.offsetTop;
+        if(el.parentElement.parentElement&&el.parentElement.parentElement.classList.contains('accordion')){
+            window.scrollTop=el.parentElement.parentElement.offsetTop;
+            console.log(el.parentElement.parentElement.offsetTop)
             el.parentElement.parentElement.setAttribute('aria-expanded', 'true');
-            el.parentElement.parentElement.classList.add('is-open')
+            el.parentElement.parentElement.classList.add('is-open');
+        }
+        if(el.parentElement.parentElement&&el.parentElement.parentElement.classList.contains('accordion-content')){
+            window.scrollTop=el.offsetTop;
+            el.parentElement.parentElement.parentElement.setAttribute('aria-expanded', 'true');
+            el.parentElement.parentElement.parentElement.classList.add('is-open')
         }
     }
 }

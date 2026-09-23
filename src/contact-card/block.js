@@ -110,17 +110,23 @@ registerBlockType( 'purdue-blocks/contact-card', {
   ),
 
   edit: ( props ) => {
+
+  const initialContact = {
+    icon: '',
+    text: '',
+  };  
+
     if(props.attributes.contactGroup.length===0){
       props.setAttributes( {contactGroup: [{
         icon: '',
-        text:{ type: 'string', source: 'html', selector: '.contact-card__text' },
+        text: '',
       }]} )
     }
     const handleAddContact = () => {
       let contactGroup = [ ...props.attributes.contactGroup ];
       contactGroup.push( {
         icon: '',
-        text:{ type: 'string', source: 'html', selector: '.contact-card__text' },
+        text: '',
       } );
       props.setAttributes( { contactGroup } );
     }; 
@@ -268,7 +274,7 @@ registerBlockType( 'purdue-blocks/contact-card', {
       </InspectorControls>,
       <div key="2" className={`pu-contact-card-editor pu-contact-card${props.attributes.addMargin?" pu-contact-card--margin":""}`}>
         <RichText
-          tagName={ props.setAttributes.titleLevel }
+          tagName={ props.attributes.titleLevel }
           value={ props.attributes.title }
           className={ 'contact-card__title' }
           onChange={ ( text ) => {

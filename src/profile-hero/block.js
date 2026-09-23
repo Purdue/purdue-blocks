@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
 
+import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -201,7 +202,7 @@ registerBlockType("purdue-blocks/profile-hero", {
     const blockProps = useBlockProps.save();
     const returned = (
       <div {...blockProps} className={`pu-profile-hero ${props.attributes.position==="right"?" pu-profile-hero--right":""}`}>
-                <div className="section is-large">
+        <div className="section is-large">
           <div className="container">
                 <div className="columns">
                   <div className="column is-two-fifths-desktop is-full-mobile">
@@ -230,7 +231,8 @@ registerBlockType("purdue-blocks/profile-hero", {
     );
     return returned;
   },
+  deprecated: dep
 });
 
 
-  
+

@@ -10,6 +10,7 @@
 // import './editor.scss';
 // import './style.scss';
 import { createBlock } from '@wordpress/blocks';
+import dep from './dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -100,6 +101,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
       props.setAttributes( {iconGroup: [{
         icon: '',
         iconUrl: '',
+        iconAlt: ''
       }]} )
     }
 
@@ -108,6 +110,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
       iconGroup.push( {
         icon: '',
         iconUrl: '',
+        iconAlt: ''
       } );
       props.setAttributes( { iconGroup } );
     }; //End handleAddIcon
@@ -128,6 +131,13 @@ registerBlockType( 'purdue-blocks/icon-group', {
 
     }; // End handleChangeiconGroupUrl
 
+    const handleChangeiconGroupAlt = ( iconAlt, index ) => {
+      const iconGroup = [ ...props.attributes.iconGroup ];
+      iconGroup[ index ].iconAlt = iconAlt;
+      props.setAttributes( { iconGroup } );
+
+    };
+
     let iconFields,
         iconDisplay;
 
@@ -145,6 +155,11 @@ registerBlockType( 'purdue-blocks/icon-group', {
                     placeholder="Link"
                     value={ card.iconUrl }
                     onChange={ ( iconUrl ) => handleChangeiconGroupUrl( iconUrl, index ) }
+                  />
+                  <TextControl
+                    placeholder="Alt Text"
+                    value={ card.iconAlt }
+                    onChange={ ( iconAlt ) => handleChangeiconGroupAlt( iconAlt, index ) }
                   />
                   <Button
                     className={ 'bulma-blocks-editor-site-hero__button is-danger' }
@@ -188,7 +203,7 @@ registerBlockType( 'purdue-blocks/icon-group', {
     const blockProps = useBlockProps.save();
     const iconFields = props.attributes.iconGroup.map( ( card, index ) => {
       return  <div key={ index } className='icon-item'>
-                <a href={ card.iconUrl } target="_blank" rel="noopener noreferrer">
+                <a href={ card.iconUrl } target="_blank" rel="noopener noreferrer" aria-label={card.iconAlt}>
                   <div className='icon-item-icon-placeholder'>
                     <div dangerouslySetInnerHTML={{ __html: card.icon }} />
                   </div>
@@ -201,4 +216,5 @@ registerBlockType( 'purdue-blocks/icon-group', {
       </div>
     );
   },
+  deprecated: dep,
 } );

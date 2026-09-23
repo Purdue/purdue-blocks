@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-nested-ternary */
 
+import dep from './dep';
+
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
@@ -172,8 +174,8 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               label="Place title on the right?"
               checked={ props.attributes.titlePosition }
               onChange={ () =>
-                props.setAttributes( { titlePosition: ! props.attributes.titlePosition } ) 
-             
+                props.setAttributes( { titlePosition: ! props.attributes.titlePosition } )
+
               }
             />
           </PanelRow>
@@ -183,8 +185,8 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
               label="Place Faculty Bio on the right?"
               checked={ props.attributes.bioPosition }
               onChange={ () =>
-                props.setAttributes( { bioPosition: ! props.attributes.bioPosition } ) 
-             
+                props.setAttributes( { bioPosition: ! props.attributes.bioPosition } )
+
               }
             />
           </PanelRow>:""}
@@ -565,8 +567,8 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
                         props.setAttributes( { bio: e.target.value } );
                       } }
                     ></textarea>
-                  </div> 
-                </div>                       
+                  </div>
+                </div>
           ) : ''}
 
         </div>
@@ -742,7 +744,7 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
             <div className="content">
             {
                 props.attributes.titlePosition?<p className="faculty-title faculty-title-side">{props.attributes.title}</p>:""
-              }  
+              }
             {props.attributes.bioPosition&&props.attributes.styleToggle !== 'mini'  ? (
                   <InnerBlocks.Content />
               ) : ''}
@@ -856,10 +858,10 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
         <div className="level">
           <div className="level-left">
             <div className="level-item">
-              <p className="faculty-name">{props.attributes.name}</p>
+              <h2 className="faculty-name">{props.attributes.name}</h2>
               {
                 props.attributes.titlePosition?"":<p className="faculty-title">{props.attributes.title}</p>
-              }              
+              }
             </div>
           </div>
           { props.attributes.includeSocial ? (
@@ -889,4 +891,5 @@ registerBlockType( 'purdue-blocks/faculty-profile-card', {
     );
     return returned;
   },
+  deprecated: dep
 } );

@@ -204,7 +204,7 @@ registerBlockType("purdue-blocks/image-gallery", {
                       multiple={true}
                       gallery={true}
                       onSelect={(imgs) => handleGalleryChange(imgs, index)}
-                      value={card.imgs.map((item) => item.id)}
+                      value={card.imgs?.map((item) => item.id)}
                       render={({ open }) => {
                         return (
                           <div class="image-slider-editor">

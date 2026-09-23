@@ -1,5 +1,17 @@
 export var slide=(itemContainer,items, slides, prev, next, dots, className, number,animate, pause, play)=> {
-    var posX1 = 0,
+
+    let ariaStatus = itemContainer.querySelector('.slider-status');
+    if (!ariaStatus) {
+      ariaStatus = document.createElement('div');
+      ariaStatus.setAttribute('aria-live', 'polite');
+      ariaStatus.setAttribute('aria-atomic', 'true');
+      ariaStatus.className = 'slider-status sr-only';
+      itemContainer.appendChild(ariaStatus);
+    }
+    const ariaCurrent = itemContainer.querySelector('.video-hero--carousel__arrow-wrapper .video-hero--carousel__current')
+    ariaCurrent.setAttribute('role', 'status');
+
+  var posX1 = 0,
         posX2 = 0,
         posY1 = 0,
         posY2 = 0,
@@ -25,25 +37,25 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
 
     // Mouse events
     items.onmousedown = dragStart;
-    
+
     // Touch events
     items.addEventListener('touchstart', dragStart, passiveIfSupported);
-    
+
     // Click events
 
     prev.addEventListener('click', function () { autoplayStop(); shiftSlide(-1) });
     next.addEventListener('click', function () { autoplayStop(); shiftSlide(1) });
     if(pause&&play){
-      pause.addEventListener('click', ()=>{ 
+      pause.addEventListener('click', ()=>{
         autoplayStop();
       });
-      play.addEventListener('click', ()=>{ 
+      play.addEventListener('click', ()=>{
         autoplayStart();
       });
     }
     if(dots){
       dots.forEach((dot, ind)=>{
-        dot.addEventListener("click", ()=>{   
+        dot.addEventListener("click", ()=>{
             dots.forEach((d, i)=>{
                 if([...d.classList].includes("active")&&ind!==i){
                     d.classList.remove("active")
@@ -57,12 +69,12 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
                         allowShift=true
                         items.classList.remove('shifting');
                     },500)
-                    
+
                 }
 
             })
-        }) 
-    })                
+        })
+    })
   }
     function dragStart (e) {
       autoplayStop();
@@ -73,7 +85,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       if(allowShift){
         if (e.type == 'touchstart') {
             posX1 = e.touches[0].clientX;
-            posY1 = e.touches[0].clientY;           
+            posY1 = e.touches[0].clientY;
             items.addEventListener('touchmove', dragAction, passiveIfSupported);
             items.addEventListener('touchend', dragEnd, false);
           } else if(e.type == 'mousedown'){
@@ -84,7 +96,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
           }
         }
     }
-  
+
     function dragAction (e) {
       e = e || window.event;
       if (e.type == 'touchmove') {
@@ -107,7 +119,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       }
       items.style.left = (items.offsetLeft - posX2) + "px";
     }
-    
+
     function dragEnd (e) {
       posFinal = items.offsetLeft;
       if (posFinal - posInitial < -threshold) {
@@ -124,20 +136,20 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       items.removeEventListener("touchmove", dragAction, passiveIfSupported);
       items.removeEventListener('touchend', dragEnd, false);
     }
-    
+
     function shiftSlide(dir, action) {
       items.classList.add('shifting');
       if (allowShift) {
         if (!action) { posInitial = items.offsetLeft; }
-  
+
         if (dir == 1) {
           items.style.left = (posInitial - slideSize) + "px";
-          index++;  
+          index++;
         } else if (dir == -1) {
           items.style.left = (posInitial + slideSize) + "px";
-          index--;  
+          index--;
         }
-      };  
+      };
 
         setTimeout(function(){
 
@@ -146,21 +158,21 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
                 items.style.left = -(slidesLength * slideSize) + "px";
                 index = slidesLength - 1;
             }
-        
+
             if (index == slidesLength) {
                 items.style.left = -(1 * slideSize) + "px";
                 index = 0;
-            }    
+            }
             if(dots){
               dots.forEach((dot, ind)=>{
                   dot.classList.remove("active")
                   if(ind===index){
                       dot.classList.add("active")
                   }
-              }) 
+              })
             }
             allowShift = true;
-        }, 500)    
+        }, 500)
         allowShift = false;
         if(number){
           if(index===-1){
@@ -179,6 +191,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       if(pause&&play){
           play.classList.add('hide');
           pause.classList.remove('hide');
+        ariaStatus.textContent = "Slider resumed";
       }
     }
 
@@ -188,9 +201,10 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
       if(pause&&play){
         pause.classList.add('hide');
         play.classList.remove('hide');
+        ariaStatus.textContent = "Slider paused";
       }
     }
-    let width=window.innerWidth; 
+    let width=window.innerWidth;
     if(animate&&width>767){
       autoplayStart();
     }
@@ -198,7 +212,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
     var rtime;
     var timeout = false;
     var delta = 200;
- 
+
     function resizeend() {
         if (new Date() - rtime < delta) {
             setTimeout(resizeend, delta);
@@ -209,7 +223,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
                 slide.style.width=slideSize+"px";
             })
             items.style.left = -(slideSize * (index+1)) + "px";
-        }               
+        }
     }
     function resize(){
         rtime = new Date();
@@ -217,7 +231,7 @@ export var slide=(itemContainer,items, slides, prev, next, dots, className, numb
             timeout = true;
             setTimeout(resizeend, delta);
         }
-        width=window.innerWidth; 
+        width=window.innerWidth;
         if(width>767&&animate&&!isPlaying){
           autoplayStart();
         }else if(width<=767&&animate&&isPlaying){

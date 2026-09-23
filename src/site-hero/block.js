@@ -4,6 +4,9 @@
 //  Import CSS.
 // import './editor.scss';
 // import './style.scss';
+
+  import dep from './dep';
+
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
@@ -153,7 +156,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
         imgUrl: ''
       });
     }
-  
+
     return [
       <InspectorControls>
         <PanelBody>
@@ -356,7 +359,7 @@ registerBlockType( 'purdue-blocks/site-hero', {
                    mediaType: img.type,
                    mediaTitle: img.title
                 } );
-                
+
               } }
               render={ ( { open } ) => {
                 return props.attributes.imgUrl !== '' ? (
@@ -445,14 +448,14 @@ registerBlockType( 'purdue-blocks/site-hero', {
                 <InnerBlocks.Content />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
-                      { props.attributes.ctaText1 ? 
+                      { props.attributes.ctaText1 ?
                       <a className="purdue-blocks__button purdue-blocks__button--gold-dark" href={props.attributes.ctaUrl1}
                         target={ props.attributes.external1 ? '_blank' : '_self' }
                         rel="noopener noreferrer"
                       >
                         {props.attributes.ctaText1}
                         </a>:""}
-                        { props.attributes.ctaText2 ? 
+                        { props.attributes.ctaText2 ?
                       <a className="purdue-blocks__button purdue-blocks__button--gold-dark purdue-blocks__button--outline" href={props.attributes.ctaUrl2}
                         target={ props.attributes.external2 ? '_blank' : '_self' }
                         rel="noopener noreferrer"
@@ -466,14 +469,16 @@ registerBlockType( 'purdue-blocks/site-hero', {
                     <div className="level-left">
                       { Object.keys( props.attributes.checkedSocials ).map(
                         ( faSlug ) => {
+                          const tmpSocial = socials.find( ( item ) => item.faSlug === faSlug );
+
                           return (
                             <div className="level-item">
                               <a
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={ tmpSocial.name}
                                 href={ `${
-                                  socials.find( ( item ) => item.faSlug === faSlug )
-                                    .share
+                                  tmpSocial.share
                                 }${
                                   props.attributes.currUrl ||
                                   select( 'core/editor' ).getPermalink()
@@ -506,7 +511,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
               className="background-image"
               role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
-              aria-label={ props.attributes.altText }
             />:""}
             {props.attributes.mediaType === "video"?
             <video muted="" title={props.attributes.mediaTitle} loop="" autoplay="" playsinline="" src={props.attributes.imgUrl}/>:""}
@@ -528,14 +532,14 @@ registerBlockType( 'purdue-blocks/site-hero', {
                 <InnerBlocks.Content />
                 { props.attributes.hasLink && (props.attributes.ctaText1 || props.attributes.ctaText2) ? (
                   <div className="cta-button-container">
-                      { props.attributes.ctaText1 ? 
+                      { props.attributes.ctaText1 ?
                       <a className="purdue-blocks__button purdue-blocks__button--gold-light" href={props.attributes.ctaUrl1}
                         target={ props.attributes.external1 ? '_blank' : '_self' }
                         rel="noopener noreferrer"
                       >
                         {props.attributes.ctaText1}
                         </a>:""}
-                        { props.attributes.ctaText2 ? 
+                        { props.attributes.ctaText2 ?
                       <a className="purdue-blocks__button purdue-blocks__button--gold-light purdue-blocks__button--outline" href={props.attributes.ctaUrl2}
                         target={ props.attributes.external2 ? '_blank' : '_self' }
                         rel="noopener noreferrer"
@@ -549,14 +553,15 @@ registerBlockType( 'purdue-blocks/site-hero', {
                     <div className="level-left">
                       { Object.keys( props.attributes.checkedSocials ).map(
                         ( faSlug ) => {
+                          const tmpSocial = socials.find( ( item ) => item.faSlug === faSlug );
                           return (
                             <div className="level-item">
                               <a
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label={tmpSocial.name}
                                 href={ `${
-                                  socials.find( ( item ) => item.faSlug === faSlug )
-                                    .share
+                                  tmpSocial.share
                                 }${
                                   props.attributes.currUrl ||
                                   select( 'core/editor' ).getPermalink()
@@ -590,7 +595,6 @@ registerBlockType( 'purdue-blocks/site-hero', {
               className="background-image"
               role={`${props.attributes.altText?"img":""}`}
               style={ { backgroundImage: `url(${ props.attributes.imgUrl })` } }
-              aria-label={ props.attributes.altText }
             />
           </div>
         </div>
@@ -598,4 +602,5 @@ registerBlockType( 'purdue-blocks/site-hero', {
     );
     return returned;
   },
+  deprecated: dep
 } );

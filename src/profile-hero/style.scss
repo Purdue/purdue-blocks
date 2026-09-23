@@ -5,7 +5,11 @@
  */
 
 .pu-profile-hero {
+  $padLine: 90px;
+
   position:relative;
+  background: #000000;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) calc(100% - $padLine), rgba(255, 255, 255, 1) calc(100% - $padLine), rgba(255, 255, 255, 1) 100%);
   &.pu-profile-hero--right{
     .section .container .columns{
       @include tablet{
@@ -13,19 +17,29 @@
       }
     }
   }
-  &:before{
-    content:"";
-    width:100%;
-    height:80%;
-    background:$black;
-    position:absolute;
-    top:0;
-    left:0;
-  }
+
   @include mobile{
+    background: #fff;
     &:before{
       content:"";
       height:min(80vw, 450px);
+    }
+
+    .section > .container {
+      > .columns {
+        .column:first-child {
+          z-index: 1;
+          position: relative;
+          &:after {
+            content:'';
+            inset: -3rem -1000% 0 -1000%;
+            position: absolute;
+            height:90%;
+            background-color: #000;
+            z-index:-1;
+          }
+        }
+      }
     }
   }
   .section{
@@ -35,8 +49,14 @@
     }
     .container{
       max-width:888px !important;
+      .columns > .column {
+        padding-bottom:0;
+      }
       .columns .column.is-full-mobile{
-        @include mobile{
+        padding:0;
+        padding-top: .75em;
+        margin-right: .75em;
+        @include mobile {
           max-width: 500px;
            margin: 0 auto;
         }
@@ -46,7 +66,7 @@
   &__content{
     color:$white;
     margin-left:2rem;
-
+    padding-bottom: calc($padLine + 1em);
     h1, p{
       color:$white !important;
       a{

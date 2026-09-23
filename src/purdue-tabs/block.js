@@ -10,6 +10,8 @@
 // import "./editor.scss";
 // import "./style.scss";
 
+import deps from './deps';
+
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 
@@ -122,7 +124,7 @@ registerBlockType("purdue-blocks/tabs", {
                   props.setAttributes( { addPadding: ! props.attributes.addPadding } )
                 }
               />
-            </PanelRow>  
+            </PanelRow>
         </PanelBody>
       </InspectorControls>,
 
@@ -131,7 +133,7 @@ registerBlockType("purdue-blocks/tabs", {
       >
         <div className={`pu-blocks-tabs__headers`}>
         {props.attributes.headers.map((header, index) => {
-           return  <Button 
+           return  <Button
            onClick={(e) => {
             const select = wp.data.select("core/block-editor");
             let innerBlocks = select.getBlock(props.clientId).innerBlocks;
@@ -154,7 +156,7 @@ registerBlockType("purdue-blocks/tabs", {
             className={`pu-blocks-tabs__header
                         ${props.attributes.headerSize==="medium"?" pu-blocks-tabs__header-medium":""}
                         ${props.attributes.headerSize==="small"?" pu-blocks-tabs__header-small":""}${header.active?" active":""}
-                        `} 
+                        `}
             onChange={(text) => {
               let headers = [ ...props.attributes.headers ];
               headers[ index ].text = text;
@@ -166,8 +168,8 @@ registerBlockType("purdue-blocks/tabs", {
           })
         }
         </div>
-        <InnerBlocks 
-        templateLock="all" 
+        <InnerBlocks
+        templateLock="all"
         />
       </div>,
     ];
@@ -188,7 +190,7 @@ registerBlockType("purdue-blocks/tabs", {
     const blockProps = useBlockProps.save();
     return (
       <div className={`pu-blocks-tabs${props.attributes.addPadding?" has-padding":""}`} {...blockProps}>
-         <div className={`pu-blocks-tabs__headers`}>
+         <div className={`pu-blocks-tabs__headers`} role="tablist">
            {props.attributes.headers.length>0?props.attributes.headers.map((header)=>{
             return  <RichText.Content
             id={  `header-${header.id}` }
@@ -204,11 +206,12 @@ registerBlockType("purdue-blocks/tabs", {
             aria-selected={ `${header.active?"true":"false"}` }
           />
           }):""}
-        </div> 
+        </div>
         <InnerBlocks.Content />
       </div>
     );
   },
+  deprecated: deps
 });
 
 const updateTabs = (props, oldNum, newNum) => {
@@ -233,7 +236,7 @@ const updateTabs = (props, oldNum, newNum) => {
       .replaceInnerBlocks(props.clientId, innerBlocks, false);
     wp.data
       .dispatch('core/block-editor')
-      .updateBlockAttributes(select.getBlock(props.clientId).innerBlocks[0].clientId, {editorSelected:true,selected: true})      
+      .updateBlockAttributes(select.getBlock(props.clientId).innerBlocks[0].clientId, {editorSelected:true,selected: true})
 
   } else if (adding && !triedZero) {
     const newToAdd = newNum - oldNum
@@ -268,7 +271,7 @@ const updateTabs = (props, oldNum, newNum) => {
   for(let i=0; i<innerBlocks.length; i++){
     wp.data
     .dispatch('core/block-editor').updateBlockAttributes(select.getBlock(props.clientId).innerBlocks[i].clientId, {aria: headers[i].id})
-    
+
   }
 
 };

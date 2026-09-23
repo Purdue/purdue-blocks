@@ -4,11 +4,11 @@
  *
  * @package WordPress
  */
-	
+
 function render_block_purdue_slider($attributes){
     $id=$attributes['id']!=""?' id="'.$attributes['id'].'"':"";
     if($attributes['background'] != "" && $attributes['background'] == "white"){
-        $output='<div'.$id.' class="purdue-slider has-white-background section is-medium">'; 
+        $output='<div'.$id.' class="purdue-slider has-white-background section is-medium">';
     }elseif($attributes['background'] != "" && $attributes['background'] == "black"){
         $output='<div'.$id.' class="purdue-slider has-black-background section is-medium">';
     }elseif($attributes['background'] != "" && $attributes['background'] == "gray"){
@@ -16,13 +16,13 @@ function render_block_purdue_slider($attributes){
     }
     $output.='<div class="container">';
     if($attributes['header'] != "" && $attributes['headerLevel'] != ""){
-        $output.='<'.$attributes['headerLevel'].' class="purdue-slider__header align-'.$attributes['headerLocation'].'">'.$attributes['header'].'</'.$attributes['headerLevel'].'>'; 
+        $output.='<'.$attributes['headerLevel'].' class="purdue-slider__header align-'.$attributes['headerLocation'].'">'.$attributes['header'].'</'.$attributes['headerLevel'].'>';
     }
         if($attributes['type']=="slider" && sizeof($attributes['cards'])>0){
-            $output.='<div class="glide purdue-slider--default">';            
+            $output.='<div class="glide purdue-slider--default">';
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
-            foreach ( $attributes['cards'] as $card ) {  
+            foreach ( $attributes['cards'] as $card ) {
                 $backgroundRole=$card["imageAlt"]?' role="img" ':'';
                 if($card["ctaLink"] != ""){
                     $target=$card["external"]?'targe="_blank"':'targe="_self"';
@@ -34,7 +34,7 @@ function render_block_purdue_slider($attributes){
                     if($card["storyType"] != ""){
                         $output.='<p class="story-type">'.$card["storyType"].'</p>';
                     }
-                    $output.='<p class="story-title">'.$card["header"].'</p>';
+                    $output.='<h2 class="story-title">'.$card["header"].'</h2>';
                     $output.='<div class="read-more purdue-blocks__button purdue-blocks__button--gold-light"><span>'.$card["ctaText"].'</span></div>';
                     if($card["tag"] != ""){
                         $output.='<p class="story-tag">'.$card["tag"].'</p>';
@@ -58,23 +58,23 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
-            foreach ( $attributes['cards'] as $key => $card ) {  
+            foreach ( $attributes['cards'] as $key => $card ) {
                 $num = $key + 1;
                 $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
 
         }elseif($attributes['type']=="tabs" && sizeof($attributes['tabs'])>0){
-            $output.='<div class="glide purdue-slider--tabs">';            
+            $output.='<div class="glide purdue-slider--tabs">';
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
             // var_dump($attributes['tabs']);
             $backgroundRole=$tab["imageAlt"]?' role="img" ':'';
-            foreach ( $attributes['tabs'] as $tab ) {  
+            foreach ( $attributes['tabs'] as $tab ) {
                 $output.='<div class="glide__slide columns">';
                 if($tab["imageURL"] != ""){
                     $output.='<div class="column image-column">';
@@ -82,8 +82,8 @@ function render_block_purdue_slider($attributes){
                     $output.='</div>';
                 }
                 $output.='<div class="content column">';
-                $output.='<p class="title">'.$tab["header"].'</p>';
-                
+                $output.='<h2 class="title">'.$tab["header"].'</h2>';
+
                 if($tab["subtext"] != ""){
                     $output.='<p class="subtext">'.$tab["subtext"].'</p>';
                 }
@@ -95,31 +95,31 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
-            foreach ( $attributes['tabs'] as $key => $tab ) {  
+            foreach ( $attributes['tabs'] as $key => $tab ) {
                 $num = $key + 1;
                 $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
-            }            
+            }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="rtb" && sizeof($attributes['rtb'])>0){
             if($attributes['divider']){
-                $output.='<div class="glide purdue-slider--rtb has-divider" data-number="'.$attributes['displayNumber'].'">';    
+                $output.='<div class="glide purdue-slider--rtb has-divider" data-number="'.$attributes['displayNumber'].'">';
             }else{
-                $output.='<div class="glide purdue-slider--rtb" data-number="'.$attributes['displayNumber'].'">';  
-            }          
+                $output.='<div class="glide purdue-slider--rtb" data-number="'.$attributes['displayNumber'].'">';
+            }
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
-            foreach ( $attributes['rtb'] as $rtb ) {  
+            foreach ( $attributes['rtb'] as $rtb ) {
                 $hasLead=$attributes['hasLead']?" pu-proofpoint__has-lead":"";
                 $output.='<div class="glide__slide"><div class="pu-proofpoint'.$hasLead.'"><div class="container">';
                 if($rtb["leadText"] != "" && $attributes['hasLead']){
                     $output.='<span class="lead-text pu-proofpoint__lead">'.$rtb["leadText"].'</span>';
                 }
                 if($rtb["largeText"] != ""){
-                    $output.='<span class="large-text pu-proofpoint__highlighted">'.$rtb["largeText"].'</span>';
+                    $output.='<h2 class="large-text pu-proofpoint__highlighted">'.$rtb["largeText"].'</h2>';
                 }
                 if($rtb["smallText"] != ""){
                     $output.='<span class="small-text pu-proofpoint__content">'.$rtb["smallText"].'</span>';
@@ -135,14 +135,14 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
-            foreach ( $attributes['rtb'] as $key => $rtb ) {  
+            foreach ( $attributes['rtb'] as $key => $rtb ) {
                 $num = $key + 1;
                 $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }elseif($attributes['type']=="img" && sizeof($attributes['imgs'])>0){
             $classname="glide purdue-slider--img";
@@ -155,7 +155,7 @@ function render_block_purdue_slider($attributes){
             $output.='<div class="'.$classname.'">';
             $output.='<div class="glide__track" data-glide-el="track">';
             $output.='<div class="glide__slides">';
-            foreach ( $attributes['imgs'] as $img ) {  
+            foreach ( $attributes['imgs'] as $img ) {
                 if($attributes['linkImg']){
                     $output.='<a class="glide__slide" target="_blank">
                     <figure>';
@@ -172,20 +172,20 @@ function render_block_purdue_slider($attributes){
             }
             $output.='</div></div>';
             $output.='<div class="glide__bullets" data-glide-el="controls[nav]">';
-            foreach ( $attributes['imgs'] as $key => $img ) {  
+            foreach ( $attributes['imgs'] as $key => $img ) {
                 $num = $key + 1;
                 $output.='<button class="glide__bullet" data-glide-dir="='.$key.'" aria-label="slide '.$num.'"></button>';
             }
             $output.='</div>';
             $output.='<div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;">next</button>';
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous Slide">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir="&#62;" aria-label="Next Slide">next</button>';
             $output.='</div></div>';
         }
         if($attributes['hasLink'] != "" && $attributes['linkUrl'] != ""){
             $buttonTarget=$attributes["external"]?'targe="_blank"':'targe="_self"';
             $output.='<div class="purdue-slider__button-container align-'.$attributes['ctaLocation'].'">';
-            $output.='<a class="purdue-slider__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$attributes['linkUrl'].'" '.$buttonTarget.'>'.$attributes['linkText'].'</a>'; 
+            $output.='<a class="purdue-slider__button purdue-blocks__button purdue-blocks__button--gold-light" href="'.$attributes['linkUrl'].'" '.$buttonTarget.'>'.$attributes['linkText'].'</a>';
             $output.='</div>';
         }
         $output.='</div></div>';

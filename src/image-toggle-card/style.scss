@@ -14,14 +14,15 @@
     padding: 1rem;
     flex-wrap: wrap;
 
-    span {
+    h2 {
       color: black;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: $acumin-pro-semicondensed;
-      font-size: 25px;
-      font-weight: 500;
+      font-family: $acumin-pro-semicondensed !important;
+      font-size: 25px !important;
+      font-weight: 500 !important;
+      margin-bottom: 0 !important;
     }
 
     &.has-header-black {
@@ -37,11 +38,11 @@
         font-family: $acumin-pro;
         font-size: 18px;
         font-weight: 700;
-  
+
         &:hover {
           cursor: pointer;
           text-decoration: none;
-  
+
         }
       }
     }
@@ -109,7 +110,7 @@
     }
   }
 
-  &__images {
+  &__images--image {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,11 +119,10 @@
     img {
       max-width: 80%;
       max-height: 500px;
-      display: none;
     }
 
-    .show {
-      display: block;
+    &.show {
+      display: flex !important;
     }
   }
 
@@ -159,9 +159,6 @@
         cursor: pointer;
       }
 
-      &:focus {
-        outline: none;
-      }
     }
   }
 }

@@ -7,12 +7,12 @@ function is_IE() {
 if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
 
     anchorLinkBlocks.forEach((block)=>{
-        let hasAccordion=block.classList.contains("has-accordion")?true:false; 
+        let hasAccordion=block.classList.contains("has-accordion")?true:false;
         let headers=[]
-        !block.classList.contains("no-H2")?headers.push("h2"):"";        
-        block.classList.contains("has-H3")?headers.push("h3"):"";  
-        block.classList.contains("has-H4")?headers.push("h4"):""; 
-        block.classList.contains("has-H5")?headers.push("h5"):"";   
+        !block.classList.contains("no-H2")?headers.push("h2"):"";
+        block.classList.contains("has-H3")?headers.push("h3"):"";
+        block.classList.contains("has-H4")?headers.push("h4"):"";
+        block.classList.contains("has-H5")?headers.push("h5"):"";
         block.classList.contains("has-H6")?headers.push("h6"):"";
 
         let string=headers.join(", ")
@@ -39,24 +39,42 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         })
     }
     })
-    const links=document.querySelectorAll('a.anchor-link-block-link')
-    links.forEach((link)=>{
-        link.addEventListener('click',(e)=>{
-            is_IE()?'':e.preventDefault( );
-            const topY=document.querySelector(link.hash).getBoundingClientRect().top + window.pageYOffset -20;
-            window.scroll({
-                top: topY,
-                behavior: 'smooth'
-                })
-            links.forEach((el)=>{
-                el===link?el.classList.add("is-active"):el.classList.remove("is-active")
-            })
-        })
-    })
+  const links = document.querySelectorAll('a.anchor-link-block-link')
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      is_IE() ? '' : e.preventDefault();
+      const target = document.querySelector(link.hash);
+      const topY = target.getBoundingClientRect().top + window.pageYOffset - 20;
+
+      window.scroll({
+        top: topY,
+        behavior: 'smooth'
+      });
+
+      links.forEach((el) => {
+        el === link ? el.classList.add("is-active") : el.classList.remove("is-active")
+      });
+
+      // Set focus after scroll completes
+      const onScrollEnd = () => {
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+        target.addEventListener('blur', () => {
+          target.removeAttribute('tabindex');
+        }, { once: true });
+      };
+
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', onScrollEnd, { once: true });
+      } else {
+        setTimeout(onScrollEnd, 500);
+      }
+    });
+  });
     window.addEventListener('scroll', () => {
         setTimeout(function(){
             if(anchorHeaders && anchorHeaders.length>0){
-                anchorHeaders.forEach((header)=>{ 
+                anchorHeaders.forEach((header)=>{
                     if ( header.getBoundingClientRect().top <= 30 ) {
                         const id = "#"+header.id
                         links.forEach((el)=>{
@@ -68,14 +86,25 @@ if(anchorLinkBlocks&&anchorLinkBlocks.length>0){
         }, 100)
     })
     const toTop = document.querySelector('#to-top-sidebar')
-    if(toTop){
-        toTop.addEventListener('click', () => {
-            window.scroll({
-            top: 0,
-            behavior: 'smooth'
-            })
-        })
-    }
+  if (toTop) {
+    toTop.addEventListener('click', () => {
+      window.scroll({ top: 0, behavior: 'smooth' });
+
+      const topElement = document.querySelector('h1') || document.body;
+      topElement.setAttribute('tabindex', '-1');
+
+      // Wait for scroll to finish before moving focus
+      const onScrollEnd = () => {
+        topElement.focus({ preventScroll: true });
+        topElement.addEventListener('blur', () => {
+          topElement.removeAttribute('tabindex');
+        }, { once: true });
+      };
+
+      // scrollend fires when smooth scroll completes
+      window.addEventListener('scrollend', onScrollEnd, { once: true });
+    });
+  }
 }
 
 

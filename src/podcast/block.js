@@ -10,6 +10,7 @@
 // import './editor.scss';
 // import './style.scss';
 import { createBlock } from '@wordpress/blocks';
+import dep from '../large-featured-story/dep';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
@@ -38,19 +39,19 @@ const {
   useBlockProps
 } = wp.blockEditor;
 
-const applyWithSelect = withSelect( ( select ) => {
-	const { getMedia, getPostType } = select( 'core' );
-	const { getCurrentPostId, getEditedPostAttribute } = select( 'core/editor' );
-	const featuredImageId = getEditedPostAttribute( 'featured_media' );
+const applyWithSelect = withSelect((select) => {
+  const { getMedia, getPostType } = select('core');
+  const { getCurrentPostId, getEditedPostAttribute } = select('core/editor');
+  const featuredImageId = getEditedPostAttribute('featured_media');
 
-	return {
-		media: featuredImageId ? getMedia( featuredImageId ) : null,
-		currentPostId: getCurrentPostId(),
-		postType: getPostType( getEditedPostAttribute( 'type' ) ),
-		featuredImageId,
-		isDisabled: select( 'core/edit-post' ).isFeatureActive( 'disableEditorsKitDragAndDropFeaturedTools' ),
-	};
-} );
+  return {
+    media: featuredImageId ? getMedia(featuredImageId) : null,
+    currentPostId: getCurrentPostId(),
+    postType: getPostType(getEditedPostAttribute('type')),
+    featuredImageId,
+    isDisabled: select('core/edit-post').isFeatureActive('disableEditorsKitDragAndDropFeaturedTools'),
+  };
+});
 
 const post_id = applyWithSelect.currentPostId;
 
@@ -67,9 +68,9 @@ const post_id = applyWithSelect.currentPostId;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'purdue-blocks/podcast', {
+registerBlockType('purdue-blocks/podcast', {
   // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-  title: __( 'Podcast' ), // Block title.
+  title: __('Podcast'), // Block title.
   icon: (
     <svg
       aria-hidden="true"
@@ -113,7 +114,8 @@ registerBlockType( 'purdue-blocks/podcast', {
     episodeNumber: { type: 'string', default: '' },
     episodeTitle: { type: 'string', default: '' },
     fullDescription: { type: 'string', default: '' },
-    listenOnUrls: { type: 'array', default: []
+    listenOnUrls: {
+      type: 'array', default: []
     },
   },
 
@@ -127,131 +129,131 @@ registerBlockType( 'purdue-blocks/podcast', {
     'Add this block and add a Podcast episode.'
   ),
 
-  edit: ( props ) => {
-    const [ isChecked, setChecked ] = useState( false );
+  edit: (props) => {
+    const [isChecked, setChecked] = useState(false);
     const handleAddVideoCard = () => {
-      const listenOnUrls = [ ...props.attributes.listenOnUrls ];
-      listenOnUrls.push( {
+      const listenOnUrls = [...props.attributes.listenOnUrls];
+      listenOnUrls.push({
         chennelname: '',
         chennelUrl: '',
-      } );
-      props.setAttributes( { listenOnUrls } );
+      });
+      props.setAttributes({ listenOnUrls });
     }; //End handleAddVideoCard
-    const handleRemoveVideoCard = ( index ) => {
-      const listenOnUrls = [ ...props.attributes.listenOnUrls ];
-      listenOnUrls.splice( index, 1 );
-      props.setAttributes( { listenOnUrls } );
+    const handleRemoveVideoCard = (index) => {
+      const listenOnUrls = [...props.attributes.listenOnUrls];
+      listenOnUrls.splice(index, 1);
+      props.setAttributes({ listenOnUrls });
     }; //End handleRemoveVideoCard
-    const handleChangeVideoCardVideo = ( chennelname, index ) => {
-      const listenOnUrls = [ ...props.attributes.listenOnUrls ];
-      listenOnUrls[ index ].chennelname = chennelname;
-      props.setAttributes( { listenOnUrls } );
+    const handleChangeVideoCardVideo = (chennelname, index) => {
+      const listenOnUrls = [...props.attributes.listenOnUrls];
+      listenOnUrls[index].chennelname = chennelname;
+      props.setAttributes({ listenOnUrls });
     }; // End handleChangeVideoCardVideo
-    const handleChangeVideoCardDescription = ( chennelUrl, index ) => {
-      const listenOnUrls = [ ...props.attributes.listenOnUrls ];
-      listenOnUrls[ index ].chennelUrl = chennelUrl;
-      props.setAttributes( { listenOnUrls } );
+    const handleChangeVideoCardDescription = (chennelUrl, index) => {
+      const listenOnUrls = [...props.attributes.listenOnUrls];
+      listenOnUrls[index].chennelUrl = chennelUrl;
+      props.setAttributes({ listenOnUrls });
     }; // End handleChangeVideoCardDescription
 
     let videoFields,
-        videoDisplay;
-    if ( props.attributes.listenOnUrls.length ) {
-      videoFields = props.attributes.listenOnUrls.map( ( card, index ) => {
-        return  <Fragment key={index}>
-                  <TextControl
-                    className="purdue_video_carousel_url"
-                    placeholder="Channel Name"
-                    value={ props.attributes.listenOnUrls[ index ].chennelname }
-                    onChange={ ( chennelname ) =>  handleChangeVideoCardVideo( chennelname, index ) }
-                  />
-                  <TextControl
-                    className="video_carrousel_description"
-                    placeholder="Channel URL"
-                    value={ props.attributes.listenOnUrls[ index ].chennelUrl }
-                    onChange={ ( chennelUrl ) => handleChangeVideoCardDescription( chennelUrl, index ) }
-                  />
-                  <Button
-                    className={ 'bulma-blocks-editor-site-hero__button is-danger' }
-                    onClick={ () => handleRemoveVideoCard( index ) }
-                  >
-                    Remove Chennel
-                  </Button>
-                  <hr />
-                </Fragment>
-      } );
+      videoDisplay;
+    if (props.attributes.listenOnUrls.length) {
+      videoFields = props.attributes.listenOnUrls.map((card, index) => {
+        return <Fragment key={index}>
+          <TextControl
+            className="purdue_video_carousel_url"
+            placeholder="Channel Name"
+            value={props.attributes.listenOnUrls[index].chennelname}
+            onChange={(chennelname) => handleChangeVideoCardVideo(chennelname, index)}
+          />
+          <TextControl
+            className="video_carrousel_description"
+            placeholder="Channel URL"
+            value={props.attributes.listenOnUrls[index].chennelUrl}
+            onChange={(chennelUrl) => handleChangeVideoCardDescription(chennelUrl, index)}
+          />
+          <Button
+            className={'bulma-blocks-editor-site-hero__button is-danger'}
+            onClick={() => handleRemoveVideoCard(index)}
+          >
+            Remove Chennel
+          </Button>
+          <hr />
+        </Fragment>
+      });
 
-      videoDisplay = props.attributes.listenOnUrls.map( ( card, index ) => {
-        return  <a key={ index } className='item' href={ card.chennelUrl } target="_blank">
-                    { card.chennelname }
-                </a>;
-      } );
+      videoDisplay = props.attributes.listenOnUrls.map((card, index) => {
+        return <a key={index} className='item' href={card.chennelUrl} target="_blank">
+          {card.chennelname}
+        </a>;
+      });
     }
     return [
       <InspectorControls>
-      <PanelBody title={ __( 'Listen On Chennels' ) }>
-        { videoFields }
-        <Button
-          isDefault
-          onClick={ handleAddVideoCard.bind( this ) }
-        >
-          { __( 'Add Chennel' ) }
-        </Button>
-        <hr />
+        <PanelBody title={__('Listen On Chennels')}>
+          {videoFields}
+          <Button
+            isDefault
+            onClick={handleAddVideoCard.bind(this)}
+          >
+            {__('Add Chennel')}
+          </Button>
+          <hr />
         </PanelBody>
         <PanelBody>
           <PanelRow>
             <TextControl
               label="Espisode Number"
-              value={ props.attributes.episodeNumber }
-              onChange={ ( episodeNumber ) => props.setAttributes( { episodeNumber } ) }
+              value={props.attributes.episodeNumber}
+              onChange={(episodeNumber) => props.setAttributes({ episodeNumber })}
               type="number"
             />
           </PanelRow>
           <PanelRow>
             <MediaUploadCheck>
-              <label>{ __('Cover Image') }
-              <MediaUpload
-                allowedTypes={['image']}
-                onSelect={ ( coverImage ) => {
-                  props.setAttributes( {
-                    coverImage: coverImage.url,
-                    altText:
-                      props.attributes.altText !== '' ?
-                        props.attributes.altText :
-                        coverImage.alt,
-                  } );
-                } }
-                render={ ( { open } ) => {
-                  return props.attributes.coverImage !== '' ? (
-                    <div className={ 'bulma-blocks-editor-home-card__preview' }>
-                      <figure className={ 'image' }>
-                        <img
-                          alt={ props.attributes.altText }
-                          src={ props.attributes.coverImage }
-                        />
-                      </figure>
-                      <Button
-                        className={ 'bulma-blocks-editor-home-card__button' }
-                        onClick={ open }
-                      >
-                        Update Image
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className={ 'bulma-blocks-editor-home-card__container' }>
-                      <p className={ 'bulma-blocks-editor-home-card__description' }>
-                        Pick an image from the media library.
-                      </p>
-                      <Button
-                        className={ 'bulma-blocks-editor-home-card__button' }
-                        onClick={ open }
-                      >
-                        Open Media Library
-                      </Button>
-                    </div>
-                  );
-                } }
-              />
+              <label>{__('Cover Image')}
+                <MediaUpload
+                  allowedTypes={['image']}
+                  onSelect={(coverImage) => {
+                    props.setAttributes({
+                      coverImage: coverImage.url,
+                      altText:
+                        props.attributes.altText !== '' ?
+                          props.attributes.altText :
+                          coverImage.alt,
+                    });
+                  }}
+                  render={({ open }) => {
+                    return props.attributes.coverImage !== '' ? (
+                      <div className={'bulma-blocks-editor-home-card__preview'}>
+                        <figure className={'image'}>
+                          <img
+                            alt={props.attributes.altText}
+                            src={props.attributes.coverImage}
+                          />
+                        </figure>
+                        <Button
+                          className={'bulma-blocks-editor-home-card__button'}
+                          onClick={open}
+                        >
+                          Update Image
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className={'bulma-blocks-editor-home-card__container'}>
+                        <p className={'bulma-blocks-editor-home-card__description'}>
+                          Pick an image from the media library.
+                        </p>
+                        <Button
+                          className={'bulma-blocks-editor-home-card__button'}
+                          onClick={open}
+                        >
+                          Open Media Library
+                        </Button>
+                      </div>
+                    );
+                  }}
+                />
               </label>
             </MediaUploadCheck>
           </PanelRow>
@@ -259,64 +261,64 @@ registerBlockType( 'purdue-blocks/podcast', {
             <CheckboxControl
               label="Podcast Source"
               help="Is the Podcast episode loading from an external source?"
-              checked={ props.attributes.isChecked }
-              onChange={ (isChecked) => {
-                props.setAttributes( { isChecked: isChecked } );
-              } }
+              checked={props.attributes.isChecked}
+              onChange={(isChecked) => {
+                props.setAttributes({ isChecked: isChecked });
+              }}
             />
           </PanelRow>
-          { props.attributes.isChecked ? (
+          {props.attributes.isChecked ? (
             <PanelRow>
               <TextControl
                 label="Podcast URL"
-                value={ props.attributes.urlText }
-                onChange={ ( urlText ) => props.setAttributes( { urlText } ) }
+                value={props.attributes.urlText}
+                onChange={(urlText) => props.setAttributes({ urlText })}
               />
             </PanelRow>
-            ) : (
+          ) : (
             <PanelRow>
               <MediaUploadCheck>
-                <label>{ __('Podcast File') }
-                <MediaUpload
-                  allowedTypes={['audio']}
-                  onSelect={ ( internalFile ) => {
-                    props.setAttributes( {
-                      internalFile: internalFile.url,
-                    } );
-                  } }
-                  render={ ( { open } ) => {
-                    return props.attributes.internalFile !== '' ? (
-                      <div className={ 'bulma-blocks-editor-home-card__preview' }>
-                        <TextControl
-                          value={ props.attributes.internalFile }
-                          disabled = {true}
-                        />
-                        <Button
-                          className={ 'bulma-blocks-editor-home-card__button' }
-                          onClick={ open }
-                        >
-                          Update File
-                        </Button>
-                      </div>
-                    ) : (
-                      <div className={ 'bulma-blocks-editor-home-card__container' }>
-                        <p className={ 'bulma-blocks-editor-home-card__description' }>
-                          Pick a file from the library.
-                        </p>
-                        <Button
-                          className={ 'bulma-blocks-editor-home-card__button' }
-                          onClick={ open }
-                        >
-                          Open Media Library
-                        </Button>
-                      </div>
-                    );
-                  } }
-                />
+                <label>{__('Podcast File')}
+                  <MediaUpload
+                    allowedTypes={['audio']}
+                    onSelect={(internalFile) => {
+                      props.setAttributes({
+                        internalFile: internalFile.url,
+                      });
+                    }}
+                    render={({ open }) => {
+                      return props.attributes.internalFile !== '' ? (
+                        <div className={'bulma-blocks-editor-home-card__preview'}>
+                          <TextControl
+                            value={props.attributes.internalFile}
+                            disabled={true}
+                          />
+                          <Button
+                            className={'bulma-blocks-editor-home-card__button'}
+                            onClick={open}
+                          >
+                            Update File
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className={'bulma-blocks-editor-home-card__container'}>
+                          <p className={'bulma-blocks-editor-home-card__description'}>
+                            Pick a file from the library.
+                          </p>
+                          <Button
+                            className={'bulma-blocks-editor-home-card__button'}
+                            onClick={open}
+                          >
+                            Open Media Library
+                          </Button>
+                        </div>
+                      );
+                    }}
+                  />
                 </label>
               </MediaUploadCheck>
             </PanelRow>
-            )
+          )
           }
         </PanelBody>
       </InspectorControls>,
@@ -328,16 +330,16 @@ registerBlockType( 'purdue-blocks/podcast', {
               <RichText
                 tagName="h2"
                 label="Podcast Name"
-                value={ props.attributes.podcastName }
-                onChange={ ( podcastName ) => props.setAttributes( { podcastName } ) }
-                placeholder={ __( 'Podcast Name' ) }
+                value={props.attributes.podcastName}
+                onChange={(podcastName) => props.setAttributes({ podcastName })}
+                placeholder={__('Podcast Name')}
               />
             </div>
           </div>
         </div>
         <div className="columns purdue_podcast_desc">
           <div className="column is-one-quarter">
-            <img className="purdue_podcast_episode_cover_image" src={ props.attributes.coverImage } alt={ props.attributes.altText } />
+            <img className="purdue_podcast_episode_cover_image" src={props.attributes.coverImage} alt={props.attributes.altText} />
           </div>
           <div className="column is-three-quarters">
             <div className="purdue_podcast_episode_short_desc">
@@ -345,13 +347,13 @@ registerBlockType( 'purdue-blocks/podcast', {
                 tagName="div"
                 multiline="p"
                 label="Short Description"
-                value={ props.attributes.shortDescription }
-                onChange={ ( shortDescription ) => props.setAttributes( { shortDescription } ) }
-                placeholder={ __( 'Short Description' ) }
+                value={props.attributes.shortDescription}
+                onChange={(shortDescription) => props.setAttributes({ shortDescription })}
+                placeholder={__('Short Description')}
               />
             </div>
             <div className="purdue_podcast_episode_links">
-              <strong>{__('Listen on: ')}</strong> { videoDisplay }
+              <strong>{__('Listen on: ')}</strong> {videoDisplay}
             </div>
           </div>
         </div>
@@ -374,60 +376,60 @@ registerBlockType( 'purdue-blocks/podcast', {
                   <div className="purdue_podcast_controls_black_total">00:00:00</div>
                   <div className="purdue_podcast_controls_black_volume"><i class="fas fa-volume-up"></i><i class="fas fa-volume-mute hidden"></i></div>
                   <div className="purdue_podcast_controls_black_speed"><button class="pcast-speed">1x</button></div>
-                  { isChecked ? (
-                  <audio src={ props.attributes.urlText }></audio> ) : (
-                    <audio src={ props.attributes.internalFile }></audio>
+                  {isChecked ? (
+                    <audio src={props.attributes.urlText}></audio>) : (
+                    <audio src={props.attributes.internalFile}></audio>
                   )
-                }
+                  }
                 </div>
               </div>
               <div class="modal">
                 <div class="modal-background"></div>
-                  <div class="modal-content">
-                    <div class="top_article_data">
-                      <div class="top_article_data_share">
-                        <a id="share_text" class="top_article_data_share_text " target="_blank" aria-label={`Share link https://youtu.be/${ post_id }`} href={`https://youtu.be/${ post_id }`} title="Share link">{`https://youtu.be/${ post_id }`}</a>
-                        <a class="top_article_data_share_button" href={`https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/${ post_id }`} title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a class="top_article_data_share_button" href={`https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/${ post_id }`} title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="top_article_data_share_button" href={`https://twitter.com/intent/tweet?text=https://youtu.be/${ post_id }`} title="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a class="top_article_data_share_button" href={`mailto:?subject=&body=https://youtu.be/${ post_id }`} title="{{ Drupal.t('Share via Email') }}" target="_blank"><i class="fas fa-envelope"></i></a>
-                      </div>
+                <div class="modal-content">
+                  <div class="top_article_data">
+                    <div class="top_article_data_share">
+                      <a id="share_text" class="top_article_data_share_text " target="_blank" aria-label={`Share link https://youtu.be/${post_id}`} href={`https://youtu.be/${post_id}`} title="Share link">{`https://youtu.be/${post_id}`}</a>
+                      <a class="top_article_data_share_button" href={`https://www.facebook.com/sharer/sharer.php?u=https://youtu.be/${post_id}`} title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                      <a class="top_article_data_share_button" href={`https://www.linkedin.com/sharing/share-offsite/?url=https://youtu.be/${post_id}`} title="Share on Linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                      <a class="top_article_data_share_button" href={`https://twitter.com/intent/tweet?text=https://youtu.be/${post_id}`} title="Share on Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                      <a class="top_article_data_share_button" href={`mailto:?subject=&body=https://youtu.be/${post_id}`} title="{{ Drupal.t('Share via Email') }}" target="_blank"><i class="fas fa-envelope"></i></a>
                     </div>
                   </div>
-                  <button class="modal-close is-large" aria-label="close"></button>
                 </div>
+                <button class="modal-close is-large" aria-label="close"></button>
               </div>
-              <div className="purdue_podcast_episode_box">
-                <div className="purdue_podcast_episode_number">
-                  {__('Espisode # ')}{ props.attributes.episodeNumber }
-                </div>
-                <div className="purdue_podcast_episode_title">
-                  <RichText
-                    tagName="h3"
-                    value={ props.attributes.episodeTitle }
-                    onChange={ ( episodeTitle ) => props.setAttributes( { episodeTitle } ) }
-                    placeholder={ __( "Episode Name" ) }
-                  />
-                </div>
-                <div className="purdue_podcast_episode_date">
-                </div>
-                <div className="purdue_podcast_full_desc">
+            </div>
+            <div className="purdue_podcast_episode_box">
+              <div className="purdue_podcast_episode_number">
+                {__('Espisode # ')}{props.attributes.episodeNumber}
+              </div>
+              <div className="purdue_podcast_episode_title">
+                <RichText
+                  tagName="h3"
+                  value={props.attributes.episodeTitle}
+                  onChange={(episodeTitle) => props.setAttributes({ episodeTitle })}
+                  placeholder={__("Episode Name")}
+                />
+              </div>
+              <div className="purdue_podcast_episode_date">
+              </div>
+              <div className="purdue_podcast_full_desc">
                 <RichText
                   tagName="div"
                   multiline="p"
                   label="Full Description"
-                  value={ props.attributes.fullDescription }
-                  onChange={ ( fullDescription ) => props.setAttributes( { fullDescription } ) }
-                  placeholder={ __( "Full Description" ) }
+                  value={props.attributes.fullDescription}
+                  onChange={(fullDescription) => props.setAttributes({ fullDescription })}
+                  placeholder={__("Full Description")}
                 />
-                </div>
-                <div className="purdue_podcast_controls_pause_share">
-                  <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share"></i> Share</button>
-                </div>
+              </div>
+              <div className="purdue_podcast_controls_pause_share">
+                <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share"></i> Share</button>
               </div>
             </div>
           </div>
-        </div>,
+        </div>
+      </div>,
     ];
   },
 
@@ -442,84 +444,87 @@ registerBlockType( 'purdue-blocks/podcast', {
    * @param {Object} props Props.
    * @returns {Mixed} JSX Frontend HTML.
    */
-  save: ( props ) => {
+  save: (props) => {
     const blockProps = useBlockProps.save();
-    const videoFields = props.attributes.listenOnUrls.map( ( card, index ) => {
-      return  <a key={ index } className='item' href={ card.chennelUrl } target="_blank" rel="noopener noreferrer">
-                  { card.chennelname }
-              </a>;
-    } );
+    const videoFields = props.attributes.listenOnUrls.map((card, index) => {
+      return <a key={index} className='item' href={card.chennelUrl} target="_blank" rel="noopener noreferrer">
+        {card.chennelname}
+      </a>;
+    });
     return (
-    <div {...blockProps} className='purdue_podcast'>
-      <div className="columns">
-        <div className="column">
-          <div className="purdue_podcast_podcast_name">
-            <RichText.Content tagName="h2" value={ props.attributes.podcastName } />
-          </div>
-        </div>
-      </div>
-      <div className="columns purdue_podcast_desc">
-        <div className="column">
-          <img className="purdue_podcast_episode_cover_image" src={ props.attributes.coverImage } alt={ props.attributes.altText } />
-          <div className="purdue_podcast_episode_short_desc">
-            <RichText.Content tagName="div" multiline="p" value={ props.attributes.shortDescription } />
-          </div>
-          <div className="purdue_podcast_episode_links">
-            <strong>{__('Listen on: ')}</strong> { videoFields }
-          </div>
-        </div>
-      </div>
-      <div className="columns">
-        <div className="column">
-          <div className="purdue_podcast_episode_player">
-            <div className="purdue_podcast_controls">
-              <div className="purdue_podcast_controls_pause">
-                <div className="purdue_podcast_controls_pause_playing">
-                  NOW PLAYING
-                  <button id="play" className="purdue_podcast_controls_pause_share_play">
-                    <span className="purdue_podcast_controls_pause_share_play_border"><i className="fas fa-play"></i><i class="fas fa-pause hidden"></i></span>
-                  </button>
-                </div>
-                <div className="purdue_podcast_controls_pause_button"></div>
-              </div>
-              <div className="purdue_podcast_controls_black">
-                <div className="purdue_podcast_controls_black_elapsed">00:00:00</div>
-                <div className="purdue_podcast_controls_black_timeline"><span className="time_elapsed"></span></div>
-                <div className="purdue_podcast_controls_black_total">00:00:00</div>
-                <div className="purdue_podcast_controls_black_volume"><i class="fas fa-volume-up  podcast-volume"></i><i class="fas fa-volume-mute hidden"></i></div>
-                <div className="purdue_podcast_controls_black_speed"><button class="pcast-speed">1x</button></div>
-                { props.attributes.isChecked ? (
-                <audio src={ props.attributes.urlText }></audio> ) : (
-                  <audio src={ props.attributes.internalFile }></audio>
-                )
-              }
-              </div>
+      <div {...blockProps} className='purdue_podcast'>
+        <div className="columns">
+          <div className="column">
+            <div className="purdue_podcast_podcast_name">
+              <RichText.Content tagName="h2" value={props.attributes.podcastName} />
             </div>
+          </div>
+        </div>
+        <div className="columns purdue_podcast_desc">
+          <div className="column">
+            <img className="purdue_podcast_episode_cover_image" src={props.attributes.coverImage} alt={props.attributes.altText} />
+            <div className="purdue_podcast_episode_short_desc">
+              <RichText.Content tagName="div" multiline="p" value={props.attributes.shortDescription} />
+            </div>
+            <div className="purdue_podcast_episode_links">
+              <strong>{__('Listen on: ')}</strong> {videoFields}
+            </div>
+          </div>
+        </div>
+        <div className="columns">
+          <div className="column">
+            <div className="purdue_podcast_episode_player">
+              <div className="purdue_podcast_controls">
+                <div className="purdue_podcast_controls_pause">
+                  <div className="purdue_podcast_controls_pause_playing">
+                    <div id="podcast-status" role="status" aria-live="polite">
+                      NOW PLAYING
+                    </div>
+                    <button id="play" className="purdue_podcast_controls_pause_share_play" aria-label="Play Audio">
+                      <span className="purdue_podcast_controls_pause_share_play_border"><i className="fas fa-play" aria-hidden="true"></i><i class="fas fa-pause hidden" aria-hidden="true"></i></span>
+                    </button>
+                  </div>
+                  <div className="purdue_podcast_controls_pause_button"></div>
+                </div>
+                <div className="purdue_podcast_controls_black">
+                  <div className="purdue_podcast_controls_black_elapsed">00:00:00</div>
+                  <div className="purdue_podcast_black_status_eplayed sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+                  <div className="purdue_podcast_controls_black_timeline"><span className="time_elapsed"></span></div>
+                  <div className="purdue_podcast_controls_black_total">00:00:00</div>
+                  <div className="purdue_podcast_controls_black_volume" aria-label="Mute Audio"><i class="fas fa-volume-up  podcast-volume"></i><i class="fas fa-volume-mute hidden"></i></div>
+                  <div className="purdue_podcast_controls_black_speed"><button class="pcast-speed" aria-label="Playback speed, currently 1x">1x</button></div>
+                  {props.attributes.isChecked ? (
+                    <audio src={props.attributes.urlText}></audio>) : (
+                    <audio src={props.attributes.internalFile}></audio>
+                  )
+                  }
+                </div>
+              </div>
 
-            <div className="purdue_podcast_episode_box">
-              <div className="purdue_podcast_episode_number">
-                {__('Espisode # ')}{ props.attributes.episodeNumber }
-              </div>
-              <div className="purdue_podcast_episode_title">
-                <RichText.Content tagName="h3" value={ props.attributes.episodeTitle } />
-              </div>
-              <div className="purdue_podcast_episode_date">
-              </div>
-              <div className="purdue_podcast_full_desc">
-                <RichText.Content tagName="div" multiline="p" value={ props.attributes.fullDescription } />
-              </div>
-              <div className="purdue_podcast_controls_pause_share">
-                <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share share-icon"></i> Share</button>
-                <div class="podcast-modal">
-                <button class="modal-close podcast-modal-close is-large" aria-label="close"></button>
+              <div className="purdue_podcast_episode_box">
+                <div className="purdue_podcast_episode_number">
+                  {__('Espisode # ')}{props.attributes.episodeNumber}
+                </div>
+                <div className="purdue_podcast_episode_title">
+                  <RichText.Content tagName="h3" value={props.attributes.episodeTitle} />
+                </div>
+                <div className="purdue_podcast_episode_date">
+                </div>
+                <div className="purdue_podcast_full_desc">
+                  <RichText.Content tagName="div" multiline="p" value={props.attributes.fullDescription} />
+                </div>
+                <div className="purdue_podcast_controls_pause_share">
+                  <button className="purdue_podcast_controls_pause_share_share" aria-haspopup="dialog"><i className="fas fa-share share-icon"></i> Share</button>
+                  <div class="podcast-modal" role="dialog" aria-modal="true">
+                    <button class="modal-close podcast-modal-close is-large" aria-label="close"></button>
                     <div class="modal-content">
-                        <div class="top_article_data_share">
-                          <span id="share_text" class="top_article_data_share_text ">Share</span>
-                          <a class="top_article_data_share_button facebook_share_button" href='' title="Share on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-                          <a class="top_article_data_share_button instagram_share_button" href='' title="Share on Linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                          <a class="top_article_data_share_button twitter_share_button" href='' title="Share on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                          <a class="top_article_data_share_button email_share_button" href='' title="{{ Drupal.t('Share via Email') }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
-                        </div>
+                      <div class="top_article_data_share">
+                        <span id="share_text" class="top_article_data_share_text ">Share</span>
+                        <a class="top_article_data_share_button facebook_share_button" href='' title="Share on Facebook" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a class="top_article_data_share_button instagram_share_button" href='' title="Share on Linkedin" target="_blank" rel="noopener noreferrer" aria-label="Share on Linkedin"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                        <a class="top_article_data_share_button twitter_share_button" href='' title="Share on Twitter" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a class="top_article_data_share_button email_share_button" href='' title="{{ Drupal.t('Share via Email') }}" target="_blank" rel="noopener noreferrer" aria-label="Share via Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -528,6 +533,122 @@ registerBlockType( 'purdue-blocks/podcast', {
           </div>
         </div>
       </div>
-      );
+    );
   },
-} );
+
+  deprecated: [
+    {
+      attributes: {
+        isChecked: { type: 'boolean', default: false },
+        urlText: { type: 'string', default: '' },
+        internalFile: { type: 'string', default: '' },
+        coverImage: { type: 'string', default: '' },
+        altText: { type: 'string', default: '' },
+        podcastName: { type: 'string', default: '' },
+        shortDescription: { type: 'string', default: '' },
+        episodeNumber: { type: 'string', default: '' },
+        episodeTitle: { type: 'string', default: '' },
+        fullDescription: { type: 'string', default: '' },
+        listenOnUrls: {
+          type: 'array', default: []
+        },
+      },
+
+      supports: {
+        className: false,
+        anchor: true,
+      },
+
+      save: (props) => {
+
+        const videoFields = props.attributes.listenOnUrls.map((card, index) => {
+          return <a key={index} className='item' href={card.chennelUrl} target="_blank" rel="noopener noreferrer">
+            {card.chennelname}
+          </a>;
+        });
+        return (
+          <div className='purdue_podcast'>
+            <div className="columns">
+              <div className="column">
+                <div className="purdue_podcast_podcast_name">
+                  <RichText.Content tagName="h2" value={props.attributes.podcastName} />
+                </div>
+              </div>
+            </div>
+            <div className="columns purdue_podcast_desc">
+              <div className="column">
+                <img className="purdue_podcast_episode_cover_image" src={props.attributes.coverImage} alt={props.attributes.altText} />
+                <div className="purdue_podcast_episode_short_desc">
+                  <RichText.Content tagName="div" multiline="p" value={props.attributes.shortDescription} />
+                </div>
+                <div className="purdue_podcast_episode_links">
+                  <strong>{__('Listen on: ')}</strong> {videoFields}
+                </div>
+              </div>
+            </div>
+            <div className="columns">
+              <div className="column">
+                <div className="purdue_podcast_episode_player">
+                  <div className="purdue_podcast_controls">
+                    <div className="purdue_podcast_controls_pause">
+                      <div className="purdue_podcast_controls_pause_playing">
+                        Play Audio
+                        <button id="play" className="purdue_podcast_controls_pause_share_play">
+                          <span className="purdue_podcast_controls_pause_share_play_border"><i className="fas fa-play"></i><i class="fas fa-pause hidden"></i></span>
+                        </button>
+                      </div>
+                      <div className="purdue_podcast_controls_pause_button"></div>
+                    </div>
+                    <div className="purdue_podcast_controls_black">
+                      <div className="purdue_podcast_controls_black_elapsed">00:00:00</div>
+                      <div className="purdue_podcast_controls_black_timeline"><span className="time_elapsed"></span></div>
+                      <div className="purdue_podcast_controls_black_total">00:00:00</div>
+                      <div className="purdue_podcast_controls_black_volume"><i class="fas fa-volume-up  podcast-volume"></i><i class="fas fa-volume-mute hidden"></i></div>
+                      <div className="purdue_podcast_controls_black_speed"><button class="pcast-speed">1x</button></div>
+                      {props.attributes.isChecked ? (
+                        <audio src={props.attributes.urlText}></audio>) : (
+                        <audio src={props.attributes.internalFile}></audio>
+                      )
+                      }
+                    </div>
+                  </div>
+
+                  <div className="purdue_podcast_episode_box">
+                    <div className="purdue_podcast_episode_number">
+                      {__('Espisode # ')}{props.attributes.episodeNumber}
+                    </div>
+                    <div className="purdue_podcast_episode_title">
+                      <RichText.Content tagName="h3" value={props.attributes.episodeTitle} />
+                    </div>
+                    <div className="purdue_podcast_episode_date">
+                    </div>
+                    <div className="purdue_podcast_full_desc">
+                      <RichText.Content tagName="div" multiline="p" value={props.attributes.fullDescription} />
+                    </div>
+                    <div className="purdue_podcast_controls_pause_share">
+                      <button className="purdue_podcast_controls_pause_share_share"><i className="fas fa-share share-icon"></i> Share</button>
+                      <div class="podcast-modal">
+                        <button class="modal-close podcast-modal-close is-large" aria-label="close"></button>
+                        <div class="modal-content">
+                          <div class="top_article_data_share">
+                            <span id="share_text" class="top_article_data_share_text ">Share</span>
+                            <a class="top_article_data_share_button facebook_share_button" href='' title="Share on Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                            <a class="top_article_data_share_button instagram_share_button" href='' title="Share on Linkedin" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="top_article_data_share_button twitter_share_button" href='' title="Share on Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                            <a class="top_article_data_share_button email_share_button" href='' title="{{ Drupal.t('Share via Email') }}" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      },
+
+    }
+
+  ],
+});

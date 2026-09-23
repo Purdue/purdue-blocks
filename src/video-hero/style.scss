@@ -5,6 +5,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - 184px - 3rem);
+
+  @include touch {
+    min-height: 100%;
+    padding: 6rem 0;
+  }
 
   &--background-image {
     top: 0;
@@ -100,12 +106,15 @@
     a {
       text-decoration: none;
       margin: 0;
+      text-align: center;
     }
 
     .cta-button {
+      display: inline-block;
       position: relative;
       background: $boiler-gold;
       padding: 0.8rem 1.8rem 0.7rem;
+      line-height: 2;
       font-family: United Sans;
       font-weight: 700;
       font-size: 1.125rem;
@@ -222,15 +231,26 @@
       right: 50%;
       transform: translateX(50%);
     }
-    .video-hero--carousel__arrow-left{
-      padding-right:1rem;
+    .video-hero--carousel__arrow-left, .video-hero--carousel__arrow-right {
+      all: unset;
+      outline:none;
+      margin:0;
+      padding:0;
+      background-color: transparent;
       align-self: center;
       cursor: pointer;
+      color: inherit;
+
+      &:focus-visible {
+        outline: 2px solid #005fcc;
+        outline-offset: 2px;
+      }
+    }
+    .video-hero--carousel__arrow-left{
+      margin-right:1rem;
     }
     .video-hero--carousel__arrow-right{
-      padding-left:1rem;
-      align-self: center;
-      cursor: pointer;
+      margin-left:1rem;
     }
     .video-hero--carousel__current, .video-hero--carousel__total{
       align-self: flex-end;
@@ -251,21 +271,21 @@
 // based on which header is active
 
 .header--global + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 184px - 3rem);
+  min-height: calc(100vh - 184px - 3rem);
 }
 
 .header--global__microsite + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 97px - 3rem);
+  min-height: calc(100vh - 97px - 3rem);
 }
 
 .header--simple + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 143px - 3rem);
+  min-height: calc(100vh - 143px - 3rem);
 }
 
 .header--mega + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 97px - 3rem);
+  min-height: calc(100vh - 97px - 3rem);
 }
 
 .header--mega.is-transparent + .site-content > .main-content > .content .video-hero {
-  height: calc(100vh - 3rem);
+  min-height: calc(100vh - 3rem);
 }
