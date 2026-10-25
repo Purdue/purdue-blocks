@@ -135,7 +135,7 @@ registerBlockType( 'purdue-blocks/image-showcase', {
                     <span>Image Showcase</span>
                   </span>
                   <p className={ 'editor-image-showcase__description' }>
-                    Pick three image from the media library.
+                    Pick three images from the media library.
                   </p>
                   <Button
                     className={ 'editor-image-showcase__button' }

@@ -112,7 +112,7 @@ registerBlockType("purdue-blocks/proofpoint", {
           <PanelRow>
             <RadioControl
               label="Background Color"
-              help="Choose to background color of the proofpoint."
+              help="Choose the background color of the proofpoint."
               selected={props.attributes.color}
               options={[
                 { label: 'Black', value: 'black' },

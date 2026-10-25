@@ -85,7 +85,7 @@ registerBlockType("purdue-blocks/sidebar-cta", {
           <PanelRow>
             <RadioControl
               label="Background Color"
-              help="Choose to background color of the proofpoint."
+              help="Choose the background color of the proofpoint."
               selected={ props.attributes.backgroundColor }
               options={ [
                 { label: 'White', value: 'white' },
